@@ -8,6 +8,9 @@ module.exports = {
         'btn-hover': '#030E41',
       },
     },
+    container: {
+      center: true,
+    },
   },
   plugins: [
     require('flowbite/plugin'),
