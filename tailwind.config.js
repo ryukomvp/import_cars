@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'btn': '#11468F',
+        'primario': '#11468F',
         'btn-hover': '#030E41',
       },
     },
