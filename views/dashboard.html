@@ -2,111 +2,83 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/resources/css/jose.css" />
-    <link rel="stylesheet" href="/resources/css/dashboard.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/resources/css/jose.css">
 </head>
 
 <body>
-    <nav>
-        <div class="logo">
-            <i class="bx bx-menu menu-icon"></i>
-            <span class="logo-name">Import Cars</span>
+  <div class="min-h-screen bg-gray-100">
+    <div class="h-16 bg-white shadow-sm pl-80 pr-8 fixed w-full top-0 left-0 flex items-center">
+      <div class="relative">
+        <svg class="absolute left-2 top-2 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
+          viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0  105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+        <input type="text"
+          class="block w-72 shadow boder-none rounded-3xl focus:outline-none py-2 bg-gray-100 text-base text-gray-600 pl-11 pr-2" />
+      </div>
+
+      <div class="ml-auto flex items-center">
+        <div>
+          <svg class="w-6 cursor-pointer text-gray-600 hover:text-gray-900" xmlns="http://www.w3.org/2000/svg"
+            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+          </svg>
         </div>
 
-        <div class="sidebar">
-            <div class="logo">
-                <i class="bx bx-menu menu-icon"></i>
-                <span class="logo-name">Import Cars</span>
-            </div>
+        <div class="ml-4 relative">
+          <div class="cursor-pointer">
+            <img class="h-8 w-8 rounded-full object-cover"
+              src="https://ui-avatars.com/api/?name=Jose+Gonzalez&amp;color=7F9CF5&amp;backgrounded=EBF4FF" alt="">
+          </div>
 
-            <div class="sidebar-content">
-                <ul class="lists">
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class="bx bx-home-alt icon"></i>
-                            <span class="link">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class='bx bxl-product-hunt icon'></i>
-                            <span class="link">Productos</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class='bx bx-bar-chart-alt icon'></i>
-                            <span class="link">Procesos</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class='bx bxs-report icon'></i>
-                            <span class="link">Reportes</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class='bx bx-list-plus icon'></i>
-                            <span class="link">Consultas</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class='bx bxs-briefcase icon'></i>
-                            <span class="link">Cierres</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class='bx bx-table icon'></i>
-                            <span class="link">Tablas</span>
-                        </a>
-                    </li>
-                </ul>
-
-                <div class="bottom-cotent">
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class="bx bx-cog icon"></i>
-                            <span class="link">Configuracion</span>
-                        </a>
-                    </li>
-                    <li class="list">
-                        <a href="#" class="nav-link">
-                            <i class="bx bx-log-out icon"></i>
-                            <span class="link">Cerrar sesion</span>
-                        </a>
-                    </li>
-                </div>
-            </div>
+          <div class="absolute z-50 mt-2 rounded-md shadow-lg w-64 right-0 py-1 bg-white">
+            <div class="px-4 py-2 text-xs text-gray-400">Manage Account</div>
+            <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 transition">Profile</a>
+            <div class="border-t border-gray-100"></div>
+            <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 transition">Logout</a>
+          </div>
         </div>
-    </nav>
+      </div>
+    </div>
+  </div>
 
-    <section>
+  <div class="fixed left-0 top-0 w-72 h-full bg-gray-800 shadow-md z-10">
+    <div class="text-white font-bold text-base uppecase text-center py-5 bg-gray-900">
+      ImportCars
+    </div>
+    <div class="py-5">
+      <a href="#" class="flex items-center my-1 px-4 py-3 text-white border-1-4 border-blue-600 bg-gray-900"><svg
+          class="w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>
+        Dashboard
+      </a>
+      <a href="#"
+        class="flex items-center my-1 px-4 py-3 text-white border-1-4 border-transparent hover:border-blue-600 hover:bg-gray-900 transition"><svg
+          class="w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+          stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+        </svg>
+        Category
+      </a>
+    </div>
 
-    </section>
+    <div class="pt-24 pr-8 pl-80">
+      <h1 class="text-3xl text-gray-700 font-bold">Grid Templates</h1>
+    </div>
 
-    <script>
-        const navBar = document.querySelector("nav"),
-            menuBtns = document.querySelectorAll(".menu-icon"),
-            overlay = document.querySelector(".overlay");
+  </div>
 
-        menuBtns.forEach((menuBtn) => {
-            menuBtn.addEventListener("click", () => {
-                navBar.classList.toggle("open");
-            });
-        });
-
-        overlay.addEventListener("click", () => {
-            navBar.classList.remove("open");
-        });
-    </script>
+  <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
 </body>
 
 </html>
