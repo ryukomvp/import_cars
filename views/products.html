@@ -7,12 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/resources/css/marchelli.css" rel="stylesheet">
     <link href="/resources/css/menu.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="icon" href="/resources/img/logo.png">
     <title>Productos</title>
 </head>
 
 <body>
     <header">
-        <nav  class="sticky top-0 z-10">
+        <nav class="sticky top-0 z-10">
             <div class="logo">
                 <i class="bx bx-menu menu-icon text-white"></i>
                 <span class="logo-name text-white">Import Cars</span>
@@ -93,9 +95,9 @@
     <main>
         <div class="container py-4">
             <div>
-                <div class="py-4">
-                    <h1 class="text-xl">Productos</h1>
-                    <p>Gestoria de la entrada del inventario de los productos. </p>
+                <div class="py-4 text-center">
+                    <h1 class="text-xl text-rojo font-bold">Productos</h1>
+                    <p class="text-azul font-medium">Gestoria de la entrada del inventario de los productos. </p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
@@ -112,17 +114,17 @@
                                 </div>
                                 <input type="search" id="default-search"
                                     class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Search Mockups, Logos..." required>
+                                    placeholder="Buscar..." required>
                                 <button type="submit"
-                                    class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+                                    class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                             </div>
                         </form>
                     </div>
                     <div class="col-end-5">
                         <button data-modal-target="modal_add_product" data-modal-toggle="modal_add_product"
-                            class="block w-full md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
-                            Producto Nuevo
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png"/>
                         </button>
                     </div>
                 </div>
@@ -146,7 +148,7 @@
                                         d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                         clip-rule="evenodd"></path>
                                 </svg>
-                                <span class="sr-only">Close modal</span>
+                                <span class="sr-only">Cerrar ventana</span>
                             </button>
                         </div>
                         <!-- Modal body -->
@@ -252,7 +254,7 @@
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
+                        <tr class="text-oscuro font-semibold">
                             <th scope="col" class="px-6 py-3">
                                 Nombre del producto
                             </th>
@@ -274,7 +276,7 @@
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="text-oscuro font-bold px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 Apple MacBook Pro 17"
                             </th>
                             <td class="px-6 py-4">
@@ -287,13 +289,13 @@
                                 $2999
                             </td>
                             <td class="px-6 py-4">
-                                <div class="grid grid-cols-2 m-0">
+                                <div class="grid gap-2 md:grid-cols-2 m-0">
                                     <div>
                                         <button data-modal-target="modal_update_product"
                                             data-modal-toggle="modal_update_product"
-                                            class="block w-full md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            class="block md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            Actualizar
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png"/>
                                         </button>
                                     </div>
                                     <div id="modal_update_product" tabindex="-1"
@@ -305,7 +307,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-                                                        Añadir nuevo producto
+                                                        Actualizar Producto
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -316,7 +318,7 @@
                                                                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                                                 clip-rule="evenodd"></path>
                                                         </svg>
-                                                        <span class="sr-only">Close modal</span>
+                                                        <span class="sr-only">Cerrar ventana</span>
                                                     </button>
                                                 </div>
                                                 <!-- Modal body -->
@@ -422,11 +424,12 @@
                                             </div>
                                         </div>
                                     </div><!--Final del modal-->
+                                    <!--Modal de eliminar-->
                                     <div>
                                         <button data-modal-target="delete-modal" data-modal-toggle="delete-modal"
-                                            class="block w-full md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            class="block md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            Eliminar
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png"/>
                                         </button>
                                     </div>
                                     <div id="delete-modal" tabindex="-1"
@@ -473,7 +476,7 @@
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="text-oscuro px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 Microsoft Surface Pro
                             </th>
                             <td class="px-6 py-4">
@@ -486,13 +489,13 @@
                                 $1999
                             </td>
                             <td class="px-6 py-4">
-                                <div class="grid grid-cols-2 m-0">
+                                <div class="grid gap-2 md:grid-cols-2 m-0">
                                     <div>
                                         <button data-modal-target="modal_update_product"
                                             data-modal-toggle="modal_update_product"
-                                            class="block w-full md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            class="block md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            Actualizar
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png"/>
                                         </button>
                                     </div>
                                     <div id="modal_update_product" tabindex="-1"
@@ -504,7 +507,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-                                                        Añadir nuevo producto
+                                                        Actualizar Producto
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -515,7 +518,7 @@
                                                                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                                                 clip-rule="evenodd"></path>
                                                         </svg>
-                                                        <span class="sr-only">Close modal</span>
+                                                        <span class="sr-only">Cerrar ventana</span>
                                                     </button>
                                                 </div>
                                                 <!-- Modal body -->
@@ -621,11 +624,12 @@
                                             </div>
                                         </div>
                                     </div><!--Final del modal-->
+                                    <!--Modal de eliminar-->
                                     <div>
                                         <button data-modal-target="delete-modal" data-modal-toggle="delete-modal"
-                                            class="block w-full md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            class="block md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            Eliminar
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png"/>
                                         </button>
                                     </div>
                                     <div id="delete-modal" tabindex="-1"
@@ -671,7 +675,7 @@
                         </tr>
                         <tr class="bg-white dark:bg-gray-800 hover:bg-blue-200 dark:hover:bg-gray-600">
                             <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                class="text-oscuro px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 Magic Mouse 2
                             </th>
                             <td class="px-6 py-4">
@@ -684,13 +688,13 @@
                                 $99
                             </td>
                             <td class="px-6 py-4">
-                                <div class="grid grid-cols-2 m-0">
+                                <div class="grid gap-2 md:grid-cols-2 m-0">
                                     <div>
                                         <button data-modal-target="modal_update_product"
                                             data-modal-toggle="modal_update_product"
-                                            class="block w-full md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            class="block md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            Actualizar
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png"/>
                                         </button>
                                     </div>
                                     <div id="modal_update_product" tabindex="-1"
@@ -702,7 +706,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-medium text-gray-900 dark:text-white">
-                                                        Añadir nuevo producto
+                                                        Actualizar Producto
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -713,7 +717,7 @@
                                                                 d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
                                                                 clip-rule="evenodd"></path>
                                                         </svg>
-                                                        <span class="sr-only">Close modal</span>
+                                                        <span class="sr-only">Cerrar ventana</span>
                                                     </button>
                                                 </div>
                                                 <!-- Modal body -->
@@ -819,11 +823,12 @@
                                             </div>
                                         </div>
                                     </div><!--Final del modal-->
+                                    <!--Modal de eliminar-->
                                     <div>
                                         <button data-modal-target="delete-modal" data-modal-toggle="delete-modal"
-                                            class="block w-full md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            class="block md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            Eliminar
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png"/>
                                         </button>
                                     </div>
                                     <div id="delete-modal" tabindex="-1"
@@ -872,7 +877,7 @@
             </div>
         </div>
     </main>
-    <footer class="fixed bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+    <footer class="md:fixed bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
             <img class="h-8" src="/resources/img/logo.png" alt="">
             <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-400 sm:mt-0">
                 <li>
@@ -893,6 +898,21 @@
             </ul>
     </footer>
     <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script>
+        const navBar = document.querySelector("nav"),
+            menuBtns = document.querySelectorAll(".menu-icon"),
+            overlay = document.querySelector(".overlay");
+
+        menuBtns.forEach((menuBtn) => {
+            menuBtn.addEventListener("click", () => {
+                navBar.classList.toggle("open");
+            });
+        });
+
+        overlay.addEventListener("click", () => {
+            navBar.classList.remove("open");
+        });
+    </script>
 </body>
 
 </html>
