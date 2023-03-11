@@ -7,7 +7,6 @@ module.exports = {
         'oscuro': '#041562',
         'azul': '#11468F',
         'rojo': '#DA1212',
-        'blanco': '#EEEEEE',
       },
     },
     container: {

@@ -1,22 +1,136 @@
 <!doctype html>
-<html>
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/resources/css/daniel.css" rel="stylesheet">
+    <!-- importación de archivos css -->
+    <link href="/resources/css/daniel.css" rel="stylesheet" />
+    <link href="/resources/css/menu.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <!-- titulo de la página -->
+    <title>Perfil de usuario</title>
+    <!-- icono de la página -->
+    <link rel="icon" href="/resources/img/logo.png">
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="bx bx-menu menu-icon text-white"></i>
+                <span class="logo-name text-white">Import Cars</span>
+            </div>
+
+            <div class="sidebar">
+                <div class="logo">
+                    <i class="bx bx-menu menu-icon text-oscuro"></i>
+                    <span class="logo-name text-oscuro">Import Cars</span>
+                </div>
+
+                <div class="sidebar-content">
+                    <ul class="lists">
+                        <li class="list">
+                            <a href="#" class="nav-link">
+                                <i class="bx bx-home-alt icon"></i>
+                                <span class="link">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link">
+                                <i class='bx bxl-product-hunt icon'></i>
+                                <span class="link">Productos</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link">
+                                <i class='bx bx-bar-chart-alt icon'></i>
+                                <span class="link">Procesos</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link">
+                                <i class='bx bxs-report icon'></i>
+                                <span class="link">Reportes</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link">
+                                <i class='bx bx-list-plus icon'></i>
+                                <span class="link">Consultas</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link">
+                                <i class='bx bxs-briefcase icon'></i>
+                                <span class="link">Cierres</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link">
+                                <i class='bx bx-table icon'></i>
+                                <span class="link">Tablas</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="bottom-cotent">
+                        <li class="list">
+                            <a href="#" class="nav-link">
+                                <i class="bx bx-cog icon"></i>
+                                <span class="link">Configuracion</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link">
+                                <i class="bx bx-log-out icon"></i>
+                                <span class="link">Cerrar sesion</span>
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+                src="/resources/img/perfil.jpg" alt="Bordered avatar">
+        </nav>
+    </header>
     <main>
-        <div class="container">
-        </div>
+        <!-- component -->
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+
+        <section class="bg-gray-900 flex font-medium items-center justify-center h-screen">
+            <section class="w-64 mx-auto bg-white rounded-2xl px-8 py-6 shadow-lg">
+                <div class="flex items-center justify-between">
+                    <span class="text-oscuro text-sm">Cargo en la empresa</span>
+                    <span class="text-oscuro">
+                        <svg data-tooltip-target="tooltip" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                        </svg>
+                        <div id="tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+                            Editar perfil
+                            <div class="tooltip-arrow" data-popper-arrow></div>
+                        </div>
+                    </span>
+                </div>
+                <div class="mt-6 w-fit mx-auto">
+                    <img class="rounded-full ring-2 ring-oscuro" src="/resources/img/perfil.jpg" class="rounded-full w-28 "
+                        alt="profile picture" srcset="">
+                </div>
+
+                <div class="mt-8 ">
+                    <h2 class="text-oscuro font-bold text-2xl tracking-wide">Jonathan Smith</h2>
+                </div>
+                <p class="text-red-400 font-semibold mt-2.5" >
+                    Desconectado
+                </p>
+            </section>
+        </section>
     </main>
-    <footer
-        class="fixed bottom-0 left-0 z-20 w-full bg-primario p-4 shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800 dark:border-gray-600">
-        <!-- <span class="text-sm text-white sm:text-center dark:text-gray-400">Import Cars</span> -->
-        <img class="h-8" src="/resources/img/logo.png" alt="">
+    <footer class="p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+        <span class="text-white text-2xl">Import Cars</span>
         <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-400 sm:mt-0">
             <li>
                 <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6 "
@@ -36,7 +150,23 @@
         </ul>
     </footer>
 
+
     <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script>
+        const navBar = document.querySelector("nav"),
+            menuBtns = document.querySelectorAll(".menu-icon"),
+            overlay = document.querySelector(".overlay");
+
+        menuBtns.forEach((menuBtn) => {
+            menuBtn.addEventListener("click", () => {
+                navBar.classList.toggle("open");
+            });
+        });
+
+        overlay.addEventListener("click", () => {
+            navBar.classList.remove("open");
+        });
+    </script>
 </body>
 
 </html>
