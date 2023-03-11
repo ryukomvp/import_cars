@@ -9,6 +9,10 @@
   <!-- importación de archivos css -->
   <link href="/resources/css/daniel.css" rel="stylesheet">
   <link href="/resources/css/styles.css" rel="stylesheet">
+  <!-- titulo de la página -->
+  <title>Import Cars</title>
+  <!-- icono de la página -->
+  <link rel="icon" href="/resources/img/logo.png">
 </head>
 
 <body>
@@ -17,11 +21,12 @@
       <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <!-- logo de la empresa -->
         <img src="/resources/img/lcr.png" alt="logo">
+        <!-- caja de contenido -->
         <div
-          class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          class="w-full rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700" id="fondo">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1
-              class="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              class="text-center text-azul-oscuro text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Iniciar sesión en el sistema
             </h1>
             <form class="space-y-4 md:space-y-6" action="#">
@@ -49,7 +54,7 @@
                       required="">
                   </div>
                   <div class="ml-3 text-sm">
-                    <label for="remember" class="text-gray-500 dark:text-gray-300">Recuerdame</label>
+                    <label for="remember" class="text-black dark:text-gray-300">Recuerdame</label>
                   </div>
                 </div>
                 <!-- Acceder a recuperación de clave -->
@@ -57,8 +62,9 @@
                   class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">¿Olvidaste tu
                   contraseña?</a>
               </div>
+              <!-- boton -->
               <button type="submit"
-                class="w-full text-white bg-primario hover:bg-btn-hover focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Ingresar</button>
+                class="w-full text-white bg-azul hover:bg-oscuro focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Ingresar</button>
             </form>
           </div>
         </div>

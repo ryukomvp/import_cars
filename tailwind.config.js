@@ -4,8 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primario': '#11468F',
-        'btn-hover': '#030E41',
+        'oscuro': '#041562',
+        'azul': '#11468F',
+        'rojo': '#DA1212',
+        'blanco': '#EEEEEE',
       },
     },
     container: {
