@@ -245,7 +245,7 @@
                                         </select>
                                     </div>
                                     <!--Input pais de origen-->
-                                    <div class="mb-6">
+                                    <div>
                                         <label for="idpaisorigen"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais de
                                             origen:</label>
@@ -261,7 +261,7 @@
                                         </select>
                                     </div>
                                     <!--Input estado-->
-                                    <div class="mb-6">
+                                    <div>
                                         <label for="idestado"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
                                             del producto:</label>
@@ -274,6 +274,32 @@
                                             <option>Sin Existencia</option>
                                         </select>
                                     </div>
+                                    <!--Input Comision ed Venta-->
+                                    <div>
+                                        <label for="idcomisionventas"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Comision de Ventas:</label>
+                                        <select id="idcomisionventas"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            <option selected>Comision por venta</option>
+                                            <option>Disponible</option>
+                                            <option>No Disponible</option>
+                                            <option>Pendiente</option>
+                                            <option>Sin Existencia</option>
+                                        </select>
+                                    </div>
+                                    <!--Input Sucursal-->
+                                    <div>
+                                        <label for="idsucursal"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal:</label>
+                                        <select id="idsucursal"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            <option selected>Sucursal en la que se ubica</option>
+                                            <option>Metro Centro</option>
+                                            <option>Plaza Mundo</option>
+                                            <option>San Miguelito</option>
+                                        </select>
+                                    </div>
+                                    <!--Textarea Descipcion-->
                                     <div class="col-start-1 col-end-3">
                                         <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
                                         <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
@@ -372,14 +398,14 @@
                             <td class="px-6 py-4">
                                 <div class="grid gap-2 m-0">
                                     <div>
-                                        <button data-modal-target="modal_update_product"
-                                            data-modal-toggle="modal_update_product"
+                                        <button data-modal-target="modal_update_product1"
+                                            data-modal-toggle="modal_update_product1"
                                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
                                             <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                                         </button>
                                     </div>
-                                    <div id="modal_update_product" tabindex="-1"
+                                    <div id="modal_update_product1" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                         <div class="relative w-full h-full max-w-4xl">
                                             <!-- Modal content -->
@@ -406,8 +432,7 @@
                                                 <form class="p-4">
                                                     <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                                         <div>
-                                                            <div
-                                                                class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
+                                                            <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
                                                                 <img src="../resources/img/logo.jpg" alt="img">
                                                                 <br>
                                                                 <button type="button"
@@ -423,8 +448,7 @@
                                                                     placeholder="ID" disabled>
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                                        <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                                             <!--Input nombre del producto-->
                                                             <div>
                                                                 <label for="nombre"
@@ -469,8 +493,7 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria:</label>
                                                                 <select id="idcategoria"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge una categoria del producto
-                                                                    </option>
+                                                                    <option selected>Escoge una categoria del producto</option>
                                                                     <option>Capo</option>
                                                                     <option>Espejos</option>
                                                                     <option>Rines</option>
@@ -483,8 +506,7 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo:</label>
                                                                 <select id="idmodelo"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el modelo de la categoria
-                                                                    </option>
+                                                                    <option selected>Escoge el modelo de la categoria</option>
                                                                     <option>Capo ligero G7th</option>
                                                                     <option>Dorman 955-069</option>
                                                                     <option>Rines Deportivos PRW</option>
@@ -492,14 +514,13 @@
                                                                 </select>
                                                             </div>
                                                             <!--Input pais de origen-->
-                                                            <div class="mb-6">
+                                                            <div>
                                                                 <label for="idpaisorigen"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais
-                                                                    de origen:</label>
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais de
+                                                                    origen:</label>
                                                                 <select id="idpaisorigen"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el pais de origen del
-                                                                        producto</option>
+                                                                    <option selected>Escoge el pais de origen del producto</option>
                                                                     <option>Estados Unidos</option>
                                                                     <option>Alemania</option>
                                                                     <option>China</option>
@@ -509,7 +530,7 @@
                                                                 </select>
                                                             </div>
                                                             <!--Input estado-->
-                                                            <div class="mb-6">
+                                                            <div>
                                                                 <label for="idestado"
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
                                                                     del producto:</label>
@@ -522,9 +543,35 @@
                                                                     <option>Sin Existencia</option>
                                                                 </select>
                                                             </div>
+                                                            <!--Input Comision ed Venta-->
+                                                            <div>
+                                                                <label for="idcomisionventas"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Comision de Ventas:</label>
+                                                                <select id="idcomisionventas"
+                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                                    <option selected>Comision por venta</option>
+                                                                    <option>Disponible</option>
+                                                                    <option>No Disponible</option>
+                                                                    <option>Pendiente</option>
+                                                                    <option>Sin Existencia</option>
+                                                                </select>
+                                                            </div>
+                                                            <!--Input Sucursal-->
+                                                            <div>
+                                                                <label for="idsucursal"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal:</label>
+                                                                <select id="idsucursal"
+                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                                    <option selected>Sucursal en la que se ubica</option>
+                                                                    <option>Metro Centro</option>
+                                                                    <option>Plaza Mundo</option>
+                                                                    <option>San Miguelito</option>
+                                                                </select>
+                                                            </div>
+                                                            <!--Textarea Descipcion-->
                                                             <div class="col-start-1 col-end-3">
                                                                 <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea> 
+                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
                                                             </div>
                                                         </div>
                                                     </div>
@@ -532,7 +579,7 @@
                                                 <!-- Modal footer -->
                                                 <div
                                                     class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                    <button data-modal-hide="modal_update_product" type="button"
+                                                    <button data-modal-hide="modal_update_product1" type="button"
                                                         class="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Actualizar</button>
                                                 </div>
                                             </div>
@@ -540,13 +587,13 @@
                                     </div><!--Final del modal-->
                                     <!--Modal de eliminar-->
                                     <div>
-                                        <button data-modal-target="delete-modal" data-modal-toggle="delete-modal"
+                                        <button data-modal-target="delete-modal1" data-modal-toggle="delete-modal1"
                                             class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
                                             <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
                                         </button>
                                     </div>
-                                    <div id="delete-modal" tabindex="-1"
+                                    <div id="delete-modal1" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                         <div class="relative w-full h-full max-w-md md:h-auto">
                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -574,11 +621,11 @@
                                                     <h3
                                                         class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
                                                         ¿Estas seguro que deseas eliminarlo?</h3>
-                                                    <button data-modal-hide="delete-modal" type="button"
+                                                    <button data-modal-hide="delete-modal1" type="button"
                                                         class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                                         Confirmar
                                                     </button>
-                                                    <button data-modal-hide="delete-modal" type="button"
+                                                    <button data-modal-hide="delete-modal1" type="button"
                                                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancelar</button>
                                                 </div>
                                             </div>
@@ -626,14 +673,14 @@
                             <td class="px-6 py-4">
                                 <div class="grid gap-2 m-0">
                                     <div>
-                                        <button data-modal-target="modal_update_product"
-                                            data-modal-toggle="modal_update_product"
+                                        <button data-modal-target="modal_update_product2"
+                                            data-modal-toggle="modal_update_product2"
                                             class="block md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
                                             <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                                         </button>
                                     </div>
-                                    <div id="modal_update_product" tabindex="-1"
+                                    <div id="modal_update_product2" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                         <div class="relative w-full h-full max-w-4xl">
                                             <!-- Modal content -->
@@ -660,8 +707,7 @@
                                                 <form class="p-4">
                                                     <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                                         <div>
-                                                            <div
-                                                                class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
+                                                            <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
                                                                 <img src="../resources/img/logo.jpg" alt="img">
                                                                 <br>
                                                                 <button type="button"
@@ -677,8 +723,7 @@
                                                                     placeholder="ID" disabled>
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                                        <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                                             <!--Input nombre del producto-->
                                                             <div>
                                                                 <label for="nombre"
@@ -723,8 +768,7 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria:</label>
                                                                 <select id="idcategoria"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge una categoria del producto
-                                                                    </option>
+                                                                    <option selected>Escoge una categoria del producto</option>
                                                                     <option>Capo</option>
                                                                     <option>Espejos</option>
                                                                     <option>Rines</option>
@@ -737,8 +781,7 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo:</label>
                                                                 <select id="idmodelo"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el modelo de la categoria
-                                                                    </option>
+                                                                    <option selected>Escoge el modelo de la categoria</option>
                                                                     <option>Capo ligero G7th</option>
                                                                     <option>Dorman 955-069</option>
                                                                     <option>Rines Deportivos PRW</option>
@@ -746,14 +789,13 @@
                                                                 </select>
                                                             </div>
                                                             <!--Input pais de origen-->
-                                                            <div class="mb-6">
+                                                            <div>
                                                                 <label for="idpaisorigen"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais
-                                                                    de origen:</label>
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais de
+                                                                    origen:</label>
                                                                 <select id="idpaisorigen"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el pais de origen del
-                                                                        producto</option>
+                                                                    <option selected>Escoge el pais de origen del producto</option>
                                                                     <option>Estados Unidos</option>
                                                                     <option>Alemania</option>
                                                                     <option>China</option>
@@ -763,7 +805,7 @@
                                                                 </select>
                                                             </div>
                                                             <!--Input estado-->
-                                                            <div class="mb-6">
+                                                            <div>
                                                                 <label for="idestado"
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
                                                                     del producto:</label>
@@ -776,9 +818,35 @@
                                                                     <option>Sin Existencia</option>
                                                                 </select>
                                                             </div>
+                                                            <!--Input Comision ed Venta-->
+                                                            <div>
+                                                                <label for="idcomisionventas"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Comision de Ventas:</label>
+                                                                <select id="idcomisionventas"
+                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                                    <option selected>Comision por venta</option>
+                                                                    <option>Disponible</option>
+                                                                    <option>No Disponible</option>
+                                                                    <option>Pendiente</option>
+                                                                    <option>Sin Existencia</option>
+                                                                </select>
+                                                            </div>
+                                                            <!--Input Sucursal-->
+                                                            <div>
+                                                                <label for="idsucursal"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal:</label>
+                                                                <select id="idsucursal"
+                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                                    <option selected>Sucursal en la que se ubica</option>
+                                                                    <option>Metro Centro</option>
+                                                                    <option>Plaza Mundo</option>
+                                                                    <option>San Miguelito</option>
+                                                                </select>
+                                                            </div>
+                                                            <!--Textarea Descipcion-->
                                                             <div class="col-start-1 col-end-3">
                                                                 <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>
+                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
                                                             </div>
                                                         </div>
                                                     </div>
@@ -786,7 +854,7 @@
                                                 <!-- Modal footer -->
                                                 <div
                                                     class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                    <button data-modal-hide="modal_update_product" type="button"
+                                                    <button data-modal-hide="modal_update_product2" type="button"
                                                         class="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Actualizar</button>
                                                 </div>
                                             </div>
@@ -794,13 +862,13 @@
                                     </div><!--Final del modal-->
                                     <!--Modal de eliminar-->
                                     <div>
-                                        <button data-modal-target="delete-modal" data-modal-toggle="delete-modal"
+                                        <button data-modal-target="delete-modal2" data-modal-toggle="delete-modal2"
                                             class="block md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
                                             <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
                                         </button>
                                     </div>
-                                    <div id="delete-modal" tabindex="-1"
+                                    <div id="delete-modal2" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                         <div class="relative w-full h-full max-w-md md:h-auto">
                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -828,11 +896,11 @@
                                                     <h3
                                                         class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
                                                         ¿Estas seguro que deseas eliminarlo?</h3>
-                                                    <button data-modal-hide="delete-modal" type="button"
+                                                    <button data-modal-hide="delete-modal2" type="button"
                                                         class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                                         Confirmar
                                                     </button>
-                                                    <button data-modal-hide="delete-modal" type="button"
+                                                    <button data-modal-hide="delete-modal2" type="button"
                                                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancelar</button>
                                                 </div>
                                             </div>
@@ -879,14 +947,14 @@
                             <td class="px-6 py-4">
                                 <div class="grid gap-2">
                                     <div>
-                                        <button data-modal-target="modal_update_product"
-                                            data-modal-toggle="modal_update_product"
+                                        <button data-modal-target="modal_update_product3"
+                                            data-modal-toggle="modal_update_product3"
                                             class="block  text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
                                             <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                                         </button>
                                     </div>
-                                    <div id="modal_update_product" tabindex="-1"
+                                    <div id="modal_update_product3" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                         <div class="relative w-full h-full max-w-4xl">
                                             <!-- Modal content -->
@@ -913,8 +981,7 @@
                                                 <form class="p-4">
                                                     <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                                         <div>
-                                                            <div
-                                                                class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
+                                                            <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
                                                                 <img src="../resources/img/logo.jpg" alt="img">
                                                                 <br>
                                                                 <button type="button"
@@ -930,8 +997,7 @@
                                                                     placeholder="ID" disabled>
                                                             </div>
                                                         </div>
-                                                        <div
-                                                            class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                                        <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                                             <!--Input nombre del producto-->
                                                             <div>
                                                                 <label for="nombre"
@@ -976,8 +1042,7 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria:</label>
                                                                 <select id="idcategoria"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge una categoria del producto
-                                                                    </option>
+                                                                    <option selected>Escoge una categoria del producto</option>
                                                                     <option>Capo</option>
                                                                     <option>Espejos</option>
                                                                     <option>Rines</option>
@@ -990,8 +1055,7 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo:</label>
                                                                 <select id="idmodelo"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el modelo de la categoria
-                                                                    </option>
+                                                                    <option selected>Escoge el modelo de la categoria</option>
                                                                     <option>Capo ligero G7th</option>
                                                                     <option>Dorman 955-069</option>
                                                                     <option>Rines Deportivos PRW</option>
@@ -999,14 +1063,13 @@
                                                                 </select>
                                                             </div>
                                                             <!--Input pais de origen-->
-                                                            <div class="mb-6">
+                                                            <div>
                                                                 <label for="idpaisorigen"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais
-                                                                    de origen:</label>
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais de
+                                                                    origen:</label>
                                                                 <select id="idpaisorigen"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el pais de origen del
-                                                                        producto</option>
+                                                                    <option selected>Escoge el pais de origen del producto</option>
                                                                     <option>Estados Unidos</option>
                                                                     <option>Alemania</option>
                                                                     <option>China</option>
@@ -1016,7 +1079,7 @@
                                                                 </select>
                                                             </div>
                                                             <!--Input estado-->
-                                                            <div class="mb-6">
+                                                            <div>
                                                                 <label for="idestado"
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
                                                                     del producto:</label>
@@ -1029,9 +1092,35 @@
                                                                     <option>Sin Existencia</option>
                                                                 </select>
                                                             </div>
+                                                            <!--Input Comision ed Venta-->
+                                                            <div>
+                                                                <label for="idcomisionventas"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Comision de Ventas:</label>
+                                                                <select id="idcomisionventas"
+                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                                    <option selected>Comision por venta</option>
+                                                                    <option>Disponible</option>
+                                                                    <option>No Disponible</option>
+                                                                    <option>Pendiente</option>
+                                                                    <option>Sin Existencia</option>
+                                                                </select>
+                                                            </div>
+                                                            <!--Input Sucursal-->
+                                                            <div>
+                                                                <label for="idsucursal"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal:</label>
+                                                                <select id="idsucursal"
+                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                                                    <option selected>Sucursal en la que se ubica</option>
+                                                                    <option>Metro Centro</option>
+                                                                    <option>Plaza Mundo</option>
+                                                                    <option>San Miguelito</option>
+                                                                </select>
+                                                            </div>
+                                                            <!--Textarea Descipcion-->
                                                             <div class="col-start-1 col-end-3">
                                                                 <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>
+                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1039,7 +1128,7 @@
                                                 <!-- Modal footer -->
                                                 <div
                                                     class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                    <button data-modal-hide="modal_update_product" type="button"
+                                                    <button data-modal-hide="modal_update_product3" type="button"
                                                         class="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Actualizar</button>
                                                 </div>
                                             </div>
@@ -1047,13 +1136,13 @@
                                     </div><!--Final del modal-->
                                     <!--Modal de eliminar-->
                                     <div>
-                                        <button data-modal-target="delete-modal" data-modal-toggle="delete-modal"
+                                        <button data-modal-target="delete-modal3" data-modal-toggle="delete-modal3"
                                             class="block md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
                                             type="button">
                                             <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
                                         </button>
                                     </div>
-                                    <div id="delete-modal" tabindex="-1"
+                                    <div id="delete-modal3" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                         <div class="relative w-full h-full max-w-md md:h-auto">
                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -1081,11 +1170,11 @@
                                                     <h3
                                                         class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
                                                         ¿Estas seguro que deseas eliminarlo?</h3>
-                                                    <button data-modal-hide="delete-modal" type="button"
+                                                    <button data-modal-hide="delete-modal3" type="button"
                                                         class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                                         Confirmar
                                                     </button>
-                                                    <button data-modal-hide="delete-modal" type="button"
+                                                    <button data-modal-hide="delete-modal3" type="button"
                                                         class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancelar</button>
                                                 </div>
                                             </div>

@@ -2608,6 +2608,10 @@ input:checked + .toggle-bg {
 }
 
 @media (min-width: 768px) {
+  .md\:fixed {
+    position: fixed;
+  }
+
   .md\:inset-0 {
     top: 0px;
     right: 0px;
