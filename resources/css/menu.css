@@ -1,12 +1,6 @@
-/* body {
-  background: rgb(4, 21, 98);
-  background: linear-gradient(
-    90deg,
-    rgba(4, 21, 98, 1) 0%,
-    rgba(17, 70, 143, 1) 50%,
-    rgba(4, 21, 98, 1) 100%
-  );
-} */
+main{
+  margin: 1%;
+}
 
 nav {
   position: fixed;
@@ -16,7 +10,6 @@ nav {
   width: 100%;
   display: flex;
   align-items: center;
-  background: #11468f;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -44,7 +37,6 @@ nav .sidebar {
   height: 100%;
   width: 260px;
   padding: 20px 0;
-  background-color: #fff;
   box-shadow: 0 5px 1px rgba(0, 0, 0, 0.1);
   transition: all 0.4s ease;
 }
@@ -74,25 +66,14 @@ nav.open .sidebar {
   text-decoration: none;
 }
 
-.lists .nav-link:hover {
-  background-color: #4070f4;
-}
-
 .nav-link .icon {
   margin-right: 14px;
   font-size: 20px;
-  color: #707070;
 }
 
 .nav-link .link {
   font-size: 16px;
-  color: #707070;
   font-weight: 400;
-}
-
-.lists .nav-link:hover .icon,
-.lists .nav-link:hover .link {
-  color: #fff;
 }
 
 .overlay {

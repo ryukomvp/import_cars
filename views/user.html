@@ -16,64 +16,64 @@
 
 <body>
     <header>
-        <nav>
+        <nav class="sticky top-0 z-10 bg-azul">
             <div class="logo">
                 <i class="bx bx-menu menu-icon text-white"></i>
                 <span class="logo-name text-white">Import Cars</span>
             </div>
 
-            <div class="sidebar">
+            <div class="sidebar bg-white">
                 <div class="logo">
-                    <i class="bx bx-menu menu-icon text-oscuro"></i>
-                    <span class="logo-name text-oscuro">Import Cars</span>
+                    <i class="bx bx-menu menu-icon text-black"></i>
+                    <span class="logo-name text-black">IMPORT CARS</span>
                 </div>
-
                 <div class="sidebar-content">
+                    <hr>
                     <ul class="lists">
                         <li class="list">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
                                 <i class="bx bx-home-alt icon"></i>
                                 <span class="link">Dashboard</span>
                             </a>
                         </li>
                         <li class="list">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link text-black text-gray-600 hover:bg-azul hover:text-white">
                                 <i class='bx bxl-product-hunt icon'></i>
                                 <span class="link">Productos</span>
                             </a>
                         </li>
                         <li class="list">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
                                 <i class='bx bx-bar-chart-alt icon'></i>
                                 <span class="link">Procesos</span>
                             </a>
                         </li>
                         <li class="list">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
                                 <i class='bx bxs-report icon'></i>
                                 <span class="link">Reportes</span>
                             </a>
                         </li>
                         <li class="list">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
                                 <i class='bx bx-list-plus icon'></i>
                                 <span class="link">Consultas</span>
                             </a>
                         </li>
                         <li class="list">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
                                 <i class='bx bxs-briefcase icon'></i>
                                 <span class="link">Cierres</span>
                             </a>
                         </li>
                         <li class="list">
-                            <a href="#" class="nav-link">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
                                 <i class='bx bx-table icon'></i>
                                 <span class="link">Tablas</span>
                             </a>
                         </li>
                     </ul>
-
+                    <hr>
                     <div class="bottom-cotent">
                         <li class="list">
                             <a href="#" class="nav-link">
@@ -82,7 +82,7 @@
                             </a>
                         </li>
                         <li class="list">
-                            <a href="#" class="nav-link">
+                            <a href="index.html" class="nav-link">
                                 <i class="bx bx-log-out icon"></i>
                                 <span class="link">Cerrar sesion</span>
                             </a>
@@ -90,44 +90,121 @@
                     </div>
                 </div>
             </div>
-            <img class="w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                src="/resources/img/perfil.jpg" alt="Bordered avatar">
+            <div class="absolute inset-y-0 right-0 p-3">
+                <img data-tooltip-target="tooltip"
+                    class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+                    src="/resources/img/perfil.jpg" alt="Bordered avatar">
+            </div>
+            <div id="tooltip" role="tooltip"
+                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 border border-azul rounded-lg shadow-sm opacity-0 tooltip">
+                Mi perfil
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
         </nav>
     </header>
-    <main>
-        <!-- component -->
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <main class="grid md:grid-cols-3 bg-white flex font-medium items-center justify-center">
+            <!-- carta para perfil del usaruio -->
+                <section class="mx-auto bg-gray-900 rounded-2xl px-8 py-6 shadow-lg">
+                    <div class="flex items-center justify-between">
+                        <span class="text-white text-sm">Cargo en la empresa</span>
+                        <span class="text-white">
+                            <svg data-tooltip-target="tooltip-editar-perfil" xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                            </svg>
+                            <div id="tooltip-editar-perfil" role="tooltip"
+                                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-black transition-opacity duration-300 bg-white border border-black rounded-lg shadow-sm opacity-0 tooltip">
+                                Editar perfil
+                                <div class="tooltip-arrow" data-popper-arrow></div>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="mt-6 w-fit mx-auto">
+                        <img class="rounded-full ring-2 ring-oscuro" src="https://i.scdn.co/image/ab67616d0000b273ac7bbd44360e147f4bb81bf2"
+                            class="rounded-full w-28 " alt="profile picture" srcset="">
+                    </div>
 
-        <section class="bg-gray-900 flex font-medium items-center justify-center h-screen">
-            <section class="w-64 mx-auto bg-white rounded-2xl px-8 py-6 shadow-lg">
-                <div class="flex items-center justify-between">
-                    <span class="text-oscuro text-sm">Cargo en la empresa</span>
-                    <span class="text-oscuro">
-                        <svg data-tooltip-target="tooltip" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                    <div class="mt-8 ">
+                        <h2 class="text-white font-bold text-2xl tracking-wide">Jonathan Smith</h2>
+                    </div>
+                    <p class="text-emerald-400 font-semibold mt-2.5">
+                        Ten un lindo dia :)
+                    </p>
+                </section>
+
+            <!-- carrusel decorativo -->
+            <div id="default-carousel" class="relative col-span-2 px-8 py-6" data-carousel="slide">
+                <!-- Carousel wrapper -->
+                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                    <!-- Item 1 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://www.santevet.es/uploads/images/es_ES/articulos/gato_gordo_santevet.jpeg"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://animapedia.org/wp-content/uploads/2021/06/gato-persa.jpg"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://mf.b37mrtl.ru/rbthmedia/images/2021.06/article/60c5347885600a4d6224e3e0.jpg"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://señordongato.com/wp-content/uploads/2022/09/gato-de-raza-Sphynx-780x470.webp"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://t2.ea.ltmcdn.com/es/razas/9/7/1/siames_179_0_orig.jpg"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                </div>
+                <!-- Slider indicators -->
+                <!-- <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
+                        data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
+                        data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
+                        data-carousel-slide-to="2"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
+                        data-carousel-slide-to="3"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
+                        data-carousel-slide-to="4"></button>
+                </div> -->
+                
+                <!-- Slider controls -->
+                <!-- <button type="button"
+                    class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-prev>
+                    <span
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                            </path>
                         </svg>
-                        <div id="tooltip" role="tooltip" class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
-                            Editar perfil
-                            <div class="tooltip-arrow" data-popper-arrow></div>
-                        </div>
+                        <span class="sr-only">Previous</span>
                     </span>
-                </div>
-                <div class="mt-6 w-fit mx-auto">
-                    <img class="rounded-full ring-2 ring-oscuro" src="/resources/img/perfil.jpg" class="rounded-full w-28 "
-                        alt="profile picture" srcset="">
-                </div>
-
-                <div class="mt-8 ">
-                    <h2 class="text-oscuro font-bold text-2xl tracking-wide">Jonathan Smith</h2>
-                </div>
-                <p class="text-red-400 font-semibold mt-2.5" >
-                    Desconectado
-                </p>
-            </section>
-        </section>
+                </button>
+                <button type="button"
+                    class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                    data-carousel-next>
+                    <span
+                        class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button> -->
+            </div>
     </main>
     <footer class="p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span class="text-white text-2xl">Import Cars</span>

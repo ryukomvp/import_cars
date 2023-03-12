@@ -1,9 +1,18 @@
-body{
-    background-image: url("https://i.redd.it/1b4nhmme44v51.jpg");
-    background-size: cover;
-    /* background-color: #f2274c; */
+body {
+  background: rgb(17, 70, 143);
+  background: radial-gradient(
+    circle,
+    rgba(17, 70, 143, 1) 0%,
+    rgba(34, 34, 34, 1) 100%
+  );
 }
 
-#fondo{
-    backdrop-filter: blur(100px);
+#fondo {
+  /* background-color: rgba(255, 255, 255, 0.200); */
+  backdrop-filter: blur(100px);
+  box-shadow: 1px 1px 10px black;
+}
+
+#logo {
+  margin-bottom: 10px;
 }
