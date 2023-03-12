@@ -7,24 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/resources/css/marchelli.css" rel="stylesheet">
     <link href="/resources/css/menu.css" rel="stylesheet" />
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <link rel="icon" href="/resources/img/logo.png">
     <title>Productos</title>
 </head>
 
 <body>
-    <header">
+    <header>
         <nav class="sticky top-0 z-10 bg-azul">
             <div class="logo">
                 <i class="bx bx-menu menu-icon text-white"></i>
                 <span class="logo-name text-white">Import Cars</span>
             </div>
+
             <div class="sidebar bg-white">
                 <div class="logo">
-                    <i class="bx bx-menu menu-icon text-oscuro"></i>
-                    <span class="logo-name text-oscuro">Import Cars</span>
+                    <i class="bx bx-menu menu-icon text-black"></i>
+                    <span class="logo-name text-black">IMPORT CARS</span>
                 </div>
                 <div class="sidebar-content">
+                    <hr>
                     <ul class="lists">
                         <li class="list">
                             <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
@@ -33,7 +35,7 @@
                             </a>
                         </li>
                         <li class="list">
-                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
+                            <a href="#" class="nav-link text-black text-gray-600 hover:bg-azul hover:text-white">
                                 <i class='bx bxl-product-hunt icon'></i>
                                 <span class="link">Productos</span>
                             </a>
@@ -69,7 +71,7 @@
                             </a>
                         </li>
                     </ul>
-
+                    <hr>
                     <div class="bottom-cotent">
                         <li class="list">
                             <a href="#" class="nav-link">
@@ -78,7 +80,7 @@
                             </a>
                         </li>
                         <li class="list">
-                            <a href="#" class="nav-link">
+                            <a href="index.html" class="nav-link">
                                 <i class="bx bx-log-out icon"></i>
                                 <span class="link">Cerrar sesion</span>
                             </a>
@@ -87,8 +89,14 @@
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 p-3">
-                <img class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                src="/resources/img/perfil.jpg" alt="Bordered avatar">
+                <img data-tooltip-target="tooltip"
+                    class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+                    src="/resources/img/perfil.jpg" alt="Bordered avatar">
+            </div>
+            <div id="tooltip" role="tooltip"
+                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 border border-azul rounded-lg shadow-sm opacity-0 tooltip">
+                Mi perfil
+                <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
         </nav>
     </header>
@@ -97,7 +105,8 @@
             <div>
                 <div class="py-4 text-center">
                     <h1 class="text-xl text-rojo font-bold">Productos</h1>
-                    <p class="text-azul font-medium">Gestion del inventario donde se registran los productos y se detalla la información de cada uno de ellos.</p>
+                    <p class="text-azul font-medium">Gestion del inventario donde se registran los productos y se
+                        detalla la información de cada uno de ellos.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
@@ -124,7 +133,7 @@
                         <button data-modal-target="modal_add_product" data-modal-toggle="modal_add_product"
                             class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
-                            <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png"/>
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
                         </button>
                     </div>
                 </div>
@@ -295,7 +304,7 @@
                                             data-modal-toggle="modal_update_product"
                                             class="block md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png"/>
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                                         </button>
                                     </div>
                                     <div id="modal_update_product" tabindex="-1"
@@ -429,7 +438,7 @@
                                         <button data-modal-target="delete-modal" data-modal-toggle="delete-modal"
                                             class="block md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png"/>
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
                                         </button>
                                     </div>
                                     <div id="delete-modal" tabindex="-1"
@@ -495,7 +504,7 @@
                                             data-modal-toggle="modal_update_product"
                                             class="block md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png"/>
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                                         </button>
                                     </div>
                                     <div id="modal_update_product" tabindex="-1"
@@ -629,7 +638,7 @@
                                         <button data-modal-target="delete-modal" data-modal-toggle="delete-modal"
                                             class="block md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png"/>
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
                                         </button>
                                     </div>
                                     <div id="delete-modal" tabindex="-1"
@@ -694,7 +703,7 @@
                                             data-modal-toggle="modal_update_product"
                                             class="block md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png"/>
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                                         </button>
                                     </div>
                                     <div id="modal_update_product" tabindex="-1"
@@ -828,7 +837,7 @@
                                         <button data-modal-target="delete-modal" data-modal-toggle="delete-modal"
                                             class="block md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                             type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png"/>
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
                                         </button>
                                     </div>
                                     <div id="delete-modal" tabindex="-1"
@@ -877,25 +886,26 @@
             </div>
         </div>
     </main>
-    <footer class="md:fixed bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
-            <img class="h-8" src="/resources/img/logo.png" alt="">
-            <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-400 sm:mt-0">
-                <li>
-                    <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6 "
-                        target="_blank">About</a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
-                        target="_blank">Privacy Policy</a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
-                        target="_blank">Licensing</a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/dnlhernandez_/" class="hover:underline" target="_blank">Contact</a>
-                </li>
-            </ul>
+    <footer
+        class="md:fixed bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+        <img class="h-8" src="/resources/img/logo.png" alt="">
+        <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-400 sm:mt-0">
+            <li>
+                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6 "
+                    target="_blank">About</a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
+                    target="_blank">Privacy Policy</a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
+                    target="_blank">Licensing</a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/dnlhernandez_/" class="hover:underline" target="_blank">Contact</a>
+            </li>
+        </ul>
     </footer>
     <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
     <script>
