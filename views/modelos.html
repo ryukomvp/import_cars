@@ -228,10 +228,12 @@
     <main>
         <div class="py-4">
             <div>
+                <!--Encabezado del SCRUD de modelos-->
                 <div class="py-4 text-center">
                     <h1 class="text-xl text-rojo font-bold">Modelos</h1>
                     <p class="text-azul font-medium">Gestion de los modelos disponibles a la venta.</p>
                 </div>
+                <!--Buscador de modelos-->
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
                         <form>
@@ -265,9 +267,9 @@
             <div id="modal_add_model" tabindex="-1"
                 class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                 <div class="relative w-full h-full max-w-4xl">
-                    <!-- Modal content -->
+                    <!-- Contenido del modal -->
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal header -->
+                        <!-- Encabezado del modal -->
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-xl font-bold text-oscuro dark:text-white">
                                 Añadir nuevo modelo
@@ -284,7 +286,7 @@
                                 <span class="sr-only">Cerrar ventana</span>
                             </button>
                         </div>
-                        <!-- Modal body -->
+                        <!-- Cuerpo del modal -->
                         <form class="p-4">
                             <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                 <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
@@ -313,7 +315,7 @@
                                 </div>
                             </div>
                         </form>
-                        <!-- Modal footer -->
+                        <!-- Pie del modal -->
                         <div
                             class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                             <button data-modal-hide="modal_add_model" type="button"
@@ -323,8 +325,10 @@
                 </div>
             </div>
             <!--Final del modal-->
+            <!--Tabla de modelos-->
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <!--Encabezados de las columnas de la tabla modelos-->
                     <thead
                         class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
@@ -342,6 +346,7 @@
                             </th>
                         </tr>
                     </thead>
+                    <!--Filas de la tabla-->
                     <tbody>
                         <tr
                             class="text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
@@ -368,9 +373,9 @@
                                     <div id="modal_update_model1" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                         <div class="relative w-full h-full max-w-4xl">
-                                            <!-- Modal content -->
+                                            <!-- Contenido del modal-->
                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                <!-- Modal header -->
+                                                <!-- Encabezado del modal -->
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
@@ -388,7 +393,7 @@
                                                         <span class="sr-only">Cerrar ventana</span>
                                                     </button>
                                                 </div>
-                                                <!-- Modal body -->
+                                                <!-- Cuerpo del modal-->
                                                 <form class="p-4">
                                                     <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                                         <div>
@@ -429,7 +434,7 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <!-- Modal footer -->
+                                                <!-- Pie del modal -->
                                                 <div
                                                     class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                                     <button data-modal-hide="modal_update_model1" type="button"
