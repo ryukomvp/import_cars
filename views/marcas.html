@@ -9,7 +9,7 @@
     <link href="/resources/css/menu.css" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <link rel="icon" href="/resources/img/logo.png">
-    <title>Usuarios</title>
+    <title>Marcas</title>
 </head>
 
 <body>
@@ -104,8 +104,8 @@
         <div class="py-4">
             <div>
                 <div class="py-4 text-center">
-                    <h1 class="text-xl text-rojo font-bold">Usuarios</h1>
-                    <p class="text-azul font-medium">Gestion del ingreso de usuarios donde se registran y almacenan cada uno de ellos.</p>
+                    <h1 class="text-xl text-rojo font-bold">Marcas</h1>
+                    <p class="text-azul font-medium">Gestion del ingreso de las diversas marcas de los productos a la venta.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
@@ -145,7 +145,7 @@
                         <!-- Modal header -->
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                Añadir nuevo usuario
+                                Añadir nueva marca
                             </h3>
                             <button type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -180,61 +180,10 @@
                                     <!--Input nombre de de usuario-->
                                     <div>
                                         <label for="nombre"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre del usuario:</label>
-                                        <input type="text" id="nombredelusuario"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de la marca:</label>
+                                        <input type="text" id="nombremarca"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Usuario" required>
-                                    </div>
-                                    <!--Input contraseña del usuario-->
-                                    <div>
-                                        <label for="Contraseña"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contraseña:</label>
-                                        <input type="password" id="Contraseña"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Contraseña" required>
-                                    </div>
-                                    <!--Input pin del usuario-->
-                                    <div>
-                                        <label for="Pin"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pin:</label>
-                                        <input type="number" id="pin"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Pin" required>
-                                    </div>
-                                    <!--Input del tipo de usuario-->
-                                    <div>
-                                        <label for="idtipousuario"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo de usuario:</label>
-                                        <select id="idtipousuario"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Escoge un tipo de usuario</option>
-                                            <option>Administrador</option>
-                                            <option>Vendedor</option>
-                                            <option>Cajero</option>
-                                        </select>
-                                    </div>
-                                    <!--Input del empleado asignado al usuario-->
-                                    <div>
-                                        <label for="idempleado"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Empleado:</label>
-                                        <select id="idempleado"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Escoge un empleado</option>
-                                            <option>José Ernesto Gónzales Castillo</option>
-                                            <option>Alejandro Antonio Méndez Letona</option>
-                                        </select>
-                                    </div>
-                                    <!--Input estado del usuario-->
-                                    <div>
-                                        <label for="idestado"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado del usuario:</label>
-                                        <select id="idestado"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Escoge un estado de usuario</option>
-                                            <option>Activo</option>
-                                            <option>Suspendido</option>
-                                            <option>Bloqueado</option>
-                                        </select>
+                                            placeholder="Marca" required>
                                     </div>
                                 </div>
                             </div>
@@ -256,19 +205,7 @@
                                 ID
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Nombre de usuario
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Pin
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Tipo de usuario
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Empleado
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Estado del usuario
+                                Nombre de marca
                             </th>
                             <th scope="col" class="px-8 py-3">
                                 <span class="">Controles</span>
@@ -282,20 +219,7 @@
                                 1
                             </td>
                             <td class="px-6 py-4">
-                                Mendez
-                            </td>
-                            <th scope="row"
-                                class="text-oscuro font-bold px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                780152
-                            </th>
-                            <td class="px-6 py-4">
-                                Aministrador
-                            </td>
-                            <td class="px-6 py-4">
-                                Alejandro Antonio Mendez Letona
-                            </td>
-                            <td class="px-6 py-4">
-                                Activo
+                                Toyota
                             </td>
                             <td class="px-6 py-4">
                                 <div class="grid gap-2 m-0">
@@ -316,7 +240,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar Usuario
+                                                        Actualizar Marca
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -351,62 +275,10 @@
                                                             <!--Input nombre del usuario-->
                                                             <div>
                                                                 <label for="nombre" 
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                                                    del usuario:</label>
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de la marca:</label>
                                                                 <input type="text" id="nombre"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Nombre" required>
-                                                            </div>
-                                                            <!--Input contraseña del usuario-->
-                                                            <div>
-                                                                <label for="contraseña"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contraseña:</label>
-                                                                <input type="password" id="contraseña"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Contraseña" disabled>
-                                                            </div>
-                                                            <!--Input pin del usuario-->
-                                                            <div>
-                                                                <label for="pin"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pin:</label>
-                                                                <input type="number" id="pin"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Pin" required>
-                                                            </div>
-                                                            <!--Input del tipo de usuario-->
-                                                            <div>
-                                                                <label for="idtipousuario"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo de usuario:</label>
-                                                                <select id="idtipousuario"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un tipo de usuario</option>
-                                                                    <option>Administrador</option>
-                                                                    <option>Vendedor</option>
-                                                                    <option>Cajero</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input empleado asignado al usuario-->
-                                                            <div>
-                                                                <label for="idempleado"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Empleado:</label>
-                                                                <select id="idempleado"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un empleado</option>
-                                                                    <option>José Ernesto Gónzales Castillo</option>
-                                                                    <option>Alejandro Antonio Méndez Letona</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input modelo-->
-                                                            <div>
-                                                                <label for="idestado"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado del usuario:</label>
-                                                                <select id="idestado"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un estado</option>
-                                                                    <option>Acrivo</option>
-                                                                    <option>Suspendido</option>
-                                                                    <option>Bloqueado</option>
-                                                                </select>
+                                                                    placeholder="Nombre marca" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -475,21 +347,7 @@
                                 2
                             </td>
                             <td class="px-6 py-4">
-                                Josesito
-                            </td>
-                            <th scope="row"
-                                class="text-oscuro font-bold px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                091325
-                            </th>
-                            <td class="px-6 py-4">
-                                Vendedor
-                            </td>
-                            <td class="px-6 py-4">
-                                José Ernesto Gónzales Castillo
-                            </td>
-                            <td class="px-6 py-4">
-                                Activo
-                            </td>
+                                Nissan
                             <td class="px-6 py-4">
                                 <div class="grid gap-2 m-0">
                                     <div>
@@ -509,7 +367,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar Usuario
+                                                        Actualizar Marca
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -545,61 +403,10 @@
                                                             <div>
                                                                 <label for="nombre" 
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                                                    del usuario:</label>
+                                                                    de la marca:</label>
                                                                 <input type="text" id="nombre"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Nombre" required>
-                                                            </div>
-                                                            <!--Input contraseña del usuario-->
-                                                            <div>
-                                                                <label for="contraseña"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contraseña:</label>
-                                                                <input type="password" id="contraseña"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Contraseña" disabled>
-                                                            </div>
-                                                            <!--Input pin del usuario-->
-                                                            <div>
-                                                                <label for="pin"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pin:</label>
-                                                                <input type="number" id="pin"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Pin" required>
-                                                            </div>
-                                                            <!--Input del tipo de usuario-->
-                                                            <div>
-                                                                <label for="idtipousuario"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo de usuario:</label>
-                                                                <select id="idtipousuario"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un tipo de usuario</option>
-                                                                    <option>Administrador</option>
-                                                                    <option>Vendedor</option>
-                                                                    <option>Cajero</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input empleado asignado al usuario-->
-                                                            <div>
-                                                                <label for="idempleado"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Empleado:</label>
-                                                                <select id="idempleado"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un empleado</option>
-                                                                    <option>José Ernesto Gónzales Castillo</option>
-                                                                    <option>Alejandro Antonio Méndez Letona</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input modelo-->
-                                                            <div>
-                                                                <label for="idestado"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado del usuario:</label>
-                                                                <select id="idestado"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un estado</option>
-                                                                    <option>Acrivo</option>
-                                                                    <option>Suspendido</option>
-                                                                    <option>Bloqueado</option>
-                                                                </select>
+                                                                    placeholder="Nombre marca" required>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -667,20 +474,7 @@
                                 3
                             </td>
                             <td class="px-6 py-4">
-                                Kevin
-                            </td>
-                            <th scope="row"
-                                class="text-oscuro font-bold px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                878921
-                            </th>
-                            <td class="px-6 py-4">
-                                Administrador
-                            </td>
-                            <td class="px-6 py-4">
-                                Kevin Rivas Delgado
-                            </td>
-                            <td class="px-6 py-4">
-                                Activo
+                                Hyundai
                             </td>
                             <td class="px-6 py-4">
                                 <div class="grid gap-2">
@@ -701,7 +495,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar Usuario
+                                                        Actualizar Marca
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -737,61 +531,10 @@
                                                             <div>
                                                                 <label for="nombre" 
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                                                    del usuario:</label>
+                                                                    de la marca:</label>
                                                                 <input type="text" id="nombre"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Nombre" required>
-                                                            </div>
-                                                            <!--Input contraseña del usuario-->
-                                                            <div>
-                                                                <label for="contraseña"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contraseña:</label>
-                                                                <input type="password" id="contraseña"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Contraseña" disabled>
-                                                            </div>
-                                                            <!--Input pin del usuario-->
-                                                            <div>
-                                                                <label for="pin"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pin:</label>
-                                                                <input type="number" id="pin"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Pin" required>
-                                                            </div>
-                                                            <!--Input del tipo de usuario-->
-                                                            <div>
-                                                                <label for="idtipousuario"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo de usuario:</label>
-                                                                <select id="idtipousuario"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un tipo de usuario</option>
-                                                                    <option>Administrador</option>
-                                                                    <option>Vendedor</option>
-                                                                    <option>Cajero</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input empleado asignado al usuario-->
-                                                            <div>
-                                                                <label for="idempleado"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Empleado:</label>
-                                                                <select id="idempleado"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un empleado</option>
-                                                                    <option>José Ernesto Gónzales Castillo</option>
-                                                                    <option>Alejandro Antonio Méndez Letona</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input modelo-->
-                                                            <div>
-                                                                <label for="idestado"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado del usuario:</label>
-                                                                <select id="idestado"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un estado</option>
-                                                                    <option>Acrivo</option>
-                                                                    <option>Suspendido</option>
-                                                                    <option>Bloqueado</option>
-                                                                </select>
+                                                                    placeholder="Nombre marca" required>
                                                             </div>
                                                         </div>
                                                     </div>
