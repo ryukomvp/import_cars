@@ -228,10 +228,12 @@
     <main>
         <div class="py-4">
             <div>
+                <!--Encabezado del SCRUD-->
                 <div class="py-4 text-center">
                     <h1 class="text-xl text-rojo font-bold">Marcas</h1>
                     <p class="text-azul font-medium">Gestion del ingreso de las diversas marcas de los productos a la venta.</p>
                 </div>
+                <!--Buscador-->
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
                         <form>
@@ -262,12 +264,13 @@
                     </div>
                 </div>
             </div>
+            <!--Modal para añadir marca-->
             <div id="modal_add_brand" tabindex="-1"
                 class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                 <div class="relative w-full h-full max-w-4xl">
-                    <!-- Modal content -->
+                    <!-- Contenido del modal -->
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal header -->
+                        <!-- Encabezado del modal -->
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-xl font-bold text-oscuro dark:text-white">
                                 Añadir nueva marca
@@ -284,7 +287,7 @@
                                 <span class="sr-only">Cerrar ventana</span>
                             </button>
                         </div>
-                        <!-- Modal body -->
+                        <!-- Cuerpo del modal -->
                         <form class="p-4">
                             <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                 <div>
@@ -302,7 +305,7 @@
                                     </div>
                                 </div>
                                 <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                    <!--Input nombre de de usuario-->
+                                    <!--Input nombre de la marca-->
                                     <div>
                                         <label for="nombre"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de la marca:</label>
@@ -313,7 +316,7 @@
                                 </div>
                             </div>
                         </form>
-                        <!-- Modal footer -->
+                        <!-- Pie del modal -->
                         <div
                             class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                             <button data-modal-hide="modal_add_brand" type="button"
@@ -322,8 +325,10 @@
                     </div>
                 </div>
             </div><!--Final del modal-->
+            <!--Tabla de Marcas-->
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <!--Encabezados de columnas de la tabla-->
                     <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
                             <th scope="col" class="px-6 py-3">
@@ -337,6 +342,7 @@
                             </th>
                         </tr>
                     </thead>
+                    <!--Filas de la tabla-->
                     <tbody>
                         <tr
                             class="text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
@@ -359,9 +365,9 @@
                                     <div id="modal_update_brand1" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                         <div class="relative w-full h-full max-w-4xl">
-                                            <!-- Modal content -->
+                                            <!-- Contenido del modal -->
                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                <!-- Modal header -->
+                                                <!-- Encabezado del modal -->
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
@@ -379,7 +385,7 @@
                                                         <span class="sr-only">Cerrar ventana</span>
                                                     </button>
                                                 </div>
-                                                <!-- Modal body -->
+                                                <!-- Cuerpo del modal -->
                                                 <form class="p-4">
                                                     <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                                         <div>
@@ -397,7 +403,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                                            <!--Input nombre del usuario-->
+                                                            <!--Input nombre de la marca-->
                                                             <div>
                                                                 <label for="nombre" 
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de la marca:</label>
@@ -408,7 +414,7 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <!-- Modal footer -->
+                                                <!-- Pie del modal -->
                                                 <div
                                                     class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                                     <button data-modal-hide="modal_update_brand1" type="button"
@@ -486,9 +492,9 @@
                                     <div id="modal_update_brand2" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                         <div class="relative w-full h-full max-w-4xl">
-                                            <!-- Modal content -->
+                                            <!-- Contenido del modal -->
                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                <!-- Modal header -->
+                                                <!-- Encabezado del modal -->
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
@@ -506,7 +512,7 @@
                                                         <span class="sr-only">Cerrar ventana</span>
                                                     </button>
                                                 </div>
-                                                <!-- Modal body -->
+                                                <!-- Cuerpo del modal -->
                                                 <form class="p-4">
                                                     <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                                         <div>
@@ -524,7 +530,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                                            <!--Input nombre del usuario-->
+                                                            <!--Input nombre de la marca-->
                                                             <div>
                                                                 <label for="nombre" 
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
@@ -536,7 +542,7 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <!-- Modal footer -->
+                                                <!-- Pie del modal -->
                                                 <div
                                                     class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                                     <button data-modal-hide="modal_update_brand2" type="button"
@@ -614,9 +620,9 @@
                                     <div id="modal_update_brand3" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                         <div class="relative w-full h-full max-w-4xl">
-                                            <!-- Modal content -->
+                                            <!-- Contenido del modal -->
                                             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                <!-- Modal header -->
+                                                <!-- Encabezado del modal -->
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
@@ -634,7 +640,7 @@
                                                         <span class="sr-only">Cerrar ventana</span>
                                                     </button>
                                                 </div>
-                                                <!-- Modal body -->
+                                                <!-- Cuerpo del modal -->
                                                 <form class="p-4">
                                                     <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                                         <div>
@@ -652,7 +658,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                                            <!--Input nombre del usuario-->
+                                                            <!--Input nombre de la marca-->
                                                             <div>
                                                                 <label for="nombre" 
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
@@ -664,7 +670,7 @@
                                                         </div>
                                                     </div>
                                                 </form>
-                                                <!-- Modal footer -->
+                                                <!-- Pie del modal -->
                                                 <div
                                                     class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                                     <button data-modal-hide="modal_update_brand3" type="button"
