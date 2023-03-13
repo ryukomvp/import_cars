@@ -228,10 +228,12 @@
     <main>
         <div class="py-4">
             <div>
+                <!-- Informacion sobre la pagina  -->
                 <div class="py-4 text-center">
                     <h1 class="text-xl text-rojo font-bold">Categorias</h1>
                     <p class="text-azul font-medium">Gestion de categorias de los productos.</p>
                 </div>
+                <!-- buscador -->
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
                         <form>
@@ -262,6 +264,7 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal para agregar categorias  -->
             <div id="modal_add_category" tabindex="-1"
                 class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                 <div class="relative w-full h-full max-w-4xl">
@@ -295,7 +298,7 @@
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="ID" disabled>
                                 </div>
-                                <!--Input nombre de la familia-->
+                                <!--Input categoria-->
                                 <div>
                                     <label for="Categoria"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria</label>
@@ -314,8 +317,10 @@
                     </div>
                 </div>
             </div><!--Final del modal-->
+            <!-- Contenido de la tabla -->
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <!-- Encabezado de la tabla -->
                     <thead class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
                             <th scope="col" class="px-6 py-3">
@@ -326,7 +331,9 @@
                             </th>
                         </tr>
                     </thead>
+                    <!-- Contenido de la tabla -->
                     <tbody>
+                        <!-- datos -->
                         <tr
                             class="text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
                             <td class="px-6 py-4">
@@ -380,7 +387,7 @@
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                 placeholder="ID" disabled>
                                                         </div>
-                                                        <!--Input nombre de la familia-->
+                                                        <!--Input categrias-->
                                                         <div>
                                                             <label for="Categoria"
                                                                 class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria</label>
@@ -501,7 +508,7 @@
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                 placeholder="ID" disabled>
                                                         </div>
-                                                        <!--Input nombre de la familia-->
+                                                        <!--Input categorias-->
                                                         <div>
                                                             <label for="Categoria"
                                                                 class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria</label>
@@ -621,7 +628,7 @@
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                 placeholder="ID" disabled>
                                                         </div>
-                                                        <!--Input nombre de la familia-->
+                                                        <!--Input categorias-->
                                                         <div>
                                                             <label for="Categoria"
                                                                 class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria</label>
