@@ -103,108 +103,116 @@
         </nav>
     </header>
     <main class="grid md:grid-cols-3 bg-white flex font-medium items-center justify-center">
-            <!-- carta para perfil del usaruio -->
-                <section class="mx-auto bg-gray-900 rounded-2xl px-8 py-6 shadow-lg">
-                    <div class="flex items-center justify-between">
-                        <span class="text-white text-sm">Cargo en la empresa</span>
-                        <span class="text-white">
-                            <svg data-tooltip-target="tooltip-editar-perfil" xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                            </svg>
-                            <div id="tooltip-editar-perfil" role="tooltip"
-                                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-black transition-opacity duration-300 bg-white border border-black rounded-lg shadow-sm opacity-0 tooltip">
-                                Editar perfil
-                                <div class="tooltip-arrow" data-popper-arrow></div>
-                            </div>
-                        </span>
+        <!-- carta para perfil del usaruio -->
+        <section class="mx-auto bg-gray-900 rounded-2xl px-8 py-6 shadow-lg">
+            <div class="flex items-center justify-between">
+                <span class="text-white text-sm">Cargo en la empresa</span>
+                <span class="text-white">
+                    <svg data-tooltip-target="tooltip-editar-perfil" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                    </svg>
+                    <div id="tooltip-editar-perfil" role="tooltip"
+                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-black transition-opacity duration-300 bg-white border border-black rounded-lg shadow-sm opacity-0 tooltip">
+                        Editar perfil
+                        <div class="tooltip-arrow" data-popper-arrow></div>
                     </div>
-                    <div class="mt-6 w-fit mx-auto">
-                        <img class="rounded-full ring-2 ring-oscuro" src="/resources/img/perfil.jpg"
-                            class="rounded-full w-28 " alt="profile picture" srcset="">
-                    </div>
-
-                    <div class="mt-8 ">
-                        <h2 class="text-white font-bold text-2xl tracking-wide">Jonathan Smith</h2>
-                    </div>
-                    <p class="text-emerald-400 font-semibold mt-2.5">
-                        Ten un lindo dia :)
-                    </p>
-                </section>
-
-            <!-- carrusel decorativo -->
-            <div id="default-carousel" class="relative col-span-2 px-8 py-6" data-carousel="slide">
-                <!-- Carousel wrapper -->
-                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                    <!-- Item 1 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://www.santevet.es/uploads/images/es_ES/articulos/gato_gordo_santevet.jpeg"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://animapedia.org/wp-content/uploads/2021/06/gato-persa.jpg"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://mf.b37mrtl.ru/rbthmedia/images/2021.06/article/60c5347885600a4d6224e3e0.jpg"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 4 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://señordongato.com/wp-content/uploads/2022/09/gato-de-raza-Sphynx-780x470.webp"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                    <!-- Item 5 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="https://t2.ea.ltmcdn.com/es/razas/9/7/1/siames_179_0_orig.jpg"
-                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                    </div>
-                </div>
-                <!-- Slider indicators -->
-                <!-- <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
-                        data-carousel-slide-to="0"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
-                        data-carousel-slide-to="1"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
-                        data-carousel-slide-to="2"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
-                        data-carousel-slide-to="3"></button>
-                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5"
-                        data-carousel-slide-to="4"></button>
-                </div> -->
-                
-                <!-- Slider controls -->
-                <!-- <button type="button"
-                    class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                    data-carousel-prev>
-                    <span
-                        class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
-                            </path>
-                        </svg>
-                        <span class="sr-only">Previous</span>
-                    </span>
-                </button>
-                <button type="button"
-                    class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-                    data-carousel-next>
-                    <span
-                        class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none"
-                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
-                            </path>
-                        </svg>
-                        <span class="sr-only">Next</span>
-                    </span>
-                </button> -->
+                </span>
             </div>
+            <div class="mt-6 w-fit mx-auto">
+                <img class="rounded-full ring-2 ring-oscuro" src="/resources/img/perfil.jpg" class="rounded-full w-28 "
+                    alt="profile picture" srcset="">
+            </div>
+
+            <div class="mt-8 ">
+                <h2 class="text-white font-bold text-2xl tracking-wide">Jonathan Smith</h2>
+            </div>
+            <p class="text-emerald-400 font-semibold mt-2.5">
+                Ten un lindo dia :)
+            </p>
+        </section>
+        <form class="grid col-span-2">
+            <div class="mb-6">
+                <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre
+                    completo</label>
+                <input type="text" id="nombre"
+                    class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                    placeholder="Ingrese su nombre completo" required>
+            </div>
+            <div class="grid gap-6 mb-12 md:grid-cols-2">
+                <div>
+                    <label for="telefono"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teléfono</label>
+                    <input type="text" id="telefono"
+                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Ingrese su teléfono" required>
+                </div>
+                <div>
+                    <label for="correo"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
+                    <input type="email" id="correo"
+                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Ingrese su correo" required>
+                </div>
+                <button id="tipo-documento" data-dropdown-toggle="dropdown"
+                    class="text-white bg-azul hover:bg-oscuro focus:ring-4 focus:outline-none focus:ring-azul font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
+                    type="button">Seleccionar tipo de documento</button>
+                <!-- Dropdown menu -->
+                <div id="dropdown" class="z-10 hidden bg-oscuro divide-y divide-gray-100 rounded-lg shadow w-44">
+                    <ul class="py-2 text-sm text-white" aria-labelledby="tipo-documento">
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <label for="documento"
+                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Documento</label>
+                    <input type="text" id="documento"
+                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Ingrese su documento" required>
+                </div>
+        </form>
+        <hr class="grid col-span-2">
+        <form class="grid col-span-2">
+            <div class="grid gap-6 mb-12 md:grid-cols-2">
+                <div>
+                    <label for="usuario" class="block mb-2 text-sm font-medium text-gray-900">Nombre de usuario</label>
+                    <input type="text" id="usuario"
+                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Ingrese su nombre de usuario" required>
+                </div>
+                <div>
+                    <label for="pin" class="block mb-2 text-sm font-medium text-gray-900">Pin</label>
+                    <input type="number" id="telefono"
+                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Ingrese su pin" required>
+                </div>
+                <div>
+                    <label for="usuario" class="block mb-2 text-sm font-medium text-gray-900">Clave</label>
+                    <input type="password" id="usuario"
+                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Ingrese su clave" required>
+                </div>
+                <div>
+                    <label for="pin" class="block mb-2 text-sm font-medium text-gray-900">Confirmación de clave</label>
+                    <input type="password" id="telefono"
+                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Confirme su clave" required>
+                </div>
+            </div>
+        </form>
+        <button type="submit" class="text-white bg-azul hover:bg-oscuro focus:ring-4 focus:outline-none focus:ring-azul font-medium rounded-lg text-sm w-fit sm:w-auto px-5 py-2.5 text-center">Guardar cambios</button>
     </main>
     <footer class="p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span class="text-white text-2xl">Import Cars</span>
