@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- definición del lengauje del sitio -->
+<html lang="es">
 
 <head>
+    <!-- definición del set de carácteres -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- importación de archivos css -->
     <link href="/resources/css/marchelli.css" rel="stylesheet">
     <link href="/resources/css/menu.css" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <!-- icono de la página -->
     <link rel="icon" href="/resources/img/logo.png">
+    <!-- titulo de la página -->
     <title>Detalles de factura</title>
 </head>
 
@@ -1097,23 +1102,9 @@
             </li>
         </ul>
     </footer>
-
+    <!-- Importacion de archivos JavaScript -->
     <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script>
-        const navBar = document.querySelector("nav"),
-            menuBtns = document.querySelectorAll(".menu-icon"),
-            overlay = document.querySelector(".overlay");
-
-        menuBtns.forEach((menuBtn) => {
-            menuBtn.addEventListener("click", () => {
-                navBar.classList.toggle("open");
-            });
-        });
-
-        overlay.addEventListener("click", () => {
-            navBar.classList.remove("open");
-        });
-    </script>
+    <script src="/resources/JS/menu.js"></script>
 
 </body>
 

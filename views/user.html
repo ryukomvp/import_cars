@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+    <!-- definición del set de carácteres -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- importación de archivos css -->
@@ -107,18 +108,6 @@
         <section class="mx-auto bg-gray-900 rounded-2xl px-8 py-6 shadow-lg">
             <div class="flex items-center justify-between">
                 <span class="text-white text-sm">Cargo en la empresa</span>
-                <span class="text-white">
-                    <svg data-tooltip-target="tooltip-editar-perfil" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
-                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                    </svg>
-                    <div id="tooltip-editar-perfil" role="tooltip"
-                        class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-black transition-opacity duration-300 bg-white border border-black rounded-lg shadow-sm opacity-0 tooltip">
-                        Editar perfil
-                        <div class="tooltip-arrow" data-popper-arrow></div>
-                    </div>
-                </span>
             </div>
             <div class="mt-6 w-fit mx-auto">
                 <img class="rounded-full ring-2 ring-oscuro" src="/resources/img/perfil.jpg" class="rounded-full w-28 "
@@ -155,25 +144,16 @@
                         class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                         placeholder="Ingrese su correo" required>
                 </div>
-                <button id="tipo-documento" data-dropdown-toggle="dropdown"
-                    class="text-white bg-azul hover:bg-oscuro focus:ring-4 focus:outline-none focus:ring-azul font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
-                    type="button">Seleccionar tipo de documento</button>
-                <!-- Dropdown menu -->
-                <div id="dropdown" class="z-10 hidden bg-oscuro divide-y divide-gray-100 rounded-lg shadow w-44">
-                    <ul class="py-2 text-sm text-white" aria-labelledby="tipo-documento">
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
-                        </li>
-                    </ul>
+                <div>
+                    <label for="tipo-documento" class="block mb-2 text-sm font-medium text-gray-900">Tipo de
+                        documento</label>
+                    <select id="tipo-documento"
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5">
+                        <option selected>Seleccione el tipo de documento</option>
+                        <option value="dui">DUI</option>
+                        <option value="pa">Pasaporte</option>
+                        <option value="nit">NIT</option>
+                    </select>
                 </div>
                 <div>
                     <label for="documento"
@@ -212,7 +192,9 @@
                 </div>
             </div>
         </form>
-        <button type="submit" class="text-white bg-azul hover:bg-oscuro focus:ring-4 focus:outline-none focus:ring-azul font-medium rounded-lg text-sm w-fit sm:w-auto px-5 py-2.5 text-center">Guardar cambios</button>
+        <button type="submit"
+            class="text-white bg-azul hover:bg-oscuro focus:ring-4 focus:outline-none focus:ring-azul font-medium rounded-lg text-sm w-fit sm:w-auto px-5 py-2.5 text-center">Guardar
+            cambios</button>
     </main>
     <footer class="p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span class="text-white text-2xl">Import Cars</span>
@@ -235,23 +217,9 @@
         </ul>
     </footer>
 
-
+    <!-- Importacion de archivos JavaScript -->
     <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script>
-        const navBar = document.querySelector("nav"),
-            menuBtns = document.querySelectorAll(".menu-icon"),
-            overlay = document.querySelector(".overlay");
-
-        menuBtns.forEach((menuBtn) => {
-            menuBtn.addEventListener("click", () => {
-                navBar.classList.toggle("open");
-            });
-        });
-
-        overlay.addEventListener("click", () => {
-            navBar.classList.remove("open");
-        });
-    </script>
+    <script src="/resources/JS/menu.js"></script>
 </body>
 
 </html>

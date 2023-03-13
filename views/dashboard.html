@@ -92,9 +92,9 @@
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 p-3">
-                <img data-tooltip-target="tooltip"
-                    class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                    src="/resources/img/perfil.jpg" alt="Bordered avatar">
+                <a href="user.html"> <img data-tooltip-target="tooltip"
+                        class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+                        src="/resources/img/perfil.jpg" alt="Bordered avatar"></a>
             </div>
             <div id="tooltip" role="tooltip"
                 class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 border border-azul rounded-lg shadow-sm opacity-0 tooltip">
@@ -104,85 +104,54 @@
         </nav>
     </header>
     <main>
-        <!-- Cajas donde se encontraran los datos de acceso facil -->
-        <div class="h-screen p-16 grid grid-cols-4 grid-rows-4 gap-6">
-            <!-- caja de la venta de la ultima semana -->
-            <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-3">
-                <h1 class="text-center">Ventas de la ultima semana. <i class='bx bx-dollar-circle'></i></h1>
-                <p class="text-justify mt-20 ml-4">128.00</p>
-                <p class="mt-20 ml-4 text-green-400"><i class='bx bx-line-chart'></i>12% mas que las ultimas semanas</p>
+        <div class="grid grid-cols-4 gap-4 mb-4">
+            <div class="border border-azul flex items-center justify-center h-24 rounded">
+                <p class="text-2xl text-gray-400"><img src="/resources/img/estadisticas1.png" alt=""></p>
             </div>
-            <!-- caja de la venta de el ultimo mes -->
-            <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-3">
-                <h1 class="text-center">Ventas del ultimo mes. <i class='bx bx-dollar-circle'></i></h1>
-                <p class="text-justify mt-20 ml-4">350.00</p>
-                <p class="mt-20 ml-4 text-red-400"><i class='bx bx-line-chart-down'></i>12% menos que el mes pasado</p>
+            <div class="border border-azul flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500"><img src="/resources/img/estadisticas1.png" alt="">
+                </p>
             </div>
-            <!-- caja de la venta del ultimo año -->
-            <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-3">
-                <h1 class="text-center">Ventas del ultimo año. <i class='bx bx-dollar-circle'></i></h1>
-                <p class="text-justify mt-20 ml-4">128.00</p>
-                <p class="mt-20 ml-4 text-green-400"><i class='bx bx-line-chart'></i>12% mas que el año pasado</p>
+            <div class="border border-azul flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500"><img src="/resources/img/estadisticas1.png" alt="">
+                </p>
             </div>
-            <!-- caja de los Productos mas vendidos -->
-            <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-6">
-                <h1 class="text-center">Productos mas populares.</h1>
-                <br>
-                <!-- listo de los productos -->
-                <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
-                    <li class="pb-3 sm:pb-4">
-                        <div class="flex items-center space-x-4 ml-4">
-                            <div class="flex-1 min-w-0">
-                                <p class="text-sm font-medium text-gray-900 dark:text-white">
-                                    Zapatas de frenos.
-                                </p>
-                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                    SKU 58302-31020.
-                                </p>
-                            </div>
-                            <div class="mr-4 inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                $44.00
-                            </div>
-                        </div>
-                    </li>
-                    <li class="pb-3 sm:pb-4">
-                        <div class="flex items-center space-x-4 ml-4">
-                            <div class="flex-1 min-w-0">
-                                <p class="text-sm font-medium text-gray-900 dark:text-white">
-                                    Pastillas de frenos.
-                                </p>
-                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                    SKU PK-16-AF
-                                </p>
-                            </div>
-                            <div class="mr-4 inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                $59.25
-                            </div>
-                        </div>
-                    </li>
-                    <li class="pb-3 sm:pb-4">
-                        <div class="flex items-center space-x-4 ml-4">
-                            <div class="flex-1 min-w-0">
-                                <p class="text-sm font-medium text-gray-900 dark:text-white">
-                                    Sealed beam halogeno multiproposito
-                                </p>
-                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                                    SKU 58302-31020
-                                </p>
-                            </div>
-                            <div class="mr-4 inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                                $32.06
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+            <div
+                class=" row-start-1 row-end-5 border border-azul flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500"><img src="/resources/img/estadisticas1.png" alt="">
+                </p>
             </div>
-            <!-- Cajas para las estadisticas de los datos. -->
-            <div class="bg-gray-300 text-gray-800 font-bold text-3xl py-4 rounded-lg col-span-2">
-                Estadisticas por mes.
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-4">
+            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
             </div>
-            <div class="bg-gray-300 text-gray-800 font-bold text-3xl py-4 rounded-lg col-span-2">
-                Estadisticas por año.</div>
+            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
+            </div>
+            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
+            </div>
+            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
+            </div>
+        </div>
+        <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
+            <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
+            </div>
+            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
+            </div>
+            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
+            </div>
+            <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
+                <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
+            </div>
         </div>
     </main>
     <footer

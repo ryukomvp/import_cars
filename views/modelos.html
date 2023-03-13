@@ -1,14 +1,19 @@
 <!DOCTYPE html>
+<!-- definición del lengauje del sitio -->
 <html lang="es">
 
 <head>
+    <!-- definición del set de carácteres -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- importación de archivos css -->
     <link href="/resources/css/jose.css" rel="stylesheet">
     <link href="/resources/css/menu.css" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <!-- icono de la página -->
     <link rel="icon" href="/resources/img/logo.png">
+    <!-- titulo de la página -->
     <title>Modelos</title>
 </head>
 
@@ -199,7 +204,8 @@
             <!--Final del modal-->
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead
+                        class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
                             <th scope="col" class="px-6 py-3">
                                 ID
@@ -288,7 +294,8 @@
                                                             <!--Input marca del modelo-->
                                                             <div>
                                                                 <label for="estadoempleado"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Marca del modelo:</label>
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Marca
+                                                                    del modelo:</label>
                                                                 <select id="estadoempleado"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                                                     <option selected>Escoge una marca para el modelo
@@ -364,6 +371,7 @@
             </div>
         </div>
     </main>
+
     <footer
         class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <img class="h-8" src="/resources/img/logo.png" alt="">
@@ -385,22 +393,9 @@
             </li>
         </ul>
     </footer>
+    <!-- Importacion de archivos JavaScript -->
     <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script>
-        const navBar = document.querySelector("nav"),
-            menuBtns = document.querySelectorAll(".menu-icon"),
-            overlay = document.querySelector(".overlay");
-
-        menuBtns.forEach((menuBtn) => {
-            menuBtn.addEventListener("click", () => {
-                navBar.classList.toggle("open");
-            });
-        });
-
-        overlay.addEventListener("click", () => {
-            navBar.classList.remove("open");
-        });
-    </script>
+    <script src="/resources/JS/menu.js"></script>
 </body>
 
 </html>
