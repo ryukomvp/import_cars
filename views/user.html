@@ -144,25 +144,16 @@
                         class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                         placeholder="Ingrese su correo" required>
                 </div>
-                <button id="tipo-documento" data-dropdown-toggle="dropdown"
-                    class="text-white bg-azul hover:bg-oscuro focus:ring-4 focus:outline-none focus:ring-azul font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
-                    type="button">Seleccionar tipo de documento</button>
-                <!-- Dropdown menu -->
-                <div id="dropdown" class="z-10 hidden bg-oscuro divide-y divide-gray-100 rounded-lg shadow w-44">
-                    <ul class="py-2 text-sm text-white" aria-labelledby="tipo-documento">
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
-                        </li>
-                        <li>
-                            <a href="#" class="block px-4 py-2 hover:bg-azul">Dui</a>
-                        </li>
-                    </ul>
+                <div>
+                    <label for="tipo-documento" class="block mb-2 text-sm font-medium text-gray-900">Tipo de
+                        documento</label>
+                    <select id="tipo-documento"
+                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5">
+                        <option selected>Seleccione el tipo de documento</option>
+                        <option value="dui">DUI</option>
+                        <option value="pa">Pasaporte</option>
+                        <option value="nit">NIT</option>
+                    </select>
                 </div>
                 <div>
                     <label for="documento"
@@ -201,7 +192,9 @@
                 </div>
             </div>
         </form>
-        <button type="submit" class="text-white bg-azul hover:bg-oscuro focus:ring-4 focus:outline-none focus:ring-azul font-medium rounded-lg text-sm w-fit sm:w-auto px-5 py-2.5 text-center">Guardar cambios</button>
+        <button type="submit"
+            class="text-white bg-azul hover:bg-oscuro focus:ring-4 focus:outline-none focus:ring-azul font-medium rounded-lg text-sm w-fit sm:w-auto px-5 py-2.5 text-center">Guardar
+            cambios</button>
     </main>
     <footer class="p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <span class="text-white text-2xl">Import Cars</span>
