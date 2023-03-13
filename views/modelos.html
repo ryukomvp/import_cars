@@ -385,22 +385,9 @@
             </li>
         </ul>
     </footer>
+    <!-- Importacion de archivos JavaScript -->
     <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script>
-        const navBar = document.querySelector("nav"),
-            menuBtns = document.querySelectorAll(".menu-icon"),
-            overlay = document.querySelector(".overlay");
-
-        menuBtns.forEach((menuBtn) => {
-            menuBtn.addEventListener("click", () => {
-                navBar.classList.toggle("open");
-            });
-        });
-
-        overlay.addEventListener("click", () => {
-            navBar.classList.remove("open");
-        });
-    </script>
+    <script src="/resources/JS/menu.js"></script>
 </body>
 
 </html>
