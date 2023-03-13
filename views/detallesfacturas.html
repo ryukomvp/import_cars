@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -9,10 +9,11 @@
     <link href="/resources/css/menu.css" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <link rel="icon" href="/resources/img/logo.png">
-    <title>Productos</title>
+    <title>Detalles de factura</title>
 </head>
 
 <body>
+
     <header class="sticky top-0 z-10">
         <nav class="sticky top-0 z-10 bg-azul">
             <div class="logo">
@@ -99,13 +100,13 @@
             </div>
         </nav>
     </header>
+
     <main>
         <div class="py-4">
             <div>
                 <div class="py-4 text-center">
-                    <h1 class="text-xl text-rojo font-bold">Productos</h1>
-                    <p class="text-azul font-medium">Gestion del inventario donde se registran los productos y se
-                        detalla la información de cada uno de ellos.</p>
+                    <h1 class="text-xl text-rojo font-bold">Detalles de factura</h1>
+                    <p class="text-azul font-medium">Gestion de .</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
@@ -268,8 +269,11 @@
                                     </div>
                                     <!--Textarea Descipcion-->
                                     <div class="col-start-1 col-end-3">
-                                        <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                        <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
+                                        <label for="descripcion"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
+                                        <textarea id="descripcion" rows="4"
+                                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Descripción del producto..."></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -393,7 +397,8 @@
                                                 <form class="p-4">
                                                     <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                                         <div>
-                                                            <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
+                                                            <div
+                                                                class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
                                                                 <img src="../resources/img/logo.jpg" alt="img">
                                                                 <br>
                                                                 <button type="button"
@@ -409,7 +414,8 @@
                                                                     placeholder="ID" disabled>
                                                             </div>
                                                         </div>
-                                                        <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                                        <div
+                                                            class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                                             <!--Input nombre del producto-->
                                                             <div>
                                                                 <label for="nombre"
@@ -446,7 +452,8 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria:</label>
                                                                 <select id="idcategoria"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge una categoria del producto</option>
+                                                                    <option selected>Escoge una categoria del producto
+                                                                    </option>
                                                                     <option>Capo</option>
                                                                     <option>Espejos</option>
                                                                     <option>Rines</option>
@@ -459,7 +466,8 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo:</label>
                                                                 <select id="idmodelo"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el modelo de la categoria</option>
+                                                                    <option selected>Escoge el modelo de la categoria
+                                                                    </option>
                                                                     <option>Capo ligero G7th</option>
                                                                     <option>Dorman 955-069</option>
                                                                     <option>Rines Deportivos PRW</option>
@@ -469,11 +477,13 @@
                                                             <!--Input pais de origen-->
                                                             <div>
                                                                 <label for="idpaisorigen"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais de
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais
+                                                                    de
                                                                     origen:</label>
                                                                 <select id="idpaisorigen"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el pais de origen del producto</option>
+                                                                    <option selected>Escoge el pais de origen del
+                                                                        producto</option>
                                                                     <option>Estados Unidos</option>
                                                                     <option>Alemania</option>
                                                                     <option>China</option>
@@ -498,8 +508,11 @@
                                                             </div>
                                                             <!--Textarea Descipcion-->
                                                             <div class="col-start-1 col-end-3">
-                                                                <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
+                                                                <label for="descripcion"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
+                                                                <textarea id="descripcion" rows="4"
+                                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                    placeholder="Descripción del producto..."></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -632,7 +645,8 @@
                                                 <form class="p-4">
                                                     <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                                         <div>
-                                                            <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
+                                                            <div
+                                                                class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
                                                                 <img src="../resources/img/logo.jpg" alt="img">
                                                                 <br>
                                                                 <button type="button"
@@ -648,7 +662,8 @@
                                                                     placeholder="ID" disabled>
                                                             </div>
                                                         </div>
-                                                        <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                                        <div
+                                                            class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                                             <!--Input nombre del producto-->
                                                             <div>
                                                                 <label for="nombre"
@@ -685,7 +700,8 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria:</label>
                                                                 <select id="idcategoria"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge una categoria del producto</option>
+                                                                    <option selected>Escoge una categoria del producto
+                                                                    </option>
                                                                     <option>Capo</option>
                                                                     <option>Espejos</option>
                                                                     <option>Rines</option>
@@ -698,7 +714,8 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo:</label>
                                                                 <select id="idmodelo"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el modelo de la categoria</option>
+                                                                    <option selected>Escoge el modelo de la categoria
+                                                                    </option>
                                                                     <option>Capo ligero G7th</option>
                                                                     <option>Dorman 955-069</option>
                                                                     <option>Rines Deportivos PRW</option>
@@ -708,11 +725,13 @@
                                                             <!--Input pais de origen-->
                                                             <div>
                                                                 <label for="idpaisorigen"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais de
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais
+                                                                    de
                                                                     origen:</label>
                                                                 <select id="idpaisorigen"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el pais de origen del producto</option>
+                                                                    <option selected>Escoge el pais de origen del
+                                                                        producto</option>
                                                                     <option>Estados Unidos</option>
                                                                     <option>Alemania</option>
                                                                     <option>China</option>
@@ -737,8 +756,11 @@
                                                             </div>
                                                             <!--Textarea Descipcion-->
                                                             <div class="col-start-1 col-end-3">
-                                                                <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
+                                                                <label for="descripcion"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
+                                                                <textarea id="descripcion" rows="4"
+                                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                    placeholder="Descripción del producto..."></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -870,7 +892,8 @@
                                                 <form class="p-4">
                                                     <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                                         <div>
-                                                            <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
+                                                            <div
+                                                                class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
                                                                 <img src="../resources/img/logo.jpg" alt="img">
                                                                 <br>
                                                                 <button type="button"
@@ -886,7 +909,8 @@
                                                                     placeholder="ID" disabled>
                                                             </div>
                                                         </div>
-                                                        <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                                        <div
+                                                            class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                                             <!--Input nombre del producto-->
                                                             <div>
                                                                 <label for="nombre"
@@ -923,7 +947,8 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria:</label>
                                                                 <select id="idcategoria"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge una categoria del producto</option>
+                                                                    <option selected>Escoge una categoria del producto
+                                                                    </option>
                                                                     <option>Capo</option>
                                                                     <option>Espejos</option>
                                                                     <option>Rines</option>
@@ -936,7 +961,8 @@
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo:</label>
                                                                 <select id="idmodelo"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el modelo de la categoria</option>
+                                                                    <option selected>Escoge el modelo de la categoria
+                                                                    </option>
                                                                     <option>Capo ligero G7th</option>
                                                                     <option>Dorman 955-069</option>
                                                                     <option>Rines Deportivos PRW</option>
@@ -946,11 +972,13 @@
                                                             <!--Input pais de origen-->
                                                             <div>
                                                                 <label for="idpaisorigen"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais de
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais
+                                                                    de
                                                                     origen:</label>
                                                                 <select id="idpaisorigen"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el pais de origen del producto</option>
+                                                                    <option selected>Escoge el pais de origen del
+                                                                        producto</option>
                                                                     <option>Estados Unidos</option>
                                                                     <option>Alemania</option>
                                                                     <option>China</option>
@@ -975,8 +1003,11 @@
                                                             </div>
                                                             <!--Textarea Descipcion-->
                                                             <div class="col-start-1 col-end-3">
-                                                                <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
+                                                                <label for="descripcion"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
+                                                                <textarea id="descripcion" rows="4"
+                                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                    placeholder="Descripción del producto..."></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1044,6 +1075,7 @@
             </div>
         </div>
     </main>
+
     <footer
         class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <img class="h-8" src="/resources/img/logo.png" alt="">
@@ -1065,6 +1097,7 @@
             </li>
         </ul>
     </footer>
+
     <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
     <script>
         const navBar = document.querySelector("nav"),
@@ -1081,6 +1114,7 @@
             navBar.classList.remove("open");
         });
     </script>
+
 </body>
 
 </html>

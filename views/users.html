@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- importación de archivos css -->
     <link href="/resources/css/marchelli.css" rel="stylesheet">
     <link href="/resources/css/menu.css" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <!-- icono de la página -->
     <link rel="icon" href="/resources/img/logo.png">
-    <title>Productos</title>
+    <!-- titulo de la página -->
+    <title>Usuarios</title>
 </head>
 
 <body>
@@ -99,13 +102,13 @@
             </div>
         </nav>
     </header>
+
     <main>
         <div class="py-4">
             <div>
                 <div class="py-4 text-center">
-                    <h1 class="text-xl text-rojo font-bold">Productos</h1>
-                    <p class="text-azul font-medium">Gestion del inventario donde se registran los productos y se
-                        detalla la información de cada uno de ellos.</p>
+                    <h1 class="text-xl text-rojo font-bold">Usuarios</h1>
+                    <p class="text-azul font-medium">Gestion del ingreso de usuarios donde se registran y almacenan cada uno de ellos.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
@@ -145,7 +148,7 @@
                         <!-- Modal header -->
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                Añadir nuevo producto
+                                Añadir nuevo usuario
                             </h3>
                             <button type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -166,9 +169,6 @@
                                     <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
                                         <img src="../resources/img/logo.jpg" alt="img">
                                         <br>
-                                        <button type="button"
-                                            class="text-center text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Insertar
-                                            imagen</button>
                                     </div>
                                     <!--ID-->
                                     <div>
@@ -180,96 +180,64 @@
                                     </div>
                                 </div>
                                 <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                    <!--Input nombre del producto-->
+                                    <!--Input nombre de de usuario-->
                                     <div>
                                         <label for="nombre"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                            del producto:</label>
-                                        <input type="text" id="nombre"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre del usuario:</label>
+                                        <input type="text" id="nombredelusuario"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Nombre" required>
+                                            placeholder="Usuario" required>
                                     </div>
-                                    <!--Input precio del producto-->
+                                    <!--Input contraseña del usuario-->
                                     <div>
-                                        <label for="precio"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio:</label>
-                                        <input type="number" id="precio"
+                                        <label for="Contraseña"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contraseña:</label>
+                                        <input type="password" id="Contraseña"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Precio" required>
+                                            placeholder="Contraseña" required>
                                     </div>
-                                    <!--Input proveedor-->
+                                    <!--Input pin del usuario-->
                                     <div>
-                                        <label for="idproveedor"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Proveedor:</label>
-                                        <select id="idproveedor"
+                                        <label for="Pin"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pin:</label>
+                                        <input type="number" id="pin"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Pin" required>
+                                    </div>
+                                    <!--Input del tipo de usuario-->
+                                    <div>
+                                        <label for="idtipousuario"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo de usuario:</label>
+                                        <select id="idtipousuario"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Escoge un Proveedor</option>
-                                            <option>John Roger</option>
-                                            <option>Marco Montano</option>
-                                            <option>Josué Serrano</option>
-                                            <option>Alejandro Fuentes</option>
+                                            <option selected>Escoge un tipo de usuario</option>
+                                            <option>Administrador</option>
+                                            <option>Vendedor</option>
+                                            <option>Cajero</option>
                                         </select>
                                     </div>
-                                    <!--Input categoria-->
+                                    <!--Input del empleado asignado al usuario-->
                                     <div>
-                                        <label for="idcategoria"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria:</label>
-                                        <select id="idcategoria"
+                                        <label for="idempleado"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Empleado:</label>
+                                        <select id="idempleado"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Escoge una categoria del producto</option>
-                                            <option>Capo</option>
-                                            <option>Espejos</option>
-                                            <option>Rines</option>
-                                            <option>Frenos</option>
+                                            <option selected>Escoge un empleado</option>
+                                            <option>José Ernesto Gónzales Castillo</option>
+                                            <option>Alejandro Antonio Méndez Letona</option>
                                         </select>
                                     </div>
-                                    <!--Input modelo-->
-                                    <div>
-                                        <label for="idmodelo"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo:</label>
-                                        <select id="idmodelo"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Escoge el modelo de la categoria</option>
-                                            <option>Capo ligero G7th</option>
-                                            <option>Dorman 955-069</option>
-                                            <option>Rines Deportivos PRW</option>
-                                            <option>Frenos ABS</option>
-                                        </select>
-                                    </div>
-                                    <!--Input pais de origen-->
-                                    <div>
-                                        <label for="idpaisorigen"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais de
-                                            origen:</label>
-                                        <select id="idpaisorigen"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Escoge el pais de origen del producto</option>
-                                            <option>Estados Unidos</option>
-                                            <option>Alemania</option>
-                                            <option>China</option>
-                                            <option>Japon</option>
-                                            <option>Inglaterra</option>
-                                            <option>España</option>
-                                        </select>
-                                    </div>
-                                    <!--Input estado-->
+                                    <!--Input estado del usuario-->
                                     <div>
                                         <label for="idestado"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
-                                            del producto:</label>
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado del usuario:</label>
                                         <select id="idestado"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Estado del producto</option>
-                                            <option>Disponible</option>
-                                            <option>No Disponible</option>
-                                            <option>Pendiente</option>
-                                            <option>Sin Existencia</option>
+                                            <option selected>Escoge un estado de usuario</option>
+                                            <option>Activo</option>
+                                            <option>Suspendido</option>
+                                            <option>Bloqueado</option>
                                         </select>
-                                    </div>
-                                    <!--Textarea Descipcion-->
-                                    <div class="col-start-1 col-end-3">
-                                        <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                        <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
                                     </div>
                                 </div>
                             </div>
@@ -291,31 +259,19 @@
                                 ID
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Imagen
+                                Nombre de usuario
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Nombre del producto
+                                Pin
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Descripción
+                                Tipo de usuario
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Precio
+                                Empleado
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Proveedor
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Categoria
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Modelo
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Pais de origen
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Estado del producto
+                                Estado del usuario
                             </th>
                             <th scope="col" class="px-8 py-3">
                                 <span class="">Controles</span>
@@ -329,32 +285,20 @@
                                 1
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
+                                Mendez
                             </td>
                             <th scope="row"
                                 class="text-oscuro font-bold px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
+                                780152
                             </th>
                             <td class="px-6 py-4">
-                                Silver
+                                Aministrador
                             </td>
                             <td class="px-6 py-4">
-                                Silver
+                                Alejandro Antonio Mendez Letona
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
-                            </td>
-                            <td class="px-6 py-4">
-                                Silver
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
+                                Activo
                             </td>
                             <td class="px-6 py-4">
                                 <div class="grid gap-2 m-0">
@@ -375,7 +319,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar Producto
+                                                        Actualizar Usuario
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -396,9 +340,6 @@
                                                             <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
                                                                 <img src="../resources/img/logo.jpg" alt="img">
                                                                 <br>
-                                                                <button type="button"
-                                                                    class="text-center text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Insertar
-                                                                    imagen</button>
                                                             </div>
                                                             <!--ID-->
                                                             <div>
@@ -410,96 +351,65 @@
                                                             </div>
                                                         </div>
                                                         <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                                            <!--Input nombre del producto-->
+                                                            <!--Input nombre del usuario-->
                                                             <div>
-                                                                <label for="nombre"
+                                                                <label for="nombre" 
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                                                    del producto:</label>
+                                                                    del usuario:</label>
                                                                 <input type="text" id="nombre"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                     placeholder="Nombre" required>
                                                             </div>
-                                                            <!--Input precio del producto-->
+                                                            <!--Input contraseña del usuario-->
                                                             <div>
-                                                                <label for="precio"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio:</label>
-                                                                <input type="number" id="precio"
+                                                                <label for="contraseña"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contraseña:</label>
+                                                                <input type="password" id="contraseña"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Precio" required>
+                                                                    placeholder="Contraseña" disabled>
                                                             </div>
-                                                            <!--Input proveedor-->
+                                                            <!--Input pin del usuario-->
                                                             <div>
-                                                                <label for="idproveedor"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Proveedor:</label>
-                                                                <select id="idproveedor"
+                                                                <label for="pin"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pin:</label>
+                                                                <input type="number" id="pin"
+                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                    placeholder="Pin" required>
+                                                            </div>
+                                                            <!--Input del tipo de usuario-->
+                                                            <div>
+                                                                <label for="idtipousuario"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo de usuario:</label>
+                                                                <select id="idtipousuario"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un Proveedor</option>
-                                                                    <option>John Roger</option>
-                                                                    <option>Marco Montano</option>
-                                                                    <option>Josué Serrano</option>
-                                                                    <option>Alejandro Fuentes</option>
+                                                                    <option selected>Escoge un tipo de usuario</option>
+                                                                    <option>Administrador</option>
+                                                                    <option>Vendedor</option>
+                                                                    <option>Cajero</option>
                                                                 </select>
                                                             </div>
-                                                            <!--Input categoria-->
+                                                            <!--Input empleado asignado al usuario-->
                                                             <div>
-                                                                <label for="idcategoria"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria:</label>
-                                                                <select id="idcategoria"
+                                                                <label for="idempleado"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Empleado:</label>
+                                                                <select id="idempleado"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge una categoria del producto</option>
-                                                                    <option>Capo</option>
-                                                                    <option>Espejos</option>
-                                                                    <option>Rines</option>
-                                                                    <option>Frenos</option>
+                                                                    <option selected>Escoge un empleado</option>
+                                                                    <option>José Ernesto Gónzales Castillo</option>
+                                                                    <option>Alejandro Antonio Méndez Letona</option>
                                                                 </select>
                                                             </div>
                                                             <!--Input modelo-->
                                                             <div>
-                                                                <label for="idmodelo"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo:</label>
-                                                                <select id="idmodelo"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el modelo de la categoria</option>
-                                                                    <option>Capo ligero G7th</option>
-                                                                    <option>Dorman 955-069</option>
-                                                                    <option>Rines Deportivos PRW</option>
-                                                                    <option>Frenos ABS</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input pais de origen-->
-                                                            <div>
-                                                                <label for="idpaisorigen"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais de
-                                                                    origen:</label>
-                                                                <select id="idpaisorigen"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el pais de origen del producto</option>
-                                                                    <option>Estados Unidos</option>
-                                                                    <option>Alemania</option>
-                                                                    <option>China</option>
-                                                                    <option>Japon</option>
-                                                                    <option>Inglaterra</option>
-                                                                    <option>España</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input estado-->
-                                                            <div>
                                                                 <label for="idestado"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
-                                                                    del producto:</label>
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado del usuario:</label>
                                                                 <select id="idestado"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Estado del producto</option>
-                                                                    <option>Disponible</option>
-                                                                    <option>No Disponible</option>
-                                                                    <option>Pendiente</option>
-                                                                    <option>Sin Existencia</option>
+                                                                    <option selected>Escoge un estado</option>
+                                                                    <option>Acrivo</option>
+                                                                    <option>Suspendido</option>
+                                                                    <option>Bloqueado</option>
                                                                 </select>
-                                                            </div>
-                                                            <!--Textarea Descipcion-->
-                                                            <div class="col-start-1 col-end-3">
-                                                                <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
                                                             </div>
                                                         </div>
                                                     </div>
@@ -568,32 +478,20 @@
                                 2
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
+                                Josesito
                             </td>
                             <th scope="row"
                                 class="text-oscuro font-bold px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
+                                091325
                             </th>
                             <td class="px-6 py-4">
-                                Silver
+                                Vendedor
                             </td>
                             <td class="px-6 py-4">
-                                Silver
+                                José Ernesto Gónzales Castillo
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
-                            </td>
-                            <td class="px-6 py-4">
-                                Silver
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
+                                Activo
                             </td>
                             <td class="px-6 py-4">
                                 <div class="grid gap-2 m-0">
@@ -614,7 +512,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar Producto
+                                                        Actualizar Usuario
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -635,9 +533,6 @@
                                                             <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
                                                                 <img src="../resources/img/logo.jpg" alt="img">
                                                                 <br>
-                                                                <button type="button"
-                                                                    class="text-center text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Insertar
-                                                                    imagen</button>
                                                             </div>
                                                             <!--ID-->
                                                             <div>
@@ -649,96 +544,65 @@
                                                             </div>
                                                         </div>
                                                         <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                                            <!--Input nombre del producto-->
+                                                            <!--Input nombre del usuario-->
                                                             <div>
-                                                                <label for="nombre"
+                                                                <label for="nombre" 
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                                                    del producto:</label>
+                                                                    del usuario:</label>
                                                                 <input type="text" id="nombre"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                     placeholder="Nombre" required>
                                                             </div>
-                                                            <!--Input precio del producto-->
+                                                            <!--Input contraseña del usuario-->
                                                             <div>
-                                                                <label for="precio"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio:</label>
-                                                                <input type="number" id="precio"
+                                                                <label for="contraseña"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contraseña:</label>
+                                                                <input type="password" id="contraseña"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Precio" required>
+                                                                    placeholder="Contraseña" disabled>
                                                             </div>
-                                                            <!--Input proveedor-->
+                                                            <!--Input pin del usuario-->
                                                             <div>
-                                                                <label for="idproveedor"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Proveedor:</label>
-                                                                <select id="idproveedor"
+                                                                <label for="pin"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pin:</label>
+                                                                <input type="number" id="pin"
+                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                    placeholder="Pin" required>
+                                                            </div>
+                                                            <!--Input del tipo de usuario-->
+                                                            <div>
+                                                                <label for="idtipousuario"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo de usuario:</label>
+                                                                <select id="idtipousuario"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un Proveedor</option>
-                                                                    <option>John Roger</option>
-                                                                    <option>Marco Montano</option>
-                                                                    <option>Josué Serrano</option>
-                                                                    <option>Alejandro Fuentes</option>
+                                                                    <option selected>Escoge un tipo de usuario</option>
+                                                                    <option>Administrador</option>
+                                                                    <option>Vendedor</option>
+                                                                    <option>Cajero</option>
                                                                 </select>
                                                             </div>
-                                                            <!--Input categoria-->
+                                                            <!--Input empleado asignado al usuario-->
                                                             <div>
-                                                                <label for="idcategoria"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria:</label>
-                                                                <select id="idcategoria"
+                                                                <label for="idempleado"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Empleado:</label>
+                                                                <select id="idempleado"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge una categoria del producto</option>
-                                                                    <option>Capo</option>
-                                                                    <option>Espejos</option>
-                                                                    <option>Rines</option>
-                                                                    <option>Frenos</option>
+                                                                    <option selected>Escoge un empleado</option>
+                                                                    <option>José Ernesto Gónzales Castillo</option>
+                                                                    <option>Alejandro Antonio Méndez Letona</option>
                                                                 </select>
                                                             </div>
                                                             <!--Input modelo-->
                                                             <div>
-                                                                <label for="idmodelo"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo:</label>
-                                                                <select id="idmodelo"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el modelo de la categoria</option>
-                                                                    <option>Capo ligero G7th</option>
-                                                                    <option>Dorman 955-069</option>
-                                                                    <option>Rines Deportivos PRW</option>
-                                                                    <option>Frenos ABS</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input pais de origen-->
-                                                            <div>
-                                                                <label for="idpaisorigen"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais de
-                                                                    origen:</label>
-                                                                <select id="idpaisorigen"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el pais de origen del producto</option>
-                                                                    <option>Estados Unidos</option>
-                                                                    <option>Alemania</option>
-                                                                    <option>China</option>
-                                                                    <option>Japon</option>
-                                                                    <option>Inglaterra</option>
-                                                                    <option>España</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input estado-->
-                                                            <div>
                                                                 <label for="idestado"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
-                                                                    del producto:</label>
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado del usuario:</label>
                                                                 <select id="idestado"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Estado del producto</option>
-                                                                    <option>Disponible</option>
-                                                                    <option>No Disponible</option>
-                                                                    <option>Pendiente</option>
-                                                                    <option>Sin Existencia</option>
+                                                                    <option selected>Escoge un estado</option>
+                                                                    <option>Acrivo</option>
+                                                                    <option>Suspendido</option>
+                                                                    <option>Bloqueado</option>
                                                                 </select>
-                                                            </div>
-                                                            <!--Textarea Descipcion-->
-                                                            <div class="col-start-1 col-end-3">
-                                                                <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
                                                             </div>
                                                         </div>
                                                     </div>
@@ -806,32 +670,20 @@
                                 3
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
+                                Kevin
                             </td>
                             <th scope="row"
                                 class="text-oscuro font-bold px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Apple MacBook Pro 17"
+                                878921
                             </th>
                             <td class="px-6 py-4">
-                                Silver
+                                Administrador
                             </td>
                             <td class="px-6 py-4">
-                                Silver
+                                Kevin Rivas Delgado
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
-                            </td>
-                            <td class="px-6 py-4">
-                                Silver
-                            </td>
-                            <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
+                                Activo
                             </td>
                             <td class="px-6 py-4">
                                 <div class="grid gap-2">
@@ -852,7 +704,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar Producto
+                                                        Actualizar Usuario
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -873,9 +725,6 @@
                                                             <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
                                                                 <img src="../resources/img/logo.jpg" alt="img">
                                                                 <br>
-                                                                <button type="button"
-                                                                    class="text-center text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Insertar
-                                                                    imagen</button>
                                                             </div>
                                                             <!--ID-->
                                                             <div>
@@ -887,96 +736,65 @@
                                                             </div>
                                                         </div>
                                                         <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                                            <!--Input nombre del producto-->
+                                                            <!--Input nombre del usuario-->
                                                             <div>
-                                                                <label for="nombre"
+                                                                <label for="nombre" 
                                                                     class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                                                    del producto:</label>
+                                                                    del usuario:</label>
                                                                 <input type="text" id="nombre"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                     placeholder="Nombre" required>
                                                             </div>
-                                                            <!--Input precio del producto-->
+                                                            <!--Input contraseña del usuario-->
                                                             <div>
-                                                                <label for="precio"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio:</label>
-                                                                <input type="number" id="precio"
+                                                                <label for="contraseña"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contraseña:</label>
+                                                                <input type="password" id="contraseña"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Precio" required>
+                                                                    placeholder="Contraseña" disabled>
                                                             </div>
-                                                            <!--Input proveedor-->
+                                                            <!--Input pin del usuario-->
                                                             <div>
-                                                                <label for="idproveedor"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Proveedor:</label>
-                                                                <select id="idproveedor"
+                                                                <label for="pin"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pin:</label>
+                                                                <input type="number" id="pin"
+                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                    placeholder="Pin" required>
+                                                            </div>
+                                                            <!--Input del tipo de usuario-->
+                                                            <div>
+                                                                <label for="idtipousuario"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo de usuario:</label>
+                                                                <select id="idtipousuario"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge un Proveedor</option>
-                                                                    <option>John Roger</option>
-                                                                    <option>Marco Montano</option>
-                                                                    <option>Josué Serrano</option>
-                                                                    <option>Alejandro Fuentes</option>
+                                                                    <option selected>Escoge un tipo de usuario</option>
+                                                                    <option>Administrador</option>
+                                                                    <option>Vendedor</option>
+                                                                    <option>Cajero</option>
                                                                 </select>
                                                             </div>
-                                                            <!--Input categoria-->
+                                                            <!--Input empleado asignado al usuario-->
                                                             <div>
-                                                                <label for="idcategoria"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoria:</label>
-                                                                <select id="idcategoria"
+                                                                <label for="idempleado"
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Empleado:</label>
+                                                                <select id="idempleado"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge una categoria del producto</option>
-                                                                    <option>Capo</option>
-                                                                    <option>Espejos</option>
-                                                                    <option>Rines</option>
-                                                                    <option>Frenos</option>
+                                                                    <option selected>Escoge un empleado</option>
+                                                                    <option>José Ernesto Gónzales Castillo</option>
+                                                                    <option>Alejandro Antonio Méndez Letona</option>
                                                                 </select>
                                                             </div>
                                                             <!--Input modelo-->
                                                             <div>
-                                                                <label for="idmodelo"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo:</label>
-                                                                <select id="idmodelo"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el modelo de la categoria</option>
-                                                                    <option>Capo ligero G7th</option>
-                                                                    <option>Dorman 955-069</option>
-                                                                    <option>Rines Deportivos PRW</option>
-                                                                    <option>Frenos ABS</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input pais de origen-->
-                                                            <div>
-                                                                <label for="idpaisorigen"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pais de
-                                                                    origen:</label>
-                                                                <select id="idpaisorigen"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge el pais de origen del producto</option>
-                                                                    <option>Estados Unidos</option>
-                                                                    <option>Alemania</option>
-                                                                    <option>China</option>
-                                                                    <option>Japon</option>
-                                                                    <option>Inglaterra</option>
-                                                                    <option>España</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input estado-->
-                                                            <div>
                                                                 <label for="idestado"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
-                                                                    del producto:</label>
+                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado del usuario:</label>
                                                                 <select id="idestado"
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Estado del producto</option>
-                                                                    <option>Disponible</option>
-                                                                    <option>No Disponible</option>
-                                                                    <option>Pendiente</option>
-                                                                    <option>Sin Existencia</option>
+                                                                    <option selected>Escoge un estado</option>
+                                                                    <option>Acrivo</option>
+                                                                    <option>Suspendido</option>
+                                                                    <option>Bloqueado</option>
                                                                 </select>
-                                                            </div>
-                                                            <!--Textarea Descipcion-->
-                                                            <div class="col-start-1 col-end-3">
-                                                                <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                                                <textarea id="descripcion" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Descripción del producto..."></textarea>                                        
                                                             </div>
                                                         </div>
                                                     </div>
