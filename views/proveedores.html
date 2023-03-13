@@ -9,7 +9,7 @@
     <link href="/resources/css/menu.css" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <link rel="icon" href="/resources/img/logo.png">
-    <title>Sucursales</title>
+    <title>Proveedores</title>
 </head>
 
 <body>
@@ -103,8 +103,8 @@
         <div class="py-4">
             <div>
                 <div class="py-4 text-center">
-                    <h1 class="text-xl text-rojo font-bold">Sucursales</h1>
-                    <p class="text-azul font-medium">Gestion de sucursales.</p>
+                    <h1 class="text-xl text-rojo font-bold">Proveedores</h1>
+                    <p class="text-azul font-medium">Gestion de proveedores de productos.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
@@ -144,7 +144,7 @@
                         <!-- Modal header -->
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                Añadir nueva sucursal
+                                Añadir nuevo proveedor
                             </h3>
                             <button type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -172,8 +172,7 @@
                                 <!--Input nombre de la familia-->
                                 <div>
                                     <label for="nombre"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de la
-                                        sucursal:</label>
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre proveedor</label>
                                     <input type="text" id="nombre"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Nombre" required>
@@ -193,25 +192,6 @@
                                     <input type="email" id="email"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="john.doe@company.com" required>
-                                </div>
-                                <div>
-                                    <label for="direccion"
-                                        class="block mb-2 text-sm font-medium text-azul dark:text-white">Direccion</label>
-                                    <textarea id="message" rows="4"
-                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Direccion"></textarea>
-                                </div>
-                                <!--Input familia-->
-                                <div>
-                                    <label for="idbodega"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega:</label>
-                                    <select id="idfamilia"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        <option selected>Escoge una bodega</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
                                 </div>
                             </div>
                         </form>
@@ -238,7 +218,7 @@
                                 Telefono
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Bodega
+                                Correo
                             </th>
                         </tr>
                     </thead>
@@ -248,13 +228,13 @@
                                 1
                             </td>
                             <td class="px-6 py-4">
-                                Import cars
+                                Super repuestos
                             </td>
                             <td class="px-6 py-4">
                                 7743-7912
                             </td>
                             <td class="px-6 py-4">
-                                1
+                                Superrepuestos@gmail.com
                             </td>
                             <td class="px-6 py-4">
                                 <div class="grid gap-2 m-0">
@@ -275,7 +255,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar sucursal
+                                                        Actualizar proveedores
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -291,8 +271,7 @@
                                                 </div>
                                                 <!-- Modal body -->
                                                 <form class="p-4">
-                                                    <div
-                                                        class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                                    <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                                         <!--ID-->
                                                         <div>
                                                             <label for="id"
@@ -304,22 +283,18 @@
                                                         <!--Input nombre de la familia-->
                                                         <div>
                                                             <label for="nombre"
-                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                                                de la
-                                                                sucursal:</label>
+                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre proveedor</label>
                                                             <input type="text" id="nombre"
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                 placeholder="Nombre" required>
                                                         </div>
                                                         <div>
                                                             <label for="telefono"
-                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero
-                                                                de
+                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero de
                                                                 telefono</label>
                                                             <input type="tel" id="telefono"
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="1232-1231"
-                                                                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                                                                placeholder="1232-1231" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
                                                         </div>
                                                         <div>
                                                             <label for="email"
@@ -328,25 +303,6 @@
                                                             <input type="email" id="email"
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                 placeholder="john.doe@company.com" required>
-                                                        </div>
-                                                        <div>
-                                                            <label for="direccion"
-                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Direccion</label>
-                                                            <textarea id="message" rows="4"
-                                                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="Direccion"></textarea>
-                                                        </div>
-                                                        <!--Input familia-->
-                                                        <div>
-                                                            <label for="idbodega"
-                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega:</label>
-                                                            <select id="idfamilia"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                <option selected>Escoge una bodega</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                            </select>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -440,7 +396,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar sucursal
+                                                        Actualizar proveedores
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -456,60 +412,40 @@
                                                 </div>
                                                 <!-- Modal body -->
                                                 <form class="p-4">
-                                                        <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                                            <!--ID-->
-                                                            <div>
-                                                                <label for="id"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
-                                                                <input type="text" id="id"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="ID" disabled>
-                                                            </div>
-                                                            <!--Input nombre de la familia-->
-                                                            <div>
-                                                                <label for="nombre"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de la
-                                                                    sucursal:</label>
-                                                                <input type="text" id="nombre"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Nombre" required>
-                                                            </div>
-                                                            <div>
-                                                                <label for="telefono"
-                                                                    class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero de
-                                                                    telefono</label>
-                                                                <input type="tel" id="telefono"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="1232-1231" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
-                                                            </div>
-                                                            <div>
-                                                                <label for="email"
-                                                                    class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
-                                                                    electronico</label>
-                                                                <input type="email" id="email"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="john.doe@company.com" required>
-                                                            </div>
-                                                            <div>
-                                                                <label for="direccion"
-                                                                    class="block mb-2 text-sm font-medium text-azul dark:text-white">Direccion</label>
-                                                                <textarea id="message" rows="4"
-                                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Direccion"></textarea>
-                                                            </div>
-                                                            <!--Input familia-->
-                                                            <div>
-                                                                <label for="idbodega"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega:</label>
-                                                                <select id="idfamilia"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge una bodega</option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                </select>
-                                                            </div>
+                                                    <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                                        <!--ID-->
+                                                        <div>
+                                                            <label for="id"
+                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
+                                                            <input type="text" id="id"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                placeholder="ID" disabled>
                                                         </div>
+                                                        <!--Input nombre de la familia-->
+                                                        <div>
+                                                            <label for="nombre"
+                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre proveedor</label>
+                                                            <input type="text" id="nombre"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                placeholder="Nombre" required>
+                                                        </div>
+                                                        <div>
+                                                            <label for="telefono"
+                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero de
+                                                                telefono</label>
+                                                            <input type="tel" id="telefono"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                placeholder="1232-1231" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                                                        </div>
+                                                        <div>
+                                                            <label for="email"
+                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
+                                                                electronico</label>
+                                                            <input type="email" id="email"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                placeholder="john.doe@company.com" required>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                                 <!-- Modal footer -->
                                                 <div
@@ -601,7 +537,7 @@
                                                 <div
                                                     class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                                                     <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar sucursal
+                                                        Actualizar proveedores
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -617,60 +553,40 @@
                                                 </div>
                                                 <!-- Modal body -->
                                                 <form class="p-4">
-                                                        <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                                            <!--ID-->
-                                                            <div>
-                                                                <label for="id"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
-                                                                <input type="text" id="id"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="ID" disabled>
-                                                            </div>
-                                                            <!--Input nombre de la familia-->
-                                                            <div>
-                                                                <label for="nombre"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de la
-                                                                    sucursal:</label>
-                                                                <input type="text" id="nombre"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Nombre" required>
-                                                            </div>
-                                                            <div>
-                                                                <label for="telefono"
-                                                                    class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero de
-                                                                    telefono</label>
-                                                                <input type="tel" id="telefono"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="1232-1231" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
-                                                            </div>
-                                                            <div>
-                                                                <label for="email"
-                                                                    class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
-                                                                    electronico</label>
-                                                                <input type="email" id="email"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="john.doe@company.com" required>
-                                                            </div>
-                                                            <div>
-                                                                <label for="direccion"
-                                                                    class="block mb-2 text-sm font-medium text-azul dark:text-white">Direccion</label>
-                                                                <textarea id="message" rows="4"
-                                                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Direccion"></textarea>
-                                                            </div>
-                                                            <!--Input familia-->
-                                                            <div>
-                                                                <label for="idbodega"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega:</label>
-                                                                <select id="idfamilia"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Escoge una bodega</option>
-                                                                    <option>1</option>
-                                                                    <option>2</option>
-                                                                    <option>3</option>
-                                                                </select>
-                                                            </div>
+                                                    <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                                        <!--ID-->
+                                                        <div>
+                                                            <label for="id"
+                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
+                                                            <input type="text" id="id"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                placeholder="ID" disabled>
                                                         </div>
+                                                        <!--Input nombre de la familia-->
+                                                        <div>
+                                                            <label for="nombre"
+                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre proveedor</label>
+                                                            <input type="text" id="nombre"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                placeholder="Nombre" required>
+                                                        </div>
+                                                        <div>
+                                                            <label for="telefono"
+                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero de
+                                                                telefono</label>
+                                                            <input type="tel" id="telefono"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                placeholder="1232-1231" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                                                        </div>
+                                                        <div>
+                                                            <label for="email"
+                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
+                                                                electronico</label>
+                                                            <input type="email" id="email"
+                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                                placeholder="john.doe@company.com" required>
+                                                        </div>
+                                                    </div>
                                                 </form>
                                                 <!-- Modal footer -->
                                                 <div
