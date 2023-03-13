@@ -18,12 +18,14 @@
 </head>
 
 <body>
+    <!-- menus header -->
     <header class="sticky top-0 z-10">
         <nav class="sticky top-0 z-10 bg-azul">
             <div class="logo">
                 <i class="bx bx-menu menu-icon text-white"></i>
                 <span class="logo-name text-white">Import Cars</span>
             </div>
+            <!-- menu sidebar -->
             <div class="sidebar bg-white">
                 <div class="logo">
                     <i class="bx bx-menu menu-icon text-black"></i>
@@ -92,6 +94,7 @@
                     </div>
                 </div>
             </div>
+            <!-- menu navbar -->
             <div class="absolute inset-y-0 right-0 p-3">
                 <img data-tooltip-target="tooltip"
                     class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
@@ -105,8 +108,10 @@
         </nav>
     </header>
     <main>
+        <!-- Contenido de la pagina -->
         <div class="py-4">
             <div>
+                <!-- Informacion sobre el proposito de la pagina -->
                 <div class="py-4 text-center">
                     <h1 class="text-xl text-rojo font-bold">Bodegas</h1>
                     <p class="text-azul font-medium">Gestion de bodega por sucursal.</p>
@@ -141,6 +146,7 @@
                     </div>
                 </div>
             </div>
+            <!-- buscador -->
             <div id="modal_add_winery" tabindex="-1"
                 class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                 <div class="relative w-full h-full max-w-4xl">
@@ -205,8 +211,10 @@
                     </div>
                 </div>
             </div><!--Final del modal-->
+            <!-- Contenido de tabla  -->
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <!-- Encabezado de tabla  -->
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
                             <th scope="col" class="px-6 py-3">
@@ -220,7 +228,9 @@
                             </th>
                         </tr>
                     </thead>
+                    <!-- Datos ingresados en la tabla  -->
                     <tbody>
+                        <!-- Contenido de la tabla  -->
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
                             <td class="px-6 py-4">
@@ -277,7 +287,7 @@
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                 placeholder="ID" disabled>
                                                         </div>
-                                                        <!--Input nombre de la familia-->
+                                                        <!--Input numero de bodega-->
                                                         <div>
                                                             <label for="nombre"
                                                                 class="block mb-2 text-sm font-semibold text-azul dark:text-white">Numero de bodega:</label>
@@ -287,7 +297,7 @@
                                                         </div>
                                                         <!--Input familia-->
                                                         <div>
-                                                            <label for="idproveedor"
+                                                            <label for="idfamilia"
                                                                 class="block mb-2 text-sm font-semibold text-azul dark:text-white">familia:</label>
                                                             <select id="idfamilia"
                                                                 class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -316,6 +326,7 @@
                                             <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
                                         </button>
                                     </div>
+                                    <!-- Modal para eliminar -->
                                     <div id="delete-modal1" tabindex="-1"
                                         class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                                         <div class="relative w-full h-full max-w-md md:h-auto">
@@ -357,6 +368,7 @@
                                 </div>
                             </td>
                         </tr>
+                        <!-- Contenido de la tabla  -->.
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
                             <td class="px-6 py-4">
@@ -631,22 +643,28 @@
             </div>
         </div>
     </main>
+
+    <!-- footer -->
     <footer
         class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
         <img class="h-8" src="/resources/img/logo.png" alt="">
         <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-400 sm:mt-0">
+            <!-- licks fr informacion -->
             <li>
                 <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6 "
                     target="_blank">About</a>
             </li>
+            <!-- licks fr informacion -->
             <li>
                 <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
                     target="_blank">Privacy Policy</a>
             </li>
+            <!-- licks fr informacion -->
             <li>
                 <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
                     target="_blank">Licensing</a>
             </li>
+            <!-- licks fr informacion -->
             <li>
                 <a href="https://www.instagram.com/dnlhernandez_/" class="hover:underline" target="_blank">Contact</a>
             </li>
