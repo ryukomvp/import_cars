@@ -197,14 +197,6 @@
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Precio" required>
                                     </div>
-                                    <!--Input existencia del producto-->
-                                    <div>
-                                        <label for="existencia"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Existencia:</label>
-                                        <input type="number" id="existencia"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Existencia" required>
-                                    </div>
                                     <!--Input proveedor-->
                                     <div>
                                         <label for="idproveedor"
@@ -274,31 +266,6 @@
                                             <option>Sin Existencia</option>
                                         </select>
                                     </div>
-                                    <!--Input Comision ed Venta-->
-                                    <div>
-                                        <label for="idcomisionventas"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Comision de Ventas:</label>
-                                        <select id="idcomisionventas"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Comision por venta</option>
-                                            <option>Disponible</option>
-                                            <option>No Disponible</option>
-                                            <option>Pendiente</option>
-                                            <option>Sin Existencia</option>
-                                        </select>
-                                    </div>
-                                    <!--Input Sucursal-->
-                                    <div>
-                                        <label for="idsucursal"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal:</label>
-                                        <select id="idsucursal"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            <option selected>Sucursal en la que se ubica</option>
-                                            <option>Metro Centro</option>
-                                            <option>Plaza Mundo</option>
-                                            <option>San Miguelito</option>
-                                        </select>
-                                    </div>
                                     <!--Textarea Descipcion-->
                                     <div class="col-start-1 col-end-3">
                                         <label for="descripcion" class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
@@ -334,9 +301,6 @@
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Precio
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Existencia
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Proveedor
@@ -388,9 +352,6 @@
                             </td>
                             <td class="px-6 py-4">
                                 Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
                             </td>
                             <td class="px-6 py-4">
                                 $2999
@@ -466,14 +427,6 @@
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                     placeholder="Precio" required>
                                                             </div>
-                                                            <!--Input existencia del producto-->
-                                                            <div>
-                                                                <label for="existencia"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Existencia:</label>
-                                                                <input type="number" id="existencia"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Existencia" required>
-                                                            </div>
                                                             <!--Input proveedor-->
                                                             <div>
                                                                 <label for="idproveedor"
@@ -541,31 +494,6 @@
                                                                     <option>No Disponible</option>
                                                                     <option>Pendiente</option>
                                                                     <option>Sin Existencia</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input Comision ed Venta-->
-                                                            <div>
-                                                                <label for="idcomisionventas"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Comision de Ventas:</label>
-                                                                <select id="idcomisionventas"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Comision por venta</option>
-                                                                    <option>Disponible</option>
-                                                                    <option>No Disponible</option>
-                                                                    <option>Pendiente</option>
-                                                                    <option>Sin Existencia</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input Sucursal-->
-                                                            <div>
-                                                                <label for="idsucursal"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal:</label>
-                                                                <select id="idsucursal"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Sucursal en la que se ubica</option>
-                                                                    <option>Metro Centro</option>
-                                                                    <option>Plaza Mundo</option>
-                                                                    <option>San Miguelito</option>
                                                                 </select>
                                                             </div>
                                                             <!--Textarea Descipcion-->
@@ -668,9 +596,6 @@
                                 $2999
                             </td>
                             <td class="px-6 py-4">
-                                $2999
-                            </td>
-                            <td class="px-6 py-4">
                                 <div class="grid gap-2 m-0">
                                     <div>
                                         <button data-modal-target="modal_update_product2"
@@ -741,14 +666,6 @@
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                     placeholder="Precio" required>
                                                             </div>
-                                                            <!--Input existencia del producto-->
-                                                            <div>
-                                                                <label for="existencia"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Existencia:</label>
-                                                                <input type="number" id="existencia"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Existencia" required>
-                                                            </div>
                                                             <!--Input proveedor-->
                                                             <div>
                                                                 <label for="idproveedor"
@@ -816,31 +733,6 @@
                                                                     <option>No Disponible</option>
                                                                     <option>Pendiente</option>
                                                                     <option>Sin Existencia</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input Comision ed Venta-->
-                                                            <div>
-                                                                <label for="idcomisionventas"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Comision de Ventas:</label>
-                                                                <select id="idcomisionventas"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Comision por venta</option>
-                                                                    <option>Disponible</option>
-                                                                    <option>No Disponible</option>
-                                                                    <option>Pendiente</option>
-                                                                    <option>Sin Existencia</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input Sucursal-->
-                                                            <div>
-                                                                <label for="idsucursal"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal:</label>
-                                                                <select id="idsucursal"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Sucursal en la que se ubica</option>
-                                                                    <option>Metro Centro</option>
-                                                                    <option>Plaza Mundo</option>
-                                                                    <option>San Miguelito</option>
                                                                 </select>
                                                             </div>
                                                             <!--Textarea Descipcion-->
@@ -942,9 +834,6 @@
                                 $2999
                             </td>
                             <td class="px-6 py-4">
-                                $2999
-                            </td>
-                            <td class="px-6 py-4">
                                 <div class="grid gap-2">
                                     <div>
                                         <button data-modal-target="modal_update_product3"
@@ -1015,14 +904,6 @@
                                                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                                     placeholder="Precio" required>
                                                             </div>
-                                                            <!--Input existencia del producto-->
-                                                            <div>
-                                                                <label for="existencia"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Existencia:</label>
-                                                                <input type="number" id="existencia"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                    placeholder="Existencia" required>
-                                                            </div>
                                                             <!--Input proveedor-->
                                                             <div>
                                                                 <label for="idproveedor"
@@ -1090,31 +971,6 @@
                                                                     <option>No Disponible</option>
                                                                     <option>Pendiente</option>
                                                                     <option>Sin Existencia</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input Comision ed Venta-->
-                                                            <div>
-                                                                <label for="idcomisionventas"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Comision de Ventas:</label>
-                                                                <select id="idcomisionventas"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Comision por venta</option>
-                                                                    <option>Disponible</option>
-                                                                    <option>No Disponible</option>
-                                                                    <option>Pendiente</option>
-                                                                    <option>Sin Existencia</option>
-                                                                </select>
-                                                            </div>
-                                                            <!--Input Sucursal-->
-                                                            <div>
-                                                                <label for="idsucursal"
-                                                                    class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal:</label>
-                                                                <select id="idsucursal"
-                                                                    class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected>Sucursal en la que se ubica</option>
-                                                                    <option>Metro Centro</option>
-                                                                    <option>Plaza Mundo</option>
-                                                                    <option>San Miguelito</option>
                                                                 </select>
                                                             </div>
                                                             <!--Textarea Descipcion-->
