@@ -1,84 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/resources/css/jose.css">
+    <link rel="stylesheet" href="/resources/css/menu.css">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
 
-  <link rel="stylesheet" href="/resources/css/jose.css">
+    <title>Dashboard</title>
 </head>
 
 <body>
-  <div class="min-h-screen bg-gray-100">
-    <div class="h-16 bg-white shadow-sm pl-80 pr-8 fixed w-full top-0 left-0 flex items-center">
-      <div class="relative">
-        <svg class="absolute left-2 top-2 w-6 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none"
-          viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0  105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-        </svg>
-        <input type="text"
-          class="block w-72 shadow boder-none rounded-3xl focus:outline-none py-2 bg-gray-100 text-base text-gray-600 pl-11 pr-2" />
-      </div>
+    <header>
+        <nav class="sticky top-0 z-10 bg-azul">
+            <div class="logo">
+                <i class="bx bx-menu menu-icon text-white"></i>
+                <span class="logo-name text-white">Import Cars</span>
+            </div>
 
-      <div class="ml-auto flex items-center">
-        <div>
-          <svg class="w-6 cursor-pointer text-gray-600 hover:text-gray-900" xmlns="http://www.w3.org/2000/svg"
-            fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
-          </svg>
+            <div class="sidebar bg-white">
+                <div class="logo">
+                    <i class="bx bx-menu menu-icon text-black"></i>
+                    <span class="logo-name text-black">IMPORT CARS</span>
+                </div>
+                <div class="sidebar-content">
+                    <hr>
+                    <ul class="lists">
+                        <li class="list">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
+                                <i class="bx bx-home-alt icon"></i>
+                                <span class="link">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link text-black text-gray-600 hover:bg-azul hover:text-white">
+                                <i class='bx bxl-product-hunt icon'></i>
+                                <span class="link">Productos</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
+                                <i class='bx bx-bar-chart-alt icon'></i>
+                                <span class="link">Procesos</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
+                                <i class='bx bxs-report icon'></i>
+                                <span class="link">Reportes</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
+                                <i class='bx bx-list-plus icon'></i>
+                                <span class="link">Consultas</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
+                                <i class='bx bxs-briefcase icon'></i>
+                                <span class="link">Cierres</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
+                                <i class='bx bx-table icon'></i>
+                                <span class="link">Tablas</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                    <div class="bottom-cotent">
+                        <li class="list">
+                            <a href="#" class="nav-link">
+                                <i class="bx bx-cog icon"></i>
+                                <span class="link">Configuracion</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="index.html" class="nav-link">
+                                <i class="bx bx-log-out icon"></i>
+                                <span class="link">Cerrar sesion</span>
+                            </a>
+                        </li>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-y-0 right-0 p-3">
+                <img data-tooltip-target="tooltip"
+                    class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
+                    src="/resources/img/perfil.jpg" alt="Bordered avatar">
+            </div>
+            <div id="tooltip" role="tooltip"
+                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 border border-azul rounded-lg shadow-sm opacity-0 tooltip">
+                Mi perfil
+                <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="h-screen p-16 grid grid-cols-4 grid-rows-4 gap-6">
+            <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-3">
+                <h1 class="text-center">Ventas de la ultima semana. <i class='bx bx-dollar-circle'></i></h1>
+                <p class="text-justify mt-20 ml-4">128.00</p>
+                <p class="mt-20 ml-4 text-green-400"><i class='bx bx-line-chart'></i>12% mas que las ultimas semanas</p>
+            </div>
+            <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-3">
+                <h1 class="text-center">Ventas del ultimo mes. <i class='bx bx-dollar-circle'></i></h1>
+                <p class="text-justify mt-20 ml-4">350.00</p>
+                <p class="mt-20 ml-4 text-red-400"><i class='bx bx-line-chart-down'></i>12% menos que el mes pasado</p>
+            </div>
+            <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-3">
+                <h1 class="text-center">Ventas del ultimo año. <i class='bx bx-dollar-circle'></i></h1>
+                <p class="text-justify mt-20 ml-4">128.00</p>
+                <p class="mt-20 ml-4 text-green-400"><i class='bx bx-line-chart'></i>12% mas que el año pasado</p>
+            </div>
+            <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-6">
+                <h1 class="text-center">Ventas de la ultima semana.</h1>
+                <br>
+                <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
+                    <li class="pb-3 sm:pb-4">
+                        <div class="flex items-center space-x-4 ml-4">
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-gray-900 dark:text-white">
+                                    Zapatas de frenos.
+                                </p>
+                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                    SKU 58302-31020.
+                                </p>
+                            </div>
+                            <div class="mr-4 inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                $44.00
+                            </div>
+                        </div>
+                    </li>
+                    <li class="pb-3 sm:pb-4">
+                        <div class="flex items-center space-x-4 ml-4">
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-gray-900 dark:text-white">
+                                    Pastillas de frenos.
+                                </p>
+                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                    SKU PK-16-AF
+                                </p>
+                            </div>
+                            <div class="mr-4 inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                $59.25
+                            </div>
+                        </div>
+                    </li>
+                    <li class="pb-3 sm:pb-4">
+                        <div class="flex items-center space-x-4 ml-4">
+                            <div class="flex-1 min-w-0">
+                                <p class="text-sm font-medium text-gray-900 dark:text-white">
+                                    Sealed beam halogeno multiproposito
+                                </p>
+                                <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                    SKU 58302-31020
+                                </p>
+                            </div>
+                            <div class="mr-4 inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
+                                $32.06
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-gray-300 text-gray-800 font-bold text-3xl py-4 rounded-lg col-span-2">
+                Estadisticas por mes.
+            </div>
+            <div class="bg-gray-300 text-gray-800 font-bold text-3xl py-4 rounded-lg col-span-2">
+                Estadisticas por año.</div>
         </div>
+    </main>
+    <footer
+        class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+        <img class="h-8" src="/resources/img/logo.png" alt="">
+        <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-400 sm:mt-0">
+            <li>
+                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6 "
+                    target="_blank">About</a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
+                    target="_blank">Privacy Policy</a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
+                    target="_blank">Licensing</a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/dnlhernandez_/" class="hover:underline" target="_blank">Contact</a>
+            </li>
+        </ul>
+    </footer>
 
-        <div class="ml-4 relative">
-          <div class="cursor-pointer">
-            <img class="h-8 w-8 rounded-full object-cover"
-              src="https://ui-avatars.com/api/?name=Jose+Gonzalez&amp;color=7F9CF5&amp;backgrounded=EBF4FF" alt="">
-          </div>
+    <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script>
+        const navBar = document.querySelector("nav"),
+            menuBtns = document.querySelectorAll(".menu-icon"),
+            overlay = document.querySelector(".overlay");
 
-          <div class="absolute z-50 mt-2 rounded-md shadow-lg w-64 right-0 py-1 bg-white">
-            <div class="px-4 py-2 text-xs text-gray-400">Manage Account</div>
-            <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 transition">Profile</a>
-            <div class="border-t border-gray-100"></div>
-            <a href="#" class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 transition">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        menuBtns.forEach((menuBtn) => {
+            menuBtn.addEventListener("click", () => {
+                navBar.classList.toggle("open");
+            });
+        });
 
-  <div class="fixed left-0 top-0 w-72 h-full bg-gray-800 shadow-md z-10">
-    <div class="text-white font-bold text-base uppecase text-center py-5 bg-gray-900">
-      ImportCars
-    </div>
-    <div class="py-5">
-      <a href="#" class="flex items-center my-1 px-4 py-3 text-white border-1-4 border-blue-600 bg-gray-900"><svg
-          class="w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-          stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-        </svg>
-        Dashboard
-      </a>
-      <a href="#"
-        class="flex items-center my-1 px-4 py-3 text-white border-1-4 border-transparent hover:border-blue-600 hover:bg-gray-900 transition"><svg
-          class="w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-          stroke="currentColor" class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round"
-            d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-        </svg>
-        Category
-      </a>
-    </div>
-
-    <div class="pt-24 pr-8 pl-80">
-      <h1 class="text-3xl text-gray-700 font-bold">Grid Templates</h1>
-    </div>
-
-  </div>
-
-  <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
+        overlay.addEventListener("click", () => {
+            navBar.classList.remove("open");
+        });
+    </script>
 </body>
 
 </html>
