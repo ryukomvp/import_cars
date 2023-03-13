@@ -5,10 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- importación de archivos css -->
     <link rel="stylesheet" href="/resources/css/jose.css">
     <link rel="stylesheet" href="/resources/css/menu.css">
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-
+    <!-- icono de la página -->
+    <link rel="icon" href="/resources/img/logo.png">
+    <!-- titulo de la página -->
     <title>Dashboard</title>
 </head>
 
@@ -101,25 +104,31 @@
         </nav>
     </header>
     <main>
+        <!-- Cajas donde se encontraran los datos de acceso facil -->
         <div class="h-screen p-16 grid grid-cols-4 grid-rows-4 gap-6">
+            <!-- caja de la venta de la ultima semana -->
             <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-3">
                 <h1 class="text-center">Ventas de la ultima semana. <i class='bx bx-dollar-circle'></i></h1>
                 <p class="text-justify mt-20 ml-4">128.00</p>
                 <p class="mt-20 ml-4 text-green-400"><i class='bx bx-line-chart'></i>12% mas que las ultimas semanas</p>
             </div>
+            <!-- caja de la venta de el ultimo mes -->
             <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-3">
                 <h1 class="text-center">Ventas del ultimo mes. <i class='bx bx-dollar-circle'></i></h1>
                 <p class="text-justify mt-20 ml-4">350.00</p>
                 <p class="mt-20 ml-4 text-red-400"><i class='bx bx-line-chart-down'></i>12% menos que el mes pasado</p>
             </div>
+            <!-- caja de la venta del ultimo año -->
             <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-3">
                 <h1 class="text-center">Ventas del ultimo año. <i class='bx bx-dollar-circle'></i></h1>
                 <p class="text-justify mt-20 ml-4">128.00</p>
                 <p class="mt-20 ml-4 text-green-400"><i class='bx bx-line-chart'></i>12% mas que el año pasado</p>
             </div>
+            <!-- caja de los Productos mas vendidos -->
             <div class="bg-gray-300 text-gray-800 font-bold text-2xl py-4 rounded-lg row-span-6">
-                <h1 class="text-center">Ventas de la ultima semana.</h1>
+                <h1 class="text-center">Productos mas populares.</h1>
                 <br>
+                <!-- listo de los productos -->
                 <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
                     <li class="pb-3 sm:pb-4">
                         <div class="flex items-center space-x-4 ml-4">
@@ -168,6 +177,7 @@
                     </li>
                 </ul>
             </div>
+            <!-- Cajas para las estadisticas de los datos. -->
             <div class="bg-gray-300 text-gray-800 font-bold text-3xl py-4 rounded-lg col-span-2">
                 Estadisticas por mes.
             </div>
