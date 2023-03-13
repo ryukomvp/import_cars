@@ -224,6 +224,7 @@
             </div>
         </nav>
     </header>
+
     <!-- contenido del sitio -->
     <main>
         <!-- Contenido de la pagina -->
@@ -272,6 +273,7 @@
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                         <!-- Modal header -->
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                            <!--Añadir nuevo registro de bodega-->
                             <h3 class="text-xl font-bold text-oscuro dark:text-white">
                                 Añadir nueva bodega
                             </h3>
@@ -335,14 +337,21 @@
                     <!-- Encabezado de tabla  -->
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
+                            <!--Columna del numero del registro-->
                             <th scope="col" class="px-6 py-3">
                                 ID
                             </th>
+                            <!--Columna al que pertenece el numero de bodega-->
                             <th scope="col" class="px-6 py-3">
                                 Numero de bodega 
                             </th>
+                            <!--Columna a la familia-->
                             <th scope="col" class="px-6 py-3">
                                 Familia
+                            </th>
+                            <!--Controles para actualizar o eliminar registro-->
+                            <th scope="col" class="px-6 py-3">
+                                Controles
                             </th>
                         </tr>
                     </thead>
