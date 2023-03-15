@@ -211,47 +211,85 @@
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 p-3">
-                <a href="user.html"> <img data-tooltip-target="tooltip"
-                        class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300 dark:ring-gray-500"
-                        src="/resources/img/perfil.jpg" alt="Bordered avatar"></a>
+                <button id="usuario-config" data-dropdown-toggle="dropdown-user"><img
+                        class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300" src="/resources/img/perfil.jpg"
+                        alt=""></button>
             </div>
-            <div id="tooltip" role="tooltip"
-                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 border border-azul rounded-lg shadow-sm opacity-0 tooltip">
-                Mi perfil
-                <div class="tooltip-arrow" data-popper-arrow></div>
+            <div id="dropdown-user" class="z-10 hidden bg-white text-black rounded-lg shadow w-44 ml:5 border border-black">
+                <div class="px-4 py-3 text-sm text-center">
+                    <div>Ryuko</div>
+                </div>
+                <hr>
+                <ul class="py-1">
+                    <li>
+                        <a href="user.html" class="block px-4 py-2 hover:bg-azul hover:text-white">Mi perfil</a>
+                    </li>
+                    <li>
+                        <a href="user.html" class="block px-4 py-2 hover:bg-azul hover:text-white">Configuración</a>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
     <!-- contenido del sitio -->
-    <main>
+    <main class="container mt-5 mb-5">
         <!-- contenedor para tarjetas informativas -->
         <div class="grid grid-cols-4 gap-4 mb-4">
             <!-- tarjeta informativa -->
-            <div class="border border-azul flex items-center justify-center h-24 rounded">
-                <img src="/resources/img/estadisticas1.png" alt="">
+            <div class="flex items-center justify-center h-24 rounded">
+                <foarm class="border border-azul block max-w-sm p-6 bg-white rounded-lg shadow">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                        technology acquisitions 2021</h5>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
+                        acquisitions of 2021 so far, in reverse chronological order.</p>
+                </foarm>
+            </div>
+            <!-- tarjeta informativa -->
+            <div class="flex items-center justify-center h-24 rounded">
+                <foarm class="border border-azul block max-w-sm p-6 bg-white rounded-lg shadow">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                        technology acquisitions 2021</h5>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
+                        acquisitions of 2021 so far, in reverse chronological order.</p>
+                </foarm>
             </div>
             <!-- tarjeta informativa -->
             <div class="border border-azul flex items-center justify-center h-24 rounded">
-                <img src="/resources/img/estadisticas1.png" alt="">
+                <foarm class="block max-w-sm p-6 bg-white rounded-lg shadow">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                        technology acquisitions 2021</h5>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
+                        acquisitions of 2021 so far, in reverse chronological order.</p>
+                </foarm>
             </div>
             <!-- tarjeta informativa -->
             <div class="border border-azul flex items-center justify-center h-24 rounded">
-                <img src="/resources/img/estadisticas1.png" alt="">
-            </div>
-            <!-- tarjeta informativa -->
-            <div class="border border-azul flex items-center justify-center h-24 rounded">
-                <img src="/resources/img/estadisticas1.png" alt="">
+                <foarm class="block max-w-sm p-6 bg-white rounded-lg shadow">
+                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
+                        technology acquisitions 2021</h5>
+                    <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
+                        acquisitions of 2021 so far, in reverse chronological order.</p>
+                </foarm>
             </div>
         </div>
         <!-- contenedor para tarjetas informativas -->
-        <div class="grid grid-cols-2 gap-4 mb-4">
-            <!-- tarjeta informativa -->
-            <div class="border border-azul flex items-center justify-center h-24 rounded">
-                <img src="/resources/img/estadisticas1.png" alt="">
+        <div class="grid grid-cols-2 mb-4">
+            <!-- gráfica -->
+            <div>
+                <canvas id="chart-bar"></canvas>
             </div>
-            <!-- tarjeta informativa -->
-            <div class="border border-azul flex items-center justify-center h-24 rounded">
-                <img src="/resources/img/estadisticas1.png" alt="">
+            <div>
+                <canvas id="chart-line"></canvas>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 mb-4">
+            <!-- gráfica -->
+            <div>
+                <canvas id="chart-polar" class=""></canvas>
+            </div>
+            <!-- gráfica -->
+            <div>
+                <canvas id="chart-doughnut" class=""></canvas>
             </div>
         </div>
     </main>
@@ -283,6 +321,95 @@
     <!-- importación de archivos js -->
     <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="/resources/JS/menu.js"></script>
+
+    <!-- importación de archivo js para libreria chart -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- configuración js para libreria chart -->
+    <script>
+        const cbar = document.getElementById('chart-bar');
+
+        new Chart(cbar, {
+            type: 'bar',
+            data: {
+                labels: ['Tilin', 'El pepe', 'Ete sech'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [11, 9, 10],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const cline = document.getElementById('chart-line');
+
+        new Chart(cline, {
+            type: 'line',
+            data: {
+                labels: ['Tilin', 'El pepe', 'Ete sech'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [11, 9, 10],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const cpolar = document.getElementById('chart-polar');
+
+        new Chart(cpolar, {
+            type: 'polarArea',
+            data: {
+                labels: ['Tilin', 'El pepe', 'Ete sech'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [1, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        const cdoughnut = document.getElementById('chart-doughnut');
+
+        new Chart(cdoughnut, {
+            type: 'doughnut',
+            data: {
+                labels: ['Tilin', 'El pepe', 'Ete sech'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [1, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
