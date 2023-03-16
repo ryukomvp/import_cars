@@ -1,22 +1,23 @@
 <!DOCTYPE html>
+<!-- definición del lengauje del sitio -->
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- definición del set de carácteres -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- importación de archivos css -->
-    <link rel="stylesheet" href="/resources/css/jose.css">
-    <link rel="stylesheet" href="/resources/css/menu.css">
+    <link href="/resources/css/marchelli.css" rel="stylesheet">
+    <link href="/resources/css/menu.css" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <!-- icono de la página -->
     <link rel="icon" href="/resources/img/logo.png">
     <!-- titulo de la página -->
-    <title>Dashboard</title>
+    <title>Clientes</title>
 </head>
 
 <body>
-    <!-- encabezado del sistio -->
     <header class="sticky top-0 z-10">
         <nav class="sticky top-0 z-10 bg-azul">
             <!-- nombre del sistema -->
@@ -236,185 +237,8 @@
             </div>
         </nav>
     </header>
-    <!-- contenido del sitio -->
-    <main class="container mt-5 mb-5">
-        <!-- contenedor para tarjetas informativas -->
-        <div class="grid grid-cols-4 gap-4 mb-4">
-            <!-- tarjeta informativa -->
-            <div class="flex items-center justify-center h-24 rounded">
-                <foarm class="border border-azul block max-w-sm p-6 bg-white rounded-lg shadow">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                        technology acquisitions 2021</h5>
-                    <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
-                        acquisitions of 2021 so far, in reverse chronological order.</p>
-                </foarm>
-            </div>
-            <!-- tarjeta informativa -->
-            <div class="flex items-center justify-center h-24 rounded">
-                <foarm class="border border-azul block max-w-sm p-6 bg-white rounded-lg shadow">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                        technology acquisitions 2021</h5>
-                    <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
-                        acquisitions of 2021 so far, in reverse chronological order.</p>
-                </foarm>
-            </div>
-            <!-- tarjeta informativa -->
-            <div class="border border-azul flex items-center justify-center h-24 rounded">
-                <foarm class="block max-w-sm p-6 bg-white rounded-lg shadow">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                        technology acquisitions 2021</h5>
-                    <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
-                        acquisitions of 2021 so far, in reverse chronological order.</p>
-                </foarm>
-            </div>
-            <!-- tarjeta informativa -->
-            <div class="border border-azul flex items-center justify-center h-24 rounded">
-                <foarm class="block max-w-sm p-6 bg-white rounded-lg shadow">
-                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy
-                        technology acquisitions 2021</h5>
-                    <p class="font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology
-                        acquisitions of 2021 so far, in reverse chronological order.</p>
-                </foarm>
-            </div>
-        </div>
-        <!-- contenedor para tarjetas informativas -->
-        <div class="grid grid-cols-2 mb-4">
-            <!-- gráfica -->
-            <div>
-                <canvas id="chart-bar"></canvas>
-            </div>
-            <div>
-                <canvas id="chart-line"></canvas>
-            </div>
-        </div>
-        <div class="grid grid-cols-2 mb-4">
-            <!-- gráfica -->
-            <div>
-                <canvas id="chart-polar" class=""></canvas>
-            </div>
-            <!-- gráfica -->
-            <div>
-                <canvas id="chart-doughnut" class=""></canvas>
-            </div>
-        </div>
-    </main>
-    <!-- pie del sitio -->
-    <footer
-        class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
-        <!-- nombre del sistema -->
-        <span class="text-white text-2xl">Import Cars</span>
-        <!-- lista de enlaces -->
-        <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-400 sm:mt-0">
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6 "
-                    target="_blank">About</a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
-                    target="_blank">Privacy Policy</a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
-                    target="_blank">Licensing</a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="hover:underline" target="_blank">Contact</a>
-            </li>
-        </ul>
-    </footer>
-
-    <!-- importación de archivos js -->
     <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="/resources/JS/menu.js"></script>
-
-    <!-- importación de archivo js para libreria chart -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- configuración js para libreria chart -->
-    <script>
-        const cbar = document.getElementById('chart-bar');
-
-        new Chart(cbar, {
-            type: 'bar',
-            data: {
-                labels: ['Tilin', 'El pepe', 'Ete sech'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [11, 9, 10],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const cline = document.getElementById('chart-line');
-
-        new Chart(cline, {
-            type: 'line',
-            data: {
-                labels: ['Tilin', 'El pepe', 'Ete sech'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [11, 9, 10],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const cpolar = document.getElementById('chart-polar');
-
-        new Chart(cpolar, {
-            type: 'polarArea',
-            data: {
-                labels: ['Tilin', 'El pepe', 'Ete sech'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [1, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: false
-                    }
-                }
-            }
-        });
-
-        const cdoughnut = document.getElementById('chart-doughnut');
-
-        new Chart(cdoughnut, {
-            type: 'doughnut',
-            data: {
-                labels: ['Tilin', 'El pepe', 'Ete sech'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [1, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: false
-                    }
-                }
-            }
-        });
-    </script>
 </body>
 
 </html>
