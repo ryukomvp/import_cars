@@ -220,6 +220,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             </div>
         </nav>
     `;
+    // Configuración para menu
+    const navBar = document.querySelector("nav"),
+        menuBtns = document.querySelectorAll(".menu-icon"),
+        overlay = document.querySelector(".overlay");
+
+    menuBtns.forEach((menuBtn) => {
+        menuBtn.addEventListener("click", () => {
+            navBar.classList.toggle("open");
+        });
+    });
+
+    overlay.addEventListener("click", () => {
+        navBar.classList.remove("open");
+    });
     // Inserción de footer
     FOOTER.innerHTML = `
         <div class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
