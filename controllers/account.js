@@ -230,7 +230,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             navBar.classList.toggle("open");
         });
     });
-
     overlay.addEventListener("click", () => {
         navBar.classList.remove("open");
     });
