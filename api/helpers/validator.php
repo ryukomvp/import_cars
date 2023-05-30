@@ -55,7 +55,7 @@ class Validator
     public static function validateNaturalNumber($value)
     {
         // Se verifica que el valor sea un número entero mayor o igual a uno.
-        if (filter_var($value, FILTER_VALIDATE_INT, array('options'=>array('min_range' => 1)))) {
+        if (filter_var($value, FILTER_VALIDATE_INT, array('min_range' => 1))) {
             return true;
         } else {
             return false;
@@ -220,7 +220,7 @@ class Validator
     public static function validatePhone($value)
     {
         // Se verifica que el número tenga el formato 0000-0000 y que inicie con 2, 6 o 7.
-        if (preg_match('/^[0-9]{4}[-][0-9]{4}$/', $value)) {
+        if (preg_match('/^[2,6,7]{1}[0-9]{3}[-][0-9]{4}$/', $value)) {
             return true;
         } else {
             return false;
