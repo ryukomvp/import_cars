@@ -41,14 +41,14 @@ class UsuarioQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function readProfile()
-    {
-        $sql = 'SELECT idusuario, nombre, pin
-                FROM usuarios
-                WHERE idusuario = ?';
-        $params = array($_SESSION['idusuario']);
-        return Database::getRow($sql, $params);
-    }
+    // public function readProfile()
+    // {
+    //     $sql = 'SELECT idusuario, nombre, pin
+    //             FROM usuarios
+    //             WHERE idusuario = ?';
+    //     $params = array($_SESSION['idusuario']);
+    //     return Database::getRow($sql, $params);
+    // }
 
     // public function editProfile()
     // {
