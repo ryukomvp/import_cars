@@ -99,21 +99,21 @@ class UsuarioQueries
 
     public function readTipo()
     {
-        $sql = 'SELECT unnest(enum_range(NULL::tiposusuarios))';
+        $sql = 'SELECT unnest(enum_range(NULL::tiposusuarios)) val, unnest(enum_range(NULL::tiposusuarios)) text';
         return Database::getRows($sql);
     }
 
     public function readEstado()
     {
-        $sql = 'SELECT unnest(enum_range(NULL::tiposusuarios))';
+        $sql = 'SELECT unnest(enum_range(NULL::estadosusuarios)) val, unnest(enum_range(NULL::estadosusuarios)) text';
         return Database::getRows($sql);
     }
 
     public function updateRow()
     {
         $sql = 'UPDATE usuarios 
-                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?
-                WHERE id_usuario = ?';
+                SET nombres = ?, pin = ?, tiposusuarios = ?, idempleado = ?, estadosusuarios
+                WHERE idusuario = ?';
         $params = array($this->nombres, $this->apellidos, $this->correo, $this->id);
         return Database::executeRow($sql, $params);
     }
