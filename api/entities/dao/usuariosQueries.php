@@ -6,14 +6,14 @@ require_once('../../helpers/database.php');
 class UsuarioQueries
 {
     /*
-    *   Métodos para gestionar la cuenta del usuario.P
+    *   Métodos para realizar operaciones de gestión en la cuenta del usuario
     */
     public function checkUser($alias)
     {
-        $sql = 'SELECT id_usuario FROM usuarios WHERE alias_usuario = ?';
-        $params = array($alias);
+        $sql = 'SELECT idusuario FROM usuarios WHERE nombre = ?';
+        $params = array($nombre);
         if ($data = Database::getRow($sql, $params)) {
-            $this->id = $data['id_usuario'];
+            $this->id = $data['idusuario'];
             $this->alias = $alias;
             return true;
         } else {
@@ -23,11 +23,11 @@ class UsuarioQueries
 
     public function checkPassword($password)
     {
-        $sql = 'SELECT clave_usuario FROM usuarios WHERE id_usuario = ?';
+        $sql = 'SELECT clave FROM usuarios WHERE idusuario = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
-        if (password_verify($password, $data['clave_usuario'])) {
+        if (password_verify($password, $data['clave'])) {
             return true;
         } else {
             return false;
@@ -36,31 +36,31 @@ class UsuarioQueries
 
     public function changePassword()
     {
-        $sql = 'UPDATE usuarios SET clave_usuario = ? WHERE id_usuario = ?';
-        $params = array($this->clave, $_SESSION['id_usuario']);
+        $sql = 'UPDATE usuarios SET clave = ? WHERE idusuario = ?';
+        $params = array($this->clave, $_SESSION['idusuario']);
         return Database::executeRow($sql, $params);
     }
 
     public function readProfile()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
+        $sql = 'SELECT idusuario, nombre, pin
                 FROM usuarios
-                WHERE id_usuario = ?';
-        $params = array($_SESSION['id_usuario']);
+                WHERE idusuario = ?';
+        $params = array($_SESSION['idusuario']);
         return Database::getRow($sql, $params);
     }
 
-    public function editProfile()
-    {
-        $sql = 'UPDATE usuarios
-                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?, alias_usuario = ?
-                WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $_SESSION['id_usuario']);
-        return Database::executeRow($sql, $params);
-    }
+    // public function editProfile()
+    // {
+    //     $sql = 'UPDATE usuarios
+    //             SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?, alias_usuario = ?
+    //             WHERE id_usuario = ?';
+    //     $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $_SESSION['id_usuario']);
+    //     return Database::executeRow($sql, $params);
+    // }
 
     /*
-    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
+    *   Métodos para realizar operaciones de gestión en la tabla usuarios
     */
     public function searchRows($value)
     {
@@ -112,7 +112,7 @@ class UsuarioQueries
     public function updateRow()
     {
         $sql = 'UPDATE usuarios 
-                SET nombres = ?, pin = ?, tiposusuarios = ?, idempleado = ?, estadosusuarios
+                SET nombres = ?, pin = ?, tipousuario = ?, idempleado = ?, estadousuario = ?
                 WHERE idusuario = ?';
         $params = array($this->nombres, $this->apellidos, $this->correo, $this->id);
         return Database::executeRow($sql, $params);
@@ -124,5 +124,26 @@ class UsuarioQueries
                 WHERE idusuario = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
+    }
+
+    public function estadoActivo()
+    {
+        $sql = "UPDATE usuarios SET estadousuario = 'Activo'
+                WHERE idusuario = ? AND estadousuario = 'Inactivo'";
+        $params = array($this->id)
+    }
+
+    public function estadoInactivo()
+    {
+        $sql = "UPDATE usuarios SET estadousuario = 'Inactivo'
+                WHERE idusuario = ? AND estadousuario = 'Activo'";
+        $params = array($this->id)
+    }
+
+    public function desbloquearUsuario()
+    {
+        $sql = "UPDATE usuarios SET estadousuario = 'Inactivo'
+                WHERE idusuario = ? AND estadousuario = 'Bloqueado'";
+        $params = array($this->id)
     }
 }
