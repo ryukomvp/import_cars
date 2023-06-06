@@ -64,37 +64,49 @@ class UsuarioQueries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
-                FROM usuarios
-                WHERE apellidos_usuario ILIKE ? OR nombres_usuario ILIKE ?
-                ORDER BY apellidos_usuario';
+        $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, e.nombre, estadousuario
+                FROM usuarios u INNER JOIN empleados e USING(idempleado)
+				WHERE u.nombre ILIKE ? OR e.nombre ILIKE ?
+                ORDER BY idusuario';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function createRow()
     {
-        $sql = 'INSERT INTO usuarios(nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, clave_usuario)
-                VALUES(?, ?, ?, ?, ?)';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->clave);
+        $sql = 'INSERT INTO usuarios(nombre, clave, pin, tipousuario, idempleado, estadousuario)
+                VALUES(?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre, $this->clave, $this->pin, $this->tipo, $this->empleado, $this->estado);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
-                FROM usuarios
-                ORDER BY apellidos_usuario';
+        $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, e.nombre, estadousuario
+                FROM usuarios u INNER JOIN empleados e USING(idempleado)
+                ORDER BY idusuario';
         return Database::getRows($sql);
     }
 
     public function readOne()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
-                FROM usuarios
-                WHERE id_usuario = ?';
+        $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, e.nombre, estadousuario
+                FROM usuarios u INNER JOIN empleados e USING(idempleado)
+				WHERE idusuario = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
+    }
+
+    public function readTipo()
+    {
+        $sql = 'SELECT unnest(enum_range(NULL::tiposusuarios))';
+        return Database::getRows($sql);
+    }
+
+    public function readEstado()
+    {
+        $sql = 'SELECT unnest(enum_range(NULL::tiposusuarios))';
+        return Database::getRows($sql);
     }
 
     public function updateRow()
@@ -109,7 +121,7 @@ class UsuarioQueries
     public function deleteRow()
     {
         $sql = 'DELETE FROM usuarios
-                WHERE id_usuario = ?';
+                WHERE idusuario = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
