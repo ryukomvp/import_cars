@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!-- definición del lengauje del sitio -->
+<html lang="es">
+
+<head>
+    <!-- definición del set de carácteres -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- importación de archivos css -->
+    <link href="../resources/css/marchelli.css" rel="stylesheet">
+    <link href="../resources/css/menu.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <!-- icono de la página -->
+    <link rel="icon" href="../resources/img/logo.png">
+    <!-- titulo de la página -->
+    <title>Paises de origen</title>
+</head>
+
+<body>
+    <!-- encabezado del sistio -->
+    <header class="sticky top-0 z-10">
+    </header>
+    <!-- contenido del sitio -->
+    <main>
+        <div class="py-4">
+            <div class="">
+                <!--Encabezado del SCRUD de modelos-->
+                <div class="py-4 text-center">
+                    <h1 class="text-xl text-rojo font-bold uppercase">Paises de Origen de los Repuestos recibidos</h1>
+                    <p class="text-azul font-medium">Gestion de los paises de donde se importan los componentes de los
+                        vehiculos para teenr registro de su marca.</p>
+                </div>
+                <div class="grid grid-cols-4 gap-4 py-4">
+                    <!--Buscador de paises de origen-->
+                    <div class="col-start-2 col-end-4">
+                        <form method="post" id="searchForm">
+                            <label for="buscar"
+                                class="mb-2 text-sm font-medium text-gray-900 sr-only">Buscar</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                                <input type="search" id="buscar"
+                                    class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Buscar..." required>
+                                <button type="submit"
+                                    class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-end-5">
+                        <button data-modal-target="openModal" data-modal-toggle="openModal"
+                            class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                            type="button">
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="openModal" tabindex="-1"
+                class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+                <div class="relative w-full h-full max-w-4xl">
+                    <!-- Contenido del modal -->
+                    <div class="relative bg-white rounded-lg shadow">
+                        <!-- Encabezado del modal -->
+                        <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                            <h3 id="titulo" class="text-xl font-bold text-oscuro dark:text-white">
+                            </h3>
+                            <button type="button"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+                                data-modal-hide="openModal">
+                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="sr-only">Cerrar ventana</span>
+                            </button>
+                        </div>
+                        <!-- Cuerpo del modal -->
+                        <form method="post" class="p-4" id="executeForm">
+                                <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                    <!--Input del ID-->
+                                    <div>
+                                        <label for="id"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID:</label>
+                                        <input disabled type="text" id="id" name="id"
+                                            class="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700"
+                                            placeholder="ID" required>
+                                    </div>
+                                    <!--Input nombre del modelo-->
+                                    <div>
+                                        <label for="pais"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">País:</label>
+                                        <input type="text" id="pais" name="pais"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                            placeholder="Pais" required>
+                                    </div>
+                                </div>
+                            <!-- Pie del modal -->
+                            <div
+                                class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button data-modal-hide="openModal" type="button"
+                                    class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Añadir</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!--Final del modal-->
+            <!--Tabla de modelos-->
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <!--Encabezados de las columnas de la tabla modelos-->
+                    <thead
+                        class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr class="text-oscuro font-semibold">
+                            <th scope="col" class="hidden px-6 py-3">
+                                ID
+                            </th>
+                            <th scope="col" class="text-oscuro font-bold px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white px-6 py-3">
+                                País de Origen
+                            </th>
+                            <th scope="col" class="px-8 py-3">
+                                <span class="">Controles</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <!--Filas de la tabla-->
+                    <tbody>
+                        <tr
+                            class="text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
+                            <td class="px-6 py-4">
+                                El Salvador
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="grid gap-2 m-0">
+                                    <div>
+                                        <button data-modal-target="modal_update_model1"
+                                            data-modal-toggle="modal_update_model1"
+                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            type="button">
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                                        </button>
+                                    </div>
+                                    <!--Modal de eliminar-->
+                                    <div>
+                                        <button data-modal-target="delete-modal1" data-modal-toggle="delete-modal1"
+                                            class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                            type="button">
+                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                                        </button>
+                                    </div>
+                                    <div id="delete-modal1" tabindex="-1"
+                                        class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+                                        <div class="relative w-full h-full max-w-md md:h-auto">
+                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                                                <button type="button"
+                                                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+                                                    data-modal-hide="delete-modal1">
+                                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
+                                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd"
+                                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                                            clip-rule="evenodd"></path>
+                                                    </svg>
+                                                    <span class="sr-only">Cerrar</span>
+                                                </button>
+                                                <div class="p-6 text-center">
+                                                    <svg aria-hidden="true"
+                                                        class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
+                                                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                                        xmlns="http://www.w3.org/2000/svg">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="2"
+                                                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                                        </path>
+                                                    </svg>
+                                                    <h3
+                                                        class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                                                        ¿Estas seguro que deseas eliminarlo?</h3>
+                                                    <button data-modal-hide="delete-modal1" type="button"
+                                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                                        Confirmar
+                                                    </button>
+                                                    <button data-modal-hide="delete-modal1" type="button"
+                                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- pie del sitio -->
+    <footer></footer>
+
+    <!-- Importacion de archivos JavaScript -->
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="../resources/JS/menu.js"></script>
+    <script src="../resources/JS/sweetalert.min.js"></script>
+    <script src="../controllers/components.js"></script>
+    <script src="../controllers/paisOrigen.js"></script>
+    <script src="../controllers/account.js"></script>
+</body>
