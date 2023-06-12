@@ -8,7 +8,7 @@ const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
-const SAVE_MODAL = new bootstrap.Modal(document.getElementById('save-modal'));
+const SAVE_MODAL = new Modal(document.getElementById('modal_add_model'));
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
@@ -65,10 +65,11 @@ async function fillTable(form = null) {
                     <td>${row.nombre_marca}</td>
                     <td>
                     <!--Botones de acciones-->
-                    <button data-modal-target="modal_update_category1" data-modal-toggle="modal_update_category1" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"><img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                    <button onclick="openUpdate(${row.id_marca})" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                    <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                     <span class="sr-only">Cerrar ventana</span>
-                    </button>
-                    <button data-modal-target="delete-modal1" data-modal-toggle="delete-modal1" class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"><img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                    <button onclick="openDelete(${row.id_marca})" class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                    <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
                     </button>
                     </td>
                 </tr>
