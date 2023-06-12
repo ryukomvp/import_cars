@@ -19,8 +19,6 @@
 	CREATE TYPE tiposUsuarios AS ENUM(
 		'Administrador' , 'Gerente' , 'Vendedor'
 	);
-
-	
 	
 	CREATE TYPE tiposDocumentos AS ENUM(
 		'DUI' , 'Pasaporte' , 'NIT'
@@ -45,14 +43,12 @@
 	);
 	
 	create table paisesDeOrigen(
-		
 		idPais serial primary key not null,
 		pais varchar(30) not null
 		
 	);
 
 	create table marcas(
-		
 		idMarca serial primary key not null,
 		marca varchar(25) not null
 		
@@ -62,14 +58,11 @@
 		
 		idFamilia serial primary key not null,
 		familia varchar(30) not null
-		
 	);
 	
-	create table categorias(
-		
+	create table categorias(	
 		idCategoria serial primary key not null,
 		categoria varchar(50) not null
-		
 	);
 
     CREATE TABLE codigoComun(
@@ -80,7 +73,7 @@
 
     CREATE TABLE tipoProducto(
 		idTipoProducto serial primary key not null,
-		tipoProducto
+		tipoProducto varchar (30) not null
 	);
 	
 	create table proveedores(
@@ -132,7 +125,6 @@
 		constraint fkSucursalBod
 		foreign key (idSucursal)
 		references sucursales(idSucursal)
-		
 	);
 	
 	create table familiasBodegas(
@@ -147,13 +139,11 @@
 		
 		constraint fkFamiliaBodegaFam
 		foreign key (idFamilia)
-		references familias(idFamilia)
-		
+		references familias(idFamilia)		
 	);
 	
 	
 	create table empleados(
-		
 		idEmpleado serial primary key not null,
 		nombre varchar(60) not null,
 		telefono varchar(10) not null,
@@ -296,7 +286,7 @@
 		constraint fkFacturaDetFact
 		foreign key (idFactura)
 		references facturas(idFactura)
-		
+	
 	);
 
 	insert into paisesDeOrigen(pais) values

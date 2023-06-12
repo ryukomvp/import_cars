@@ -16,26 +16,17 @@ BODY
 
 DTO
 
-<<<<<<< HEAD
 Nombre archivos: camelCase; tabla.php plural
 Clases: PascalCase; TablaQueries
-=======
-Nombre archivos: camelCase; tabla.php
-Clases: camelCase; tablaQueries
->>>>>>> 147ec0ad42cd5ef236de698f77a7d68a7ddf044c
+
 Propiedades: en minúsculas, una sola palabra; detallePedido -> detalle
 Funciones (get, set): camelCase
 
 
 DAO
 
-<<<<<<< HEAD
 Nombre archivos: camelCase; tablaQueries.php  plural
 Clases: PascalCase; TablaQueries
-=======
-Nombre archivos: camelCase; tablaQueries.php
-Clases: camelCase; tablaQueries
->>>>>>> 147ec0ad42cd5ef236de698f77a7d68a7ddf044c
 Funciones: camelCase; buscarColumnaCategorias
 
 

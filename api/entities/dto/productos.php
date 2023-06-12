@@ -1,25 +1,26 @@
 <?php
 require_once('../../helpers/validator.php');
-require_once('../../entities/dao/products.queries.php');
+require_once('../../entities/dao/productosQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad PRODUCTO.
 */
-class Product extends ProductQueries
+class Productos extends ProductosQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
     protected $nombre = null;
-    protected $codigocomun = null;
+    protected $imagen = null;
     protected $descripcion = null;
     protected $precio = null;
-    protected $codigo = null;
-    protected $dimensiones = null;
-    protected $categoria = null;
-    protected $material = null;
+    protected $anio = null;
+    protected $codigoComun = null;
+    protected $tipoProducto = null;
     protected $proveedor = null;
-    protected $estado = null;
-    protected $existencia = null;
-    protected $ruta = '../../images/products/';
+    protected $categoria = null;
+    protected $modelo = null;
+    protected $pais = null;
+    protected $estadoProducto = null;
+    protected $ruta = '../images/products/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -46,7 +47,7 @@ class Product extends ProductQueries
 
     public function setImagen($file)
     {
-        if (Validator::validateImageFile($file, 600, 600)) {
+        if (Validator::validateImageFile($file, 1000, 1000)) {
             $this->imagen = Validator::getFileName();
             return true;
         } else {
@@ -74,40 +75,30 @@ class Product extends ProductQueries
         }
     }
 
-    public function setCodigo($value)
+    public function setAnio($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->codigo = $value;
+        if (Validator::validateDate($value)) {
+            $this->anio = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setDimensiones($value)
+    public function setCodigoComun($value)
     {
-        if (Validator::validateString($value, 1, 250)) {
-            $this->dimensiones = $value;
+        if (Validator::validateNaturalNumber($value)) {
+            $this->codigoComun = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setCategoria($value)
+    public function setTipoProducto($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->categoria = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setMaterial($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->material = $value;
+            $this->tipoProducto = $value;
             return true;
         } else {
             return false;
@@ -124,17 +115,47 @@ class Product extends ProductQueries
         }
     }
 
-    public function setEstado($value)
+    public function setCategoria($value)
     {
-        if (Validator::validateBoolean($value)) {
-            $this->estado = $value;
+        if (Validator::validateNaturalNumber($value)) {
+            $this->categoria = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setExistencia($value)
+    public function setModelo($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->modelo = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setPais($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->pais = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setEstadoProducto($value)
+    {
+        if (Validator::validateBoolean($value)) {
+            $this->estadoProducto = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setRuta($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->existencia = $value;
