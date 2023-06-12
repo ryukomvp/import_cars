@@ -3,18 +3,18 @@ require_once('../../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad USUARIO.
 */
-class UsuarioQueries
+class UsuariosQueries
 {
     /*
     *   Métodos para realizar operaciones de gestión en la cuenta del usuario
     */
-    public function checkUser($alias)
+    public function checkUser($nombre)
     {
         $sql = 'SELECT idusuario FROM usuarios WHERE nombre = ?';
         $params = array($nombre);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['idusuario'];
-            $this->alias = $alias;
+            $this->nombre = $nombre;
             return true;
         } else {
             return false;
