@@ -4,7 +4,7 @@ require_once('../../helpers/database.');
 *	Clase para manejar el acceso a datos de la entidad MARCA.
 */
 
-class MarcaQueries
+class marcaQueries
 {
      /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).

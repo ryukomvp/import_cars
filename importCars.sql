@@ -20,9 +20,7 @@
 		'Administrador' , 'Gerente' , 'Vendedor'
 	);
 
-	CREATE TYPE estadosUsuarios AS ENUM(
-		'Activo' , 'Inactivo' , 'Bloqueado'
-	);
+	
 	
 	CREATE TYPE tiposDocumentos AS ENUM(
 		'DUI' , 'Pasaporte' , 'NIT'
@@ -31,7 +29,9 @@
 	CREATE TYPE estadosEmpleados AS ENUM(
 		'Activo', 'Inactivo' , 'Ausente con justificación' , 'Ausente sin justificación'
 	);
-	
+	CREATE TYPE estadosUsuarios AS ENUM(
+		'Activo' , 'Inactivo' , 'Bloqueado'
+	);
 	CREATE TYPE estadosProductos AS ENUM(
 		'Escaso', 'Existente' , 'Sin existencias'
 	);
@@ -70,6 +70,17 @@
 		idCategoria serial primary key not null,
 		categoria varchar(50) not null
 		
+	);
+
+    CREATE TABLE codigoComun(
+	    idCodigoComun serial primary key not null,
+		nomenclatura varchar(10) not null,
+		codigo int not null
+	);
+
+    CREATE TABLE tipoProducto(
+		idTipoProducto serial primary key not null,
+		tipoProducto
 	);
 	
 	create table proveedores(
@@ -171,14 +182,14 @@
 	);
 	
 	create table productos(
-		
 		idProducto serial primary key not null,
 		nombre varchar(50) not null,
-		codigoComun int not null,
 		imagen varchar(150),
 		descripcion varchar(150) not null,
 		precio numeric(5,2) not null,
 		anio int,
+		idCodigoComun int not null,
+		idTipoProducto int not null,
 		idProveedor int not null,
 		idCategoria int not null,
 		idModelo int not null,
