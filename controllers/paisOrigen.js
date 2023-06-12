@@ -1,6 +1,6 @@
 import { Modal } from 'flowbite';
 // COnstante para la ruta del business que conecta a los metodos del SCRUD
-const PAIS_ORIGEN_API = 'business/paisOrigen.php';
+const PAIS_ORIGEN_API = 'business/paisesOrigen.php';
 // Constante para el input de busqueda
 const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
 // Constante para el formulario del modal, sirve para añadir y editar
