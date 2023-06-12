@@ -17,7 +17,7 @@ BODY
 DTO
 
 Nombre archivos: camelCase; tabla.php
-Clases: PascalCase; TablaQueries
+Clases: camelCase; tablaQueries
 Propiedades: en minúsculas, una sola palabra; detallePedido -> detalle
 Funciones (get, set): camelCase
 
@@ -25,7 +25,7 @@ Funciones (get, set): camelCase
 DAO
 
 Nombre archivos: camelCase; tablaQueries.php
-Clases: PascalCase; TablaQueries
+Clases: camelCase; tablaQueries
 Funciones: camelCase; buscarColumnaCategorias
 
 
