@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const USUARIO_API = 'business/dashboard/usuarios.php';
+const USUARIO_API = 'business/usuarios.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -73,6 +73,7 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
+                    <td>${row.idusuario}</td>
                     <td>${row.nombre}</td>
                     <td>${row.pin}</td>
                     <td>${row.tipousuario}</td>
@@ -84,9 +85,6 @@ async function fillTable(form = null) {
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                         </button>
-                        <a onclick="openDelete(${row.idusuario})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
-                            <i class="material-icons">delete</i>
-                        </a>
                         <button onclick="openDelete(${row.idusuario})"  
                             class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
