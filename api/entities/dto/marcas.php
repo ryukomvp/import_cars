@@ -23,9 +23,9 @@ class Marca extends MarcaQueries
         }
     }
 
-    public function setNombre($value)
+    public function setMarca($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 25) {
+        if (Validator::validateAlphanumeric($value, 1, 25)) {
             $this->marca = $value;
             return true;
         } else {
@@ -41,8 +41,8 @@ class Marca extends MarcaQueries
         return $this->id;
     }
 
-    public function getNombre()
+    public function getMarca()
     {
-        return $this->nombre;
+        return $this->marca;
     }
 }
