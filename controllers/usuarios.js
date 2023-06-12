@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const USUARIO_API = 'business/dashboard/usuario.php';
+const USUARIO_API = 'business/dashboard/usuarios.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -31,27 +31,27 @@ SEARCH_FORM.addEventListener('submit', (event) => {
 });
 
 // Método manejador de eventos para cuando se envía el formulario de guardar.
-SAVE_FORM.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
-    // Se verifica la acción a realizar.
-    (document.getElementById('id').value) ? action = 'update' : action = 'create';
-    // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SAVE_FORM);
-    // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(USUARIO_API, action, FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (JSON.status) {
-        // Se carga nuevamente la tabla para visualizar los cambios.
-        fillTable();
-        // Se cierra la caja de diálogo.
-        SAVE_MODAL.close();
-        // Se muestra un mensaje de éxito.
-        sweetAlert(1, JSON.message, true);
-    } else {
-        sweetAlert(2, JSON.exception, false);
-    }
-});
+// SAVE_FORM.addEventListener('submit', async (event) => {
+//     // Se evita recargar la página web después de enviar el formulario.
+//     event.preventDefault();
+//     // Se verifica la acción a realizar.
+//     (document.getElementById('id').value) ? action = 'update' : action = 'create';
+//     // Constante tipo objeto con los datos del formulario.
+//     const FORM = new FormData(SAVE_FORM);
+//     // Petición para guardar los datos del formulario.
+//     const JSON = await dataFetch(USUARIO_API, action, FORM);
+//     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+//     if (JSON.status) {
+//         // Se carga nuevamente la tabla para visualizar los cambios.
+//         fillTable();
+//         // Se cierra la caja de diálogo.
+//         SAVE_MODAL.close();
+//         // Se muestra un mensaje de éxito.
+//         sweetAlert(1, JSON.message, true);
+//     } else {
+//         sweetAlert(2, JSON.exception, false);
+//     }
+// });
 
 /*
 *   Función asíncrona para llenar la tabla con los registros disponibles.
@@ -79,8 +79,7 @@ async function fillTable(form = null) {
                     <td>${row.nombre}</td>
                     <td>${row.estadousuario}</td>
                     <td>
-                        <button data-modal-target="modal_update_branch-office1"
-                            data-modal-toggle="modal_update_branch-office1"
+                        <button onclick="openUpdate(${row.idusuario})"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
@@ -88,6 +87,11 @@ async function fillTable(form = null) {
                         <a onclick="openDelete(${row.idusuario})" class="btn waves-effect red tooltipped" data-tooltip="Eliminar">
                             <i class="material-icons">delete</i>
                         </a>
+                        <button onclick="openDelete(${row.idusuario})"  
+                            class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button">
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                        </button>
                     </td>
                 </tr>
             `;
