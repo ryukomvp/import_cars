@@ -1,5 +1,5 @@
 <?php
-require_once('../../helpers/database.php');
+require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad USUARIO.
 */
@@ -130,20 +130,20 @@ class UsuariosQueries
     {
         $sql = "UPDATE usuarios SET estadousuario = 'Activo'
                 WHERE idusuario = ? AND estadousuario = 'Inactivo'";
-        $params = array($this->id)
+        $params = array($this->id);
     }
 
     public function estadoInactivo()
     {
         $sql = "UPDATE usuarios SET estadousuario = 'Inactivo'
                 WHERE idusuario = ? AND estadousuario = 'Activo'";
-        $params = array($this->id)
+        $params = array($this->id);
     }
 
     public function desbloquearUsuario()
     {
         $sql = "UPDATE usuarios SET estadousuario = 'Inactivo'
                 WHERE idusuario = ? AND estadousuario = 'Bloqueado'";
-        $params = array($this->id)
+        $params = array($this->id);
     }
 }

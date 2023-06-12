@@ -246,7 +246,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     </div>
     `;
 
-    // Configuración para menu
+    // Configuración para menú
     const navBar = document.querySelector("nav"),
         menuBtns = document.querySelectorAll(".menu-icon"),
         overlay = document.querySelector(".overlay");
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             navBar.classList.toggle("open");
         });
     });
-    overlay.addEventListener("click", () => {
-        navBar.classList.remove("open");
-    });
+    // overlay.addEventListener("click", () => {
+    //     navBar.classList.remove("open");
+    // });
 })
