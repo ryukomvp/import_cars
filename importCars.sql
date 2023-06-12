@@ -69,7 +69,7 @@
 	    idCodigoComun serial primary key not null,
 		nomenclatura varchar(10) not null,
 		codigo int not null
-	);
+	);  
 
     CREATE TABLE tipoProducto(
 		idTipoProducto serial primary key not null,
@@ -645,4 +645,8 @@
 	 (18, 2, 0, 16),
 	 (19, 7, 0, 16),
 	 (20, 8, 14, 20);
+
+	-- Ingresar tipo de productos en la tabla tipoProducto
+	-- Ingresar nomnclatura y codigo en la tabla cogidoComun
+	-- Despues de esos insert actualizar los insert de productos
 	 
