@@ -164,6 +164,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                                         <a href="sucursales.html"
                                             class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Sucursales</a>
                                     </li>
+                                    <!-- boton para paises -->
+                                    <li>
+                                        <a href="paisOrigen.html"
+                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Paises de origen</a>
+                                    </li>
                                 </ul>
                             </div>
                         </li>

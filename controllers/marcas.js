@@ -9,6 +9,11 @@ const MODAL_TITLE = document.getElementById('modal-title');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 const RECORDS = document.getElementById('records');
 const SAVE_MODAL = new Modal(document.getElementById('modal_add_model'));
+// Constante tipo objeto para establecer las opciones del componente Modal.
+const OPTIONS = {
+    dismissible: false
+}
+
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
@@ -25,31 +30,30 @@ SEARCH_FORM.addEventListener('submit', (event) => {
     fillTable(FORM);
 });
 
-// Método manejador de eventos para cuando se envía el formulario de guardar.
-SAVE_FORM.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
-    // Se verifica la acción a realizar.
-    (document.getElementById('id').value) ? action = 'update' : action = 'create';
-    // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SAVE_FORM);
-    // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(MARCA_API, action, FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (JSON.status) {
-        // Se carga nuevamente la tabla para visualizar los cambios.
-        fillTable();
-        // Se muestra un mensaje de éxito.
-        sweetAlert(1, JSON.message, true);
-    } else {
-        sweetAlert(2, JSON.exception, false);
-    }
-});
+// // Método manejador de eventos para cuando se envía el formulario de guardar.
+// SAVE_FORM.addEventListener('submit', async (event) => {
+//     // Se evita recargar la página web después de enviar el formulario.
+//     event.preventDefault();
+//     // Se verifica la acción a realizar.
+//     (document.getElementById('id').value) ? action = 'update' : action = 'create';
+//     // Constante tipo objeto con los datos del formulario.
+//     const FORM = new FormData(SAVE_FORM);
+//     // Petición para guardar los datos del formulario.
+//     const JSON = await dataFetch(MARCA_API, action, FORM);
+//     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+//     if (JSON.status) {
+//         // Se carga nuevamente la tabla para visualizar los cambios.
+//         fillTable();
+//         // Se muestra un mensaje de éxito.
+//         sweetAlert(1, JSON.message, true);
+//     } else {
+//         sweetAlert(2, JSON.exception, false);
+//     }
+// });
 
 async function fillTable(form = null) {
     // Se inicializa el contenido de la tabla.
     TBODY_ROWS.innerHTML = '';
-    RECORDS.textContent = '';
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
@@ -61,16 +65,19 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td>${row.id_marca}</td>
-                    <td>${row.nombre_marca}</td>
+                    <td>${row.idmarca}</td>
+                    <td>${row.marca}</td>
                     <td>
                     <!--Botones de acciones-->
-                    <button onclick="openUpdate(${row.id_marca})" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                    <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
-                    <span class="sr-only">Cerrar ventana</span>
-                    <button onclick="openDelete(${row.id_marca})" class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                    <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
-                    </button>
+                        <button onclick="openUpdate(${row.idmarca})" 
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                        </button>
+                        <button onclick="openDelete(${row.idmarca})"  
+                            class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button">
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                        </button>
                     </td>
                 </tr>
             `;
