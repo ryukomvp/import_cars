@@ -5,7 +5,7 @@ if(isset($_GET['action'])){
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $pais = new pais;
+    $pais = new paisesOrigen;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -63,7 +63,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'País incorrecta';
                 } elseif (!$data = $pais->leerUnPaisOrigen()) {
                     $result['exception'] = 'País inexistente';
-                } elseif (!$pais->setNombre($_POST['pais'])) {
+                } elseif (!$pais->setPais($_POST['pais'])) {
                      $result['exception'] = 'País incorrecto';
                 } elseif ($pais->actualizarPaisOrigen()) {
                     $result['status'] = 1;
@@ -77,7 +77,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'País incorrecta';
                 } elseif (!$data = $pais->leerUnPaisOrigen()) {
                     $result['exception'] = 'País inexistente';
-                } elseif ($pais->()) {
+                } elseif ($pais->eliminarPaisOrigen()) {
                     $result['status'] = 1;
                     $result['message'] = 'País eliminada correctamente';
                 } else {
