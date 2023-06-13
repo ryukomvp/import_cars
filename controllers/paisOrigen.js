@@ -51,7 +51,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
 });
 
 // Metodo para cargar la tabla con los datos de la base
-async function rellenarTabla(form = null) {
+async function rellenarTabla(formulario = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
