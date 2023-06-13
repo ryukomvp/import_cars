@@ -9,7 +9,7 @@ class marcaQueries
      /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function searchRows($value)
+    public function buscarMarca($value)
     {
         $sql = 'SELECT idmarca, marca
                 FROM marcas
@@ -19,23 +19,15 @@ class marcaQueries
         return Database::getRows($sql, $params);
     }
 
-    public function createRow()
-    {
-        $sql = 'INSERT INTO marcas(marca)
-                VALUES(?)';
-        $params = array($this->marca);
-        return Database::executeRow($sql, $params);
-    }
-
-    public function readAll()
+    public function leerMarcas()
     {
         $sql = 'SELECT idmarca, marca
                 FROM marcas
-                ORDER BY marca';
+                ORDER BY idmarca';
         return Database::getRows($sql);
     }
 
-    public function readOne()
+    public function leerMarca()
     {
         $sql = 'SELECT idmarca, marca
                 FROM marcas
@@ -44,7 +36,15 @@ class marcaQueries
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow()
+    public function crearMarca()
+    {
+        $sql = 'INSERT INTO marcas(marca)
+                VALUES(?)';
+        $params = array($this->marca);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function actualizarMarca()
     {
         $sql = 'UPDATE marcas 
                 SET marca = ?
@@ -53,7 +53,7 @@ class marcaQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function deleteRow()
+    public function eliminarMarca()
     {
         $sql = 'DELETE FROM marcas
                 WHERE idmarca = ?';
