@@ -90,7 +90,7 @@ class usuariosQueries
 
     public function leerUsuario()
     {
-        $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, idempleado, e.nombre, estadousuario
+        $sql = 'SELECT idusuario, u.nombre usuario, contrasenia, pin, tipousuario, idempleado, e.nombre empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
 				WHERE idusuario = ?';
         $params = array($this->id);
@@ -119,9 +119,9 @@ class usuariosQueries
     public function actualizarUsuario()
     {
         $sql = 'UPDATE usuarios 
-                SET nombres = ?, pin = ?, tipousuario = ?, idempleado = ?, estadousuario = ?
+                SET nombre = ?, pin = ?, tipousuario = ?, idempleado = ?, estadousuario = ?
                 WHERE idusuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->id);
+        $params = array($this->nombre, $this->pin, $this->tipo, $this->empleado, $this->estado, $this->id);
         return Database::executeRow($sql, $params);
     }
 

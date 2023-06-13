@@ -134,19 +134,23 @@ if (isset($_GET['action'])) {
                 break;
             case 'actualizar':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setId($_POST['idusuario'])) {
+                if (!$usuario->setId($_POST['id'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->readOne()) {
+                } elseif (!$usuario->leerUsuario()) {
                     $result['exception'] = 'Usuario inexistente';
-                } elseif (!$usuario->setNombres($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$usuario->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif ($usuario->updateRow()) {
+                } elseif (!$usuario->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombres incorrecto';
+                } elseif (!$usuario->setPin($_POST['pin'])) {
+                    $result['exception'] = 'Pin incorrecto';
+                } elseif (!$usuario->setTipo($_POST['tipo'])) {
+                    $result['exception'] = 'Tipo incorrecto';
+                } elseif (!$usuario->setEmpleado($_POST['empleado'])) {
+                    $result['exception'] = 'Empleado incorrecto';
+                } elseif (!$usuario->setEstado($_POST['estado'])) {
+                    $result['exception'] = 'Estado incorrecto';
+                } elseif ($usuario->actualizarUsuario()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Usuario modificado correctamente';
+                    $result['message'] = 'Usuario actualizado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
