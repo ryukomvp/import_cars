@@ -11,19 +11,19 @@ class modeloQueries
     */
     public function searchRows($value)
     {
-        $sql = 'SELECT id_modelo, nombre_modelo, numero_de_modelo, id_marca
+        $sql = 'SELECT idmodelo, modelo, idmarca
                 FROM modelos
-                WHERE nombre_modelo ILIKE ? OR numero_de_modelo ILIKE ?
-                ORDER BY nombre_modelo';
-        $params = array("%$value%", "%$value%");
+                WHERE modelo ILIKE ?
+                ORDER BY modelo';
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function createRow()
     {
-        $sql = 'INSERT INTO modelos(nombre_modelo, numero_de_modelo, id_marca)
-                VALUES(?, ?, ?)';
-        $params = array($this->nombre, $this->numeromodelo, $this->marca);
+        $sql = 'INSERT INTO modelos(modelo, idmarca)
+                VALUES(?, ?)';
+        $params = array($this->modelo, $this->marca);
         return Database::executeRow($sql, $params);
     }
 

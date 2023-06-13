@@ -1,6 +1,6 @@
 <?php
-require_once('../../helpers/validator.php');
-require_once('../../entities/dao/marcasQueries.php');
+require_once('../helpers/validator.php');
+require_once('../entities/dao/marcasQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad MARCA.
 */

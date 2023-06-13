@@ -3,7 +3,7 @@ require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad USUARIO.
 */
-class UsuariosQueries
+class usuariosQueries
 {
     /*
     *   Métodos para realizar operaciones de gestión en la cuenta del usuario
@@ -62,7 +62,7 @@ class UsuariosQueries
     /*
     *   Métodos para realizar operaciones de gestión en la tabla usuarios
     */
-    public function searchRows($value)
+    public function buscarUsuario($value)
     {
         $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, e.nombre, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
@@ -72,44 +72,51 @@ class UsuariosQueries
         return Database::getRows($sql, $params);
     }
 
-    public function createRow()
+    public function crearUsuario()
     {
-        $sql = 'INSERT INTO usuarios(nombre, clave, pin, tipousuario, idempleado, estadousuario)
+        $sql = 'INSERT INTO usuarios(nombre, contrasenia, pin, tipousuario, idempleado, estadousuario)
                 VALUES(?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre, $this->clave, $this->pin, $this->tipo, $this->empleado, $this->estado);
         return Database::executeRow($sql, $params);
     }
 
-    public function readAll()
+    public function leerUsuarios()
     {
-        $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, e.nombre, estadousuario
+        $sql = 'SELECT idusuario, u.nombre usuario, contrasenia, pin, tipousuario, e.nombre empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
                 ORDER BY idusuario';
         return Database::getRows($sql);
     }
 
-    public function readOne()
+    public function leerUsuario()
     {
-        $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, e.nombre, estadousuario
+        $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, idempleado, e.nombre, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
 				WHERE idusuario = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
-    public function readTipo()
+    public function leerTipo()
     {
         $sql = 'SELECT unnest(enum_range(NULL::tiposusuarios)) val, unnest(enum_range(NULL::tiposusuarios)) text';
         return Database::getRows($sql);
     }
 
-    public function readEstado()
+    public function leerEmpleados()
+    {
+        $sql = 'SELECT idempleado, nombre FROM empleados
+                ORDER BY idempleado';
+        return Database::getRows($sql);
+    }
+
+    public function leerEstado()
     {
         $sql = 'SELECT unnest(enum_range(NULL::estadosusuarios)) val, unnest(enum_range(NULL::estadosusuarios)) text';
         return Database::getRows($sql);
     }
 
-    public function updateRow()
+    public function actualizarUsuario()
     {
         $sql = 'UPDATE usuarios 
                 SET nombres = ?, pin = ?, tipousuario = ?, idempleado = ?, estadousuario = ?
@@ -118,7 +125,7 @@ class UsuariosQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function deleteRow()
+    public function eliminarUsuario()
     {
         $sql = 'DELETE FROM usuarios
                 WHERE idusuario = ?';

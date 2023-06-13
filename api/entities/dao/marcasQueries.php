@@ -1,5 +1,5 @@
 <?php
-require_once('../../helpers/database.');
+require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad MARCA.
 */

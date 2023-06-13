@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dto/categorias.php');
+require_once('../entities/dto/categorias.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -10,7 +10,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['id_usuario']) OR !isset($_SESSION['id_usuario'])) {
+    if (isset($_SESSION['idusuario']) OR !isset($_SESSION['idusuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
@@ -38,7 +38,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$categoria->setNombre($_POST['nombre'])) {
+                if (!$categoria->setCategoria($_POST['categoria'])) {
                     $result['exception'] = 'Nombre incorrecto';
                 } elseif ($categoria->createRow()) {
                     $result['status'] = 1;
@@ -48,7 +48,7 @@ if (isset($_GET['action'])) {
                 }  
                 break;
             case 'readOne':
-                if (!$categoria->setId($_POST['id_categoria'])) {
+                if (!$categoria->setId($_POST['idcategoria'])) {
                     $result['exception'] = 'Categoría incorrecta';
                 } elseif ($result['dataset'] = $categoria->readOne()) {
                     $result['status'] = 1;
@@ -61,35 +61,20 @@ if (isset($_GET['action'])) {
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                 if (!$categoria->setId($_POST['id'])) {
-                    $result['exception'] = 'Categoría incorrecta';
+                    $result['exception'] = 'Id incorrecto';
                 } elseif (!$data = $categoria->readOne()) {
                     $result['exception'] = 'Categoría inexistente';
-                } elseif (!$categoria->setNombre($_POST['nombre'])) {
+                } elseif (!$categoria->setCategoria($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$categoria->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripcion incorrecta';
-                } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
-                    if ($categoria->updateRow($data['imagen_categoria'])) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Producto modificado correctamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                } elseif (!$categoria->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
-                } elseif ($categoria->updateRow($data['imagen_categoria'])) {
+                } elseif ($categoria->updateRow()) {
                     $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $categoria->getRuta(), $categoria->getImagen())) {
-                        $result['message'] = 'Categoria modificada correctamente';
-                    } else {
-                        $result['message'] = 'Categoria modificada pero no se guardó la imagen';
-                    }
+                    $result['message'] = 'Categoria modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$categoria->setId($_POST['id_categoria'])) {
+                if (!$categoria->setId($_POST['idcategoria'])) {
                     $result['exception'] = 'Categoría incorrecta';
                 } elseif (!$data = $categoria->readOne()) {
                     $result['exception'] = 'Categoría inexistente';

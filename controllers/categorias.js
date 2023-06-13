@@ -1,4 +1,5 @@
-const CATEGORIA_API = 'bussines/dashboard/categoria.php';
+// Constante para completar la ruta de la API.
+const CATEGORIA_API = 'business/categorias.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -7,9 +8,11 @@ const SAVE_FORM = document.getElementById('save-form');
 const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
-const RECORDS = new Modal(document.getElementById('modal_add_model'));
+const RECORDS = document.getElementById('records');
 
-const SAVE_MODAL = new bootstrap.Modal(document.getElementById('save-modal'));
+// Constante para capturar el modal.
+const SAVE_MODAL = new Modal(document.getElementById('modal_add_category'));
+
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
@@ -41,7 +44,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
-       
+        SAVE_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -52,7 +55,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
 async function fillTable(form = null) {
     // Se inicializa el contenido de la tabla.
     TBODY_ROWS.innerHTML = '';
-    RECORDS.textContent = '';
+    // RECORDS.textContent = '';
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
@@ -64,14 +67,18 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td>${row.id_categoria}</td>
-                    <td>${row.nombre_categoria}</td>
-                    <td>${row.descripcion_categoria}</td>
+                    <td>${row.idcategoria}</td>
+                    <td>${row.categoria}</td>
                     <td>
-                    <!--Botones de acciones-->
-                    <a onclick="openUpdate(${row.id_categoria})" class="link-white" data-tooltip = "Actualizar"><i class="fa-solid fa-pen-to-square fs-5 me-3" ></i></a>
-                    <a onclick="openDelete(${row.id_categoria})" class="borrar-usuario" data-tooltip="Eliminar">Eliminar</a>
-                    <a onclick="openReport(${row.id_categoria})" class="borrar-usuario" data-tooltip="Reporte">Reporte</a>
+                        <button onclick="openUpdate(${row.idcategoria})" 
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                        <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                        </button>
+                        <button onclick="openDelete(${row.idcategoria})"  
+                        class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">
+                        <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                        </button>
                     </td>
                 </tr>
             `;
@@ -93,7 +100,6 @@ function openCreate() {
     SAVE_MODAL.show();
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Crear categoría';
-    document.getElementById('archivo').required = true;
 }
 
 /*
@@ -104,7 +110,7 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('id_categoria', id);
+    FORM.append('idcategoria', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(CATEGORIA_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -116,9 +122,8 @@ async function openUpdate(id) {
         // Se asigna título para la caja de diálogo.
         MODAL_TITLE.textContent = 'Actualizar categoría';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_categoria;
-        document.getElementById('nombre').value = JSON.dataset.nombre_categoria;
-        document.getElementById('descripcion').value = JSON.dataset.descripcion_categoria;
+        document.getElementById('id').value = JSON.dataset.idcategoria;
+        document.getElementById('categoria').value = JSON.dataset.categoria;
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -136,7 +141,7 @@ async function openDelete(id) {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_categoria', id);
+        FORM.append('idcategoria', id);
         // Petición para eliminar el registro seleccionado.
         const JSON = await dataFetch(CATEGORIA_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.

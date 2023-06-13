@@ -1,5 +1,6 @@
 <?php
-require_once('../../entities/dto/marcas.php');
+require_once('../entities/dto/marcas.php');
+
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if(isset($_GET['action'])){
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
@@ -9,7 +10,7 @@ if(isset($_GET['action'])){
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if(isset($_SESSION['id_usuario'])){
+    if(isset($_SESSION['idusuario']) OR !isset($_SESSION['idusuario'])){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch($_GET['action']) {
             case 'readAll':
@@ -37,7 +38,7 @@ if(isset($_GET['action'])){
                  break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$marca->setMarca($_POST['nombre'])){
+                if (!$marca->setMarca($_POST['marca'])){
                     $result['exception'] = 'Nombre incorrecto'; 
                 } elseif ($marca->createRow()){
                     $result['status'] = 1;
@@ -47,7 +48,7 @@ if(isset($_GET['action'])){
                 }
                 break;   
             case 'readOne':
-                if (!$marca->setId($_POST['id_marca'])) {
+                if (!$marca->setId($_POST['idmarca'])) {
                         $result['exception'] = 'Marca incorrecta';
                 } elseif ($result['dataset'] = $marca->readOne()) {
                        $result['status'] = 1;
