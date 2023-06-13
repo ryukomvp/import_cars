@@ -12,7 +12,7 @@ const RECORDS = document.getElementById('records');
 
 // Se inicializa el componente Modal para que funcionen las cajas de diálogo.
 // Constante para establecer la modal de guardar.
-const SAVE_MODAL = new Modal(document.getElementById(''));
+const SAVE_MODAL = new Modal(document.getElementById('modal_add_branch-office'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -45,7 +45,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
-        SAVE_MODAL.hide();
+        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -90,7 +90,7 @@ async function fillTable(form = null) {
                         <div class="grid gap-2 m-0">
                             <!--botón de actualizar-->
                             <div>
-                                <button data-modal-target="modal_update_branch-office1"
+                                <button onclick="actualizarRegistro(${row.idsucursal})"
                                     data-modal-toggle="modal_update_branch-office1"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                     type="button">
@@ -99,7 +99,7 @@ async function fillTable(form = null) {
                             </div>
                             <!--botón de eliminar registro-->
                             <div>
-                                <button data-modal-target="delete-modal1" data-modal-toggle="delete-modal1"
+                                <button onclick="eliminarRegistro(${row.idsucursal})"
                                     class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                     type="button">
                                     <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
