@@ -74,7 +74,7 @@ class usuariosQueries
 
     public function crearUsuario()
     {
-        $sql = 'INSERT INTO usuarios(nombre, clave, pin, tipousuario, idempleado, estadousuario)
+        $sql = 'INSERT INTO usuarios(nombre, contrasenia, pin, tipousuario, idempleado, estadousuario)
                 VALUES(?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre, $this->clave, $this->pin, $this->tipo, $this->empleado, $this->estado);
         return Database::executeRow($sql, $params);
@@ -82,7 +82,7 @@ class usuariosQueries
 
     public function leerUsuarios()
     {
-        $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, e.nombre, estadousuario
+        $sql = 'SELECT idusuario, u.nombre usuario, contrasenia, pin, tipousuario, e.nombre empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
                 ORDER BY idusuario';
         return Database::getRows($sql);
@@ -90,7 +90,7 @@ class usuariosQueries
 
     public function leerUsuario()
     {
-        $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, e.nombre, estadousuario
+        $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, idempleado, e.nombre, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
 				WHERE idusuario = ?';
         $params = array($this->id);

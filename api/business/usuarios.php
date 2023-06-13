@@ -114,7 +114,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$usuario->setClave($_POST['clave'])) {
                     $result['exception'] = Validator::getPasswordError();
-                } elseif ($usuario->createRow()) {
+                } elseif ($usuario->crearUsuario()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario creado correctamente';
                 } else {

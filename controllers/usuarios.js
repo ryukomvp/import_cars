@@ -8,7 +8,8 @@ const SAVE_FORM = document.getElementById('save-form');
 const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
-const RECORDS = document.getElementById('records');
+// Constantes para establecer el contenido de la tabla.
+const BTN_TEXTO = document.getElementById('accion');
 
 // Constante para capturar el modal.
 const SAVE_MODAL = new Modal(document.getElementById('modal_add_user'));
@@ -60,7 +61,6 @@ SAVE_FORM.addEventListener('submit', async (event) => {
 async function registrosTabla(form = null) {
     // Se inicializa el contenido de la tabla.
     TBODY_ROWS.innerHTML = '';
-    // RECORDS.textContent = '';
     // Se verifica la acción a realizar.
     (form) ? action = 'buscar' : action = 'leerUsuarios';
     // Petición para obtener los registros disponibles.
@@ -73,10 +73,10 @@ async function registrosTabla(form = null) {
             TBODY_ROWS.innerHTML += `
                 <tr class="text-center bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
                     <td>${row.idusuario}</td>
-                    <td>${row.nombre}</td>
+                    <td>${row.usuario}</td>
                     <td>${row.pin}</td>
                     <td>${row.tipousuario}</td>
-                    <td>${row.nombre}</td>
+                    <td>${row.empleado}</td>
                     <td>${row.estadousuario}</td>
                     <td>
                         <button onclick="actualizarRegistro(${row.idusuario})"
@@ -93,8 +93,6 @@ async function registrosTabla(form = null) {
                 </tr>
             `;
         });
-        // Se muestra un mensaje de acuerdo con el resultado.
-        // RECORDS.textContent = JSON.message;
     } else {
         sweetAlert(4, JSON.exception, true);
     }
@@ -112,6 +110,15 @@ function crearRegistro() {
     SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
     MODAL_TITLE.textContent = 'Añadir nuevo usuario';
+    // Se asigna texto al botón de acción.
+    BTN_TEXTO.textContent = 'Añadir';
+    // Se habilitan los campos necesarios
+    // Se deshabilitan los campos necesarios.
+    document.getElementById('nombre').disabled = false;
+    document.getElementById('pin').disabled = false;
+    document.getElementById('clave').disabled = false;
+    document.getElementById('confirmar').disabled = false;
+    // Se cargan los datos del/los componente/s select 
     fillSelect(USUARIO_API, 'leerTipos', 'tipo');
     fillSelect(USUARIO_API, 'leerEmpleados', 'empleado');
     fillSelect(USUARIO_API, 'leerEstados', 'estado');
@@ -136,6 +143,8 @@ async function actualizarRegistro(id) {
         SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
         MODAL_TITLE.textContent = 'Actualizar usuario';
+        // Se asigna texto al botón de acción.
+        BTN_TEXTO.textContent = 'Actualizar';
         // Se deshabilitan los campos necesarios.
         document.getElementById('nombre').disabled = true;
         document.getElementById('pin').disabled = true;
