@@ -148,8 +148,8 @@ async function actualizarRegistro(id) {
         // Se deshabilitan los campos necesarios.
         // document.getElementById('nombre').disabled = true;
         // document.getElementById('pin').disabled = true;
-        // document.getElementById('clave').disabled = true;
-        // document.getElementById('confirmar').disabled = true;
+        document.getElementById('clave').disabled = true;
+        document.getElementById('confirmar').disabled = true;
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idusuario;
         document.getElementById('nombre').value = JSON.dataset.usuario;
