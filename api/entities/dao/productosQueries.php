@@ -22,7 +22,7 @@ class ProductosQueries
         return Database::getRows($sql, $params);
     }
 
-    public function createRow()
+    public function crearProducto()
     {
         // , $_SESSION['id_usuario_privado']
         $sql = 'INSERT INTO producto(nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto)
@@ -31,7 +31,7 @@ class ProductosQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function readAll()
+    public function leerTodo()
     {
         $sql = 'SELECT nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto
                 FROM productos INNER JOIN categorias USING(idcategoria)
@@ -39,7 +39,7 @@ class ProductosQueries
         return Database::getRows($sql);
     }
 
-    public function readOne()
+    public function leerUno()
     {
         $sql = 'SELECT idproducto,nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto
                 FROM productos
@@ -48,7 +48,7 @@ class ProductosQueries
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow($current_image)
+    public function actualizarProducto($current_image)
     {
         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
         ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
@@ -60,7 +60,7 @@ class ProductosQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function deleteRow()
+    public function eliminarProducto()
     {
         $sql = 'DELETE FROM productos
                 WHERE idproducto = ?';
@@ -68,7 +68,7 @@ class ProductosQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function leerproductoCategoria()
+    public function leerProductoCategoria()
     {
         $sql = 'SELECT idproducto, nombre, foto,  descripcio, precio
                 FROM productos INNER JOIN categorias USING(idcategoria)
