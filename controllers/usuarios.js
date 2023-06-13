@@ -34,7 +34,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (document.getElementById('id').value) ? action = 'update' : action = 'create';
+    (document.getElementById('id').value) ? action = 'actualizar' : action = 'crear';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
@@ -44,7 +44,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         registrosTabla();
         // Se cierra la caja de diálogo.
-        SAVE_MODAL.hide();
+        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
