@@ -9,7 +9,7 @@ if(isset($_GET['action'])){
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if(isset($_SESSION['id_usuario'])){
+    if(isset($_SESSION['idUsuario'])  OR !isset($_SESSION['idUsuario'])){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch($_GET['action']) {
             case 'readAll':
@@ -25,7 +25,8 @@ if(isset($_GET['action'])){
             case 'search':
                 $_POST = Validator::validateForm($_POST);
                    if ($_POST['buscar'] == '') {
-                       $result['exception'] = 'Ingrese un valor para buscar';
+                        $result['dataset'] = $pais->leerPaisesOrigen();
+                        $result['status'] = 1;
                 } elseif ($result['dataset'] = $pais->buscarPaisOrigen($_POST['buscar'])) {
                        $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
@@ -47,33 +48,33 @@ if(isset($_GET['action'])){
                 }
                 break;   
             case 'readOne':
-                if (!$pais->setId($_POST['idPais'])) {
-                        $result['exception'] = 'País incorrecta';
+                if (!$pais->setId($_POST['id'])) {
+                    $result['exception'] = 'País incorrecto';
                 } elseif ($result['dataset'] = $pais->leerUnPaisOrigen()) {
-                       $result['status'] = 1;
+                    $result['status'] = 1;
                 } elseif (Database::getException()) {
-                       $result['exception'] = Database::getException();
+                    $result['exception'] = Database::getException();
                 } else {
-                       $result['exception'] = 'pais inexistente';
+                    $result['exception'] = 'País inexistente';
                 }
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
                if (!$pais->setId($_POST['id'])) {
-                    $result['exception'] = 'País incorrecta';
+                    $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $pais->leerUnPaisOrigen()) {
                     $result['exception'] = 'País inexistente';
                 } elseif (!$pais->setPais($_POST['pais'])) {
                      $result['exception'] = 'País incorrecto';
                 } elseif ($pais->actualizarPaisOrigen()) {
                     $result['status'] = 1;
-                    $result['message'] = 'pais modificada correctamente';
+                    $result['message'] = 'Pais modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$pais->setId($_POST['idPais'])) {
+                if (!$pais->setId($_POST['idpais'])) {
                     $result['exception'] = 'País incorrecta';
                 } elseif (!$data = $pais->leerUnPaisOrigen()) {
                     $result['exception'] = 'País inexistente';

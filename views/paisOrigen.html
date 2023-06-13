@@ -44,16 +44,16 @@
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                     </svg>
                                 </div>
-                                <input type="search" id="buscar"
+                                <input type="search" id="buscar" name="buscar"
                                     class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Buscar..." required>
+                                    placeholder="Buscar...">
                                 <button type="submit"
                                     class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                             </div>
                         </form>
                     </div>
                     <div class="col-end-5">
-                        <button onclick="abrirCrear()" data-modal-target="abrirModal" data-modal-toggle="abrirModal"
+                        <button onclick="crearRegistro()"
                             class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
@@ -70,17 +70,6 @@
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                             <h3 id="titulo" class="text-xl font-bold text-oscuro dark:text-white">
                             </h3>
-                            <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
-                                data-modal-hide="abrirModal">
-                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="sr-only">Cerrar ventana</span>
-                            </button>
                         </div>
                         <!-- Cuerpo del modal -->
                         <form method="post" class="p-4" id="ejecutarFormulario">
@@ -94,9 +83,9 @@
                                     <div>
                                         <label for="id"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID:</label>
-                                        <input disabled type="text" id="id" name="id"
+                                        <input type="number" id="id" name="id"
                                             class="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700"
-                                            placeholder="ID" required>
+                                            placeholder="ID" readonly>
                                     </div>
                                     <!--Input nombre del modelo-->
                                     <div>
@@ -111,8 +100,8 @@
                             <!-- Pie del modal -->
                             <div
                                 class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                <button data-modal-hide="abrirModal" type="button"
-                                    class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Añadir</button>
+                                <button id="accion" type="submit"
+                                    class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"></button>
                             </div>
                         </form>
                     </div>
@@ -140,9 +129,6 @@
                     </thead>
                     <!--Filas de la tabla-->
                     <tbody id="registrosTabla">
-                        <tr
-                            class="text-center bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
-                        </tr>
                     </tbody>
                 </table>
             </div>
