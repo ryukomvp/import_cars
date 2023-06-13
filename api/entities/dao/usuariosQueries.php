@@ -8,7 +8,7 @@ class usuariosQueries
     /*
     *   Métodos para realizar operaciones de gestión en la cuenta del usuario
     */
-    public function checkUser($nombre)
+    public function verificarUsuario($nombre)
     {
         $sql = 'SELECT idusuario FROM usuarios WHERE nombre = ?';
         $params = array($nombre);
@@ -21,7 +21,7 @@ class usuariosQueries
         }
     }
 
-    public function checkPassword($password)
+    public function verificarClave($password)
     {
         $sql = 'SELECT clave FROM usuarios WHERE idusuario = ?';
         $params = array($this->id);
@@ -34,7 +34,7 @@ class usuariosQueries
         }
     }
 
-    public function changePassword()
+    public function cambiarClave()
     {
         $sql = 'UPDATE usuarios SET clave = ? WHERE idusuario = ?';
         $params = array($this->clave, $_SESSION['idusuario']);
@@ -64,11 +64,11 @@ class usuariosQueries
     */
     public function buscarUsuario($value)
     {
-        $sql = 'SELECT idusuario, u.nombre, contrasenia, pin, tipousuario, e.nombre, estadousuario
+        $sql = 'SELECT idusuario, u.nombre usuario, contrasenia, pin, tipousuario, e.nombre empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
-				WHERE u.nombre ILIKE ? OR e.nombre ILIKE ?
+                WHERE u.nombre ILIKE ?
                 ORDER BY idusuario';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
