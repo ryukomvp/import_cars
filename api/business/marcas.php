@@ -13,8 +13,8 @@ if(isset($_GET['action'])){
     if(isset($_SESSION['idusuario']) OR !isset($_SESSION['idusuario'])){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch($_GET['action']) {
-            case 'readAll':
-                if ($result['dataset'] = $marca->readAll()) {
+            case 'leerMarcas':
+                if ($result['dataset'] = $marca->leerMarcas()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
@@ -23,11 +23,11 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'search':
+            case 'buscar':
                 $_POST = Validator::validateForm($_POST);
                    if ($_POST['search'] == '') {
                        $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $marca->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $marca->buscarMarca($_POST['search'])) {
                        $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -36,21 +36,21 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay coincidencias';
                 }
                  break;
-            case 'create':
+            case 'crear':
                 $_POST = Validator::validateForm($_POST);
                 if (!$marca->setMarca($_POST['marca'])){
                     $result['exception'] = 'Nombre incorrecto'; 
-                } elseif ($marca->createRow()){
+                } elseif ($marca->crearMarca()){
                     $result['status'] = 1;
                     $result['message'] = 'Marca creada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;   
-            case 'readOne':
+            case 'leerMarca':
                 if (!$marca->setId($_POST['idmarca'])) {
                         $result['exception'] = 'Marca incorrecta';
-                } elseif ($result['dataset'] = $marca->readOne()) {
+                } elseif ($result['dataset'] = $marca->leerMarca()) {
                        $result['status'] = 1;
                 } elseif (Database::getException()) {
                        $result['exception'] = Database::getException();
@@ -58,27 +58,27 @@ if(isset($_GET['action'])){
                        $result['exception'] = 'Marca inexistente';
                 }
                 break;
-            case 'update':
+            case 'actualizar':
                 $_POST = Validator::validateForm($_POST);
                if (!$marca->setId($_POST['id'])) {
                     $result['exception'] = 'Marca incorrecta';
-                } elseif (!$data = $marca->readOne()) {
+                } elseif (!$data = $marca->leerMarca()) {
                     $result['exception'] = 'Categoría inexistente';
                 } elseif (!$marca->setNombre($_POST['nombre'])) {
                      $result['exception'] = 'Nombre incorrecto';
-                } elseif ($marca->updateRow()) {
+                } elseif ($marca->actualizarMarca()) {
                     $result['status'] = 1;
                     $result['message'] = 'Marca modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'delete':
-                if (!$marca->setId($_POST['id_marca'])) {
+            case 'eliminar':
+                if (!$marca->setId($_POST['idmarca'])) {
                     $result['exception'] = 'Marca incorrecta';
-                } elseif (!$data = $marca->readOne()) {
+                } elseif (!$data = $marca->leerMarca()) {
                     $result['exception'] = 'Marca inexistente';
-                } elseif ($marca->deleteRow()) {
+                } elseif ($marca->eliminarMarca()) {
                     $result['status'] = 1;
                     $result['message'] = 'Marca eliminada correctamente';
                 } else {
