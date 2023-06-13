@@ -1,6 +1,6 @@
 <?php
-require_once('../../helpers/validator.php');
-require_once('../../entities/dao/productosQueries.php');
+require_once('../helpers/validator.php');
+require_once('../entities/dao/productosQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad PRODUCTO.
 */
@@ -155,17 +155,6 @@ class Productos extends ProductosQueries
         }
     }
 
-    public function setRuta($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->existencia = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -194,24 +183,19 @@ class Productos extends ProductosQueries
         return $this->precio;
     }
 
-    public function getCodigo()
+    public function getAnio()
     {
-        return $this->codigo;
+        return $this->anio;
     }
    
-    public function getDimensiones()
+    public function getCodigoComun()
     {
-        return $this->dimensiones;
+        return $this->codigoComun;
     }
     
-    public function getCategoria()
+    public function getTipoProducto()
     {
-        return $this->categoria;
-    }
-
-    public function getMaterial()
-    {
-        return $this->material;
+        return $this->tipoProducto;
     }
 
     public function getProveedor()
@@ -219,16 +203,26 @@ class Productos extends ProductosQueries
         return $this->proveedor;
     }
 
-    public function getEstado()
+    public function getcategoria()
     {
-        return $this->estado;
+        return $this->proveedor;
     }
 
-    public function getExistencia()
+    public function getModelo()
     {
-        return $this->existencia;
+        return $this->modelo;
+    }
+
+    public function getPais()
+    {
+        return $this->pais;
     }
     
+    public function getEstadoProducto()
+    {
+        return $this->estadoProducto;
+    }
+
     public function getRuta()
     {
         return $this->ruta;
