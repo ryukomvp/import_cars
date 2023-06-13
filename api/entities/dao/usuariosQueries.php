@@ -105,9 +105,9 @@ class usuariosQueries
 
     public function leerEmpleados()
     {
-        $sql = 'SELECT nombre FROM empleados
+        $sql = 'SELECT idempleado, nombre FROM empleados
                 ORDER BY idempleado';
-        $params = array($this->id);
+        return Database::getRows($sql);
     }
 
     public function leerEstado()

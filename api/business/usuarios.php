@@ -124,7 +124,7 @@ if (isset($_GET['action'])) {
             case 'leerUsuario':
                 if (!$usuario->setId($_POST['idusuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                } elseif ($result['dataset'] = $usuario->readOne()) {
+                } elseif ($result['dataset'] = $usuario->leerUsuario()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();

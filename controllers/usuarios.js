@@ -127,27 +127,29 @@ async function actualizarRegistro(id) {
     const FORM = new FormData();
     FORM.append('idusuario', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(USUARIO_API, 'readOne', FORM);
+    const JSON = await dataFetch(USUARIO_API, 'leerUsuario', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
         SAVE_MODAL.show();
         // Se restauran los elementos del formulario.
-        SAVE_FORM.toggle();
+        SAVE_FORM.reset();
         // Se asigna título a la caja de diálogo.
         MODAL_TITLE.textContent = 'Actualizar usuario';
         // Se deshabilitan los campos necesarios.
-        document.getElementById('alias').disabled = true;
+        document.getElementById('nombre').disabled = true;
+        document.getElementById('pin').disabled = true;
         document.getElementById('clave').disabled = true;
         document.getElementById('confirmar').disabled = true;
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_usuario;
-        document.getElementById('nombres').value = JSON.dataset.nombres_usuario;
-        document.getElementById('apellidos').value = JSON.dataset.apellidos_usuario;
-        document.getElementById('correo').value = JSON.dataset.correo_usuario;
-        document.getElementById('alias').value = JSON.dataset.alias_usuario;
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        M.updateTextFields();
+        document.getElementById('id').value = JSON.dataset.idusuario;
+        document.getElementById('nombre').value = JSON.dataset.nombre;
+        document.getElementById('pin').value = JSON.dataset.pin;
+        document.getElementById('clave').value = JSON.dataset.contrasenia;
+        document.getElementById('confirmar').value = JSON.dataset.contrasenia;
+        fillSelect(USUARIO_API, 'leerTipos', 'tipo', JSON.dataset.tipousuario);
+        fillSelect(USUARIO_API, 'leerEmpleados', 'empleado', JSON.dataset.idempleado);
+        fillSelect(USUARIO_API, 'leerEstados', 'estado', JSON.dataset.estadousuario);
     } else {
         sweetAlert(2, JSON.exception, false);
     }
