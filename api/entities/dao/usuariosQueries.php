@@ -23,11 +23,11 @@ class usuariosQueries
 
     public function verificarClave($password)
     {
-        $sql = 'SELECT clave FROM usuarios WHERE idusuario = ?';
+        $sql = 'SELECT contrasenia FROM usuarios WHERE idusuario = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
-        if (password_verify($password, $data['clave'])) {
+        if (password_verify($password, $data['contrasenia'])) {
             return true;
         } else {
             return false;
@@ -62,7 +62,7 @@ class usuariosQueries
     /*
     *   Métodos para realizar operaciones de gestión en la tabla usuarios
     */
-    public function buscarUsuario($value)
+    public function buscarUsuarios($value)
     {
         $sql = 'SELECT idusuario, u.nombre usuario, contrasenia, pin, tipousuario, e.nombre empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)

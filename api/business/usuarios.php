@@ -11,11 +11,11 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idusuario']) OR !isset($_SESSION['idusuario'])) {
+    if (isset($_SESSION['idusuario'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'getUser':
+            case 'capturarUsuario':
                 if (isset($_SESSION['nombre'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['nombre'];
@@ -23,7 +23,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre de usuario indefinido';
                 }
                 break;
-            case 'logOut':
+            case 'cerrarSesion':
                 if (session_destroy()) {
                     $result['status'] = 1;
                     $result['message'] = 'Sesión eliminada correctamente';
@@ -78,7 +78,7 @@ if (isset($_GET['action'])) {
             case 'leerUsuarios':
                 if ($result['dataset'] = $usuario->leerUsuarios()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    // $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -89,7 +89,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $usuario->buscarUsuario($_POST['search'])) {
+                } elseif ($result['dataset'] = $usuario->buscarUsuarios($_POST['search'])) {
                     $result['status'] = 1;
                     // $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -205,15 +205,15 @@ if (isset($_GET['action'])) {
     } else {
         // Se compara la acción a realizar cuando el administrador no ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'readUsers':
-                if ($usuario->readAll()) {
+            case 'leerUsuarios':
+                if ($usuario->leerUsuarios()) {
                     $result['status'] = 1;
                     $result['message'] = 'Debe autenticarse para ingresar';
                 } else {
                     $result['exception'] = 'Debe crear un usuario para comenzar';
                 }
                 break;
-            case 'signup':
+            case 'regitrarUsuario':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setNombres($_POST['nombres'])) {
                     $result['exception'] = 'Nombres incorrectos';
@@ -234,15 +234,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'login':
+            case 'iniciarSesion':
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->checkUser($_POST['alias'])) {
+                if (!$usuario->verificarUsuario($_POST['usuario'])) {
                     $result['exception'] = 'Alias incorrecto';
-                } elseif ($usuario->checkPassword($_POST['clave'])) {
+                } elseif ($usuario->verificarClave($_POST['clave'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
-                    $_SESSION['id_usuario'] = $usuario->getId();
-                    $_SESSION['alias_usuario'] = $usuario->getAlias();
+                    $_SESSION['idusuario'] = $usuario->getId();
+                    $_SESSION['nombre'] = $usuario->getNombre();
                 } else {
                     $result['exception'] = 'Clave incorrecta';
                 }
