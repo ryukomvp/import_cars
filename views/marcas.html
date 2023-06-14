@@ -96,22 +96,22 @@
                                 <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                     <!--Input nombre de la marca-->
                                     <div>
-                                        <label for="nombre"
+                                        <label for="nombremarca"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de
                                             la marca:</label>
                                         <input type="text" id="nombremarca" name="nombremarca"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Marca" required>
+                                            placeholder="Ingrese el nombre de la marca" required>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Pie del modal -->
+                            <div
+                                class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button id="accion" type="submit"
+                                    class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Añadir</button>
+                            </div>
                         </form>
-                        <!-- Pie del modal -->
-                        <div
-                            class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <button data-modal-hide="modal_add_brand" type="button"
-                                class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Añadir</button>
-                        </div>
                     </div>
                 </div>
             </div><!--Final del modal-->
@@ -122,7 +122,7 @@
                     <thead
                         class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
-                            <th scope="col" class="px-6 py-3" >
+                            <th scope="col" class="px-6 py-3">
                                 ID
                             </th>
                             <th scope="col" class="px-6 py-3">

@@ -1,18 +1,19 @@
 <?php
 require_once('../helpers/validator.php');
-require_once('../entities/dao/marcasQueries.php');
+require_once('../entities/dao/familiasQueries.php');
 /*
-*	Clase para manejar la transferencia de datos de la entidad MARCA.
+*	Clase para manejar la transferencia de datos de la entidad CATEGORIA.
 */
-class marca extends marcaQueries
+class familias extends familiasqueries
 {
-    //Declaración de atributos(propiedades).
+    //Declaración de atributos (propiedades).
     protected $id = null;
-    protected $marca = null;
+    protected $familia = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
+
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -23,17 +24,17 @@ class marca extends marcaQueries
         }
     }
 
-    public function setMarca($value)
+    public function setFamilia($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 25)) {
-            $this->marca = $value;
+        if (Validator::validateAlphanumeric($value, 1, 20)) {
+            $this->familia = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    /*
+     /*
     *   Métodos para obtener valores de los atributos.
     */
     public function getId()
@@ -41,8 +42,8 @@ class marca extends marcaQueries
         return $this->id;
     }
 
-    public function getMarca()
+    public function getFamilia()
     {
-        return $this->marca;
+        return $this->familia;
     }
 }

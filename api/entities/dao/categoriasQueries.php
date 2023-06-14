@@ -8,7 +8,7 @@ class categoriaQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function searchRows($value)
+    public function buscarCategoria($value)
     {
         $sql = 'SELECT idcategoria, categoria
                 FROM categorias
@@ -18,7 +18,7 @@ class categoriaQueries
         return Database::getRows($sql, $params);
     }
 
-    public function createRow()
+    public function crearCategoria()
     {
         $sql = 'INSERT INTO categorias(categoria)
                 VALUES(?)';
@@ -26,15 +26,15 @@ class categoriaQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function readAll()
+    public function leerCategorias()
     {
         $sql = 'SELECT idcategoria, categoria
                 FROM categorias
-                ORDER BY categoria';
+                ORDER BY idcategoria';
         return Database::getRows($sql);
     }
 
-    public function readOne()
+    public function leerCategoria()
     {
         $sql = 'SELECT idcategoria, categoria
                 FROM categorias
@@ -43,7 +43,7 @@ class categoriaQueries
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow()
+    public function actualizarCategoria()
     {
         $sql = 'UPDATE categorias
                 SET categoria = ?
@@ -52,7 +52,7 @@ class categoriaQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function deleteRow()
+    public function eliminarCategoria()
     {
         $sql = 'DELETE FROM categorias
                 WHERE idcategoria = ?';
