@@ -6,7 +6,7 @@ require_once('../entities/dao/marcasQueries.php');
 */
 class marca extends marcaQueries
 {
-    //Declaracion de atributos(propiedades).
+    //Declaración de atributos(propiedades).
     protected $id = null;
     protected $marca = null;
 

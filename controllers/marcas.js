@@ -37,13 +37,13 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(USUARIO_API, action, FORM);
+    const JSON = await dataFetch(MARCA_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         registrosTabla();
         // Se cierra la caja de diálogo.
-        SAVE_MODAL.toogle();
+        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -125,8 +125,8 @@ async function actualizarRegistro(id) {
         // Se asigna título para la caja de diálogo.
         MODAL_TITLE.textContent = 'Actualizar marca';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_marca;
-        document.getElementById('marca').value = JSON.dataset.nombre_marca;
+        document.getElementById('id').value = JSON.dataset.idmarca;
+        document.getElementById('nombremarca').value = JSON.dataset.marca;
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -146,7 +146,7 @@ async function eliminarRegistro(id) {
         const FORM = new FormData();
         FORM.append('idmarca', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(MARCA_API, 'delete', FORM);
+        const JSON = await dataFetch(MARCA_API, 'eliminar', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

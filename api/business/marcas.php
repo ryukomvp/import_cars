@@ -1,4 +1,5 @@
 <?php
+// Se incluye la clase para la transferencia y acceso a datos.
 require_once('../entities/dto/marcas.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
@@ -38,7 +39,7 @@ if(isset($_GET['action'])){
                  break;
             case 'crear':
                 $_POST = Validator::validateForm($_POST);
-                if (!$marca->setMarca($_POST['marca'])){
+                if (!$marca->setMarca($_POST['nombremarca'])){
                     $result['exception'] = 'Nombre incorrecto'; 
                 } elseif ($marca->crearMarca()){
                     $result['status'] = 1;
@@ -64,7 +65,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Marca incorrecta';
                 } elseif (!$data = $marca->leerMarca()) {
                     $result['exception'] = 'Categoría inexistente';
-                } elseif (!$marca->setNombre($_POST['nombre'])) {
+                } elseif (!$marca->setMarca($_POST['nombremarca'])) {
                      $result['exception'] = 'Nombre incorrecto';
                 } elseif ($marca->actualizarMarca()) {
                     $result['status'] = 1;
@@ -75,7 +76,7 @@ if(isset($_GET['action'])){
                 break;
             case 'eliminar':
                 if (!$marca->setId($_POST['idmarca'])) {
-                    $result['exception'] = 'Marca incorrecta';
+                    $result['exception'] = 'Id incorrecto';
                 } elseif (!$data = $marca->leerMarca()) {
                     $result['exception'] = 'Marca inexistente';
                 } elseif ($marca->eliminarMarca()) {

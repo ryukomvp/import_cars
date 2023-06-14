@@ -1,5 +1,5 @@
 <?php
-require_once('../../helpers/database.php');
+require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad MODELO.
 */
@@ -9,17 +9,34 @@ class modeloQueries
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function searchRows($value)
+    public function buscarModelo($value)
     {
-        $sql = 'SELECT idmodelo, modelo, idmarca
-                FROM modelos
+        $sql = 'SELECT idmodelo, modelo, marca
+                FROM modelos INNER JOIN marcas USING(idmarca)
                 WHERE modelo ILIKE ?
-                ORDER BY modelo';
+                ORDER BY idmodelo';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
-    public function createRow()
+    public function leerModelos()
+    {
+        $sql = 'SELECT idmodelo, modelo, marca
+                FROM modelos INNER JOIN marcas USING(idmarca)
+                ORDER BY idmodelo';
+        return Database::getRows($sql);
+    }
+
+    public function leerModelo()
+    {
+        $sql = 'SELECT idmodelo, modelo, idmarca
+                FROM modelos
+                WHERE idmodelo = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+    
+    public function crearModelo()
     {
         $sql = 'INSERT INTO modelos(modelo, idmarca)
                 VALUES(?, ?)';
@@ -27,43 +44,26 @@ class modeloQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function readAll()
-    {
-        $sql = 'SELECT id_modelo, nombre_modelo, numero_de_modelo, id_marca
-                FROM modelos
-                ORDER BY nombre_modelo';
-        return Database::getRows($sql);
-    }
-
-    public function readOne()
-    {
-        $sql = 'SELECT id_modelo, nombre_modelo, numero_de_modelo, id_marca
-                FROM modelos
-                WHERE id_modelo = ?';
-        $params = array($this->id);
-        return Database::getRow($sql, $params);
-    }
-
-    public function updateRow()
+    public function actualizarModelo()
     {
         $sql = 'UPDATE modelos 
-                SET nombre_modelo = ?, numero_de_modelo = ?, id_marca = ?
-                WHERE id_modelo = ?';
-        $params = array($this->nombre, $this->numeromodelo, $this->marca, $this->id);
+                SET modelo = ?, idmarca = ?
+                WHERE idmodelo = ?';
+        $params = array($this->modelo, $this->marca, $this->id);
         return Database::executeRow($sql, $params);
     }
 
-    public function deleteRow()
+    public function eliminarModelo()
     {
         $sql = 'DELETE FROM modelos
-                WHERE id_modelo = ?';
+                WHERE idmodelo = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
 
-    public function cargarMarca(){
-        $sql = 'SELECT id_marca, nombre_marca
-        FROM marcas';
+    public function leerMarcas(){
+        $sql = 'SELECT idmarca, marca FROM marcas
+                ORDER BY marca';
         return Database::getRows($sql);
     }
 }

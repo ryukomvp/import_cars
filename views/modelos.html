@@ -32,8 +32,8 @@
                 <!--Buscador de modelos-->
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
-                        <form>
-                            <label for="default-search"
+                        <form method="post" id="search-form">
+                            <label for="search"
                                 class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -52,7 +52,7 @@
                         </form>
                     </div>
                     <div class="col-end-5">
-                        <button data-modal-target="modal_add_model" data-modal-toggle="modal_add_model"
+                        <button onclick="crearRegistro()"
                             class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
@@ -82,36 +82,37 @@
                             </button>
                         </div>
                         <!-- Cuerpo del modal -->
-                        <form class="p-4">
+                        <form class="p-4" method="post" id="save-form">
                             <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                 <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                    <!--ID-->
+                                    <input class="hidden" type="number" id="id" name="id">
                                     <!--Input nombre del modelo-->
                                     <div>
-                                        <label for="nombre"
+                                        <label for="modelo"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
                                             del modelo:</label>
-                                        <input type="text" id="nombre"
+                                        <input type="text" id="modelo" name="modelo"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Nombre modelo" required>
+                                            placeholder="Coloque el nombre del modelo" required>
                                     </div>
-                                    <!--Input marca del modelo-->
+                                    <!--Input de la marca asignada al modelo-->
                                     <div>
-                                        <label for="idmarca"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Marca del
-                                            modelo:</label>
-                                        <select id="idmarca" name="idmarca"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">  
+                                        <label for="marca"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Marca:</label>
+                                        <select id="marca" name="marca"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         </select>
                                     </div>
                                 </div>
                             </div>
+                            <!-- Pie del modal -->
+                            <div
+                                class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button id="accion" type="submit"
+                                    class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Añadir</button>
+                            </div>
                         </form>
-                        <!-- Pie del modal -->
-                        <div
-                            class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <button data-modal-hide="modal_add_model" type="button"
-                                class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Añadir</button>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -120,8 +121,7 @@
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <!--Encabezados de las columnas de la tabla modelos-->
-                    <thead
-                        class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
                             <th scope="col" class="px-6 py-3" id="records">
                                 ID
@@ -147,6 +147,8 @@
     <footer></footer>
     <!-- Importacion de archivos JavaScript -->
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="../resources/js/sweetalert.min.js"></script>
+    <script src="../controllers/components.js"></script>
     <script src="../controllers/account.js"></script>
     <script src="../controllers/modelos.js"></script>
 </body>

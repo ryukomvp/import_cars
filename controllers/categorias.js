@@ -8,7 +8,6 @@ const SAVE_FORM = document.getElementById('save-form');
 const MODAL_TITLE = document.getElementById('modal-title');
 // Constantes para establecer el contenido de la tabla.
 const TBODY_ROWS = document.getElementById('tbody-rows');
-const RECORDS = document.getElementById('records');
 
 // Constante para capturar el modal.
 const SAVE_MODAL = new Modal(document.getElementById('modal_add_category'));
@@ -16,7 +15,7 @@ const SAVE_MODAL = new Modal(document.getElementById('modal_add_category'));
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
-    fillTable();
+    registrosTabla();
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
@@ -26,7 +25,7 @@ SEARCH_FORM.addEventListener('submit', (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SEARCH_FORM);
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
-    fillTable(FORM);
+    registrosTabla(FORM);
 });
 
 // Método manejador de eventos para cuando se envía el formulario de guardar.
@@ -34,7 +33,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (document.getElementById('id').value) ? action = 'update' : action = 'create';
+    (document.getElementById('id').value) ? action = 'actualizar' : action = 'crear';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
@@ -42,9 +41,9 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
-        fillTable();
+        registrosTabla();
         // Se cierra la caja de diálogo.
-        SAVE_MODAL.hide();
+        SAVE_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -52,12 +51,16 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     }
 });
 
-async function fillTable(form = null) {
+/*
+*   Función asíncrona para llenar la tabla con los registros disponibles.
+*   Parámetros: form (objeto opcional con los datos de búsqueda).
+*   Retorno: ninguno.
+*/
+async function registrosTabla(form = null) {
     // Se inicializa el contenido de la tabla.
     TBODY_ROWS.innerHTML = '';
-    // RECORDS.textContent = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'search' : action = 'readAll';
+    (form) ? action = 'buscar' : action = 'leerCategorias';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(CATEGORIA_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -66,25 +69,23 @@ async function fillTable(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
-                <tr>
+                <tr class="text-center bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
                     <td>${row.idcategoria}</td>
                     <td>${row.categoria}</td>
                     <td>
-                        <button onclick="openUpdate(${row.idcategoria})" 
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
-                        <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                        <button onclick="actualizarRegistro(${row.idcategoria})" 
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                         </button>
-                        <button onclick="openDelete(${row.idcategoria})"  
-                        class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        type="button">
-                        <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                        <button onclick="eliminarRegistro(${row.idcategoria})"  
+                            class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button">
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
                         </button>
                     </td>
                 </tr>
             `;
         });
-        // Se muestra un mensaje de acuerdo con el resultado.
-        RECORDS.textContent = JSON.message;
     } else {
         sweetAlert(4, JSON.exception, true);
     }
@@ -95,11 +96,13 @@ async function fillTable(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function openCreate() {
+function crearRegistro() {
     // Se abre la caja de diálogo que contiene el formulario.
     SAVE_MODAL.show();
+    // Se restauran los elementos del formulario.
+    SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear categoría';
+    MODAL_TITLE.textContent = 'Crear categoria';
 }
 
 /*
@@ -107,12 +110,12 @@ function openCreate() {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function openUpdate(id) {
+async function actualizarRegistro(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
     FORM.append('idcategoria', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(CATEGORIA_API, 'readOne', FORM);
+    const JSON = await dataFetch(CATEGORIA_API, 'leerCategoria', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -120,7 +123,7 @@ async function openUpdate(id) {
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título para la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar categoría';
+        MODAL_TITLE.textContent = 'Actualizar categoria';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idcategoria;
         document.getElementById('categoria').value = JSON.dataset.categoria;
@@ -134,38 +137,24 @@ async function openUpdate(id) {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function openDelete(id) {
+async function eliminarRegistro(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la categoría de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar la categoria de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
         FORM.append('idcategoria', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(CATEGORIA_API, 'delete', FORM);
+        const JSON = await dataFetch(CATEGORIA_API, 'eliminar', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
-            fillTable();
+            registrosTabla();
             // Se muestra un mensaje de éxito.
             sweetAlert(1, JSON.message, true);
         } else {
             sweetAlert(2, JSON.exception, false);
         }
     }
-}
-
-/*
-*   Función para abrir el reporte de productos de una categoría.
-*   Parámetros: id (identificador del registro seleccionado).
-*   Retorno: ninguno.
-*/
-function openReport(id) {
-    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
-    const PATH = new URL(`${SERVER_URL}reports/dashboard/productos_categoria.php`);
-    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
-    PATH.searchParams.append('id_categoria', id);
-    // Se abre el reporte en una nueva pestaña del navegador web.
-    window.open(PATH.href);
 }
