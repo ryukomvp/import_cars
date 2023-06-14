@@ -3,5 +3,5 @@
 define('SERVER', 'localhost');
 define('DATABASE', 'importCars');
 define('USERNAME', 'postgres');
-define('PASSWORD', '123');
+define('PASSWORD', '1234');
 ?>

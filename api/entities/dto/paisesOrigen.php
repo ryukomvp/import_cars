@@ -1,10 +1,10 @@
 <?php
-require_once('../../helpers/validator.php');
-require_once('../../entities/dao/paisesOrigenQueries.php');
+require_once('../helpers/validator.php');
+require_once('../entities/dao/paisesOrigenQueries.php');
 
 class paisesOrigen extends paisesOrigenQueries
 {
-    public $idPais = null;
+    public $idpais = null;
     public $pais = null;
 
     //Metodos set para asignar valores a los atributos
@@ -12,7 +12,7 @@ class paisesOrigen extends paisesOrigenQueries
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idPais = $value;
+            $this->idpais = $value;
             return true;
         } else {
             return false;
@@ -33,7 +33,7 @@ class paisesOrigen extends paisesOrigenQueries
 
     public function getId()
     {
-        return $this->idPais;
+        return $this->idpais;
     }
 
     public function getPais()
