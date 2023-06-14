@@ -60,7 +60,7 @@ class usuarios extends usuariosQueries
 
     public function setTipo($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphabetic($value, 1, 50)) {
             $this->tipo = $value;
             return true;
         } else {
@@ -80,7 +80,7 @@ class usuarios extends usuariosQueries
 
     public function setEstado($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphabetic($value, 1, 50)) {
             $this->estado = $value;
             return true;
         } else {

@@ -1,12 +1,12 @@
 <?php
-require_once('../entities/dto/categorias.php');
+require_once('../entities/dto/sucursales.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
-if (isset($_GET['action'])) {
+if(isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $categoria = new categoria;
+    $sucursal = new sucursal;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -14,7 +14,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
-                if ($result['dataset'] = $categoria->readAll()) {
+                if ($result['dataset'] = $sucursal->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
@@ -27,7 +27,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $categoria->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $sucursal->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -38,49 +38,61 @@ if (isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if (!$categoria->setCategoria($_POST['categoria'])) {
+                if(!$sucursal->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
-                } elseif ($categoria->createRow()) {
+                } elseif(!$sucursal->setTelefono($_POST['telefono'])) {
+                    $result['exception'] = 'Numero de telefono incorrecto';
+                } elseif(!$sucursal->setCorreo($_POST['correo'])) {
+                    $result['exception'] = 'Correo incorrecto';
+                } elseif(!$sucursal->setDireccion($_POST['direccion'])) {
+                    $result['exception'] = 'Direccion incorrecta';
+                } elseif($sucursal->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Categoria creada correctamente';
+                    $result['message'] = 'Registro creado';
                 } else {
                     $result['exception'] = Database::getException();
-                }  
+                }
                 break;
             case 'readOne':
-                if (!$categoria->setId($_POST['idcategoria'])) {
-                    $result['exception'] = 'Categoría incorrecta';
-                } elseif ($result['dataset'] = $categoria->readOne()) {
+                if (!$sucursal->setId($_POST['idusuario'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif ($result['dataset'] = $sucursal->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Categoría inexistente';
+                    $result['exception'] = 'Sucursal inexistente';
                 }
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$categoria->setId($_POST['id'])) {
-                    $result['exception'] = 'Id incorrecto';
-                } elseif (!$data = $categoria->readOne()) {
-                    $result['exception'] = 'Categoría inexistente';
-                } elseif (!$categoria->setCategoria($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif ($categoria->updateRow()) {
+                if (!$sucursal->setId($_POST['id'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif (!$sucursal->readOne()) {
+                    $result['exception'] = 'Sucursal inexistente';
+                } elseif (!$sucursal->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombres incorrectos';
+                } elseif (!$sucursal->setTelefono($_POST['telefono'])) {
+                    $result['exception'] = 'Telefono incorrecto';
+                } elseif (!$sucursal->setCorreo($_POST['correo'])) {
+                    $result['exception'] = 'Correo incorrecto';
+                } elseif (!$sucursal->setDireccion($_POST['direccion'])) {
+                    $result['exception'] = 'Direccion incorrecta';
+                } elseif ($sucursal->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Categoria modificada correctamente';
+                    $result['message'] = 'Sucursal modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$categoria->setId($_POST['idcategoria'])) {
-                    $result['exception'] = 'Categoría incorrecta';
-                } elseif (!$data = $categoria->readOne()) {
-                    $result['exception'] = 'Categoría inexistente';
-                } elseif ($categoria->deleteRow()) {
+                if (!$sucursal->setId($_POST['idsucursal'])) {
+                    $result['exception'] = 'Sucursal incorrecta';
+                } elseif (!$data = $sucursal->readOne()) {
+                    $result['exception'] = 'Sucursal inexistente';
+                } elseif ($sucursal->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Categoria eliminada correctamente';
+                    $result['message'] = 'Sucursal eliminada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

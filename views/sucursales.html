@@ -19,225 +19,7 @@
 
 <body>
     <!-- encabezado del sistio -->
-    <header class="sticky top-0 z-10">
-        <nav class="sticky top-0 z-10 bg-azul">
-            <!-- nombre del sistema -->
-            <div class="logo">
-                <i class="bx bx-menu menu-icon text-white"></i>
-                <span class="logo-name text-white">Import Cars</span>
-            </div>
-            <!-- nombre del sistema -->
-            <div class="sidebar bg-white">
-                <div class="logo">
-                    <i class="bx bx-menu menu-icon text-black"></i>
-                    <span class="logo-name text-black">IMPORT CARS</span>
-                </div>
-                <div class="sidebar-content">
-                    <hr>
-                    <ul class="lists">
-                        <!-- boton para dashboard -->
-                        <li class="list">
-                            <a href="dashboard.html" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
-                                <i class="bx bx-home-alt icon"></i>
-                                <span class="link">Dashboard</span>
-                            </a>
-                        </li>
-                        <!-- boton para dorpdown de productos -->
-                        <li class="list">
-                            <a href="#" id="dropdownHoverButton" data-dropdown-toggle="productos-detalles"
-                                class="nav-link text-gray-600 hover:bg-azul hover:text-white">
-                                <button
-                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button">
-                                    <i class='bx bx-chevron-down icon'></i>
-                                    <span class="link">Productos
-                                    </span></button>
-                            </a>
-                            <!-- Dropdown menu -->
-                            <div id="productos-detalles"
-                                class="z-10 hidden bg-white border border-black divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownHoverButton">
-                                    <!-- boton para productos -->
-                                    <li>
-                                        <a href="productos.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Productos</a>
-                                    </li>
-                                    <!-- boton para bodega -->
-                                    <li>
-                                        <a href="bodegas.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Bodega</a>
-                                    </li>
-                                    <!-- boton para entradas -->
-                                    <li>
-                                        <a href="entradas.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Entradas</a>
-                                    </li>
-                                    <!-- boton para proveedores -->
-                                    <li>
-                                        <a href="proveedores.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Proveedores<a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- boton para dropdown de detalles de productos -->
-                        <li class="list">
-                            <a href="#" id="dropdownHoverButton" data-dropdown-toggle="productos"
-                                class="nav-link text-gray-600 hover:bg-azul hover:text-white">
-                                <button
-                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button">
-                                    <i class='bx bx-chevron-down icon'></i>
-                                    <span class="link">Detalles de productos
-                                    </span></button>
-                            </a>
-                            <!-- Dropdown menu -->
-                            <div id="productos"
-                                class="z-10 hidden bg-white border border-black divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownHoverButton">
-                                    <!-- boton para categorias -->
-                                    <li>
-                                        <a href="categorias.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Categorias</a>
-                                    </li>
-                                    <!-- boton para familias -->
-                                    <li>
-                                        <a href="familias.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Familias</a>
-                                    </li>
-                                    <!-- boton para marcas -->
-                                    <li>
-                                        <a href="marcas.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Marcas</a>
-                                    </li>
-                                    <!-- boton para modelos -->
-                                    <li>
-                                        <a href="modelos.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Modelos</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- boton para dropdown de facturacion -->
-                        <li class="list">
-                            <a href="#" id="dropdownHoverButton" data-dropdown-toggle="facturacion"
-                                class="nav-link text-gray-600 hover:bg-azul hover:text-white">
-                                <button
-                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button">
-                                    <i class='bx bx-chevron-down icon'></i>
-                                    <span class="link">Facturación
-                                    </span></button>
-                            </a>
-                            <!-- Dropdown menu -->
-                            <div id="facturacion"
-                                class="z-10 hidden bg-white border border-black divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownHoverButton">
-                                    <!-- boton para facturas -->
-                                    <li>
-                                        <a href="facturas.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Facturas</a>
-                                    </li>
-                                    <!-- boton para detalles de facturas -->
-                                    <li>
-                                        <a href="detallesfacturas.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Detalles
-                                            de facturas</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- boton para dropdown de entidades -->
-                        <li class="list">
-                            <a href="#" id="dropdownHoverButton" data-dropdown-toggle="entidades"
-                                class="nav-link text-gray-600 hover:bg-azul hover:text-white">
-                                <button
-                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button">
-                                    <i class='bx bx-chevron-down icon'></i>
-                                    <span class="link">Entidades
-                                    </span></button>
-                            </a>
-                            <!-- Dropdown menu -->
-                            <div id="entidades"
-                                class="z-10 hidden bg-white border border-black divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                                <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                    aria-labelledby="dropdownHoverButton">
-                                    <!-- boton para empleados -->
-                                    <li>
-                                        <a href="empleados.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Empleados</a>
-                                    </li>
-                                    <!-- boton para usuarios -->
-                                    <li>
-                                        <a href="usuarios.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Usuarios</a>
-                                    </li>
-                                    <!-- boton para surcusales -->
-                                    <li>
-                                        <a href="sucursales.html"
-                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Sucursales</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <!-- boton para consulta -->
-                        <li class="list">
-                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
-                                <i class='bx bx-bar-chart-alt icon'></i>
-                                <span class="link">Procesos</span>
-                            </a>
-                        </li>
-                        <!-- boton para reportes -->
-                        <li class="list">
-                            <a href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
-                                <i class='bx bxs-report icon'></i>
-                                <span class="link">Reportes</span>
-                            </a>
-                        </li>
-                    </ul>
-                    <hr>
-                    <div class="bottom-cotent">
-                        <li class="list">
-                            <a href="#" class="nav-link">
-                                <i class="bx bx-cog icon"></i>
-                                <span class="link">Configuracion</span>
-                            </a>
-                        </li>
-                        <li class="list">
-                            <a href="index.html" class="nav-link">
-                                <i class="bx bx-log-out icon"></i>
-                                <span class="link">Cerrar sesion</span>
-                            </a>
-                        </li>
-                    </div>
-                </div>
-            </div>
-            <div class="absolute inset-y-0 right-0 p-3">
-                <button id="usuario-config" data-dropdown-toggle="dropdown-user"><img
-                        class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300" src="../resources/img/perfil.jpg"
-                        alt=""></button>
-            </div>
-            <div id="dropdown-user"
-                class="z-10 hidden bg-white text-black rounded-lg shadow w-44 ml:5 border border-black">
-                <div class="px-4 py-3 text-sm text-center">
-                    <div>Ryuko</div>
-                </div>
-                <hr>
-                <ul class="py-1">
-                    <li>
-                        <a href="usuario.html" class="block px-4 py-2 hover:bg-azul hover:text-white">Mi perfil</a>
-                    </li>
-                    <li>
-                        <a href="usuario.html" class="block px-4 py-2 hover:bg-azul hover:text-white">Configuración</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </header>
+    <header class="sticky top-0 z-10"></header>
     <!-- contenido del sitio -->
     <main>
         <div class="py-4">
@@ -248,7 +30,7 @@
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
-                        <form>
+                        <form method="post" id="search-form">
                             <label for="default-search"
                                 class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
                             <div class="relative">
@@ -268,7 +50,7 @@
                         </form>
                     </div>
                     <div class="col-end-5">
-                        <button data-modal-target="modal_add_branch-office" data-modal-toggle="modal_add_branch-office"
+                        <button onclick="openCreate()"
                             class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
@@ -276,100 +58,99 @@
                     </div>
                 </div>
             </div>
-            <div id="modal_add_branch-office" tabindex="-1"
-                class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-                <div class="relative w-full h-full max-w-4xl">
-                    <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal header -->
-                        <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
-                            <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                Añadir nueva sucursal
-                            </h3>
-                            <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                data-modal-hide="modal_add_branch-office">
-                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="sr-only">Cerrar ventana</span>
-                            </button>
-                        </div>
-                        <!-- Modal body -->
-                        <form class="p-4">
-                            <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                <!--ID-->
-                                <div>
-                                    <label for="id"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
-                                    <input type="text" id="id"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="ID" disabled>
-                                </div>
-                                <!--Input nombre de la familia-->
-                                <div>
-                                    <label for="nombre"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de la
-                                        sucursal:</label>
-                                    <input type="text" id="nombre"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Nombre" required>
-                                </div>
-                                <div>
-                                    <label for="telefono"
-                                        class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero de
-                                        telefono</label>
-                                    <input type="tel" id="telefono"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="1232-1231" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
-                                </div>
-                                <div>
-                                    <label for="email"
-                                        class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
-                                        electronico</label>
-                                    <input type="email" id="email"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="john.doe@company.com" required>
-                                </div>
-                                <div>
-                                    <label for="direccion"
-                                        class="block mb-2 text-sm font-medium text-azul dark:text-white">Direccion</label>
-                                    <textarea id="message" rows="4"
-                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Direccion"></textarea>
-                                </div>
-                                <!--Input familia-->
-                                <div>
-                                    <label for="idbodega"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega:</label>
-                                    <select id="idfamilia"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        <option selected>Escoge una bodega</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                    </select>
-                                </div>
+
+            <!--Acciones y contenido del modal-->
+
+            <!--Componente modal para guardar un registro-->
+            <div id="save-modal">
+                <div id="modal_add_branch-office" tabindex="-1"
+                    class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+                    <div class="relative w-full h-full max-w-4xl">
+                        <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            <!-- Modal header -->
+                            <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                                <!--Título del componente modal-->
+                                <h3 class="text-xl font-bold text-oscuro dark:text-white" id="modal-title"></h3>
+                                <button type="button"
+                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                    data-modal-hide="modal_add_branch-office">
+                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="sr-only">Cerrar ventana</span>
+                                </button>
                             </div>
-                        </form>
-                        <!-- Modal footer -->
-                        <div
-                            class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <button data-modal-hide="modal_add_branch-office" type="button"
-                                class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Añadir</button>
+                            <!-- Modal body -->
+                            <!-- Formulario para crear o actualizar un registro -->
+                            <form class="p-4" method="post" id="save-form">
+                                <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                    <!--ID-->
+                                    <div>
+                                        <label for="id"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
+                                        <input type="text" id="id"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="ID" disabled>
+                                            <!--ID-->
+                                    <input class="hidden" type="number" id="id" name="id">
+                                    </div>
+                                    <!--Input nombre de la familia-->
+                                    <div>
+                                        <label for="nombre"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de
+                                            la
+                                            sucursal:</label>
+                                        <input type="text" id="nombre"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Nombre" name="nombre" required>
+                                    </div>
+                                    <div>
+                                        <label for="telefono"
+                                            class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero de
+                                            telefono</label>
+                                        <input type="number" id="telefono"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            name="telefono">
+                                    </div>
+                                    <div>
+                                        <label for="email"
+                                            class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
+                                            electronico</label>
+                                        <input type="email" id="correo"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="john.doe@company.com" name="correo" required>
+                                    </div>
+                                    <div>
+                                        <label for="direccion"
+                                            class="block mb-2 text-sm font-medium text-azul dark:text-white">Direccion</label>
+                                        <textarea id="direccion" rows="4"
+                                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Direccion" name="direccion" required></textarea>
+                                    </div>
+                                </div>
+                                <!-- Modal footer -->
+                                <div
+                                    class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                    <button data-modal-hide="modal_add_branch-office" type="submit"
+                                        class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" data-tooltip="Guardar">Añadir</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                </div>
-            </div><!--Final del modal-->
+                </div><!--Final del modal-->
+            </div>
+
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <!--Tabla para mostrar los registros que existen-->
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
-                            <th scope="col" class="px-6 py-3">
-                                ID
+                            <th scope="col" class="px-6 py-3" id="records">
+
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Nombre
@@ -378,544 +159,31 @@
                                 Telefono
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Bodega
+                                correo
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                direccion
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Controles
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4">
-                                1
-                            </td>
-                            <td class="px-6 py-4">
-                                Import cars
-                            </td>
-                            <td class="px-6 py-4">
-                                7743-7912
-                            </td>
-                            <td class="px-6 py-4">
-                                1
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="grid gap-2 m-0">
-                                    <div>
-                                        <button data-modal-target="modal_update_branch-office1"
-                                            data-modal-toggle="modal_update_branch-office1"
-                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                            type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
-                                        </button>
-                                    </div>
-                                    <div id="modal_update_branch-office1" tabindex="-1"
-                                        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-                                        <div class="relative w-full h-full max-w-4xl">
-                                            <!-- Modal content -->
-                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                <!-- Modal header -->
-                                                <div
-                                                    class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
-                                                    <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar sucursal
-                                                    </h3>
-                                                    <button type="button"
-                                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                                        data-modal-hide="modal_update_branch-office1">
-                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
-                                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd"
-                                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                                clip-rule="evenodd"></path>
-                                                        </svg>
-                                                        <span class="sr-only">Cerrar ventana</span>
-                                                    </button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <form class="p-4">
-                                                    <div
-                                                        class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                                        <!--ID-->
-                                                        <div>
-                                                            <label for="id"
-                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
-                                                            <input type="text" id="id"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="ID" disabled>
-                                                        </div>
-                                                        <!--Input nombre de la familia-->
-                                                        <div>
-                                                            <label for="nombre"
-                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                                                de la
-                                                                sucursal:</label>
-                                                            <input type="text" id="nombre"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="Nombre" required>
-                                                        </div>
-                                                        <div>
-                                                            <label for="telefono"
-                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero
-                                                                de
-                                                                telefono</label>
-                                                            <input type="tel" id="telefono"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="1232-1231"
-                                                                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
-                                                        </div>
-                                                        <div>
-                                                            <label for="email"
-                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
-                                                                electronico</label>
-                                                            <input type="email" id="email"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="john.doe@company.com" required>
-                                                        </div>
-                                                        <div>
-                                                            <label for="direccion"
-                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Direccion</label>
-                                                            <textarea id="message" rows="4"
-                                                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="Direccion"></textarea>
-                                                        </div>
-                                                        <!--Input familia-->
-                                                        <div>
-                                                            <label for="idbodega"
-                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega:</label>
-                                                            <select id="idfamilia"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                <option selected>Escoge una bodega</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                                <!-- Modal footer -->
-                                                <div
-                                                    class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                    <button data-modal-hide="modal_update_branch-office1" type="button"
-                                                        class="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Actualizar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!--Final del modal-->
-                                    <!--Modal de eliminar-->
-                                    <div>
-                                        <button data-modal-target="delete-modal1" data-modal-toggle="delete-modal1"
-                                            class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                            type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
-                                        </button>
-                                    </div>
-                                    <div id="delete-modal1" tabindex="-1"
-                                        class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-                                        <div class="relative w-full h-full max-w-md md:h-auto">
-                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                <button type="button"
-                                                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                    data-modal-hide="delete-modal1">
-                                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
-                                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span class="sr-only">Cerrar</span>
-                                                </button>
-                                                <div class="p-6 text-center">
-                                                    <svg aria-hidden="true"
-                                                        class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
-                                                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                                        </path>
-                                                    </svg>
-                                                    <h3
-                                                        class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                                        ¿Estas seguro que deseas eliminarlo?</h3>
-                                                    <button data-modal-hide="delete-modal1" type="button"
-                                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                                                        Confirmar
-                                                    </button>
-                                                    <button data-modal-hide="delete-modal1" type="button"
-                                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancelar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4">
-                                2
-                            </td>
-                            <td class="px-6 py-4">
-                                Import cars
-                            </td>
-                            <td class="px-6 py-4">
-                                7934-9873
-                            </td>
-                            <td class="px-6 py-4">
-                                2
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="grid gap-2 m-0">
-                                    <div>
-                                        <button data-modal-target="modal_update_branch-office2"
-                                            data-modal-toggle="modal_update_branch-office2"
-                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                            type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
-                                        </button>
-                                    </div>
-                                    <div id="modal_update_branch-office2" tabindex="-1"
-                                        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-                                        <div class="relative w-full h-full max-w-4xl">
-                                            <!-- Modal content -->
-                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                <!-- Modal header -->
-                                                <div
-                                                    class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
-                                                    <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar sucursal
-                                                    </h3>
-                                                    <button type="button"
-                                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                                        data-modal-hide="modal_update_branch-office2">
-                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
-                                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd"
-                                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                                clip-rule="evenodd"></path>
-                                                        </svg>
-                                                        <span class="sr-only">Cerrar ventana</span>
-                                                    </button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <form class="p-4">
-                                                    <div
-                                                        class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                                        <!--ID-->
-                                                        <div>
-                                                            <label for="id"
-                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
-                                                            <input type="text" id="id"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="ID" disabled>
-                                                        </div>
-                                                        <!--Input nombre de la familia-->
-                                                        <div>
-                                                            <label for="nombre"
-                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                                                de la
-                                                                sucursal:</label>
-                                                            <input type="text" id="nombre"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="Nombre" required>
-                                                        </div>
-                                                        <div>
-                                                            <label for="telefono"
-                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero
-                                                                de
-                                                                telefono</label>
-                                                            <input type="tel" id="telefono"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="1232-1231"
-                                                                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
-                                                        </div>
-                                                        <div>
-                                                            <label for="email"
-                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
-                                                                electronico</label>
-                                                            <input type="email" id="email"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="john.doe@company.com" required>
-                                                        </div>
-                                                        <div>
-                                                            <label for="direccion"
-                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Direccion</label>
-                                                            <textarea id="message" rows="4"
-                                                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="Direccion"></textarea>
-                                                        </div>
-                                                        <!--Input familia-->
-                                                        <div>
-                                                            <label for="idbodega"
-                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega:</label>
-                                                            <select id="idfamilia"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                <option selected>Escoge una bodega</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                                <!-- Modal footer -->
-                                                <div
-                                                    class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                    <button data-modal-hide="modal_update_branch-office2" type="button"
-                                                        class="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Actualizar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!--Final del modal-->
-                                    <!--Modal de eliminar-->
-                                    <div>
-                                        <button data-modal-target="delete-modal2" data-modal-toggle="delete-modal2"
-                                            class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                            type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
-                                        </button>
-                                    </div>
-                                    <div id="delete-modal2" tabindex="-1"
-                                        class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-                                        <div class="relative w-full h-full max-w-md md:h-auto">
-                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                <button type="button"
-                                                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                    data-modal-hide="delete-modal2">
-                                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
-                                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span class="sr-only">Cerrar</span>
-                                                </button>
-                                                <div class="p-6 text-center">
-                                                    <svg aria-hidden="true"
-                                                        class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
-                                                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                                        </path>
-                                                    </svg>
-                                                    <h3
-                                                        class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                                        ¿Estas seguro que deseas eliminarlo?</h3>
-                                                    <button data-modal-hide="delete-modal2" type="button"
-                                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                                                        Confirmar
-                                                    </button>
-                                                    <button data-modal-hide="delete-modal2" type="button"
-                                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancelar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="bg-white dark:bg-gray-800 hover:bg-blue-200 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4">
-                                3
-                            </td>
-                            <td class="px-6 py-4">
-                                Import cars
-                            </td>
-                            <td class="px-6 py-4">
-                                7098-6543
-                            </td>
-                            <td class="px-6 py-4">
-                                3
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="grid gap-2 m-0">
-                                    <div>
-                                        <button data-modal-target="modal_update_branch-office3"
-                                            data-modal-toggle="modal_update_branch-office3"
-                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                            type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
-                                        </button>
-                                    </div>
-                                    <div id="modal_update_branch-office3" tabindex="-1"
-                                        class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-                                        <div class="relative w-full h-full max-w-4xl">
-                                            <!-- Modal content -->
-                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                <!-- Modal header -->
-                                                <div
-                                                    class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
-                                                    <h3 class="text-xl font-bold text-oscuro dark:text-white">
-                                                        Actualizar sucursal
-                                                    </h3>
-                                                    <button type="button"
-                                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                                        data-modal-hide="modal_update_branch-office3">
-                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
-                                                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd"
-                                                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                                clip-rule="evenodd"></path>
-                                                        </svg>
-                                                        <span class="sr-only">Cerrar ventana</span>
-                                                    </button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <form class="p-4">
-                                                    <div
-                                                        class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                                        <!--ID-->
-                                                        <div>
-                                                            <label for="id"
-                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
-                                                            <input type="text" id="id"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="ID" disabled>
-                                                        </div>
-                                                        <!--Input nombre de la familia-->
-                                                        <div>
-                                                            <label for="nombre"
-                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                                                de la
-                                                                sucursal:</label>
-                                                            <input type="text" id="nombre"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="Nombre" required>
-                                                        </div>
-                                                        <div>
-                                                            <label for="telefono"
-                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero
-                                                                de
-                                                                telefono</label>
-                                                            <input type="tel" id="telefono"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="1232-1231"
-                                                                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
-                                                        </div>
-                                                        <div>
-                                                            <label for="email"
-                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
-                                                                electronico</label>
-                                                            <input type="email" id="email"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="john.doe@company.com" required>
-                                                        </div>
-                                                        <div>
-                                                            <label for="direccion"
-                                                                class="block mb-2 text-sm font-medium text-azul dark:text-white">Direccion</label>
-                                                            <textarea id="message" rows="4"
-                                                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                                placeholder="Direccion"></textarea>
-                                                        </div>
-                                                        <!--Input familia-->
-                                                        <div>
-                                                            <label for="idbodega"
-                                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega:</label>
-                                                            <select id="idfamilia"
-                                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                <option selected>Escoge una bodega</option>
-                                                                <option>1</option>
-                                                                <option>2</option>
-                                                                <option>3</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                                <!-- Modal footer -->
-                                                <div
-                                                    class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                                    <button data-modal-hide="modal_update_branch-office3" type="button"
-                                                        class="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Actualizar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div><!--Final del modal-->
-                                    <!--Modal de eliminar-->
-                                    <div>
-                                        <button data-modal-target="delete-modal3" data-modal-toggle="delete-modal3"
-                                            class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                            type="button">
-                                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
-                                        </button>
-                                    </div>
-                                    <div id="delete-modal3" tabindex="-1"
-                                        class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-                                        <div class="relative w-full h-full max-w-md md:h-auto">
-                                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                                <button type="button"
-                                                    class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
-                                                    data-modal-hide="delete-modal3">
-                                                    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor"
-                                                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd"
-                                                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                                            clip-rule="evenodd"></path>
-                                                    </svg>
-                                                    <span class="sr-only">Cerrar</span>
-                                                </button>
-                                                <div class="p-6 text-center">
-                                                    <svg aria-hidden="true"
-                                                        class="mx-auto mb-4 text-gray-400 w-14 h-14 dark:text-gray-200"
-                                                        fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                                        xmlns="http://www.w3.org/2000/svg">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                                                        </path>
-                                                    </svg>
-                                                    <h3
-                                                        class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                                        ¿Estas seguro que deseas eliminarlo?</h3>
-                                                    <button data-modal-hide="delete-modal3" type="button"
-                                                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
-                                                        Confirmar
-                                                    </button>
-                                                    <button data-modal-hide="delete-modal3" type="button"
-                                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Cancelar</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <!--Cuerpo de la tabla para mostrar los registros-->
+                    <tbody id="tbody-rows"></tbody>
                 </table>
             </div>
         </div>
     </main>
     <!-- pie del sitio -->
-    <footer
-        class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
-        <!-- nombre del sistema -->
-        <span class="text-white text-2xl">Import Cars</span>
-        <!-- lista de enlaces -->
-        <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-400 sm:mt-0">
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6 "
-                    target="_blank">About</a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
-                    target="_blank">Privacy Policy</a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
-                    target="_blank">Licensing</a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="hover:underline" target="_blank">Contact</a>
-            </li>
-        </ul>
-    </footer>
+    <footer></footer>
 
     <!-- Importacion de archivos JavaScript -->
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
-    <script src="../resources/JS/menu.js"></script>
+    <script type="text/javascript" src="../resources/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../controllers/components.js"></script>
+    <script type="text/javascript" src="../controllers/account.js"></script>
+    <script type="text/javascript" src="../controllers/sucursales.js"></script>
 </body>
 
 </html>
