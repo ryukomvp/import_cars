@@ -78,16 +78,9 @@ class ProductosQueries
         return Database::getRows($sql, $params);
     }
 
-    /*
-    *   Métodos para generar reportes.
-    */
-    // public function productoCategoria()
-    // {
-    //     $sql = 'SELECT nombre_producto, precio_producto, estado_producto
-    //             FROM producto INNER JOIN categorias USING(id_categoria)
-    //             WHERE id_categoria = ?
-    //             ORDER BY nombre_producto';
-    //     $params = array($this->categoria);
-    //     return Database::getRows($sql, $params);
-    // }
+    public function leerEstado()
+    {
+        $sql = 'SELECT unnest(enum_range(NULL::estadoproducto)) val, unnest(enum_range(NULL::estadoproducto)) text';
+        return Database::getRows($sql);
+    }
 }
