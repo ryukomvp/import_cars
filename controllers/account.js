@@ -1,4 +1,5 @@
-// Archivo para crear la plantilla del sitio privado
+// Constante para completar la ruta de la API.
+const USUARIO_API = 'business/usuarios.php';
 
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
 const HEADER = document.querySelector('header');
@@ -196,7 +197,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </a>
                         </li>
                         <li class="list">
-                            <a href="index.html" class="nav-link">
+                            <a onclick="cerrarSesion()" href="index.html" class="nav-link">
                                 <i class="bx bx-log-out icon"></i>
                                 <span class="link">Cerrar sesion</span>
                             </a>

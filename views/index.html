@@ -30,18 +30,18 @@
                         class="text-center text-white text-xl font-bold leading-tight tracking-tight md:text-2xl dark:text-white">
                         Iniciar sesión en el sistema
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="#">
+                    <form method="post" id="login-form" class="space-y-4 md:space-y-6" action="#">
                         <!-- textbox para ingresar usuario -->
                         <div>
-                            <label for="user" class="block mb-2 text-sm font-medium text-white">Usuario</label>
-                            <input type="text" name="user" id="user"
+                            <label for="usuario" class="block mb-2 text-sm font-medium text-white">Usuario</label>
+                            <input type="text" name="usuario" id="usuario"
                                 class="bg-white border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5"
                                 placeholder="Ingrese su usuario" required="" autocomplete="no">
                         </div>
                         <!-- textbox para ingresar contraseña -->
                         <div>
-                            <label for="password" class="block mb-2 text-sm font-medium text-white">Contraseña</label>
-                            <input type="password" name="password" id="password"
+                            <label for="clave" class="block mb-2 text-sm font-medium text-white">Contraseña</label>
+                            <input type="password" name="clave" id="clave"
                                 class="bg-white border border-gray-300 text-black sm:text-sm rounded-lg focus:ring-black focus:border-black block w-full p-2.5"
                                 placeholder="Ingrese su contraseña" required="">
                         </div>
@@ -62,8 +62,8 @@
                                 contraseña?</a>
                         </div>
                         <!-- boton para ingersar -->
-                        <a href="dashboard.html" type="submit"
-                            class="w-full text-white bg-azul hover:bg-oscuro focus:ring-4 focus:outline-none focus:ring-azul font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Ingresar</a>
+                        <button type="submit"
+                            class="w-full text-white bg-azul hover:bg-oscuro focus:ring-4 focus:outline-none focus:ring-azul font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Ingresar</button>
                     </form>
                 </div>
             </div>
@@ -168,7 +168,11 @@
     </main>
 
     <!-- importación del archivo js de la libreria flowbite -->
-    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script type="text/javascript" src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script type="text/javascript" src="../resources/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../controllers/components.js"></script>
+    <script type="text/javascript" src="../controllers/account.js"></script>
+    <script type="text/javascript" src="../controllers/index.js"></script>
 </body>
 
 </html>
