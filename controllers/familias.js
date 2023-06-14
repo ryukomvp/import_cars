@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const SUCURSAL_API = 'business/sucursales.php';
+const FAMILIA_API = 'business/familias.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -12,7 +12,7 @@ const RECORDS = document.getElementById('records');
 
 // Se inicializa el componente Modal para que funcionen las cajas de diálogo.
 // Constante para establecer la modal de guardar.
-const SAVE_MODAL = new Modal(document.getElementById('modal_add_branch-office'));
+const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -39,7 +39,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(SUCURSAL_API, action, FORM);
+    const JSON = await dataFetch(FAMILIA_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -65,7 +65,7 @@ async function fillTable(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(SUCURSAL_API, action, form);
+    const JSON = await dataFetch(FAMILIA_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -74,19 +74,10 @@ async function fillTable(form = null) {
             TBODY_ROWS.innerHTML += `
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
                     <td class="px-6 py-4">
-                        ${row.idsucursal}
+                        ${row.idfamilia}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.nombre}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${row.telefono}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${row.correo}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${row.direccion}
+                        ${row.familia}
                     </td>
                     <td class="px-6 py-4">
                         <!--contenedor de los controles de actualizar y eliminar-->
@@ -131,7 +122,7 @@ function openCreate() {
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear sucursal';
+    MODAL_TITLE.textContent = 'Crear Familia';
 }
 
 /*
@@ -142,9 +133,9 @@ function openCreate() {
 async function openUpdate(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idsucursal', id);
+    FORM.append('idfamilia', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(SUCURSAL_API, 'readOne', FORM);
+    const JSON = await dataFetch(FAMILIA_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -152,13 +143,10 @@ async function openUpdate(id) {
         // Se restauran los elementos del formulario.
         SAVE_FORM.reset();
         // Se asigna título para la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar sucursal';
+        MODAL_TITLE.textContent = 'Actualizar Familia';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idsucursal;
-        document.getElementById('nombre').value = JSON.dataset.nombre;
-        document.getElementById('telefono').value = JSON.dataset.telefono;
-        document.getElementById('correo').value = JSON.dataset.correo;
-        document.getElementById('direccion').value = JSON.dataset.direccion;
+        document.getElementById('id').value = JSON.dataset.idfamilia;
+        document.getElementById('familia').value = JSON.dataset.familia;
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -171,14 +159,14 @@ async function openUpdate(id) {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la sucursal de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar la familia de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idsucursal', id);
+        FORM.append('idfamilia', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(SUCURSAL_API, 'delete', FORM);
+        const JSON = await dataFetch(FAMILIA_API, 'delete', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

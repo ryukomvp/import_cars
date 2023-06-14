@@ -41,9 +41,9 @@
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                     </svg>
                                 </div>
-                                <input type="search" id="default-search"
+                                <input type="search" id="search" name="search"
                                     class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Buscar..." required>
+                                    placeholder="Buscar registro por nombre o dirección de la sucursal" required>
                                 <button type="submit"
                                     class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                             </div>
@@ -90,9 +90,9 @@
                                 <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                     <!--ID-->
                                     <div>
-                                        <label for="id"
+                                        <label
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
-                                        <input type="text" id="id"
+                                        <input type="text"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="ID" disabled>
                                             <!--ID-->
@@ -109,12 +109,11 @@
                                             placeholder="Nombre" name="nombre" required>
                                     </div>
                                     <div>
-                                        <label for="telefono"
-                                            class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero de
-                                            telefono</label>
-                                        <input type="number" id="telefono"
+                                        <label for="Telefono"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Ingrese su Telefono:</label>
+                                        <input type="text" id="telefono"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            name="telefono">
+                                            placeholder="telefono" name="telefono" required>
                                     </div>
                                     <div>
                                         <label for="email"
@@ -150,7 +149,7 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
                             <th scope="col" class="px-6 py-3" id="records">
-
+                                
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Nombre

@@ -1,12 +1,11 @@
 <?php
-require_once('../entities/dto/sucursales.php');
-
+require_once('../entities/dto/familias.php');
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if(isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $sucursal = new sucursal;
+    $familia = new familias;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -14,7 +13,7 @@ if(isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
-                if ($result['dataset'] = $sucursal->readAll()) {
+                if ($result['dataset'] = $familia->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
@@ -27,7 +26,7 @@ if(isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $sucursal->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $familia->searchRows($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -38,15 +37,9 @@ if(isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if(!$sucursal->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif(!$sucursal->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Numero de telefono incorrecto';
-                } elseif(!$sucursal->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif(!$sucursal->setDireccion($_POST['direccion'])) {
-                    $result['exception'] = 'Direccion incorrecta';
-                } elseif($sucursal->createRow()) {
+                if(!$familia->setFamilia($_POST['familia'])) {
+                    $result['exception'] = 'Familia incorrecta';
+                } elseif($familia->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Registro creado';
                 } else {
@@ -54,45 +47,39 @@ if(isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$sucursal->setId($_POST['idsucursal'])) {
-                    $result['exception'] = 'sucursal incorrecta';
-                } elseif ($result['dataset'] = $sucursal->readOne()) {
+                if (!$familia->setId($_POST['idfamilia'])) {
+                    $result['exception'] = 'Familia incorrecta';
+                } elseif ($result['dataset'] = $familia->readOne()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Sucursal inexistente';
+                    $result['exception'] = 'Familia inexistente';
                 }
                 break;
             case 'update':
                 $_POST = Validator::validateForm($_POST);
-                if (!$sucursal->setId($_POST['id'])) {
-                    $result['exception'] = 'sucursal incorrecta';
-                } elseif (!$sucursal->readOne()) {
-                    $result['exception'] = 'Sucursal inexistente';
-                } elseif (!$sucursal->setNombre($_POST['nombre'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$sucursal->setTelefono($_POST['telefono'])) {
-                    $result['exception'] = 'Telefono incorrecto';
-                } elseif (!$sucursal->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$sucursal->setDireccion($_POST['direccion'])) {
-                    $result['exception'] = 'Direccion incorrecta';
-                } elseif ($sucursal->updateRow()) {
+                if (!$familia->setId($_POST['id'])) {
+                    $result['exception'] = 'Familia incorrecta';
+                } elseif (!$familia->readOne()) {
+                    $result['exception'] = 'Familia inexistente';
+                } elseif (!$familia->setFamilia($_POST['familia'])) {
+                    $result['exception'] = 'Familia incorrecta';
+                } elseif ($familia->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Sucursal modificada correctamente';
+                    $result['message'] = 'Familia modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'delete':
-                if (!$sucursal->setId($_POST['idsucursal'])) {
-                    $result['exception'] = 'Sucursal incorrecta';
-                } elseif (!$data = $sucursal->readOne()) {
+                if (!$familia->setId($_POST['idfamilia'])) {
+                    $result['exception'] = 'Familia incorrecta';
+                } elseif (!$data = $familia->readOne()) {
                     $result['exception'] = 'Sucursal inexistente';
-                } elseif ($sucursal->deleteRow()) {
+                } elseif ($familia->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Sucursal eliminada correctamente';
+                    $result['message'] = 'Familia eliminada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
