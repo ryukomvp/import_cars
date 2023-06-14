@@ -11,8 +11,6 @@ const REGISTROS_TABLA = document.getElementById('registrosTabla');
 const TITULO = document.getElementById('titulo');
 // Constante para el texto del boton
 const BTN_ACCION = document.getElementById('accion');
-// Constante para el icono de cerrar el modal
-const ICONO_CERRAR = document.getElementById('cerrarIcono');
 // COnstante para abrir o cerrar el modal
 const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
 
