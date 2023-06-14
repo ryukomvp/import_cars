@@ -83,4 +83,9 @@ class ProductosQueries
         $sql = 'SELECT unnest(enum_range(NULL::estadoproducto)) val, unnest(enum_range(NULL::estadoproducto)) text';
         return Database::getRows($sql);
     }
+
+    public function leerCodigo()
+    {
+        $sql = 'SELECT '
+    }
 }

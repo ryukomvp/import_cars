@@ -177,7 +177,7 @@
 		imagen varchar(150),
 		descripcion varchar(150) not null,
 		precio numeric(5,2) not null,
-		anio int,
+		anio int not null,
 		idCodigoComun int not null,
 		idTipoProducto int not null,
 		idProveedor int not null,
@@ -185,6 +185,10 @@
 		idModelo int not null,
 		idPais int not null,
 		estadoProducto estadosProductos,
+
+		constraint fkCodigoProd
+		foreign key (idCodigoComun)
+		references codigoComun(idCodigoComun),
 		
 		constraint fkProveedorProd
 		foreign key (idProveedor)
@@ -468,6 +472,25 @@
 	(19, 7),
 	(20, 8);
 	
+	insert into codigoComun(nomenclatura, codigo) values
+	('PDI', 0001823),
+	('PDD', 0001824),
+	('PTI', 0001832),
+	('PTD', 0001842),
+	('FDD', 0001930),
+	('FDI', 0001931),
+	('FTD', 0001903),
+	('FTI', 0001913),
+	('RD', 0002043),
+	('RI', 0002034);
+	
+	insert into tipoProducto(tipoProducto) values
+	('Faroles'),
+	('Retrovisor'),
+	('Puerta'),
+	('Bomper'),
+	('Capo');
+	
 	insert into empleados(nombre, telefono, correo, nacimiento, tipoDocumento, documento, estadoEmpleado) values
 	('Annamaria Sheffield', '1971-3740', 'asheffield0@sogou.com', '6/2/2003', 'DUI', '32434523-2', 'Activo'),
 	('Elianore Boggon', '4518-8750', 'eboggon1@techcrunch.com', '6/8/2003', 'DUI', '32434523-2', 'Activo'),
@@ -512,27 +535,27 @@
 	('Mellisa', 'Anstee', '12345678', 'Gerente', 19, 'Activo'),
 	('Nevin', 'Sheffield', '12345678', 'Gerente', 20, 'Activo');
 	
-	insert into productos(nombre, codigoComun, descripcion, precio, anio, idProveedor, idCategoria, idModelo, idPais, estadoProducto) values
-	('escape ford', 00001, 'escape', 90.00, 2000 , 5, 1, 1, 1, 'Existente'),
-	('escape ford', 00001,'escape', 90.00, 2000 , 5, 1, 1, 1, 'Existente'),
-	('escape ford', 00001,'escape', 90.00, 2000 , 5, 1, 1, 1, 'Existente'),
-	('escape ford', 00001,'escape', 90.00, 2000 , 5, 1, 1, 1, 'Existente'),
-	('escape ford', 00001,'escape', 90.00, 2000 , 5, 1, 1, 1, 'Existente'),
-	('escape ford', 00001,'escape', 90.00, 2000 , 5, 1, 1, 1, 'Existente'),
-	('escape ford', 00001,'escape', 90.00, 2000 , 5, 1, 1, 1, 'Existente'),
-	('escape ford', 00001,'escape', 90.00, 2000 , 5, 1, 1, 1, 'Existente'),
-	('escape ford', 00001,'escape', 90.00, 2000 , 5, 1, 1, 1, 'Existente'),
-	('escape ford', 00001,'escape', 90.00, 2000 , 5, 1, 1, 1, 'Existente'),
-	('foco Maybach', 00001,'foco', 80.00, 2018 , 2, 3, 11, 4, 'Existente'),
-	('foco Maybach', 00001,'foco', 80.00, 2018 , 2, 3, 11, 4, 'Existente'),
-	('foco Maybach', 00001,'foco', 80.00, 2018 , 2, 3, 11, 4, 'Existente'),
-	('foco Maybach', 00001,'foco', 80.00, 2018 , 2, 3, 11, 4, 'Existente'),
-	('foco Maybach', 00001,'foco', 80.00, 2018 , 2, 3, 11, 4, 'Existente'),
-	('foco Maybach', 00001,'foco', 80.00, 2018 , 2, 3, 11, 4, 'Existente'),
-	('foco Maybach', 00001,'foco', 80.00, 2018 , 2, 3, 11, 4, 'Existente'),
-	('foco Maybach', 00001,'foco', 80.00, 2018 , 2, 3, 11, 4, 'Existente'),
-	('foco Maybach', 00001,'foco', 80.00, 2018 , 2, 3, 11, 4, 'Existente'),
-	('foco Maybach', 00001,'foco', 80.00, 2018 , 2, 3, 11, 4, 'Existente');
+	insert into productos(nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto) values
+	('escape ford','foto','escape', 90.00, 2000,  1 , 5, 5, 1, 1, 1, 'Existente'),
+	('escape ford','foto','escape', 90.00, 2000 , 2 , 4, 5, 1, 1, 1, 'Existente'),
+	('escape ford','foto','escape', 90.00, 2000 , 3 , 3, 5, 1, 1, 1, 'Existente'),
+	('escape ford','foto','escape', 90.00, 2000 , 4 , 1, 5, 1, 1, 1, 'Existente'),
+	('escape ford','foto','escape', 90.00, 2000 , 5 , 2, 5, 1, 1, 1, 'Existente'),
+	('escape ford','foto','escape', 90.00, 2000 , 6 , 5, 5, 1, 1, 1, 'Existente'),
+	('escape ford','foto','escape', 90.00, 2000 , 7 , 4, 5, 1, 1, 1, 'Existente'),
+	('escape ford','foto','escape', 90.00, 2000 , 8 , 3, 5, 1, 1, 1, 'Existente'),
+	('escape ford','foto','escape', 90.00, 2000 , 9 , 2, 5, 1, 1, 1, 'Existente'),
+	('escape ford','foto','escape', 90.00, 2000 , 10 , 1, 5, 1, 1, 1, 'Existente'),
+	('foco Maybach','foto','foco', 80.00, 2018 , 1 , 5, 2, 3, 11, 4, 'Existente'),
+	('foco Maybach','foto','foco', 80.00, 2018 , 2 , 4, 2, 3, 11, 4, 'Existente'),
+	('foco Maybach','foto','foco', 80.00, 2018 , 3 , 3, 2, 3, 11, 4, 'Existente'),
+	('foco Maybach','foto','foco', 80.00, 2018 , 4 , 2, 2, 3, 11, 4, 'Existente'),
+	('foco Maybach','foto','foco', 80.00, 2018 , 5 , 1, 2, 3, 11, 4, 'Existente'),
+	('foco Maybach','foto','foco', 80.00, 2018 , 6 , 5, 2, 3, 11, 4, 'Existente'),
+	('foco Maybach','foto','foco', 80.00, 2018 , 7 , 4, 2, 3, 11, 4, 'Existente'),
+	('foco Maybach','foto','foco', 80.00, 2018 , 8 , 3, 2, 3, 11, 4, 'Existente'),
+	('foco Maybach','foto','foco', 80.00, 2018 , 9 , 2, 2, 3, 11, 4, 'Existente'),
+	('foco Maybach','foto','foco', 80.00, 2018 , 10 , 1, 2, 3, 11, 4, 'Existente');
 	
 	insert into comisionesVentas(comision, idProducto) values
 	(90.00, 1),
@@ -649,4 +672,4 @@
 	-- Ingresar tipo de productos en la tabla tipoProducto
 	-- Ingresar nomnclatura y codigo en la tabla cogidoComun
 	-- Despues de esos insert actualizar los insert de productos
-	 
+
