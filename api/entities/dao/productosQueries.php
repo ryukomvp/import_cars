@@ -86,6 +86,7 @@ class ProductosQueries
 
     public function leerCodigo()
     {
-        $sql = 'SELECT '
+        $sql = 'SELECT nomenclatura, codigo from codigoComun';
+        return Database::getRows($sql);
     }
 }

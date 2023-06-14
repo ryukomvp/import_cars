@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const CATEGORIES_API = 'business/producto.php';
+const PRODUCTOS_API = 'business/producto.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -79,16 +79,22 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr>
-                    <td><img src="${SERVER_URL}images/categories/${row.foto}" class="materialboxed" height="100"></td>
-                    <td>${row.categoria}</td>
+                    <td><img src="${SERVER_URL}images/productos/${row.foto}" class="materialboxed" height="100"></td>
+                    <td>${row.imagen}</td>
+                    <td>${row.nombre}</td>
+                    <td>${row.nomenclatura}"-"${row.codigo}</td>
                     <td>${row.descripcion}</td>
+                    <td>${row.precio}</td>
+                    <td>${row.proveedor}</td>
+                    <td>${row.categoria}</td>
+                    <td>${row.modelo}</td>
                     <td>
-                        <button onclick="openUpdate(${row.id_categoria})" class="btn blue tooltipped" data-tooltip="Actualizar">
+                        <button onclick="openUpdate(${row.idproducto})" class="btn blue tooltipped" data-tooltip="Actualizar">
                             <i class="material-icons">mode_edit</i>
                         </button>
                     </td>
                     <td>
-                        <button onclick="openDelete(${row.id_categoria})" class="btn red tooltipped" data-tooltip="Eliminar">
+                        <button onclick="openDelete(${row.idproducto})" class="btn red tooltipped" data-tooltip="Eliminar">
                             <i class="material-icons">delete</i>
                         </button>
                     </td>
