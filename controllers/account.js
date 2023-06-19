@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     const JSON = await dataFetch(USUARIO_API, 'capturarUsuario');
     if (JSON.session) {
         if (JSON.status) {
-                        // Inserción de header
-                        HEADER.innerHTML = `
+            // Inserción de header
+            HEADER.innerHTML = `
                         <nav class="sticky top-0 z-10 bg-azul">
                             <!-- nombre del sistema -->
                             <div class="logo">
@@ -230,6 +230,31 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </div>
                         </nav>
                     `;
+                        // Inserción de footer
+            FOOTER.innerHTML = `
+                        <div class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
+                            <!-- nombre del sistema -->
+                            <span class="text-white text-2xl">Import Cars</span>
+                            <!-- lista de enlaces -->
+                            <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-400 sm:mt-0">
+                                <li>
+                                    <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6 "
+                                        target="_blank">About</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
+                                        target="_blank">Privacy Policy</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
+                                        target="_blank">Licensing</a>
+                                </li>
+                                <li>
+                                    <a href="https://www.instagram.com/dnlhernandez_/" class="hover:underline" target="_blank">Contact</a>
+                                </li>
+                            </ul>
+                        </div>
+                    `;
         } else {
             sweetAlert(3, JSON.exception, false, 'index.html');
         }
@@ -241,31 +266,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             location.href = 'index.html'
         }
     };
-    // Inserción de footer
-    FOOTER.innerHTML = `
-    <div class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
-        <!-- nombre del sistema -->
-        <span class="text-white text-2xl">Import Cars</span>
-        <!-- lista de enlaces -->
-        <ul class="flex flex-wrap items-center mt-3 text-sm text-white dark:text-gray-400 sm:mt-0">
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6 "
-                    target="_blank">About</a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
-                    target="_blank">Privacy Policy</a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="mr-4 hover:underline md:mr-6"
-                    target="_blank">Licensing</a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/dnlhernandez_/" class="hover:underline" target="_blank">Contact</a>
-            </li>
-        </ul>
-    </div>
-    `;
+
 
     // Configuración para menú
     const navBar = document.querySelector("nav"),
