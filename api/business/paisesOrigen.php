@@ -42,7 +42,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'País incorrecto'; 
                 } elseif ($pais->crearPaisOrigen()){
                     $result['status'] = 1;
-                    $result['message'] = 'País creada correctamente';
+                    $result['message'] = 'País creado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -68,7 +68,7 @@ if(isset($_GET['action'])){
                      $result['exception'] = 'País incorrecto';
                 } elseif ($pais->actualizarPaisOrigen()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Pais modificada correctamente';
+                    $result['message'] = 'Pais modificado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -80,7 +80,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'País inexistente';
                 } elseif ($pais->eliminarPaisOrigen()) {
                     $result['status'] = 1;
-                    $result['message'] = 'País eliminada correctamente';
+                    $result['message'] = 'País eliminado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

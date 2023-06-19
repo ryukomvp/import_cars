@@ -1,5 +1,5 @@
 
-// COnstante para la ruta del business que conecta a los metodos del SCRUD
+// Constante para la ruta del business que conecta a los metodos del SCRUD
 const PAIS_ORIGEN_API = 'business/paisesOrigen.php';
 // Constante para el input de busqueda
 const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
@@ -11,7 +11,7 @@ const REGISTROS_TABLA = document.getElementById('registrosTabla');
 const TITULO = document.getElementById('titulo');
 // Constante para el texto del boton
 const BTN_ACCION = document.getElementById('accion');
-// COnstante para abrir o cerrar el modal
+// Constante para abrir o cerrar el modal
 const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
 
 const options = {
