@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                             </a>
                                         </li>
                                         <li class="list">
-                                            <a onclick="cerrarSesion()" href="index.html" class="nav-link">
+                                            <a onclick="cerrarSesion()" class="nav-link">
                                                 <i class="bx bx-log-out icon"></i>
                                                 <span class="link">Cerrar sesion</span>
                                             </a>
@@ -255,6 +255,20 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </ul>
                         </div>
                     `;
+              
+                // Configuración para menú
+                const navBar = document.querySelector("nav"),
+                menuBtns = document.querySelectorAll(".menu-icon"),
+                overlay = document.querySelector(".overlay");
+
+                menuBtns.forEach((menuBtn) => {
+                    menuBtn.addEventListener("click", () => {
+                        navBar.classList.toggle("open");
+                    });
+                });
+                // overlay.addEventListener("click", () => {
+                //     navBar.classList.remove("open");
+                // });
         } else {
             sweetAlert(3, JSON.exception, false, 'index.html');
         }
@@ -268,17 +282,4 @@ document.addEventListener('DOMContentLoaded', async () => {
     };
 
 
-    // Configuración para menú
-    const navBar = document.querySelector("nav"),
-        menuBtns = document.querySelectorAll(".menu-icon"),
-        overlay = document.querySelector(".overlay");
-
-    menuBtns.forEach((menuBtn) => {
-        menuBtn.addEventListener("click", () => {
-            navBar.classList.toggle("open");
-        });
-    });
-    // overlay.addEventListener("click", () => {
-    //     navBar.classList.remove("open");
-    // });
 })
