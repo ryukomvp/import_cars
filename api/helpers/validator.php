@@ -55,7 +55,7 @@ class Validator
     public static function validateNaturalNumber($value)
     {
         // Se verifica que el valor sea un número entero mayor o igual a uno.
-        if (filter_var($value, FILTER_VALIDATE_INT, array('min_range' => 1))) {
+        if (filter_var($value, FILTER_VALIDATE_INT, array('options'=>array('min_range' => 1)))) {
             return true;
         } else {
             return false;

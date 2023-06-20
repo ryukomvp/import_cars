@@ -58,23 +58,23 @@ if (isset($_GET['action'])) {
             //         $result['exception'] = Database::getException();
             //     }
             //     break;
-            case 'changePassword':
-                $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setId($_SESSION['id_usuario'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->checkPassword($_POST['actual'])) {
-                    $result['exception'] = 'Clave actual incorrecta';
-                } elseif ($_POST['nueva'] != $_POST['confirmar']) {
-                    $result['exception'] = 'Claves nuevas diferentes';
-                } elseif (!$usuario->setClave($_POST['nueva'])) {
-                    $result['exception'] = Validator::getPasswordError();
-                } elseif ($usuario->changePassword()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Contraseña cambiada correctamente';
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
+            // case 'changePassword':
+            //     $_POST = Validator::validateForm($_POST);
+            //     if (!$usuario->setId($_SESSION['id_usuario'])) {
+            //         $result['exception'] = 'Usuario incorrecto';
+            //     } elseif (!$usuario->checkPassword($_POST['actual'])) {
+            //         $result['exception'] = 'Clave actual incorrecta';
+            //     } elseif ($_POST['nueva'] != $_POST['confirmar']) {
+            //         $result['exception'] = 'Claves nuevas diferentes';
+            //     } elseif (!$usuario->setClave($_POST['nueva'])) {
+            //         $result['exception'] = Validator::getPasswordError();
+            //     } elseif ($usuario->changePassword()) {
+            //         $result['status'] = 1;
+            //         $result['message'] = 'Contraseña cambiada correctamente';
+            //     } else {
+            //         $result['exception'] = Database::getException();
+            //     }
+            //     break;
             case 'leerUsuarios':
                 if ($result['dataset'] = $usuario->leerUsuarios()) {
                     $result['status'] = 1;
@@ -213,27 +213,27 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Debe crear un usuario para comenzar';
                 }
                 break;
-            case 'regitrarUsuario':
-                $_POST = Validator::validateForm($_POST);
-                if (!$usuario->setNombres($_POST['nombres'])) {
-                    $result['exception'] = 'Nombres incorrectos';
-                } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
-                    $result['exception'] = 'Apellidos incorrectos';
-                } elseif (!$usuario->setCorreo($_POST['correo'])) {
-                    $result['exception'] = 'Correo incorrecto';
-                } elseif (!$usuario->setAlias($_POST['usuario'])) {
-                    $result['exception'] = 'Alias incorrecto';
-                } elseif ($_POST['codigo'] != $_POST['confirmar']) {
-                    $result['exception'] = 'Claves diferentes';
-                } elseif (!$usuario->setClave($_POST['codigo'])) {
-                    $result['exception'] = Validator::getPasswordError();
-                } elseif ($usuario->createRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Usuario registrado correctamente';
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
+            // case 'regitrarUsuario':
+            //     $_POST = Validator::validateForm($_POST);
+            //     if (!$usuario->setNombres($_POST['nombres'])) {
+            //         $result['exception'] = 'Nombres incorrectos';
+            //     } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
+            //         $result['exception'] = 'Apellidos incorrectos';
+            //     } elseif (!$usuario->setCorreo($_POST['correo'])) {
+            //         $result['exception'] = 'Correo incorrecto';
+            //     } elseif (!$usuario->setAlias($_POST['usuario'])) {
+            //         $result['exception'] = 'Alias incorrecto';
+            //     } elseif ($_POST['codigo'] != $_POST['confirmar']) {
+            //         $result['exception'] = 'Claves diferentes';
+            //     } elseif (!$usuario->setClave($_POST['codigo'])) {
+            //         $result['exception'] = Validator::getPasswordError();
+            //     } elseif ($usuario->createRow()) {
+            //         $result['status'] = 1;
+            //         $result['message'] = 'Usuario registrado correctamente';
+            //     } else {
+            //         $result['exception'] = Database::getException();
+            //     }
+            //     break;
             case 'iniciarSesion':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->verificarUsuario($_POST['usuario'])) {

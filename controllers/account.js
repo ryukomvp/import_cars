@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                                 <span class="link">Dashboard</span>
                                             </a>
                                         </li>
-                                        <!-- boton para dorpdown de productos -->
+                                        <!-- boton para dropdown de productos -->
                                         <li class="list">
                                             <a href="#" id="dropdownHoverButton" data-dropdown-toggle="productos-detalles"
                                                 class="nav-link text-gray-600 hover:bg-azul hover:text-white">
@@ -201,9 +201,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                                             </a>
                                         </li>
                                         <li class="list">
-                                            <a onclick="cerrarSesion()" class="nav-link">
-                                                <i class="bx bx-log-out icon"></i>
-                                                <span class="link">Cerrar sesion</span>
+                                            <a onclick="cerrarSesion()" href="#" class="nav-link text-gray-600 hover:bg-azul hover:text-white">
+                                            <button
+                                                    class="font-medium rounded-lg text-sm text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                                    type="button">
+                                                    <i class="bx bx-log-out icon"></i>
+                                                    <span class="link">Cerrar sesion</span></button> 
                                             </a>
                                         </li>
                                     </div>
@@ -255,20 +258,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </ul>
                         </div>
                     `;
-              
-                // Configuración para menú
-                const navBar = document.querySelector("nav"),
-                menuBtns = document.querySelectorAll(".menu-icon"),
-                overlay = document.querySelector(".overlay");
-
-                menuBtns.forEach((menuBtn) => {
-                    menuBtn.addEventListener("click", () => {
-                        navBar.classList.toggle("open");
-                    });
-                });
-                // overlay.addEventListener("click", () => {
-                //     navBar.classList.remove("open");
-                // });
+                        
         } else {
             sweetAlert(3, JSON.exception, false, 'index.html');
         }
@@ -281,5 +271,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 
+        // Configuración para menú
+        const navBar = document.querySelector("nav"),
+        menuBtns = document.querySelectorAll(".menu-icon"),
+        overlay = document.querySelector(".overlay");
 
+        menuBtns.forEach((menuBtn) => {
+            menuBtn.addEventListener("click", () => {
+                navBar.classList.toggle("open");
+            });
+        });
+        // overlay.addEventListener("click", () => {
+        //     navBar.classList.remove("open");
+        // });
 })
