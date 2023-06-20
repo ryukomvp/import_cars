@@ -23,14 +23,14 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre de usuario indefinido';
                 }
                 break;
-            case 'cerrarSesion':
-                if (session_destroy()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Sesión eliminada correctamente';
-                } else {
-                    $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
-                }
-                break;
+                case 'cerrarSesion':
+                    if (session_destroy()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Sesión cerrada correctamente';
+                    } else {
+                        $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
+                    }
+                    break;
             // case 'readProfile':
             //     if ($result['dataset'] = $usuario->readProfile()) {
             //         $result['status'] = 1;

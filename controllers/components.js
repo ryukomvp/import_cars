@@ -236,13 +236,13 @@ function pieGraph(canvas, legends, values, title) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-async function logOut() {
+async function cerrarSesion() {
     // Se muestra un mensaje de confirmación y se captura la respuesta en una constante.
     const RESPONSE = await confirmAction('¿Está seguro de cerrar la sesión?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Petición para eliminar la sesión.
-        const JSON = await dataFetch(USER_API, 'logOut');
+        const JSON = await dataFetch(USUARIO_API, 'cerrarSesion');
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             sweetAlert(1, JSON.message, true, 'index.html');
