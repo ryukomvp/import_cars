@@ -54,6 +54,11 @@
 		
 	);
 	
+	create table monedas(
+		idMoneda serial primary key not null,
+		moneda varchar(30) not null
+	);
+	
 	create table familias(
 		
 		idFamilia serial primary key not null,
@@ -82,15 +87,18 @@
 		nombre varchar(25) not null,
 		telefono varchar(10) not null,
 		correo varchar(100) not null,
-		fechaCompra date,
-		saldoInicial numeric(5,2),
+		fechaCompra date not null,
+		saldoInicial numeric(5,2) not null,
 		saldoActual numeric(5,2),
-		codigoProv int,
-		codigoMaestroProv int,
-		dui varchar(20),
-		moneda varchar(20),
-		numeroRegistroProv int
-	
+		codigoProv int not null,
+		codigoMaestroProv int not null,
+		dui varchar(20) not null,
+		idMoneda int) not null,
+		numeroRegistroProv int not null
+		
+		constraint fkProvMoneda
+		foreign key (idMoneda)
+		references monedas(idMoneda)
 	);
 	
 	create table modelos(
@@ -99,9 +107,9 @@
 		modelo varchar(50) not null,
 		idMarca int not null,
 		
-		constraint fkmarcamod
-		foreign key (idmarca)
-		references marcas(idmarca)
+		constraint fkMarcaMod
+		foreign key (idMarca)
+		references marcas(idMarca)
 		
 	);
 	
