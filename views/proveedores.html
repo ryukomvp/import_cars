@@ -71,9 +71,8 @@
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                             <h3 id="titulo" class="text-xl font-bold text-oscuro dark:text-white">
                             </h3>
-                            <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                data-modal-hide="abrirModal">
+                            <button onclick="ABRIR_MODAL.hide()" type="button"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
                                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -86,98 +85,108 @@
                         <!-- Modal body -->
                         <form method="post" class="p-4" id="ejecutarFormulario">
                             <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                <!--ID-->
-                                <div>
-                                    <label for="id"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
-                                    <input type="number" id="id" name="id"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="ID" readonly>
+                                <div class="text-center py-4 p-6 space-x-2">
+                                    <img src="../resources/img/logo.jpg" alt="img">
+                                    <br>
                                 </div>
-                                <!--Input nombre proveedor-->
                                 <div>
-                                    <label for="nombre"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                        proveedor</label>
-                                    <input type="text" id="nombre" name="nombre"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Nombre" required>
-                                </div>
-                                <!-- Input telefono -->
-                                <div>
-                                    <label for="telefono"
-                                        class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero de
-                                        teléfono</label>
-                                    <input type="tel" id="telefono" name="telefono"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="0000-0000" required>
-                                </div>
-                                <!-- Input email -->
-                                <div>
-                                    <label for="correo"
-                                        class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
-                                        electrónico</label>
-                                    <input type="email" id="correo" name="correo"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="usuario@gmail.com" required>
-                                </div>
-                                <!--Input fecha de compra al proveedor-->
-                                <div>
-                                    <label for="fechaProv"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Fecha de
-                                        compra</label>
-                                    <input type="date" id="fechaProv" name="fechaProv"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="" required>
+                                    <!--ID-->
+                                    <div>
+                                        <label for="id"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
+                                        <input type="number" id="id" name="id"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="ID" readonly>
+                                    </div>
+                                    <!--Input nombre proveedor-->
+                                    <div>
+                                        <label for="nombre"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
+                                            proveedor</label>
+                                        <input type="text" id="nombre" name="nombre"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Nombre" required>
+                                    </div>
+                                    <!-- Input telefono -->
+                                    <div>
+                                        <label for="telefono"
+                                            class="block mb-2 text-sm font-medium text-azul dark:text-white">Numero de
+                                            teléfono</label>
+                                        <input type="tel" id="telefono" name="telefono"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="0000-0000" required>
+                                    </div>
+                                    <!-- Input email -->
+                                    <div>
+                                        <label for="correo"
+                                            class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
+                                            electrónico</label>
+                                        <input type="email" id="correo" name="correo"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="usuario@gmail.com" required>
+                                    </div>
+                                    <!--Input fecha de compra al proveedor-->
+                                    <div>
+                                        <label for="fechaProv"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Fecha de
+                                            compra</label>
+                                        <input type="date" id="fechaProv" name="fechaProv"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="" required>
+                                    </div>
+                                    <!--DUI proveedor-->
+                                    <div>
+                                        <label for="dui"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">DUI</label>
+                                        <input type="text" id="dui" name="dui"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="00000000-0" required>
+                                    </div>
                                 </div>
                                 <!--Saldo inicial permitido-->
                                 <div>
                                     <label for="saldoInicial"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Saldo inicial
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Saldo
+                                        inicial
                                         de compra</label>
                                     <input type="number" id="saldoInicial" name="saldoInicial"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Saldo inicial" min="0.1" required>
+                                        placeholder="Saldo inicial" step="0.01" min="0.1" required>
                                 </div>
                                 <!--Saldo actual permitido-->
                                 <div>
                                     <label for="saldoActual"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Saldo actual
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Saldo
+                                        actual
                                         para comprar</label>
                                     <input type="number" id="saldoActual" name="saldoActual"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Saldo actual" min="0.1" required>
+                                        placeholder="Saldo actual" step="0.01" min="0.1" required>
                                 </div>
                                 <!--Codigo del proveedor-->
                                 <div>
                                     <label for="codigoProv"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Codigo del
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Código
+                                        del
                                         proveedor</label>
                                     <input type="number" id="codigoProv" name="codigoProv"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Codigo" min="0" required>
+                                        placeholder="Código" min="0" required>
                                 </div>
                                 <!--Codigo maestro del proveedor-->
                                 <div>
                                     <label for="codigoMaestroProv"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Codigo
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Código
                                         maestro del proveedor</label>
                                     <input type="number" id="codigoMaestroProv" name="codigoMaestroProv"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Codigo maestro" min="0" required>
-                                </div>
-                                <!--DUI proveedor-->
-                                <div>
-                                    <label for="codigoMaestroProv"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">DUI</label>
-                                    <input type="text" id="dui" name="dui"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="DUI" required>
+                                        placeholder="Código maestro" min="0" required>
                                 </div>
                                 <!--Tipo de moneda-->
                                 <div>
                                     <label for="moneda"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Moneda con la
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Moneda
+                                        con la
                                         que trabaja el proveedor</label>
                                     <select id="moneda" name="moneda"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
@@ -186,17 +195,18 @@
                                 <!--Numero de registro del proveedor-->
                                 <div>
                                     <label for="numeroRegistroProv"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Numero de registro del proveedor</label>
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Numero de
+                                        registro del proveedor</label>
                                     <input type="number" id="numeroRegistroProv" name="numeroRegistroProv"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                         placeholder="Numero de registro del proveedor" min="0" required>
                                 </div>
-                                <!-- Modal footer -->
-                                <div
-                                    class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                    <button id="accion" type="submit"
-                                        class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"></button>
-                                </div>
+                            </div>
+                            <!-- Modal footer -->
+                            <div
+                                class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button id="accion" type="submit"
+                                    class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"></button>
                             </div>
                         </form>
                     </div>

@@ -12,7 +12,7 @@ if(isset($_GET['action'])){
     if(isset($_SESSION['idUsuario'])  OR !isset($_SESSION['idUsuario'])){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch($_GET['action']) {
-            case 'readAll':
+            case 'leerProveedores':
                 if ($result['dataset'] = $proveedores->leerProveedores()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
@@ -22,7 +22,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'search':
+            case 'buscarProveedor':
                 $_POST = Validator::validateForm($_POST);
                    if ($_POST['buscar'] == '') {
                         $result['dataset'] = $proveedores->leerProveedores();
@@ -36,7 +36,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay coincidencias';
                 }
                  break;
-            case 'create':
+            case 'crearProveedor':
                 $_POST = Validator::validateForm($_POST);
                 if (!$proveedores->setNombre($_POST['nombre'])){
                     $result['exception'] = 'Nombre incorrecto'; 
@@ -67,10 +67,10 @@ if(isset($_GET['action'])){
                     $result['exception'] = Database::getException();
                 }
                 break;   
-            case 'readOne':
+            case 'leerUnProveedor':
                 if (!$proveedores->setId($_POST['id'])) {
                     $result['exception'] = 'Proveedor incorrecto';
-                } elseif ($result['dataset'] = $proveedores->leerunProveedor()) {
+                } elseif ($result['dataset'] = $proveedores->leerUnProveedor()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -78,7 +78,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Proveedor inexistente';
                 }
                 break;
-            case 'update':
+            case 'actualizarProveedor':
                 $_POST = Validator::validateForm($_POST);
                if (!$proveedores->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
@@ -113,7 +113,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'delete':
+            case 'eliminarProveedor':
                 if (!$proveedores->setId($_POST['idproveedor'])) {
                     $result['exception'] = 'Proveedor incorrecta';
                 } elseif (!$data = $proveedores->leerunProveedor()) {

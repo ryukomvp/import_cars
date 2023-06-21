@@ -1,19 +1,19 @@
 <?php
-require_once('../entities/dto/paisesOrigen.php');
+require_once('../entities/dto/monedas.php');
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if(isset($_GET['action'])){
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $pais = new paisesOrigen;
+    $moneda = new moneda;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if(isset($_SESSION['idusuario'])){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch($_GET['action']) {
-            case 'leerPaises':
-                if ($result['dataset'] = $pais->leerPaisesOrigen()) {
+            case 'leerMonedas':
+                if ($result['dataset'] = $moneda->leerMoneda()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
@@ -22,12 +22,12 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'buscarPais':
+            case 'buscarMoneda':
                 $_POST = Validator::validateForm($_POST);
                    if ($_POST['buscar'] == '') {
-                        $result['dataset'] = $pais->leerPaisesOrigen();
+                        $result['dataset'] = $moneda->leerMoneda();
                         $result['status'] = 1;
-                } elseif ($result['dataset'] = $pais->buscarPaisOrigen($_POST['buscar'])) {
+                } elseif ($result['dataset'] = $moneda->buscarMoneda($_POST['buscar'])) {
                        $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -36,51 +36,51 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay coincidencias';
                 }
                  break;
-            case 'crearPais':
+            case 'crearMoneda':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pais->setpais($_POST['pais'])){
-                    $result['exception'] = 'País incorrecto'; 
-                } elseif ($pais->crearPaisOrigen()){
+                if (!$moneda->setMoneda($_POST['moneda'])){
+                    $result['exception'] = 'Moneda incorrecto'; 
+                } elseif ($moneda->crearMoneda()){
                     $result['status'] = 1;
-                    $result['message'] = 'País creado correctamente';
+                    $result['message'] = 'Moneda creada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;   
-            case 'leerUnPais':
-                if (!$pais->setId($_POST['id'])) {
-                    $result['exception'] = 'País incorrecto';
-                } elseif ($result['dataset'] = $pais->leerUnPaisOrigen()) {
+            case 'leerUnaMoneda':
+                if (!$moneda->setId($_POST['id'])) {
+                    $result['exception'] = 'Moneda incorrecto';
+                } elseif ($result['dataset'] = $moneda->leerUnaMoneda()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'País inexistente';
+                    $result['exception'] = 'Moneda inexistente';
                 }
                 break;
-            case 'actualizarPais':
+            case 'actualizarMoneda':
                 $_POST = Validator::validateForm($_POST);
-               if (!$pais->setId($_POST['id'])) {
+               if (!$moneda->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
-                } elseif (!$data = $pais->leerUnPaisOrigen()) {
-                    $result['exception'] = 'País inexistente';
-                } elseif (!$pais->setPais($_POST['pais'])) {
-                     $result['exception'] = 'País incorrecto';
-                } elseif ($pais->actualizarPaisOrigen()) {
+                } elseif (!$data = $moneda->leerUnaMoneda()) {
+                    $result['exception'] = 'Moneda inexistente';
+                } elseif (!$moneda->setMoneda($_POST['pais'])) {
+                     $result['exception'] = 'Moneda incorrecto';
+                } elseif ($moneda->actualizarMoneda()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Pais modificado correctamente';
+                    $result['message'] = 'Moneda modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'eliminarPais':
-                if (!$pais->setId($_POST['idpais'])) {
-                    $result['exception'] = 'País incorrecta';
-                } elseif (!$data = $pais->leerUnPaisOrigen()) {
-                    $result['exception'] = 'País inexistente';
-                } elseif ($pais->eliminarPaisOrigen()) {
+            case 'eliminarMoneda':
+                if (!$moneda->setId($_POST['idpais'])) {
+                    $result['exception'] = 'moneda incorrecta';
+                } elseif (!$data = $moneda->leerUnaMoneda()) {
+                    $result['exception'] = 'moneda inexistente';
+                } elseif ($moneda->eliminarMoneda()) {
                     $result['status'] = 1;
-                    $result['message'] = 'País eliminado correctamente';
+                    $result['message'] = 'Moneda eliminada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

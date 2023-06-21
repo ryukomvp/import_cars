@@ -27,9 +27,8 @@
             <div class="">
                 <!--Encabezado del SCRUD de modelos-->
                 <div class="py-4 text-center">
-                    <h1 class="text-xl text-rojo font-bold ">Paises de Origen de los Repuestos recibidos</h1>
-                    <p class="text-azul font-medium">Gestion de los paises de donde se importan los componentes de los
-                        vehiculos para teenr registro de su marca.</p>
+                    <h1 class="text-xl text-rojo font-bold ">Tipos de monedas</h1>
+                    <p class="text-azul font-medium">Tipos de moneda con las que se trabaja con los proveedores relacionados con el pais de origen del producto.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <!--Buscador de paises de origen-->
@@ -99,9 +98,9 @@
                                     </div>
                                     <!--Input nombre del modelo-->
                                     <div>
-                                        <label for="pais"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">País</label>
-                                        <input type="text" id="pais" name="pais"
+                                        <label for="moneda"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Moneda</label>
+                                        <input type="text" id="moneda" name="moneda"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                             placeholder="Pais" required>
                                     </div>
@@ -130,7 +129,7 @@
                             </th>
                             <th scope="col"
                                 class="text-oscuro font-bold px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white px-6 py-3">
-                                País de Origen
+                                Moneda
                             </th>
                             <th scope="col" class="px-8 py-3">
                                 <span class="">Controles</span>
@@ -152,5 +151,5 @@
     <script src="../resources/JS/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
     <script src="../controllers/account.js"></script>
-    <script src="../controllers/paisOrigen.js"></script>
+    <script src="../controllers/monedas.js"></script>
 </body>

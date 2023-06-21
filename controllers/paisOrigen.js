@@ -14,12 +14,6 @@ const BTN_ACCION = document.getElementById('accion');
 // Constante para abrir o cerrar el modal
 const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
 
-const options = {
-    placement: 'bottom-right',
-    backdrop: 'dynamic',
-    backdropClasses: '',
-    closable: true,
-}
 // Metodo para cargar la pagina cada vez que haya un cambio en el DOM
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
@@ -41,7 +35,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica si se realizara una actualización o un registro nuevo.
-    (document.getElementById('id').value) ? action = 'update' : action = 'create';
+    (document.getElementById('id').value) ? action = 'actualizarPais' : action = 'crearPais';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
@@ -64,7 +58,7 @@ async function rellenarTabla(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'search' : action = 'readAll';
+    (form) ? action = 'buscarPais' : action = 'leerPaises';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(PAIS_ORIGEN_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -115,7 +109,7 @@ async function actualizarRegistro(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(PAIS_ORIGEN_API, 'readOne', FORM);
+    const JSON = await dataFetch(PAIS_ORIGEN_API, 'leerUnPais', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -143,7 +137,7 @@ async function eliminarRegistro(id) {
         const FORM = new FormData();
         FORM.append('idpais', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(PAIS_ORIGEN_API, 'delete', FORM);
+        const JSON = await dataFetch(PAIS_ORIGEN_API, 'eliminarPais', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

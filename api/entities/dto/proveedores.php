@@ -111,7 +111,7 @@ class proveedores extends proveedoresQueries
 
     public function setDui($value)
     {
-        if (Validator::validateString($value, 1, 20)) {
+        if (Validator::validateDUI($value)) {
             $this->dui = $value;
             return true;
         } else {

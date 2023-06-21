@@ -16,9 +16,9 @@ class proveedoresQueries
     {
         $sql = 'SELECT idproveedor, nombre, telefono, correo, fechacompra, saldoinicial, saldoactual, codigoprov, codigomaestroprov, dui, moneda, numeroregistroprov
                 FROM proveedores INNER JOIN monedas USING(idmoneda)
-                WHERE nombre ILIKE ? OR telefono ILIKE ? OR telefono ILIKE ? or correo ILIKE ? OR codigoprov LILIKE ? OR codigomaestroprov ILIKE ? OR dui ILIKE ? OR numeroregistroprov ILIKE ?
-                ORDER BY pais';
-        $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
+                WHERE nombre ILIKE ? OR telefono ILIKE ? OR correo ILIKE ?  OR dui ILIKE ?
+                ORDER BY nombre';
+        $params = array("%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
     // Función para crear paises de origen
@@ -30,7 +30,7 @@ class proveedoresQueries
         return Database::executeRow($sql, $params);
     }
     // Función para seleccionar un pais de origen
-    public function leerunProveedor()
+    public function leerUnProveedor()
     {
         $sql = 'SELECT idproveedor, nombre, telefono, correo, fechacompra, saldoinicial, saldoactual, codigoprov, codigomaestroprov, dui, idmoneda, numeroregistroprov
                 FROM proveedores
