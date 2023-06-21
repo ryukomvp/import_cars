@@ -93,8 +93,8 @@
 		codigoProv int not null,
 		codigoMaestroProv int not null,
 		dui varchar(20) not null,
-		idMoneda int) not null,
-		numeroRegistroProv int not null
+		idMoneda int not null,
+		numeroRegistroProv int not null,
 		
 		constraint fkProvMoneda
 		foreign key (idMoneda)
@@ -310,7 +310,7 @@
 	('Estados Unidos'),
 	('Suiza'),
 	('Inglaterra'),
-	('Espana'),
+	('España'),
 	('Rusia'),
 	('Costa Rica'),
 	('Nicaragua'),
@@ -370,27 +370,39 @@
 	('Espejos'),
 	('Retrovisores');
 	
-	insert into proveedores(nombre, telefono, correo, fechaCompra, saldoInicial, saldoActual, codigoProv, codigoMaestroProv, dui, moneda, numeroRegistroProv) values
-	('Mercury', '4365-5632', 'mercury@gmail.com', '4/11/2020', 500.00, 250.00, 123, 1233, '234356234-0', 'Dolar', 1),
-	('Maybach', '4125-5632', 'maybach@gmail.com', '11/06/2020', 500.00, 250.00, 124, 1244, '23656234-0', 'Dolar', 2),
-	('Pontiac', '5265-6832', 'pontiac@gmail.com', '4/11/2021', 500.00, 250.00, 125, 1255, '236516234-0', 'Dolar', 3),
-	('Chrysler', '4365-2132', 'chrysler@gmail.com', '4/01/2022', 500.00, 250.00, 126, 1266, '224356234-0', 'Dolar', 4),
-	('Ford', '5365-3432', 'ford@gmail.com', '12/03/2014', 500.00, 250.00, 127, 1277, '23435524-1', 'Dolar', 5),
-	('Suzuki', '4667-3232', 'suzuki@gmail.com', '10/08/2016', 500.00, 250.00, 128, 1288, '234352334-5', 'Dolar', 6),
-	('Buick', '2364-4662', 'buik@gmail.com', '4/11/2020', 500.00, 250.00, 129, 1299, '43435624-5', 'Dolar', 7),
-	('Isuzu', '2363-5237', 'isuzu@gmail.com', '5/03/2020', 500.00, 250.00, 131, 1311, '536256434-7', 'Dolar', 8),
-	('GMC', '5325-5674', 'gmc@gmail.com', '7/2/2020', 500.00, 250.00, 132, 1322, '234346234-8', 'Dolar', 9),
-	('Cadillac', '8265-3731', 'cadillac@gmail.com', '9/5/2021', 500.00, 250.00, 134, 1344, '22656234-0', 'Dolar', 10),
-	('Porsche', '7228-5581', 'porsche@gmail.com', '9/8/2021', 500.00, 250.00, 123, 1233, '21356234-5', 'Dolar', 11),
-	('Chevrolet', '3371-5638', 'chevrolet@gmail.com', '10/5/2021', 500.00, 250.00, 123, 1233, '232376234-0', 'Dolar', 12),
-	('Toyota', '7265-9682', 'toyota@gmail.com', '4/11/2022', 500.00, 250.00, 123, 1233, '23356624-4', 'Dolar', 13),
-	('Porsche', '0194-5924', 'porsche@gmail.com', '7/5/2022', 500.00, 250.00, 123, 1233, '245356234-0', 'Dolar', 14),
-	('Isuzu', '1296-0492', 'isuzu@gmail.com', '8/5/2022', 500.00, 250.00, 123, 1233, '23435234-5', 'Dolar', 15),
-	('Dodge', '1964-5127', 'dodge@gmail.com', '10/2/2020', 500.00, 250.00, 123, 1233, '23435634-0', 'Dolar', 16),
-	('Nissan', '4024-3712', 'nissan@gmail.com', '12/5/2020', 500.00, 250.00, 123, 1233, '23463234-6', 'Dolar', 17),
-	('Tesla', '1572-7633', 'tesla@gmail.com', '4/11/2018', 500.00, 250.00, 123, 1233, '23432334-6', 'Dolar', 18),
-	('Dodge', '8366-2539', 'dodge@gmail.com', '4/11/2018', 500.00, 250.00, 123, 1233, '2343124434-6', 'Dolar', 19),
-	('Plymouth', '7363-8636', 'plymouth@gmail.com', '4/11/2018', 500.00, 250.00, 123, 1233, '234238234-0', 'Dolar', 20);
+	insert into monedas(moneda) values
+	('Dolar'),
+	('Euro'),
+	('Libra'),
+	('Peso Argentino'),
+	('Yen'),
+	('Yuan'),
+	('Libra Esterlina'),
+	('Peso Mexicano'),
+	('Peso Colombiano'),
+	('Rublo');
+	
+	insert into proveedores(nombre, telefono, correo, fechaCompra, saldoInicial, saldoActual, codigoProv, codigoMaestroProv, dui, idmoneda, numeroRegistroProv) values
+	('Mercury', '4365-5632', 'mercury@gmail.com', '4/11/2020', 500.00, 250.00, 123, 1233, '234356234-0', 1, 1),
+	('Maybach', '4125-5632', 'maybach@gmail.com', '11/06/2020', 500.00, 250.00, 124, 1244, '23656234-0', 2, 2),
+	('Pontiac', '5265-6832', 'pontiac@gmail.com', '4/11/2021', 500.00, 250.00, 125, 1255, '236516234-0', 1, 3),
+	('Chrysler', '4365-2132', 'chrysler@gmail.com', '4/01/2022', 500.00, 250.00, 126, 1266, '224356234-0', 3, 4),
+	('Ford', '5365-3432', 'ford@gmail.com', '12/03/2014', 500.00, 250.00, 127, 1277, '23435524-1', 4, 5),
+	('Suzuki', '4667-3232', 'suzuki@gmail.com', '10/08/2016', 500.00, 250.00, 128, 1288, '234352334-5', 1, 6),
+	('Buick', '2364-4662', 'buik@gmail.com', '4/11/2020', 500.00, 250.00, 129, 1299, '43435624-5', 1, 7),
+	('Isuzu', '2363-5237', 'isuzu@gmail.com', '5/03/2020', 500.00, 250.00, 131, 1311, '536256434-7', 2, 8),
+	('GMC', '5325-5674', 'gmc@gmail.com', '7/2/2020', 500.00, 250.00, 132, 1322, '234346234-8', 2, 9),
+	('Cadillac', '8265-3731', 'cadillac@gmail.com', '9/5/2021', 500.00, 250.00, 134, 1344, '22656234-0', 2, 10),
+	('Porsche', '7228-5581', 'porsche@gmail.com', '9/8/2021', 500.00, 250.00, 123, 1233, '21356234-5', 2, 11),
+	('Chevrolet', '3371-5638', 'chevrolet@gmail.com', '10/5/2021', 500.00, 250.00, 123, 1233, '232376234-0', 1, 12),
+	('Toyota', '7265-9682', 'toyota@gmail.com', '4/11/2022', 500.00, 250.00, 123, 1233, '23356624-4', 1, 13),
+	('Porsche', '0194-5924', 'porsche@gmail.com', '7/5/2022', 500.00, 250.00, 123, 1233, '245356234-0', 1, 14),
+	('Isuzu', '1296-0492', 'isuzu@gmail.com', '8/5/2022', 500.00, 250.00, 123, 1233, '23435234-5', 1, 15),
+	('Dodge', '1964-5127', 'dodge@gmail.com', '10/2/2020', 500.00, 250.00, 123, 1233, '23435634-0', 1, 16),
+	('Nissan', '4024-3712', 'nissan@gmail.com', '12/5/2020', 500.00, 250.00, 123, 1233, '23463234-6', 3, 17),
+	('Tesla', '1572-7633', 'tesla@gmail.com', '4/11/2018', 500.00, 250.00, 123, 1233, '23432334-6', 2, 18),
+	('Dodge', '8366-2539', 'dodge@gmail.com', '4/11/2018', 500.00, 250.00, 123, 1233, '2343124434-6', 1, 19),
+	('Plymouth', '7363-8636', 'plymouth@gmail.com', '4/11/2018', 500.00, 250.00, 123, 1233, '234238234-0', 1, 20);
 	
 	insert into modelos(modelo, idMarca) values
 	('modf1', 5),
