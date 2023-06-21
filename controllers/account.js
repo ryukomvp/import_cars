@@ -174,6 +174,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                                                         <a href="paisOrigen.html"
                                                             class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Paises de origen</a>
                                                     </li>
+                                                    <!-- boton para monedas -->
+                                                    <li>
+                                                        <a href="monedas.html"
+                                                            class="block px-4 py-2 hover:bg-azul hover:text-white dark:hover:bg-gray-600 dark:hover:text-white">Tipos de monedas</a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>

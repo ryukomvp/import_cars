@@ -16,7 +16,7 @@ class moneda extends monedasQueries
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idmonedas = $value;
+            $this->idmoneda = $value;
             return true;
         } else {
             return false;

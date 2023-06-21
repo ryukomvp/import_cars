@@ -64,7 +64,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $moneda->leerUnaMoneda()) {
                     $result['exception'] = 'Moneda inexistente';
-                } elseif (!$moneda->setMoneda($_POST['pais'])) {
+                } elseif (!$moneda->setMoneda($_POST['moneda'])) {
                      $result['exception'] = 'Moneda incorrecto';
                 } elseif ($moneda->actualizarMoneda()) {
                     $result['status'] = 1;
@@ -74,10 +74,10 @@ if(isset($_GET['action'])){
                 }
                 break;
             case 'eliminarMoneda':
-                if (!$moneda->setId($_POST['idpais'])) {
-                    $result['exception'] = 'moneda incorrecta';
+                if (!$moneda->setId($_POST['idmoneda'])) {
+                    $result['exception'] = 'Moneda incorrecta';
                 } elseif (!$data = $moneda->leerUnaMoneda()) {
-                    $result['exception'] = 'moneda inexistente';
+                    $result['exception'] = 'Moneda inexistente';
                 } elseif ($moneda->eliminarMoneda()) {
                     $result['status'] = 1;
                     $result['message'] = 'Moneda eliminada correctamente';
