@@ -232,6 +232,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 </ul>
                             </div>
                         </nav>
+
+                        <section class='overlay'></section>
                     `;
                         // Inserción de footer
             FOOTER.innerHTML = `
@@ -270,18 +272,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             location.href = 'index.html'
         }
     };
-
         // Configuración para menú
-        const navBar = document.querySelector("nav"),
-        menuBtns = document.querySelectorAll(".menu-icon"),
-        overlay = document.querySelector(".overlay");
+        const   navBar = document.querySelector("nav"),
+                menuBtns = document.querySelectorAll(".menu-icon"),
+                overlay = document.querySelector(".overlay");
 
         menuBtns.forEach((menuBtn) => {
             menuBtn.addEventListener("click", () => {
                 navBar.classList.toggle("open");
             });
         });
-        // overlay.addEventListener("click", () => {
-        //     navBar.classList.remove("open");
-        // });
+        overlay.addEventListener("click", () => {
+            navBar.classList.remove("open");
+        });
 })
