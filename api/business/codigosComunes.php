@@ -1,21 +1,19 @@
 <?php
-// Se incluye la clase para la transferencia y acceso a datos.
-require_once('../entities/dto/codigosComun.php');
-
+require_once('../entities/dto/codigosComunes.php');
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if(isset($_GET['action'])){
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $codigo = new codigo;
+    $codigo = new codigoComun;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if(isset($_SESSION['idusuario']) OR !isset($_SESSION['idusuario'])){
+    if(isset($_SESSION['idusuario'])){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch($_GET['action']) {
-            case 'leerCategorias':
-                if ($result['dataset'] = $categoria->leerCodigos()) {
+            case 'leerCodigosComunes':
+                if ($result['dataset'] = $codigo->leerCodigosComunes()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
@@ -24,11 +22,12 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'buscar':
+            case 'buscarCodigoComun':
                 $_POST = Validator::validateForm($_POST);
-                   if ($_POST['search'] == '') {
-                       $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $categoria->buscarCodigos($_POST['search'])) {
+                   if ($_POST['buscar'] == '') {
+                        $result['dataset'] = $codigo->leerCodigosComunes();
+                        $result['status'] = 1;
+                } elseif ($result['dataset'] = $codigo->buscarCodigoComun($_POST['buscar'])) {
                        $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -37,51 +36,55 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay coincidencias';
                 }
                  break;
-            case 'crear':
+            case 'crearCodigoComun':
                 $_POST = Validator::validateForm($_POST);
-                if (!$categoria->setCategoria($_POST['categoria'])){
-                    $result['exception'] = 'Nombre incorrecto'; 
-                } elseif ($categoria->crearCategoria()){
+                if (!$codigo->setNomenclatura($_POST['nomenclatura'])) {
+                    $result['exception'] = 'Nomenclatura incorrecta'; 
+                } elseif (!$codigo->setCodigo($_POST['codigo'])) {
+                    $result['exception'] = 'Código incorrecto';
+                } elseif ($codigo->crearCodigoComun()){
                     $result['status'] = 1;
-                    $result['message'] = 'Marca creada correctamente';
+                    $result['message'] = 'Código común creado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;   
-            case 'leerCategoria':
-                if (!$categoria->setId($_POST['idcategoria'])) {
-                        $result['exception'] = 'Categoria incorrecta';
-                } elseif ($result['dataset'] = $categoria->leerCategoria()) {
-                       $result['status'] = 1;
+            case 'leerUnCodigoComun':
+                if (!$codigo->setId($_POST['id'])) {
+                    $result['exception'] = 'Código incorrecto';
+                } elseif ($result['dataset'] = $codigo->leerUnCodigoComun()) {
+                    $result['status'] = 1;
                 } elseif (Database::getException()) {
-                       $result['exception'] = Database::getException();
+                    $result['exception'] = Database::getException();
                 } else {
-                       $result['exception'] = 'Categoria inexistente';
+                    $result['exception'] = 'Código común inexistente';
                 }
                 break;
-            case 'actualizar':
+            case 'actualizarCodigoComun':
                 $_POST = Validator::validateForm($_POST);
-               if (!$categoria->setId($_POST['id'])) {
-                    $result['exception'] = 'Categoria incorrecta';
-                } elseif (!$data = $categoria->leerCategoria()) {
-                    $result['exception'] = 'Categoría inexistente';
-                } elseif (!$categoria->setCategoria($_POST['categoria'])) {
-                     $result['exception'] = 'Nombre incorrecto';
-                } elseif ($categoria->actualizarCategoria()) {
+               if (!$codigo->setId($_POST['id'])) {
+                    $result['exception'] = 'ID incorrecto';
+                } elseif (!$data = $codigo->leerUnCodigoComun()) {
+                    $result['exception'] = 'Moneda inexistente';
+                } elseif (!$codigo->setNomenclatura($_POST['nomenclatura'])) {
+                     $result['exception'] = 'Moneda incorrecto';
+                } elseif (!$codigo->setCodigo($_POST['codigo'])) {
+                    $result['exception'] = 'Moneda incorrecto';
+                } elseif ($codigo->actualizarCodigoComun()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Categoria modificada correctamente';
+                    $result['message'] = 'Moneda modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'eliminar':
-                if (!$categoria->setId($_POST['idcategoria'])) {
-                    $result['exception'] = 'Id incorrecto';
-                } elseif (!$data = $categoria->leerCategoria()) {
-                    $result['exception'] = 'Categoria inexistente';
-                } elseif ($categoria->eliminarCategoria()) {
+            case 'eliminarCodigoComun':
+                if (!$codigo->setId($_POST['idcodigocomun'])) {
+                    $result['exception'] = 'Código incorrecto';
+                } elseif (!$data = $codigo->leerUnCodigoComun()) {
+                    $result['exception'] = 'Código inexistente';
+                } elseif ($codigo->eliminarCodigoComun()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Categoria eliminada correctamente';
+                    $result['message'] = 'Código eliminado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
