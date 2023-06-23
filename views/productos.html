@@ -123,7 +123,7 @@
                                     </div>
                                     <!--Input codigo-->
                                     <div>  
-                                        <label for="precio"
+                                        <label for="Codigo-nomenclatura"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio:</label>
                                         <input type="text" list="datalistOptions" class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="codigo o nomenclatura" >
                                             <datalist id="datalistOptions">
@@ -260,9 +260,8 @@
                             </th>
                         </tr>
                     </thead>
-                    <!-- Contenido de la tabla -->
-                    <tbody id="tbody-rows">
-                    </tbody>
+                    <!-- Filas de la tabla -->
+                    <tbody id="tbody-rows"></tbody>
                 </table>
             </div>
         </div>
@@ -295,6 +294,7 @@
     <!-- Importacion de archivos JavaScript -->
     <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
     <script src="../controllers/account.js"></script>
+    <script src="../controllers/productos.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,10 @@
 // Constante para completar la ruta de la API.
 const PRODUCTOS_API = 'business/producto.php';
+const CODIGOS_COMUNES_API = 'business/comidogosComun.php';
+const PROVEEDORES_API = 'business/proveedores.php';
+const CATEGORIAS_API = 'business/categorias.php';
+const MODELOS_API = 'business/modelos.php';
+const PAISES_API = 'business/paisOrigen.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -69,7 +74,7 @@ async function fillTable(form = null) {
     TBODY_ROWS.innerHTML = '';
     RECORDS.textContent = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'search' : action = 'readAll';
+    (form) ? action = 'search' : action = 'leerTodo';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(CATEGORIES_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -82,7 +87,7 @@ async function fillTable(form = null) {
                     <td><img src="${SERVER_URL}images/productos/${row.foto}" class="materialboxed" height="100"></td>
                     <td>${row.imagen}</td>
                     <td>${row.nombre}</td>
-                    <td>${row.nomenclatura}"-"${row.codigo}</td>
+                    <td>${row.nomenclatura}${row.codigo}</td>
                     <td>${row.descripcion}</td>
                     <td>${row.precio}</td>
                     <td>${row.proveedor}</td>
@@ -121,7 +126,13 @@ function openCreate() {
     // Se restauran los elementos del formulario.
     SAVE_FORM.reset();
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear categoría';
+    MODAL_TITLE.textContent = 'Crear Producto';
+    // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
+    fillSelect(CODIGOS_COMUNES_API, 'LeerCodigos', 'codigo_comun');
+    fillSelect(PROVEEDORES_API, 'LeerProveedores', 'Proveedor');
+    fillSelect(CATEGORIAS_API, 'LeerCategorias', 'categoria');
+    fillSelect(MODELOS_API, 'LeerModelos', 'modelo');
+    fillSelect(PAISES_API, 'LeerPaises', 'pais');
 }
 
 /*
