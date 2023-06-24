@@ -25,7 +25,7 @@ class familiasqueries
     public function createRow()
     {
         $sql = 'INSERT INTO familias(familia)
-            VALUES(?,)';
+            VALUES(?)';
         $params = array($this->familia);
         return Database::executeRow($sql, $params);
     }

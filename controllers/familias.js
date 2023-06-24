@@ -12,7 +12,7 @@ const RECORDS = document.getElementById('records');
 
 // Se inicializa el componente Modal para que funcionen las cajas de diálogo.
 // Constante para establecer la modal de guardar.
-const SAVE_MODAL = new Modal(document.getElementById('save-modal'));
+const SAVE_MODAL = new Modal(document.getElementById('modal_add_family'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -84,7 +84,7 @@ async function fillTable(form = null) {
                         <div class="grid gap-2 m-0">
                             <!--botón de actualizar-->
                             <div>
-                                <button onclick="openUpdate(${row.idsucursal})"
+                                <button onclick="openUpdate(${row.idfamilia})"
                                     data-modal-toggle="modal_update_branch-office1"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                     type="button">
@@ -93,7 +93,7 @@ async function fillTable(form = null) {
                             </div>
                             <!--botón de eliminar registro-->
                             <div>
-                                <button onclick="openDelete(${row.idsucursal})"
+                                <button onclick="openDelete(${row.idfamilia})"
                                     class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                     type="button">
                                     <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
