@@ -33,8 +33,8 @@
                 <!--Buscador-->
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
-                        <form method="post" id="search-form">
-                            <label for="search-form"
+                        <form method="post" id="buscarFormulario">
+                            <label for="buscarFormulario"
                                 class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -44,11 +44,11 @@
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                     </svg>
                                 </div>
-                                <input type="search" id="search-form"
+                                <input type="search" id="search" name="search"
                                     class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Buscar..." required>
+                                    placeholder="Buscar...">
                                 <button type="submit"
-                                    class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
+                                    class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                             </div>
                         </form>
                     </div>
@@ -62,17 +62,16 @@
                 </div>
             </div>
             <!--Modal para añadir marca-->
-            <div id="modal_add_brand" tabindex="-1"
+            <div id="abrirModal" tabindex="-1"
                 class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                 <div class="relative w-full h-full max-w-4xl">
                     <!-- Contenido del modal -->
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                         <!-- Encabezado del modal -->
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
-                            <h3 class="text-xl font-bold text-oscuro dark:text-white" id="modal-title"></h3>
-                            <button type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                                data-modal-hide="modal_add_brand">
+                            <h3 class="text-xl font-bold text-oscuro dark:text-white" id="titulo"></h3>
+                            <button onclick="ABRIR_MODAL.hide()" type="button"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
                                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -83,17 +82,18 @@
                             </button>
                         </div>
                         <!-- Cuerpo del modal -->
-                        <form class="p-4" method="post" id="save-form" enctype="multipart/form-data">
+                        <form class="p-4" method="post" id="ejecutarFormulario" enctype="multipart/form-data">
                             <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                 <div>
                                     <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
                                         <img src="../resources/img/logo.jpg" alt="img">
                                         <br>
                                     </div>
-                                    <!--ID-->
-                                    <input class="hidden" type="number" id="id" name="id">
+
                                 </div>
                                 <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                    <!--ID-->
+                                    <input class="hidden" type="number" id="id" name="id">
                                     <!--Input nombre de la marca-->
                                     <div>
                                         <label for="nombremarca"
@@ -122,7 +122,7 @@
                     <thead
                         class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
-                            <th scope="col" class="px-6 py-3">
+                            <th scope="col" class="hidden px-6 py-3">
                                 ID
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -134,7 +134,7 @@
                         </tr>
                     </thead>
                     <!--Filas de la tabla-->
-                    <tbody id="tbody-rows"></tbody>
+                    <tbody id="registrosTabla"></tbody>
                 </table>
             </div>
         </div>

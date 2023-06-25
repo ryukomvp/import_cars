@@ -73,7 +73,7 @@ async function fillTable(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
-                    <td class="px-6 py-4">
+                    <td class="hidden px-6 py-4">
                         ${row.idbodega}
                     </td>
                     <td class="px-6 py-4">

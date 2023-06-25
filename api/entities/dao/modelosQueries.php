@@ -14,7 +14,7 @@ class modeloQueries
         $sql = 'SELECT idmodelo, modelo, marca
                 FROM modelos INNER JOIN marcas USING(idmarca)
                 WHERE modelo ILIKE ?
-                ORDER BY idmodelo';
+                ORDER BY modelo';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
@@ -23,7 +23,7 @@ class modeloQueries
     {
         $sql = 'SELECT idmodelo, modelo, marca
                 FROM modelos INNER JOIN marcas USING(idmarca)
-                ORDER BY idmodelo';
+                ORDER BY modelo';
         return Database::getRows($sql);
     }
 
