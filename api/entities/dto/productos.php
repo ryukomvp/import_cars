@@ -4,7 +4,7 @@ require_once('../entities/dao/productosQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad PRODUCTO.
 */
-class Productos extends ProductosQueries
+class Productos extends productosQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
@@ -13,12 +13,12 @@ class Productos extends ProductosQueries
     protected $descripcion = null;
     protected $precio = null;
     protected $anio = null;
-    protected $codigoComun = null;
-    protected $tipoProducto = null;
-    protected $proveedor = null;
-    protected $categoria = null;
-    protected $modelo = null;
-    protected $pais = null;
+    protected $idCodigoComun = null;
+    protected $idTipoProducto = null;
+    protected $idProveedor = null;
+    protected $idCategoria = null;
+    protected $idModelo = null;
+    protected $idPais = null;
     protected $estadoProducto = null;
     protected $ruta = '../images/products/';
 
@@ -88,7 +88,7 @@ class Productos extends ProductosQueries
     public function setCodigoComun($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->codigoComun = $value;
+            $this->idCodigoComun = $value;
             return true;
         } else {
             return false;
@@ -98,7 +98,7 @@ class Productos extends ProductosQueries
     public function setTipoProducto($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->tipoProducto = $value;
+            $this->idTipoProducto = $value;
             return true;
         } else {
             return false;
@@ -108,7 +108,7 @@ class Productos extends ProductosQueries
     public function setProveedor($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->proveedor = $value;
+            $this->idProveedor = $value;
             return true;
         } else {
             return false;
@@ -118,7 +118,7 @@ class Productos extends ProductosQueries
     public function setCategoria($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->categoria = $value;
+            $this->idCategoria = $value;
             return true;
         } else {
             return false;
@@ -128,7 +128,7 @@ class Productos extends ProductosQueries
     public function setModelo($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->modelo = $value;
+            $this->idModelo = $value;
             return true;
         } else {
             return false;
@@ -138,7 +138,7 @@ class Productos extends ProductosQueries
     public function setPais($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->pais = $value;
+            $this->idPais = $value;
             return true;
         } else {
             return false;
@@ -190,32 +190,32 @@ class Productos extends ProductosQueries
    
     public function getCodigoComun()
     {
-        return $this->codigoComun;
+        return $this->idCodigoComun;
     }
     
     public function getTipoProducto()
     {
-        return $this->tipoProducto;
+        return $this->idTipoProducto;
     }
 
     public function getProveedor()
     {
-        return $this->proveedor;
+        return $this->idProveedor;
     }
 
     public function getcategoria()
     {
-        return $this->proveedor;
+        return $this->idCategoria;
     }
 
     public function getModelo()
     {
-        return $this->modelo;
+        return $this->idModelo;
     }
 
     public function getPais()
     {
-        return $this->pais;
+        return $this->idPais;
     }
     
     public function getEstadoProducto()

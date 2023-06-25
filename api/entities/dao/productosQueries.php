@@ -1,9 +1,9 @@
 <?php
-require_once('../../helpers/database.php');
+require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad PRODUCTO.
 */
-class ProductosQueries
+class productosQueries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
@@ -15,7 +15,7 @@ class ProductosQueries
         $sql = 'SELECT idproducto, nombre, descripcion, precio, anio, idcodigocomun, idtipoproducto, idproveedor, idcategoria, idmodelo, idpais, estadoproducto
                 FROM productos 
                 INNER JOIN categorias USING(idcategoria)
-                INNER JOIN codigocomun USING(idcodigocomun)
+                INNER JOIN codigoComun USING(idcodigocomun)
                 WHERE nombre LIKE ? OR descripcion LIKE ? OR categoria LIKE ? OR nomenclatura LIKE ? OR codigo LIKE ? 
                 ORDER BY nombre_producto';
         $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
@@ -24,7 +24,7 @@ class ProductosQueries
 
     public function crearProducto()
     {
-        // , $_SESSION['id_usuario_privado']
+        // , $_SESSION['idUsuario']
         $sql = 'INSERT INTO producto(nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->anio, $this->codigo, $this->tipoProducto, $this->proveedor, $this->categoria, $this->modelo, $this->pais, $this->estadoProducto);
@@ -33,13 +33,19 @@ class ProductosQueries
 
     public function leerTodo()
     {
-        $sql = 'SELECT nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto
-                FROM productos INNER JOIN categorias USING(idcategoria)
-                ORDER BY nombre';
+        $sql = 'SELECT p.nombre, p.imagen, p.descripcion, p.precio, p.anio, a.nomenclatura, a.codigo, b.TipoProducto, m.nombre, c.categoria, n.modelo, s.pais, estadoProducto
+                FROM productos p
+                INNER JOIN categorias c ON p.idCategoria = c.idCategoria 
+                INNER JOIN proveedores m ON p.idProveedor = m.idProveedor 
+                INNER JOIN codigoComun a ON p.idCodigoComun = a.idCodigoComun
+                INNER JOIN tipoProducto b ON p.idTipoProducto = b.idTipoProducto
+                INNER JOIN modelos n ON p.idModelo = n.idModelo
+                INNER JOIN paisesDeOrigen s ON p.idPais = s.idPais
+                ORDER BY p.nombre;';
         return Database::getRows($sql);
     }
 
-    public function leerUno()
+    public function leerUnProducto()
     {
         $sql = 'SELECT idproducto,nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto
                 FROM productos

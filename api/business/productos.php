@@ -1,5 +1,5 @@
 <?php
-require_once('../../entities/dto/productos.php');
+require_once('../entities/dto/productos.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -10,7 +10,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idusuario']) OR !isset($_SESSION['idusuario'])) {
+    if (isset($_SESSION['idUsuario']) OR !isset($_SESSION['idUsuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'leerTodo':
@@ -23,11 +23,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'buscar':
+            case 'buscarProducto':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $productos->buscarProducto($_POST['search'])) {
+                } elseif ($result['dataset'] = $productos->leerTodo($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
@@ -36,7 +36,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'crear':
+            case 'crearProducto':
                 $_POST = Validator::validateForm($_POST);
                 if (!$productos->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
@@ -87,10 +87,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();;
                 }
                 break;
-            case 'leerUno':
+            case 'leerUnProducto':
                 if (!$productos->setId($_POST['id'])) {
                     $result['exception'] = 'Producto incorrecto';
-                } elseif ($result['dataset'] = $productos->leerUno()) {
+                } elseif ($result['dataset'] = $productos->leerUnProducto()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -98,12 +98,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 }
                 break;
-            case 'Actualizar':
+            case 'actualizarProducto':
 
                 $_POST = Validator::validateForm($_POST);
                 if (!$productos->setId($_POST['id'])) {
                     $result['exception'] = 'Producto incorrecto';
-                } elseif (!$data = $productos->leerUno()) {
+                } elseif (!$data = $productos->leerUnProducto()) {
                     $result['exception'] = 'Producto inexistente';
                 } elseif (!$productos->setImagen($_FILES['archivo'])) {
                     $result['exception'] = Validator::getFileError();
@@ -157,10 +157,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'Eliminar':
+            case 'eliminarProducto':
                 if (!$productos->setId($_POST['idproducto'])) {
                     $result['exception'] = 'Producto incorrecto';
-                } elseif (!$data = $productos->leerUno()) {
+                } elseif (!$data = $productos->leerUnProducto()) {
                     $result['exception'] = 'Producto inexistente';
                 } elseif ($productos->eliminarProducto()) {
                     $result['status'] = 1;
