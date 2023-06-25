@@ -35,7 +35,7 @@
 	);
 
 	CREATE TYPE generos AS ENUM(
-		'Masculino', 'Femenino' , 'Pendejo sin cerebro'
+		'Masculino', 'Femenino' , 'Otro'
 	);
 	
 	CREATE TYPE cargos AS ENUM(
