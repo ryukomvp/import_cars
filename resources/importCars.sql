@@ -508,7 +508,7 @@
 	('RD', 0002043),
 	('RI', 0002034);
 	
-	insert into tipoProducto(tipoProducto) values
+	insert into tiposProductos(tipoProducto) values
 	('Faroles'),
 	('Retrovisor'),
 	('Puerta'),
