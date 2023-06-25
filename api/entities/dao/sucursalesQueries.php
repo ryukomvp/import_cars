@@ -15,9 +15,9 @@ class sucursalesqueries
     {
         $sql = 'SELECT idsucursal, nombre, telefono, correo, direccion
             FROM sucursales
-            WHERE nombre ILIKE ? OR direccion ILIKE ?
+            WHERE nombre ILIKE ? OR telefono ILIKE ? OR direccion ILIKE ?
             ORDER BY nombre';
-        $params = array("%$value%", "%$value%");
+        $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);    
     }
 

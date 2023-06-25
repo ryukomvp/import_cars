@@ -14,7 +14,7 @@ class marcaQueries
         $sql = 'SELECT idmarca, marca
                 FROM marcas
                 WHERE marca ILIKE ?
-                ORDER BY idmarca';
+                ORDER BY marca';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
@@ -23,7 +23,7 @@ class marcaQueries
     {
         $sql = 'SELECT idmarca, marca
                 FROM marcas
-                ORDER BY idmarca';
+                ORDER BY marca';
         return Database::getRows($sql);
     }
 

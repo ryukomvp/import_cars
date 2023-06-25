@@ -30,7 +30,7 @@ class categoriaQueries
     {
         $sql = 'SELECT idcategoria, categoria
                 FROM categorias
-                ORDER BY idcategoria';
+                ORDER BY categoria';
         return Database::getRows($sql);
     }
 

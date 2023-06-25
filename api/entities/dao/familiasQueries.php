@@ -1,7 +1,7 @@
 <?php
 require_once('../helpers/database.php');
 /*
-*  Clase para manejar el acceso a datos de la entidad de SUCURSALES
+*  Clase para manejar el acceso a datos de la entidad de FAMILIAS
 */
 class familiasqueries
 {
@@ -10,7 +10,7 @@ class familiasqueries
     */
 
     /*Método para la realizacion de busqueda de registros en la base de datos
-     mediante el nombre de la familia*/
+     mediante el nombre de la bodega*/
      public function searchRows($value)
      {
          $sql = 'SELECT idfamilia, familia
@@ -25,7 +25,7 @@ class familiasqueries
     public function createRow()
     {
         $sql = 'INSERT INTO familias(familia)
-            VALUES(?,)';
+            VALUES(?)';
         $params = array($this->familia);
         return Database::executeRow($sql, $params);
     }

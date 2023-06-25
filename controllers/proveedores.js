@@ -68,19 +68,19 @@ async function rellenarTabla(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr  class="text-center bg-white hover:bg-blue-200">
-                    <td class="hidden">${row.idproveedor}</td>
-                    <td>${row.nombre}</td>
-                    <td>${row.telefono}</td>
-                    <td>${row.correo}</td>
-                    <td>${row.fechacompra}</td>
-                    <td>${row.saldoinicial}</td>
-                    <td>${row.saldoactual}</td>
-                    <td>${row.codigoprov}</td>
-                    <td>${row.codigomaestroprov}</td>
-                    <td>${row.dui}</td>
-                    <td>${row.moneda}</td>
-                    <td>${row.numeroregistroprov}</td>
-                    <td>
+                    <td class="hidden class="px-6 py-4"">${row.idproveedor}</td>
+                    <td class="px-6 py-4">${row.nombre}</td>
+                    <td class="">${row.telefono}</td>
+                    <td class="px-6 py-4">${row.correo}</td>
+                    <td class="">${row.fechacompra}</td>
+                    <td class="px-6 py-4">${row.saldoinicial}</td>
+                    <td class="px-6 py-4">${row.saldoactual}</td>
+                    <td class="px-6 py-4">${row.codigoprov}</td>
+                    <td class="px-6 py-4">${row.codigomaestroprov}</td>
+                    <td class="px-6 py-4">${row.dui}</td>
+                    <td class="px-6 py-4">${row.moneda}</td>
+                    <td class="px-6 py-4">${row.numeroregistroprov}</td>
+                    <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idproveedor})"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
