@@ -1,19 +1,18 @@
 // Constante para completar la ruta de la API.
 const FAMILIA_API = 'business/familias.php';
 // Constante para establecer el formulario de buscar.
-const SEARCH_FORM = document.getElementById('search-form');
+const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
 // Constante para establecer el formulario de guardar.
-const SAVE_FORM = document.getElementById('save-form');
+const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 // Constante para establecer el título de la modal.
-const MODAL_TITLE = document.getElementById('modal-title');
+const TITULO = document.getElementById('titulo');
 // Constantes para establecer el contenido de la tabla.
-const TBODY_ROWS = document.getElementById('tbody-rows');
-const RECORDS = document.getElementById('records');
-
+const REGISTROS_TABLA = document.getElementById('registrosTabla');
 // Se inicializa el componente Modal para que funcionen las cajas de diálogo.
 // Constante para establecer la modal de guardar.
-const SAVE_MODAL = new Modal(document.getElementById('modal_add_family'));
-
+const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
+// Constante para el texto del boton
+const BTN_ACCION = document.getElementById('accion');
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
@@ -21,23 +20,23 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
-SEARCH_FORM.addEventListener('submit', (event) => {
+BUSCAR_FORMULARIO.addEventListener('submit', (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SEARCH_FORM);
+    const FORM = new FormData(BUSCAR_FORMULARIO);
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
     fillTable(FORM);
 });
 
 // Método manejador de eventos para cuando se envía el formulario de guardar.
-SAVE_FORM.addEventListener('submit', async (event) => {
+EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
     (document.getElementById('id').value) ? action = 'update' : action = 'create';
     // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SAVE_FORM);
+    const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
     const JSON = await dataFetch(FAMILIA_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -45,7 +44,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
         // Se cierra la caja de diálogo.
-        SAVE_MODAL.toggle();
+        ABRIR_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -60,8 +59,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
 */
 async function fillTable(form = null) {
     // Se inicializa el contenido de la tabla.
-    TBODY_ROWS.innerHTML = '';
-    RECORDS.textContent = '';
+    REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
     (form) ? action = 'search' : action = 'readAll';
     // Petición para obtener los registros disponibles.
@@ -71,41 +69,30 @@ async function fillTable(form = null) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
-            TBODY_ROWS.innerHTML += `
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
-                    <td class="px-6 py-4">
+            REGISTROS_TABLA.innerHTML += `
+                <tr class="text-center bg-white hover:bg-blue-200">
+                    <td class="hidden px-6 py-4">
                         ${row.idfamilia}
                     </td>
                     <td class="px-6 py-4">
                         ${row.familia}
                     </td>
                     <td class="px-6 py-4">
-                        <!--contenedor de los controles de actualizar y eliminar-->
-                        <div class="grid gap-2 m-0">
-                            <!--botón de actualizar-->
-                            <div>
-                                <button onclick="openUpdate(${row.idfamilia})"
-                                    data-modal-toggle="modal_update_branch-office1"
-                                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button">
-                                    <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
-                                </button>
-                            </div>
-                            <!--botón de eliminar registro-->
-                            <div>
-                                <button onclick="openDelete(${row.idfamilia})"
-                                    class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    type="button">
-                                    <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
-                                </button>
-                            </div>
-                        </div>
+                        <button onclick="openUpdate(${row.idfamilia})"
+                            data-modal-toggle="modal_update_branch-office1"
+                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button">
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                        </button>
+                        <button onclick="openDelete(${row.idfamilia})"
+                            class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button">
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                        </button>
                     </td>
                 </tr>
             `;
         });
-        // Se muestra un mensaje de acuerdo con el resultado.
-        RECORDS.textContent = JSON.message;
     } else {
         sweetAlert(4, JSON.exception, true);
     }
@@ -118,11 +105,13 @@ async function fillTable(form = null) {
 */
 function openCreate() {
     // Se abre la caja de diálogo que contiene el formulario.
-    SAVE_MODAL.show();
+    ABRIR_MODAL.show();
     // Se restauran los elementos del formulario.
-    SAVE_FORM.reset();
+    EJECUTAR_FORMULARIO.reset();
+    // Texto del boton para crear un registro
+    BTN_ACCION.textContent = 'Añadir';
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Crear Familia';
+    TITULO.textContent = 'Crear Familia';
 }
 
 /*
@@ -139,11 +128,13 @@ async function openUpdate(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        SAVE_MODAL.show();
+        ABRIR_MODAL.show();
         // Se restauran los elementos del formulario.
-        SAVE_FORM.reset();
+        EJECUTAR_FORMULARIO.reset();
+        // Texto del boton para crear un registro
+        BTN_ACCION.textContent = 'Actualizar';
         // Se asigna título para la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar Familia';
+        TITULO.textContent = 'Actualizar Familia';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idfamilia;
         document.getElementById('familia').value = JSON.dataset.familia;

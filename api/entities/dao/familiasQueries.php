@@ -13,11 +13,11 @@ class familiasqueries
      mediante el nombre de la bodega*/
      public function searchRows($value)
      {
-         $sql = 'SELECT idbodega, numerobodega, direccion
-             FROM bodegas
-             WHERE numerobodega ILIKE ? OR direccion ILIKE ?
-             ORDER BY direccion';
-         $params = array("%$value%", "%$value%");
+         $sql = 'SELECT idfamilia, familia
+             FROM familias
+             WHERE familia ILIKE ?
+             ORDER BY familia';
+         $params = array("%$value%");
          return Database::getRows($sql, $params);    
      }
 

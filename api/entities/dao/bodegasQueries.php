@@ -13,11 +13,11 @@ class bodegasqueries
      mediante el nombre de la bodega*/
      public function searchRows($value)
      {
-         $sql = 'SELECT idbodega, numerobodega, direccion
-             FROM bodegas
-             WHERE direccion ILIKE ?
-             ORDER BY direccion';
-         $params = array("%$value%");
+         $sql = 'SELECT idbodega, numerobodega, bodegas.direccion, nombre
+             FROM bodegas INNER JOIN sucursales ON bodegas.idsucursal = sucursales.idsucursal
+             WHERE  bodegas.direccion ILIKE ? OR nombre ILIKE ?
+             ORDER BY numerobodega';
+         $params = array("%$value%","%$value%");
          return Database::getRows($sql, $params);    
      }
 
@@ -33,8 +33,8 @@ class bodegasqueries
     /*Funcion para cargar los registros en la tabla y mostrarlos*/
     public function readAll()
     {
-        $sql = 'SELECT idbodega, numerobodega, direccion
-            FROM bodegas
+        $sql = 'SELECT idbodega, numerobodega, bodegas.direccion, nombre
+            FROM bodegas INNER JOIN sucursales ON bodegas.idsucursal = sucursales.idsucursal
             ORDER BY numerobodega';
         return Database::getRows($sql);
     }
@@ -51,7 +51,7 @@ class bodegasqueries
      /*Funcion para cargar un unico registro*/
      public function readOne()
      {
-         $sql = 'SELECT idbodega, numerobodega, direccion
+         $sql = 'SELECT idbodega, numerobodega, direccion, idsucursal
              FROM bodegas
              WHERE idbodega = ?';
          $params = array($this->id);

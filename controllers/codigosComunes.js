@@ -68,10 +68,10 @@ async function rellenarTabla(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr  class="text-center bg-white hover:bg-blue-200">
-                    <td class="hidden">${row.idcodigocomun}</td>
-                    <td>${row.nomenclatura}</td>
-                    <td>${row.codigo}</td>
-                    <td>
+                    <td class="hidden px-6 py-4">${row.idcodigocomun}</td>
+                    <td class="px-6 py-4">${row.nomenclatura}</td>
+                    <td class="px-6 py-4">${row.codigo}</td>
+                    <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idcodigocomun})"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
