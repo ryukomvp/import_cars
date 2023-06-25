@@ -70,9 +70,9 @@ async function registrosTabla(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
-                    <td class="hidden">${row.idcategoria}</td>
-                    <td>${row.categoria}</td>
-                    <td>
+                    <td class="hidden px-6 py-4">${row.idcategoria}</td>
+                    <td class="px-6 py-4">${row.categoria}</td>
+                    <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idcategoria})" 
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
