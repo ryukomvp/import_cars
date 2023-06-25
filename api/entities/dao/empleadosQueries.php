@@ -43,6 +43,33 @@ class empleadosQueries
         return Database::getRow($sql, $params);
     }
 
+    //funcion para leer los tipos de documento
+    public function leerTiposDocumentos()
+    {
+        $sql = 'SELECT unnest(enum_range(NULL::tiposdocumentos)) val, unnest(enum_range(NULL::tiposdocumentos)) text';
+        return Database::getRows($sql);
+    }
+
+    //funcion para leer los estados de empleado
+    public function leerEstadosEmpleados()
+    {
+        $sql = 'SELECT unnest(enum_range(NULL::estadosempleados)) val, unnest(enum_range(NULL::estadosempleados)) text';
+        return Database::getRows($sql);
+    }
+
+    //funcion para leer los generos
+    public function leerGeneros()
+    {
+        $sql = 'SELECT unnest(enum_range(NULL::generos)) val, unnest(enum_range(NULL::generos)) text';
+        return Database::getRows($sql);
+    }
+
+    public function leerCargos()
+    {
+        $sql = 'SELECT unnest(enum_range(NULL::cargos)) val, unnest(enum_range(NULL::cargos)) text';
+        return Database::getRows($sql);
+    }
+
     //funcion para actualizar empleado
     public function actualizarEmpleado()
     {
