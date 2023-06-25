@@ -5,6 +5,7 @@ const PROVEEDORES_API = 'business/proveedores.php';
 const CATEGORIAS_API = 'business/categorias.php';
 const MODELOS_API = 'business/modelos.php';
 const PAISES_API = 'business/paisesOrigen.php';
+const TIPO_API = 'business/paisesOrigen.php';
 // Constante para establecer el formulario de buscar.
 const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
 // Constante para establecer el formulario de guardar.
@@ -43,14 +44,14 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(PRODUCTOS_API, action, form);
+    const JSON = await dataFetch(PRODUCTOS_API, action, FORM);
     console.log(JSON);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
         rellenarTabla();
         // Se cierra la caja de diálogo.
-        ABRIR_MODAL.hide();
+        ABRIR_MODAL.toggle();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     }
@@ -128,7 +129,7 @@ function crearRegistro() {
     fillSelect(MODELOS_API, 'leerModelos', 'modelo');
     fillSelect(PAISES_API, 'leerPaises', 'paisorigen');
     fillSelect(PRODUCTOS_API, 'leerEstado', 'estado');
-
+    fillSelect(TIPO_API, 'leerTipo', 'tipo');
 }
 
 /*
