@@ -76,7 +76,7 @@
 		codigo int not null
 	);  
 
-    CREATE TABLE tipoProducto(
+    CREATE TABLE tiposProductos(
 		idTipoProducto serial primary key not null,
 		tipoProducto varchar (30) not null
 	);
@@ -98,7 +98,7 @@
 		
 		constraint fkProvMoneda
 		foreign key (idMoneda)
-		references monedas(idMoneda)
+		references monedas(idMoneda) ON UPDATE CASCADE ON DELETE CASCADE
 	);
 	
 	create table modelos(
@@ -109,7 +109,7 @@
 		
 		constraint fkMarcaMod
 		foreign key (idMarca)
-		references marcas(idMarca)
+		references marcas(idMarca) ON UPDATE CASCADE ON DELETE CASCADE
 		
 	);
 	
@@ -132,7 +132,7 @@
 		
 		constraint fkSucursalBod
 		foreign key (idSucursal)
-		references sucursales(idSucursal)
+		references sucursales(idSucursal) ON UPDATE CASCADE ON DELETE CASCADE
 	);
 	
 	create table familiasBodegas(
@@ -143,11 +143,11 @@
 		
 		constraint fkFamiliaBodegaBod
 		foreign key (idBodega)
-		references bodegas(idBodega),
+		references bodegas(idBodega) ON UPDATE CASCADE ON DELETE CASCADE,
 		
 		constraint fkFamiliaBodegaFam
 		foreign key (idFamilia)
-		references familias(idFamilia)		
+		references familias(idFamilia) ON UPDATE CASCADE ON DELETE CASCADE		
 	);
 	
 	
@@ -176,7 +176,7 @@
 
 		constraint fkEmpleadoUs
 		foreign key (idEmpleado)
-		references empleados(idEmpleado)
+		references empleados(idEmpleado) ON UPDATE CASCADE ON DELETE CASCADE
 	);
 	
 	create table productos(
@@ -196,23 +196,27 @@
 
 		constraint fkCodigoProd
 		foreign key (idCodigoComun)
-		references codigoComun(idCodigoComun),
+		references codigoComun(idCodigoComun) ON UPDATE CASCADE ON DELETE CASCADE,
 		
 		constraint fkProveedorProd
 		foreign key (idProveedor)
-		references proveedores(idProveedor),
+		references proveedores(idProveedor) ON UPDATE CASCADE ON DELETE CASCADE,
 		
 		constraint fkCategoriaProd
 		foreign key (idCategoria)
-		references categorias(idCategoria),
+		references categorias(idCategoria) ON UPDATE CASCADE ON DELETE CASCADE,
 		
 		constraint fkModeloProd
 		foreign key (idModelo)
-		references modelos(idModelo),
+		references modelos(idModelo) ON UPDATE CASCADE ON DELETE CASCADE,
 		
 		constraint fkPaisprod
 		foreign key (idPais)
-		references paisesDeOrigen(idPais)
+		references paisesDeOrigen(idPais) ON UPDATE CASCADE ON DELETE CASCADE,
+		
+		constraint fkTipoProd
+		foreign key (idTipoProducto)
+		references tiposProductos(idTipoProducto) ON UPDATE CASCADE ON DELETE CASCADE
 	);
 	
 	create table comisionesVentas(
@@ -223,7 +227,7 @@
 		
 		constraint fkProductoCom
 		foreign key (idProducto)
-		references productos(idProducto)
+		references productos(idProducto) ON UPDATE CASCADE ON DELETE CASCADE
 		
 	);
 	
@@ -239,11 +243,11 @@
 		
 		constraint fkProductoEnt
 		foreign key (idProducto)
-		references productos(idProducto),
+		references productos(idProducto) ON UPDATE CASCADE ON DELETE CASCADE,
 		
 		constraint fkEmpleadoEnt
 		foreign key (idEmpleado)
-		references empleados(idEmpleado)
+		references empleados(idEmpleado) ON UPDATE CASCADE ON DELETE CASCADE
 		
 	);
 	
@@ -256,11 +260,11 @@
 		
 		constraint fkProducoLot
 		foreign key (idProducto)
-		references productos(idProducto),
+		references productos(idProducto) ON UPDATE CASCADE ON DELETE CASCADE,
 		
 		constraint fkSucursalLote
 		foreign key (idSucursal)
-		references sucursales(idSucursal)
+		references sucursales(idSucursal) ON UPDATE CASCADE ON DELETE CASCADE
 		
 	);
 	
@@ -275,11 +279,11 @@
 		
 		constraint fkComisionFact
 		foreign key (idComisionVenta)
-		references comisionesVentas(idComisionVenta),
+		references comisionesVentas(idComisionVenta) ON UPDATE CASCADE ON DELETE CASCADE,
 		
 		constraint fkEmpleadoFact
 		foreign key (idEmpleado)
-		references empleados(idEmpleado)
+		references empleados(idEmpleado) ON UPDATE CASCADE ON DELETE CASCADE
 		
 	);
 	
@@ -293,11 +297,11 @@
 		
 		constraint fkLoteDetFact
 		foreign key (idLote)
-		references lotes(idLote),
+		references lotes(idLote) ON UPDATE CASCADE ON DELETE CASCADE,
 		
 		constraint fkFacturaDetFact
 		foreign key (idFactura)
-		references facturas(idFactura)
+		references facturas(idFactura) ON UPDATE CASCADE ON DELETE CASCADE
 	
 	);
 
