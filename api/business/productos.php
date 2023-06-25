@@ -99,7 +99,6 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'actualizarProducto':
-
                 $_POST = Validator::validateForm($_POST);
                 if (!$productos->setId($_POST['id'])) {
                     $result['exception'] = 'Producto incorrecto';
@@ -173,6 +172,26 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            case 'leerCodigosComunes':
+                if ($result['dataset'] = $productos->leerCodigosComunes()) {
+                    $result['status'] = 1;
+                    // $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            case 'leerEstado':
+                    if ($result['dataset'] = $productos->leerEstado()) {
+                        $result['status'] = 1;
+                        // $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay datos registrados';
+                    }
+                    break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

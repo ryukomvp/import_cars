@@ -1,10 +1,10 @@
 // Constante para completar la ruta de la API.
 const PRODUCTOS_API = 'business/productos.php';
-const CODIGOS_COMUNES_API = 'business/comidogosComunes.php';
+const CODIGOS_COMUNES_API = 'business/codigosComunes.php';
 const PROVEEDORES_API = 'business/proveedores.php';
 const CATEGORIAS_API = 'business/categorias.php';
 const MODELOS_API = 'business/modelos.php';
-const PAISES_API = 'business/paisOrigen.php';
+const PAISES_API = 'business/paisesOrigen.php';
 // Constante para establecer el formulario de buscar.
 const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
 // Constante para establecer el formulario de guardar.
@@ -43,7 +43,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(PRODUCTOS_API_API, action, FORM);
+    const JSON = await dataFetch(PRODUCTOS_API, action, form);
     console.log(JSON);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
@@ -77,13 +77,13 @@ async function rellenarTabla(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
-                <tr>
+                <tr class="text-center bg-white hover:bg-blue-200">
                     <td><img src="${SERVER_URL}images/productos/${row.foto}" class="materialboxed" height="100"></td>
                     <td>${row.nombre}</td>
                     <td>${row.codigo}-${row.nomenclatura}</td>
                     <td>${row.descripcion}</td>
                     <td>${row.precio}</td>
-                    <td>${row.proveedor}</td>
+                    <td>${row.nombre}</td>
                     <td>${row.categoria}</td>
                     <td>${row.modelo}</td>
                     <td>
@@ -122,11 +122,13 @@ function crearRegistro() {
     // Se asigna título a la caja de diálogo.
     TITULO.textContent = 'Crear Producto nuevo';
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
-    fillSelect(CODIGOS_COMUNES_API, 'leerCodigosComunes', 'codigo');
+    fillSelect(PRODUCTOS_API, 'leerCodigosComunes', 'codigo');
     fillSelect(PROVEEDORES_API, 'leerProveedores', 'proveedor');
     fillSelect(CATEGORIAS_API, 'leerCategorias', 'categoria');
     fillSelect(MODELOS_API, 'leerModelos', 'modelo');
-    fillSelect(PAISES_API, 'leerPaisesOrigen', 'paisorigen');
+    fillSelect(PAISES_API, 'leerPaises', 'paisorigen');
+    fillSelect(PRODUCTOS_API, 'leerEstado', 'estado');
+
 }
 
 /*

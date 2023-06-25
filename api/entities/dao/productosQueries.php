@@ -78,7 +78,7 @@ class productosQueries
     {
         $sql = 'SELECT idproducto, nombre, foto,  descripcio, precio
                 FROM productos INNER JOIN categorias USING(idcategoria)
-                WHERE idcategoria = ? AND estadoproducto = true
+                WHERE idcategoria = ? AND estadosproducto = true
                 ORDER BY nombre';
         $params = array($this->id);
         return Database::getRows($sql, $params);
@@ -86,13 +86,15 @@ class productosQueries
 
     public function leerEstado()
     {
-        $sql = 'SELECT unnest(enum_range(NULL::estadoproducto)) val, unnest(enum_range(NULL::estadoproducto)) text';
+        $sql = 'SELECT unnest(enum_range(NULL::estadosproductos)) val, unnest(enum_range(NULL::estadosproductos)) text';
         return Database::getRows($sql);
     }
 
-    public function leerCodigo()
+    public function leerCodigosComunes()
     {
-        $sql = 'SELECT nomenclatura, codigo from codigoComun';
-        return Database::getRows($sql);
+       $sql = "SELECT concat(nomenclatura,' - ',codigo)
+       FROM codigoComun
+       ORDER BY nomenclatura;";
+       return Database::getRows($sql);
     }
 }
