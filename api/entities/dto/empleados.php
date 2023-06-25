@@ -4,7 +4,7 @@ require_once('../../entities/dao/empleadosQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
 */
-class empleado extends empleadosQueries
+class empleados extends empleadosQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
