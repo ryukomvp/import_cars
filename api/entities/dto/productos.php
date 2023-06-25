@@ -77,7 +77,7 @@ class Productos extends productosQueries
 
     public function setAnio($value)
     {
-        if (Validator::validateDate($value)) {
+        if (Validator::validateNaturalNumber($value)) {
             $this->anio = $value;
             return true;
         } else {

@@ -25,7 +25,7 @@ class productosQueries
     public function crearProducto()
     {
         // , $_SESSION['idUsuario']
-        $sql = 'INSERT INTO producto(nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto)
+        $sql = 'INSERT INTO productos(nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->anio, $this->codigo, $this->tipoProducto, $this->proveedor, $this->categoria, $this->modelo, $this->pais, $this->estadoProducto);
         return Database::executeRow($sql, $params);
@@ -38,7 +38,7 @@ class productosQueries
                 INNER JOIN categorias c ON p.idCategoria = c.idCategoria 
                 INNER JOIN proveedores m ON p.idProveedor = m.idProveedor 
                 INNER JOIN codigoComun a ON p.idCodigoComun = a.idCodigoComun
-                INNER JOIN tipoProducto b ON p.idTipoProducto = b.idTipoProducto
+                INNER JOIN tiposProductos b ON p.idTipoProducto = b.idTipoProducto
                 INNER JOIN modelos n ON p.idModelo = n.idModelo
                 INNER JOIN paisesDeOrigen s ON p.idPais = s.idPais
                 ORDER BY p.nombre;';

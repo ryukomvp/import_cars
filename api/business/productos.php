@@ -25,9 +25,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'buscarProducto':
                 $_POST = Validator::validateForm($_POST);
-                if ($_POST['search'] == '') {
+                if ($_POST['buscar'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $productos->leerTodo($_POST['search'])) {
+                } elseif ($result['dataset'] = $productos->buscarProducto($_POST['buscar'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {

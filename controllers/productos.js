@@ -82,7 +82,7 @@ async function rellenarTabla(form = null) {
                     <td><img src="${SERVER_URL}images/productos/${row.foto}" class="materialboxed" height="100"></td>
                     <td>${row.nombre}</td>
                     <td>${row.codigo}-${row.nomenclatura}</td>
-                    <td>${row.descripcion}</td>
+                    <td>${row.anio}</td>
                     <td>${row.precio}</td>
                     <td>${row.nombre}</td>
                     <td>${row.categoria}</td>
