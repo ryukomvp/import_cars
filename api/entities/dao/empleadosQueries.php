@@ -1,5 +1,5 @@
 <?php
-require_once('../../helpers/database.php');
+require_once('../helpers/database.php');
 
 class empleadosQueries
 {
@@ -8,8 +8,8 @@ class empleadosQueries
     public function leerEmpleados()
     {
         $sql = 'SELECT idempleado, nombre, telefono, correo, nacimiento, tipodocumento, documento, estadoempleado, genero, cargo
-                FROM empleados INNER JOIN cargos USING(idcargo)
-                ORDER BY nombre';
+        FROM empleados 
+        ORDER BY nombre';
         return Database::getRows($sql);
     }
 

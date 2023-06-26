@@ -10,33 +10,35 @@ class entradasQueries
     */
 
     /*metodo para buscar registros*/
-    public function buscarEntradas($value)
+    public function buscarEntrada($value)
     {
-        $sql = 'SELECT identrada, descripcion, idproducto, cantidad, precio, fechaentrada, idempleado
-                FROM entradas
-                INNER JOIN productos USING(idproducto)
-                INNER JOIN empleados USING(idempleado)
-                WHERE descripcion LIKE ? OR descripcion LIKE ? OR categoria LIKE ? OR nomenclatura LIKE ? OR codigo LIKE ? 
+        $sql = 'SELECT entradas.identrada, entradas.descripcion, productos.nombre, entradas.cantidad, entradas.precio, entradas.fechaentrada, empleados.nombre as empleado
+                FROM entradas 
+                INNER JOIN productos ON entradas.idproducto = productos.idproducto
+                INNER JOIN empleados ON entradas.idempleado = empleados.idempleado
+                WHERE entradas.descripcion LIKE ? OR productos.nombre LIKE ? empleados.nombre LIKE ? 
                 ORDER BY nombre_producto';
-        $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
+        $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
-    public function crearEntradas()
+    public function crearEntrada()
     {
-        $sql = 'INSERT INTO entradas(descripcion, idproducto, cantidad, precio, fechaentrada , idTipoProducto, idempleado)
-                VALUES(?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->descripcion, $this->producto, $this->cantidad, $this->precio, $this->fechaEntrada, $this->tipoProducto, $this->empleado);
+        date_default_timezone_set('America/El_Salvador');
+        $date = date('Y-m-d');
+        $sql = 'INSERT INTO entradas(descripcion, idproducto, cantidad, precio, fechaentrada ,  idempleado)
+                VALUES(?, ?, ?, ?, ?, ?)';
+        $params = array($this->descripcion, $this->producto, $this->cantidad, $this->precio, $date, $this->empleado);
         return Database::executeRow($sql, $params);
     }
 
     public function leerTodo()
     {
-        $sql = 'SELECT entradas.descripcion, producto.nombre, entradas.cantidad, entradas.precio, entradas.fechaentrada, empleados.idempleado
+        $sql = 'SELECT entradas.identrada, entradas.descripcion, productos.nombre, entradas.cantidad, entradas.precio, entradas.fechaentrada, empleados.nombre as empleado
                 FROM entradas 
                 INNER JOIN productos ON entradas.idproducto = productos.idproducto
                 INNER JOIN empleados ON entradas.idempleado = empleados.idempleado
-                Order by nombre = ?';
+                Order by productos.nombre';
         return Database::getRows($sql);
     }
 
@@ -49,17 +51,17 @@ class entradasQueries
         return Database::getRow($sql, $params);
     }
 
-    public function actualizarEntradas($current_image)
+    public function actualizarEntrada()
     {
         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
         $sql = 'UPDATE entradas
-                SET descripcion = ?, idproducto= ?, precio= ?, fechaentrada= ?, idempleado= ? 
+                SET descripcion = ?, idproducto= ?, precio= ?, idempleado= ? 
                 WHERE identrada = ?';
-        $params = array($this->descripcion, $this->producto, $this->precio, $this->fecha, $this->empleado);
+        $params = array($this->descripcion, $this->producto, $this->precio, $this->empleado);
         return Database::executeRow($sql, $params);
     }
 
-    public function eliminarProducto()
+    public function eliminarEntrada()
     {
         $sql = 'DELETE FROM entradas
                 WHERE identrada = ?';

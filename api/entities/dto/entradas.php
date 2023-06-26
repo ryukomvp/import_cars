@@ -1,6 +1,6 @@
 <?php
 require_once('../helpers/validator.php');
-require_once('../entities/dao/productosQueries.php');
+require_once('../entities/dao/entradasQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad PRODUCTO.
 */
@@ -12,8 +12,6 @@ class Entradas extends entradasQueries
     protected $producto = null;
     protected $cantidad = null;
     protected $precio = null;
-    protected $fechaEntrada = null;
-    protected $tipoProducto  = null;
     protected $empleado = null;
 
     /*
@@ -23,26 +21,6 @@ class Entradas extends entradasQueries
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->id = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setNombre($value)
-    {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->nombre = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setImagen($file)
-    {
-        if (Validator::validateImageFile($file, 1000, 1000)) {
-            $this->imagen = Validator::getFileName();
             return true;
         } else {
             return false;
@@ -59,6 +37,27 @@ class Entradas extends entradasQueries
         }
     }
 
+    public function setProducto($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->producto = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setCantidad($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->cantidad = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+
     public function setPrecio($value)
     {
         if (Validator::validateMoney($value)) {
@@ -69,80 +68,10 @@ class Entradas extends entradasQueries
         }
     }
 
-    public function setAnio($value)
+    public function setEmpleado($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->anio = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setCodigoComun($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->idCodigoComun = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setTipoProducto($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->idTipoProducto = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setProveedor($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->idProveedor = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setCategoria($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->idCategoria = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setModelo($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->idModelo = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setPais($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->idPais = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setEstadoProducto($value)
-    {
-        if (Validator::validateBoolean($value)) {
-            $this->estadoProducto = $value;
+            $this->empleado = $value;
             return true;
         } else {
             return false;
@@ -157,68 +86,28 @@ class Entradas extends entradasQueries
         return $this->id;
     }
 
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-
-    public function getImagen()
-    {
-        return $this->imagen;
-    }
-
     public function getDescripcion()
     {
         return $this->descripcion;
+    }
+
+    public function getProducto()
+    {
+        return $this->producto;
+    }
+
+    public function getCantidad()
+    {
+        return $this->cantidad;
     }
 
     public function getPrecio()
     {
         return $this->precio;
     }
-
-    public function getAnio()
-    {
-        return $this->anio;
-    }
    
-    public function getCodigoComun()
+    public function getEmpleado()
     {
-        return $this->idCodigoComun;
-    }
-    
-    public function getTipoProducto()
-    {
-        return $this->idTipoProducto;
-    }
-
-    public function getProveedor()
-    {
-        return $this->idProveedor;
-    }
-
-    public function getcategoria()
-    {
-        return $this->idCategoria;
-    }
-
-    public function getModelo()
-    {
-        return $this->idModelo;
-    }
-
-    public function getPais()
-    {
-        return $this->idPais;
-    }
-    
-    public function getEstadoProducto()
-    {
-        return $this->estadoProducto;
-    }
-
-    public function getRuta()
-    {
-        return $this->ruta;
+        return $this->empleado;
     }
 }
