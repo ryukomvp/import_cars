@@ -79,16 +79,16 @@ async function rellenarTabla(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white hover:bg-blue-200">
-                    <td class="hidden">${row.idproducto}</td>
-                    <td class="flex justify-center py-3"><img src="${SERVER_URL}images/productos/${row.imagen}" class="h-28 w-28"></td>
-                    <td>${row.nombre}</td>
-                    <td>${row.codigo}-${row.nomenclatura}</td>
-                    <td>${row.anio}</td>
-                    <td>${row.precio}</td>
-                    <td>${row.proveedor}</td>
-                    <td>${row.categoria}</td>
-                    <td>${row.modelo}</td>
-                    <td>
+                    <td class="hidden px-6 py-4">${row.idproducto}</td>
+                    <td class="flex justify-center px-6 py-4"><img src="${SERVER_URL}images/productos/${row.imagen}" class="h-28 w-28"></td>
+                    <td class="px-6 py-4">${row.nombre}</td>
+                    <td class="px-6 py-4">${row.codigo}-${row.nomenclatura}</td>
+                    <td class="px-6 py-4">${row.anio}</td>
+                    <td class="px-6 py-4">${row.precio}</td>
+                    <td class="px-6 py-4">${row.proveedor}</td>
+                    <td class="px-6 py-4">${row.categoria}</td>
+                    <td class="px-6 py-4">${row.modelo}</td>
+                    <td class="px-6 py-4" >
                         <button onclick="actualizarRegistro(${row.idproducto})"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">

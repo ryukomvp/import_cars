@@ -22,20 +22,20 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'buscarTipoProducto':
+            case 'buscarTiposProductos':
                 $_POST = Validator::validateForm($_POST);
-                   if ($_POST['buscar'] == '') {
-                        $result['dataset'] = $tipo->leerTiposProductos();
-                        $result['status'] = 1;
+                if ($_POST['buscar'] == '') {
+                    $result['dataset'] = $tipo->leerTiposProductos();
+                    $result['status'] = 1;
                 } elseif ($result['dataset'] = $tipo->buscarTiposProductos($_POST['buscar'])) {
-                       $result['status'] = 1;
+                    $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
-                       $result['exception'] = Database::getException();
+                    $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No hay coincidencias';
                 }
-                 break;
+                break;
             case 'crearTipoProducto':
                 $_POST = Validator::validateForm($_POST);
                 if (!$tipo->setTipoProducto($_POST['tipoProducto'])){

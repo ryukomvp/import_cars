@@ -105,17 +105,17 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto incorrecto';
                 } elseif (!$data = $productos->leerUnProducto()) {
                     $result['exception'] = 'Producto inexistente';
-                } elseif (!$productos->setImagen($_FILES['archivo'])) {
-                    $result['exception'] = Validator::getFileError();
+                } elseif (!$productos->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre del producto incorrecto';
                 } elseif (!$productos->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripción incorrecta';
                 } elseif (!$productos->setPrecio($_POST['precio'])){
                     $result['exception'] = 'Precio incorrecto';
                 } elseif (!$productos->setAnio($_POST['anio'])){
                     $result['exception'] = 'Año incorrecto';
-                } elseif (!isset($_POST['codigocomun'])) {
+                } elseif (!isset($_POST['codigoComun'])) {
                     $result['exception'] = 'Seleccione un codigo';
-                } elseif (!$productos->setCodigoComun($_POST['codigocomun'])) {
+                } elseif (!$productos->setCodigoComun($_POST['codigoComun'])) {
                     $result['exception'] = 'codigo incorrecta';
                 } elseif (!isset($_POST['tipo'])) {
                     $result['exception'] = 'Seleccione u tipo de producto';
