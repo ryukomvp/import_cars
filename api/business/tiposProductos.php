@@ -22,7 +22,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'buscarTipoProducto':
+            case 'buscarTiposProductos':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['buscar'] == '') {
                     $result['dataset'] = $tipo->leerTiposProductos();

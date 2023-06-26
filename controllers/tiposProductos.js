@@ -62,7 +62,7 @@ async function registrosTabla(form = null) {
     // Se inicializa el contenido de la tabla.
     TBODY_ROWS.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'buscarTipoProducto' : action = 'leerTiposProductos';
+    (form) ? action = 'buscarTiposProductos' : action = 'leerTiposProductos';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(TIPO_PRODUCTO_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
