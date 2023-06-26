@@ -24,24 +24,17 @@ class entradasQueries
 
     public function crearProducto()
     {
-        // , $_SESSION['idUsuario']
-        $sql = 'INSERT INTO producto(nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->anio, $this->codigo, $this->tipoProducto, $this->proveedor, $this->categoria, $this->modelo, $this->pais, $this->estadoProducto);
+        $sql = 'INSERT INTO entradas(descripcion, idprodcuto, cantidad, precio, fechaentrada, , idTipoProducto, idempleado)
+                VALUES(?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->descripcion, $this->producto, $this->cantidad, $this->precio, $this->fechaEntrada, $this->tipoProducto, $this->empleado);
         return Database::executeRow($sql, $params);
     }
 
     public function leerTodo()
     {
-        $sql = 'SELECT p.nombre, p.imagen, p.descripcion, p.precio, p.anio, a.nomenclatura, a.codigo, b.TipoProducto, m.nombre, c.categoria, n.modelo, s.pais, estadoProducto
-                FROM productos p
-                INNER JOIN categorias c ON p.idCategoria = c.idCategoria 
-                INNER JOIN proveedores m ON p.idProveedor = m.idProveedor 
-                INNER JOIN codigoComun a ON p.idCodigoComun = a.idCodigoComun
-                INNER JOIN tipoProducto b ON p.idTipoProducto = b.idTipoProducto
-                INNER JOIN modelos n ON p.idModelo = n.idModelo
-                INNER JOIN paisesDeOrigen s ON p.idPais = s.idPais
-                ORDER BY p.nombre;';
+        $sql = 'SELECT entradas.descripcion, producto.nombre, entradas.cantidad, entradas.precio, fechaentrada, idempleado
+                FROM entradas 
+                ';
         return Database::getRows($sql);
     }
 
