@@ -1,11 +1,11 @@
 <?php
-require_once('../entities/dto/tipoProducto.php');
+require_once('../entities/dto/tiposProductos.php');
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if(isset($_GET['action'])){
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $tipo = new tipoProducto;
+    $tipo = new tiposProductos;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -27,7 +27,7 @@ if(isset($_GET['action'])){
                    if ($_POST['buscar'] == '') {
                         $result['dataset'] = $tipo->leerTiposProductos();
                         $result['status'] = 1;
-                } elseif ($result['dataset'] = $tipo->buscarTiposProducto($_POST['buscar'])) {
+                } elseif ($result['dataset'] = $tipo->buscarTiposProductos($_POST['buscar'])) {
                        $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -40,7 +40,7 @@ if(isset($_GET['action'])){
                 $_POST = Validator::validateForm($_POST);
                 if (!$tipo->setTipoProducto($_POST['tipoProducto'])){
                     $result['exception'] = 'Tipo de producto incorrecto'; 
-                } elseif ($tipo->crearPaisOrigen()){
+                } elseif ($tipo->crearTiposProductos()){
                     $result['status'] = 1;
                     $result['message'] = 'Tipo de producto creado correctamente';
                 } else {
@@ -50,7 +50,7 @@ if(isset($_GET['action'])){
             case 'leerTipoProducto':
                 if (!$tipo->setId($_POST['id'])) {
                     $result['exception'] = 'Tipo de producto incorrecto';
-                } elseif ($result['dataset'] = $tipo->leerTipoProducto()) {
+                } elseif ($result['dataset'] = $tipo->leerTiposProductos()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -62,11 +62,11 @@ if(isset($_GET['action'])){
                 $_POST = Validator::validateForm($_POST);
                if (!$tipo->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
-                } elseif (!$data = $tipo->leerTipoProducto()) {
+                } elseif (!$data = $tipo->leerTiposProductos()) {
                     $result['exception'] = 'Tipo de producto inexistente';
                 } elseif (!$tipo->setTipoProducto($_POST['pais'])) {
                      $result['exception'] = 'Tipo de producto incorrecto';
-                } elseif ($tipo->actualizarTipoProducto()) {
+                } elseif ($tipo->actualizarTiposProductos()) {
                     $result['status'] = 1;
                     $result['message'] = 'Tipo de producto modificado correctamente';
                 } else {
@@ -76,9 +76,9 @@ if(isset($_GET['action'])){
             case 'eliminarTipoProducto':
                 if (!$tipo->setId($_POST['idtipoproducto'])) {
                     $result['exception'] = 'Tipo de producto incorrecto';
-                } elseif (!$data = $tipo->leerTipoProducto()) {
+                } elseif (!$data = $tipo->leerTiposProductos()) {
                     $result['exception'] = 'Tipo de producto inexistente';
-                } elseif ($tipo->eliminarTipoProducto()) {
+                } elseif ($tipo->eliminarTiposProductos()) {
                     $result['status'] = 1;
                     $result['message'] = 'Tipo de producto eliminado correctamente';
                 } else {

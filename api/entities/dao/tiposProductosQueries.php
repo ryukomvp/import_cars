@@ -18,7 +18,7 @@ class tiposProductosQueries
         return Database::getRows($sql, $params);
     }
 
-    public function crearTipoProducto()
+    public function crearTiposProductos()
     {
         $sql = 'INSERT INTO tiposproductos(tipoproducto)
                 VALUES(?)';
@@ -43,7 +43,7 @@ class tiposProductosQueries
         return Database::getRow($sql, $params);
     }
 
-    public function actualizarTipoProducto()
+    public function actualizarTiposProductos()
     {
         $sql = 'UPDATE tiposproductos 
                 SET tipoproducto = ?
@@ -52,7 +52,7 @@ class tiposProductosQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function eliminarTipoProducto()
+    public function eliminarTiposProductos()
     {
         $sql = 'DELETE FROM tiposproductos
                 WHERE idtipoproducto = ?';

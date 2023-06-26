@@ -5,7 +5,7 @@ const PROVEEDORES_API = 'business/proveedores.php';
 const CATEGORIAS_API = 'business/categorias.php';
 const MODELOS_API = 'business/modelos.php';
 const PAISES_API = 'business/paisesOrigen.php';
-const TIPO_API = 'business/paisesOrigen.php';
+const TIPO_API = 'business/tiposProductos.php';
 // Constante para establecer el formulario de buscar.
 const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
 // Constante para establecer el formulario de guardar.
@@ -129,7 +129,7 @@ function crearRegistro() {
     fillSelect(MODELOS_API, 'leerModelos', 'modelo');
     fillSelect(PAISES_API, 'leerPaises', 'paisorigen');
     fillSelect(PRODUCTOS_API, 'leerEstado', 'estado');
-    fillSelect(TIPO_API, 'leerTipo', 'tipo');
+    fillSelect(TIPO_API, 'leerTiposProductos', 'tipo');
 }
 
 /*
