@@ -12,7 +12,7 @@ class productosQueries
     /*metodo para buscar registros*/
     public function buscarProducto($value)
     {
-        $sql = "SELECT productos.idproducto, productos.nombre, productos.descripcion, productos.precio, productos.anio, concat(codigoComun.nomenclatura,' - ',codigoComun.codigo), tiposProductos.tipoproducto, proveedores.nombre, categorias.categoria, modelos.modelo, paisesdeorigen.pais, productos.estadoproducto
+        $sql = 'SELECT productos.idproducto, productos.nombre, productos.descripcion, productos.precio, productos.anio, codigocomun.nomenclatura, codigocomun.codigo, tiposproductos.tipoproducto, proveedores.nombre as proveedor, categorias.categoria, modelos.modelo, paisesdeorigen.pais, productos.estadoproducto
                 FROM productos 
                 INNER JOIN categorias ON productos.idcategoria = categorias.idcategoria
                 INNER JOIN codigoComun ON productos.idcodigocomun = codigocomun.idcodigocomun
@@ -21,7 +21,7 @@ class productosQueries
                 INNER JOIN modelos ON productos.idmodelo = modelos.idmodelo  
                 INNER JOIN paisesdeorigen ON productos.idpais = paisesdeorigen.idpais
                 WHERE  productos.nombre LIKE ? OR productos.descripcion LIKE ? OR categorias.categoria  LIKE ? OR codigoComun.nomenclatura  LIKE ? OR CAST (codigoComun.codigo as varchar) LIKE ?
-                ORDER BY productos.nombre";  
+                ORDER BY productos.nombre';  
         $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
@@ -37,7 +37,7 @@ class productosQueries
 
     public function leerTodo()
     {
-        $sql = 'SELECT p.idproducto, p.nombre, p.imagen, p.descripcion, p.precio, p.anio, a.nomenclatura, a.codigo, b.tipoproducto, m.nombre as proveedor, c.categoria, n.modelo, s.pais, p.estadoProducto
+        $sql = 'SELECT p.idproducto, p.nombre, p.imagen, p.descripcion, p.precio, p.anio, a.nomenclatura, a.codigo, b.tipoproducto, m.nombre as proveedor, c.categoria, n.modelo, s.pais, p.estadoproducto
                 FROM productos p
                 INNER JOIN categorias c ON p.idcategoria = c.idcategoria 
                 INNER JOIN proveedores m ON p.idproveedor = m.idproveedor 
@@ -64,9 +64,9 @@ class productosQueries
         ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
 
         $sql = 'UPDATE productos
-                SET nombre = ?, imagen= ?, descripcion= ?, precio,= ? anio= ?, idCodigoComun= ?, idTipoProducto= ?, idProveedor= ?, idCategoria= ?, idModelo= ?, idPais= ?, estadoProducto= ?
-                WHERE id_producto = ?';
-        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->anio, $this->codigo, $this->tipoProducto, $this->proveedor, $this->categoria, $this->modelo, $this->pais, $this->estadoProducto, $this->id);
+                SET nombre = ?, imagen= ?, descripcion= ?, precio= ?, anio= ?, idcodigocomun= ?, idtipoproducto= ?, idproveedor= ?, idcategoria= ?, idmodelo= ?, idpais= ?, estadoproducto= ?
+                WHERE idproducto = ?';
+        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->anio, $this->idCodigoComun, $this->idTipoProducto, $this->idProveedor, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto, $this->id);
         return Database::executeRow($sql, $params);
     }
 
