@@ -20,7 +20,7 @@ class Productos extends productosQueries
     protected $idModelo = null;
     protected $idPais = null;
     protected $estadoProducto = null;
-    protected $ruta = '../images/products/';
+    protected $ruta = '../images/productos/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.

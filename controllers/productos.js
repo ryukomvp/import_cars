@@ -51,7 +51,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         rellenarTabla();
         // Se cierra la caja de diálogo.
-        ABRIR_MODAL.hidden();
+        ABRIR_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     }
@@ -80,12 +80,12 @@ async function rellenarTabla(form = null) {
             REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white hover:bg-blue-200">
                     <td class="hidden">${row.idproducto}</td>
-                    <td><img src="${SERVER_URL}images/productos/${row.foto}" class="materialboxed" height="100"></td>
+                    <td class="flex justify-center py-3"><img src="${SERVER_URL}images/productos/${row.imagen}" class="h-28 w-28"></td>
                     <td>${row.nombre}</td>
                     <td>${row.codigo}-${row.nomenclatura}</td>
                     <td>${row.anio}</td>
                     <td>${row.precio}</td>
-                    <td>${row.nombre}</td>
+                    <td>${row.proveedor}</td>
                     <td>${row.categoria}</td>
                     <td>${row.modelo}</td>
                     <td>
@@ -155,11 +155,20 @@ async function actualizarRegistro(id) {
         // Se asigna título para la caja de diálogo.
         TITULO.textContent = 'Actualizar producto';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.id_categoria;
-        document.getElementById('nombre').value = JSON.dataset.categoria;
+        // Se establece el campo de archivo como opcional.
+        document.getElementById('archivo').required = false;
+        document.getElementById('id').value = JSON.dataset.idproducto;
+        document.getElementById('nombre').value = JSON.dataset.nombre;
         document.getElementById('descripcion').value = JSON.dataset.descripcion;
-        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-        M.updateTextFields();
+        document.getElementById('precio').value = JSON.dataset.precio;
+        document.getElementById('anio').value = JSON.dataset.anio;
+        fillSelect(PRODUCTOS_API, 'leerCodigosComunes', 'codigo', JSON.dataset.idcodigocomun);
+        fillSelect(PROVEEDORES_API, 'leerProveedores', 'proveedor', JSON.dataset.idproveedor);
+        fillSelect(CATEGORIAS_API, 'leerCategorias', 'categoria', JSON.dataset.idcategoria);
+        fillSelect(MODELOS_API, 'leerModelos', 'modelo', JSON.dataset.idmodelo);
+        fillSelect(PAISES_API, 'leerPaises', 'paisorigen', JSON.dataset.idpais);
+        fillSelect(PRODUCTOS_API, 'leerEstado', 'estado', JSON.dataset.estadoproducto);
+        fillSelect(TIPO_API, 'leerTiposProductos', 'tipo', JSON.dataset.idtipoproducto);
     } else {
         sweetAlert(2, JSON.exception, false);
     }
