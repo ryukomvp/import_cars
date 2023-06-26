@@ -51,9 +51,9 @@ class productosQueries
 
     public function leerUnProducto()
     {
-        $sql = 'SELECT idproducto,nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto
-                FROM productos
-                WHERE idproducto = ?';
+        $sql = 'SELECT idproducto,nombre, imagen, descripcion, precio, anio, idcodigocomun, idtipoproducto, idproveedor, idcategoria, idmodelo, idpais, estadoproducto
+        FROM productos
+        WHERE idproducto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }

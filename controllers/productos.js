@@ -51,7 +51,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         rellenarTabla();
         // Se cierra la caja de diálogo.
-        ABRIR_MODAL.toggle();
+        ABRIR_MODAL.hidden();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     }
@@ -79,6 +79,7 @@ async function rellenarTabla(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white hover:bg-blue-200">
+                    <td class="hidden">${row.idproducto}</td>
                     <td><img src="${SERVER_URL}images/productos/${row.foto}" class="materialboxed" height="100"></td>
                     <td>${row.nombre}</td>
                     <td>${row.codigo}-${row.nomenclatura}</td>
@@ -88,13 +89,13 @@ async function rellenarTabla(form = null) {
                     <td>${row.categoria}</td>
                     <td>${row.modelo}</td>
                     <td>
-                        <button onclick="actualizarRegistro(${row.idProducto})"
+                        <button onclick="actualizarRegistro(${row.idproducto})"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                         </button>
 
-                        <button onclick="eliminarRegistro(${row.idProducto})"
+                        <button onclick="eliminarRegistro(${row.idproducto})"
                         class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />

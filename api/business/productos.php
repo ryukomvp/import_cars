@@ -158,21 +158,17 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'eliminarProducto':
-                if (!$productos->setId($_POST['idproducto'])) {
-                    $result['exception'] = 'Producto incorrecto';
-                } elseif (!$data = $productos->leerUnProducto()) {
-                    $result['exception'] = 'Producto inexistente';
-                } elseif ($productos->eliminarProducto()) {
-                    $result['status'] = 1;
-                    if (Validator::deleteFile($productos->getRuta(), $data['imagen'])) {
-                        $result['message'] = 'Producto eliminado correctamente';
+                    if (!$productos->setId($_POST['idproducto'])) {
+                        $result['exception'] = 'Id incorrecto';
+                    } elseif (!$data = $productos->leerUnProducto()) {
+                        $result['exception'] = 'Marca inexistente';
+                    } elseif ($productos->eliminarProducto()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Modelo eliminado correctamente';
                     } else {
-                        $result['message'] = 'Producto eliminado pero no se borró la imagen';
+                        $result['exception'] = Database::getException();
                     }
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
+                    break;
             case 'leerCodigosComunes':
                 if ($result['dataset'] = $productos->leerCodigosComunes()) {
                     $result['status'] = 1;
