@@ -1,6 +1,5 @@
 // Constante para la ruta del business que conecta a los metodos del SCRUD
-const PROVEEDOR_API = 'business/proveedores.php';
-const MONEDA_API = 'business/monedas.php';
+const EMPLEADO_API = 'business/empleados.php';
 // Constante para el input de busqueda
 const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
 // Constante para el formulario del modal, sirve para añadir y editar
@@ -35,11 +34,11 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica si se realizara una actualización o un registro nuevo.
-    (document.getElementById('id').value) ? action = 'actualizarProveedor' : action = 'crearProveedor';
+    (document.getElementById('id').value) ? action = 'actualizarEmpleado' : action = 'crearEmpleado';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(PROVEEDOR_API, action, FORM);
+    const JSON = await dataFetch(EMPLEADO_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -58,9 +57,9 @@ async function rellenarTabla(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'buscarProveedor' : action = 'leerProveedores';
+    (form) ? action = 'buscarEmpleado' : action = 'leerEmpleados';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(PROVEEDOR_API, action, form);
+    const JSON = await dataFetch(EMPLEADO_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -68,26 +67,24 @@ async function rellenarTabla(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr  class="text-center bg-white hover:bg-blue-200">
-                    <td class="hidden">${row.idproveedor}</td>
+                    <td class="hidden">${row.idempleado}</td>
                     <td>${row.nombre}</td>
                     <td>${row.telefono}</td>
                     <td>${row.correo}</td>
-                    <td>${row.fechacompra}</td>
-                    <td>${row.saldoinicial}</td>
-                    <td>${row.saldoactual}</td>
-                    <td>${row.codigoprov}</td>
-                    <td>${row.codigomaestroprov}</td>
-                    <td>${row.dui}</td>
-                    <td>${row.moneda}</td>
-                    <td>${row.numeroregistroprov}</td>
+                    <td>${row.nacimiento}</td>
+                    <td>${row.tipodocumento}</td>
+                    <td>${row.documento}</td>
+                    <td>${row.estadoempleado}</td>
+                    <td>${row.genero}</td>
+                    <td>${row.cargo}</td>
                     <td>
-                        <button onclick="actualizarRegistro(${row.idproveedor})"
+                        <button onclick="actualizarRegistro(${row.idempleado})"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                         </button>
 
-                        <button onclick="eliminarRegistro(${row.idproveedor})"
+                        <button onclick="eliminarRegistro(${row.idempleado})"
                         class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
@@ -110,8 +107,8 @@ function crearRegistro() {
     // Texto del boton para crear un registro
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna el título a la caja de diálogo.
-    TITULO.textContent = 'Añadir un nuevo proveedor';
-    fillSelect(MONEDA_API, 'leerMonedas', 'moneda');
+    TITULO.textContent = 'Añadir un nuevo empleado';
+    //fillSelect(MONEDA_API, 'leerMonedas', 'moneda');
 }
 
 //Funcion para abrir el modal con los datos del registro a actualizar
@@ -120,7 +117,7 @@ async function actualizarRegistro(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(PROVEEDOR_API, 'leerUnProveedor', FORM);
+    const JSON = await dataFetch(EMPLEADO_API, 'leerUnEmpleado', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -129,20 +126,20 @@ async function actualizarRegistro(id) {
          // Texto del boton para actualizar un registro 
          BTN_ACCION.textContent = 'Actualizar';
         // Se asigna título para la caja de diálogo.
-        TITULO.textContent = 'Actualizar proveedor';
+        TITULO.textContent = 'Actualizar empleado';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idproveedor;
+        document.getElementById('id').value = JSON.dataset.idempleado;
         document.getElementById('nombre').value = JSON.dataset.nombre;
         document.getElementById('telefono').value = JSON.dataset.telefono;
         document.getElementById('correo').value = JSON.dataset.correo;
-        document.getElementById('fechaProv').value = JSON.dataset.fechacompra;
-        document.getElementById('saldoInicial').value = JSON.dataset.saldoinicial;
-        document.getElementById('saldoActual').value = JSON.dataset.saldoactual;
-        document.getElementById('codigoProv').value = JSON.dataset.codigoprov;
-        document.getElementById('codigoMaestroProv').value = JSON.dataset.codigomaestroprov;
-        document.getElementById('dui').value = JSON.dataset.dui;
-        document.getElementById('numeroRegistroProv').value = JSON.dataset.numeroregistroprov;
-        fillSelect(MONEDA_API, 'leerMonedas', 'moneda', JSON.dataset.idmoneda);
+        document.getElementById('nacimiento').value = JSON.dataset.nacimiento;
+        document.getElementById('tipodocumento').value = JSON.dataset.tipodocumento;
+        document.getElementById('documento').value = JSON.dataset.documento;
+        document.getElementById('estadoEmmpleado').value = JSON.dataset.estadoEmmpleado;
+        document.getElementById('genero').value = JSON.dataset.genero;
+        document.getElementById('cargo').value = JSON.dataset.cargo;
+        //document.getElementById('numeroRegistroProv').value = JSON.dataset.numeroregistroprov;
+        //fillSelect(MONEDA_API, 'leerMonedas', 'moneda', JSON.dataset.idmoneda);
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -151,14 +148,14 @@ async function actualizarRegistro(id) {
 //Funcion para abrir el modal con los datos del registro a eliminar
 async function eliminarRegistro(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const MENSAJE = await confirmAction('¿Desea eliminar el proveedor?');
+    const MENSAJE = await confirmAction('¿Desea eliminar el empleado?');
     // Se verifica la respuesta del mensaje.
     if (MENSAJE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idproveedor', id);
+        FORM.append('idempleado', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(PROVEEDOR_API, 'eliminarProveedor', FORM);
+        const JSON = await dataFetch(EMPLEADO_API, 'eliminarEmpleado', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

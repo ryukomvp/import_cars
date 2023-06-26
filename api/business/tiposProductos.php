@@ -48,9 +48,9 @@ if(isset($_GET['action'])){
                 }
                 break;   
             case 'leerTipoProducto':
-                if (!$tipo->setId($_POST['id'])) {
+                if (!$tipo->setId($_POST['idtipoproducto'])) {
                     $result['exception'] = 'Tipo de producto incorrecto';
-                } elseif ($result['dataset'] = $tipo->leerTiposProductos()) {
+                } elseif ($result['dataset'] = $tipo->leerTipoProducto()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -64,7 +64,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $tipo->leerTiposProductos()) {
                     $result['exception'] = 'Tipo de producto inexistente';
-                } elseif (!$tipo->setTipoProducto($_POST['pais'])) {
+                } elseif (!$tipo->setTipoProducto($_POST['tipoProducto'])) {
                      $result['exception'] = 'Tipo de producto incorrecto';
                 } elseif ($tipo->actualizarTiposProductos()) {
                     $result['status'] = 1;
