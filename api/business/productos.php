@@ -117,9 +117,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un codigo';
                 } elseif (!$productos->setCodigoComun($_POST['codigocomun'])) {
                     $result['exception'] = 'codigo incorrecta';
-                } elseif (!isset($_POST['tipoproducto'])) {
+                } elseif (!isset($_POST['tipo'])) {
                     $result['exception'] = 'Seleccione u tipo de producto';
-                } elseif (!$productos->setTipoProducto($_POST['tipoproducto'])) {
+                } elseif (!$productos->setTipoProducto($_POST['tipo'])) {
                     $result['exception'] = 'Tipo de producto incorrecta';
                 } elseif (!isset($_POST['proveedor'])) {
                     $result['exception'] = 'Seleccione un proveedor';
@@ -133,9 +133,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un modelo';
                 } elseif (!$productos->setModelo($_POST['modelo'])) {
                     $result['exception'] = 'modelo incorrecta';
-                } elseif (!isset($_POST['pais'])) {
+                } elseif (!isset($_POST['paisorigen'])) {
                     $result['exception'] = 'Seleccione un pais';
-                } elseif (!$productos->setPais($_POST['pais'])) {
+                } elseif (!$productos->setPais($_POST['paisorigen'])) {
                     $result['exception'] = 'pais incorrecta';
                 } elseif (!$productos->setEstadoProducto($_POST['estado'])) {
                     $result['exception'] = 'Estado incorrecto';
