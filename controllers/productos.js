@@ -80,12 +80,12 @@ async function rellenarTabla(form = null) {
             REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white hover:bg-blue-200">
                     <td class="hidden">${row.idproducto}</td>
-                    <td><img src="${SERVER_URL}images/productos/${row.foto}" class="materialboxed" height="100"></td>
+                    <td><img src="${SERVER_URL}images/productos/${row.imagen}" class="materialboxed" height="100"></td>
                     <td>${row.nombre}</td>
                     <td>${row.codigo}-${row.nomenclatura}</td>
                     <td>${row.anio}</td>
                     <td>${row.precio}</td>
-                    <td>${row.nombre}</td>
+                    <td>${row.proveedor}</td>
                     <td>${row.categoria}</td>
                     <td>${row.modelo}</td>
                     <td>

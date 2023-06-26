@@ -25,10 +25,10 @@ if (isset($_GET['action'])) {
                 break;
             case 'buscarProducto':
                 $_POST = Validator::validateForm($_POST);
-                if ($_POST['buscar'] == '') {
+                if ($_POST['search'] == '') {
                     $result['dataset'] = $productos->leerTodo();
                     $result['status'] = 1;
-                } elseif ($result['dataset'] = $productos->buscarProducto($_POST['buscar'])) {
+                } elseif ($result['dataset'] = $productos->buscarProducto($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
@@ -49,13 +49,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Precio incorrecto';
                 } elseif (!$productos->setAnio($_POST['anio'])){
                     $result['exception'] = 'Año incorrecto';
-                } elseif (!isset($_POST['codigocomun'])) {
+                } elseif (!isset($_POST['codigoComun'])) {
                     $result['exception'] = 'Seleccione un codigo';
-                } elseif (!$productos->setCodigoComun($_POST['codigocomun'])) {
+                } elseif (!$productos->setCodigoComun($_POST['codigoComun'])) {
                     $result['exception'] = 'codigo incorrecta';
-                } elseif (!isset($_POST['tipoproducto'])) {
-                    $result['exception'] = 'Seleccione u tipo de producto';
-                } elseif (!$productos->setTipoProducto($_POST['tipoproducto'])) {
+                } elseif (!isset($_POST['tipo'])) {
+                    $result['exception'] = 'Seleccione un tipo de producto';
+                } elseif (!$productos->setTipoProducto($_POST['tipo'])) {
                     $result['exception'] = 'Tipo de producto incorrecta';
                 } elseif (!isset($_POST['proveedor'])) {
                     $result['exception'] = 'Seleccione un proveedor';
@@ -69,11 +69,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un modelo';
                 } elseif (!$productos->setModelo($_POST['modelo'])) {
                     $result['exception'] = 'modelo incorrecta';
-                } elseif (!isset($_POST['pais'])) {
+                } elseif (!isset($_POST['paisorigen'])) {
                     $result['exception'] = 'Seleccione un pais';
-                } elseif (!$productos->setPais($_POST['pais'])) {
+                } elseif (!$productos->setPais($_POST['paisorigen'])) {
                     $result['exception'] = 'pais incorrecta';
-                } elseif (!$productos->setEstadoProducto(isset($_POST['estadoproducto']))) {
+                } elseif (!$productos->setEstadoProducto($_POST['estado'])) {
                     $result['exception'] = 'Estado incorrecto';
                 } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
@@ -137,7 +137,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un pais';
                 } elseif (!$productos->setPais($_POST['pais'])) {
                     $result['exception'] = 'pais incorrecta';
-                } elseif (!$productos->setEstadoProducto(isset($_POST['estadoproducto']))) {
+                } elseif (!$productos->setEstadoProducto($_POST['estado'])) {
                     $result['exception'] = 'Estado incorrecto';
                 } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     if ($productos->actualizarProducto($data['imagen'])) {
@@ -161,10 +161,10 @@ if (isset($_GET['action'])) {
                     if (!$productos->setId($_POST['idproducto'])) {
                         $result['exception'] = 'Id incorrecto';
                     } elseif (!$data = $productos->leerUnProducto()) {
-                        $result['exception'] = 'Marca inexistente';
+                        $result['exception'] = 'Producto inexistente';
                     } elseif ($productos->eliminarProducto()) {
                         $result['status'] = 1;
-                        $result['message'] = 'Modelo eliminado correctamente';
+                        $result['message'] = 'Producto eliminado correctamente';
                     } else {
                         $result['exception'] = Database::getException();
                     }

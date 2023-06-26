@@ -29,22 +29,22 @@ class productosQueries
     public function crearProducto()
     {
         // , $_SESSION['idUsuario']
-        $sql = 'INSERT INTO productos(nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto)
+        $sql = 'INSERT INTO productos(nombre, imagen, descripcion, precio, anio, idcodigocomun, idtipoproducto, idproveedor, idcategoria, idmodelo, idpais, estadoproducto)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->anio, $this->codigo, $this->tipoProducto, $this->proveedor, $this->categoria, $this->modelo, $this->pais, $this->estadoProducto);
+        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->anio, $this->idCodigoComun, $this->idTipoProducto, $this->idProveedor, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto);
         return Database::executeRow($sql, $params);
     }
 
     public function leerTodo()
     {
-        $sql = 'SELECT p.nombre, p.imagen, p.descripcion, p.precio, p.anio, a.nomenclatura, a.codigo, b.TipoProducto, m.nombre, c.categoria, n.modelo, s.pais, estadoProducto
+        $sql = 'SELECT p.idproducto, p.nombre, p.imagen, p.descripcion, p.precio, p.anio, a.nomenclatura, a.codigo, b.tipoproducto, m.nombre as proveedor, c.categoria, n.modelo, s.pais, p.estadoProducto
                 FROM productos p
-                INNER JOIN categorias c ON p.idCategoria = c.idCategoria 
-                INNER JOIN proveedores m ON p.idProveedor = m.idProveedor 
-                INNER JOIN codigoComun a ON p.idCodigoComun = a.idCodigoComun
-                INNER JOIN tiposProductos b ON p.idTipoProducto = b.idTipoProducto
-                INNER JOIN modelos n ON p.idModelo = n.idModelo
-                INNER JOIN paisesDeOrigen s ON p.idPais = s.idPais
+                INNER JOIN categorias c ON p.idcategoria = c.idcategoria 
+                INNER JOIN proveedores m ON p.idproveedor = m.idproveedor 
+                INNER JOIN codigoComun a ON p.idcodigocomun = a.idcodigocomun
+                INNER JOIN tiposproductos b ON p.idtipoproducto = b.idtipoproducto
+                INNER JOIN modelos n ON p.idmodelo = n.idmodelo
+                INNER JOIN paisesdeorigen s ON p.idpais = s.idpais
                 ORDER BY p.nombre;';
         return Database::getRows($sql);
     }
@@ -96,9 +96,9 @@ class productosQueries
 
     public function leerCodigosComunes()
     {
-       $sql = "SELECT concat(nomenclatura,' - ',codigo)
-       FROM codigoComun
-       ORDER BY nomenclatura;";
+       $sql = "SELECT idcodigocomun, concat(nomenclatura,' - ',codigo)
+       FROM codigocomun
+       ORDER BY nomenclatura";
        return Database::getRows($sql);
     }
 }
