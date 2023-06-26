@@ -10,13 +10,13 @@ class entradasQueries
     */
 
     /*metodo para buscar registros*/
-    public function buscarProducto($value)
+    public function buscarEntradas($value)
     {
-        $sql = 'SELECT idproducto, nombre, descripcion, precio, anio, idcodigocomun, idtipoproducto, idproveedor, idcategoria, idmodelo, idpais, estadoproducto
-                FROM productos 
-                INNER JOIN categorias USING(idcategoria)
-                INNER JOIN codigoComun USING(idcodigocomun)
-                WHERE nombre LIKE ? OR descripcion LIKE ? OR categoria LIKE ? OR nomenclatura LIKE ? OR codigo LIKE ? 
+        $sql = 'SELECT identrada, descripcion, idproducto, cantidad, precio, fechaentrada, idempleado
+                FROM entradas
+                INNER JOIN productos USING(idproducto)
+                INNER JOIN empleados USING(idempleado)
+                WHERE descripcion LIKE ? OR descripcion LIKE ? OR categoria LIKE ? OR nomenclatura LIKE ? OR codigo LIKE ? 
                 ORDER BY nombre_producto';
         $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
