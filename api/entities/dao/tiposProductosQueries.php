@@ -13,7 +13,7 @@ class tiposProductosQueries
         $sql = 'SELECT idtipoproducto, tipoproducto
                 FROM tiposproductos
                 WHERE tipoproducto ILIKE ?
-                ORDER BY idtipoproducto';
+                ORDER BY tipoproducto';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
@@ -30,7 +30,7 @@ class tiposProductosQueries
     {
         $sql = 'SELECT idtipoproducto, tipoproducto
                 FROM tiposproductos
-                ORDER BY idtipoproducto';
+                ORDER BY tipoproducto';
         return Database::getRows($sql);
     }
 

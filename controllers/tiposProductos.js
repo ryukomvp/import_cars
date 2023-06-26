@@ -45,7 +45,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         registrosTabla();
         // Se cierra la caja de diálogo.
-        SAVE_MODAL.toggle();
+        SAVE_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -62,7 +62,7 @@ async function registrosTabla(form = null) {
     // Se inicializa el contenido de la tabla.
     TBODY_ROWS.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'buscarTiposProductos' : action = 'leerTiposProductos';
+    (form) ? action = 'buscarTipoProducto' : action = 'leerTiposProductos';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(TIPO_PRODUCTO_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -72,9 +72,9 @@ async function registrosTabla(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TBODY_ROWS.innerHTML += `
                 <tr class="text-center bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
-                    <td>${row.idtipoproducto}</td>
-                    <td>${row.tipoproducto}</td>
-                    <td>
+                    <td class="hidden px-6 py-4">${row.idtipoproducto}</td>
+                    <td class="px-6 py-4">${row.tipoproducto}</td>
+                    <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idtipoproducto})"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
