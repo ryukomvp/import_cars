@@ -8,7 +8,7 @@ class empleadosQueries
     public function leerEmpleados()
     {
         $sql = 'SELECT idempleado, nombre, telefono, correo, nacimiento, tipodocumento, documento, estadoempleado, genero, cargo
-        FROM empleados 
+        FROM empleados
         ORDER BY nombre';
         return Database::getRows($sql);
     }
@@ -17,10 +17,10 @@ class empleadosQueries
     public function buscarEmpleado($value)
     {
         $sql = 'SELECT idempleado, nombre, telefono, correo, nacimiento, tipodocumento, documento, estadoempleado, genero, cargo
-                FROM empleados INNER JOIN cargos USING(idcargo)
+                FROM empleados
                 WHERE nombre ILIKE ? OR telefono ILIKE ? OR correo ILIKE ?  OR documento ILIKE ?
                 ORDER BY nombre';
-        $params = array("%$value%");
+        $params = array("%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
@@ -36,7 +36,7 @@ class empleadosQueries
     //funcion para seleccionar un empleado
     public function leerUnEmpleado()
     {
-        $sql = 'SELECT idempleado, nombre, telefono, correo, nacimiento, tipodocumento, documento, estadoempleado, genero, idcargo
+        $sql = 'SELECT idempleado, nombre, telefono, correo, nacimiento, tipodocumento, documento, estadoempleado, genero, cargo
                 FROM empleados
                 WHERE idempleado = ?';
         $params = array($this->idempleado);

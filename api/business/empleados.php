@@ -105,8 +105,10 @@ if(isset($_GET['action'])){
                     $result['exception'] = Database::getException();
                 }
                 break;
+                
             case 'eliminarEmpleado':
-                if (!$proveedores->setId($_POST['idEmpleado'])) {
+                print_r($_POST);
+                if (!$empleados->setId($_POST['idempleado'])) {
                     $result['exception'] = 'Empleado incorrecta';
                 } elseif (!$data = $empleados->leerUnEmpleado()) {
                     $result['exception'] = 'Empleado inexistente';
@@ -137,7 +139,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'leerGewneros':
+            case 'leerGeneros':
                 if ($result['dataset'] = $empleados->leerGeneros()) {
                     $result['status'] = 1;
                     //$result['message'] = 'Existen '.count($result['dataset']).' registros';

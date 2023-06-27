@@ -7,7 +7,7 @@ require_once('../entities/dao/empleadosQueries.php');
 class empleados extends empleadosQueries
 {
     // Declaración de atributos (propiedades).
-    protected $id = null;
+    protected $idempleado = null;
     protected $nombre = null;
     protected $telefono = null;
     protected $correo = null;

@@ -97,7 +97,7 @@ class Database
                 self::$error = 'Violación de unicidad';
                 break;
             case '42P01':
-                self::$error = 'Nombre de tabla desconocido';
+                // self::$error = 'Nombre de tabla desconocido';
                 break;
             case '23503':
                 self::$error = 'Violación de llave foránea';
