@@ -4,7 +4,7 @@ require_once('../entities/dao/bodegasQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad BODEGAS.
 */
-class bodegas extends bodegasqueries
+class Bodegas extends BodegasQueries
 {
     //Declaración de atributos (propiedades).
     protected $id = null;
@@ -26,7 +26,7 @@ class bodegas extends bodegasqueries
         }
     }
 
-    public function setNumerobodega($value)
+    public function setNumeroBodega($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->numerobodega = $value;
@@ -64,7 +64,7 @@ class bodegas extends bodegasqueries
         return $this->id;
     }
 
-    public function getNumerobodega()
+    public function getNumeroBodega()
     {
         return $this->numerobodega;
     }
