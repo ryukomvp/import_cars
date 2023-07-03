@@ -4,12 +4,12 @@ require_once('../helpers/database.php');
 *	Clase para manejar el acceso a datos de la entidad MODELO.
 */
 
-class modeloQueries
+class ModeloQueries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function buscarModelo($value)
+    public function buscarRegistros($value)
     {
         $sql = 'SELECT idmodelo, modelo, marca
                 FROM modelos INNER JOIN marcas USING(idmarca)
@@ -19,24 +19,7 @@ class modeloQueries
         return Database::getRows($sql, $params);
     }
 
-    public function leerModelos()
-    {
-        $sql = 'SELECT idmodelo, modelo, marca
-                FROM modelos INNER JOIN marcas USING(idmarca)
-                ORDER BY modelo';
-        return Database::getRows($sql);
-    }
-
-    public function leerModelo()
-    {
-        $sql = 'SELECT idmodelo, modelo, idmarca
-                FROM modelos
-                WHERE idmodelo = ?';
-        $params = array($this->id);
-        return Database::getRow($sql, $params);
-    }
-    
-    public function crearModelo()
+    public function crearRegistro()
     {
         $sql = 'INSERT INTO modelos(modelo, idmarca)
                 VALUES(?, ?)';
@@ -44,7 +27,24 @@ class modeloQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function actualizarModelo()
+    public function leerRegistros()
+    {
+        $sql = 'SELECT idmodelo, modelo, marca
+                FROM modelos INNER JOIN marcas USING(idmarca)
+                ORDER BY modelo';
+        return Database::getRows($sql);
+    }
+
+    public function leerUnRegistro()
+    {
+        $sql = 'SELECT idmodelo, modelo, idmarca
+                FROM modelos
+                WHERE idmodelo = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+
+    public function actualizarRegistro()
     {
         $sql = 'UPDATE modelos 
                 SET modelo = ?, idmarca = ?
@@ -53,7 +53,7 @@ class modeloQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function eliminarModelo()
+    public function eliminarRegistro()
     {
         $sql = 'DELETE FROM modelos
                 WHERE idmodelo = ?';
@@ -61,7 +61,7 @@ class modeloQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function leerMarcas(){
+    public function cargarMarcas(){
         $sql = 'SELECT idmarca, marca FROM marcas
                 ORDER BY marca';
         return Database::getRows($sql);

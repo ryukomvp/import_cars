@@ -1,7 +1,7 @@
 // Constante para completar la ruta de la API.
 const MODELO_API = 'business/modelos.php';
 // Constante para establecer el formulario de buscar.
-const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
+const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para establecer el formulario de guardar.
 const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 // Constante para establecer el título de la modal.
@@ -19,11 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
-BUSCAR_FORMULARIO.addEventListener('submit', (event) => {
+FORMULARIO_BUSQUEDA.addEventListener('submit', (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(BUSCAR_FORMULARIO);
+    const FORM = new FormData(FORMULARIO_BUSQUEDA);
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
     registrosTabla(FORM);
 });
@@ -33,7 +33,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (document.getElementById('id').value) ? action = 'actualizar' : action = 'crear';
+    (document.getElementById('id').value) ? action = 'actualizarRegistro' : action = 'crearRegistro';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
@@ -60,7 +60,7 @@ async function registrosTabla(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'buscar' : action = 'leerModelos';
+    (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(MODELO_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -107,7 +107,7 @@ function crearRegistro() {
     // Se asigna título a la caja de diálogo.
     TITULO.textContent = 'Crear modelo';
     // Se cargan los datos del/los componente/s select 
-    fillSelect(MODELO_API, 'leerMarcas', 'marca');
+    fillSelect(MODELO_API, 'cargarMarcas', 'marca');
 }
 
 /*
@@ -120,7 +120,7 @@ async function actualizarRegistro(id) {
     const FORM = new FormData();
     FORM.append('idmodelo', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(MODELO_API, 'leerModelo', FORM);
+    const JSON = await dataFetch(MODELO_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -134,7 +134,7 @@ async function actualizarRegistro(id) {
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idmodelo;
         document.getElementById('modelo').value = JSON.dataset.modelo;
-        fillSelect(MODELO_API, 'leerMarcas', 'marca', JSON.dataset.idmarca);
+        fillSelect(MODELO_API, 'cargarMarcas', 'marca', JSON.dataset.idmarca);
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -154,7 +154,7 @@ async function eliminarRegistro(id) {
         const FORM = new FormData();
         FORM.append('idmodelo', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(MODELO_API, 'eliminar', FORM);
+        const JSON = await dataFetch(MODELO_API, 'eliminarRegistro', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

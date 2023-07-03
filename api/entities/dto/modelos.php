@@ -4,7 +4,7 @@ require_once('../entities/dao/modelosQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad MARCA.
 */
-class modelo extends modeloQueries
+class Modelo extends ModeloQueries
 {
     //Declaración de atributos(propiedades).
     protected $id = null;
