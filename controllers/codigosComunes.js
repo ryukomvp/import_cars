@@ -2,7 +2,7 @@
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const CODIGOC_API = 'business/codigosComunes.php';
 // Constante para el input de busqueda
-const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
+const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para el formulario del modal, sirve para añadir y editar
 const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 // Constante para rellenar la tabla de los datos registrados en la base
@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Metodo para el input de busqueda
-BUSCAR_FORMULARIO.addEventListener('submit', (event) => {
+FORMULARIO_BUSQUEDA.addEventListener('submit', (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(BUSCAR_FORMULARIO);
+    const FORM = new FormData(FORMULARIO_BUSQUEDA);
     // LLama la función de rellenar la tabla para actualizarla con los datos de la busqueda.
     rellenarTabla(FORM);
 });
