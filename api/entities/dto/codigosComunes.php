@@ -4,7 +4,7 @@ require_once('../entities/dao/codigosComunesQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad CATEGORIA.
 */
-class codigoComun extends codigoComunQueries
+class CodigoComun extends CodigoComunQueries
 {
     // Declaración de atributos (propiedades).
     protected $idcodigocomun = null;

@@ -3,12 +3,12 @@ require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad CATEGORIA.
 */
-class codigoComunQueries
+class CodigoComunQueries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function buscarCodigoComun($value)
+    public function buscarRegistros($value)
     {
         $sql = 'SELECT idcodigocomun, nomenclatura, codigo
                 FROM codigocomun
@@ -18,7 +18,7 @@ class codigoComunQueries
         return Database::getRows($sql, $params);
     }
 
-    public function crearCodigoComun()
+    public function crearRegistro()
     {
         $sql = 'INSERT INTO codigocomun(nomenclatura, codigo)
                 VALUES(?,?)';
@@ -26,7 +26,7 @@ class codigoComunQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function leerCodigosComunes()
+    public function leerRegistros()
     {
         $sql = 'SELECT idcodigocomun, nomenclatura, codigo
                 FROM codigoComun
@@ -34,7 +34,7 @@ class codigoComunQueries
         return Database::getRows($sql);
     }
 
-    public function leerUnCodigoComun()
+    public function leerUnRegistro()
     {
         $sql = 'SELECT idcodigocomun, nomenclatura, codigo
                 FROM codigocomun
@@ -43,7 +43,7 @@ class codigoComunQueries
         return Database::getRow($sql, $params);
     }
 
-    public function actualizarCodigoComun()
+    public function actualizarRegistro()
     {
         $sql = 'UPDATE codigocomun
                 SET nomenclatura = ?, codigo = ?
@@ -52,7 +52,7 @@ class codigoComunQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function eliminarCodigoComun()
+    public function eliminarRegistro()
     {
         $sql = 'DELETE FROM codigocomun
                 WHERE idcodigocomun = ?';
