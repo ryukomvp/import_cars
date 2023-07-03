@@ -3,12 +3,12 @@ require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad CATEGORIA.
 */
-class categoriaQueries
+class CategoriaQueries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function buscarCategoria($value)
+    public function buscarRegistros($value)
     {
         $sql = 'SELECT idcategoria, categoria
                 FROM categorias
@@ -18,7 +18,7 @@ class categoriaQueries
         return Database::getRows($sql, $params);
     }
 
-    public function crearCategoria()
+    public function crearRegistro()
     {
         $sql = 'INSERT INTO categorias(categoria)
                 VALUES(?)';
@@ -26,7 +26,7 @@ class categoriaQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function leerCategorias()
+    public function leerRegistros()
     {
         $sql = 'SELECT idcategoria, categoria
                 FROM categorias
@@ -34,7 +34,7 @@ class categoriaQueries
         return Database::getRows($sql);
     }
 
-    public function leerCategoria()
+    public function leerUnRegistro()
     {
         $sql = 'SELECT idcategoria, categoria
                 FROM categorias
@@ -43,7 +43,7 @@ class categoriaQueries
         return Database::getRow($sql, $params);
     }
 
-    public function actualizarCategoria()
+    public function actualizarRegistro()
     {
         $sql = 'UPDATE categorias
                 SET categoria = ?
@@ -52,7 +52,7 @@ class categoriaQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function eliminarCategoria()
+    public function eliminarRegistro()
     {
         $sql = 'DELETE FROM categorias
                 WHERE idcategoria = ?';
