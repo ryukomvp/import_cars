@@ -109,6 +109,10 @@ function crearRegistro() {
     // Se asigna el título a la caja de diálogo.
     TITULO.textContent = 'Añadir un nuevo empleado';
     //fillSelect(MONEDA_API, 'leerMonedas', 'moneda');
+    fillSelect(EMPLEADO_API, 'leerTiposDocumentos', 'tipodocumento');
+    fillSelect(EMPLEADO_API, 'leerEstadosEmpleados', 'estado');
+    fillSelect(EMPLEADO_API, 'leerGeneros', 'genero');
+    fillSelect(EMPLEADO_API, 'leerCargos', 'cargo');
 }
 
 //Funcion para abrir el modal con los datos del registro a actualizar
@@ -133,11 +137,11 @@ async function actualizarRegistro(id) {
         document.getElementById('telefono').value = JSON.dataset.telefono;
         document.getElementById('correo').value = JSON.dataset.correo;
         document.getElementById('nacimiento').value = JSON.dataset.nacimiento;
-        document.getElementById('tipodocumento').value = JSON.dataset.tipodocumento;
         document.getElementById('documento').value = JSON.dataset.documento;
-        document.getElementById('estadoEmmpleado').value = JSON.dataset.estadoEmmpleado;
-        document.getElementById('genero').value = JSON.dataset.genero;
-        document.getElementById('cargo').value = JSON.dataset.cargo;
+        fillSelect(EMPLEADO_API, 'leerTiposDocumentos', 'tipodocumento', JSON.dataset.tipodocumento);
+        fillSelect(EMPLEADO_API, 'leerEstadosEmpleados', 'estado', JSON.dataset.estadoemmpleado);
+        fillSelect(EMPLEADO_API, 'leerGeneros', 'genero', JSON.dataset.genero);
+        fillSelect(EMPLEADO_API, 'leerCargos', 'cargo', JSON.dataset.cargos);
         //document.getElementById('numeroRegistroProv').value = JSON.dataset.numeroregistroprov;
         //fillSelect(MONEDA_API, 'leerMonedas', 'moneda', JSON.dataset.idmoneda);
     } else {
