@@ -4,7 +4,7 @@ require_once('../entities/dao/marcasQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad MARCA.
 */
-class marca extends marcaQueries
+class Marca extends MarcaQueries
 {
     //Declaración de atributos(propiedades).
     protected $id = null;

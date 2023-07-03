@@ -4,12 +4,12 @@ require_once('../helpers/database.php');
 *	Clase para manejar el acceso a datos de la entidad MARCA.
 */
 
-class marcaQueries
+class MarcaQueries
 {
      /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function buscarMarca($value)
+    public function buscarRegistro($value)
     {
         $sql = 'SELECT idmarca, marca
                 FROM marcas
@@ -19,7 +19,15 @@ class marcaQueries
         return Database::getRows($sql, $params);
     }
 
-    public function leerMarcas()
+    public function crearRegistro()
+    {
+        $sql = 'INSERT INTO marcas(marca)
+                VALUES(?)';
+        $params = array($this->marca);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function leerRegistros()
     {
         $sql = 'SELECT idmarca, marca
                 FROM marcas
@@ -27,7 +35,7 @@ class marcaQueries
         return Database::getRows($sql);
     }
 
-    public function leerMarca()
+    public function leerUnRegistro()
     {
         $sql = 'SELECT idmarca, marca
                 FROM marcas
@@ -36,15 +44,7 @@ class marcaQueries
         return Database::getRow($sql, $params);
     }
 
-    public function crearMarca()
-    {
-        $sql = 'INSERT INTO marcas(marca)
-                VALUES(?)';
-        $params = array($this->marca);
-        return Database::executeRow($sql, $params);
-    }
-
-    public function actualizarMarca()
+    public function actualizarRegistro()
     {
         $sql = 'UPDATE marcas 
                 SET marca = ?
@@ -53,7 +53,7 @@ class marcaQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function eliminarMarca()
+    public function eliminarRegistro()
     {
         $sql = 'DELETE FROM marcas
                 WHERE idmarca = ?';
