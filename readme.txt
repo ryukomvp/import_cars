@@ -1,5 +1,8 @@
-Indicaciones sobre la estandarización del proyecto
+Comandos para ejecutar el archivo css
+npx tailwindcss -i ./tailwind.css -o ./resources/css/tailwind.css --watch
 
+
+Indicaciones sobre la estandarización del proyecto
 Idioma: español
 
 
