@@ -1,45 +1,21 @@
 Idioma: español
 
-HTML
-// Se utiliza unicamente "-"
-
-HEAD
-BODY
-    HEADER
-    MAIN
-        Modal
-            Form: save-form
-                Inputs
-                    ID, Name: en minúsculas, una sola palabra
-    FOOTER
 
 
-DTO
+API
 
-Nombre archivos: camelCase; tabla.php plural
-Clases: PascalCase; TablaQueries
-
-Propiedades: en minúsculas, una sola palabra; detallePedido -> detalle
-Funciones (get, set): camelCase
-
-
-DAO
-
-Nombre archivos: camelCase; tablaQueries.php  plural
-Clases: PascalCase; TablaQueries
-Funciones: camelCase; buscarColumnaCategorias
+Nombres de archivos: camelCase; nombre de la tabla (Agregar la palabra Queries al final en el caso del DAO)
+Nombres de clases: PascalCase
+Nombres de funciones: camelCase
+Nombres de propiedades: mismo nombre del campo en la tabla; tipoProducto -> tipoproducto
+Nombres de objetos: minúsculas, una sola palabra referente a la tabla (Bussiness)
+Nombres de los casos: camelCase (Businnes)
 
 
-Bussiness
 
-Nombre archivos: camelCase; tabla.php plural
-Nombre de objeto: en minúsculas, una sola palabra
-Casos: camelCase; buscarColumnaCategorias
+CONTROLLER
 
-
-Controllers
-
-Nombre archivos: en minúsculas, una sola palabra plural
-Nombre de constantes: SCREAMING_SNAKE_CASE; USUARIO_API
+Nombre de archivos: camelCase
+Nombre de constantes: SCREAMING_SNAKE_CASE; ejemplo: USUARIO_API
 Funciones: camelCase
 Variables: camelCase

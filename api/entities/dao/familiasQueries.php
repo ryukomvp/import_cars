@@ -3,7 +3,7 @@ require_once('../helpers/database.php');
 /*
 *  Clase para manejar el acceso a datos de la entidad de FAMILIAS
 */
-class familiasqueries
+class FamiliasQueries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
@@ -11,7 +11,7 @@ class familiasqueries
 
     /*Método para la realizacion de busqueda de registros en la base de datos
      mediante el nombre de la bodega*/
-     public function searchRows($value)
+     public function buscarRegistros($value)
      {
          $sql = 'SELECT idfamilia, familia
              FROM familias
@@ -22,7 +22,7 @@ class familiasqueries
      }
 
      /*Método para la insercion de datos en la base de datos*/
-    public function createRow()
+    public function crearRegistro()
     {
         $sql = 'INSERT INTO familias(familia)
             VALUES(?)';
@@ -31,7 +31,7 @@ class familiasqueries
     }
     
     /*Funcion para cargar los registros en la tabla y mostrarlos*/
-    public function readAll()
+    public function leerRegistros()
     {
         $sql = 'SELECT idfamilia, familia
             FROM familias
@@ -40,7 +40,7 @@ class familiasqueries
     }
 
      /*Funcion para cargar un unico registro*/
-     public function readOne()
+     public function leerUnRegistro()
      {
          $sql = 'SELECT idfamilia, familia
              FROM familias
@@ -50,7 +50,7 @@ class familiasqueries
      }
      
       /*Funcion para la actualizacion de un registro*/
-    public function updateRow()
+    public function actualizarRegistro()
     {
         $sql = 'UPDATE familias
             SET  familia = ?
@@ -60,7 +60,7 @@ class familiasqueries
     } 
 
     /*Funcion para eliminar un registro de la base de datos*/
-    public function deleteRow()
+    public function eliminarRegistro()
     {
         $sql = 'DELETE FROM familias
             WHERE idfamilia = ?';

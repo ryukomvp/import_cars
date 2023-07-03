@@ -5,29 +5,19 @@ if(isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $bodega = new bodegas;
+    $bodega = new Bodegas;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['idusuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'readAll':
-                if ($result['dataset'] = $bodega->readAll()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;  
-            case 'search':
+            case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
-                    $result['dataset'] = $bodega->readAll();
+                    $result['dataset'] = $bodega->leerRegistros();
                     $result['status'] = 1;
-                } elseif ($result['dataset'] = $bodega->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $bodega->buscarRegistros($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -36,35 +26,35 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'create':
+            case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
-                if(!$bodega->setNumerobodega($_POST['numerobodega'])) {
+                if(!$bodega->setNumeroBodega($_POST['numerobodega'])) {
                     $result['exception'] = 'Bodega incorrecta';
                 } elseif(!$bodega->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion incorrecta';
                 } elseif(!$bodega->setSucursal($_POST['sucursal'])) {
                     $result['exception'] = 'Sucursal incorrecta';
-                } elseif($bodega->createRow()) {
+                } elseif($bodega->crearRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Registro creado';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                case 'cargarSucursal':
-                    if($result['dataset'] = $bodega->cargarSucursal()){
-                        $result['status'] = 1;
-                        $result['message'] = 'Existen '.count($result['dataset']). ' registros';
-                    } elseif(Database::getException()){
-                        $result['exception'] = Database::getException();
-                    } else {
-                        $result['exception'] = 'No hay datos registrados';
-                    }
-                    break;  
-            case 'readOne':
+            case 'leerRegistros':
+                if ($result['dataset'] = $bodega->leerRegistros()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            case 'leerUnRegistro':
                 if (!$bodega->setId($_POST['idbodega'])) {
                     $result['exception'] = 'Bodega incorrecta';
-                } elseif ($result['dataset'] = $bodega->readOne()) {
+                } elseif ($result['dataset'] = $bodega->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -72,35 +62,45 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'Bodega inexistente';
                 }
                 break;
-            case 'update':
+            case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$bodega->setId($_POST['id'])) {
                     $result['exception'] = 'Bodega incorrecta';
-                } elseif (!$bodega->readOne()) {
+                } elseif (!$bodega->leerUnRegistro()) {
                     $result['exception'] = 'Bodega inexistente';
-                } elseif (!$bodega->setNumerobodega($_POST['numerobodega'])) {
+                } elseif (!$bodega->setNumeroBodega($_POST['numerobodega'])) {
                     $result['exception'] = 'Bodega incorrecta';
                 } elseif (!$bodega->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion incorrecta';
                 } elseif (!$bodega->setSucursal($_POST['sucursal'])) {
                     $result['exception'] = 'Sucursal incorrecta';
-                } elseif ($bodega->updateRow()) {
+                } elseif ($bodega->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Bodega modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'delete':
+            case 'eliminarRegistro':
                 if (!$bodega->setId($_POST['idbodega'])) {
                     $result['exception'] = 'Bodega incorrecta';
-                } elseif (!$data = $bodega->readOne()) {
+                } elseif (!$data = $bodega->leerUnRegistro()) {
                     $result['exception'] = 'Bodega inexistente';
-                } elseif ($bodega->deleteRow()) {
+                } elseif ($bodega->eliminarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Bodega eliminada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
+                }
+                break;
+            case 'cargarSucursal':
+                if($result['dataset'] = $bodega->cargarSucursal()){
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']). ' registros';
+                } elseif(Database::getException()){
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
                 }
                 break;
             default:

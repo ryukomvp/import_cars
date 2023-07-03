@@ -1,5 +1,3 @@
-// Constante para completar la ruta de la API.
-// const USUARIO_API = 'business/usuarios.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('search-form');
 // Constante para establecer el formulario de guardar.
@@ -10,7 +8,6 @@ const MODAL_TITLE = document.getElementById('modal-title');
 const TBODY_ROWS = document.getElementById('tbody-rows');
 // Constantes para establecer el contenido de la tabla.
 const BTN_TEXTO = document.getElementById('accion');
-
 // Constante para capturar el modal.
 const SAVE_MODAL = new Modal(document.getElementById('modal_add_user'));
 

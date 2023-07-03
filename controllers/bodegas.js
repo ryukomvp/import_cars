@@ -1,7 +1,7 @@
 // Constante para completar la ruta de la API.
 const BODEGA_API = 'business/bodegas.php';
 // Constante para establecer el formulario de buscar.
-const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
+const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para establecer el formulario de guardar.
 const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 // Constante para establecer el título de la modal.
@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
-BUSCAR_FORMULARIO.addEventListener('submit', (event) => {
+FORMULARIO_BUSQUEDA.addEventListener('submit', (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(BUSCAR_FORMULARIO);
+    const FORM = new FormData(FORMULARIO_BUSQUEDA);
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
     fillTable(FORM);
 });
@@ -36,7 +36,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (document.getElementById('id').value) ? action = 'update' : action = 'create';
+    (document.getElementById('id').value) ? action = 'actualizarRegistro' : action = 'crearRegistro';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
@@ -63,7 +63,7 @@ async function fillTable(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'search' : action = 'readAll';
+    (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(BODEGA_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -133,7 +133,7 @@ async function openUpdate(id) {
     const FORM = new FormData();
     FORM.append('idbodega', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(BODEGA_API, 'readOne', FORM);
+    const JSON = await dataFetch(BODEGA_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -168,7 +168,7 @@ async function openDelete(id) {
         const FORM = new FormData();
         FORM.append('idbodega', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(BODEGA_API, 'delete', FORM);
+        const JSON = await dataFetch(BODEGA_API, 'eliminarRegistro', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

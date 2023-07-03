@@ -3,7 +3,7 @@ require_once('../helpers/database.php');
 /*
 *  Clase para manejar el acceso a datos de la entidad de BODEGAS
 */
-class bodegasqueries
+class BodegasQueries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
@@ -11,7 +11,7 @@ class bodegasqueries
 
     /*Método para la realizacion de busqueda de registros en la base de datos
      mediante el nombre de la bodega*/
-     public function searchRows($value)
+     public function buscarRegistros($value)
      {
          $sql = 'SELECT idbodega, numerobodega, bodegas.direccion, nombre
              FROM bodegas INNER JOIN sucursales ON bodegas.idsucursal = sucursales.idsucursal
@@ -22,7 +22,7 @@ class bodegasqueries
      }
 
      /*Método para la insercion de datos en la base de datos*/
-    public function createRow()
+    public function crearRegistro()
     {
         $sql = 'INSERT INTO bodegas(numerobodega, direccion, idsucursal)
             VALUES(?, ?, ?)';
@@ -31,7 +31,7 @@ class bodegasqueries
     }
     
     /*Funcion para cargar los registros en la tabla y mostrarlos*/
-    public function readAll()
+    public function leerRegistros()
     {
         $sql = 'SELECT idbodega, numerobodega, bodegas.direccion, nombre
             FROM bodegas INNER JOIN sucursales ON bodegas.idsucursal = sucursales.idsucursal
@@ -39,17 +39,9 @@ class bodegasqueries
         return Database::getRows($sql);
     }
 
-    /*Funcion para cargar los registros en el select y mostrarlos*/
-    public function cargarSucursal()
-    {
-        $sql = 'SELECT idsucursal, nombre, telefono, correo
-            FROM sucursales
-            ORDER BY nombre';
-        return Database::getRows($sql);
-    }
-
+    
      /*Funcion para cargar un unico registro*/
-     public function readOne()
+     public function leerUnRegistro()
      {
          $sql = 'SELECT idbodega, numerobodega, direccion, idsucursal
              FROM bodegas
@@ -59,7 +51,7 @@ class bodegasqueries
      }
      
       /*Funcion para la actualizacion de un registro*/
-    public function updateRow()
+    public function actualizarRegistro()
     {
         $sql = 'UPDATE bodegas
             SET  numerobodega = ?, direccion = ?, idsucursal = ?
@@ -69,11 +61,20 @@ class bodegasqueries
     } 
 
     /*Funcion para eliminar un registro de la base de datos*/
-    public function deleteRow()
+    public function eliminarRegistro()
     {
         $sql = 'DELETE FROM bodegas
             WHERE idbodega = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
+    }
+
+    /*Funcion para cargar los registros en el select y mostrarlos*/
+    public function cargarSucursal()
+    {
+        $sql = 'SELECT idsucursal, nombre, telefono, correo
+            FROM sucursales
+            ORDER BY nombre';
+        return Database::getRows($sql);
     }
 }

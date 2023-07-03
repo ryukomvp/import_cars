@@ -5,29 +5,19 @@ if(isset($_GET['action'])){
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $codigo = new codigoComun;
+    $codigo = new CodigoComun;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if(isset($_SESSION['idusuario'])){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch($_GET['action']) {
-            case 'leerCodigosComunes':
-                if ($result['dataset'] = $codigo->leerCodigosComunes()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'buscarCodigoComun':
+            case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                    if ($_POST['buscar'] == '') {
-                        $result['dataset'] = $codigo->leerCodigosComunes();
+                        $result['dataset'] = $codigo->leerRegistros();
                         $result['status'] = 1;
-                } elseif ($result['dataset'] = $codigo->buscarCodigoComun($_POST['buscar'])) {
+                } elseif ($result['dataset'] = $codigo->buscarRegistros($_POST['buscar'])) {
                        $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -36,23 +26,33 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay coincidencias';
                 }
                  break;
-            case 'crearCodigoComun':
+            case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$codigo->setNomenclatura($_POST['nomenclatura'])) {
                     $result['exception'] = 'Nomenclatura incorrecta'; 
                 } elseif (!$codigo->setCodigo($_POST['codigo'])) {
                     $result['exception'] = 'Código incorrecto';
-                } elseif ($codigo->crearCodigoComun()){
+                } elseif ($codigo->crearRegistro()){
                     $result['status'] = 1;
                     $result['message'] = 'Código común creado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
-                break;   
-            case 'leerUnCodigoComun':
+                break;
+            case 'leerRegistros':
+                if ($result['dataset'] = $codigo->leerRegistros()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break; 
+            case 'leerUnRegistro':
                 if (!$codigo->setId($_POST['id'])) {
                     $result['exception'] = 'Código incorrecto';
-                } elseif ($result['dataset'] = $codigo->leerUnCodigoComun()) {
+                } elseif ($result['dataset'] = $codigo->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -60,29 +60,29 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Código común inexistente';
                 }
                 break;
-            case 'actualizarCodigoComun':
+            case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                if (!$codigo->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
-                } elseif (!$data = $codigo->leerUnCodigoComun()) {
+                } elseif (!$data = $codigo->leerUnRegistro()) {
                     $result['exception'] = 'Moneda inexistente';
                 } elseif (!$codigo->setNomenclatura($_POST['nomenclatura'])) {
                      $result['exception'] = 'Moneda incorrecto';
                 } elseif (!$codigo->setCodigo($_POST['codigo'])) {
                     $result['exception'] = 'Moneda incorrecto';
-                } elseif ($codigo->actualizarCodigoComun()) {
+                } elseif ($codigo->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Moneda modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'eliminarCodigoComun':
+            case 'eliminarRegistro':
                 if (!$codigo->setId($_POST['idcodigocomun'])) {
                     $result['exception'] = 'Código incorrecto';
-                } elseif (!$data = $codigo->leerUnCodigoComun()) {
+                } elseif (!$data = $codigo->leerUnRegistro()) {
                     $result['exception'] = 'Código inexistente';
-                } elseif ($codigo->eliminarCodigoComun()) {
+                } elseif ($codigo->eliminarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Código eliminado correctamente';
                 } else {
