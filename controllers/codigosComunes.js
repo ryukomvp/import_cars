@@ -35,7 +35,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica si se realizara una actualización o un registro nuevo.
-    (document.getElementById('id').value) ? action = 'actualizarCodigoComun' : action = 'crearCodigoComun';
+    (document.getElementById('id').value) ? action = 'actualizarRegistro' : action = 'crearRegistro';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
@@ -58,7 +58,7 @@ async function rellenarTabla(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'buscarCodigoComun' : action = 'leerCodigosComunes';
+    (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(CODIGOC_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -110,7 +110,7 @@ async function actualizarRegistro(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(CODIGOC_API, 'leerUnCodigoComun', FORM);
+    const JSON = await dataFetch(CODIGOC_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -139,7 +139,7 @@ async function eliminarRegistro(id) {
         const FORM = new FormData();
         FORM.append('idcodigocomun', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(CODIGOC_API, 'eliminarCodigoComun', FORM);
+        const JSON = await dataFetch(CODIGOC_API, 'eliminarRegistro', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
