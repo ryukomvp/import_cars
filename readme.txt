@@ -1,5 +1,6 @@
-Idioma: español
+Indicaciones sobre la estandarización del proyecto
 
+Idioma: español
 
 
 API
@@ -10,7 +11,6 @@ Nombres de funciones: camelCase
 Nombres de propiedades: mismo nombre del campo en la tabla; tipoProducto -> tipoproducto
 Nombres de objetos: minúsculas, una sola palabra referente a la tabla (Bussiness)
 Nombres de los casos: camelCase (Businnes)
-
 
 
 CONTROLLER
