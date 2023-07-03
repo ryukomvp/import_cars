@@ -5,52 +5,50 @@ if(isset($_GET['action'])){
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $moneda = new moneda;
+    $moneda = new Moneda;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if(isset($_SESSION['idusuario'])){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch($_GET['action']) {
-            case 'leerMonedas':
-                if ($result['dataset'] = $moneda->leerMoneda()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'buscarMoneda':
+            case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                    if ($_POST['buscar'] == '') {
-                        $result['dataset'] = $moneda->leerMoneda();
+                        $result['dataset'] = $moneda->leerRegistros();
                         $result['status'] = 1;
-                } elseif ($result['dataset'] = $moneda->buscarMoneda($_POST['buscar'])) {
+                } elseif ($result['dataset'] = $moneda->buscarRegistros($_POST['buscar'])) {
                        $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
                        $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No hay coincidencias';
                 }
                  break;
-            case 'crearMoneda':
+            case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$moneda->setMoneda($_POST['moneda'])){
                     $result['exception'] = 'Moneda incorrecto'; 
-                } elseif ($moneda->crearMoneda()){
+                } elseif ($moneda->crearRegistro()){
                     $result['status'] = 1;
                     $result['message'] = 'Moneda creada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
-                break;   
-            case 'leerUnaMoneda':
+                break;  
+            case 'leerRegistros':
+                if ($result['dataset'] = $moneda->leerMoneda()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break; 
+            case 'leerUnRegistro':
                 if (!$moneda->setId($_POST['id'])) {
                     $result['exception'] = 'Moneda incorrecto';
-                } elseif ($result['dataset'] = $moneda->leerUnaMoneda()) {
+                } elseif ($result['dataset'] = $moneda->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -58,27 +56,27 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Moneda inexistente';
                 }
                 break;
-            case 'actualizarMoneda':
+            case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                if (!$moneda->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
-                } elseif (!$data = $moneda->leerUnaMoneda()) {
+                } elseif (!$data = $moneda->leerUnRegistro()) {
                     $result['exception'] = 'Moneda inexistente';
                 } elseif (!$moneda->setMoneda($_POST['moneda'])) {
                      $result['exception'] = 'Moneda incorrecto';
-                } elseif ($moneda->actualizarMoneda()) {
+                } elseif ($moneda->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Moneda modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'eliminarMoneda':
+            case 'eliminarRegistro':
                 if (!$moneda->setId($_POST['idmoneda'])) {
                     $result['exception'] = 'Moneda incorrecta';
-                } elseif (!$data = $moneda->leerUnaMoneda()) {
+                } elseif (!$data = $moneda->leerUnRegistro()) {
                     $result['exception'] = 'Moneda inexistente';
-                } elseif ($moneda->eliminarMoneda()) {
+                } elseif ($moneda->eliminarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Moneda eliminada correctamente';
                 } else {

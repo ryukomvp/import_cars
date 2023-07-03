@@ -4,7 +4,7 @@ require_once('../entities/dao/monedasQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad CATEGORIA.
 */
-class moneda extends monedasQueries
+class Moneda extends MonedasQueries
 {
     // Declaración de atributos (propiedades).
     protected $idmoneda = null;
