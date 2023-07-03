@@ -5,29 +5,19 @@ if(isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $familia = new familias;
+    $familia = new Familias;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idusuario']) OR !isset($_SESSION['idusuario'])) {
+    if (isset($_SESSION['idusuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'readAll':
-                if ($result['dataset'] = $familia->readAll()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'search':
+            case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
-                    $result['dataset'] = $familia->readAll();
+                    $result['dataset'] = $familia->leerRegistros();
                     $result['status'] = 1;
-                } elseif ($result['dataset'] = $familia->searchRows($_POST['search'])) {
+                } elseif ($result['dataset'] = $familia->buscarRegistros($_POST['search'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -36,21 +26,31 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'create':
+            case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if(!$familia->setFamilia($_POST['familia'])) {
                     $result['exception'] = 'Familia incorrecta';
-                } elseif($familia->createRow()) {
+                } elseif($familia->crearRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Registro creado';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'readOne':
+            case 'leerRegistros':
+                if ($result['dataset'] = $familia->leerRegistros()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            case 'leerUnRegistro':
                 if (!$familia->setId($_POST['idfamilia'])) {
                     $result['exception'] = 'Familia incorrecta';
-                } elseif ($result['dataset'] = $familia->readOne()) {
+                } elseif ($result['dataset'] = $familia->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -58,27 +58,27 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'Familia inexistente';
                 }
                 break;
-            case 'update':
+            case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$familia->setId($_POST['id'])) {
                     $result['exception'] = 'Familia incorrecta';
-                } elseif (!$familia->readOne()) {
+                } elseif (!$familia->leerUnRegistro()) {
                     $result['exception'] = 'Familia inexistente';
                 } elseif (!$familia->setFamilia($_POST['familia'])) {
                     $result['exception'] = 'Familia incorrecta';
-                } elseif ($familia->updateRow()) {
+                } elseif ($familia->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Familia modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'delete':
+            case 'eliminarRegistro':
                 if (!$familia->setId($_POST['idfamilia'])) {
                     $result['exception'] = 'Familia incorrecta';
-                } elseif (!$data = $familia->readOne()) {
+                } elseif (!$data = $familia->leerUnRegistro()) {
                     $result['exception'] = 'Sucursal inexistente';
-                } elseif ($familia->deleteRow()) {
+                } elseif ($familia->eliminarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Familia eliminada correctamente';
                 } else {
