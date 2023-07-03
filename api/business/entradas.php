@@ -10,25 +10,15 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idUsuario']) OR !isset($_SESSION['idUsuario'])) {
+    if (isset($_SESSION['idUsuario']) OR !isset($_SESSION['idusuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'leerTodo':
-                if ($result['dataset'] = $entradas->leerTodo()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'buscarEntrada':
+            case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['buscar'] == '') {
-                    $result['dataset'] = $entradas->leerTodo();
+                    $result['dataset'] = $entradas->leerRegistros();
                     $result['status'] = 1;
-                } elseif ($result['dataset'] = $entradas->buscarEntrada($_POST['buscar'])) {
+                } elseif ($result['dataset'] = $entradas->buscarRegistros($_POST['buscar'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
@@ -37,7 +27,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'crearEntrada':
+            case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$entradas->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripcion incorrecto';
@@ -51,17 +41,27 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un empleado';
                 } elseif (!$entradas->setEmpleado($_POST['empleado'])) {
                     $result['exception'] = 'codigo incorrecta';
-                } elseif ($entradas->crearEntrada()) {
+                } elseif ($entradas->crearRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Registro creado';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'leerUnaEntrada':
+            case 'leerRegistros':
+                if ($result['dataset'] = $entradas->leerRegistros()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            case 'leerUnRegistro':
                 if (!$entradas->setId($_POST['id'])) {
                     $result['exception'] = 'entrada incorrecto';
-                } elseif ($result['dataset'] = $entradas->leerUnaEntrada()) {
+                } elseif ($result['dataset'] = $entradas->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -69,11 +69,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Entrada inexistente';
                 }
                 break;
-            case 'actualizarEntrada':
+            case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$entradas->setId($_POST['id'])) {
                     $result['exception'] = 'Entrada incorrecto';
-                } elseif (!$data = $entradas->leerUnaEntrada()) {
+                } elseif (!$data = $entradas->leerUnRegistro()) {
                     $result['exception'] = 'Entrada inexistente';
                 } elseif (!$entradas->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripción incorrecta';
@@ -81,19 +81,19 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto incorrecto';
                 } elseif (!isset($_POST['empleado'])) {
                     $result['exception'] = 'Seleccione un empleado';
-                } elseif ($entradas->actualizarEntrada()) {
+                } elseif ($entradas->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Marca modificada correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'eliminarEntrada':
+            case 'eliminarRegistro':
                     if (!$entradas->setId($_POST['identrada'])) {
                         $result['exception'] = 'Id incorrecto';
-                    } elseif (!$data = $entradas->leerUnaEntrada()) {
+                    } elseif (!$data = $entradas->leerUnRegistro()) {
                         $result['exception'] = 'Marca inexistente';
-                    } elseif ($entradas->eliminarEntrada()) {
+                    } elseif ($entradas->eliminarRegistro()) {
                         $result['status'] = 1;
                         $result['message'] = 'Entrada eliminada correctamente';
                     } else {

@@ -3,14 +3,14 @@ require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad PRODUCTO.
 */
-class entradasQueries
+class EntradasQueries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
 
     /*metodo para buscar registros*/
-    public function buscarEntrada($value)
+    public function buscarRegistros($value)
     {
         $sql = 'SELECT entradas.identrada, entradas.descripcion, productos.nombre, entradas.cantidad, entradas.precio, entradas.fechaentrada, empleados.nombre as empleado
                 FROM entradas 
@@ -22,7 +22,7 @@ class entradasQueries
         return Database::getRows($sql, $params);
     }
 
-    public function crearEntrada()
+    public function crearRegistro()
     {
         date_default_timezone_set('America/El_Salvador');
         $date = date('Y-m-d');
@@ -32,7 +32,7 @@ class entradasQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function leerTodo()
+    public function leerRegistros()
     {
         $sql = 'SELECT entradas.identrada, entradas.descripcion, productos.nombre, entradas.cantidad, entradas.precio, entradas.fechaentrada, empleados.nombre as empleado
                 FROM entradas 
@@ -42,7 +42,7 @@ class entradasQueries
         return Database::getRows($sql);
     }
 
-    public function leerUnaEntrada()
+    public function leerUnRegistro()
     {
         $sql = 'SELECT identrada , descripcion, idproducto, precio, fechaentrada, idempleado
                 FROM entradas
@@ -51,7 +51,7 @@ class entradasQueries
         return Database::getRow($sql, $params);
     }
 
-    public function actualizarEntrada()
+    public function actualizarRegistro()
     {
         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
         $sql = 'UPDATE entradas
@@ -61,7 +61,7 @@ class entradasQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function eliminarEntrada()
+    public function eliminarRegistro()
     {
         $sql = 'DELETE FROM entradas
                 WHERE identrada = ?';
