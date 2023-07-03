@@ -1,15 +1,13 @@
 // Constante para establecer el formulario de buscar.
-const SEARCH_FORM = document.getElementById('search-form');
+const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para establecer el formulario de guardar.
-const SAVE_FORM = document.getElementById('save-form');
+const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 // Constante para establecer el título de la modal.
-const MODAL_TITLE = document.getElementById('modal-title');
+const TITULO = document.getElementById('titulo');
 // Constantes para establecer el contenido de la tabla.
-const TBODY_ROWS = document.getElementById('tbody-rows');
-// Constantes para establecer el contenido de la tabla.
-const BTN_TEXTO = document.getElementById('accion');
+const REGISTROS_TABLA = document.getElementById('registrosTabla');
 // Constante para capturar el modal.
-const SAVE_MODAL = new Modal(document.getElementById('modal_add_user'));
+const ABRIR_MODAL = new Modal(document.getElementById('modal_add_user'));
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {

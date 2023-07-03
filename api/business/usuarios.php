@@ -7,7 +7,7 @@ if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $usuario = new usuarios;
+    $usuario = new Usuarios;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -75,21 +75,11 @@ if (isset($_GET['action'])) {
             //         $result['exception'] = Database::getException();
             //     }
             //     break;
-            case 'leerUsuarios':
-                if ($result['dataset'] = $usuario->leerUsuarios()) {
-                    $result['status'] = 1;
-                    // $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'buscar':
+            case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['exception'] = 'Ingrese un valor para buscar';
-                } elseif ($result['dataset'] = $usuario->buscarUsuarios($_POST['search'])) {
+                } elseif ($result['dataset'] = $usuario->buscarRegistros($_POST['search'])) {
                     $result['status'] = 1;
                     // $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -98,7 +88,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'crear':
+            case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombres incorrecto';
@@ -114,17 +104,27 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$usuario->setClave($_POST['clave'])) {
                     $result['exception'] = Validator::getPasswordError();
-                } elseif ($usuario->crearUsuario()) {
+                } elseif ($usuario->crearRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario creado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'leerUsuario':
+            case 'leerRegistros':
+                if ($result['dataset'] = $usuario->leerRegistros()) {
+                    $result['status'] = 1;
+                    // $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            case 'leerUnRegistro':
                 if (!$usuario->setId($_POST['idusuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                } elseif ($result['dataset'] = $usuario->leerUsuario()) {
+                } elseif ($result['dataset'] = $usuario->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -132,11 +132,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Usuario inexistente';
                 }
                 break;
-            case 'actualizar':
+            case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_POST['id'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->leerUsuario()) {
+                } elseif (!$usuario->leerUnRegistro()) {
                     $result['exception'] = 'Usuario inexistente';
                 } elseif (!$usuario->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombres incorrecto';
@@ -148,21 +148,21 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Empleado incorrecto';
                 } elseif (!$usuario->setEstado($_POST['estado'])) {
                     $result['exception'] = 'Estado incorrecto';
-                } elseif ($usuario->actualizarUsuario()) {
+                } elseif ($usuario->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario actualizado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'eliminar':
+            case 'eliminarRegistro':
                 if ($_POST['idusuario'] == $_SESSION['idusuario']) {
                     $result['exception'] = 'No se puede eliminar a sí mismo';
                 } elseif (!$usuario->setId($_POST['idusuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->leerUsuario()) {
+                } elseif (!$usuario->leerUnRegistro()) {
                     $result['exception'] = 'Usuario inexistente';
-                } elseif ($usuario->eliminarUsuario()) {
+                } elseif ($usuario->eliminarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario eliminado correctamente';
                 } else {

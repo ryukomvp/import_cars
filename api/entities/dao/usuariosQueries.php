@@ -3,11 +3,12 @@ require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad USUARIO.
 */
-class usuariosQueries
+class UsuariosQueries
 {
     /*
-    *   Métodos para realizar operaciones de gestión en la cuenta del usuario
+    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
+
     public function verificarUsuario($nombre)
     {
         $sql = 'SELECT idusuario FROM usuarios WHERE nombre = ?';
@@ -62,7 +63,7 @@ class usuariosQueries
     /*
     *   Métodos para realizar operaciones de gestión en la tabla usuarios
     */
-    public function buscarUsuarios($value)
+    public function buscarRegistros($value)
     {
         $sql = 'SELECT idusuario, u.nombre usuario, contrasenia, pin, tipousuario, e.nombre empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
@@ -72,7 +73,7 @@ class usuariosQueries
         return Database::getRows($sql, $params);
     }
 
-    public function crearUsuario()
+    public function crearRegistro()
     {
         $sql = 'INSERT INTO usuarios(nombre, contrasenia, pin, tipousuario, idempleado, estadousuario)
                 VALUES(?, ?, ?, ?, ?, ?)';
@@ -80,7 +81,7 @@ class usuariosQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function leerUsuarios()
+    public function leerRegistros()
     {
         $sql = 'SELECT idusuario, u.nombre usuario, contrasenia, pin, tipousuario, e.nombre empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
@@ -88,13 +89,30 @@ class usuariosQueries
         return Database::getRows($sql);
     }
 
-    public function leerUsuario()
+    public function leerUnRegistro()
     {
         $sql = 'SELECT idusuario, u.nombre usuario, contrasenia, pin, tipousuario, idempleado, e.nombre empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
 				WHERE idusuario = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
+    }
+
+    public function actualizarRegistro()
+    {
+        $sql = 'UPDATE usuarios 
+                SET nombre = ?, pin = ?, tipousuario = ?, idempleado = ?, estadousuario = ?
+                WHERE idusuario = ?';
+        $params = array($this->nombre, $this->pin, $this->tipo, $this->empleado, $this->estado, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function eliminarRegistro()
+    {
+        $sql = 'DELETE FROM usuarios
+                WHERE idusuario = ?';
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
     }
 
     public function leerTipo()
@@ -114,23 +132,6 @@ class usuariosQueries
     {
         $sql = 'SELECT unnest(enum_range(NULL::estadosusuarios)) val, unnest(enum_range(NULL::estadosusuarios)) text';
         return Database::getRows($sql);
-    }
-
-    public function actualizarUsuario()
-    {
-        $sql = 'UPDATE usuarios 
-                SET nombre = ?, pin = ?, tipousuario = ?, idempleado = ?, estadousuario = ?
-                WHERE idusuario = ?';
-        $params = array($this->nombre, $this->pin, $this->tipo, $this->empleado, $this->estado, $this->id);
-        return Database::executeRow($sql, $params);
-    }
-
-    public function eliminarUsuario()
-    {
-        $sql = 'DELETE FROM usuarios
-                WHERE idusuario = ?';
-        $params = array($this->id);
-        return Database::executeRow($sql, $params);
     }
 
     public function estadoActivo()
