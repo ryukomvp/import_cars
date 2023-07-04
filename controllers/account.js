@@ -218,23 +218,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 </div>
                             </div>
                             <div class="absolute inset-y-0 right-0 p-3">
-                                <button id="usuario-config" data-dropdown-toggle="dropdown-user"><img
-                                        class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300" src="../resources/img/perfil.jpg"
-                                        alt=""></button>
-                            </div>
-                            <div id="dropdown-user" class="z-10 hidden bg-white text-black rounded-lg shadow w-44 ml:5 border border-black">
-                                <div class="px-4 py-3 text-sm text-center">
-                                    <div>${JSON.username}</div>
-                                </div>
-                                <hr>
-                                <ul class="py-1">
-                                    <li>
-                                        <a href="usuario.html" class="block px-4 py-2 hover:bg-azul hover:text-white">Mi perfil</a>
-                                    </li>
-                                    <li>
-                                        <a href="usuario.html" class="block px-4 py-2 hover:bg-azul hover:text-white">Configuración</a>
-                                    </li>
-                                </ul>
+                                <img class=" w-10 h-10 p-1 rounded-full ring-2 ring-gray-300" src="../resources/img/logo.jpg" alt="">
                             </div>
                         </nav>
 
