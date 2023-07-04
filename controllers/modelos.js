@@ -7,7 +7,7 @@ const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 // Constante para establecer el título de la modal.
 const TITULO = document.getElementById('titulo');
 // Constantes para establecer el contenido de la tabla.
-const REGISTROS_TABLA = document.getElementById('registrosTabla');
+const REGISTROS_TABLA = document.getElementById('cargarRegistros');
 // Constante para capturar el modal.
 const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
 // Constante para el texto del boton
@@ -15,7 +15,7 @@ const BTN_ACCION = document.getElementById('accion');
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
-    registrosTabla();
+    cargarRegistros();
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
@@ -25,7 +25,7 @@ FORMULARIO_BUSQUEDA.addEventListener('submit', (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_BUSQUEDA);
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
-    registrosTabla(FORM);
+    cargarRegistros(FORM);
 });
 
 // Método manejador de eventos para cuando se envía el formulario de guardar.
@@ -41,7 +41,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
-        registrosTabla();
+        cargarRegistros();
         // Se cierra la caja de diálogo.
         ABRIR_MODAL.hide();
         // Se muestra un mensaje de éxito.
@@ -56,7 +56,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
 *   Parámetros: form (objeto opcional con los datos de búsqueda).
 *   Retorno: ninguno.
 */
-async function registrosTabla(form = null) {
+async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
@@ -158,7 +158,7 @@ async function eliminarRegistro(id) {
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
-            registrosTabla();
+            cargarRegistros();
             // Se muestra un mensaje de éxito.
             sweetAlert(1, JSON.message, true);
         } else {

@@ -17,7 +17,7 @@ const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
 // Metodo para cargar la pagina cada vez que haya un cambio en el DOM
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
-    rellenarTabla();
+    cargarRegistros();
 });
 
 // Metodo para el input de busqueda
@@ -27,7 +27,7 @@ FORMULARIO_BUSQUEDA.addEventListener('submit', (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_BUSQUEDA);
     // LLama la función de rellenar la tabla para actualizarla con los datos de la busqueda.
-    rellenarTabla(FORM);
+    cargarRegistros(FORM);
 });
 
 // Metodo para el modal, añade o actualiza dependiendo de la acción
@@ -43,7 +43,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
-        rellenarTabla();
+        cargarRegistros();
         // Se cierra la caja de diálogo.
         ABRIR_MODAL.hide();
         // Se muestra un mensaje de éxito.
@@ -54,7 +54,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
 });
 
 // Metodo para cargar la tabla con los datos de la base
-async function rellenarTabla(form = null) {
+async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
@@ -141,7 +141,7 @@ async function eliminarRegistro(id) {
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
-            rellenarTabla();
+            cargarRegistros();
             // Se muestra un mensaje de éxito.
             sweetAlert(1, JSON.message, true);
         } else {

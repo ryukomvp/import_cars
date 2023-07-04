@@ -18,7 +18,7 @@ const BTN_ACCION = document.getElementById('accion');
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
-    fillTable();
+    cargarRegistros();
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
@@ -28,7 +28,7 @@ FORMULARIO_BUSQUEDA.addEventListener('submit', (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_BUSQUEDA);
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
-    fillTable(FORM);
+    cargarRegistros(FORM);
 });
 
 // Método manejador de eventos para cuando se envía el formulario de guardar.
@@ -44,7 +44,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
-        fillTable();
+        cargarRegistros();
         // Se cierra la caja de diálogo.
         ABRIR_MODAL.hide();
         // Se muestra un mensaje de éxito.
@@ -59,7 +59,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
 *   Parámetros: form (objeto opcional con los datos de búsqueda).
 *   Retorno: ninguno.
 */
-async function fillTable(form = null) {
+async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
@@ -172,7 +172,7 @@ async function openDelete(id) {
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
-            fillTable();
+            cargarRegistros();
             // Se muestra un mensaje de éxito.
             sweetAlert(1, JSON.message, true);
         } else {
