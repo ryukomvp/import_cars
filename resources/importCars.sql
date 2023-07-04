@@ -535,7 +535,8 @@
 	('Evelin Fery', '1971-3740', 'eferyg@omniture.com', '6/4/1998','NIT', '32434523-2', 'Inactivo'),
 	('Pietrek Peris', '8905-6928', 'pperish@cornell.edu', '6/6/2002', 'NIT', '32434523-2', 'Inactivo'),
 	('Mellisa Anstee', '1936-8789', 'mansteei@google.co.jp', '9/11/1997', 'NIT', '32434523-2', 'Inactivo'),
-	('Nevin Oke', '2536-1122', 'nokej@home.pl', '2/3/1999', 'NIT', '32434523-2', 'Inactivo');
+	('Nevin Oke', '2536-1122', 'nokej@home.pl', '2/3/1999', 'NIT', '32434523-2', 'Inactivo'),
+	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '20/12/2004', 'DUI', '06795006-2', 'Activo');
 	
 	insert into usuarios(nombre, contrasenia, pin, tipoUsuario, idEmpleado, estadoUsuario) values
 	('Annamaria', 'Sheffield', '12345678', 'Administrador', 1, 'Activo'),
@@ -557,7 +558,8 @@
 	('Evelin', 'Anstee', '12345678', 'Administrador', 17, 'Activo'),
 	('Pietrek', 'Sheffield', '12345678', 'Gerente', 18, 'Inactivo'),
 	('Mellisa', 'Anstee', '12345678', 'Gerente', 19, 'Activo'),
-	('Nevin', 'Sheffield', '12345678', 'Gerente', 20, 'Activo');
+	('Nevin', 'Sheffield', '12345678', 'Gerente', 20, 'Activo'),
+	('dani', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 'Administrador', 21, 'Inactivo');
 	
 	insert into productos(nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto) values
 	('escape ford','foto','escape', 90.00, 2000,  1 , 5, 5, 1, 1, 1, 'Existente'),
