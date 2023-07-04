@@ -118,7 +118,7 @@ function openCreate() {
     // Texto del boton para crear un registro
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna título a la caja de diálogo.
-    TITULO.textContent = 'Crear Bodega';
+    TITULO.textContent = 'Registrar bodega';
     fillSelect(BODEGA_API, 'cargarSucursal', 'sucursal');
 }
 
@@ -142,7 +142,7 @@ async function openUpdate(id) {
         // Texto del boton para crear un registro
         BTN_ACCION.textContent = 'Actualizar';
         // Se asigna título para la caja de diálogo.
-        TITULO.textContent = 'Actualizar Bodega';
+        TITULO.textContent = 'Actualizar bodega';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idbodega;
         document.getElementById('numerobodega').value = JSON.dataset.numerobodega;

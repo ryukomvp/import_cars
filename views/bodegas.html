@@ -82,33 +82,39 @@
                         <!-- Modal body -->
                         <form class="p-4" method="post" id="ejecutarFormulario">
                             <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                <!--ID-->
-                                <input class="hidden" type="number" id="id" name="id">
-                                <!--Input nombre de la bodega-->
-                                <div>
-                                    <label for="numerobodega"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Número de
-                                        de la bodega</label>
-                                    <input type="number" id="numerobodega"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Ingrese el numero de la bodega" name="numerobodega" required>
+                                <div class="text-center py-4 p-6 space-x-2 rounded-b">
+                                    <img src="../resources/img/logo.jpg" alt="img">
                                 </div>
-                                <!--Input direccion de la bodega-->
                                 <div>
-                                    <label for="direccion"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Dirección de
-                                        de la bodega</label>
-                                    <input type="text" id="direccion"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Ingrese la direccion de la bodega" name="direccion" required>
-                                </div>
-                                <!--Input de la sucursal a la cual pertenece la bodega-->
-                                <div>
-                                    <label for="sucursal"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal</label>
-                                    <select id="sucursal" name="sucursal"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    </select>
+                                    <!--ID-->
+                                    <input class="hidden" type="number" id="id" name="id">
+                                    <!--Input nombre de la bodega-->
+                                    <div>
+                                        <label for="numerobodega"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Número de
+                                            de la bodega</label>
+                                        <input type="number" id="numerobodega"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Ingrese el numero de la bodega" name="numerobodega" required>
+                                    </div>
+                                    <!--Input direccion de la bodega-->
+                                    <div>
+                                        <label for="direccion"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Dirección
+                                            de
+                                            de la bodega</label>
+                                        <input type="text" id="direccion"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Ingrese la direccion de la bodega" name="direccion" required>
+                                    </div>
+                                    <!--Input de la sucursal a la cual pertenece la bodega-->
+                                    <div>
+                                        <label for="sucursal"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal</label>
+                                        <select id="sucursal" name="sucursal"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Modal footer -->
@@ -125,7 +131,8 @@
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <!--Tabla para mostrar los registros que existen-->
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <thead
+                        class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
                             <th scope="col" class="hidden px-6 py-3">
                                 ID
