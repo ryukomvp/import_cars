@@ -7,7 +7,7 @@ const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 // Constante para establecer el título de la modal.
 const TITULO = document.getElementById('titulo');
 // Constantes para establecer el contenido de la tabla.
-const REGISTROS_TABLA = document.getElementById('registrosTabla');
+const REGISTROS_TABLA = document.getElementById('registros');
 
 // Se inicializa el componente Modal para que funcionen las cajas de diálogo.
 // Constante para capturar el modal.
