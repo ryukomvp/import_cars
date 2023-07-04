@@ -3,12 +3,14 @@ require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad USUARIO.
 */
-class tiposProductosQueries
+class TiposProductosQueries
 {
     /*
-    *   Métodos para realizar operaciones de gestión en la tabla usuarios
+    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function buscarTiposProductos($value)
+
+    /*Método para la realizacion de busqueda de registros en la base de datos mediante el nombre de la bodega*/
+    public function buscarRegistros($value)
     {
         $sql = 'SELECT idtipoproducto, tipoproducto
                 FROM tiposproductos
@@ -18,7 +20,8 @@ class tiposProductosQueries
         return Database::getRows($sql, $params);
     }
 
-    public function crearTiposProductos()
+    /*Método para la insercion de datos en la base de datos*/
+    public function crearRegistro()
     {
         $sql = 'INSERT INTO tiposproductos(tipoproducto)
                 VALUES(?)';
@@ -26,7 +29,8 @@ class tiposProductosQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function leerTiposProductos()
+    /*Funcion para cargar los registros en la tabla y mostrarlos*/
+    public function leerRegistros()
     {
         $sql = 'SELECT idtipoproducto, tipoproducto
                 FROM tiposproductos
@@ -34,7 +38,8 @@ class tiposProductosQueries
         return Database::getRows($sql);
     }
 
-    public function leerTipoProducto()
+    /*Funcion para cargar un unico registro*/
+    public function leerUnRegistro()
     {
         $sql = 'SELECT idtipoproducto, tipoproducto
                 FROM tiposproductos
@@ -43,7 +48,8 @@ class tiposProductosQueries
         return Database::getRow($sql, $params);
     }
 
-    public function actualizarTiposProductos()
+    /*Funcion para la actualizacion de un registro*/
+    public function actualizarRegistro()
     {
         $sql = 'UPDATE tiposproductos 
                 SET tipoproducto = ?
@@ -52,7 +58,8 @@ class tiposProductosQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function eliminarTiposProductos()
+    /*Funcion para eliminar un registro de la base de datos*/
+    public function eliminarRegistro()
     {
         $sql = 'DELETE FROM tiposproductos
                 WHERE idtipoproducto = ?';

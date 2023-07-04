@@ -1,18 +1,19 @@
 // Constante para completar la ruta de la API.
 const TIPO_PRODUCTO_API = 'business/tiposProductos.php';
 // Constante para establecer el formulario de buscar.
-const SEARCH_FORM = document.getElementById('search-form');
+const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para establecer el formulario de guardar.
-const SAVE_FORM = document.getElementById('save-form');
+const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 // Constante para establecer el título de la modal.
-const MODAL_TITLE = document.getElementById('modal-title');
+const TITULO = document.getElementById('titulo');
 // Constantes para establecer el contenido de la tabla.
-const TBODY_ROWS = document.getElementById('tbody-rows');
-// Constantes para establecer el contenido de la tabla.
-const BTN_TEXTO = document.getElementById('accion');
+const REGISTROS_TABLA = document.getElementById('registros');
 
+// Se inicializa el componente Modal para que funcionen las cajas de diálogo.
 // Constante para capturar el modal.
-const SAVE_MODAL = new Modal(document.getElementById('modal_add_user'));
+const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
+// Constante para el texto del boton
+const BTN_ACCION = document.getElementById('accion');
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -21,17 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
-SEARCH_FORM.addEventListener('submit', (event) => {
+FORMULARIO_BUSQUEDA.addEventListener('submit', (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SEARCH_FORM);
+    const FORM = new FormData(FORMULARIO_BUSQUEDA);
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
     registrosTabla(FORM);
 });
 
 // Método manejador de eventos para cuando se envía el formulario de guardar.
-SAVE_FORM.addEventListener('submit', async (event) => {
+EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
@@ -45,7 +46,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         registrosTabla();
         // Se cierra la caja de diálogo.
-        SAVE_MODAL.hide();
+        ABRIR_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -60,7 +61,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
 */
 async function registrosTabla(form = null) {
     // Se inicializa el contenido de la tabla.
-    TBODY_ROWS.innerHTML = '';
+    REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
     (form) ? action = 'buscarTiposProductos' : action = 'leerTiposProductos';
     // Petición para obtener los registros disponibles.
@@ -70,7 +71,7 @@ async function registrosTabla(form = null) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
-            TBODY_ROWS.innerHTML += `
+            REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
                     <td class="hidden px-6 py-4">${row.idtipoproducto}</td>
                     <td class="px-6 py-4">${row.tipoproducto}</td>
@@ -101,13 +102,13 @@ async function registrosTabla(form = null) {
 */
 function crearRegistro() {
     // Se abre la caja de diálogo que contiene el formulario.
-    SAVE_MODAL.show();
+    ABRIR_MODAL.show();
     // Se restauran los elementos del formulario.
-    SAVE_FORM.reset();
+    EJECUTAR_FORMULARIO.reset();
     // Se asigna título a la caja de diálogo.
-    MODAL_TITLE.textContent = 'Añadir nuevo tipo de producto';
+    TITULO.textContent = 'Añadir nuevo tipo de producto';
     // Se asigna texto al botón de acción.
-    BTN_TEXTO.textContent = 'Añadir';
+    BTN_ACCION.textContent = 'Añadir';
     // Se deshabilitan los campos necesarios.
     document.getElementById('tipoProducto').disabled = false;
 }
@@ -126,13 +127,13 @@ async function actualizarRegistro(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        SAVE_MODAL.show();
+        ABRIR_MODAL.show();
         // Se restauran los elementos del formulario.
-        SAVE_FORM.reset();
+        EJECUTAR_FORMULARIO.reset();
         // Se asigna título a la caja de diálogo.
-        MODAL_TITLE.textContent = 'Actualizar tipo de producto';
+        TITULO.textContent = 'Actualizar tipo de producto';
         // Se asigna texto al botón de acción.
-        BTN_TEXTO.textContent = 'Actualizar';
+        BTN_ACCION.textContent = 'Actualizar';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idtipoproducto;
         document.getElementById('tipoProducto').value = JSON.dataset.tipoproducto;

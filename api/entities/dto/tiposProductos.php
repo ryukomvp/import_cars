@@ -2,9 +2,9 @@
 require_once('../helpers/validator.php');
 require_once('../entities/dao/tiposProductosQueries.php');
 /*
-*	Clase para manejar la transferencia de datos de la entidad USUARIO.
+*	Clase para manejar la transferencia de datos de la entidad TIPOS PRODUCTOS.
 */
-class tiposProductos extends tiposProductosQueries
+class TiposProductos extends TiposProductosQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;

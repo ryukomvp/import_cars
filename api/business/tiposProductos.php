@@ -5,29 +5,19 @@ if(isset($_GET['action'])){
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $tipo = new tiposProductos;
+    $tipo = new TiposProductos;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if(isset($_SESSION['idusuario'])){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch($_GET['action']) {
-            case 'leerTiposProductos':
-                if ($result['dataset'] = $tipo->leerTiposProductos()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'buscarTiposProductos':
+            case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['buscar'] == '') {
-                    $result['dataset'] = $tipo->leerTiposProductos();
+                    $result['dataset'] = $tipo->leerRegistros();
                     $result['status'] = 1;
-                } elseif ($result['dataset'] = $tipo->buscarTiposProductos($_POST['buscar'])) {
+                } elseif ($result['dataset'] = $tipo->buscarRegistros($_POST['buscar'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -36,21 +26,31 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'crearTipoProducto':
+            case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$tipo->setTipoProducto($_POST['tipoProducto'])){
                     $result['exception'] = 'Tipo de producto incorrecto'; 
-                } elseif ($tipo->crearTiposProductos()){
+                } elseif ($tipo->crearRegistro()){
                     $result['status'] = 1;
                     $result['message'] = 'Tipo de producto creado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
-                break;   
-            case 'leerTipoProducto':
+                break;
+            case 'leerRegistros':
+                if ($result['dataset'] = $tipo->leerRegistros()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            case 'leerUnRegistro':
                 if (!$tipo->setId($_POST['idtipoproducto'])) {
                     $result['exception'] = 'Tipo de producto incorrecto';
-                } elseif ($result['dataset'] = $tipo->leerTipoProducto()) {
+                } elseif ($result['dataset'] = $tipo->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
@@ -58,27 +58,27 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Tipo de producto inexistente';
                 }
                 break;
-            case 'actualizarTipoProducto':
+            case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                if (!$tipo->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
-                } elseif (!$data = $tipo->leerTiposProductos()) {
+                } elseif (!$data = $tipo->leerUnRegistro()) {
                     $result['exception'] = 'Tipo de producto inexistente';
                 } elseif (!$tipo->setTipoProducto($_POST['tipoProducto'])) {
                      $result['exception'] = 'Tipo de producto incorrecto';
-                } elseif ($tipo->actualizarTiposProductos()) {
+                } elseif ($tipo->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Tipo de producto modificado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'eliminarTipoProducto':
+            case 'eliminarRegistro':
                 if (!$tipo->setId($_POST['idtipoproducto'])) {
                     $result['exception'] = 'Tipo de producto incorrecto';
-                } elseif (!$data = $tipo->leerTiposProductos()) {
+                } elseif (!$data = $tipo->leerUnRegistro()) {
                     $result['exception'] = 'Tipo de producto inexistente';
-                } elseif ($tipo->eliminarTiposProductos()) {
+                } elseif ($tipo->eliminarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Tipo de producto eliminado correctamente';
                 } else {
