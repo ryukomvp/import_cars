@@ -23,10 +23,10 @@ class empleados extends empleadosQueries
     */
 
     // Método para validar y asignar el id.
-    public function setId($value)
+    public function setIdempleado($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->id = $value;
+            $this->idempleado = $value;
             return true;
         } else {
             return false;
@@ -137,9 +137,9 @@ class empleados extends empleadosQueries
     */
 
     // Método para obtener el id.
-    public function getId()
+    public function getIdempleado()
     {
-        return $this->id;
+        return $this->idempleado;
     }
 
     // Método para obtener el nombre.

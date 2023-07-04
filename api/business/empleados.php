@@ -46,11 +46,11 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Correo incorrecto';
                 } elseif (!$empleados->setNacimiento($_POST['nacimiento'])) {
                     $result['exception'] = 'Fecha de nacimiento incorrecta';
-                } elseif (!$empleados->setTipoDocumento($_POST['tipoDocumento'])) {
+                } elseif (!$empleados->setTipoDocumento($_POST['tipodocumento'])) {
                     $result['exception'] = 'Tipo documento incorrecto';
                 } elseif (!$empleados->setDocumento($_POST['documento'])) {
                     $result['exception'] = 'Documento incorrecto';
-                } elseif (!$empleados->setEstado($_POST['estadoEmpleado'])) {
+                } elseif (!$empleados->setEstado($_POST['estado'])) {
                     $result['exception'] = 'Estado del empleado incorrecto';
                 } elseif (!$empleados->setGenero($_POST['genero'])) {
                     $result['exception'] = 'Genero del empleado incorrecto';
@@ -64,7 +64,7 @@ if(isset($_GET['action'])){
                 }
                 break;   
             case 'leerUnEmpleado':
-                if (!$empleados->setId($_POST['id'])) {
+                if (!$empleados->setIdempleado($_POST['id'])) {
                     $result['exception'] = 'Empleado incorrecto';
                 } elseif ($result['dataset'] = $empleados->leerUnEmpleado()) {
                     $result['status'] = 1;
@@ -76,7 +76,7 @@ if(isset($_GET['action'])){
                 break;
             case 'actualizarEmpleado':
                 $_POST = Validator::validateForm($_POST);
-               if (!$empleados->setId($_POST['id'])) {
+               if (!$empleados->setIdempleado($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $empleados->leerUnEmpleado()) {
                     $result['exception'] = 'Empleado inexistente';
@@ -88,11 +88,11 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Correo incorrecto';
                 } elseif (!$empleados->setNacimiento($_POST['nacimiento'])) {
                     $result['exception'] = 'Fecha de nacimiento incorrecta';
-                } elseif (!$empleados->setTipoDocumento($_POST['tipoDocumento'])) {
+                } elseif (!$empleados->setTipoDocumento($_POST['tipodocumento'])) {
                     $result['exception'] = 'Tipo documento incorrecto';
                 } elseif (!$empleados->setDocumento($_POST['documento'])) {
                     $result['exception'] = 'Documento incorrecto';
-                } elseif (!$empleados->setEstado($_POST['estadoEmpleado'])) {
+                } elseif (!$empleados->setEstado($_POST['estado'])) {
                     $result['exception'] = 'Estado del empleado incorrecto';
                 } elseif (!$empleados->setGenero($_POST['genero'])) {
                     $result['exception'] = 'Genero del empleado incorrecto';
@@ -108,7 +108,7 @@ if(isset($_GET['action'])){
                 
             case 'eliminarEmpleado':
                 print_r($_POST);
-                if (!$empleados->setId($_POST['idempleado'])) {
+                if (!$empleados->setIdempleado($_POST['id'])) {
                     $result['exception'] = 'Empleado incorrecta';
                 } elseif (!$data = $empleados->leerUnEmpleado()) {
                     $result['exception'] = 'Empleado inexistente';
