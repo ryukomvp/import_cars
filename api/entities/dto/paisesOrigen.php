@@ -2,7 +2,7 @@
 require_once('../helpers/validator.php');
 require_once('../entities/dao/paisesOrigenQueries.php');
 
-class paisesOrigen extends paisesOrigenQueries
+class PaisesOrigen extends PaisesOrigenQueries
 {
     public $idpais = null;
     public $pais = null;

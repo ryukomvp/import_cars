@@ -2,7 +2,7 @@
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const PAIS_ORIGEN_API = 'business/paisesOrigen.php';
 // Constante para el input de busqueda
-const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
+const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para el formulario del modal, sirve para añadir y editar
 const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 // Constante para rellenar la tabla de los datos registrados en la base
@@ -17,17 +17,17 @@ const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
 // Metodo para cargar la pagina cada vez que haya un cambio en el DOM
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
-    rellenarTabla();
+    cargarRegistros();
 });
 
 // Metodo para el input de busqueda
-BUSCAR_FORMULARIO.addEventListener('submit', (event) => {
+FORMULARIO_BUSQUEDA.addEventListener('submit', (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(BUSCAR_FORMULARIO);
+    const FORM = new FormData(FORMULARIO_BUSQUEDA);
     // LLama la función de rellenar la tabla para actualizarla con los datos de la busqueda.
-    rellenarTabla(FORM);
+    cargarRegistros(FORM);
 });
 
 // Metodo para el modal, añade o actualiza dependiendo de la acción
@@ -35,7 +35,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica si se realizara una actualización o un registro nuevo.
-    (document.getElementById('id').value) ? action = 'actualizarPais' : action = 'crearPais';
+    (document.getElementById('id').value) ? action = 'actualizarRegistro' : action = 'crearRegistro';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
@@ -43,7 +43,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
-        rellenarTabla();
+        cargarRegistros();
         // Se cierra la caja de diálogo.
         ABRIR_MODAL.hide();
         // Se muestra un mensaje de éxito.
@@ -54,11 +54,11 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
 });
 
 // Metodo para cargar la tabla con los datos de la base
-async function rellenarTabla(form = null) {
+async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'buscarPais' : action = 'leerPaises';
+    (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(PAIS_ORIGEN_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -109,7 +109,7 @@ async function actualizarRegistro(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(PAIS_ORIGEN_API, 'leerUnPais', FORM);
+    const JSON = await dataFetch(PAIS_ORIGEN_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -137,11 +137,11 @@ async function eliminarRegistro(id) {
         const FORM = new FormData();
         FORM.append('idpais', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(PAIS_ORIGEN_API, 'eliminarPais', FORM);
+        const JSON = await dataFetch(PAIS_ORIGEN_API, 'eliminarRegistro', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
-            rellenarTabla();
+            cargarRegistros();
             // Se muestra un mensaje de éxito.
             sweetAlert(1, JSON.message, true);
         } else {

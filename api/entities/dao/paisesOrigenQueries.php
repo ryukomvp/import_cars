@@ -1,18 +1,10 @@
 <?php
 require_once('../helpers/database.php');
 
-class paisesOrigenQueries
+class PaisesOrigenQueries
 {
-    // Función para leer los países de origen
-    public function leerPaisesOrigen()
-    {
-        $sql = 'SELECT idpais, pais
-                FROM paisesdeorigen
-                ORDER BY pais';
-        return Database::getRows($sql);
-    }
     // Funcion para buscar paises de origen
-    public function buscarPaisOrigen($value)
+    public function buscarRegistros($value)
     {
         $sql = 'SELECT idpais, pais
                 FROM paisesdeorigen
@@ -22,15 +14,25 @@ class paisesOrigenQueries
         return Database::getRows($sql, $params);
     }
     // Función para crear paises de origen
-    public function crearPaisOrigen()
+    public function crearRegistro()
     {
         $sql = 'INSERT INTO paisesdeorigen(pais)
                 VALUES(?)';
         $params = array($this->pais);
         return Database::executeRow($sql, $params);
     }
+    
+    // Función para leer los países de origen
+    public function leerRegistros()
+    {
+        $sql = 'SELECT idpais, pais
+                FROM paisesdeorigen
+                ORDER BY pais';
+        return Database::getRows($sql);
+    }
+
     // Función para seleccionar un pais de origen
-    public function leerUnPaisOrigen()
+    public function leerUnRegistro()
     {
         $sql = 'SELECT idpais, pais
                 FROM paisesdeorigen
@@ -39,7 +41,7 @@ class paisesOrigenQueries
         return Database::getRow($sql, $params);
     }
     // Actualizar pais de origen
-    public function actualizarPaisOrigen()
+    public function actualizarRegistro()
     {
         $sql = 'UPDATE paisesdeorigen
                 SET pais = ?
@@ -48,7 +50,7 @@ class paisesOrigenQueries
         return Database::executeRow($sql, $params);
     }
     // Función para eliminar pais de origen
-    public function eliminarPaisOrigen()
+    public function eliminarRegistro()
     {
         $sql = 'DELETE FROM paisesdeorigen
                 WHERE idpais = ?';
