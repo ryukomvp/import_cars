@@ -8,10 +8,8 @@ const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 const TITULO = document.getElementById('titulo');
 // Constantes para establecer el contenido de la tabla.
 const REGISTROS_TABLA = document.getElementById('registros');
-
-// Se inicializa el componente Modal para que funcionen las cajas de diálogo.
 // Constante para capturar el modal.
-const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
+const ACCIONES_MODAL = new Modal(document.getElementById('abrirModal'));
 // Constante para el texto del boton
 const BTN_ACCION = document.getElementById('accion');
 
@@ -46,7 +44,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         cargarRegistros();
         // Se cierra la caja de diálogo.
-        ABRIR_MODAL.hide();
+        ACCIONES_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -86,12 +84,12 @@ async function cargarRegistros(form = null) {
                         ${row.nombre}
                     </td>
                     <td class="px-6 py-4">
-                        <button onclick="openUpdate(${row.idbodega})"
+                        <button onclick="actualizarRegistro(${row.idbodega})"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                         </button>
-                        <button onclick="openDelete(${row.idbodega})"
+                        <button onclick="eliminarRegistrote(${row.idbodega})"
                             class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
@@ -110,15 +108,15 @@ async function cargarRegistros(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function openCreate() {
+function crearRegistro() {
     // Se abre la caja de diálogo que contiene el formulario.
-    ABRIR_MODAL.show();
+    ACCIONES_MODAL.show();
     // Se restauran los elementos del formulario.
     EJECUTAR_FORMULARIO.reset();
     // Texto del boton para crear un registro
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna título a la caja de diálogo.
-    TITULO.textContent = 'Registrar bodega';
+    TITULO.textContent = 'Crear un registro';
     fillSelect(BODEGA_API, 'cargarSucursal', 'sucursal');
 }
 
@@ -127,7 +125,7 @@ function openCreate() {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function openUpdate(id) {
+async function actualizarRegistro(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
     FORM.append('idbodega', id);
@@ -136,13 +134,13 @@ async function openUpdate(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        ABRIR_MODAL.show();
+        ACCIONES_MODAL.show();
         // Se restauran los elementos del formulario.
         EJECUTAR_FORMULARIO.reset();
         // Texto del boton para crear un registro
         BTN_ACCION.textContent = 'Actualizar';
         // Se asigna título para la caja de diálogo.
-        TITULO.textContent = 'Actualizar bodega';
+        TITULO.textContent = 'Actualizar un registro';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idbodega;
         document.getElementById('numerobodega').value = JSON.dataset.numerobodega;
@@ -158,7 +156,7 @@ async function openUpdate(id) {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function openDelete(id) {
+async function eliminarRegistrote(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
     const RESPONSE = await confirmAction('¿Desea eliminar la bodega de forma permanente?');
     // Se verifica la respuesta del mensaje.

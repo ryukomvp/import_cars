@@ -27,7 +27,7 @@
                 <!-- titulo con el proposito de la interfaz -->
                 <div class="py-4 text-center">
                     <h1 class="text-xl text-rojo font-bold">Bodegas</h1>
-                    <p class="text-azul font-medium">Gestion de Bodegas.</p>
+                    <p class="text-azul font-medium">Gestión de registros de las bodegas del negocio</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
@@ -52,7 +52,7 @@
                     </div>
                     <!-- contenedor para boton -->
                     <div class="col-end-5">
-                        <button onclick="openCreate()"
+                        <button onclick="crearRegistro()"
                             class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
@@ -68,7 +68,7 @@
                         <!-- Modal header -->
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-xl font-bold text-oscuro dark:text-white" id="titulo"></h3>
-                            <button onclick="ABRIR_MODAL.hide()" type="button"
+                            <button onclick="ACCIONES_MODAL.hide()" type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
                                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -86,9 +86,9 @@
                                     <img src="../resources/img/logo.jpg" alt="img">
                                 </div>
                                 <div>
-                                    <!--ID-->
+                                    <!-- Id -->
                                     <input class="hidden" type="number" id="id" name="id">
-                                    <!--Input nombre de la bodega-->
+                                    <!-- No. de bodega -->
                                     <div>
                                         <label for="numerobodega"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Número de
@@ -97,7 +97,8 @@
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Ingrese el numero de la bodega" name="numerobodega" required>
                                     </div>
-                                    <!--Input direccion de la bodega-->
+                                    <br>
+                                    <!-- Direccion de la bodega -->
                                     <div>
                                         <label for="direccion"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Dirección
@@ -107,6 +108,7 @@
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Ingrese la direccion de la bodega" name="direccion" required>
                                     </div>
+                                    <br>
                                     <!--Input de la sucursal a la cual pertenece la bodega-->
                                     <div>
                                         <label for="sucursal"

@@ -26,6 +26,7 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+            // Caso para crear un registro en la tabla
             case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if(!$bodega->setNumeroBodega($_POST['numerobodega'])) {
@@ -36,11 +37,12 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'Sucursal incorrecta';
                 } elseif($bodega->crearRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Registro creado';
+                    $result['message'] = 'Bodega creada exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            // Caso para leer todos los registros en la tabla
             case 'leerRegistros':
                 if ($result['dataset'] = $bodega->leerRegistros()) {
                     $result['status'] = 1;
@@ -48,9 +50,10 @@ if(isset($_GET['action'])) {
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
+                    $result['exception'] = 'No hay registros';
                 }
                 break;
+            // Caso para leer un registro seleccionado por el administrador
             case 'leerUnRegistro':
                 if (!$bodega->setId($_POST['idbodega'])) {
                     $result['exception'] = 'Bodega incorrecta';
@@ -59,9 +62,10 @@ if(isset($_GET['action'])) {
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Bodega inexistente';
+                    $result['exception'] = 'Registro inexistente';
                 }
                 break;
+            // Caso para actualizar un registro seleccionado por el administrador
             case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$bodega->setId($_POST['id'])) {
@@ -76,11 +80,12 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'Sucursal incorrecta';
                 } elseif ($bodega->actualizarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Bodega modificada correctamente';
+                    $result['message'] = 'Bodega actualizada exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            // Caso para eliminar un registro seleccionado por el administrador
             case 'eliminarRegistro':
                 if (!$bodega->setId($_POST['idbodega'])) {
                     $result['exception'] = 'Bodega incorrecta';
@@ -88,11 +93,12 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'Bodega inexistente';
                 } elseif ($bodega->eliminarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Bodega eliminada correctamente';
+                    $result['message'] = 'Bodega eliminada exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            // Caso para cargar los registros de una tabla externa (sucursales)
             case 'cargarSucursal':
                 if($result['dataset'] = $bodega->cargarSucursal()){
                     $result['status'] = 1;
@@ -100,7 +106,7 @@ if(isset($_GET['action'])) {
                 } elseif(Database::getException()){
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
+                    $result['exception'] = 'No hay registros';
                 }
                 break;
             default:
