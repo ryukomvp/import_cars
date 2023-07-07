@@ -32,7 +32,7 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'Familia incorrecta';
                 } elseif($familia->crearRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Registro creado';
+                    $result['message'] = 'Familia creada exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -44,18 +44,18 @@ if(isset($_GET['action'])) {
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
+                    $result['exception'] = 'No hay registros';
                 }
                 break;
             case 'leerUnRegistro':
                 if (!$familia->setId($_POST['idfamilia'])) {
-                    $result['exception'] = 'Familia incorrecta';
+                    $result['exception'] = 'Registro de familia incorrecto';
                 } elseif ($result['dataset'] = $familia->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Familia inexistente';
+                    $result['exception'] = 'Registro inexistente';
                 }
                 break;
             case 'actualizarRegistro':
@@ -68,7 +68,7 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'Familia incorrecta';
                 } elseif ($familia->actualizarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Familia modificada correctamente';
+                    $result['message'] = 'Familia actualizada exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -80,7 +80,7 @@ if(isset($_GET['action'])) {
                     $result['exception'] = 'Sucursal inexistente';
                 } elseif ($familia->eliminarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Familia eliminada correctamente';
+                    $result['message'] = 'Familia eliminada exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
