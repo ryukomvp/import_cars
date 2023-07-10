@@ -34,7 +34,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Código incorrecto';
                 } elseif ($codigo->crearRegistro()){
                     $result['status'] = 1;
-                    $result['message'] = 'Código común creado correctamente';
+                    $result['message'] = 'Código común creado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -46,7 +46,7 @@ if(isset($_GET['action'])){
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
+                    $result['exception'] = 'No hay registros';
                 }
                 break; 
             case 'leerUnRegistro':
@@ -65,14 +65,14 @@ if(isset($_GET['action'])){
                if (!$codigo->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $codigo->leerUnRegistro()) {
-                    $result['exception'] = 'Moneda inexistente';
+                    $result['exception'] = 'Código común inexistente';
                 } elseif (!$codigo->setNomenclatura($_POST['nomenclatura'])) {
-                     $result['exception'] = 'Moneda incorrecto';
+                     $result['exception'] = 'Nomenclatura incorrecta';
                 } elseif (!$codigo->setCodigo($_POST['codigo'])) {
-                    $result['exception'] = 'Moneda incorrecto';
+                    $result['exception'] = 'Código incorrecto';
                 } elseif ($codigo->actualizarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Moneda modificada correctamente';
+                    $result['message'] = 'Código común actualizado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -84,7 +84,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Código inexistente';
                 } elseif ($codigo->eliminarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Código eliminado correctamente';
+                    $result['message'] = 'Código común eliminado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
