@@ -206,7 +206,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando el administrador no ha iniciado sesión.
         switch ($_GET['action']) {
             case 'leerUsuarios':
-                if ($usuario->leerUsuarios()) {
+                if ($usuario->leerRegistros()) {
                     $result['status'] = 1;
                     $result['message'] = 'Debe autenticarse para ingresar';
                 } else {
