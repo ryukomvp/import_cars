@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                             </div>
                                         </li>
                                         <!-- boton para dropdown de detalles de productos -->
-                                        <0 class="list">
+                                        < class="list">
                                             <a href="#" id="dropdownHoverButton" data-dropdown-toggle="productos"
                                                 class="nav-link text-gray-600 hover:bg-azul hover:text-white">
                                                 <button
