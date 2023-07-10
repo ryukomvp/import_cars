@@ -9,7 +9,7 @@ if(isset($_GET['action'])){
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if(isset($_SESSION['idUsuario'])  OR !isset($_SESSION['idUsuario'])){
+    if(isset($_SESSION['idusuario'])  OR !isset($_SESSION['idusuario'])){
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch($_GET['action']) {
             case 'leerEmpleados':
@@ -37,6 +37,7 @@ if(isset($_GET['action'])){
                 }
                  break;
             case 'crearEmpleado':
+                print_r($_POST);
                 $_POST = Validator::validateForm($_POST);
                 if (!$empleados->setNombre($_POST['nombre'])){
                     $result['exception'] = 'Nombre incorrecto'; 
@@ -107,8 +108,7 @@ if(isset($_GET['action'])){
                 break;
                 
             case 'eliminarEmpleado':
-                print_r($_POST);
-                if (!$empleados->setIdempleado($_POST['id'])) {
+                if (!$empleados->setIdempleado($_POST['idempleado'])) {
                     $result['exception'] = 'Empleado incorrecta';
                 } elseif (!$data = $empleados->leerUnEmpleado()) {
                     $result['exception'] = 'Empleado inexistente';

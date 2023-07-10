@@ -27,9 +27,9 @@ class empleadosQueries
     //funcion para crear empleados
     public function crearEmpleado()
     {
-        $sql = 'INSERT INTO empleados(nombre, telefono, correo, nacimiento, tipodocumento, documento, estadoempleado, genero, idcargo)
+        $sql = 'INSERT INTO empleados(nombre, telefono, correo, nacimiento, tipodocumento, documento, estadoempleado, genero, cargo)
                 VALUES(?,?,?,?,?,?,?,?,?)';
-        $params = array($this->nombre, $this->telefono, $this->correo, $this->nacimiento, $this->tipodocumento, $this->documento, $this->estadoempleado, $this->genero, $this->idcargo);
+        $params = array($this->nombre, $this->telefono, $this->correo, $this->nacimiento, $this->tipoDocumento, $this->documento, $this->estado, $this->genero, $this->cargo);
         return Database::executeRow($sql, $params);
     }
 
@@ -74,9 +74,9 @@ class empleadosQueries
     public function actualizarEmpleado()
     {
         $sql = 'UPDATE empleados
-                SET nombre = ?, telefono = ?, correo = ?, nacimiento = ?, tipodocumento = ?, documento = ?, estadoempleado = ?, genero = ?, idcargo = ?
+                SET nombre = ?, telefono = ?, correo = ?, nacimiento = ?, tipodocumento = ?, documento = ?, estadoempleado = ?, genero = ?, cargo = ?
                 WHERE idempleado = ?';
-        $params = array($this->nombre, $this->telefono, $this->correo, $this->nacimiento, $this->tipodocumento, $this->documento, $this->estadoempleado, $this->genero, $this->idcargo, $this->idempleado);
+        $params = array($this->nombre, $this->telefono, $this->correo, $this->nacimiento, $this->tipoDocumento, $this->documento, $this->estado, $this->genero, $this->cargo, $this->idempleado);
         return Database::executeRow($sql, $params);
     }
 

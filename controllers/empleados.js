@@ -139,7 +139,7 @@ async function actualizarRegistro(id) {
         document.getElementById('nacimiento').value = JSON.dataset.nacimiento;
         document.getElementById('documento').value = JSON.dataset.documento;
         fillSelect(EMPLEADO_API, 'leerTiposDocumentos', 'tipodocumento', JSON.dataset.tipodocumento);
-        fillSelect(EMPLEADO_API, 'leerEstadosEmpleados', 'estado', JSON.dataset.estadoemmpleado);
+        fillSelect(EMPLEADO_API, 'leerEstadosEmpleados', 'estado', JSON.dataset.estadoempleado);
         fillSelect(EMPLEADO_API, 'leerGeneros', 'genero', JSON.dataset.genero);
         fillSelect(EMPLEADO_API, 'leerCargos', 'cargo', JSON.dataset.cargos);
         //document.getElementById('numeroRegistroProv').value = JSON.dataset.numeroregistroprov;

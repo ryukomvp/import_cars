@@ -91,7 +91,7 @@ class empleados extends empleadosQueries
     // Método para validar y asignar el documento.
     public function setDocumento($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateDUI($value)) {
             $this->documento = $value;
             return true;
         } else {
