@@ -34,7 +34,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Nombre incorrecto'; 
                 } elseif ($categoria->crearRegistro()){
                     $result['status'] = 1;
-                    $result['message'] = 'Categoría creada correctamente';
+                    $result['message'] = 'Categoría creada exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -46,43 +46,43 @@ if(isset($_GET['action'])){
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
+                    $result['exception'] = 'No hay registros';
                 }
                 break;  
             case 'leerUnRegistro':
                 if (!$categoria->setId($_POST['idcategoria'])) {
-                        $result['exception'] = 'Categoria incorrecta';
+                        $result['exception'] = 'No se pudo seleccionar la categoría';
                 } elseif ($result['dataset'] = $categoria->leerUnRegistro()) {
                        $result['status'] = 1;
                 } elseif (Database::getException()) {
                        $result['exception'] = Database::getException();
                 } else {
-                       $result['exception'] = 'Categoria inexistente';
+                       $result['exception'] = 'Registro inexistente';
                 }
                 break;
             case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                if (!$categoria->setId($_POST['id'])) {
-                    $result['exception'] = 'Categoria incorrecta';
+                    $result['exception'] = 'No se pudo seleccionar la categoría';
                 } elseif (!$data = $categoria->leerUnRegistro()) {
                     $result['exception'] = 'Categoría inexistente';
                 } elseif (!$categoria->setCategoria($_POST['categoria'])) {
                      $result['exception'] = 'Nombre incorrecto';
                 } elseif ($categoria->actualizarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Categoria modificada correctamente';
+                    $result['message'] = 'Categoría actualizada exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'eliminarRegistro':
                 if (!$categoria->setId($_POST['idcategoria'])) {
-                    $result['exception'] = 'ID incorrecto';
+                    $result['exception'] = 'No se pudo seleccionar la categoría';
                 } elseif (!$data = $categoria->leerUnRegistro()) {
                     $result['exception'] = 'Categoria inexistente';
                 } elseif ($categoria->eliminarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Categoria eliminada correctamente';
+                    $result['message'] = 'Categoría eliminada exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

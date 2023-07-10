@@ -32,7 +32,7 @@ if(isset($_GET['action'])) {
                 if(!$bodega->setNumeroBodega($_POST['numerobodega'])) {
                     $result['exception'] = 'Bodega incorrecta';
                 } elseif(!$bodega->setDireccion($_POST['direccion'])) {
-                    $result['exception'] = 'Direccion incorrecta';
+                    $result['exception'] = 'Dirección incorrecta';
                 } elseif(!$bodega->setSucursal($_POST['sucursal'])) {
                     $result['exception'] = 'Sucursal incorrecta';
                 } elseif($bodega->crearRegistro()) {
@@ -75,7 +75,7 @@ if(isset($_GET['action'])) {
                 } elseif (!$bodega->setNumeroBodega($_POST['numerobodega'])) {
                     $result['exception'] = 'Bodega incorrecta';
                 } elseif (!$bodega->setDireccion($_POST['direccion'])) {
-                    $result['exception'] = 'Direccion incorrecta';
+                    $result['exception'] = 'Dirección incorrecta';
                 } elseif (!$bodega->setSucursal($_POST['sucursal'])) {
                     $result['exception'] = 'Sucursal incorrecta';
                 } elseif ($bodega->actualizarRegistro()) {
