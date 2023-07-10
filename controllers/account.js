@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                             </div>
                                         </li>
                                         <!-- boton para dropdown de detalles de productos -->
-                                        <li class="list">
+                                        < class="list">
                                             <a href="#" id="dropdownHoverButton" data-dropdown-toggle="productos"
                                                 class="nav-link text-gray-600 hover:bg-azul hover:text-white">
                                                 <button
@@ -265,12 +265,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         const   navBar = document.querySelector("nav"),
                 menuBtns = document.querySelectorAll(".menu-icon"),
                 overlay = document.querySelector(".overlay");
-
+        // Evento para abrir el sidebar
         menuBtns.forEach((menuBtn) => {
             menuBtn.addEventListener("click", () => {
                 navBar.classList.toggle("open");
             });
         });
+
+        // Evento para cerrar el sidebar
         overlay.addEventListener("click", () => {
             navBar.classList.remove("open");
         });
