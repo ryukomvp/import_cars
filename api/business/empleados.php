@@ -46,8 +46,6 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Correo incorrecto';
                 } elseif (!$empleados->setNacimiento($_POST['nacimiento'])) {
                     $result['exception'] = 'Fecha de nacimiento incorrecta';
-                } elseif (!$empleados->setTipoDocumento($_POST['tipodocumento'])) {
-                    $result['exception'] = 'Tipo de documento incorrecto';
                 } elseif (!$empleados->setDocumento($_POST['documento'])) {
                     $result['exception'] = 'Documento incorrecto';
                 } elseif (!$empleados->setEstado($_POST['estado'])) {
@@ -88,8 +86,6 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Correo incorrecto';
                 } elseif (!$empleados->setNacimiento($_POST['nacimiento'])) {
                     $result['exception'] = 'Fecha de nacimiento incorrecta';
-                } elseif (!$empleados->setTipoDocumento($_POST['tipodocumento'])) {
-                    $result['exception'] = 'Tipo documento incorrecto';
                 } elseif (!$empleados->setDocumento($_POST['documento'])) {
                     $result['exception'] = 'Documento incorrecto';
                 } elseif (!$empleados->setEstado($_POST['estado'])) {
@@ -116,16 +112,6 @@ if(isset($_GET['action'])){
                     $result['message'] = 'Empleado eliminado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
-                }
-                break;
-            case 'leerTiposDocumentos':
-                if ($result['dataset'] = $empleados->leerTiposDocumentos()) {
-                    $result['status'] = 1;
-                    //$result['message'] = 'Existen '.count($result['dataset']).' registros';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
                 }
                 break;
             case 'leerEstadosEmpleados':

@@ -72,7 +72,6 @@ async function rellenarTabla(form = null) {
                     <td>${row.telefono}</td>
                     <td>${row.correo}</td>
                     <td>${row.nacimiento}</td>
-                    <td>${row.tipodocumento}</td>
                     <td>${row.documento}</td>
                     <td>${row.estadoempleado}</td>
                     <td>${row.genero}</td>
@@ -109,7 +108,6 @@ function crearRegistro() {
     // Se asigna el título a la caja de diálogo.
     TITULO.textContent = 'Añadir un nuevo empleado';
     //fillSelect(MONEDA_API, 'leerMonedas', 'moneda');
-    fillSelect(                                                                                                   , 'leerTiposDocumentos', 'tipodocumento');
     fillSelect(EMPLEADO_API, 'leerEstadosEmpleados', 'estado');
     fillSelect(EMPLEADO_API, 'leerGeneros', 'genero');
     fillSelect(EMPLEADO_API, 'leerCargos', 'cargo');
@@ -138,7 +136,6 @@ async function actualizarRegistro(id) {
         document.getElementById('correo').value = JSON.dataset.correo;
         document.getElementById('nacimiento').value = JSON.dataset.nacimiento;
         document.getElementById('documento').value = JSON.dataset.documento;
-        fillSelect(EMPLEADO_API, 'leerTiposDocumentos', 'tipodocumento', JSON.dataset.tipodocumento);
         fillSelect(EMPLEADO_API, 'leerEstadosEmpleados', 'estado', JSON.dataset.estadoempleado);
         fillSelect(EMPLEADO_API, 'leerGeneros', 'genero', JSON.dataset.genero);
         fillSelect(EMPLEADO_API, 'leerCargos', 'cargo', JSON.dataset.cargos);

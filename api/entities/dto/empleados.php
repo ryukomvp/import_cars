@@ -12,7 +12,6 @@ class empleados extends empleadosQueries
     protected $telefono = null;
     protected $correo = null;
     protected $nacimiento = null;
-    protected $tipo = null;
     protected $documento = null;
     protected $estado = null;
     protected $genero = null;
@@ -77,18 +76,7 @@ class empleados extends empleadosQueries
         }
     }
 
-    // Método para validar y asignar el tipo de documento.
-    public function setTipoDocumento($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->tipo = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // Método para validar y asignar el documento.
+   // Método para validar y asignar el documento.
     public function setDocumento($value)
     {
         if (Validator::validateDUI($value)) {
@@ -102,7 +90,7 @@ class empleados extends empleadosQueries
     // Método para validar y asignar el estado.
     public function setEstado($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphabetic($value, 1, 50)) {
             $this->estado = $value;
             return true;
         } else {
@@ -113,7 +101,7 @@ class empleados extends empleadosQueries
     // Método para validar y asignar el genero.
     public function setGenero($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphabetic($value,1,50)) {
             $this->genero = $value;
             return true;
         } else {
@@ -124,7 +112,7 @@ class empleados extends empleadosQueries
     // Método para validar y asignar el cargo.
     public function setCargo($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphabetic($value, 1, 50)) {
             $this->cargo = $value;
             return true;
         } else {
