@@ -12,7 +12,7 @@ class empleados extends empleadosQueries
     protected $telefono = null;
     protected $correo = null;
     protected $nacimiento = null;
-    protected $tipoDocumento = null;
+    protected $tipo = null;
     protected $documento = null;
     protected $estado = null;
     protected $genero = null;
@@ -81,7 +81,7 @@ class empleados extends empleadosQueries
     public function setTipoDocumento($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->tipoDocumento = $value;
+            $this->tipo = $value;
             return true;
         } else {
             return false;
@@ -169,7 +169,7 @@ class empleados extends empleadosQueries
     // Método para obtener el tipo de documento.
     public function getTipoDocumento()
     {
-        return $this->tipoDocumento;
+        return $this->tipo;
     }
 
     // Método para obtener el documento.

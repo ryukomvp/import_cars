@@ -37,7 +37,6 @@ if(isset($_GET['action'])){
                 }
                  break;
             case 'crearEmpleado':
-                print_r($_POST);
                 $_POST = Validator::validateForm($_POST);
                 if (!$empleados->setNombre($_POST['nombre'])){
                     $result['exception'] = 'Nombre incorrecto'; 
@@ -48,7 +47,7 @@ if(isset($_GET['action'])){
                 } elseif (!$empleados->setNacimiento($_POST['nacimiento'])) {
                     $result['exception'] = 'Fecha de nacimiento incorrecta';
                 } elseif (!$empleados->setTipoDocumento($_POST['tipodocumento'])) {
-                    $result['exception'] = 'Tipo documento incorrecto';
+                    $result['exception'] = 'Tipo de documento incorrecto';
                 } elseif (!$empleados->setDocumento($_POST['documento'])) {
                     $result['exception'] = 'Documento incorrecto';
                 } elseif (!$empleados->setEstado($_POST['estado'])) {

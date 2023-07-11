@@ -29,7 +29,7 @@ class empleadosQueries
     {
         $sql = 'INSERT INTO empleados(nombre, telefono, correo, nacimiento, tipodocumento, documento, estadoempleado, genero, cargo)
                 VALUES(?,?,?,?,?,?,?,?,?)';
-        $params = array($this->nombre, $this->telefono, $this->correo, $this->nacimiento, $this->tipoDocumento, $this->documento, $this->estado, $this->genero, $this->cargo);
+        $params = array($this->nombre, $this->telefono, $this->correo, $this->nacimiento, $this->tipo, $this->documento, $this->estado, $this->genero, $this->cargo);
         return Database::executeRow($sql, $params);
     }
 
@@ -76,7 +76,7 @@ class empleadosQueries
         $sql = 'UPDATE empleados
                 SET nombre = ?, telefono = ?, correo = ?, nacimiento = ?, tipodocumento = ?, documento = ?, estadoempleado = ?, genero = ?, cargo = ?
                 WHERE idempleado = ?';
-        $params = array($this->nombre, $this->telefono, $this->correo, $this->nacimiento, $this->tipoDocumento, $this->documento, $this->estado, $this->genero, $this->cargo, $this->idempleado);
+        $params = array($this->nombre, $this->telefono, $this->correo, $this->nacimiento, $this->tipo, $this->documento, $this->estado, $this->genero, $this->cargo, $this->idempleado);
         return Database::executeRow($sql, $params);
     }
 

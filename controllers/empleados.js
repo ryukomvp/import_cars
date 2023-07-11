@@ -109,7 +109,7 @@ function crearRegistro() {
     // Se asigna el título a la caja de diálogo.
     TITULO.textContent = 'Añadir un nuevo empleado';
     //fillSelect(MONEDA_API, 'leerMonedas', 'moneda');
-    fillSelect(EMPLEADO_API, 'leerTiposDocumentos', 'tipodocumento');
+    fillSelect(                                                                                                   , 'leerTiposDocumentos', 'tipodocumento');
     fillSelect(EMPLEADO_API, 'leerEstadosEmpleados', 'estado');
     fillSelect(EMPLEADO_API, 'leerGeneros', 'genero');
     fillSelect(EMPLEADO_API, 'leerCargos', 'cargo');
