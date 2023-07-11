@@ -4,18 +4,18 @@ require_once('../entities/dao/proveedoresQueries.php');
 
 class proveedores extends proveedoresQueries
 {
-    public $idproveedor = null;
-    public $nombre = null;
-    public $telefono = null;
-    public $correo = null;
-    public $fechacompra = null;
-    public $saldoinicial = null;
-    public $saldoactual = null;
-    public $codigoprov = null;
-    public $codigomaestroprov = null;
-    public $dui = null;
-    public $idmoneda = null;
-    public $numeroregistroprov = null;
+    protected $idproveedor = null;
+    protected $nombre = null;
+    protected $telefono = null;
+    protected $correo = null;
+    protected $fechacompra = null;
+    protected $saldoinicial = null;
+    protected $saldoactual = null;
+    protected $codigoprov = null;
+    protected $codigomaestroprov = null;
+    protected $dui = null;
+    protected $idmoneda = null;
+    protected $numeroregistroprov = null;
 
     //Metodos set para asignar valores a los atributos
 
