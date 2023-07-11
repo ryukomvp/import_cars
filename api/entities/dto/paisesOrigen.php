@@ -4,8 +4,8 @@ require_once('../entities/dao/paisesOrigenQueries.php');
 
 class PaisesOrigen extends PaisesOrigenQueries
 {
-    public $idpais = null;
-    public $pais = null;
+    protected $idpais = null;
+    protected $pais = null;
 
     //Metodos set para asignar valores a los atributos
 
