@@ -122,8 +122,8 @@ function crearRegistro() {
 }
 
 
-    // Set the input's value to the current date
-    document.getElementById('myDateInput').value = formattedDate;
+    // // Set the input's value to the current date
+    // document.getElementById('myDateInput').value = formattedDate;
 
 
 /*

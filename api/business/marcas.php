@@ -19,7 +19,7 @@ if(isset($_GET['action'])){
                    if ($_POST['search'] == '') {
                     $result['dataset'] = $marca->leerRegistros();
                     $result['status'] = 1;
-                } elseif ($result['dataset'] = $marca->buscarRegistros($_POST['search'])) {
+                } elseif ($result['dataset'] = $marca->buscarRegistro($_POST['search'])) {
                        $result['status'] = 1;
                     $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
@@ -64,7 +64,7 @@ if(isset($_GET['action'])){
                 $_POST = Validator::validateForm($_POST);
                if (!$marca->setId($_POST['id'])) {
                     $result['exception'] = 'Marca incorrecta';
-                } elseif (!$data = $marca->leerMarca()) {
+                } elseif (!$data = $marca->leerUnRegistro()) {
                     $result['exception'] = 'Categoría inexistente';
                 } elseif (!$marca->setMarca($_POST['nombremarca'])) {
                      $result['exception'] = 'Nombre incorrecto';

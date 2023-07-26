@@ -37,7 +37,7 @@ if(isset($_GET['action'])){
                 }
                 break;  
             case 'leerRegistros':
-                if ($result['dataset'] = $moneda->leerMoneda()) {
+                if ($result['dataset'] = $moneda->leerRegistros()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();

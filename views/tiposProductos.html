@@ -29,7 +29,7 @@
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
-                        <form method="post" id="search-form">
+                        <form method="post" id="buscarFormulario">
                             <label for="search"
                                 class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
                             <div class="relative">
@@ -57,16 +57,16 @@
                     </div>
                 </div>
             </div>
-            <div id="modal_add_user" tabindex="-1"
+            <div id="abrirModal" tabindex="-1"
                 class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                 <div class="relative w-full h-full max-w-4xl">
                     <!-- Modal content -->
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                         <!-- Modal header -->
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
-                            <h3 id="modal-title" class="text-xl font-bold text-oscuro dark:text-white">
+                            <h3 id="titulo" class="text-xl font-bold text-oscuro dark:text-white">
                             </h3>
-                            <button onclick="SAVE_MODAL.hide()" type="button"
+                            <button onclick="ABRIR_MODAL.hide()" type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
                                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -78,7 +78,7 @@
                             </button>
                         </div>
                         <!-- Modal body -->
-                        <form class="p-4" method="post" id="save-form">
+                        <form class="p-4" method="post" id="ejecutarFormulario">
                             <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                 <div>
                                     <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
@@ -123,7 +123,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="tbody-rows"></tbody>
+                    <tbody id="cargarRegistros"></tbody>
                 </table>
             </div>
         </div>

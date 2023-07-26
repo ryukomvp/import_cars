@@ -78,7 +78,8 @@ if (isset($_GET['action'])) {
             case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
-                    $result['exception'] = 'Ingrese un valor para buscar';
+                    $result['dataset'] = $usuario->leerRegistros();
+                    $result['status'] = 1;
                 } elseif ($result['dataset'] = $usuario->buscarRegistros($_POST['search'])) {
                     $result['status'] = 1;
                     // $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
@@ -122,7 +123,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'leerUnRegistro':
-                if (!$usuario->setId($_POST['idusuario'])) {
+                if (!$usuario->setId($_POST['id'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif ($result['dataset'] = $usuario->leerUnRegistro()) {
                     $result['status'] = 1;

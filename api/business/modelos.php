@@ -65,7 +65,7 @@ if(isset($_GET['action'])){
                 $_POST = Validator::validateForm($_POST);
                if (!$modelo->setId($_POST['id'])) {
                     $result['exception'] = 'Modelo incorrecta';
-                } elseif (!$data = $modelo->leerModelo()) {
+                } elseif (!$data = $modelo->leerUnRegistro()) {
                     $result['exception'] = 'Categoría inexistente';
                 } elseif (!$modelo->setModelo($_POST['modelo'])) {
                      $result['exception'] = 'Nombre incorrecto';
@@ -81,7 +81,7 @@ if(isset($_GET['action'])){
             case 'eliminarRegistro':
                 if (!$modelo->setId($_POST['idmodelo'])) {
                     $result['exception'] = 'Id incorrecto';
-                } elseif (!$data = $modelo->leerModelo()) {
+                } elseif (!$data = $modelo->leerUnRegistro()) {
                     $result['exception'] = 'Marca inexistente';
                 } elseif ($modelo->eliminarRegistro()) {
                     $result['status'] = 1;

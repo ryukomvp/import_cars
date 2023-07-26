@@ -48,7 +48,7 @@ if(isset($_GET['action'])){
                 }
                 break;
             case 'leerUnRegistro':
-                if (!$tipo->setId($_POST['idtipoproducto'])) {
+                if (!$tipo->setId($_POST['id'])) {
                     $result['exception'] = 'Tipo de producto incorrecto';
                 } elseif ($result['dataset'] = $tipo->leerUnRegistro()) {
                     $result['status'] = 1;

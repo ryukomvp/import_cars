@@ -7,7 +7,7 @@ const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 // Constante para establecer el título de la modal.
 const TITULO = document.getElementById('titulo');
 // Constantes para establecer el contenido de la tabla.
-const REGISTROS_TABLA = document.getElementById('registros');
+const REGISTROS_TABLA = document.getElementById('cargarRegistros');
 
 // Se inicializa el componente Modal para que funcionen las cajas de diálogo.
 // Constante para capturar el modal.
@@ -36,9 +36,9 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (document.getElementById('id').value) ? action = 'actualizarTipoProducto' : action = 'crearTipoProducto';
+    (document.getElementById('id').value) ? action = 'actualizarRegistro' : action = 'crearRegistro';
     // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(SAVE_FORM);
+    const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
     const JSON = await dataFetch(TIPO_PRODUCTO_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -63,7 +63,7 @@ async function registrosTabla(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'buscarTiposProductos' : action = 'leerTiposProductos';
+    (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(TIPO_PRODUCTO_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -121,9 +121,9 @@ function crearRegistro() {
 async function actualizarRegistro(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idtipoproducto', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(TIPO_PRODUCTO_API, 'leerTipoProducto', FORM);
+    const JSON = await dataFetch(TIPO_PRODUCTO_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -156,7 +156,7 @@ async function eliminarRegistro(id) {
         const FORM = new FormData();
         FORM.append('idtipoproducto', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(TIPO_PRODUCTO_API, 'eliminarTipoProducto', FORM);
+        const JSON = await dataFetch(TIPO_PRODUCTO_API, 'eliminarRegistro', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
