@@ -21,7 +21,7 @@ class productosQueries
                 INNER JOIN modelos ON productos.idmodelo = modelos.idmodelo  
                 INNER JOIN paisesdeorigen ON productos.idpais = paisesdeorigen.idpais
                 WHERE  productos.nombre LIKE ? OR productos.descripcion LIKE ? OR categorias.categoria  LIKE ? OR codigoComun.nomenclatura  LIKE ? OR CAST (codigoComun.codigo as varchar) LIKE ?
-                ORDER BY productos.nombre';  
+                ORDER BY productos.nombre';
         $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
@@ -96,9 +96,9 @@ class productosQueries
 
     public function leerCodigosComunes()
     {
-       $sql = "SELECT idcodigocomun, concat(nomenclatura,' - ',codigo)
+        $sql = "SELECT idcodigocomun, concat(nomenclatura,' - ',codigo)
        FROM codigocomun
        ORDER BY nomenclatura";
-       return Database::getRows($sql);
+        return Database::getRows($sql);
     }
 }

@@ -76,7 +76,7 @@ class empleados extends empleadosQueries
         }
     }
 
-   // Método para validar y asignar el documento.
+    // Método para validar y asignar el documento.
     public function setDocumento($value)
     {
         if (Validator::validateDUI($value)) {
@@ -101,7 +101,7 @@ class empleados extends empleadosQueries
     // Método para validar y asignar el genero.
     public function setGenero($value)
     {
-        if (Validator::validateAlphabetic($value,1,50)) {
+        if (Validator::validateAlphabetic($value, 1, 50)) {
             $this->genero = $value;
             return true;
         } else {
@@ -155,10 +155,10 @@ class empleados extends empleadosQueries
     }
 
     // Método para obtener el tipo de documento.
-    public function getTipoDocumento()
-    {
-        return $this->tipo;
-    }
+    // public function getTipoDocumento()
+    // {
+    //     return $this->tipo;
+    // }
 
     // Método para obtener el documento.
     public function getDocumento()

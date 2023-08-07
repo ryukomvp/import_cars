@@ -6,14 +6,14 @@ require_once('../entities/dao/sucursalesQueries.php');
 */
 class sucursal extends sucursalesqueries
 {
-     //Declaración de atributos (propiedades).
-     protected $id = null;
-     protected $nombre = null;
-     protected $telefono = null;
-     protected $correo = null;
-     protected $direccion = null;
+    //Declaración de atributos (propiedades).
+    protected $id = null;
+    protected $nombre = null;
+    protected $telefono = null;
+    protected $correo = null;
+    protected $direccion = null;
 
-     /*
+    /*
     *   Métodos para validar y asignar valores de los atributos.
     */
 

@@ -10,7 +10,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idUsuario']) OR !isset($_SESSION['idUsuario'])) {
+    if (isset($_SESSION['idUsuario']) or !isset($_SESSION['idUsuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'leerTodo':
@@ -45,9 +45,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getFileError();
                 } elseif (!$productos->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$productos->setPrecio($_POST['precio'])){
+                } elseif (!$productos->setPrecio($_POST['precio'])) {
                     $result['exception'] = 'Precio incorrecto';
-                } elseif (!$productos->setAnio($_POST['anio'])){
+                } elseif (!$productos->setAnio($_POST['anio'])) {
                     $result['exception'] = 'Año incorrecto';
                 } elseif (!isset($_POST['codigoComun'])) {
                     $result['exception'] = 'Seleccione un codigo';
@@ -109,9 +109,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre del producto incorrecto';
                 } elseif (!$productos->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$productos->setPrecio($_POST['precio'])){
+                } elseif (!$productos->setPrecio($_POST['precio'])) {
                     $result['exception'] = 'Precio incorrecto';
-                } elseif (!$productos->setAnio($_POST['anio'])){
+                } elseif (!$productos->setAnio($_POST['anio'])) {
                     $result['exception'] = 'Año incorrecto';
                 } elseif (!isset($_POST['codigoComun'])) {
                     $result['exception'] = 'Seleccione un codigo';
@@ -158,17 +158,17 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'eliminarProducto':
-                    if (!$productos->setId($_POST['idproducto'])) {
-                        $result['exception'] = 'Id incorrecto';
-                    } elseif (!$data = $productos->leerUnProducto()) {
-                        $result['exception'] = 'Producto inexistente';
-                    } elseif ($productos->eliminarProducto()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Producto eliminado correctamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                    break;
+                if (!$productos->setId($_POST['idproducto'])) {
+                    $result['exception'] = 'Id incorrecto';
+                } elseif (!$data = $productos->leerUnProducto()) {
+                    $result['exception'] = 'Producto inexistente';
+                } elseif ($productos->eliminarProducto()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Producto eliminado correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             case 'leerCodigosComunes':
                 if ($result['dataset'] = $productos->leerCodigosComunes()) {
                     $result['status'] = 1;
@@ -180,15 +180,15 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'leerEstado':
-                    if ($result['dataset'] = $productos->leerEstado()) {
-                        $result['status'] = 1;
-                        // $result['message'] = 'Existen '.count($result['dataset']).' registros';
-                    } elseif (Database::getException()) {
-                        $result['exception'] = Database::getException();
-                    } else {
-                        $result['exception'] = 'No hay datos registrados';
-                    }
-                    break;
+                if ($result['dataset'] = $productos->leerEstado()) {
+                    $result['status'] = 1;
+                    // $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

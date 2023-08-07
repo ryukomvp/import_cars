@@ -1,7 +1,7 @@
 <?php
 require_once('../entities/dto/tiposProductos.php');
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
-if(isset($_GET['action'])){
+if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
@@ -9,9 +9,9 @@ if(isset($_GET['action'])){
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if(isset($_SESSION['idusuario'])){
+    if (isset($_SESSION['idusuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
-        switch($_GET['action']) {
+        switch ($_GET['action']) {
             case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['buscar'] == '') {
@@ -19,7 +19,7 @@ if(isset($_GET['action'])){
                     $result['status'] = 1;
                 } elseif ($result['dataset'] = $tipo->buscarRegistros($_POST['buscar'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -28,9 +28,9 @@ if(isset($_GET['action'])){
                 break;
             case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
-                if (!$tipo->setTipoProducto($_POST['tipoProducto'])){
-                    $result['exception'] = 'Tipo de producto incorrecto'; 
-                } elseif ($tipo->crearRegistro()){
+                if (!$tipo->setTipoProducto($_POST['tipoProducto'])) {
+                    $result['exception'] = 'Tipo de producto incorrecto';
+                } elseif ($tipo->crearRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Tipo de producto creado correctamente';
                 } else {
@@ -40,7 +40,7 @@ if(isset($_GET['action'])){
             case 'leerRegistros':
                 if ($result['dataset'] = $tipo->leerRegistros()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -60,12 +60,12 @@ if(isset($_GET['action'])){
                 break;
             case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
-               if (!$tipo->setId($_POST['id'])) {
+                if (!$tipo->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $tipo->leerUnRegistro()) {
                     $result['exception'] = 'Tipo de producto inexistente';
                 } elseif (!$tipo->setTipoProducto($_POST['tipoProducto'])) {
-                     $result['exception'] = 'Tipo de producto incorrecto';
+                    $result['exception'] = 'Tipo de producto incorrecto';
                 } elseif ($tipo->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Tipo de producto modificado correctamente';
@@ -86,7 +86,7 @@ if(isset($_GET['action'])){
                 }
                 break;
             default:
-                    $result['exception'] = 'Acción no disponible dentro de la sesión';
+                $result['exception'] = 'Acción no disponible dentro de la sesión';
                 break;
         }
         // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.

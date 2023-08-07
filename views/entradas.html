@@ -26,7 +26,8 @@
             <div>
                 <div class="py-4 text-center">
                     <h1 class="text-xl text-rojo font-bold">Entradas</h1>
-                    <p class="text-azul font-medium">Gestion de las entradas donde se registran las entradasd de el producto y se
+                    <p class="text-azul font-medium">Gestion de las entradas donde se registran las entradasd de el
+                        producto y se
                         detalla la información de la entrada.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
@@ -82,52 +83,52 @@
                         <!-- Modal body -->
                         <form method="post" class="p-4" id="ejecutarFormulario">
                             <!-- Formulario para crear un producto -->
-                                <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
-                                    <!--Input nombre del producto-->
-                                    <div>
-                                        <label for="producto"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Producto:</label>
-                                        <select id="producto" name="producto"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
-                                    <!--Input cantidad del producto-->
-                                    <div>
-                                        <label for="cantidad"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Cantidad:</label>
-                                        <input type="number" id="cantidad" name="cantidad" min="1"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Cantidad" required>
-                                    </div>
-                                    <!--Input anio del producto-->
-                                    <div>
-                                        <label for="precio"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio:</label>
-                                        <input type="number" id="precio" name="precio" min="1" 
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Precio" required>
-                                    </div>
-                                    <!--Input empleado-->
-                                    <div>
-                                        <label for="empleado"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Empleado:</label>
-                                        <select id="empleado" name="empleado"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
-                                    <!--Area de texto Descipcion-->
-                                    <div class="col-start-1 col-end-3">
-                                        <label for="descripcion"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                        <textarea id="descripcion" name="descripcion" rows="4"
-                                            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Descripción del producto..."></textarea>
-                                    </div>
-                                    <div>
-                                        <!--ID-->
-                                        <input class="hidden" type="number" id="id" name="id">
-                                    </div>
+                            <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
+                                <!--Input nombre del producto-->
+                                <div>
+                                    <label for="producto"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Producto:</label>
+                                    <select id="producto" name="producto"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
                                 </div>
+                                <!--Input cantidad del producto-->
+                                <div>
+                                    <label for="cantidad"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Cantidad:</label>
+                                    <input type="number" id="cantidad" name="cantidad" min="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Cantidad" required>
+                                </div>
+                                <!--Input anio del producto-->
+                                <div>
+                                    <label for="precio"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio:</label>
+                                    <input type="number" id="precio" name="precio" min="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Precio" required>
+                                </div>
+                                <!--Input empleado-->
+                                <div>
+                                    <label for="empleado"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Empleado:</label>
+                                    <select id="empleado" name="empleado"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
+                                </div>
+                                <!--Area de texto Descipcion-->
+                                <div class="col-start-1 col-end-3">
+                                    <label for="descripcion"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
+                                    <textarea id="descripcion" name="descripcion" rows="4"
+                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Descripción del producto..."></textarea>
+                                </div>
+                                <div>
+                                    <!--ID-->
+                                    <input class="hidden" type="number" id="id" name="id">
+                                </div>
+                            </div>
                             <!-- Modal footer -->
                             <div
                                 class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">

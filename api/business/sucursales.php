@@ -2,7 +2,7 @@
 require_once('../entities/dto/sucursales.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
-if(isset($_GET['action'])) {
+if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
@@ -10,13 +10,13 @@ if(isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idusuario']) OR !isset($_SESSION['idusuario'])) {
+    if (isset($_SESSION['idusuario']) or !isset($_SESSION['idusuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readAll':
                 if ($result['dataset'] = $sucursal->readAll()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -30,7 +30,7 @@ if(isset($_GET['action'])) {
                     $result['status'] = 1;
                 } elseif ($result['dataset'] = $sucursal->searchRows($_POST['search'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -39,15 +39,15 @@ if(isset($_GET['action'])) {
                 break;
             case 'create':
                 $_POST = Validator::validateForm($_POST);
-                if(!$sucursal->setNombre($_POST['nombre'])) {
+                if (!$sucursal->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
-                } elseif(!$sucursal->setTelefono($_POST['telefono'])) {
+                } elseif (!$sucursal->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Numero de telefono incorrecto';
-                } elseif(!$sucursal->setCorreo($_POST['correo'])) {
+                } elseif (!$sucursal->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif(!$sucursal->setDireccion($_POST['direccion'])) {
+                } elseif (!$sucursal->setDireccion($_POST['direccion'])) {
                     $result['exception'] = 'Direccion incorrecta';
-                } elseif($sucursal->createRow()) {
+                } elseif ($sucursal->createRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Registro creado';
                 } else {

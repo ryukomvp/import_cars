@@ -200,5 +200,4 @@ class proveedores extends proveedoresQueries
     {
         return $this->numeroregistroprov;
     }
-    
 }

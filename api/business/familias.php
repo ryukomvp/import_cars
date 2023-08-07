@@ -1,7 +1,7 @@
 <?php
 require_once('../entities/dto/familias.php');
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
-if(isset($_GET['action'])) {
+if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
@@ -19,7 +19,7 @@ if(isset($_GET['action'])) {
                     $result['status'] = 1;
                 } elseif ($result['dataset'] = $familia->buscarRegistros($_POST['search'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -28,9 +28,9 @@ if(isset($_GET['action'])) {
                 break;
             case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
-                if(!$familia->setFamilia($_POST['familia'])) {
+                if (!$familia->setFamilia($_POST['familia'])) {
                     $result['exception'] = 'Familia incorrecta';
-                } elseif($familia->crearRegistro()) {
+                } elseif ($familia->crearRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Familia creada exitosamente';
                 } else {
@@ -40,7 +40,7 @@ if(isset($_GET['action'])) {
             case 'leerRegistros':
                 if ($result['dataset'] = $familia->leerRegistros()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {

@@ -115,8 +115,8 @@ async function actualizarRegistro(id) {
         // Se abre la caja de diálogo que contiene el formulario.
         ABRIR_MODAL.show();
         EJECUTAR_FORMULARIO.reset();
-         // Texto del boton para actualizar un registro 
-         BTN_ACCION.textContent = 'Actualizar';
+        // Texto del boton para actualizar un registro 
+        BTN_ACCION.textContent = 'Actualizar';
         // Se asigna título para la caja de diálogo.
         TITULO.textContent = 'Actualizar Pais de origen';
         // Se inicializan los campos del formulario.

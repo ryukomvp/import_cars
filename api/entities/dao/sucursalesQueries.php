@@ -18,7 +18,7 @@ class sucursalesqueries
             WHERE nombre ILIKE ? OR telefono ILIKE ? OR direccion ILIKE ?
             ORDER BY nombre';
         $params = array("%$value%", "%$value%", "%$value%");
-        return Database::getRows($sql, $params);    
+        return Database::getRows($sql, $params);
     }
 
     /*Método para la insercion de datos en la base de datos*/

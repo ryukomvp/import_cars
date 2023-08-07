@@ -122,8 +122,8 @@ function crearRegistro() {
 }
 
 
-    // // Set the input's value to the current date
-    // document.getElementById('myDateInput').value = formattedDate;
+// // Set the input's value to the current date
+// document.getElementById('myDateInput').value = formattedDate;
 
 
 /*
@@ -153,7 +153,7 @@ async function actualizarRegistro(id) {
         document.getElementById('cantidad').value = JSON.dataset.cantidad;
         document.getElementById('precio').value = JSON.dataset.precio;
         fillSelect(PRODUCTO_API, 'leerTodo', 'producto');
-    fillSelect(EMPLEADO_API, 'leerEmpleados', 'empleado');
+        fillSelect(EMPLEADO_API, 'leerEmpleados', 'empleado');
     } else {
         sweetAlert(2, JSON.exception, false);
     }

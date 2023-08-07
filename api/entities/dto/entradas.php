@@ -56,7 +56,7 @@ class Entradas extends EntradasQueries
             return false;
         }
     }
-    
+
 
     public function setPrecio($value)
     {
@@ -105,7 +105,7 @@ class Entradas extends EntradasQueries
     {
         return $this->precio;
     }
-   
+
     public function getEmpleado()
     {
         return $this->empleado;

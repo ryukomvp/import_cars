@@ -34,7 +34,7 @@ class Familias extends FamiliasQueries
         }
     }
 
-     /*
+    /*
     *   Métodos para obtener valores de los atributos.
     */
     public function getId()

@@ -1,7 +1,7 @@
 <?php
 require_once('../entities/dto/empleados.php');
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
-if(isset($_GET['action'])){
+if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
@@ -9,13 +9,13 @@ if(isset($_GET['action'])){
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if(isset($_SESSION['idusuario'])  OR !isset($_SESSION['idusuario'])){
+    if (isset($_SESSION['idusuario'])  or !isset($_SESSION['idusuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
-        switch($_GET['action']) {
+        switch ($_GET['action']) {
             case 'leerEmpleados':
                 if ($result['dataset'] = $empleados->leerEmpleados()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' registros';
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -24,22 +24,22 @@ if(isset($_GET['action'])){
                 break;
             case 'buscarEmpleado':
                 $_POST = Validator::validateForm($_POST);
-                   if ($_POST['buscar'] == '') {
-                        $result['dataset'] = $empleados->leerEmpleados();
-                        $result['status'] = 1;
+                if ($_POST['buscar'] == '') {
+                    $result['dataset'] = $empleados->leerEmpleados();
+                    $result['status'] = 1;
                 } elseif ($result['dataset'] = $empleados->buscarEmpleado($_POST['buscar'])) {
-                       $result['status'] = 1;
-                    $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
-                       $result['exception'] = Database::getException();
+                    $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No hay coincidencias';
                 }
-                 break;
+                break;
             case 'crearEmpleado':
                 $_POST = Validator::validateForm($_POST);
-                if (!$empleados->setNombre($_POST['nombre'])){
-                    $result['exception'] = 'Nombre incorrecto'; 
+                if (!$empleados->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre incorrecto';
                 } elseif (!$empleados->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Teléfonon incorrecto';
                 } elseif (!$empleados->setCorreo($_POST['correo'])) {
@@ -54,13 +54,13 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'Genero del empleado incorrecto';
                 } elseif (!$empleados->setCargo($_POST['cargo'])) {
                     $result['exception'] = 'Cargo del empleado incorrecto';
-                } elseif ($empleados->crearEmpleado()){
+                } elseif ($empleados->crearEmpleado()) {
                     $result['status'] = 1;
                     $result['message'] = 'Empleado creado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
-                break;   
+                break;
             case 'leerUnEmpleado':
                 if (!$empleados->setIdempleado($_POST['id'])) {
                     $result['exception'] = 'Empleado incorrecto';
@@ -74,12 +74,12 @@ if(isset($_GET['action'])){
                 break;
             case 'actualizarEmpleado':
                 $_POST = Validator::validateForm($_POST);
-               if (!$empleados->setIdempleado($_POST['id'])) {
+                if (!$empleados->setIdempleado($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $empleados->leerUnEmpleado()) {
                     $result['exception'] = 'Empleado inexistente';
                 } elseif (!$empleados->setNombre($_POST['nombre'])) {
-                     $result['exception'] = 'Empleado incorrecto';
+                    $result['exception'] = 'Empleado incorrecto';
                 } elseif (!$empleados->setTelefono($_POST['telefono'])) {
                     $result['exception'] = 'Teléfonon incorrecto';
                 } elseif (!$empleados->setCorreo($_POST['correo'])) {
@@ -101,7 +101,7 @@ if(isset($_GET['action'])){
                     $result['exception'] = Database::getException();
                 }
                 break;
-                
+
             case 'eliminarEmpleado':
                 if (!$empleados->setIdempleado($_POST['idempleado'])) {
                     $result['exception'] = 'Empleado incorrecta';
@@ -144,9 +144,9 @@ if(isset($_GET['action'])){
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            
+
             default:
-                    $result['exception'] = 'Acción no disponible dentro de la sesión';
+                $result['exception'] = 'Acción no disponible dentro de la sesión';
                 break;
         }
         // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.

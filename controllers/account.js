@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                         <section class='overlay'></section>
                     `;
-                        // Inserción de footer
+            // Inserción de footer
             FOOTER.innerHTML = `
                         <div class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
                             <!-- nombre del sistema -->
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </ul>
                         </div>
                     `;
-                        
+
         } else {
             sweetAlert(3, JSON.exception, false, 'index.html');
         }
@@ -261,19 +261,19 @@ document.addEventListener('DOMContentLoaded', async () => {
             location.href = 'index.html'
         }
     };
-        // Configuración para menú
-        const   navBar = document.querySelector("nav"),
-                menuBtns = document.querySelectorAll(".menu-icon"),
-                overlay = document.querySelector(".overlay");
-        // Evento para abrir el sidebar
-        menuBtns.forEach((menuBtn) => {
-            menuBtn.addEventListener("click", () => {
-                navBar.classList.toggle("open");
-            });
+    // Configuración para menú
+    const navBar = document.querySelector("nav"),
+        menuBtns = document.querySelectorAll(".menu-icon"),
+        overlay = document.querySelector(".overlay");
+    // Evento para abrir el sidebar
+    menuBtns.forEach((menuBtn) => {
+        menuBtn.addEventListener("click", () => {
+            navBar.classList.toggle("open");
         });
+    });
 
-        // Evento para cerrar el sidebar
-        overlay.addEventListener("click", () => {
-            navBar.classList.remove("open");
-        });
+    // Evento para cerrar el sidebar
+    overlay.addEventListener("click", () => {
+        navBar.classList.remove("open");
+    });
 })

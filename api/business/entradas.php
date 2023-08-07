@@ -10,7 +10,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idUsuario']) OR !isset($_SESSION['idusuario'])) {
+    if (isset($_SESSION['idUsuario']) or !isset($_SESSION['idusuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'buscarRegistros':
@@ -35,7 +35,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto incorrecto';
                 } elseif (!$entradas->setCantidad($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad incorrecta';
-                } elseif (!$entradas->setPrecio($_POST['precio'])){
+                } elseif (!$entradas->setPrecio($_POST['precio'])) {
                     $result['exception'] = 'Precio incorrecto';
                 } elseif (!isset($_POST['empleado'])) {
                     $result['exception'] = 'Seleccione un empleado';
@@ -77,7 +77,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Entrada inexistente';
                 } elseif (!$entradas->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$entradas->setProducto($_POST['producto'])){
+                } elseif (!$entradas->setProducto($_POST['producto'])) {
                     $result['exception'] = 'Producto incorrecto';
                 } elseif (!isset($_POST['empleado'])) {
                     $result['exception'] = 'Seleccione un empleado';
@@ -89,17 +89,17 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'eliminarRegistro':
-                    if (!$entradas->setId($_POST['identrada'])) {
-                        $result['exception'] = 'Id incorrecto';
-                    } elseif (!$data = $entradas->leerUnRegistro()) {
-                        $result['exception'] = 'Marca inexistente';
-                    } elseif ($entradas->eliminarRegistro()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Entrada eliminada correctamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                    break;
+                if (!$entradas->setId($_POST['identrada'])) {
+                    $result['exception'] = 'Id incorrecto';
+                } elseif (!$data = $entradas->leerUnRegistro()) {
+                    $result['exception'] = 'Marca inexistente';
+                } elseif ($entradas->eliminarRegistro()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Entrada eliminada correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
         }

@@ -6,7 +6,7 @@ require_once('../helpers/database.php');
 
 class MarcaQueries
 {
-     /*
+    /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
     public function buscarRegistro($value)

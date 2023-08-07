@@ -82,33 +82,33 @@
                         </div>
                         <!-- Cuerpo del modal -->
                         <form class="p-4" method="post" id="ejecutarFormulario">
-                                <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                    <div class="text-center py-4 p-6 space-x-2">
-                                        <img src="../resources/img/logo.jpg" alt="img">
-                                        <br>
-                                    </div>
+                            <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                <div class="text-center py-4 p-6 space-x-2">
+                                    <img src="../resources/img/logo.jpg" alt="img">
+                                    <br>
+                                </div>
+                                <div>
+                                    <!--ID-->
+                                    <input class="hidden" type="number" id="id" name="id">
+                                    <!--Input nombre del modelo-->
                                     <div>
-                                        <!--ID-->
-                                        <input class="hidden" type="number" id="id" name="id">
-                                        <!--Input nombre del modelo-->
-                                        <div>
-                                            <label for="modelo"
-                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                                del modelo:</label>
-                                            <input type="text" id="modelo" name="modelo"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                                placeholder="Coloque el nombre del modelo" required>
-                                        </div>
-                                        <!--Input de la marca asignada al modelo-->
-                                        <div>
-                                            <label for="marca"
-                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Marca:</label>
-                                            <select id="marca" name="marca"
-                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                            </select>
-                                        </div>
+                                        <label for="modelo"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
+                                            del modelo:</label>
+                                        <input type="text" id="modelo" name="modelo"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Coloque el nombre del modelo" required>
+                                    </div>
+                                    <!--Input de la marca asignada al modelo-->
+                                    <div>
+                                        <label for="marca"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Marca:</label>
+                                        <select id="marca" name="marca"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        </select>
                                     </div>
                                 </div>
+                            </div>
                             <!-- Pie del modal -->
                             <div
                                 class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">

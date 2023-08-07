@@ -21,7 +21,7 @@ class PaisesOrigenQueries
         $params = array($this->pais);
         return Database::executeRow($sql, $params);
     }
-    
+
     // Función para leer los países de origen
     public function leerRegistros()
     {

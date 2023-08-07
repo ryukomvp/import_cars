@@ -187,12 +187,12 @@ class Productos extends productosQueries
     {
         return $this->anio;
     }
-   
+
     public function getCodigoComun()
     {
         return $this->idCodigoComun;
     }
-    
+
     public function getTipoProducto()
     {
         return $this->idTipoProducto;
@@ -217,7 +217,7 @@ class Productos extends productosQueries
     {
         return $this->idPais;
     }
-    
+
     public function getEstadoProducto()
     {
         return $this->estadoProducto;

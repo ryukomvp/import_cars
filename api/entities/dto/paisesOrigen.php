@@ -40,5 +40,4 @@ class PaisesOrigen extends PaisesOrigenQueries
     {
         return $this->pais;
     }
-    
 }

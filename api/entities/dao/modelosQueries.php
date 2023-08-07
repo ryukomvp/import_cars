@@ -61,7 +61,8 @@ class ModeloQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function cargarMarcas(){
+    public function cargarMarcas()
+    {
         $sql = 'SELECT idmarca, marca FROM marcas
                 ORDER BY marca';
         return Database::getRows($sql);
