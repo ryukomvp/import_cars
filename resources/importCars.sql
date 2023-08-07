@@ -52,8 +52,14 @@ CREATE TABLE IF NOT EXISTS sucursales (
 
 CREATE TABLE IF NOT EXISTS contactos(
 	idcontacto INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    contacto VARCHAR(70) NOT NULL,
-    tipocontacto ENUM('Correo Electronico','Telefono Fijo','Telefono Celular')
+    telefonocontact VARCHAR(16) NOT NULL,
+    celularcontact VARCHAR(16) NOT NULL,
+    correocontac VARCHAR(70) NOT NULL, 
+    idsucursal INT NOT NULL,
+    
+    CONSTRAINT fksucursalcontac
+    FOREIGN KEY (idsucursal)
+    REFERENCES sucursales(idsucursal) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS parametros (
@@ -64,19 +70,10 @@ CREATE TABLE IF NOT EXISTS parametros (
     registro INT NULL,
     giroempresa VARCHAR(80) NOT NULL,
     nit VARCHAR(20) NOT NULL,
-    dui VARCHAR(20) NOT NULL
-);
-
-CREATE TABLE IF NOT EXISTS parametroscontactos(
-	idparamcontactos INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    idparametro INT NOT NULL,
+    dui VARCHAR(20) NOT NULL,
     idcontacto INT NOT NULL,
     
-    CONSTRAINT fkparam
-    FOREIGN KEY (idparametro)
-    REFERENCES parametros(idparametro) ON UPDATE CASCADE ON DELETE CASCADE,
-    
-    CONSTRAINT fkcontacto
+    CONSTRAINT fkcontactoparam
     FOREIGN KEY (idcontacto)
     REFERENCES contactos(idcontacto) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -107,31 +104,6 @@ CREATE TABLE IF NOT EXISTS modelos (
     REFERENCES marcas(idmarca) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS cajas (
-	idcaja INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    nombrecaja VARCHAR(20) NOT NULL UNIQUE,
-    nombreequipo VARCHAR(20) NOT NULL,
-    seriequipo VARCHAR(15) NOT NULL UNIQUE,
-    modeloequipo VARCHAR(20) NOT NULL,
-    idsucursal INT NOT NULL,
-    
-    CONSTRAINT fkcajasucursal
-    FOREIGN KEY (idsucursal)
-    REFERENCES sucursales(idsucursal) ON UPDATE CASCADE ON DELETE CASCADE 
-);
-
-CREATE TABLE IF NOT EXISTS cajeros (
-	idcajero INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    nombrecajero VARCHAR(20) NOT NULL UNIQUE,
-    estadocajero BOOLEAN NOT NULL,
-    fechaingreso DATE NOT NULL,
-    idcaja INT NOT NULL,
-    
-    CONSTRAINT fkcajeroacaja
-    FOREIGN KEY (idcaja)
-    REFERENCES cajas(idcaja) ON UPDATE CASCADE ON DELETE CASCADE 
-);
-
 CREATE TABLE IF NOT EXISTS empleados(
 	idempleado INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nombreemp VARCHAR(60) NOT NULL,
@@ -156,6 +128,36 @@ CREATE TABLE IF NOT EXISTS usuarios(
     CONSTRAINT fkusuarioemp
     FOREIGN KEY (idempleado)
     REFERENCES empleados(idempleado) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS cajas (
+	idcaja INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nombrecaja VARCHAR(20) NOT NULL UNIQUE,
+    nombreequipo VARCHAR(20) NOT NULL,
+    seriequipo VARCHAR(15) NOT NULL UNIQUE,
+    modeloequipo VARCHAR(20) NOT NULL,
+    idsucursal INT NOT NULL,
+    idempleado INT NOT NULL,
+    
+    CONSTRAINT fkcajasucursal
+    FOREIGN KEY (idsucursal)
+    REFERENCES sucursales(idsucursal) ON UPDATE CASCADE ON DELETE CASCADE,
+
+    CONSTRAINT fkcajaempleado
+    FOREIGN KEY (idempleado)
+    REFERENCES empleados(idempleado) ON UPDATE CASCADE ON DELETE CASCADE	 
+);
+
+CREATE TABLE IF NOT EXISTS cajeros (
+	idcajero INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    nombrecajero VARCHAR(20) NOT NULL UNIQUE,
+    estadocajero BOOLEAN NOT NULL,
+    fechaingreso DATE NOT NULL,
+    idcaja INT NOT NULL,
+    
+    CONSTRAINT fkcajeroacaja
+    FOREIGN KEY (idcaja)
+    REFERENCES cajas(idcaja) ON UPDATE CASCADE ON DELETE CASCADE 
 );
 
 CREATE TABLE IF NOT EXISTS vendedores (
@@ -333,8 +335,8 @@ insert into paisesDeOrigen(pais) values
 	('Mexico'),
 	('Canada'),
 	('Colombia');
-	
-	insert into marcas(marca) values
+
+insert into marcas(marca) values
 	('Mercury'),
 	('Maybach'),
 	('Pontiac'),
@@ -348,15 +350,12 @@ insert into paisesDeOrigen(pais) values
 	('Porsche'),
 	('Chevrolet'),
 	('Toyota'),
-	('Porsche'),
-	('Isuzu'),
-	('Dodge'),
 	('Nissan'),
 	('Tesla'),
 	('Dodge'),
 	('Plymouth');
-	
-	insert into familias(familia) values
+
+insert into familias(familia) values
 	('Escape'),
 	('Puerta Derecha'),
 	('Puerta Izquierda'),
@@ -368,9 +367,9 @@ insert into paisesDeOrigen(pais) values
 	('Foco Delantero Izquierdo'),
 	('Manubrio'),
 	('Espejos'),
-	('para Choques');
-	
-	insert into categorias(categoria) values
+	('Para Choques');
+
+insert into categorias(categoria) values
 	('Escapes'),
 	('Puertas'),
 	('Focos'),
@@ -381,7 +380,7 @@ insert into paisesDeOrigen(pais) values
 	('Espejos'),
 	('Retrovisores');
 	
-	insert into monedas(moneda) values
+insert into monedas(moneda) values
 	('Dolar'),
 	('Euro'),
 	('Libra'),
@@ -391,53 +390,9 @@ insert into paisesDeOrigen(pais) values
 	('Libra Esterlina'),
 	('Peso Mexicano'),
 	('Peso Colombiano'),
-	('Rublo');
-	
-	insert into proveedores(nombre, telefono, correo, fechaCompra, saldoInicial, saldoActual, codigoProv, codigoMaestroProv, dui, idmoneda, numeroRegistroProv) values
-	('Mercury', '4365-5632', 'mercury@gmail.com', '4/11/2020', 500.00, 250.00, 123, 1233, '234356234-0', 1, 1),
-	('Maybach', '4125-5632', 'maybach@gmail.com', '11/06/2020', 500.00, 250.00, 124, 1244, '23656234-0', 2, 2),
-	('Pontiac', '5265-6832', 'pontiac@gmail.com', '4/11/2021', 500.00, 250.00, 125, 1255, '236516234-0', 1, 3),
-	('Chrysler', '4365-2132', 'chrysler@gmail.com', '4/01/2022', 500.00, 250.00, 126, 1266, '224356234-0', 3, 4),
-	('Ford', '5365-3432', 'ford@gmail.com', '12/03/2014', 500.00, 250.00, 127, 1277, '23435524-1', 4, 5),
-	('Suzuki', '4667-3232', 'suzuki@gmail.com', '10/08/2016', 500.00, 250.00, 128, 1288, '234352334-5', 1, 6),
-	('Buick', '2364-4662', 'buik@gmail.com', '4/11/2020', 500.00, 250.00, 129, 1299, '43435624-5', 1, 7),
-	('Isuzu', '2363-5237', 'isuzu@gmail.com', '5/03/2020', 500.00, 250.00, 131, 1311, '536256434-7', 2, 8),
-	('GMC', '5325-5674', 'gmc@gmail.com', '7/2/2020', 500.00, 250.00, 132, 1322, '234346234-8', 2, 9),
-	('Cadillac', '8265-3731', 'cadillac@gmail.com', '9/5/2021', 500.00, 250.00, 134, 1344, '22656234-0', 2, 10),
-	('Porsche', '7228-5581', 'porsche@gmail.com', '9/8/2021', 500.00, 250.00, 123, 1233, '21356234-5', 2, 11),
-	('Chevrolet', '3371-5638', 'chevrolet@gmail.com', '10/5/2021', 500.00, 250.00, 123, 1233, '232376234-0', 1, 12),
-	('Toyota', '7265-9682', 'toyota@gmail.com', '4/11/2022', 500.00, 250.00, 123, 1233, '23356624-4', 1, 13),
-	('Porsche', '0194-5924', 'porsche@gmail.com', '7/5/2022', 500.00, 250.00, 123, 1233, '245356234-0', 1, 14),
-	('Isuzu', '1296-0492', 'isuzu@gmail.com', '8/5/2022', 500.00, 250.00, 123, 1233, '23435234-5', 1, 15),
-	('Dodge', '1964-5127', 'dodge@gmail.com', '10/2/2020', 500.00, 250.00, 123, 1233, '23435634-0', 1, 16),
-	('Nissan', '4024-3712', 'nissan@gmail.com', '12/5/2020', 500.00, 250.00, 123, 1233, '23463234-6', 3, 17),
-	('Tesla', '1572-7633', 'tesla@gmail.com', '4/11/2018', 500.00, 250.00, 123, 1233, '23432334-6', 2, 18),
-	('Dodge', '8366-2539', 'dodge@gmail.com', '4/11/2018', 500.00, 250.00, 123, 1233, '2343124434-6', 1, 19),
-	('Plymouth', '7363-8636', 'plymouth@gmail.com', '4/11/2018', 500.00, 250.00, 123, 1233, '234238234-0', 1, 20);
-	
-	insert into modelos(modelo, idMarca) values
-	('modf1', 5),
-	('modf2', 5),
-	('modf3', 5),
-	('modf4', 5),
-	('modf5', 5),
-	('modf6', 5),
-	('modf7', 5),
-	('modf8', 5),
-	('modf9', 5),
-	('modf10', 5),
-	('modm1', 2),
-	('modm2', 2),
-	('modm3', 2),
-	('modm4', 2),
-	('modm5', 2),
-	('modm6', 2),
-	('modm7', 2),
-	('modm8', 2),
-	('modm9', 2),
-	('modm10', 2);
-	
-	insert into sucursales(nombre, telefono, correo, direccion) values
+	('Bitcoin');
+
+insert into sucursales(nombresuc, telefonosuc, correosuc, direccionsuc) values
 	('Sucursal1', '2343-2363', 'sucursal1@gmail.com', 'sucursal1'),
 	('Sucursal2', '2343-2363', 'sucursal2@gmail.com', 'sucursal2'),
 	('Sucursal3', '5343-2631', 'sucursal3@gmail.com', 'sucursal3'),
@@ -458,8 +413,49 @@ insert into paisesDeOrigen(pais) values
 	('Sucursal18', '2283-6231', 'sucursal18@gmail.com', 'sucursal18'),
 	('Sucursal19', '1431-1363', 'sucursal19@gmail.com', 'sucursal19'),
 	('Sucursal20', '2236-1635', 'sucursal20@gmail.com', 'sucursal20');
-	
-	insert into bodegas(numeroBodega, direccion, idSucursal) values
+
+insert into proveedores(nombreprov, telefonoprov, correoprov, codigoprov, codigomaestroprov, duiprov, idmoneda, numeroregistroprov) values
+	('Mercury', '4365-5632', 'mercury@gmail.com', 123, 1233, '234306234-0', 1, 1),
+	('Maybach', '4125-5032', 'maybach@gmail.com', 124, 1244, '00656234-0', 2, 2),
+	('Pontiac', '5265-6830', 'pontiac@gmail.com', 125, 1255, '236510004-0', 1, 3),
+	('Chrysler', '4065-2132', 'chrysler@gmail.com', 126, 1266, '224356234-0', 3, 4),
+	('Ford', '5365-3402', 'ford@gmail.com', 127, 1277, '23435524-9', 4, 5),
+	('Suzuki', '4007-3232', 'suzuki@gmail.com', 128, 1288, '234095434-5', 1, 6),
+	('Buick', '2364-4002', 'buik@gmail.com', 129, 1299, '43423454-5', 1, 7),
+	('Isuzu', '2360-5237', 'isuzu@gmail.com', 131, 1311, '512346434-7', 2, 8),
+	('GMC', '5325-5604', 'gmc@gmail.com', 732, 1322, '234340004-8', 2, 9),
+	('Cadillac', '0005-3731', 'cadillac@gmail.com', 134, 1344, '00000000-0', 2, 10),
+	('Chevrolet', '3300-5638', 'chevrolet@gmail.com', 320, 1233, '123876234-0', 1, 12),
+	('Toyota', '7265-9002', 'toyota@gmail.com', 167, 1233, '23300024-4', 1, 13),
+	('Porsche', '0194-5924', 'porsche@gmail.com', 098, 1233, '200086234-0', 1, 14),
+	('Nissan', '4024-3002', 'nissan@gmail.com', 166, 1233, '12663234-6', 3, 17),
+	('Tesla', '1572-7602', 'tesla@gmail.com', 111, 1233, '23465434-6', 2, 18),
+	('Dodge', '8366-2539', 'dodge@gmail.com', 221, 1233, '2343124434-7', 1, 19),
+	('Plymouth', '7363-8636', 'plymouth@gmail.com', 233, 1233, '234239457-0', 1, 20);
+
+insert into modelos(modelo, idmarca) values
+	('modf1', 5),
+	('modf2', 5),
+	('modf3', 5),
+	('modf4', 5),
+	('modf5', 5),
+	('modf6', 5),
+	('modf7', 5),
+	('modf8', 5),
+	('modf9', 5),
+	('modf10', 5),
+	('modm1', 2),
+	('modm2', 2),
+	('modm3', 2),
+	('modm4', 2),
+	('modm5', 2),
+	('modm6', 2),
+	('modm7', 2),
+	('modm8', 2),
+	('modm9', 2),
+	('modm10', 2);
+
+insert into bodegas(numerobod, direccionbod, idsucursal) values
 	(1, 'bodega1', 1),
 	(2, 'bodega2', 2),
 	(3, 'bodega3', 3),
@@ -480,8 +476,8 @@ insert into paisesDeOrigen(pais) values
 	(18, 'bodega18', 18),
 	(19, 'bodega19', 19),
 	(20, 'bodega20', 20);
-	
-	insert into familiasBodegas(idBodega, idFamilia) values
+
+insert into familiasBodegas(idbodega, idfamilia) values
 	(1, 1),
 	(2, 2),
 	(3, 3),
@@ -502,27 +498,27 @@ insert into paisesDeOrigen(pais) values
 	(18, 6),
 	(19, 7),
 	(20, 8);
-	
-	insert into codigoComun(nomenclatura, codigo) values
-	('PDI', 0001823),
-	('PDD', 0001824),
-	('PTI', 0001832),
-	('PTD', 0001842),
-	('FDD', 0001930),
-	('FDI', 0001931),
-	('FTD', 0001903),
-	('FTI', 0001913),
-	('RD', 0002043),
-	('RI', 0002034);
-	
-	insert into tiposProductos(tipoProducto) values
+
+insert into codigoscomunes(codigo) values
+	('PDI0001823'),
+	('PDD0001824'),
+	('PTI0001832'),
+	('PTD 0001842'),
+	('FDD0001930'),
+	('FDI0001931'),
+	('FTD0001903'),
+	('FTI0001913'),
+	('RD0002043'),
+	('RI0002034');
+
+insert into tiposproductos(tipoproducto) values
 	('Faroles'),
 	('Retrovisor'),
 	('Puerta'),
 	('Bomper'),
 	('Capo');
-	
-	insert into empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo) values
+
+insert into empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo) values
 	('Annamaria Sheffield', '0971-3740', 'asheffield0@sogou.com', '6/2/2003', '02434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Elianore Boggon', '4518-8750', 'eboggon1@techcrunch.com', '6/8/2003', '12434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Germaine Antonietti', '3341-5203', 'gantonietti2@canalblog.com', '8/7/1998', '22434523-2', 'Activo', 'Masculino', 'Jefe'),
@@ -544,9 +540,9 @@ insert into paisesDeOrigen(pais) values
 	('Mellisa Anstee', '1936-8789', 'mansteei@google.co.jp', '9/11/1997', '00434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Nevin Oke', '2536-1122', 'nokej@home.pl', '2/3/1999', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '20/12/2004', '06795006-2', 'Activo', 'Masculino', 'Jefe');
-	
-	insert into usuarios(nombreus, contrasenia, pin, tipousuario, idempleado, estadousuario) values
-	('Annamaria', 'Sheffield', '12345678', 'Administrador', 1, 'Activo'),
+
+insert into usuarios(nombreus, contrasenia, pin, tipousuario, idempleado, estadousuario) values
+	('Marchelli', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 'Administrador', 1, 'Activo'),
 	('Elianore', 'Boggon', '12345678', 'Administrador', 2, 'Activo'),
 	('Germaine', 'Antonietti', '12345678', 'Administrador', 3, 'Activo'),
 	('Susanna', 'Jahns', '12345678', 'Administrador', 4, 'Activo'),
@@ -567,137 +563,3 @@ insert into paisesDeOrigen(pais) values
 	('Mellisa', 'Anstee', '12345678', 'Gerente', 19, 'Activo'),
 	('Nevin', 'Sheffield', '12345678', 'Gerente', 20, 'Activo'),
 	('dani', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 'Administrador', 21, 'Inactivo');
-	
-	insert into productos(nombre, imagen, descripcion, precio, anio, idCodigoComun, idTipoProducto, idProveedor, idCategoria, idModelo, idPais, estadoProducto) values
-	('escape ford','foto','escape', 90.00, 2000,  1 , 5, 5, 1, 1, 1, 'Existente'),
-	('escape ford','foto','escape', 90.00, 2000 , 2 , 4, 5, 1, 1, 1, 'Existente'),
-	('escape ford','foto','escape', 90.00, 2000 , 3 , 3, 5, 1, 1, 1, 'Existente'),
-	('escape ford','foto','escape', 90.00, 2000 , 4 , 1, 5, 1, 1, 1, 'Existente'),
-	('escape ford','foto','escape', 90.00, 2000 , 5 , 2, 5, 1, 1, 1, 'Existente'),
-	('escape ford','foto','escape', 90.00, 2000 , 6 , 5, 5, 1, 1, 1, 'Existente'),
-	('escape ford','foto','escape', 90.00, 2000 , 7 , 4, 5, 1, 1, 1, 'Existente'),
-	('escape ford','foto','escape', 90.00, 2000 , 8 , 3, 5, 1, 1, 1, 'Existente'),
-	('escape ford','foto','escape', 90.00, 2000 , 9 , 2, 5, 1, 1, 1, 'Existente'),
-	('escape ford','foto','escape', 90.00, 2000 , 10 , 1, 5, 1, 1, 1, 'Existente'),
-	('foco Maybach','foto','foco', 80.00, 2018 , 1 , 5, 2, 3, 11, 4, 'Existente'),
-	('foco Maybach','foto','foco', 80.00, 2018 , 2 , 4, 2, 3, 11, 4, 'Existente'),
-	('foco Maybach','foto','foco', 80.00, 2018 , 3 , 3, 2, 3, 11, 4, 'Existente'),
-	('foco Maybach','foto','foco', 80.00, 2018 , 4 , 2, 2, 3, 11, 4, 'Existente'),
-	('foco Maybach','foto','foco', 80.00, 2018 , 5 , 1, 2, 3, 11, 4, 'Existente'),
-	('foco Maybach','foto','foco', 80.00, 2018 , 6 , 5, 2, 3, 11, 4, 'Existente'),
-	('foco Maybach','foto','foco', 80.00, 2018 , 7 , 4, 2, 3, 11, 4, 'Existente'),
-	('foco Maybach','foto','foco', 80.00, 2018 , 8 , 3, 2, 3, 11, 4, 'Existente'),
-	('foco Maybach','foto','foco', 80.00, 2018 , 9 , 2, 2, 3, 11, 4, 'Existente'),
-	('foco Maybach','foto','foco', 80.00, 2018 , 10 , 1, 2, 3, 11, 4, 'Existente');
-	
-	insert into comisionesVentas(comision, idProducto) values
-	(90.00, 1),
-	(90.00, 2),
-	(90.00, 3),
-	(90.00, 4),
-	(90.00, 5),
-	(90.00, 6),
-	(90.00, 7),
-	(90.00, 8),
-	(90.00, 9),
-	(90.00, 10),
-	(90.00, 11),
-	(90.00, 12),
-	(90.00, 13),
-	(90.00, 14),
-	(90.00, 15),
-	(90.00, 16),
-	(90.00, 17),
-	(90.00, 18),
-	(90.00, 19),
-	(90.00, 20);
-	
-	 
-	insert into entradas(descripcion, idProducto, cantidad, precio, fechaEntrada, idEmpleado) values
-	 ('entrada de focos', 2, 200, 900.00, '12/2/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/2/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/5/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/6/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/6/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/6/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/10/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/10/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/10/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/10/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/10/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/11/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/11/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/11/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/12/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/12/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/12/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/12/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/12/2022', 1),
-	 ('entrada de focos', 2, 200, 900.00, '12/12/2022', 1);
-	 
-
-	insert into lotes(idProducto, existencia, idSucursal) values
-	 (1, 200, 1),
-	 (2, 200, 1),
-	 (3, 200, 1),
-	 (4, 200, 5),
-	 (5, 200, 5),
-	 (6, 200, 4),
-	 (7, 200, 2),
-	 (8, 200, 7),
-	 (9, 200, 8),
-	 (10, 200, 2),
-	 (11, 200, 3),
-	 (12, 200, 3),
-	 (13, 200, 3),
-	 (14, 200, 4),
-	 (15, 200, 4),
-	 (16, 200, 12),
-	 (17, 200, 5),
-	 (18, 200, 5),
-	 (19, 200, 2),
-	 (20, 200, 2);
-	 
-	 insert into facturas(serieFactura, fecha, estadoFactura, idComisionVenta, idEmpleado) values
-	 (1, '12/2/2022', 'Finalizada', 1, 1),
-	 (2, '12/2/2022', 'Finalizada', 2, 2),
-	 (3, '12/2/2022', 'Finalizada', 3, 3),
-	 (4, '11/2/2022', 'Finalizada', 4, 4),
-	 (5, '09/5/2022', 'Finalizada', 5, 5),
-	 (6, '09/5/2022', 'Finalizada', 6, 6),
-	 (7, '09/5/2022', 'Finalizada', 7, 7),
-	 (8, '04/5/2022', 'Finalizada', 8, 8),
-	 (9, '04/5/2022', 'Finalizada', 9, 9),
-	 (10, '04/10/2022', 'Finalizada', 10, 10),
-	 (11, '04/10/2022', 'Finalizada', 11, 11),
-	 (12, '04/09/2022', 'Finalizada', 12, 12),
-	 (13, '04/06/2022', 'Finalizada', 13, 13),
-	 (14, '04/05/2022', 'Finalizada', 14, 14),
-	 (15, '03/05/2022', 'Finalizada', 15, 15),
-	 (16, '03/05/2022', 'Finalizada', 16, 16),
-	 (17, '03/04/2022', 'Finalizada', 17, 17),
-	 (18, '03/04/2022', 'Finalizada', 18, 18),
-	 (19, '03/04/2022', 'Finalizada', 19, 19),
-	 (20, '03/04/2022', 'En revisión', 20, 20);
-	 
-	 insert into detallesFacturas(idLote, cantidad, descuento, idFactura) values
-	 (1, 20, 5, 1),
-	 (2, 15, 10, 2),
-	 (3, 12, 4, 3),
-	 (4, 3, 12, 4),
-	 (5, 2, 14, 5),
-	 (6, 4, 0, 6),
-	 (7, 5, 0, 7),
-	 (8, 23, 14, 8),
-	 (9, 6, 15, 9),
-	 (10, 2, 15, 9),
-	 (11, 2, 15, 10),
-	 (12, 3, 20, 10),
-	 (13, 4, 15, 11),
-	 (14, 6, 20, 12),
-	 (15, 8, 10, 13),
-	 (16, 1, 0, 14),
-	 (17, 3, 0, 15),
-	 (18, 2, 0, 16),
-	 (19, 7, 0, 16),
-	 (20, 8, 14, 20);
