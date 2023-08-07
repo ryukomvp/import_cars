@@ -132,20 +132,20 @@ CREATE TABLE IF NOT EXISTS usuarios(
 
 CREATE TABLE IF NOT EXISTS cajas (
 	idcaja INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    nombrecaja VARCHAR(20) NOT NULL UNIQUE,
+    nombrecaja VARCHAR(20) NOT NULL,
     nombreequipo VARCHAR(20) NOT NULL,
-    seriequipo VARCHAR(15) NOT NULL UNIQUE,
+    serieequipo VARCHAR(15) NOT NULL UNIQUE,
     modeloequipo VARCHAR(20) NOT NULL,
     idsucursal INT NOT NULL,
-    idempleado INT NOT NULL,
+    idusuario INT NOT NULL,
     
     CONSTRAINT fkcajasucursal
     FOREIGN KEY (idsucursal)
     REFERENCES sucursales(idsucursal) ON UPDATE CASCADE ON DELETE CASCADE,
 
-    CONSTRAINT fkcajaempleado
-    FOREIGN KEY (idempleado)
-    REFERENCES empleados(idempleado) ON UPDATE CASCADE ON DELETE CASCADE	 
+    CONSTRAINT fkcajausuario
+    FOREIGN KEY (idusuario)
+    REFERENCES usuarios(idusuario) ON UPDATE CASCADE ON DELETE CASCADE	 
 );
 
 CREATE TABLE IF NOT EXISTS cajeros (
@@ -314,7 +314,7 @@ CREATE TABLE IF NOT EXISTS detallestransacciones (
     REFERENCES encabezadostransacciones(idencatransaccion) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-insert into paisesDeOrigen(pais) values
+INSERT INTO paisesDeOrigen(pais) VALUES
 	('El Salvador'),
 	('Honduras'),
 	('china'),
@@ -336,7 +336,7 @@ insert into paisesDeOrigen(pais) values
 	('Canada'),
 	('Colombia');
 
-insert into marcas(marca) values
+INSERT INTO marcas(marca) VALUES
 	('Mercury'),
 	('Maybach'),
 	('Pontiac'),
@@ -355,7 +355,7 @@ insert into marcas(marca) values
 	('Dodge'),
 	('Plymouth');
 
-insert into familias(familia) values
+INSERT INTO familias(familia) VALUES
 	('Escape'),
 	('Puerta Derecha'),
 	('Puerta Izquierda'),
@@ -369,7 +369,7 @@ insert into familias(familia) values
 	('Espejos'),
 	('Para Choques');
 
-insert into categorias(categoria) values
+INSERT INTO categorias(categoria) VALUES
 	('Escapes'),
 	('Puertas'),
 	('Focos'),
@@ -380,7 +380,7 @@ insert into categorias(categoria) values
 	('Espejos'),
 	('Retrovisores');
 	
-insert into monedas(moneda) values
+INSERT INTO monedas(moneda) VALUES
 	('Dolar'),
 	('Euro'),
 	('Libra'),
@@ -392,7 +392,7 @@ insert into monedas(moneda) values
 	('Peso Colombiano'),
 	('Bitcoin');
 
-insert into sucursales(nombresuc, telefonosuc, correosuc, direccionsuc) values
+INSERT INTO sucursales(nombresuc, telefonosuc, correosuc, direccionsuc) VALUES
 	('Sucursal1', '2343-2363', 'sucursal1@gmail.com', 'sucursal1'),
 	('Sucursal2', '2343-2363', 'sucursal2@gmail.com', 'sucursal2'),
 	('Sucursal3', '5343-2631', 'sucursal3@gmail.com', 'sucursal3'),
@@ -414,7 +414,7 @@ insert into sucursales(nombresuc, telefonosuc, correosuc, direccionsuc) values
 	('Sucursal19', '1431-1363', 'sucursal19@gmail.com', 'sucursal19'),
 	('Sucursal20', '2236-1635', 'sucursal20@gmail.com', 'sucursal20');
 
-insert into proveedores(nombreprov, telefonoprov, correoprov, codigoprov, codigomaestroprov, duiprov, idmoneda, numeroregistroprov) values
+INSERT INTO proveedores(nombreprov, telefonoprov, correoprov, codigoprov, codigomaestroprov, duiprov, idmoneda, numeroregistroprov) VALUES
 	('Mercury', '4365-5632', 'mercury@gmail.com', 123, 1233, '234306234-0', 1, 1),
 	('Maybach', '4125-5032', 'maybach@gmail.com', 124, 1244, '00656234-0', 2, 2),
 	('Pontiac', '5265-6830', 'pontiac@gmail.com', 125, 1255, '236510004-0', 1, 3),
@@ -433,7 +433,7 @@ insert into proveedores(nombreprov, telefonoprov, correoprov, codigoprov, codigo
 	('Dodge', '8366-2539', 'dodge@gmail.com', 221, 1233, '2343124434-7', 1, 19),
 	('Plymouth', '7363-8636', 'plymouth@gmail.com', 233, 1233, '234239457-0', 1, 20);
 
-insert into modelos(modelo, idmarca) values
+INSERT INTO modelos(modelo, idmarca) VALUES
 	('modf1', 5),
 	('modf2', 5),
 	('modf3', 5),
@@ -455,7 +455,7 @@ insert into modelos(modelo, idmarca) values
 	('modm9', 2),
 	('modm10', 2);
 
-insert into bodegas(numerobod, direccionbod, idsucursal) values
+INSERT INTO bodegas(numerobod, direccionbod, idsucursal) VALUES
 	(1, 'bodega1', 1),
 	(2, 'bodega2', 2),
 	(3, 'bodega3', 3),
@@ -477,7 +477,7 @@ insert into bodegas(numerobod, direccionbod, idsucursal) values
 	(19, 'bodega19', 19),
 	(20, 'bodega20', 20);
 
-insert into familiasBodegas(idbodega, idfamilia) values
+INSERT INTO familiasBodegas(idbodega, idfamilia) VALUES
 	(1, 1),
 	(2, 2),
 	(3, 3),
@@ -499,7 +499,7 @@ insert into familiasBodegas(idbodega, idfamilia) values
 	(19, 7),
 	(20, 8);
 
-insert into codigoscomunes(codigo) values
+INSERT INTO codigoscomunes(codigo) VALUES
 	('PDI0001823'),
 	('PDD0001824'),
 	('PTI0001832'),
@@ -511,14 +511,14 @@ insert into codigoscomunes(codigo) values
 	('RD0002043'),
 	('RI0002034');
 
-insert into tiposproductos(tipoproducto) values
+INSERT INTO tiposproductos(tipoproducto) VALUES
 	('Faroles'),
 	('Retrovisor'),
 	('Puerta'),
 	('Bomper'),
 	('Capo');
 
-insert into empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo) values
+INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo) VALUES
 	('Annamaria Sheffield', '0971-3740', 'asheffield0@sogou.com', '2003-06-02', '02434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Elianore Boggon', '4518-8750', 'eboggon1@techcrunch.com', '2003-06-08', '12434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Germaine Antonietti', '3341-5203', 'gantonietti2@canalblog.com', '1998-08-07', '22434523-2', 'Activo', 'Masculino', 'Jefe'),
@@ -541,7 +541,7 @@ insert into empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, 
 	('Nevin Oke', '2536-1122', 'nokej@home.pl', '1999-02-03', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '2010-10-10', '06795006-2', 'Activo', 'Masculino', 'Jefe');
 
-insert into usuarios(nombreus, contrasenia, pin, tipousuario, idempleado, estadousuario) values
+INSERT INTO usuarios(nombreus, contrasenia, pin, tipousuario, idempleado, estadousuario) VALUES
 	('Marchelli', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 'Administrador', 1, 'Activo'),
 	('Elianore', 'Boggon', '12345678', 'Administrador', 2, 'Activo'),
 	('Germaine', 'Antonietti', '12345678', 'Administrador', 3, 'Activo'),
@@ -563,3 +563,18 @@ insert into usuarios(nombreus, contrasenia, pin, tipousuario, idempleado, estado
 	('Mellisa', 'Anstee', '12345678', 'Gerente', 19, 'Activo'),
 	('Nevin', 'Sheffield', '12345678', 'Gerente', 20, 'Activo'),
 	('dani', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 'Administrador', 21, 'Inactivo');
+
+INSERT INTO cajas (nombrecaja, nombreequipo, serieequipo, modeloequipo, idsucursal, idusuario) VALUES
+        ('Caja 1','HP basic 1080','1098R3456P93', 'HP',1,1),
+        ('Caja 2','HP basic 1080','09876B4567C1','HP',2,1),
+        ('Caja 3','Dell Conveni','76543J345P12','DELL',1,1),
+        ('Caja 1','MAC X','9876P098I754','MAC',2,1);
+
+INSERT INTO cajeros (nombrecajero, estadocajero, fechaingreso, idcaja) VALUES
+       ('Cajero 1', 1, '20023-07-10',1),
+       ('Cajero 2', 1, '20023-06-05',1),
+       ('Cajero 3', 1, '20023-07-20',1),
+       ('Cajero 4', 1, '20023-05-24',1),
+       ('Cajero 5', 1, '20023-04-01',1),
+       ('Cajero 6', 1, '20023-06-12',1),
+       ('Cajero 7', 1, '20023-07-09',1);
