@@ -1,3 +1,6 @@
+URL del sitio:
+http://localhost/import_cars/views/index.html
+
 Comandos para ejecutar el archivo css
 npx tailwindcss -i ./tailwind.css -o ./resources/css/tailwind.css --watch
 
