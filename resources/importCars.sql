@@ -545,7 +545,7 @@ insert into paisesDeOrigen(pais) values
 	('Nevin Oke', '2536-1122', 'nokej@home.pl', '2/3/1999', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '20/12/2004', '06795006-2', 'Activo', 'Masculino', 'Jefe');
 	
-	insert into usuarios(nombre, contrasenia, pin, tipousuario, idempleado, estadousuario) values
+	insert into usuarios(nombreus, contrasenia, pin, tipousuario, idempleado, estadousuario) values
 	('Annamaria', 'Sheffield', '12345678', 'Administrador', 1, 'Activo'),
 	('Elianore', 'Boggon', '12345678', 'Administrador', 2, 'Activo'),
 	('Germaine', 'Antonietti', '12345678', 'Administrador', 3, 'Activo'),
