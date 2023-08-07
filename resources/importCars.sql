@@ -523,13 +523,13 @@ insert into paisesDeOrigen(pais) values
 	('Capo');
 	
 	insert into empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo) values
-	('Annamaria Sheffield', '1971-3740', 'asheffield0@sogou.com', '6/2/2003', '32434523-2', 'Activo',, 'Masculino', 'Jefe'),
+	('Annamaria Sheffield', '1971-3740', 'asheffield0@sogou.com', '6/2/2003', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Elianore Boggon', '4518-8750', 'eboggon1@techcrunch.com', '6/8/2003', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Germaine Antonietti', '3341-5203', 'gantonietti2@canalblog.com', '8/7/1998', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Susanna Jahns', '9403-0016', 'sjahns3@facebook.com', '5/2/2001', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Ruperto Lundon', '8564-9955', 'rlundon4@ucsd.edu', '1/2/1997', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Isabella Phillpot', '1971-3740', 'iphillpot5@google.fr', '1/7/2000', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
-	('Pauly Budge', '3130-8699', 'pbudge6@is.gd', '4/5/2002', '32434523-2', 'Activo'),
+	('Pauly Budge', '3130-8699', 'pbudge6@is.gd', '4/5/2002', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Neely Bawden', '1971-3740', 'nbawden7@diigo.com', '5/5/1998', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Ignaz Cuvley', '8472-5129', 'icuvley8@china.com.cn', '8/4/2000', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Barri Acheson', '3811-2812', 'bacheson9@google.nl', '9/3/2001', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
@@ -539,11 +539,11 @@ insert into paisesDeOrigen(pais) values
 	('Bartholomew Chstney', '8652-4778', 'bchstneyd@adobe.com', '1/6/2003', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Shayla Woodfield', '7079-6484', 'swoodfielde@hatena.ne.jp', '3/3/2001', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Sisile Sleight', '1971-3740', 'ssleightf@businessweek.com', '6/2/2003', '32434523-2', 'Activo', 'Masculino', 'Jefe'),
-	('Evelin Fery', '1971-3740', 'eferyg@omniture.com', '6/4/1998','NIT', '32434523-2', 'Inactivo', 'Masculino', 'Jefe'),
+	('Evelin Fery', '1971-3740', 'eferyg@omniture.com', '6/4/1998', '32434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Pietrek Peris', '8905-6928', 'pperish@cornell.edu', '6/6/2002', '32434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Mellisa Anstee', '1936-8789', 'mansteei@google.co.jp', '9/11/1997', '32434523-2', 'Inactivo', 'Masculino', 'Jefe'),
-	('Nevin Oke', '2536-1122', 'nokej@home.pl', '2/3/1999', '32434523-2', 'Inactivo'),
-	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '20/12/2004', 'DUI', '06795006-2', 'Activo', 'Masculino', 'Jefe');
+	('Nevin Oke', '2536-1122', 'nokej@home.pl', '2/3/1999', '32434523-2', 'Inactivo', 'Masculino', 'Jefe'),
+	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '20/12/2004', '06795006-2', 'Activo', 'Masculino', 'Jefe');
 	
 	insert into usuarios(nombre, contrasenia, pin, tipousuario, idempleado, estadousuario) values
 	('Annamaria', 'Sheffield', '12345678', 'Administrador', 1, 'Activo'),
