@@ -11,7 +11,7 @@ class UsuariosQueries
 
     public function verificarUsuario($nombre)
     {
-        $sql = 'SELECT idusuario FROM usuarios WHERE nombre = ?';
+        $sql = 'SELECT idusuario FROM usuarios WHERE nombreus = ?';
         $params = array($nombre);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['idusuario'];
@@ -83,7 +83,7 @@ class UsuariosQueries
 
     public function leerRegistros()
     {
-        $sql = 'SELECT idusuario, u.nombre usuario, contrasenia, pin, tipousuario, e.nombre empleado, estadousuario
+        $sql = 'SELECT idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, e.nombreemp empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
                 ORDER BY idusuario';
         return Database::getRows($sql);
@@ -152,6 +152,15 @@ class UsuariosQueries
     {
         $sql = "UPDATE usuarios SET estadousuario = 'Inactivo'
                 WHERE idusuario = ? AND estadousuario = 'Bloqueado'";
+        $params = array($this->id);
+    }
+
+    public function reporteUsuariosTipo()
+    {
+        $sql = "SELECT u.nombreus, e.nombreemp, u.estadousuario FROM usuarios u
+                INNER JOIN empleados e
+                ON e.idempleado = u.idempleado
+                WHERE tipousuario = 'Gerente'";
         $params = array($this->id);
     }
 }

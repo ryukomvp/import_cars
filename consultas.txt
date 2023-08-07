@@ -1,0 +1,15 @@
+Reporte de usaurios por tipo
+
+SELECT u.nombreus, e.nombreemp, u.estadousuario FROM usuarios u
+INNER JOIN empleados e
+ON e.idempleado = u.idempleado
+WHERE tipousuario = ?
+
+
+
+Reporte de usuarios por estado
+
+SELECT u.nombreus, e.nombreemp, u.estadousuario FROM usuarios u
+INNER JOIN empleados e
+ON e.idempleado = u.idempleado
+WHERE estadousuario = ? 
