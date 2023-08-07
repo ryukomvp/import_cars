@@ -571,10 +571,10 @@ INSERT INTO cajas (nombrecaja, nombreequipo, serieequipo, modeloequipo, idsucurs
         ('Caja 1','MAC X','9876P098I754','MAC',2,1);
 
 INSERT INTO cajeros (nombrecajero, estadocajero, fechaingreso, idcaja) VALUES
-       ('Cajero 1', 1, '20023-07-10',1),
-       ('Cajero 2', 1, '20023-06-05',1),
-       ('Cajero 3', 1, '20023-07-20',1),
-       ('Cajero 4', 1, '20023-05-24',1),
-       ('Cajero 5', 1, '20023-04-01',1),
-       ('Cajero 6', 1, '20023-06-12',1),
-       ('Cajero 7', 1, '20023-07-09',1);
+       ('Cajero 1', 1, '2023-07-10',1),
+       ('Cajero 2', 1, '2023-06-05',1),
+       ('Cajero 3', 1, '2023-07-20',1),
+       ('Cajero 4', 1, '2023-05-24',1),
+       ('Cajero 5', 1, '2023-04-01',1),
+       ('Cajero 6', 1, '2023-06-12',1),
+       ('Cajero 7', 1, '2023-07-09',1);
