@@ -76,14 +76,14 @@ async function registrosTabla(form = null) {
                     <td>${row.estadousuario}</td>
                     <td>
                         <button onclick="actualizarRegistro(${row.idusuario})"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="text-blue-700 border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                             type="button">
-                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                            <img src="https://img.icons8.com/ios/30/1A56DB/synchronize.png" />
                         </button>
                         <button onclick="eliminarRegistro(${row.idusuario})"  
-                            class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="text-red-700 border border-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                             type="button">
-                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                            <img src="https://img.icons8.com/ios/30/C81E1E/delete--v1.png" />
                         </button>
                     </td>
                 </tr>
