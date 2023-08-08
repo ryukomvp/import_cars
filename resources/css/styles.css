@@ -2,15 +2,9 @@ body {
   background: rgb(17, 70, 143);
   background: radial-gradient(
     circle,
-    rgba(17, 70, 143, 1) 0%,
+    rgb(87, 143, 221) 0%,
     rgba(34, 34, 34, 1) 100%
   );
-}
-
-#fondo {
-  /* background-color: rgba(255, 255, 255, 0.200); */
-  backdrop-filter: blur(100px);
-  box-shadow: 1px 1px 10px black;
 }
 
 #logo {
