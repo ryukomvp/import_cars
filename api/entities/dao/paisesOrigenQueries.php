@@ -8,7 +8,7 @@ class PaisesOrigenQueries
     {
         $sql = 'SELECT idpais, pais
                 FROM paisesdeorigen
-                WHERE pais ILIKE ?
+                WHERE pais LIKE ?
                 ORDER BY pais';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
