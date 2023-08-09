@@ -1681,6 +1681,11 @@ input:checked + .toggle-bg {
   border-color: rgb(4 108 78 / var(--tw-border-opacity));
 }
 
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
 .bg-azul {
   --tw-bg-opacity: 1;
   background-color: rgb(17 70 143 / var(--tw-bg-opacity));
@@ -2384,6 +2389,11 @@ input:checked + .toggle-bg {
 .focus\:border-blue-600:focus {
   --tw-border-opacity: 1;
   border-color: rgb(28 100 242 / var(--tw-border-opacity));
+}
+
+.focus\:border-green-500:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(14 159 110 / var(--tw-border-opacity));
 }
 
 .focus\:outline-none:focus {

@@ -67,8 +67,7 @@ async function registrosTabla(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
-                <tr class="text-center bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
-                    <td>${row.idusuario}</td>
+                <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
                     <td>${row.usuario}</td>
                     <td>${row.pin}</td>
                     <td>${row.tipousuario}</td>
