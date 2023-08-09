@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!-- definición del lengauje del sitio -->
+<html lang="es">
+
+<head>
+    <!-- definición del set de carácteres -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- importación de archivos css -->
+    <link href="../resources/css/tailwind.css" rel="stylesheet">
+    <link href="../resources/css/menu.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <!-- icono de la página -->
+    <link rel="icon" href="../resources/img/logo.png">
+    <!-- titulo de la página -->
+    <title>Cajas</title>
+</head>
+
+<body>
+    <!-- encabezado del sistio -->
+    <header></header>
+    <!-- contenido del sitio -->
+    <main>
+        <div class="py-4">
+            <div>
+                <!-- titulo con el proposito de la interfaz -->
+                <div class="py-4 text-center">
+                    <h1 class="text-xl text-rojo font-bold">Cajas</h1>
+                    <p class="text-azul font-medium">Administración de los dispositivos donde se carga la informacion para buscar el producto del cliente. Organizada por los empleados y evaluada por cada sucursal</p>
+                </div>
+                <div class="grid grid-cols-4 gap-4 py-4">
+                    <div class="col-start-2 col-end-4">
+                        <form method="post" id="buscarFormulario">
+                            <label for="default-search"
+                                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </div>
+                                <input type="search" id="buscar" name="buscar"
+                                    class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Buscar Caja por nombres">
+                                <button type="submit"
+                                    class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- contenedor para boton -->
+                    <div class="col-end-5">
+                        <button onclick="crearRegistro()"
+                            class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            type="button">
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="abrirModal" tabindex="-1"
+                class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+                <div class="relative w-full h-full max-w-4xl">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                            <h3 class="text-xl font-bold text-oscuro dark:text-white" id="titulo"></h3>
+                            <button onclick="ACCIONES_MODAL.hide()" type="button"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="sr-only">Cerrar ventana</span>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <form class="p-4" method="post" id="ejecutarFormulario">
+                            <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                <div class="text-center py-4 p-6 space-x-2 rounded-b">
+                                    <img src="../resources/img/logo.jpg" alt="img">
+                                </div>
+                                <div>
+                                    <!--Input del ID-->
+                                    <div>
+                                        <label for="id"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
+                                        <input type="number" id="id" name="id"
+                                            class="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700"
+                                            placeholder="ID" readonly>
+                                    </div>
+                                    <!-- Caja -->
+                                    <div>
+                                        <label for="caja"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Caja</label>
+                                        <input type="text" id="caja" name="caja"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Ingrese el numero de la bodega" required>
+                                    </div>
+                                    <!-- Nombre del equipo -->
+                                    <div>
+                                        <label for="equipo"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Equipo</label>
+                                        <input type="text" id="equipo" name="equipo"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Ingrese la direccion de la bodega" required>
+                                    </div>
+                                    <!-- Serie -->
+                                    <div>
+                                        <label for="serie"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Serie del equipo</label>
+                                        <input type="text" id="serie" name="serie"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Ingrese la direccion de la bodega" required>
+                                    </div>
+                                    <!-- Modelo del equipo -->
+                                    <div>
+                                        <label for="modelo"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo del equipo</label>
+                                        <input type="text" id="modelo" name="modelo"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Ingrese la direccion de la bodega" required>
+                                    </div>
+                                    <!-- Sucursal -->
+                                    <div>
+                                        <label for="sucursal"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal</label>
+                                        <select id="sucursal" name="sucursal"
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5">
+                                        </select>
+                                    </div>
+                                    <!-- Usuario -->
+                                    <div>
+                                        <label for="usuario"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Usuario</label>
+                                        <select id="usuario" name="usuario"
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Modal footer -->
+                            <div
+                                class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button id="accion" type="submit"
+                                    class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                    data-tooltip="Guardar"></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!--Final del modal-->
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <!--Tabla para mostrar los registros que existen-->
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead
+                        class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr class="text-oscuro font-semibold">
+                            <th scope="col" class="hidden px-6 py-3">
+                                ID
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Caja
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Equipo
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Serie
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Modelo
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Sucursal
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Usuario
+                            </th>
+                            <th scope="col" class="px-8 py-3">
+                                <span class="">Controles</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <!--Cuerpo de la tabla para mostrar los registros-->
+                    <tbody id="registros"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- pie del sitio -->
+    <footer></footer>
+    <!-- Importacion de archivos JavaScript -->
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script type="text/javascript" src="../resources/js/sweetalert.min.js"></script>
+    <script type="text/javascript" src="../controllers/components.js"></script>
+    <script type="text/javascript" src="../controllers/account.js"></script>
+    <script type="text/javascript" src="../controllers/cajas.js"></script>
+
+</body>
+
+</html>
