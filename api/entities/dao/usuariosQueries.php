@@ -73,7 +73,7 @@ class UsuariosQueries
 
     public function leerUnRegistro()
     {
-        $sql = 'SELECT idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, idempleado, e.nombre empleado, estadousuario
+        $sql = 'SELECT idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, idempleado, e.nombreemp empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
 				WHERE idusuario = ?';
         $params = array($this->id);
@@ -139,10 +139,11 @@ class UsuariosQueries
 
     public function reporteUsuariosTipo()
     {
-        $sql = "SELECT u.nombreus, e.nombreemp, u.estadousuario FROM usuarios u
+        $sql = 'SELECT u.nombreus AS usuario, e.nombreemp AS empleado, u.estadousuario AS estado FROM usuarios u
                 INNER JOIN empleados e
                 ON e.idempleado = u.idempleado
-                WHERE tipousuario = 'Gerente'";
-        $params = array($this->id);
+                WHERE tipousuario = ?
+                ORDER BY e.nombreemp ASC';
+        $params = array($this->tipo);
     }
 }
