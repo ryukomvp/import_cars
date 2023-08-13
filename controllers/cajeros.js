@@ -1,7 +1,7 @@
 // Constante para completar la ruta de la API.
-const CAJA_API = 'business/cajas.php';
+const CAJERO_API = 'business/cajeros.php';
 // Constante para completar la ruta de la API.
-const SUCURSAL_API = 'business/sucursales.php';
+const CAJA_API = 'business/cajas.php';
 
 // Constante para establecer el formulario de buscar.
 const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
@@ -41,7 +41,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(CAJA_API, action, FORM);
+    const JSON = await dataFetch(CAJERO_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -66,7 +66,7 @@ async function cargarRegistros(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(CAJA_API, action, form);
+    const JSON = await dataFetch(CAJERO_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -75,33 +75,27 @@ async function cargarRegistros(form = null) {
             REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white hover:bg-blue-200">
                     <td class="hidden px-6 py-4">
-                        ${row.idcaja}
+                        ${row.idcajero}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${row.nombrecajero}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${row.estadocajero}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${row.fechaingreso}
                     </td>
                     <td class="px-6 py-4">
                         ${row.nombrecaja}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.nombreequipo}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${row.serieequipo}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${row.modeloequipo}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${row.nombresuc}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${row.nombreus}
-                    </td>
-                    <td class="px-6 py-4">
-                        <button onclick="actualizarRegistro(${row.idcaja})"
+                        <button onclick="actualizarRegistro(${row.idcajero})"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                         </button>
-                        <button onclick="eliminarRegistrote(${row.idcaja})"
+                        <button onclick="eliminarRegistrote(${row.idcajero})"
                             class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
@@ -129,8 +123,7 @@ function crearRegistro() {
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna título a la caja de diálogo.
     TITULO.textContent = 'Crear un registro';
-    fillSelect(SUCURSAL_API, 'readAll', 'sucursal');
-    fillSelect(USUARIO_API, 'leerRegistros', 'usuario');
+    fillSelect(CAJA_API, 'leerRegistros', 'caja');
 }
 
 /*
@@ -143,7 +136,7 @@ async function actualizarRegistro(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(CAJA_API, 'leerUnRegistro', FORM);
+    const JSON = await dataFetch(CAJERO_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -155,13 +148,11 @@ async function actualizarRegistro(id) {
         // Se asigna título para la caja de diálogo.
         TITULO.textContent = 'Actualizar un registro';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idcaja;
-        document.getElementById('caja').value = JSON.dataset.nombrecaja;
-        document.getElementById('equipo').value = JSON.dataset.nombreequipo;
-        document.getElementById('serie').value = JSON.dataset.serieequipo;
-        document.getElementById('modelo').value = JSON.dataset.modeloequipo;
-        fillSelect(SUCURSAL_API, 'readAll', 'sucursal', JSON.dataset.idsucursal);
-        fillSelect(USUARIO_API, 'leerRegistros', 'usuario', JSON.dataset.idusuario);
+        document.getElementById('id').value = JSON.dataset.idcajero;
+        document.getElementById('cajero').value = JSON.dataset.nombrecajero;
+        document.getElementById('estado').value = JSON.dataset.estadocajero;
+        document.getElementById('fechaIngreso').value = JSON.dataset.fechaingreso;
+        fillSelect(CAJA_API, 'leerRegistros', 'caja', JSON.dataset.idcaja);
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -174,14 +165,14 @@ async function actualizarRegistro(id) {
 */
 async function eliminarRegistrote(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la caja de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar el cajero de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idcaja', id);
+        FORM.append('idcajero', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(CAJA_API, 'eliminarRegistro', FORM);
+        const JSON = await dataFetch(CAJERO_API, 'eliminarRegistro', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

@@ -98,7 +98,7 @@ class Caja extends CajaQueries
         return $this->id;
     }
 
-    public function getCategoria()
+    public function getNombreCaja()
     {
         return $this->nombrecaja;
     }

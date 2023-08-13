@@ -14,7 +14,7 @@
     <!-- icono de la página -->
     <link rel="icon" href="../resources/img/logo.png">
     <!-- titulo de la página -->
-    <title>Cajas</title>
+    <title>Cajeros</title>
 </head>
 
 <body>
@@ -26,8 +26,8 @@
             <div>
                 <!-- titulo con el proposito de la interfaz -->
                 <div class="py-4 text-center">
-                    <h1 class="text-xl text-rojo font-bold">Cajas</h1>
-                    <p class="text-azul font-medium">Administración de los dispositivos donde se carga la informacion para buscar el producto del cliente. Organizada por los empleados y evaluada por cada sucursal</p>
+                    <h1 class="text-xl text-rojo font-bold">Cajeros</h1>
+                    <p class="text-azul font-medium">Cajero o caja ragistradora. Gestoria para mantener un registro de las cajas registradoras pertenecientes por cada equipo.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
@@ -44,7 +44,7 @@
                                 </div>
                                 <input type="search" id="buscar" name="buscar"
                                     class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Buscar Caja por nombres">
+                                    placeholder="Buscar caja registradora">
                                 <button type="submit"
                                     class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                             </div>
@@ -94,51 +94,32 @@
                                             class="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700"
                                             placeholder="ID" readonly>
                                     </div>
-                                    <!-- Caja -->
+                                    <!-- Cajero -->
                                     <div>
+                                        <label for="cajero"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Cajero</label>
+                                        <input type="text" id="cajero" name="cajero"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Caja registradora" required>
+                                    </div>
+                                    <!-- Estado -->
+                                    <div class=" my-4">
+                                        <label for="checked-checkbox" class="ml-2 text-sm font-medium text-azul dark:text-gray-300">Estado de la caja registradora</label>
+                                        <input checked id="estado" name="estado" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    </div>
+                                    <!-- Fecha de Ingreso -->
+                                    <div>
+                                        <label for="fechaIngreso"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Fecha de Ingreso</label>
+                                        <input type="date" id="fechaIngreso" name="fechaIngreso"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Fecha de Ingreso de la caja registradora" required>
+                                    </div>
+                                      <!-- Caja -->
+                                      <div>
                                         <label for="caja"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Caja</label>
-                                        <input type="text" id="caja" name="caja"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Nombre de la caja" required>
-                                    </div>
-                                    <!-- Nombre del equipo -->
-                                    <div>
-                                        <label for="equipo"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Equipo</label>
-                                        <input type="text" id="equipo" name="equipo"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Nombre del equipo" required>
-                                    </div>
-                                    <!-- Serie -->
-                                    <div>
-                                        <label for="serie"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Serie del equipo</label>
-                                        <input type="text" id="serie" name="serie"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Serie del equipo" required>
-                                    </div>
-                                    <!-- Modelo del equipo -->
-                                    <div>
-                                        <label for="modelo"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo del equipo</label>
-                                        <input type="text" id="modelo" name="modelo"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Modelo del equipo" required>
-                                    </div>
-                                    <!-- Sucursal -->
-                                    <div>
-                                        <label for="sucursal"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sucursal</label>
-                                        <select id="sucursal" name="sucursal"
-                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5">
-                                        </select>
-                                    </div>
-                                    <!-- Usuario -->
-                                    <div>
-                                        <label for="usuario"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Usuario</label>
-                                        <select id="usuario" name="usuario"
+                                        <select id="caja" name="caja"
                                             class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5">
                                         </select>
                                     </div>
@@ -165,22 +146,16 @@
                                 ID
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                Cajero
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Estado
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Fecha de Ingreso
+                            </th>
+                            <th scope="col" class="px-6 py-3">
                                 Caja
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Equipo
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Serie
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Modelo
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Sucursal
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Usuario
                             </th>
                             <th scope="col" class="px-8 py-3">
                                 <span class="">Controles</span>
@@ -200,7 +175,7 @@
     <script type="text/javascript" src="../resources/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../controllers/components.js"></script>
     <script type="text/javascript" src="../controllers/account.js"></script>
-    <script type="text/javascript" src="../controllers/cajas.js"></script>
+    <script type="text/javascript" src="../controllers/cajeros.js"></script>
 
 </body>
 
