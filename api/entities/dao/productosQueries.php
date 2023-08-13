@@ -12,12 +12,11 @@ class productosQueries
     /*metodo para buscar registros*/
     public function buscarProducto($value)
     {
-        $sql = 'SELECT productos.idproducto, productos.nombre, productos.descripcion, productos.precio, productos.anio, codigocomun.nomenclatura, codigocomun.codigo, tiposproductos.tipoproducto, proveedores.nombre as proveedor, categorias.categoria, modelos.modelo, paisesdeorigen.pais, productos.estadoproducto
+        $sql = 'SELECT productos.idproducto, productos.nombre, productos.descripcion, productos.precio, productos.anio, codigocomun.nomenclatura, codigocomun.codigo, tiposproductos.tipoproducto, categorias.categoria, modelos.modelo, paisesdeorigen.pais, productos.estadoproducto
                 FROM productos 
                 INNER JOIN categorias ON productos.idcategoria = categorias.idcategoria
                 INNER JOIN codigoComun ON productos.idcodigocomun = codigocomun.idcodigocomun
                 INNER JOIN tiposProductos ON productos.idtipoproducto = tiposproductos.idtipoproducto
-                INNER JOIN proveedores ON productos.idproveedor = proveedores.idproveedor
                 INNER JOIN modelos ON productos.idmodelo = modelos.idmodelo  
                 INNER JOIN paisesdeorigen ON productos.idpais = paisesdeorigen.idpais
                 WHERE  productos.nombre LIKE ? OR productos.descripcion LIKE ? OR categorias.categoria  LIKE ? OR codigoComun.nomenclatura  LIKE ? OR CAST (codigoComun.codigo as varchar) LIKE ?

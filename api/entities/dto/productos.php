@@ -12,10 +12,11 @@ class Productos extends productosQueries
     protected $imagen = null;
     protected $descripcion = null;
     protected $precio = null;
-    protected $anio = null;
+    protected $precioDesc = null;
+    protected $rangoFechaIni = null;
+    protected $rangoFechaFin = null;
     protected $idCodigoComun = null;
     protected $idTipoProducto = null;
-    protected $idProveedor = null;
     protected $idCategoria = null;
     protected $idModelo = null;
     protected $idPais = null;
@@ -75,10 +76,30 @@ class Productos extends productosQueries
         }
     }
 
-    public function setAnio($value)
+    public function setPrecioDesc($value)
+    {
+        if (Validator::validateMoney($value)) {
+            $this->precioDesc = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setRangoFechaIni($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->anio = $value;
+            $this->rangoFechaIni = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setRangoFechaFin($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->rangoFechaFin = $value;
             return true;
         } else {
             return false;
@@ -99,16 +120,6 @@ class Productos extends productosQueries
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->idTipoProducto = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setProveedor($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->idProveedor = $value;
             return true;
         } else {
             return false;
@@ -183,9 +194,19 @@ class Productos extends productosQueries
         return $this->precio;
     }
 
-    public function getAnio()
+    public function getPrecioDesc()
     {
-        return $this->anio;
+        return $this->precioDesc;
+    }
+
+    public function getRangoFechaIni()
+    {
+        return $this->rangoFechaIni;
+    }
+
+    public function getRangoFechaFin()
+    {
+        return $this->rangoFechaFin;
     }
 
     public function getCodigoComun()
@@ -198,12 +219,7 @@ class Productos extends productosQueries
         return $this->idTipoProducto;
     }
 
-    public function getProveedor()
-    {
-        return $this->idProveedor;
-    }
-
-    public function getcategoria()
+    public function getCategoria()
     {
         return $this->idCategoria;
     }

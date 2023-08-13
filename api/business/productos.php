@@ -45,10 +45,14 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Validator::getFileError();
                 } elseif (!$productos->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$productos->setPrecio($_POST['precio'])) {
+                } elseif (!$productos->setPrecio($_POST['precio '])) {
                     $result['exception'] = 'Precio incorrecto';
-                } elseif (!$productos->setAnio($_POST['anio'])) {
-                    $result['exception'] = 'Año incorrecto';
+                } elseif (!$productos->setPrecioDesc($_POST['precio descuento'])) {
+                    $result['exception'] = 'precio descuento incorrecto';
+                } elseif (!$productos->setRangoFechaIni($_POST['Fecha inicial'])) {
+                    $result['exception'] = 'Fecha inicial incorrecto';
+                } elseif (!$productos->setRangoFechaFin($_POST['Fecha final'])) {
+                    $result['exception'] = 'Fecha final incorrecto';
                 } elseif (!isset($_POST['codigoComun'])) {
                     $result['exception'] = 'Seleccione un codigo';
                 } elseif (!$productos->setCodigoComun($_POST['codigoComun'])) {
@@ -57,10 +61,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Seleccione un tipo de producto';
                 } elseif (!$productos->setTipoProducto($_POST['tipo'])) {
                     $result['exception'] = 'Tipo de producto incorrecta';
-                } elseif (!isset($_POST['proveedor'])) {
-                    $result['exception'] = 'Seleccione un proveedor';
-                } elseif (!$productos->setProveedor($_POST['proveedor'])) {
-                    $result['exception'] = 'Proveedor incorrecta';
                 } elseif (!isset($_POST['categoria'])) {
                     $result['exception'] = 'Seleccione una categoría';
                 } elseif (!$productos->setCategoria($_POST['categoria'])) {
@@ -111,7 +111,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Descripción incorrecta';
                 } elseif (!$productos->setPrecio($_POST['precio'])) {
                     $result['exception'] = 'Precio incorrecto';
-                } elseif (!$productos->setAnio($_POST['anio'])) {
+                } elseif (!$productos->setPrecioDesc($_POST['precio descuento'])) {
+                    $result['exception'] = 'Precio descuento incorrecto';
+                } elseif (!$productos->setRangoFechaIni($_POST['Fecha inicio'])) {
+                    $result['exception'] = 'Año incorrecto';
+                } elseif (!$productos->setRangoFechaFin($_POST['Fecha inicio'])) {
                     $result['exception'] = 'Año incorrecto';
                 } elseif (!isset($_POST['codigoComun'])) {
                     $result['exception'] = 'Seleccione un codigo';
@@ -123,8 +127,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Tipo de producto incorrecta';
                 } elseif (!isset($_POST['proveedor'])) {
                     $result['exception'] = 'Seleccione un proveedor';
-                } elseif (!$productos->setProveedor($_POST['proveedor'])) {
-                    $result['exception'] = 'Proveedor incorrecta';
                 } elseif (!isset($_POST['categoria'])) {
                     $result['exception'] = 'Seleccione una categoría';
                 } elseif (!$productos->setCategoria($_POST['categoria'])) {
