@@ -12,7 +12,7 @@ class MonedasQueries
     {
         $sql = 'SELECT idmoneda, moneda
                 FROM monedas
-                WHERE moneda ILIKE ? 
+                WHERE moneda LIKE ? 
                 ORDER BY moneda';
         $params = array("%$value%");
         return Database::getRows($sql, $params);

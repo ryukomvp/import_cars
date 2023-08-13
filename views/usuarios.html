@@ -20,12 +20,12 @@
     <!-- encabezado del sistio -->
     <header></header>
     <!-- contenido del sitio -->
-    <main>
-        <div class="py-4">
+    <main class="bg-gray-900">
+        <div class="py-4 container">
             <div>
                 <div class="py-4 text-center">
-                    <h1 class="text-xl text-rojo font-bold">Usuarios</h1>
-                    <p class="text-azul font-medium">Gestion del ingreso de usuarios donde se registran y almacenan cada
+                    <h1 class="text-xl text-rojo font-bold uppercase">usuarios</h1>
+                    <p class="text-blue-500 font-medium">Gestion del ingreso de usuarios donde se registran y almacenan cada
                         uno de ellos.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
@@ -42,18 +42,16 @@
                                     </svg>
                                 </div>
                                 <input type="search" id="search" name="search"
-                                    class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="block w-full bg-gray-900 text-white border border-white rounded-lg focus:ring-azul focus:border-azul p-4 pl-10 text-sm"
                                     placeholder="Buscar...">
-                                <button type="submit"
-                                    class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                             </div>
                         </form>
                     </div>
                     <div class="col-end-5">
                         <button onclick="crearRegistro()"
-                            class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                             type="button">
-                            <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
+                            <img src="https://img.icons8.com/ios/30/046C4E/add--v1.png"/>
                         </button>
                     </div>
                 </div>
@@ -82,7 +80,7 @@
                         <form class="p-4" method="post" id="ejecutarFormulario">
                             <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
                                 <div>
-                                    <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
+                                    <div class="text-center py-4 p-6 space-x-2 rounded-b">
                                         <img src="../resources/img/logo.jpg" alt="img">
                                         <br>
                                     </div>
@@ -96,7 +94,7 @@
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
                                             del usuario:</label>
                                         <input type="text" id="nombre" name="nombre"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                             placeholder="Ingrese nombre de usuario" required>
                                     </div>
                                     <!--Input pin del usuario-->
@@ -104,7 +102,7 @@
                                         <label for="Pin"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Pin:</label>
                                         <input type="number" id="pin" name="pin"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                             placeholder="Pin" required>
                                     </div>
                                     <!--Input contraseña del usuario-->
@@ -112,7 +110,7 @@
                                         <label for="clave"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contraseña:</label>
                                         <input type="password" id="clave" name="clave"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                             placeholder="Ingrese la contraseña" required>
                                     </div>
                                     <!--Input contraseña del usuario-->
@@ -121,7 +119,7 @@
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Confirmar
                                             contraseña:</label>
                                         <input type="password" id="confirmar" name="confirmar"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                             placeholder="Ingrese la contraseña" required>
                                     </div>
                                     <!--Input del tipo de usuario-->
@@ -130,7 +128,7 @@
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo de
                                             usuario:</label>
                                         <select id="tipo" name="tipo"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5">
                                         </select>
                                     </div>
                                     <!--Input del empleado asignado al usuario-->
@@ -138,7 +136,7 @@
                                         <label for="empleado"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Empleado:</label>
                                         <select id="empleado" name="empleado"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5">
                                         </select>
                                     </div>
                                     <!--Input estado del usuario-->
@@ -147,8 +145,7 @@
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
                                             del usuario:</label>
                                         <select id="estado" name="estado"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5">
                                         </select>
                                     </div>
                                 </div>
@@ -156,19 +153,16 @@
                             <div
                                 class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                 <button id="accion" type="submit"
-                                    class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"></button>
+                                    class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"></button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div><!--Final del modal-->
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
-                            <th scope="col" class="px-6 py-3">
-                                ID
-                            </th>
                             <th scope="col" class="px-6 py-3">
                                 Nombre de usuario
                             </th>

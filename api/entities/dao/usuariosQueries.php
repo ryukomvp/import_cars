@@ -42,32 +42,14 @@ class UsuariosQueries
         return Database::executeRow($sql, $params);
     }
 
-    // public function readProfile()
-    // {
-    //     $sql = 'SELECT idusuario, nombre, pin
-    //             FROM usuarios
-    //             WHERE idusuario = ?';
-    //     $params = array($_SESSION['idusuario']);
-    //     return Database::getRow($sql, $params);
-    // }
-
-    // public function editProfile()
-    // {
-    //     $sql = 'UPDATE usuarios
-    //             SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?, alias_usuario = ?
-    //             WHERE id_usuario = ?';
-    //     $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $_SESSION['id_usuario']);
-    //     return Database::executeRow($sql, $params);
-    // }
-
     /*
     *   Métodos para realizar operaciones de gestión en la tabla usuarios
     */
     public function buscarRegistros($value)
     {
-        $sql = 'SELECT idusuario, u.nombre usuario, contrasenia, pin, tipousuario, e.nombre empleado, estadousuario
+        $sql = 'SELECT idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, e.nombreemp empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
-                WHERE u.nombre ILIKE ?
+                WHERE u.nombreus LIKE ?
                 ORDER BY idusuario';
         $params = array("%$value%");
         return Database::getRows($sql, $params);
@@ -75,7 +57,7 @@ class UsuariosQueries
 
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO usuarios(nombre, contrasenia, pin, tipousuario, idempleado, estadousuario)
+        $sql = 'INSERT INTO usuarios(nombreus, contrasenia, pin, tipousuario, idempleado, estadousuario)
                 VALUES(?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre, $this->clave, $this->pin, $this->tipo, $this->empleado, $this->estado);
         return Database::executeRow($sql, $params);
@@ -91,7 +73,7 @@ class UsuariosQueries
 
     public function leerUnRegistro()
     {
-        $sql = 'SELECT idusuario, u.nombre usuario, contrasenia, pin, tipousuario, idempleado, e.nombre empleado, estadousuario
+        $sql = 'SELECT idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, idempleado, e.nombreemp empleado, estadousuario
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
 				WHERE idusuario = ?';
         $params = array($this->id);
@@ -101,7 +83,7 @@ class UsuariosQueries
     public function actualizarRegistro()
     {
         $sql = 'UPDATE usuarios 
-                SET nombre = ?, pin = ?, tipousuario = ?, idempleado = ?, estadousuario = ?
+                SET nombreus = ?, pin = ?, tipousuario = ?, idempleado = ?, estadousuario = ?
                 WHERE idusuario = ?';
         $params = array($this->nombre, $this->pin, $this->tipo, $this->empleado, $this->estado, $this->id);
         return Database::executeRow($sql, $params);
@@ -123,7 +105,7 @@ class UsuariosQueries
 
     public function leerEmpleados()
     {
-        $sql = 'SELECT idempleado, nombre FROM empleados
+        $sql = 'SELECT idempleado, nombreemp FROM empleados
                 ORDER BY idempleado';
         return Database::getRows($sql);
     }
@@ -157,10 +139,11 @@ class UsuariosQueries
 
     public function reporteUsuariosTipo()
     {
-        $sql = "SELECT u.nombreus, e.nombreemp, u.estadousuario FROM usuarios u
+        $sql = 'SELECT u.nombreus AS usuario, e.nombreemp AS empleado, u.estadousuario AS estado FROM usuarios u
                 INNER JOIN empleados e
                 ON e.idempleado = u.idempleado
-                WHERE tipousuario = 'Gerente'";
-        $params = array($this->id);
+                WHERE tipousuario = ?
+                ORDER BY e.nombreemp ASC';
+        $params = array($this->tipo);
     }
 }
