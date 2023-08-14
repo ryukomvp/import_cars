@@ -578,3 +578,12 @@ INSERT INTO cajeros (nombrecajero, estadocajero, fechaingreso, idcaja) VALUES
        ('Cajero 5', 1, '2023-04-01',1),
        ('Cajero 6', 1, '2023-06-12',1),
        ('Cajero 7', 1, '2023-07-09',1);
+
+INSERT INTO contactos (telefonocontact, celularcontact, correocontac, idsucursal) VALUES
+       ('7109-4312', '7109-4312', 'empresa1@gmail.com',1),
+       ('0942-1234', '7788-6565', 'empresa2@gmail.com',2),
+       ('7788-6565', '7655-0000', 'empresa3@gmail.com',3),
+       ('7655-0000', '7655-0000', 'empresa4@gmail.com',4),
+       ('0964-4566', '7655-7966', 'empresa5@gmail.com',5),
+       ('1234-5678', '0005-0000', 'empresa6@gmail.com',6),
+       ('0112-0987', '7655-0000', 'empresa7@gmail.com',1);

@@ -1,32 +1,35 @@
 // Constante para completar la ruta de la API.
+const CONTACTO_API = 'business/cajeros.php';
+// Constante para completar la ruta de la API.
 const SUCURSAL_API = 'business/sucursales.php';
+
 // Constante para establecer el formulario de buscar.
-const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
+const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para establecer el formulario de guardar.
 const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 // Constante para establecer el título de la modal.
 const TITULO = document.getElementById('titulo');
 // Constantes para establecer el contenido de la tabla.
-const REGISTROS_TABLA = document.getElementById('registrosTabla');
-// Se inicializa el componente Modal para que funcionen las cajas de diálogo.
-// Constante para establecer la modal de guardar.
-const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
+const REGISTROS_TABLA = document.getElementById('registros');
+// Constante para capturar el modal.
+const ACCIONES_MODAL = new Modal(document.getElementById('abrirModal'));
 // Constante para el texto del boton
 const BTN_ACCION = document.getElementById('accion');
+
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
-    fillTable();
+    cargarRegistros();
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
-BUSCAR_FORMULARIO.addEventListener('submit', (event) => {
+FORMULARIO_BUSQUEDA.addEventListener('submit', (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(BUSCAR_FORMULARIO);
+    const FORM = new FormData(FORMULARIO_BUSQUEDA);
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
-    fillTable(FORM);
+    cargarRegistros(FORM);
 });
 
 // Método manejador de eventos para cuando se envía el formulario de guardar.
@@ -34,17 +37,17 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (document.getElementById('id').value) ? action = 'update' : action = 'create';
+    (document.getElementById('id').value) ? action = 'actualizarRegistro' : action = 'crearRegistro';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(SUCURSAL_API, action, FORM);
+    const JSON = await dataFetch(CONTACTO_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
-        fillTable();
+        cargarRegistros();
         // Se cierra la caja de diálogo.
-        ABRIR_MODAL.hide();
+        ACCIONES_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -57,13 +60,13 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
 *   Parámetros: form (objeto opcional con los datos de búsqueda).
 *   Retorno: ninguno.
 */
-async function fillTable(form = null) {
+async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'search' : action = 'readAll';
+    (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(SUCURSAL_API, action, form);
+    const JSON = await dataFetch(CONTACTO_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -72,28 +75,27 @@ async function fillTable(form = null) {
             REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white hover:bg-blue-200">
                     <td class="hidden px-6 py-4">
-                        ${row.idsucursal}
+                        ${row.idcontacto}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${row.telefonocontact}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${row.celularcontact}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${row.correocontac}
                     </td>
                     <td class="px-6 py-4">
                         ${row.nombresuc}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.telefonosuc}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${row.correosuc}
-                    </td>
-                    <td class="px-6 py-4">
-                        ${row.direccionsuc}
-                    </td>
-                    <td class="px-6 py-4">
-                        <button onclick="openUpdate(${row.idsucursal})"
-                            data-modal-toggle="modal_update_branch-office1"
+                        <button onclick="actualizarRegistro(${row.idcajero})"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                         </button>
-                        <button onclick="openDelete(${row.idsucursal})"
+                        <button onclick="eliminarRegistrote(${row.idcajero})"
                             class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
@@ -112,15 +114,16 @@ async function fillTable(form = null) {
 *   Parámetros: ninguno.
 *   Retorno: ninguno.
 */
-function openCreate() {
+function crearRegistro() {
     // Se abre la caja de diálogo que contiene el formulario.
-    ABRIR_MODAL.show();
+    ACCIONES_MODAL.show();
     // Se restauran los elementos del formulario.
     EJECUTAR_FORMULARIO.reset();
     // Texto del boton para crear un registro
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna título a la caja de diálogo.
-    TITULO.textContent = 'Crear sucursal';
+    TITULO.textContent = 'Crear un registro';
+    fillSelect(CAJA_API, 'leerRegistros', 'caja');
 }
 
 /*
@@ -128,28 +131,28 @@ function openCreate() {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function openUpdate(id) {
+async function actualizarRegistro(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idsucursal', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(SUCURSAL_API, 'readOne', FORM);
+    const JSON = await dataFetch(CONTACTO_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        ABRIR_MODAL.show();
+        ACCIONES_MODAL.show();
         // Se restauran los elementos del formulario.
         EJECUTAR_FORMULARIO.reset();
         // Texto del boton para crear un registro
         BTN_ACCION.textContent = 'Actualizar';
         // Se asigna título para la caja de diálogo.
-        TITULO.textContent = 'Actualizar sucursal';
+        TITULO.textContent = 'Actualizar un registro';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idsucursal;
-        document.getElementById('nombre').value = JSON.dataset.nombresuc;
-        document.getElementById('telefono').value = JSON.dataset.telefonosuc;
-        document.getElementById('correo').value = JSON.dataset.correosuc;
-        document.getElementById('direccion').value = JSON.dataset.direccionsuc;
+        document.getElementById('id').value = JSON.dataset.idcontacto;
+        document.getElementById('telefonocontact').value = JSON.dataset.telefonocontact;
+        document.getElementById('celularcontact').value = JSON.dataset.celularcontact;
+        document.getElementById('correocontac').value = JSON.dataset.correocontac;
+        fillSelect(SUCURSAL_API, 'readAll', 'sucursal', JSON.dataset.idsucursal);
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -160,20 +163,20 @@ async function openUpdate(id) {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function openDelete(id) {
+async function eliminarRegistrote(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la sucursal de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar el contacto de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idsucursal', id);
+        FORM.append('idcontacto', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(SUCURSAL_API, 'delete', FORM);
+        const JSON = await dataFetch(CONTACTO_API, 'eliminarRegistro', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
-            fillTable();
+            cargarRegistros();
             // Se muestra un mensaje de éxito.
             sweetAlert(1, JSON.message, true);
         } else {
