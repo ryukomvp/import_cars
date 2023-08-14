@@ -12,7 +12,7 @@ require_once('../../entities/dto/usuarios.php');
 class Report extends FPDF
 {
     // Constante para definir la ruta de las vistas del sitio privado.
-    const CLIENT_URL = 'http://localhost/import_cars/views/';
+    const CLIENT_URL = 'http://localhost/import_cars/views/dashboard.html';
     // Propiedad para guardar el título del reporte.
     private $title = null;
 
