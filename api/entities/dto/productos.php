@@ -13,8 +13,8 @@ class Productos extends productosQueries
     protected $descripcion = null;
     protected $precio = null;
     protected $precioDesc = null;
-    protected $rangoFechaIni = null;
-    protected $rangoFechaFin = null;
+    protected $anioIni = null;
+    protected $anioFin = null;
     protected $idCodigoComun = null;
     protected $idTipoProducto = null;
     protected $idCategoria = null;

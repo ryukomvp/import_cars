@@ -12,15 +12,15 @@ class productosQueries
     /*metodo para buscar registros*/
     public function buscarProducto($value)
     {
-        $sql = 'SELECT productos.idproducto, productos.nombre, productos.descripcion, productos.precio, productos.anio, codigocomun.nomenclatura, codigocomun.codigo, tiposproductos.tipoproducto, categorias.categoria, modelos.modelo, paisesdeorigen.pais, productos.estadoproducto
-                FROM productos 
-                INNER JOIN categorias ON productos.idcategoria = categorias.idcategoria
-                INNER JOIN codigoComun ON productos.idcodigocomun = codigocomun.idcodigocomun
-                INNER JOIN tiposProductos ON productos.idtipoproducto = tiposproductos.idtipoproducto
-                INNER JOIN modelos ON productos.idmodelo = modelos.idmodelo  
-                INNER JOIN paisesdeorigen ON productos.idpais = paisesdeorigen.idpais
-                WHERE  productos.nombre LIKE ? OR productos.descripcion LIKE ? OR categorias.categoria  LIKE ? OR codigoComun.nomenclatura  LIKE ? OR CAST (codigoComun.codigo as varchar) LIKE ?
-                ORDER BY productos.nombre';
+        $sql = 'SELECT productos.idproducto, productos.nombreprod, productos.descripcionprod, productos.precio, productos.preciodesc, productos.anioinicial, productos.aniofinal,codigoscomunes.codigo, tiposproductos.tipoproducto, categorias.categoria, modelos.modelo, paisesdeorigen.pais, productos.estadoproducto 
+        FROM productos 
+        INNER JOIN categorias ON productos.idcategoria = categorias.idcategoria 
+        INNER JOIN codigoscomunes ON productos.idcodigocomun = codigoscomunes.idcodigocomun 
+        INNER JOIN tiposProductos ON productos.idtipoproducto = tiposproductos.idtipoproducto 
+        INNER JOIN modelos ON productos.idmodelo = modelos.idmodelo 
+        INNER JOIN paisesdeorigen ON productos.idpais = paisesdeorigen.idpais 
+        WHERE productos.nombreprob LIKE ? OR productos.descripcion LIKE ? OR categorias.categoria  LIKE ? OR codigoComun.nomenclatura  LIKE ? OR CAST (codigoComun.codigo as varchar) LIKE ?
+        ORDER BY productos.nombreprod';
         $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
@@ -28,29 +28,28 @@ class productosQueries
     public function crearProducto()
     {
         // , $_SESSION['idUsuario']
-        $sql = 'INSERT INTO productos(nombre, imagen, descripcion, precio, anio, idcodigocomun, idtipoproducto, idproveedor, idcategoria, idmodelo, idpais, estadoproducto)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->anio, $this->idCodigoComun, $this->idTipoProducto, $this->idProveedor, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto);
+        $sql = 'INSERT INTO productos(nombreprob, imagen, descripcionpros, precio, preciodesc, anioinicial, aniofinal, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, estadoproducto)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->idCodigoComun, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto);
         return Database::executeRow($sql, $params);
     }
 
-    public function leerTodo()
+    public function leerTodo() 
     {
-        $sql = 'SELECT p.idproducto, p.nombre, p.imagen, p.descripcion, p.precio, p.anio, a.nomenclatura, a.codigo, b.tipoproducto, m.nombre as proveedor, c.categoria, n.modelo, s.pais, p.estadoproducto
+        $sql = 'SELECT p.idproducto, p.nombrepros, p.imagen, p.descripcionprod, p.precio, p.preciodesc , p.anioinicial, p.aniofinal, a.codigo, b.tipoproducto, c.categoria, n.modelo, s.pais, p.estadoproducto
                 FROM productos p
                 INNER JOIN categorias c ON p.idcategoria = c.idcategoria 
-                INNER JOIN proveedores m ON p.idproveedor = m.idproveedor 
-                INNER JOIN codigoComun a ON p.idcodigocomun = a.idcodigocomun
+                INNER JOIN codigoscomunes a ON p.idcodigocomun = a.idcodigocomun
                 INNER JOIN tiposproductos b ON p.idtipoproducto = b.idtipoproducto
                 INNER JOIN modelos n ON p.idmodelo = n.idmodelo
                 INNER JOIN paisesdeorigen s ON p.idpais = s.idpais
-                ORDER BY p.nombre;';
+                ORDER BY p.nombreprod;';
         return Database::getRows($sql);
     }
 
     public function leerUnProducto()
     {
-        $sql = 'SELECT idproducto,nombre, imagen, descripcion, precio, anio, idcodigocomun, idtipoproducto, idproveedor, idcategoria, idmodelo, idpais, estadoproducto
+        $sql = 'SELECT idproducto,nombreprod, imagen, descripcionprod, precio, preciodesc, anioinicial, aniofinal, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, estadoproducto
         FROM productos
         WHERE idproducto = ?';
         $params = array($this->id);
@@ -63,9 +62,9 @@ class productosQueries
         ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
 
         $sql = 'UPDATE productos
-                SET nombre = ?, imagen= ?, descripcion= ?, precio= ?, anio= ?, idcodigocomun= ?, idtipoproducto= ?, idproveedor= ?, idcategoria= ?, idmodelo= ?, idpais= ?, estadoproducto= ?
+                SET nombreprod = ?, imagen= ?, descripcionprod= ?, precio= ?, preciodesc= ?, anioinicial= ?, aniofinal= ?, idcodigocomun= ?, idtipoproducto= ?, idcategoria= ?, idmodelo= ?, idpais= ?, estadoproducto= ?
                 WHERE idproducto = ?';
-        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->anio, $this->idCodigoComun, $this->idTipoProducto, $this->idProveedor, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto, $this->id);
+        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->idCodigoComun, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto, $this->id);
         return Database::executeRow($sql, $params);
     }
 
@@ -79,10 +78,10 @@ class productosQueries
 
     public function leerProductoCategoria()
     {
-        $sql = 'SELECT idproducto, nombre, foto,  descripcio, precio
+        $sql = 'SELECT idproducto, nombreprod, imagen,  descripcioprod, precio, preciodesc
                 FROM productos INNER JOIN categorias USING(idcategoria)
                 WHERE idcategoria = ? AND estadosproducto = true
-                ORDER BY nombre';
+                ORDER BY nombreprod';
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
@@ -95,9 +94,9 @@ class productosQueries
 
     public function leerCodigosComunes()
     {
-        $sql = "SELECT idcodigocomun, concat(nomenclatura,' - ',codigo)
-       FROM codigocomun
-       ORDER BY nomenclatura";
+        $sql = "SELECT idcodigocomun, codigo
+       FROM codigoscomunes
+       ORDER BY codigo";
         return Database::getRows($sql);
     }
 }
