@@ -64,7 +64,7 @@ CREATE TABLE IF NOT EXISTS contactos(
 
 CREATE TABLE IF NOT EXISTS parametros (
 	idparametro INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    nombreemp VARCHAR(30) NOT NULL UNIQUE,
+    nombreemp VARCHAR(50) NOT NULL UNIQUE,
     direccionemp VARCHAR(150) NOT NULL,
     porcentaje NUMERIC(5,2),
     registro INT NULL,
@@ -595,4 +595,22 @@ INSERT INTO parametros (nombreemp, direccionemp, porcentaje, registro, giroempre
        ('Repuestos Trasacciones','calle 40 pasaje 2 casa 6', 50.0, 4,'Proveedor de repuestos','2392-271535-233-1','32324556-6',4),
        ('Import Cars S.A de C.V','calle 12 pasaje 2 casa 8', 12.0, 5,'Proveedor de repuestos','2256-257165-236-2','32345566-7',5),
        ('Cars Repuestos','calle 23 pasaje 14 casa 7', 60.0, 6,'Proveedor de repuestos','5132-261345-245-2','15564556-8',6),
-       ('Daniela Melissa Sanchez Gutierrez','calle 25 pasaje 1 casa 10', 80.0, 7,'Proveedor de repuestos','6378-226715-283-2','32671556-3',7);
+       ('Importa Repuestos S.A de C.V','calle 25 pasaje 1 casa 10', 80.0, 7,'Proveedor de repuestos','6378-226715-283-2','32671556-3',7);
+
+INSERT INTO vendedores(idusuario, idcaja) VALUES
+       (1,1),
+       (2,2),
+       (3,3),
+       (4,4),
+       (5,3),
+       (6,1),
+       (7,4);
+       
+/*INSERT INTO productos(nombreprod, imagen, descripcionprod, precio, preciodesc, anioinicial, aniofinal, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, idestadoproducto) VALUES
+       ('Focos delantero amarillo', 'Foco frontal amarillo', 20.00, 15.00, 2010, 2017, 1112, 1, 1, 1, 1, ),
+       (2,2),
+       (3,3),
+       (4,4),
+       (5,3),
+       (6,1),
+       (7,4);*/
