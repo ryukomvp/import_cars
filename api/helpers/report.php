@@ -2,7 +2,7 @@
 // Se incluye la clase para generar archivos PDF.
 require_once('../../libraries/fpdf185/fpdf.php');
 // Se incluyen las clases para la transferencia y acceso a datos.
-require_once('../../entities/dto/user.php');
+require_once('../../entities/dto/usuarios.php');
 // Constante para completar la ruta de la API.
 
 /*
@@ -12,7 +12,7 @@ require_once('../../entities/dto/user.php');
 class Report extends FPDF
 {
     // Constante para definir la ruta de las vistas del sitio privado.
-    const CLIENT_URL = 'http://localhost/import_cars/views/dashboard/';
+    const CLIENT_URL = 'http://localhost/import_cars/views/';
     // Propiedad para guardar el título del reporte.
     private $title = null;
 
@@ -72,7 +72,7 @@ class Report extends FPDF
         $this->cell(166, 10, 'Fecha/Hora: ' . date('d-m-Y H:i:s'), 0, 1, 'C');
         // Se ubica el usuario que generó el reporte.
         $this->cell(20);
-        $this->cell(166, 5, 'Usuario: ' . $_SESSION['usuario_privado'], 0, 1, 'C');
+        $this->cell(166, 5, 'Usuario: ' . $_SESSION['nombreus'], 0, 1, 'C');
 
         // Se agrega un salto de línea para mostrar el contenido principal del documento.
         $this->ln(10);
