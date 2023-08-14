@@ -16,9 +16,9 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'capturarUsuario':
-                if (isset($_SESSION['nombre'])) {
+                if (isset($_SESSION['nombreus'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['nombre'];
+                    $result['username'] = $_SESSION['nombreus'];
                 } else {
                     $result['exception'] = 'Nombre de usuario indefinido';
                 }
@@ -171,9 +171,8 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'leerTipos':
-                if ($result['dataset'] = $usuario->leerTipo()) {
+                if ($result['dataset'] = $usuario->leerTipos()) {
                     $result['status'] = 1;
-                    // $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -183,7 +182,6 @@ if (isset($_GET['action'])) {
             case 'leerEmpleados':
                 if ($result['dataset'] = $usuario->leerEmpleados()) {
                     $result['status'] = 1;
-                    // $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -191,9 +189,8 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'leerEstados':
-                if ($result['dataset'] = $usuario->leerEstado()) {
+                if ($result['dataset'] = $usuario->leerEstados()) {
                     $result['status'] = 1;
-                    // $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -245,7 +242,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['idusuario'] = $usuario->getId();
-                    $_SESSION['nombre'] = $usuario->getNombre();
+                    $_SESSION['nombreus'] = $usuario->getNombre();
                 }
                 break;
             default:

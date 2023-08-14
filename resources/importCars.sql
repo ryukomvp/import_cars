@@ -578,3 +578,21 @@ INSERT INTO cajeros (nombrecajero, estadocajero, fechaingreso, idcaja) VALUES
        ('Cajero 5', 1, '2023-04-01',1),
        ('Cajero 6', 1, '2023-06-12',1),
        ('Cajero 7', 1, '2023-07-09',1);
+
+INSERT INTO contactos (telefonocontact, celularcontact, correocontac, idsucursal) VALUES
+       ('7109-4312', '7109-4312', 'empresa1@gmail.com',1),
+       ('0942-1234', '7788-6565', 'empresa2@gmail.com',2),
+       ('7788-6565', '7655-0000', 'empresa3@gmail.com',3),
+       ('7655-0000', '7655-0000', 'empresa4@gmail.com',4),
+       ('0964-4566', '7655-7966', 'empresa5@gmail.com',5),
+       ('1234-5678', '0005-0000', 'empresa6@gmail.com',6),
+       ('0112-0987', '7655-0000', 'empresa7@gmail.com',1);
+
+INSERT INTO parametros (nombreemp, direccionemp, porcentaje, registro, giroempresa, nit, dui, idcontacto) VALUES
+       ('Importadora Pineda','calle 25 pasaje 1 casa 3', 23.0, 1,'Proveedor de repuestos','5632-286468-633-0','33233166-0',1),
+       ('Distribuidora Repuestos S.A de C.V','calle 14 pasaje 2 casa 12', 13.0, 2,'Proveedor de repuestos','3232-234365-233-0','33232455-2',2),
+       ('Importe Repuestos','calle 11 pasaje 5 casa 3', 10.0, 3,'Proveedor de repuestos','0122-223465-532-3','24556556-3',3),
+       ('Repuestos Trasacciones','calle 40 pasaje 2 casa 6', 50.0, 4,'Proveedor de repuestos','2392-271535-233-1','32324556-6',4),
+       ('Import Cars S.A de C.V','calle 12 pasaje 2 casa 8', 12.0, 5,'Proveedor de repuestos','2256-257165-236-2','32345566-7',5),
+       ('Cars Repuestos','calle 23 pasaje 14 casa 7', 60.0, 6,'Proveedor de repuestos','5132-261345-245-2','15564556-8',6),
+       ('Daniela Melissa Sanchez Gutierrez','calle 25 pasaje 1 casa 10', 80.0, 7,'Proveedor de repuestos','6378-226715-283-2','32671556-3',7);

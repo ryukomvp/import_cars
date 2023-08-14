@@ -1,11 +1,13 @@
 <?php
-require_once('../entities/dto/cajeros.php');
+// Se incluye la clase para la transferencia y acceso a datos.
+require_once('../entities/dto/vendedores.php');
+
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $cajero = new Cajero;
+    $vendedor = new Vendedor;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -14,11 +16,12 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
-                if ($_POST['buscar'] == '') {
-                    $result['dataset'] = $cajero->leerRegistros();
+                if ($_POST['search'] == '') {
+                    $result['dataset'] = $vendedor->leerRegistros();
                     $result['status'] = 1;
-                } elseif ($result['dataset'] = $cajero->buscarRegistros($_POST['buscar'])) {
+                } elseif ($result['dataset'] = $vendedor->buscarRegistros($_POST['search'])) {
                     $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -27,70 +30,63 @@ if (isset($_GET['action'])) {
                 break;
             case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
-                if (!$cajero->setNombreCajero($_POST['cajero'])) {
-                    $result['exception'] = 'Nombre de cajero incorrecta';
-                } else if (!$cajero->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Error al validar el estado';
-                } else if (!$cajero->setFechaIngreso($_POST['fechaIngreso'])) {
-                    $result['exception'] = 'Fecha incorrecta';
-                } else if (!$cajero->setIdCaja($_POST['caja'])) {
-                    $result['exception'] = 'Caja Incorrecta';
-                } elseif ($cajero->crearRegistro()) {
+                if (!$vendedor->setIdUsuario($_POST['usuario'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif (!$vendedor->setIdCaja($_POST['caja'])) {
+                    $result['exception'] = 'Caja incorrecta';
+                } elseif ($vendedor->crearRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Cajero creada correctamente';
+                    $result['message'] = 'Vendedor creado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'leerRegistros':
-                if ($result['dataset'] = $cajero->leerRegistros()) {
+                if ($result['dataset'] = $vendedor->leerRegistros()) {
                     $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
+                    $result['exception'] = 'No hay registros';
                 }
                 break;
             case 'leerUnRegistro':
-                if (!$cajero->setId($_POST['id'])) {
-                    $result['exception'] = 'No se pudo seleccionar el cajero';
-                } elseif ($result['dataset'] = $cajero->leerUnRegistro()) {
+                if (!$vendedor->setId($_POST['id'])) {
+                    $result['exception'] = 'No se pudo seleccionar el vendedor';
+                } elseif ($result['dataset'] = $vendedor->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Cajero inexistente';
+                    $result['exception'] = 'Registro inexistente';
                 }
                 break;
             case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
-                if (!$cajero->setId($_POST['id'])) {
-                    $result['exception'] = 'ID incorrecto';
-                } elseif (!$data = $cajero->leerUnRegistro()) {
-                    $result['exception'] = 'No se pudo seleccionar el cajero';
-                } elseif (!$cajero->setNombreCajero($_POST['cajero'])) {
-                    $result['exception'] = 'Nombre de cajero incorrecta';
-                } else if (!$cajero->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Error al validar el estado';
-                } else if (!$cajero->setFechaIngreso($_POST['fechaIngreso'])) {
-                    $result['exception'] = 'Fecha incorrecta';
-                } else if (!$cajero->setIdCaja($_POST['caja'])) {
-                    $result['exception'] = 'Caja Incorrecta';
-                } elseif ($cajero->actualizarRegistro()) {
+                if (!$vendedor->setId($_POST['id'])) {
+                    $result['exception'] = 'No se pudo seleccionar el vendedor';
+                } elseif (!$data = $vendedor->leerUnRegistro()) {
+                    $result['exception'] = 'Categoría inexistente';
+                } elseif (!$vendedor->setIdUsuario($_POST['usuario'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif (!$vendedor->setIdCaja($_POST['caja'])) {
+                    $result['exception'] = 'Caja incorrecta';
+                } elseif ($vendedor->actualizarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Cajero modificado correctamente';
+                    $result['message'] = 'Vendedor actualizado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'eliminarRegistro':
-                if (!$cajero->setId($_POST['idcajero'])) {
-                    $result['exception'] = 'Cajero incorrecta';
-                } elseif (!$data = $cajero->leerUnRegistro()) {
-                    $result['exception'] = 'Cajero inexistente';
-                } elseif ($cajero->eliminarRegistro()) {
+                if (!$vendedor->setId($_POST['idvendedor'])) {
+                    $result['exception'] = 'No se pudo seleccionar el vendedor';
+                } elseif (!$data = $vendedor->leerUnRegistro()) {
+                    $result['exception'] = 'Vendedor inexistente';
+                } elseif ($vendedor->eliminarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Cajero eliminado correctamente';
+                    $result['message'] = 'Vendedor eliminado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

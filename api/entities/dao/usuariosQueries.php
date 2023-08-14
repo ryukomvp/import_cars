@@ -97,10 +97,10 @@ class UsuariosQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function leerTipo()
+    public function leerTipos()
     {
-        $sql = 'SELECT unnest(enum_range(NULL::tiposusuarios)) val, unnest(enum_range(NULL::tiposusuarios)) text';
-        return Database::getRows($sql);
+        $tipos = array(array('Administrador','Administrador'), array('Gerente','Gerente'), array('Vendedor','Vendedor'));
+        return $tipos;
     }
 
     public function leerEmpleados()
@@ -110,10 +110,10 @@ class UsuariosQueries
         return Database::getRows($sql);
     }
 
-    public function leerEstado()
+    public function leerEstados()
     {
-        $sql = 'SELECT unnest(enum_range(NULL::estadosusuarios)) val, unnest(enum_range(NULL::estadosusuarios)) text';
-        return Database::getRows($sql);
+        $estados = array(array('Activo','Activo'), array('Inactivo','Inactivo'), array('Bloqueado','Bloqueado'));
+        return $estados;
     }
 
     public function estadoActivo()
