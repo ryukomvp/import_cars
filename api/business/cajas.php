@@ -57,7 +57,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'leerUnRegistro':
                 if (!$caja->setId($_POST['id'])) {
-                    $result['exception'] = 'Caja incorrecta';
+                    $result['exception'] = 'No se pudo seleccionar la caja';
                 } elseif ($result['dataset'] = $caja->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
@@ -71,7 +71,7 @@ if (isset($_GET['action'])) {
                 if (!$caja->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $caja->leerUnRegistro()) {
-                    $result['exception'] = 'Caja inexistente';
+                    $result['exception'] = 'No se pudo seleccionar la caja';
                 } elseif (!$caja->setNombreCaja($_POST['caja'])) {
                     $result['exception'] = 'Nombre de caja incorrecta';
                 } else if (!$caja->setNombreEquipo($_POST['equipo'])) {

@@ -53,7 +53,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'leerUnRegistro':
                 if (!$contacto->setId($_POST['id'])) {
-                    $result['exception'] = 'Contacto incorrecto';
+                    $result['exception'] = 'No se pudo seleccionar el contacto';
                 } elseif ($result['dataset'] = $contacto->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
@@ -67,7 +67,7 @@ if (isset($_GET['action'])) {
                 if (!$contacto->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $contacto->leerUnRegistro()) {
-                    $result['exception'] = 'Contacto inexistente';
+                    $result['exception'] = 'No se pudo seleccionar el contacto';
                 } elseif (!$contacto->setTelefonoContacto($_POST['telefonoContact'])) {
                     $result['exception'] = 'Teléfono fijo incorrecto';
                 } else if (!$contacto->setCelularContacto($_POST['celularContact'])) {
