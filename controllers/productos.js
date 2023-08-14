@@ -123,11 +123,11 @@ function crearRegistro() {
     TITULO.textContent = 'Crear Producto nuevo';
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
     fillSelect(PRODUCTOS_API, 'leerCodigosComunes', 'codigo');
-    fillSelect(CATEGORIAS_API, 'leerCategorias', 'categoria');
-    fillSelect(MODELOS_API, 'leerModelos', 'modelo');
-    fillSelect(PAISES_API, 'leerPaises', 'paisorigen');
+    fillSelect(CATEGORIAS_API, 'leerRegistros', 'categoria');
+    fillSelect(MODELOS_API, 'leerRegistros', 'modelo');
+    fillSelect(PAISES_API, 'leerRegistros', 'pais');
     fillSelect(PRODUCTOS_API, 'leerEstado', 'estado');
-    fillSelect(TIPO_API, 'leerTiposProductos', 'tipo');
+    fillSelect(TIPO_API, 'leerRegistros', 'tipo');
 }
 
 /*
