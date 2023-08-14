@@ -589,10 +589,10 @@ INSERT INTO contactos (telefonocontact, celularcontact, correocontac, idsucursal
        ('0112-0987', '7655-0000', 'empresa7@gmail.com',1);
 
 INSERT INTO parametros (nombreemp, direccionemp, porcentaje, registro, giroempresa, nit, dui, idcontacto) VALUES
-       ('Daniel Alfredo Marchelli Hernandez','calle 25 pasaje 1 casa 3', 23.0, 1,'Proveedor de repuestos','5632-286468-633-0','33233166-0',1),
-       ('Cristian Alejandro Fernandez Henriquez','calle 14 pasaje 2 casa 12', 13.0, 2,'Proveedor de repuestos','3232-234365-233-0','33232455-2',2),
-       ('Javier Fernando Dominguez Chavez','calle 11 pasaje 5 casa 3', 10.0, 3,'Proveedor de repuestos','0122-223465-532-3','24556556-3',3),
-       ('Jonathan Jose Esquivel Mena','calle 40 pasaje 2 casa 6', 50.0, 4,'Proveedor de repuestos','2392-271535-233-1','32324556-6',4),
-       ('Alexander Adrian Iraheta Rosales','calle 12 pasaje 2 casa 8', 12.0, 5,'Proveedor de repuestos','2256-257165-236-2','32345566-7',5),
-       ('Fatima Andrea Jimenez Flores','calle 23 pasaje 14 casa 7', 60.0, 6,'Proveedor de repuestos','5132-261345-245-2','15564556-8',6),
+       ('Importadora Pineda','calle 25 pasaje 1 casa 3', 23.0, 1,'Proveedor de repuestos','5632-286468-633-0','33233166-0',1),
+       ('Distribuidora Repuestos S.A de C.V','calle 14 pasaje 2 casa 12', 13.0, 2,'Proveedor de repuestos','3232-234365-233-0','33232455-2',2),
+       ('Importe Repuestos','calle 11 pasaje 5 casa 3', 10.0, 3,'Proveedor de repuestos','0122-223465-532-3','24556556-3',3),
+       ('Repuestos Trasacciones','calle 40 pasaje 2 casa 6', 50.0, 4,'Proveedor de repuestos','2392-271535-233-1','32324556-6',4),
+       ('Import Cars S.A de C.V','calle 12 pasaje 2 casa 8', 12.0, 5,'Proveedor de repuestos','2256-257165-236-2','32345566-7',5),
+       ('Cars Repuestos','calle 23 pasaje 14 casa 7', 60.0, 6,'Proveedor de repuestos','5132-261345-245-2','15564556-8',6),
        ('Daniela Melissa Sanchez Gutierrez','calle 25 pasaje 1 casa 10', 80.0, 7,'Proveedor de repuestos','6378-226715-283-2','32671556-3',7);
