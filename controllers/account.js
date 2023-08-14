@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <div class="py-4 overflow-y-auto">
                     <ul class="space-y-2 font-medium">
                         <li>
-                            <a href="#"
+                            <a href="dashboard.html"
                                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -64,15 +64,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <!-- id="dropdown-inventory" es el buscador para poder conectar los dropdowns con los debidos botenes -->
                             <ul id="dropdown-inventory" class="hidden py-2 space-y-2">
                                 <li>
-                                    <a href="#"
+                                    <a href="productos.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Productos y relacionados</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="marcas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Marcas</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="familias.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Familias</a>
                                 </li>
                             </ul>
@@ -97,11 +97,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <!-- id="dropdown-Billing" es el buscador para poder conectar los dropdowns con los debidos botenes -->
                             <ul id="dropdown-Billing" class="hidden py-2 space-y-2">
                                 <li>
-                                    <a href="#"
+                                    <a href="facturas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Facturas</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="detallesfacturas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Detalles facturas</a>
                                 </li>
                             </ul>
@@ -128,19 +128,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                             <!-- id="dropdown-Miscellaneous" es el buscador para poder conectar los dropdowns con los debidos botenes -->
                             <ul id="dropdown-Miscellaneous" class="hidden py-2 space-y-2">
                                 <li>
-                                    <a href="#"
+                                    <a href="usuarios.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Usuarios</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="clientes.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Clientes</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="empleados"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Empleados</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="monedas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Monedas</a>
                                 </li>
                                 <li>
@@ -152,15 +152,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Compañias</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="contactos.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Personas naturales</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="vendedores.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Vendedores</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="proveedores.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Provedores</a>
                                 </li>
                             </ul>
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="reportes.html"
                                 class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                                 <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                                     aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
