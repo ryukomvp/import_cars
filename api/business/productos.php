@@ -49,9 +49,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Precio incorrecto';
                 } elseif (!$productos->setPrecioDesc($_POST['precio descuento'])) {
                     $result['exception'] = 'precio descuento incorrecto';
-                } elseif (!$productos->setRangoFechaIni($_POST['Fecha inicial'])) {
+                } elseif (!$productos->setAnioIni($_POST['Fecha inicial'])) {
                     $result['exception'] = 'Fecha inicial incorrecto';
-                } elseif (!$productos->setRangoFechaFin($_POST['Fecha final'])) {
+                } elseif (!$productos->setAnioFin($_POST['Fecha final'])) {
                     $result['exception'] = 'Fecha final incorrecto';
                 } elseif (!isset($_POST['codigoComun'])) {
                     $result['exception'] = 'Seleccione un codigo';
@@ -113,9 +113,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Precio incorrecto';
                 } elseif (!$productos->setPrecioDesc($_POST['precio descuento'])) {
                     $result['exception'] = 'Precio descuento incorrecto';
-                } elseif (!$productos->setRangoFechaIni($_POST['Fecha inicio'])) {
+                } elseif (!$productos->setAnioIni($_POST['Fecha inicio'])) {
                     $result['exception'] = 'Año incorrecto';
-                } elseif (!$productos->setRangoFechaFin($_POST['Fecha inicio'])) {
+                } elseif (!$productos->setAnioFin($_POST['Fecha inicio'])) {
                     $result['exception'] = 'Año incorrecto';
                 } elseif (!isset($_POST['codigoComun'])) {
                     $result['exception'] = 'Seleccione un codigo';

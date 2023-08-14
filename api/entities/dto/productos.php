@@ -86,20 +86,20 @@ class Productos extends productosQueries
         }
     }
 
-    public function setRangoFechaIni($value)
+    public function setAnioIni($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->rangoFechaIni = $value;
+            $this->anioIni = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setRangoFechaFin($value)
+    public function setAnioFin($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->rangoFechaFin = $value;
+            $this->anioFin = $value;
             return true;
         } else {
             return false;
@@ -199,14 +199,14 @@ class Productos extends productosQueries
         return $this->precioDesc;
     }
 
-    public function getRangoFechaIni()
+    public function getAnioIni()
     {
-        return $this->rangoFechaIni;
+        return $this->anioIni;
     }
 
-    public function getRangoFechaFin()
+    public function getAnioFin()
     {
-        return $this->rangoFechaFin;
+        return $this->anioFin;
     }
 
     public function getCodigoComun()
