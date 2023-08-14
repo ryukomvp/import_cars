@@ -122,7 +122,7 @@ function crearRegistro() {
 async function actualizarRegistro(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idcategoria', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(VENDEDORES_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
