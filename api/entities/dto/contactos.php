@@ -48,7 +48,7 @@ class Contacto extends ContactoQueries
 
     public function setCorreoContacto($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 20)) {
+        if (Validator::validateEmail($value)) {
             $this->correocontact = $value;
             return true;
         } else {

@@ -27,17 +27,17 @@ if (isset($_GET['action'])) {
                 break;
             case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
-                if (!$contacto->setNombreCajero($_POST['cajero'])) {
-                    $result['exception'] = 'Nombre de cajero incorrecta';
-                } else if (!$contacto->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Error al validar el estado';
-                } else if (!$contacto->setFechaIngreso($_POST['fechaIngreso'])) {
-                    $result['exception'] = 'Fecha incorrecta';
-                } else if (!$contacto->setIdCaja($_POST['caja'])) {
-                    $result['exception'] = 'Caja Incorrecta';
+                if (!$contacto->setTelefonoContacto($_POST['telefonoContact'])) {
+                    $result['exception'] = 'Teléfono fijo incorrecto';
+                } else if (!$contacto->setCelularContacto($_POST['celularContact'])) {
+                    $result['exception'] = 'Celular empresarial incorrecto';
+                } else if (!$contacto->setCorreoContacto($_POST['correo'])) {
+                    $result['exception'] = 'Correo incorrecto';
+                } else if (!$contacto->setIdSucursal($_POST['sucursal'])) {
+                    $result['exception'] = 'Sucursal Incorrecta';
                 } elseif ($contacto->crearRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Cajero creada correctamente';
+                    $result['message'] = 'Contacto creado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -53,13 +53,13 @@ if (isset($_GET['action'])) {
                 break;
             case 'leerUnRegistro':
                 if (!$contacto->setId($_POST['id'])) {
-                    $result['exception'] = 'Cajero incorrecta';
+                    $result['exception'] = 'Contacto incorrecto';
                 } elseif ($result['dataset'] = $contacto->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Cajero inexistente';
+                    $result['exception'] = 'Contacto inexistente';
                 }
                 break;
             case 'actualizarRegistro':
@@ -67,30 +67,30 @@ if (isset($_GET['action'])) {
                 if (!$contacto->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $contacto->leerUnRegistro()) {
-                    $result['exception'] = 'Cajero inexistente';
-                } elseif (!$contacto->setNombreCajero($_POST['cajero'])) {
-                    $result['exception'] = 'Nombre de cajero incorrecta';
-                } else if (!$contacto->setEstado(isset($_POST['estado']) ? 1 : 0)) {
-                    $result['exception'] = 'Error al validar el estado';
-                } else if (!$contacto->setFechaIngreso($_POST['fechaIngreso'])) {
-                    $result['exception'] = 'Fecha incorrecta';
-                } else if (!$contacto->setIdCaja($_POST['caja'])) {
-                    $result['exception'] = 'Caja Incorrecta';
+                    $result['exception'] = 'Contacto inexistente';
+                } elseif (!$contacto->setTelefonoContacto($_POST['telefonoContact'])) {
+                    $result['exception'] = 'Teléfono fijo incorrecto';
+                } else if (!$contacto->setCelularContacto($_POST['celularContact'])) {
+                    $result['exception'] = 'Celular empresarial incorrecto';
+                } else if (!$contacto->setCorreoContacto($_POST['correo'])) {
+                    $result['exception'] = 'Correo incorrecto';
+                } else if (!$contacto->setIdSucursal($_POST['sucursal'])) {
+                    $result['exception'] = 'Sucursal Incorrecta';
                 } elseif ($contacto->actualizarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Cajero modificado correctamente';
+                    $result['message'] = 'Contacto modificado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'eliminarRegistro':
-                if (!$contacto->setId($_POST['idcajero'])) {
-                    $result['exception'] = 'Cajero incorrecta';
+                if (!$contacto->setId($_POST['idcontacto'])) {
+                    $result['exception'] = 'Contacto incorrecta';
                 } elseif (!$data = $contacto->leerUnRegistro()) {
-                    $result['exception'] = 'Cajero inexistente';
+                    $result['exception'] = 'Contacto inexistente';
                 } elseif ($contacto->eliminarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Cajero eliminado correctamente';
+                    $result['message'] = 'Contacto eliminado correctamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

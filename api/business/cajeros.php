@@ -53,7 +53,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'leerUnRegistro':
                 if (!$cajero->setId($_POST['id'])) {
-                    $result['exception'] = 'Cajero incorrecta';
+                    $result['exception'] = 'Cajero incorrecto';
                 } elseif ($result['dataset'] = $cajero->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
