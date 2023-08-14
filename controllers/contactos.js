@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const CONTACTO_API = 'business/cajeros.php';
+const CONTACTO_API = 'business/contactos.php';
 // Constante para completar la ruta de la API.
 const SUCURSAL_API = 'business/sucursales.php';
 
@@ -90,12 +90,12 @@ async function cargarRegistros(form = null) {
                         ${row.nombresuc}
                     </td>
                     <td class="px-6 py-4">
-                        <button onclick="actualizarRegistro(${row.idcajero})"
+                        <button onclick="actualizarRegistro(${row.idcontacto})"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                         </button>
-                        <button onclick="eliminarRegistrote(${row.idcajero})"
+                        <button onclick="eliminarRegistrote(${row.idcontacto})"
                             class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
@@ -123,7 +123,7 @@ function crearRegistro() {
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna título a la caja de diálogo.
     TITULO.textContent = 'Crear un registro';
-    fillSelect(CAJA_API, 'leerRegistros', 'caja');
+    fillSelect(SUCURSAL_API, 'readAll', 'sucursal');
 }
 
 /*
@@ -149,9 +149,9 @@ async function actualizarRegistro(id) {
         TITULO.textContent = 'Actualizar un registro';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idcontacto;
-        document.getElementById('telefonocontact').value = JSON.dataset.telefonocontact;
-        document.getElementById('celularcontact').value = JSON.dataset.celularcontact;
-        document.getElementById('correocontac').value = JSON.dataset.correocontac;
+        document.getElementById('telefonoContact').value = JSON.dataset.telefonocontact;
+        document.getElementById('celularContact').value = JSON.dataset.celularcontact;
+        document.getElementById('correo').value = JSON.dataset.correocontac;
         fillSelect(SUCURSAL_API, 'readAll', 'sucursal', JSON.dataset.idsucursal);
     } else {
         sweetAlert(2, JSON.exception, false);

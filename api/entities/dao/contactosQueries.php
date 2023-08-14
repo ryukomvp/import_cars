@@ -13,49 +13,49 @@ class ContactoQueries
         $sql = 'SELECT idcontacto, telefonocontact, celularcontact, correocontac, nombresuc
                 FROM contactos INNER JOIN sucursales USING(idsucursal)
                 WHERE telefonocontact LIKE ? OR celularcontact LIKE ? OR correocontac LIKE ? OR nombresuc LIKE ?
-                ORDER BY nombrecajero';
+                ORDER BY correocontac';
         $params = array("%$value%","%$value%","%$value%","%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO cajeros(nombrecajero, estadocajero, fechaingreso, idcaja)
+        $sql = 'INSERT INTO contactos(telefonocontact, celularcontact, correocontac, idsucursal)
                 VALUES(?,?,?,?)';
-        $params = array($this->nombrecajero, $this->estadocajero, $this->fechaingreso, $this->idcaja);
+        $params = array($this->telefonocontact, $this->celularcontact, $this->correocontact, $this->idsucursal);
         return Database::executeRow($sql, $params);
     }
 
     public function leerRegistros()
     {
-        $sql = 'SELECT idcajero, nombrecajero, estadocajero, fechaingreso, nombrecaja
-                FROM cajeros INNER JOIN cajas USING(idcaja)
-                ORDER BY nombrecajero';
+        $sql = 'SELECT idcontacto, telefonocontact, celularcontact, correocontac, nombresuc
+                FROM contactos INNER JOIN sucursales USING(idsucursal)
+                ORDER BY correocontac';
         return Database::getRows($sql);
     }
 
     public function leerUnRegistro()
     {
-        $sql = 'SELECT idcajero, nombrecajero, estadocajero, fechaingreso, idcaja
-                FROM cajeros
-                WHERE idcajero = ?';
+        $sql = 'SELECT idcontacto, telefonocontact, celularcontact, correocontac, idsucursal
+                FROM contactos
+                WHERE idcontacto = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 
     public function actualizarRegistro()
     {
-        $sql = 'UPDATE cajeros
-                SET nombrecajero = ?, estadocajero = ?, fechaingreso = ?, idcaja = ?
-                WHERE idcajero = ?';
-        $params = array($this->nombrecajero, $this->estadocajero, $this->fechaingreso, $this->idcaja, $this->id);
+        $sql = 'UPDATE contactos
+                SET telefonocontact = ?, celularcontact = ?, correocontac = ?, idsucursal = ?
+                WHERE idcontacto = ?';
+        $params = array($this->telefonocontact, $this->celularcontact, $this->correocontact, $this->idsucursal, $this->id);
         return Database::executeRow($sql, $params);
     }
 
     public function eliminarRegistro()
     {
-        $sql = 'DELETE FROM cajeros
-                WHERE idcajero = ?';
+        $sql = 'DELETE FROM contactos
+                WHERE idcontacto = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
