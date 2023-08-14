@@ -16,7 +16,7 @@ class productosQueries
         FROM productos 
         INNER JOIN categorias ON productos.idcategoria = categorias.idcategoria 
         INNER JOIN codigoscomunes ON productos.idcodigocomun = codigoscomunes.idcodigocomun 
-        INNER JOIN tiposProductos ON productos.idtipoproducto = tiposproductos.idtipoproducto 
+        INNER JOIN tiposproductos ON productos.idtipoproducto = tiposproductos.idtipoproducto 
         INNER JOIN modelos ON productos.idmodelo = modelos.idmodelo 
         INNER JOIN paisesdeorigen ON productos.idpais = paisesdeorigen.idpais 
         WHERE productos.nombreprob LIKE ? OR productos.descripcion LIKE ? OR categorias.categoria  LIKE ? OR codigoComun.nomenclatura  LIKE ? OR CAST (codigoComun.codigo as varchar) LIKE ?

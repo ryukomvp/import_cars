@@ -109,7 +109,7 @@
                                         <label for="nombre"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
                                             del producto:</label>
-                                        <input type="text" id="nombre" name="nombre"
+                                        <input type="text" id="nombreprod" name="nombre"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Nombre" required>
                                     </div>
@@ -121,11 +121,25 @@
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Precio" required>
                                     </div>
+                                    <div>
+                                        <label for="precio con descuento"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio:</label>
+                                        <input type="number" id="preciodesc" name="preciodesc" min="1"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Precio" required>
+                                    </div>
                                     <!--Input anio del producto-->
                                     <div>
-                                        <label for="anio"
+                                        <label for="anio inicial"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Año:</label>
-                                        <input type="number" id="anio" name="anio" min="1900" max="2023"
+                                        <input type="number" id="anioini" name="anioini" min="1900" max="2023"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Año" required>
+                                    </div>
+                                    <div>
+                                        <label for="anio final"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Año:</label>
+                                        <input type="number" id="aniofin" name="aniofin" min="1900" max="2023"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             placeholder="Año" required>
                                     </div>
@@ -140,14 +154,6 @@
                                         <datalist id="datalistOptions">
                                             <option id="codigo" name="codigo"></option>
                                         </datalist>
-                                    </div>
-                                    <!--Input proveedor-->
-                                    <div>
-                                        <label for="proveedor"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Proveedor:</label>
-                                        <select id="proveedor" name="proveedor"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
                                     </div>
                                     <!--Input categoria-->
                                     <div>
@@ -194,7 +200,7 @@
                                     </div>
                                     <!--Area de texto Descipcion-->
                                     <div class="col-start-1 col-end-3">
-                                        <label for="descripcion"
+                                        <label for="descripcionprod"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
                                         <textarea id="descripcion" name="descripcion" rows="4"
                                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -230,7 +236,7 @@
                                 Producto
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Codigo - nomenclatura
+                                Codigo 
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Año
@@ -239,7 +245,7 @@
                                 Precio
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Proveedor
+                                Precio descuento
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Categoría

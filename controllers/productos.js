@@ -1,7 +1,6 @@
 // Constante para completar la ruta de la API.
 const PRODUCTOS_API = 'business/productos.php';
 const CODIGOS_COMUNES_API = 'business/codigosComunes.php';
-const PROVEEDORES_API = 'business/proveedores.php';
 const CATEGORIAS_API = 'business/categorias.php';
 const MODELOS_API = 'business/modelos.php';
 const PAISES_API = 'business/paisesOrigen.php';
@@ -82,10 +81,9 @@ async function rellenarTabla(form = null) {
                     <td class="hidden px-6 py-4">${row.idproducto}</td>
                     <td class="flex justify-center px-6 py-4"><img src="${SERVER_URL}images/productos/${row.imagen}" class="h-28 w-28"></td>
                     <td class="px-6 py-4">${row.nombre}</td>
-                    <td class="px-6 py-4">${row.codigo}-${row.nomenclatura}</td>
-                    <td class="px-6 py-4">${row.anio}</td>
+                    <td class="px-6 py-4">${row.codigo}</td>
+                    <td class="px-6 py-4">${row.anioini}-${row.aniofin}</td>
                     <td class="px-6 py-4">${row.precio}</td>
-                    <td class="px-6 py-4">${row.proveedor}</td>
                     <td class="px-6 py-4">${row.categoria}</td>
                     <td class="px-6 py-4">${row.modelo}</td>
                     <td class="px-6 py-4" >
@@ -125,7 +123,6 @@ function crearRegistro() {
     TITULO.textContent = 'Crear Producto nuevo';
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
     fillSelect(PRODUCTOS_API, 'leerCodigosComunes', 'codigo');
-    fillSelect(PROVEEDORES_API, 'leerProveedores', 'proveedor');
     fillSelect(CATEGORIAS_API, 'leerCategorias', 'categoria');
     fillSelect(MODELOS_API, 'leerModelos', 'modelo');
     fillSelect(PAISES_API, 'leerPaises', 'paisorigen');
@@ -158,12 +155,13 @@ async function actualizarRegistro(id) {
         // Se establece el campo de archivo como opcional.
         document.getElementById('archivo').required = false;
         document.getElementById('id').value = JSON.dataset.idproducto;
-        document.getElementById('nombre').value = JSON.dataset.nombre;
-        document.getElementById('descripcion').value = JSON.dataset.descripcion;
+        document.getElementById('nombreprod').value = JSON.dataset.nombreprod;
+        document.getElementById('descripcionprod').value = JSON.dataset.descripcionprod;
         document.getElementById('precio').value = JSON.dataset.precio;
-        document.getElementById('anio').value = JSON.dataset.anio;
+        document.getElementById('preciodesc').value = JSON.dataset.preciodesc;
+        document.getElementById('anioinicial').value = JSON.dataset.anioinicial;
+        document.getElementById('aniofinal').value = JSON.dataset.aniofinal;
         fillSelect(PRODUCTOS_API, 'leerCodigosComunes', 'codigo', JSON.dataset.idcodigocomun);
-        fillSelect(PROVEEDORES_API, 'leerProveedores', 'proveedor', JSON.dataset.idproveedor);
         fillSelect(CATEGORIAS_API, 'leerCategorias', 'categoria', JSON.dataset.idcategoria);
         fillSelect(MODELOS_API, 'leerModelos', 'modelo', JSON.dataset.idmodelo);
         fillSelect(PAISES_API, 'leerPaises', 'paisorigen', JSON.dataset.idpais);

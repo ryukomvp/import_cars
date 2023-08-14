@@ -15,7 +15,7 @@ class Productos extends productosQueries
     protected $precioDesc = null;
     protected $anioIni = null;
     protected $anioFin = null;
-    protected $idCodigoComun = null;
+    protected $idCodigosComunes = null;
     protected $idTipoProducto = null;
     protected $idCategoria = null;
     protected $idModelo = null;
@@ -106,10 +106,10 @@ class Productos extends productosQueries
         }
     }
 
-    public function setCodigoComun($value)
+    public function setCodigosComunes($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idCodigoComun = $value;
+            $this->idCodigosComunes = $value;
             return true;
         } else {
             return false;
@@ -209,9 +209,9 @@ class Productos extends productosQueries
         return $this->anioFin;
     }
 
-    public function getCodigoComun()
+    public function getCodigosComunes()
     {
-        return $this->idCodigoComun;
+        return $this->idCodigosComunes;
     }
 
     public function getTipoProducto()

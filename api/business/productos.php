@@ -53,9 +53,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Fecha inicial incorrecto';
                 } elseif (!$productos->setAnioFin($_POST['Fecha final'])) {
                     $result['exception'] = 'Fecha final incorrecto';
-                } elseif (!isset($_POST['codigoComun'])) {
+                } elseif (!isset($_POST['codigoscomunes'])) {
                     $result['exception'] = 'Seleccione un codigo';
-                } elseif (!$productos->setCodigoComun($_POST['codigoComun'])) {
+                } elseif (!$productos->setCodigosComunes($_POST['codigoscomunes'])) {
                     $result['exception'] = 'codigo incorrecta';
                 } elseif (!isset($_POST['tipo'])) {
                     $result['exception'] = 'Seleccione un tipo de producto';
