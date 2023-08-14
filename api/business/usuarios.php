@@ -16,9 +16,9 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'capturarUsuario':
-                if (isset($_SESSION['nombre'])) {
+                if (isset($_SESSION['nombreus'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['nombre'];
+                    $result['username'] = $_SESSION['nombreus'];
                 } else {
                     $result['exception'] = 'Nombre de usuario indefinido';
                 }
