@@ -4,16 +4,13 @@ require_once('../entities/dao/proveedoresQueries.php');
 
 class proveedores extends proveedoresQueries
 {
-    protected $idproveedor = null;
-    protected $nombre = null;
-    protected $telefono = null;
-    protected $correo = null;
-    protected $fechacompra = null;
-    protected $saldoinicial = null;
-    protected $saldoactual = null;
+    protected $id = null;
+    protected $nombreprov = null;
+    protected $telefonoprov = null;
+    protected $correoprov = null;
     protected $codigoprov = null;
     protected $codigomaestroprov = null;
-    protected $dui = null;
+    protected $duiprov = null;
     protected $idmoneda = null;
     protected $numeroregistroprov = null;
 
@@ -22,7 +19,7 @@ class proveedores extends proveedoresQueries
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idproveedor = $value;
+            $this->id = $value;
             return true;
         } else {
             return false;
@@ -32,7 +29,7 @@ class proveedores extends proveedoresQueries
     public function setNombre($value)
     {
         if (Validator::validateString($value, 1, 25)) {
-            $this->nombre = $value;
+            $this->nombreprov = $value;
             return true;
         } else {
             return false;
@@ -42,7 +39,7 @@ class proveedores extends proveedoresQueries
     public function setTelefono($value)
     {
         if (Validator::validatePhone($value)) {
-            $this->telefono = $value;
+            $this->telefonoprov = $value;
             return true;
         } else {
             return false;
@@ -52,44 +49,14 @@ class proveedores extends proveedoresQueries
     public function setCorreo($value)
     {
         if (Validator::validateEmail($value)) {
-            $this->correo = $value;
+            $this->correoprov = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setFechaCompra($value)
-    {
-        if (Validator::validateDate($value)) {
-            $this->fechacompra = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setSaldoInicial($value)
-    {
-        if (Validator::validateMoney($value)) {
-            $this->saldoinicial = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setSaldoActual($value)
-    {
-        if (Validator::validateMoney($value)) {
-            $this->saldoactual = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setCodigoProv($value)
+    public function setCodigo($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->codigoprov = $value;
@@ -99,7 +66,7 @@ class proveedores extends proveedoresQueries
         }
     }
 
-    public function setCodigoMaestroProv($value)
+    public function setCodigoMaestro($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->codigomaestroprov = $value;
@@ -112,7 +79,7 @@ class proveedores extends proveedoresQueries
     public function setDui($value)
     {
         if (Validator::validateDUI($value)) {
-            $this->dui = $value;
+            $this->duiprov = $value;
             return true;
         } else {
             return false;
@@ -143,37 +110,22 @@ class proveedores extends proveedoresQueries
 
     public function getId()
     {
-        return $this->idproveedor;
+        return $this->id;
     }
 
     public function getNombre()
     {
-        return $this->nombre;
+        return $this->nombreprov;
     }
 
     public function getTelefono()
     {
-        return $this->telefono;
+        return $this->telefonoprov;
     }
 
     public function getCorreo()
     {
-        return $this->correo;
-    }
-
-    public function getFechaCompra()
-    {
-        return $this->fechacompra;
-    }
-
-    public function getSaldoInicial()
-    {
-        return $this->saldoinicial;
-    }
-
-    public function getSaldoActual()
-    {
-        return $this->saldoactual;
+        return $this->correoprov;
     }
 
     public function getCodigoProv()
@@ -188,7 +140,7 @@ class proveedores extends proveedoresQueries
 
     public function getDui()
     {
-        return $this->dui;
+        return $this->duiprov;
     }
 
     public function getIdMoneda()

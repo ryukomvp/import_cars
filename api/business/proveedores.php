@@ -37,6 +37,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'crearProveedor':
+                print_r($_POST);
                 $_POST = Validator::validateForm($_POST);
                 if (!$proveedores->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
@@ -44,15 +45,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Teléfonon incorrecto';
                 } elseif (!$proveedores->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif (!$proveedores->setFechaCompra($_POST['fechaProv'])) {
-                    $result['exception'] = 'Fecha de compra incorrecta';
-                } elseif (!$proveedores->setSaldoInicial($_POST['saldoInicial'])) {
-                    $result['exception'] = 'Saldo inicial incorrecto';
-                } elseif (!$proveedores->setSaldoActual($_POST['saldoActual'])) {
-                    $result['exception'] = 'Saldo actual incorrecto';
-                } elseif (!$proveedores->setCodigoProv($_POST['codigoProv'])) {
+                } elseif (!$proveedores->setCodigo($_POST['codigoProv'])) {
                     $result['exception'] = 'Codigo del proveedor incorrecto';
-                } elseif (!$proveedores->setCodigoMaestroProv($_POST['codigoMaestroProv'])) {
+                } elseif (!$proveedores->setCodigoMaestro($_POST['codigomaestroprov'])) {
                     $result['exception'] = 'Codigo maestro del proveedor incorrecto';
                 } elseif (!$proveedores->setDui($_POST['dui'])) {
                     $result['exception'] = 'DUI del proveedor incorrecto';
@@ -79,6 +74,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'actualizarProveedor':
+                print_r($_POST);
                 $_POST = Validator::validateForm($_POST);
                 if (!$proveedores->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
@@ -90,15 +86,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Teléfonon incorrecto';
                 } elseif (!$proveedores->setCorreo($_POST['correo'])) {
                     $result['exception'] = 'Correo incorrecto';
-                } elseif (!$proveedores->setFechaCompra($_POST['fechaProv'])) {
-                    $result['exception'] = 'Fecha de compra incorrecta';
-                } elseif (!$proveedores->setSaldoInicial($_POST['saldoInicial'])) {
-                    $result['exception'] = 'Saldo inicial incorrecto';
-                } elseif (!$proveedores->setSaldoActual($_POST['saldoActual'])) {
-                    $result['exception'] = 'Saldo actual incorrecto';
-                } elseif (!$proveedores->setCodigoProv($_POST['codigoProv'])) {
+                } elseif (!$proveedores->setCodigo($_POST['codigoProv'])) {
                     $result['exception'] = 'Codigo del proveedor incorrecto';
-                } elseif (!$proveedores->setCodigoMaestroProv($_POST['codigoMaestroProv'])) {
+                } elseif (!$proveedores->setCodigoMaestro($_POST['codigoMaestroProv'])) {
                     $result['exception'] = 'Codigo maestro del proveedor incorrecto';
                 } elseif (!$proveedores->setDui($_POST['dui'])) {
                     $result['exception'] = 'DUI del proveedor incorrecto';

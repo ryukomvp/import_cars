@@ -80,10 +80,11 @@ async function rellenarTabla(form = null) {
                 <tr class="text-center bg-white hover:bg-blue-200">
                     <td class="hidden px-6 py-4">${row.idproducto}</td>
                     <td class="flex justify-center px-6 py-4"><img src="${SERVER_URL}images/productos/${row.imagen}" class="h-28 w-28"></td>
-                    <td class="px-6 py-4">${row.nombre}</td>
+                    <td class="px-6 py-4">${row.nombreprod}</td>
                     <td class="px-6 py-4">${row.codigo}</td>
-                    <td class="px-6 py-4">${row.anioini}-${row.aniofin}</td>
+                    <td class="px-6 py-4">${row.anioinicial}-${row.aniofinal}</td>
                     <td class="px-6 py-4">${row.precio}</td>
+                    <td class="px-6 py-4">${row.preciodesc}</td>
                     <td class="px-6 py-4">${row.categoria}</td>
                     <td class="px-6 py-4">${row.modelo}</td>
                     <td class="px-6 py-4" >
@@ -125,7 +126,7 @@ function crearRegistro() {
     fillSelect(PRODUCTOS_API, 'leerCodigosComunes', 'codigo');
     fillSelect(CATEGORIAS_API, 'leerRegistros', 'categoria');
     fillSelect(MODELOS_API, 'leerRegistros', 'modelo');
-    fillSelect(PAISES_API, 'leerRegistros', 'pais');
+    fillSelect(PAISES_API, 'leerRegistros', 'paisorigen');
     fillSelect(PRODUCTOS_API, 'leerEstado', 'estado');
     fillSelect(TIPO_API, 'leerRegistros', 'tipo');
 }

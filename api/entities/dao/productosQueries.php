@@ -28,7 +28,7 @@ class productosQueries
     public function crearProducto()
     {
         // , $_SESSION['idUsuario']
-        $sql = 'INSERT INTO productos(nombreprob, imagen, descripcionpros, precio, preciodesc, anioinicial, aniofinal, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, estadoproducto)
+        $sql = 'INSERT INTO productos(nombreprod, imagen, descripcionprod, precio, preciodesc, anioinicial, aniofinal, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, estadoproducto)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->idCodigoComun, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto);
         return Database::executeRow($sql, $params);
@@ -36,7 +36,7 @@ class productosQueries
 
     public function leerTodo() 
     {
-        $sql = 'SELECT p.idproducto, p.nombrepros, p.imagen, p.descripcionprod, p.precio, p.preciodesc , p.anioinicial, p.aniofinal, a.codigo, b.tipoproducto, c.categoria, n.modelo, s.pais, p.estadoproducto
+        $sql = 'SELECT p.idproducto, p.nombreprod, p.imagen, p.descripcionprod, p.precio, p.preciodesc , p.anioinicial, p.aniofinal, a.codigo, b.tipoproducto, c.categoria, n.modelo, s.pais, p.estadoproducto
                 FROM productos p
                 INNER JOIN categorias c ON p.idcategoria = c.idcategoria 
                 INNER JOIN codigoscomunes a ON p.idcodigocomun = a.idcodigocomun
@@ -88,8 +88,8 @@ class productosQueries
 
     public function leerEstado()
     {
-        $sql = 'SELECT unnest(enum_range(NULL::estadosproductos)) val, unnest(enum_range(NULL::estadosproductos)) text';
-        return Database::getRows($sql);
+        $estados = array (array('Escaso', 'Escaso'), array('Existente', 'Existente'), array('Sin existencias', 'Sin existencias'));
+        return $estados;
     }
 
     public function leerCodigosComunes()
