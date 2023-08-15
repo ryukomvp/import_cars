@@ -69,7 +69,6 @@ async function cargarRegistros(form = null) {
             REGISTROS_TABLA.innerHTML += `
                 <tr  class="text-center bg-white hover:bg-blue-200">
                     <td class="hidden px-6 py-4">${row.idcodigocomun}</td>
-                    <td class="px-6 py-4">${row.nomenclatura}</td>
                     <td class="px-6 py-4">${row.codigo}</td>
                     <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idcodigocomun})"
@@ -122,7 +121,6 @@ async function actualizarRegistro(id) {
         TITULO.textContent = 'Actualizar código común';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idcodigocomun;
-        document.getElementById('nomenclatura').value = JSON.dataset.nomenclatura;
         document.getElementById('codigo').value = JSON.dataset.codigo;
     } else {
         sweetAlert(2, JSON.exception, false);
