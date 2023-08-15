@@ -13,10 +13,10 @@ class sucursalesqueries
      mediante el nombre o la direccion de la sucursal*/
     public function searchRows($value)
     {
-        $sql = 'SELECT idsucursal, nombre, telefono, correo, direccion
+        $sql = 'SELECT idsucursal, nombresuc, telefonosuc, correosuc, direccionsuc
             FROM sucursales
-            WHERE nombre LIKE ? OR telefono LIKE ? OR direccion LIKE ?
-            ORDER BY nombre';
+            WHERE nombresuc LIKE ? OR telefonosuc LIKE ? OR direccionsuc LIKE ?
+            ORDER BY nombresuc';
         $params = array("%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
@@ -24,7 +24,7 @@ class sucursalesqueries
     /*Método para la insercion de datos en la base de datos*/
     public function createRow()
     {
-        $sql = 'INSERT INTO sucursales(nombre, telefono, correo, direccion)
+        $sql = 'INSERT INTO sucursales(nombresuc, telefonosuc, correosuc, direccionsuc)
             VALUES(?, ?, ?, ?)';
         $params = array($this->nombre, $this->telefono, $this->correo, $this->direccion);
         return Database::executeRow($sql, $params);
@@ -42,7 +42,7 @@ class sucursalesqueries
     /*Funcion para cargar un unico registro*/
     public function readOne()
     {
-        $sql = 'SELECT idsucursal, nombre, telefono, correo, direccion
+        $sql = 'SELECT idsucursal, nombresuc, telefonosuc, correosuc, direccionsuc
             FROM sucursales
             WHERE idsucursal = ?';
         $params = array($this->id);
@@ -53,7 +53,7 @@ class sucursalesqueries
     public function updateRow()
     {
         $sql = 'UPDATE sucursales
-            SET  nombre = ?, telefono = ?, correo = ?, direccion = ?
+            SET  nombresuc = ?, telefonosuc = ?, correosuc = ?, direccionsuc = ?
             WHERE idsucursal = ?';
         $params = array($this->nombre, $this->telefono, $this->correo, $this->direccion, $this->id);
         return Database::executeRow($sql, $params);

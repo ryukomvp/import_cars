@@ -1,8 +1,8 @@
 <?php
 // Se incluye la clase para generar archivos PDF.
-require_once('../../libraries/fpdf185/fpdf.php');
+require_once('../libraries/fpdf185/fpdf.php');
 // Se incluyen las clases para la transferencia y acceso a datos.
-require_once('../../entities/dto/usuarios.php');
+require_once('../entities/dto/usuarios.php');
 // Constante para completar la ruta de la API.
 
 /*
@@ -61,7 +61,7 @@ class Report extends FPDF
     public function header()
     {
         // Se establece el logo.
-        $this->image('../../images/logo.png', 15, 15, 20);
+        $this->image('../images/logo.png', 15, 15, 20);
         // Se ubica el título.
         $this->cell(20);
         $this->setFont('Arial', 'B', 15);

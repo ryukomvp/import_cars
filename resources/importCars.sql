@@ -201,7 +201,7 @@ CREATE TABLE IF NOT EXISTS familiasbodegas(
 
 CREATE TABLE IF NOT EXISTS productos(
 	idproducto INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    nombreprod VARCHAR(50) NOT NULL,
+    nombreprod VARCHAR(70) NOT NULL,
     imagen VARCHAR(150),
     descripcionprod VARCHAR(150) NOT NULL,
     precio NUMERIC(6,2) NOT NULL,
@@ -606,11 +606,41 @@ INSERT INTO vendedores(idusuario, idcaja) VALUES
        (6,1),
        (7,4);
        
-/*INSERT INTO productos(nombreprod, imagen, descripcionprod, precio, preciodesc, anioinicial, aniofinal, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, idestadoproducto) VALUES
-       ('Focos delantero amarillo', 'Foco frontal amarillo', 20.00, 15.00, 2010, 2017, 1112, 1, 1, 1, 1, ),
-       (2,2),
-       (3,3),
-       (4,4),
-       (5,3),
-       (6,1),
-       (7,4);*/
+INSERT INTO productos(nombreprod, descripcionprod, precio, preciodesc, anioinicial, aniofinal, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, estadoproducto) VALUES
+       ('Foco frontal amarillo Toyota Corolla 2012', 'Foco frontal amarillo', 20.00, 15.00, 2010, 2017, 1, 1, 3, 1, 1,'Existente'),
+       ('Retrovisor derecho Nissan Sentra 2017', 'Retrovisor derecho blanco', 20.00, 15.00, 2015, 2017, 2, 2, 9, 2, 2,'Existente'),
+       ('Capo Toyota Supra MK4', 'Capo negro Toyota Supra 2002', 120.00, 115.00, 2002, 2020, 3, 5, 7, 3, 3,'Existente'),
+       ('Puerta derecha delantera Mitsubishi Montero 2015', 'Puerta delantera gris', 100.00, 97.99, 2015, 2020, 4, 3, 2, 4, 4,'Existente'),
+       ('Bomper trasero Mercedes Benz Clase A 2021', 'Bomper trasero gris', 60.00, 58.00, 2021, 2022, 5, 4, 7, 5, 5,'Existente'),
+       ('Escape Hyundai El Antra 2017', 'Escape Hyundai EL Antra', 35.50, 33.99, 2017, 2020, 6, 4, 7, 6, 6,'Existente'),
+       ('Foco delantero blanco Honda Civic SI 2020', 'Foco frontal blanco Honda Civic SI', 44.00, 43.00, 2020, 2022, 7, 1, 3, 7, 7,'Existente');
+
+/*INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro) VALUES
+       (1, 'Foco frontal amarillo', 20.00, 15.00, 2010, 2017, 1, 1, 3, 1, 1,'Existente');*/
+
+create table tiposplazos(
+    
+    idtipoplazo int AUTO_INCREMENT PRIMARY KEY not null,
+    tipoplazo varchar(12)
+
+);
+        
+create table codigosplazos(
+    
+    idcodigoplazo int AUTO_INCREMENT PRIMARY KEY not null,
+    plazo varchar(30),
+    dias int not null
+
+);
+
+create table plazos(
+    
+    idplazo int AUTO_INCREMENT PRIMARY KEY not null,
+    descripcion varchar(30) not null,
+    vencimiento int not null,
+    idcodigoplazo int not null,
+    idtipoplazo int not null,
+	CONSTRAINT fkplazotipo
+    FOREIGN KEY (idmarca)
+    REFERENCES marcas(idmarca) ON UPDATE CASCADE ON DELETE CASCADE
+);
