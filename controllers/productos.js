@@ -160,14 +160,14 @@ async function actualizarRegistro(id) {
         document.getElementById('descripcionprod').value = JSON.dataset.descripcionprod;
         document.getElementById('precio').value = JSON.dataset.precio;
         document.getElementById('preciodesc').value = JSON.dataset.preciodesc;
-        document.getElementById('anioinicial').value = JSON.dataset.anioinicial;
+        document.getElementById('anioinicial').value = JSON.dataset.anioinicio;
         document.getElementById('aniofinal').value = JSON.dataset.aniofinal;
-        fillSelect(PRODUCTOS_API, 'leerCodigosComunes', 'codigo', JSON.dataset.idcodigocomun);
-        fillSelect(CATEGORIAS_API, 'leerCategorias', 'categoria', JSON.dataset.idcategoria);
-        fillSelect(MODELOS_API, 'leerModelos', 'modelo', JSON.dataset.idmodelo);
-        fillSelect(PAISES_API, 'leerPaises', 'paisorigen', JSON.dataset.idpais);
-        fillSelect(PRODUCTOS_API, 'leerEstado', 'estado', JSON.dataset.estadoproducto);
-        fillSelect(TIPO_API, 'leerTiposProductos', 'tipo', JSON.dataset.idtipoproducto);
+        fillSelect(PRODUCTOS_API, 'leerCodigosComunes', 'codigo');
+        fillSelect(CATEGORIAS_API, 'leerRegistros', 'categoria');
+        fillSelect(MODELOS_API, 'leerRegistros', 'modelo');
+        fillSelect(PAISES_API, 'leerRegistros', 'paisorigen');
+        fillSelect(PRODUCTOS_API, 'leerEstado', 'estado');
+        fillSelect(TIPO_API, 'leerRegistros', 'tipo');
     } else {
         sweetAlert(2, JSON.exception, false);
     }

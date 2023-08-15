@@ -13,10 +13,10 @@ class BodegasQueries
      mediante el nombre de la bodega*/
     public function buscarRegistros($value)
     {
-        $sql = 'SELECT idbodega, numerobodega, bodegas.direccion, nombre
+        $sql = 'SELECT idbodega, numerobod, bodegas.direccionbod, nombresuc
              FROM bodegas INNER JOIN sucursales ON bodegas.idsucursal = sucursales.idsucursal
-             WHERE  bodegas.direccion ILIKE ? OR nombre ILIKE ?
-             ORDER BY numerobodega';
+             WHERE  bodegas.direccionbod LIKE ? OR nombresuc LIKE ?
+             ORDER BY numerobod';
         $params = array("%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
@@ -33,9 +33,9 @@ class BodegasQueries
     /*Funcion para cargar los registros en la tabla y mostrarlos*/
     public function leerRegistros()
     {
-        $sql = 'SELECT idbodega, numerobodega, bodegas.direccion, nombre
+        $sql = 'SELECT idbodega, numerobod, bodegas.direccionbod, nombresuc
             FROM bodegas INNER JOIN sucursales ON bodegas.idsucursal = sucursales.idsucursal
-            ORDER BY numerobodega';
+            ORDER BY numerobod';
         return Database::getRows($sql);
     }
 
@@ -43,7 +43,7 @@ class BodegasQueries
     /*Funcion para cargar un unico registro*/
     public function leerUnRegistro()
     {
-        $sql = 'SELECT idbodega, numerobodega, direccion, idsucursal
+        $sql = 'SELECT idbodega, numerobod, direccionbod, idsucursal
              FROM bodegas
              WHERE idbodega = ?';
         $params = array($this->id);
@@ -54,7 +54,7 @@ class BodegasQueries
     public function actualizarRegistro()
     {
         $sql = 'UPDATE bodegas
-            SET  numerobodega = ?, direccion = ?, idsucursal = ?
+            SET  numerobod = ?, direccionbod = ?, idsucursal = ?
             WHERE idbodega = ?';
         $params = array($this->numerobodega, $this->direccion, $this->sucursal, $this->id);
         return Database::executeRow($sql, $params);
@@ -72,9 +72,9 @@ class BodegasQueries
     /*Funcion para cargar los registros en el select y mostrarlos*/
     public function cargarSucursal()
     {
-        $sql = 'SELECT idsucursal, nombre, telefono, correo
+        $sql = 'SELECT idsucursal, nombresuc, telefonosuc, correosuc, direccionsuc
             FROM sucursales
-            ORDER BY nombre';
+            ORDER BY nombresuc';
         return Database::getRows($sql);
     }
 }

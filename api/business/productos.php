@@ -38,7 +38,6 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'crearProducto':
-                print_r($_POST);
                 $_POST = Validator::validateForm($_POST);
                 if (!$productos->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
@@ -112,22 +111,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Descripción incorrecta';
                 } elseif (!$productos->setPrecio($_POST['precio'])) {
                     $result['exception'] = 'Precio incorrecto';
-                } elseif (!$productos->setPrecioDesc($_POST['precio descuento'])) {
-                    $result['exception'] = 'Precio descuento incorrecto';
-                } elseif (!$productos->setAnioIni($_POST['Fecha inicio'])) {
-                    $result['exception'] = 'Año incorrecto';
-                } elseif (!$productos->setAnioFin($_POST['Fecha inicio'])) {
-                    $result['exception'] = 'Año incorrecto';
-                } elseif (!isset($_POST['codigoComun'])) {
+                } elseif (!$productos->setPrecioDesc($_POST['preciodesc'])) {
+                    $result['exception'] = 'precio descuento incorrecto';
+                } elseif (!$productos->setAnioIni($_POST['anioinicial'])) {
+                    $result['exception'] = 'Fecha inicial incorrecto';
+                } elseif (!$productos->setAnioFin($_POST['aniofinal'])) {
+                    $result['exception'] = 'Fecha final incorrecto';
+                } elseif (!isset($_POST['codigoscomunes'])) {
                     $result['exception'] = 'Seleccione un codigo';
-                } elseif (!$productos->setCodigosComunes($_POST['codigoComun'])) {
+                } elseif (!$productos->setCodigosComunes($_POST['codigoscomunes'])) {
                     $result['exception'] = 'codigo incorrecta';
                 } elseif (!isset($_POST['tipo'])) {
-                    $result['exception'] = 'Seleccione u tipo de producto';
+                    $result['exception'] = 'Seleccione un tipo de producto';
                 } elseif (!$productos->setTipoProducto($_POST['tipo'])) {
                     $result['exception'] = 'Tipo de producto incorrecta';
-                } elseif (!isset($_POST['proveedor'])) {
-                    $result['exception'] = 'Seleccione un proveedor';
                 } elseif (!isset($_POST['categoria'])) {
                     $result['exception'] = 'Seleccione una categoría';
                 } elseif (!$productos->setCategoria($_POST['categoria'])) {
@@ -148,13 +145,6 @@ if (isset($_GET['action'])) {
                         $result['message'] = 'Producto modificado correctamente';
                     } else {
                         $result['exception'] = Database::getException();
-                    }
-                } elseif ($productos->actualizarProducto($data['imagen'])) {
-                    $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $productos->getRuta(), $productos->getImagen())) {
-                        $result['message'] = 'Producto modificado correctamente';
-                    } else {
-                        $result['message'] = 'Producto modificado pero no se guardó la imagen';
                     }
                 } else {
                     $result['exception'] = Database::getException();

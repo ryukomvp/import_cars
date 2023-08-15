@@ -1,8 +1,8 @@
 <?php
 // Se incluye la clase con las plantillas para generar reportes.
-require_once('../../helpers/report.php');
+require_once('../helpers/report.php');
 // Se incluyen las clases para la transferencia y acceso a datos.
-require_once('../../entities/dto/usuarios.php');
+require_once('../entities/dto/usuarios.php');
 
 // Se instancia la clase para crear el reporte.
 $pdf = new Report;
@@ -32,13 +32,13 @@ foreach ($dataTipos as $indice => $valor) {
     // Se establece la categoría para obtener sus productos, de lo contrario se imprime un mensaje de error.
     if ($usuario->setTipo($valor)) {
         // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-        if ($dataUsuarios = $usuario->usuariosAcceso()) {
+        if ($dataUsuarios = $usuario->reporteUsuariosTipo()) {
             // Se recorren los registros fila por fila.
             foreach ($dataUsuarios as $rowUsuario) {
                 // Se imprimen las celdas con los datos de los productos.
-                $pdf->cell(46.5, 10, $rowUsuario['nombreus'], 1, 0);
-                $pdf->cell(93, 10, $pdf->encodeString($rowUsuario['nombreemp']), 1, 0);
-                $pdf->cell(46.5, 10, $rowUsuario['estadousuario'], 1, 1);
+                $pdf->cell(46.5, 10, $rowUsuario['usuario'], 1, 0);
+                $pdf->cell(93, 10, $pdf->encodeString($rowUsuario['empleado']), 1, 0);
+                $pdf->cell(46.5, 10, $rowUsuario['estado'], 1, 1);
             }
         } else {
             $pdf->cell(0, 10, $pdf->encodeString('No hay usuarios con este tipo'), 1, 1);

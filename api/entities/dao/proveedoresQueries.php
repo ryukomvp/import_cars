@@ -16,8 +16,8 @@ class proveedoresQueries
     {
         $sql = 'SELECT idproveedor, nombreprov, telefonoprov, correoprov, codigoprov, codigomaestroprov, duiprov, moneda, numeroregistroprov
                 FROM proveedores INNER JOIN monedas USING(idmoneda)
-                WHERE nombreprov ILIKE ? OR telefonoprov ILIKE ? OR correoprov ILIKE ?  OR duiprov ILIKE ? OR codigoprov ILIKE ? OR codigomaestroprov ILIKE ?
-                ORDER BY nombre';
+                WHERE nombreprov LIKE ? OR telefonoprov LIKE ? OR correoprov LIKE ?  OR duiprov LIKE ? OR codigoprov LIKE ? OR codigomaestroprov LIKE ?
+                ORDER BY nombreprov';
         $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
@@ -44,7 +44,7 @@ class proveedoresQueries
         $sql = 'UPDATE proveedores
                 SET nombreprov = ?, telefonoprov = ?, correoprov = ?, codigoprov = ?, codigomaestroprov = ?, duiprov = ?, idmoneda = ?, numeroregistroprov = ?
                 WHERE idproveedor = ?';
-        $params = array($this->nombreprov, $this->telefonoprov, $this->correoprov, $this->codigoprov, $this->codigomaestroprov, $this->duiprov, $this->idmoneda, $this->numeroregistroprov, $this->idproveedor);
+        $params = array($this->nombreprov, $this->telefonoprov, $this->correoprov, $this->codigoprov, $this->codigomaestroprov, $this->duiprov, $this->idmoneda, $this->numeroregistroprov, $this->id);
         return Database::executeRow($sql, $params);
     }
     // Función para eliminar pais de origen
@@ -52,7 +52,7 @@ class proveedoresQueries
     {
         $sql = 'DELETE FROM proveedores
                 WHERE idproveedor = ?';
-        $params = array($this->idproveedor);
+        $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
 }

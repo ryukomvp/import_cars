@@ -55,7 +55,7 @@ if (isset($_GET['action'])) {
                 break;
                 // Caso para leer un registro seleccionado por el administrador
             case 'leerUnRegistro':
-                if (!$bodega->setId($_POST['idbodega'])) {
+                if (!$bodega->setId($_POST['id'])) {
                     $result['exception'] = 'Bodega incorrecta';
                 } elseif ($result['dataset'] = $bodega->leerUnRegistro()) {
                     $result['status'] = 1;

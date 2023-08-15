@@ -75,13 +75,13 @@ async function cargarRegistros(form = null) {
                         ${row.idbodega}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.numerobodega}
+                        ${row.numerobod}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.direccion}
+                        ${row.direccionbod}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.nombre}
+                        ${row.nombresuc}
                     </td>
                     <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idbodega})"
@@ -128,7 +128,7 @@ function crearRegistro() {
 async function actualizarRegistro(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idbodega', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
     const JSON = await dataFetch(BODEGA_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -143,8 +143,8 @@ async function actualizarRegistro(id) {
         TITULO.textContent = 'Actualizar un registro';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idbodega;
-        document.getElementById('numerobodega').value = JSON.dataset.numerobodega;
-        document.getElementById('direccion').value = JSON.dataset.direccion;
+        document.getElementById('numerobodega').value = JSON.dataset.numerobod;
+        document.getElementById('direccion').value = JSON.dataset.direccionbod;
         fillSelect(BODEGA_API, 'cargarSucursal', 'sucursal', JSON.dataset.idsucursal);
     } else {
         sweetAlert(2, JSON.exception, false);

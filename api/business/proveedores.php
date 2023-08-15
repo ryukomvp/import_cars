@@ -12,7 +12,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['idUsuario'])  or !isset($_SESSION['idUsuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'leerProveedores':
+            case 'leerRegistros':
                 if ($result['dataset'] = $proveedores->leerProveedores()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
@@ -22,7 +22,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'buscarProveedor':
+            case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['buscar'] == '') {
                     $result['dataset'] = $proveedores->leerProveedores();
@@ -36,8 +36,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'crearProveedor':
-                print_r($_POST);
+            case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$proveedores->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
@@ -47,7 +46,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Correo incorrecto';
                 } elseif (!$proveedores->setCodigo($_POST['codigoProv'])) {
                     $result['exception'] = 'Codigo del proveedor incorrecto';
-                } elseif (!$proveedores->setCodigoMaestro($_POST['codigomaestroprov'])) {
+                } elseif (!$proveedores->setCodigoMaestro($_POST['codigoMaestroProv'])) {
                     $result['exception'] = 'Codigo maestro del proveedor incorrecto';
                 } elseif (!$proveedores->setDui($_POST['dui'])) {
                     $result['exception'] = 'DUI del proveedor incorrecto';
@@ -62,7 +61,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'leerUnProveedor':
+            case 'leerUnRegistro':
                 if (!$proveedores->setId($_POST['id'])) {
                     $result['exception'] = 'Proveedor incorrecto';
                 } elseif ($result['dataset'] = $proveedores->leerUnProveedor()) {
@@ -73,8 +72,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Proveedor inexistente';
                 }
                 break;
-            case 'actualizarProveedor':
-                print_r($_POST);
+            case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$proveedores->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
@@ -103,7 +101,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'eliminarProveedor':
+            case 'eliminarRegistro':
                 if (!$proveedores->setId($_POST['idproveedor'])) {
                     $result['exception'] = 'Proveedor incorrecta';
                 } elseif (!$data = $proveedores->leerunProveedor()) {
