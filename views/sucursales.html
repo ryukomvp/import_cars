@@ -17,16 +17,16 @@
     <title>Sucursales</title>
 </head>
 
-<body>
+<body class="bg-gray-900">
     <!-- encabezado del sistio -->
     <header></header>
     <!-- contenido del sitio -->
     <main>
-        <div class="py-4">
+        <div class="py-4 container">
             <div>
                 <div class="py-4 text-center">
-                    <h1 class="text-xl text-rojo font-bold">Sucursales</h1>
-                    <p class="text-azul font-medium">Gestion de sucursales.</p>
+                    <h1 class="text-xl text-rojo font-bold uppercase">Sucursales</h1>
+                    <p class="text-blue-500 font-medium">Gestion de sucursales.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
@@ -42,16 +42,14 @@
                                     </svg>
                                 </div>
                                 <input type="search" id="search" name="search"
-                                    class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="block w-full bg-gray-900 text-white border border-white rounded-lg focus:ring-azul focus:border-azul p-4 pl-10 text-sm"
                                     placeholder="Buscar registro por nombre o dirección de la sucursal">
-                                <button type="submit"
-                                    class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                             </div>
                         </form>
                     </div>
                     <div class="col-end-5">
                         <button onclick="openCreate()"
-                            class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2""
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
                         </button>
@@ -86,53 +84,54 @@
                             <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                 <!--ID-->
                                 <div>
-                                    <label class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
-                                    <input type="text"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="ID" disabled>
+                                    <div class="text-center py-4 p-6 space-x-2 rounded-b">
+                                        <img src="../resources/img/logo.jpg" alt="img">
+                                        <br>
+                                    </div>
                                     <!--ID-->
                                     <input class="hidden" type="number" id="id" name="id">
                                 </div>
-                                <!--Input nombre de la familia-->
-                                <div>
-                                    <label for="nombre"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de
-                                        la
-                                        sucursal:</label>
-                                    <input type="text" id="nombre"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Nombre" name="nombre" required>
-                                </div>
-                                <div>
-                                    <label for="Telefono"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Ingrese su
-                                        Telefono:</label>
-                                    <input type="text" id="telefono"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="telefono" name="telefono" required>
-                                </div>
-                                <div>
-                                    <label for="email"
-                                        class="block mb-2 text-sm font-medium text-azul dark:text-white">Correo
-                                        electronico</label>
-                                    <input type="email" id="correo"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="john.doe@company.com" name="correo" required>
-                                </div>
-                                <div>
-                                    <label for="direccion"
-                                        class="block mb-2 text-sm font-medium text-azul dark:text-white">Direccion</label>
-                                    <textarea id="direccion" rows="4"
-                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                        placeholder="Direccion" name="direccion" required></textarea>
+                                <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                    <!--Input nombre de la familia-->
+                                    <div>
+                                        <label for="nombre"
+                                            class="block mb-2 text-sm font-semibold text-azul">Nombre de
+                                            la
+                                            sucursal:</label>
+                                        <input type="text" id="nombre"
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                                            placeholder="Nombre" name="nombre" required>
+                                    </div>
+                                    <div>
+                                        <label for="Telefono"
+                                            class="block mb-2 text-sm font-semibold text-azul">Ingrese su
+                                            Telefono:</label>
+                                        <input type="text" id="telefono"
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                                            placeholder="telefono" name="telefono" required>
+                                    </div>
+                                    <div>
+                                        <label for="email"
+                                            class="block mb-2 text-sm font-semibold text-azul">Correo
+                                            electronico</label>
+                                        <input type="email" id="correo"
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                                            placeholder="john.doe@company.com" name="correo" required>
+                                    </div>
+                                    <div>
+                                        <label for="direccion"
+                                            class="block mb-2 text-sm font-semibold text-azul">Direccion</label>
+                                        <textarea id="direccion" rows="4"
+                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                                            placeholder="Direccion" name="direccion" required></textarea>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Modal footer -->
                             <div
                                 class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                 <button id="accion" type="submit"
-                                    class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    data-tooltip="Guardar">Añadir</button>
+                                    class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"></button>
                             </div>
                         </form>
                     </div>
@@ -140,9 +139,9 @@
             </div><!--Final del modal-->
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <!--Tabla para mostrar los registros que existen-->
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
                     <thead
-                        class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        class="text-xs text-gray-700 uppercase bg-gray-50">
                         <tr class="text-oscuro font-semibold">
                             <th scope="col" class="hidden px-6 py-3">
                                 ID
