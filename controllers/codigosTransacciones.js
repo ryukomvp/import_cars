@@ -1,44 +1,45 @@
-// Constante para completar la ruta de la API.
-const FAMILIA_API = 'business/familias.php';
-// Constante para establecer el formulario de buscar.
+
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const CODIGO_TRANSACCION_API = 'business/codigosTransacciones.php';
+// Constante para el input de busqueda
 const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
-// Constante para establecer el formulario de guardar.
+// Constante para el formulario del modal, sirve para añadir y editar
 const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
-// Constante para establecer el título de la modal.
+// Constante para rellenar la tabla de los datos registrados en la base
+const REGISTROS_TABLA = document.getElementById('registros');
+// Constante para nombrar el modal dependiendo de la acción que se haga
 const TITULO = document.getElementById('titulo');
-// Constantes para establecer el contenido de la tabla.
-const REGISTROS_TABLA = document.getElementById('registrosTabla');
-// Se inicializa el componente Modal para que funcionen las cajas de diálogo.
-// Constante para establecer la modal de guardar.
-const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
 // Constante para el texto del boton
 const BTN_ACCION = document.getElementById('accion');
-// Método manejador de eventos para cuando el documento ha cargado.
+// Constante para abrir o cerrar el modal
+const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
+
+// Metodo para cargar la pagina cada vez que haya un cambio en el DOM
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros disponibles.
     cargarRegistros();
 });
 
-// Método manejador de eventos para cuando se envía el formulario de buscar.
+// Metodo para el input de busqueda
 FORMULARIO_BUSQUEDA.addEventListener('submit', (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_BUSQUEDA);
-    // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
+    // LLama la función de rellenar la tabla para actualizarla con los datos de la busqueda.
     cargarRegistros(FORM);
 });
 
-// Método manejador de eventos para cuando se envía el formulario de guardar.
+// Metodo para el modal, añade o actualiza dependiendo de la acción
 EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    // Se verifica la acción a realizar.
+    // Se verifica si se realizara una actualización o un registro nuevo.
     (document.getElementById('id').value) ? action = 'actualizarRegistro' : action = 'crearRegistro';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(FAMILIA_API, action, FORM);
+    const JSON = await dataFetch(CODIGO_TRANSACCION_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -52,108 +53,93 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     }
 });
 
-/*
-*   Función asíncrona para llenar la tabla con los registros disponibles.
-*   Parámetros: form (objeto opcional con los datos de búsqueda).
-*   Retorno: ninguno.
-*/
+// Metodo para cargar la tabla con los datos de la base
 async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
     (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(FAMILIA_API, action, form);
+    const JSON = await dataFetch(CODIGO_TRANSACCION_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
-                <tr class="bg-white hover:bg-blue-200">
+                <tr  class="text-center bg-white hover:bg-blue-200">
+                    <td class="hidden px-6 py-4">${row.idcodigotransaccion}</td>
+                    <td class="px-6 py-4">${row.codigo}</td>
+                    <td class="px-6 py-4">${row.nombrecodigo}</td>
                     <td class="px-6 py-4">
-                        ${row.familia}
-                    </td>
-                    <td class="px-6 py-4">
-                        <button onclick="openUpdate(${row.idfamilia})"
-                            class="text-blue-700 border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                            type="button">
-                            <img src="https://img.icons8.com/ios/30/1A56DB/synchronize.png" />
+                        <button onclick="actualizarRegistro(${row.idcodigotransaccion})"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">
+                        <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                         </button>
-                        <button onclick="openDelete(${row.idfamilia})"
-                            class="text-red-700 border border-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                            type="button">
-                            <img src="https://img.icons8.com/ios/30/C81E1E/delete--v1.png" />
+
+                        <button onclick="eliminarRegistro(${row.idcodigotransaccion})"
+                        class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">
+                        <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
                         </button>
                     </td>
                 </tr>
             `;
         });
+
     } else {
         sweetAlert(4, JSON.exception, true);
     }
 }
 
-/*
-*   Función para preparar el formulario al momento de insertar un registro.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
-*/
-function openCreate() {
+// Funcion para abrir el modal y añadir un registro
+function crearRegistro() {
     // Se abre la caja de diálogo que contiene el formulario.
     ABRIR_MODAL.show();
-    // Se restauran los elementos del formulario.
     EJECUTAR_FORMULARIO.reset();
     // Texto del boton para crear un registro
     BTN_ACCION.textContent = 'Añadir';
-    // Se asigna título a la caja de diálogo.
-    TITULO.textContent = 'Crear Familia';
+    // Se asigna el título a la caja de diálogo.
+    TITULO.textContent = 'Crear un registro';
 }
 
-/*
-*   Función asíncrona para preparar el formulario al momento de actualizar un registro.
-*   Parámetros: id (identificador del registro seleccionado).
-*   Retorno: ninguno.
-*/
-async function openUpdate(id) {
+//Funcion para abrir el modal con los datos del registro a actualizar
+async function actualizarRegistro(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
-    FORM.append('idfamilia', id);
+    FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(FAMILIA_API, 'leerUnRegistro', FORM);
+    const JSON = await dataFetch(CODIGO_TRANSACCION_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
         ABRIR_MODAL.show();
-        // Se restauran los elementos del formulario.
         EJECUTAR_FORMULARIO.reset();
-        // Texto del boton para crear un registro
+        // Texto del boton para actualizar un registro 
         BTN_ACCION.textContent = 'Actualizar';
         // Se asigna título para la caja de diálogo.
-        TITULO.textContent = 'Actualizar Familia';
+        TITULO.textContent = 'Actualizar un registro';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idfamilia;
-        document.getElementById('familia').value = JSON.dataset.familia;
+        document.getElementById('id').value = JSON.dataset.idcodigotransaccion;
+        document.getElementById('codigo').value = JSON.dataset.codigo;
+        document.getElementById('nombreCodigo').value = JSON.dataset.nombrecodigo;
     } else {
         sweetAlert(2, JSON.exception, false);
     }
 }
 
-/*
-*   Función asíncrona para eliminar un registro.
-*   Parámetros: id (identificador del registro seleccionado).
-*   Retorno: ninguno.
-*/
-async function openDelete(id) {
+//Funcion para abrir el modal con los datos del registro a eliminar
+async function eliminarRegistro(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar la familia de forma permanente?');
+    const MENSAJE = await confirmAction('¿Desea eliminar el código de la transacción?');
     // Se verifica la respuesta del mensaje.
-    if (RESPONSE) {
+    if (MENSAJE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idfamilia', id);
+        FORM.append('idcodigotransaccion', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(FAMILIA_API, 'eliminarRegistro', FORM);
+        const JSON = await dataFetch(CODIGO_TRANSACCION_API, 'eliminarRegistro', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

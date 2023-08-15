@@ -14,20 +14,20 @@
     <!-- icono de la página -->
     <link rel="icon" href="../resources/img/logo.png">
     <!-- titulo de la página -->
-    <title>Familia</title>
+    <title>Codigos Transacciones</title>
 </head>
 
-<body class="bg-gray-900">
+<body>
     <!-- encabezado del sistio -->
     <header></header>
     <!-- contenido del sitio -->
     <main>
-        <div class="py-4 container">
+        <div class="py-4">
             <div>
                 <!-- titulo con el proposito de la interfaz -->
                 <div class="py-4 text-center">
-                    <h1 class="text-xl text-rojo font-bold uppercase">Familias</h1>
-                    <p class="text-blue-500 font-medium">Gestión de los registros de familias</p>
+                    <h1 class="text-xl text-rojo font-bold">Codigos de Transacciones</h1>
+                    <p class="text-azul font-medium">Descripción de los tipos de transacciones, basadas en códigos que se usaran para verificar el tipo de transacción que se realizara.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
@@ -42,16 +42,18 @@
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                     </svg>
                                 </div>
-                                <input type="search" id="search" name="search"
-                                    class="block w-full bg-gray-900 text-white border border-white rounded-lg focus:ring-azul focus:border-azul p-4 pl-10 text-sm"
-                                    placeholder="Buscar registro por nombre de la familia">
+                                <input type="search" id="buscar" name="buscar"
+                                    class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Buscar código de transacción...">
+                                <button type="submit"
+                                    class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                             </div>
                         </form>
                     </div>
                     <!-- contenedor para boton -->
                     <div class="col-end-5">
-                        <button onclick="openCreate()"
-                            class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                        <button onclick="crearRegistro()"
+                            class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
                         </button>
@@ -66,7 +68,7 @@
                         <!-- Modal header -->
                         <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-xl font-bold text-oscuro dark:text-white" id="titulo"></h3>
-                            <button onclick="ABRIR_MODAL.hide()" type="button"
+                            <button onclick="ACCIONES_MODAL.hide()" type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
                                 <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -84,16 +86,28 @@
                                     <img src="../resources/img/logo.jpg" alt="img">
                                 </div>
                                 <div>
-                                    <!--ID-->
-                                    <input class="hidden" type="number" id="id" name="id">
-                                    <!--Input nombre de la familia-->
+                                    <!--Input del ID-->
                                     <div>
-                                        <label for="familia"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                            de la familia:</label>
-                                        <input type="text" id="familia"
+                                        <label for="id"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
+                                        <input type="number" id="id" name="id"
+                                            class="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700"
+                                            placeholder="ID" readonly>
+                                    </div>
+                                    <!-- Teléfono -->
+                                    <div>
+                                        <label for="codigo"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Código</label>
+                                        <input type="text" id="codigo" name="codigo"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Ingresar el nombre de la familia" name="familia" required>
+                                            placeholder="Código del tipo de transacción" required>
+                                    </div>
+                                    <!-- Celular -->
+                                    <div class=" my-4">
+                                        <label for="nombreCodigo" class="ml-2 text-sm font-medium text-azul dark:text-gray-300">Descripción del código</label>
+                                        <input type="text" id="nombreCodigo" name="nombreCodigo"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Significado del código ingresado" required>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +116,7 @@
                                 class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                 <button id="accion" type="submit"
                                     class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    data-tooltip="Guardar">Añadir</button>
+                                    data-tooltip="Guardar"></button>
                             </div>
                         </form>
                     </div>
@@ -110,20 +124,26 @@
             </div><!--Final del modal-->
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <!--Tabla para mostrar los registros que existen-->
-                <table class="w-full text-sm text-center text-gray-500">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead
-                        class="text-xs text-gray-700 uppercase bg-gray-50">
+                        class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
-                            <th scope="col" class="px-6 py-3">
-                                Familia
+                            <th scope="col" class="hidden px-6 py-3">
+                                ID
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Acciones
+                                Código
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Descripción del código
+                            </th>
+                            <th scope="col" class="px-8 py-3">
+                                <span class="">Controles</span>
                             </th>
                         </tr>
                     </thead>
                     <!--Cuerpo de la tabla para mostrar los registros-->
-                    <tbody id="registrosTabla"></tbody>
+                    <tbody id="registros"></tbody>
                 </table>
             </div>
         </div>
@@ -135,7 +155,7 @@
     <script type="text/javascript" src="../resources/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../controllers/components.js"></script>
     <script type="text/javascript" src="../controllers/account.js"></script>
-    <script type="text/javascript" src="../controllers/familias.js"></script>
+    <script type="text/javascript" src="../controllers/codigosTransacciones.js"></script>
 
 </body>
 

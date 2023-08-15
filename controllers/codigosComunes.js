@@ -100,7 +100,7 @@ function crearRegistro() {
     // Texto del boton para crear un registro
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna el título a la caja de diálogo.
-    TITULO.textContent = 'Añadir un código común nuevo';
+    TITULO.textContent = 'Crear un registro';
 }
 
 //Funcion para abrir el modal con los datos del registro a actualizar
@@ -118,7 +118,7 @@ async function actualizarRegistro(id) {
         // Texto del boton para actualizar un registro 
         BTN_ACCION.textContent = 'Actualizar';
         // Se asigna título para la caja de diálogo.
-        TITULO.textContent = 'Actualizar código común';
+        TITULO.textContent = 'Actualizar un registro';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idcodigocomun;
         document.getElementById('codigo').value = JSON.dataset.codigo;
