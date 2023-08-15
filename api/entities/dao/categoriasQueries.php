@@ -12,7 +12,7 @@ class CategoriaQueries
     {
         $sql = 'SELECT idcategoria, categoria
                 FROM categorias
-                WHERE categoria ILIKE ? 
+                WHERE categoria LIKE ? 
                 ORDER BY categoria';
         $params = array("%$value%");
         return Database::getRows($sql, $params);

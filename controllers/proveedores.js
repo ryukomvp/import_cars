@@ -35,7 +35,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica si se realizara una actualización o un registro nuevo.
-    (document.getElementById('id').value) ? action = 'actualizarProveedor' : action = 'crearProveedor';
+    (document.getElementById('id').value) ? action = 'actualizarRegistro' : action = 'crearRegistro';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
@@ -58,7 +58,7 @@ async function rellenarTabla(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'buscarProveedor' : action = 'leerProveedores';
+    (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(PROVEEDOR_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -67,17 +67,14 @@ async function rellenarTabla(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
-                <tr  class="text-center bg-white hover:bg-blue-200">
+                <tr class="text-center bg-white hover:bg-blue-200">
                     <td class="hidden class="px-6 py-4"">${row.idproveedor}</td>
-                    <td class="px-6 py-4">${row.nombre}</td>
-                    <td class="">${row.telefono}</td>
-                    <td class="px-6 py-4">${row.correo}</td>
-                    <td class="">${row.fechacompra}</td>
-                    <td class="px-6 py-4">${row.saldoinicial}</td>
-                    <td class="px-6 py-4">${row.saldoactual}</td>
+                    <td class="px-6 py-4">${row.nombreprov}</td>
+                    <td class="">${row.telefonoprov}</td>
+                    <td class="px-6 py-4">${row.correoprov}</td>
                     <td class="px-6 py-4">${row.codigoprov}</td>
                     <td class="px-6 py-4">${row.codigomaestroprov}</td>
-                    <td class="px-6 py-4">${row.dui}</td>
+                    <td class="px-6 py-4">${row.duiprov}</td>
                     <td class="px-6 py-4">${row.moneda}</td>
                     <td class="px-6 py-4">${row.numeroregistroprov}</td>
                     <td class="px-6 py-4">
@@ -111,7 +108,7 @@ function crearRegistro() {
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna el título a la caja de diálogo.
     TITULO.textContent = 'Añadir un nuevo proveedor';
-    fillSelect(MONEDA_API, 'leerMonedas', 'moneda');
+    fillSelect(MONEDA_API, 'leerRegistros', 'moneda');
 }
 
 //Funcion para abrir el modal con los datos del registro a actualizar
@@ -120,7 +117,7 @@ async function actualizarRegistro(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(PROVEEDOR_API, 'leerUnProveedor', FORM);
+    const JSON = await dataFetch(PROVEEDOR_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -132,17 +129,14 @@ async function actualizarRegistro(id) {
         TITULO.textContent = 'Actualizar proveedor';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idproveedor;
-        document.getElementById('nombre').value = JSON.dataset.nombre;
-        document.getElementById('telefono').value = JSON.dataset.telefono;
-        document.getElementById('correo').value = JSON.dataset.correo;
-        document.getElementById('fechaProv').value = JSON.dataset.fechacompra;
-        document.getElementById('saldoInicial').value = JSON.dataset.saldoinicial;
-        document.getElementById('saldoActual').value = JSON.dataset.saldoactual;
+        document.getElementById('nombre').value = JSON.dataset.nombreprov;
+        document.getElementById('telefono').value = JSON.dataset.telefonoprov;
+        document.getElementById('correo').value = JSON.dataset.correoprov;
         document.getElementById('codigoProv').value = JSON.dataset.codigoprov;
         document.getElementById('codigoMaestroProv').value = JSON.dataset.codigomaestroprov;
-        document.getElementById('dui').value = JSON.dataset.dui;
+        document.getElementById('dui').value = JSON.dataset.duiprov;
         document.getElementById('numeroRegistroProv').value = JSON.dataset.numeroregistroprov;
-        fillSelect(MONEDA_API, 'leerMonedas', 'moneda', JSON.dataset.idmoneda);
+        fillSelect(MONEDA_API, 'leerRegistros', 'moneda', JSON.dataset.idmoneda);
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -158,7 +152,7 @@ async function eliminarRegistro(id) {
         const FORM = new FormData();
         FORM.append('idproveedor', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(PROVEEDOR_API, 'eliminarProveedor', FORM);
+        const JSON = await dataFetch(PROVEEDOR_API, 'eliminarRegistro', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.

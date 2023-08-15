@@ -19,7 +19,7 @@
 
 <body>
     <!-- encabezado del sistio -->
-    <header class="sticky top-0 z-10">
+    <header>
     </header>
     <!-- contenido del sitio -->
     <main>
@@ -91,19 +91,11 @@
                                 <div>
                                     <!--Input del ID-->
                                     <input class="hidden" type="number" id="id" name="id">
-                                    <!--Input nomenclatura-->
-                                    <div>
-                                        <label for="nomenclatura"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nomenclatura</label>
-                                        <input type="text" id="nomenclatura" name="nomenclatura"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                            placeholder="Nomenclatura" required>
-                                    </div>
                                     <!--Input de código-->
                                     <div>
                                         <label for="codigo"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Código</label>
-                                        <input type="number" min="0" id="codigo" name="codigo"
+                                        <input type="text" min="0" id="codigo" name="codigo"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                             placeholder="Código" required>
                                     </div>
@@ -129,9 +121,6 @@
                         <tr class="text-oscuro font-semibold">
                             <th scope="col" class="hidden px-6 py-3">
                                 ID
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Nomenclatura
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Código

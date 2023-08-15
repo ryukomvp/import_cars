@@ -7,8 +7,7 @@ require_once('../entities/dao/codigosComunesQueries.php');
 class CodigoComun extends CodigoComunQueries
 {
     // Declaración de atributos (propiedades).
-    protected $idcodigocomun = null;
-    protected $nomenclatura = null;
+    protected $id = null;
     protected $codigo = null;
 
 
@@ -18,17 +17,7 @@ class CodigoComun extends CodigoComunQueries
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idcodigocomun = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setNomenclatura($value)
-    {
-        if (Validator::validateAlphanumeric($value, 1, 10)) {
-            $this->nomenclatura = $value;
+            $this->id = $value;
             return true;
         } else {
             return false;
@@ -37,7 +26,7 @@ class CodigoComun extends CodigoComunQueries
 
     public function setCodigo($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphanumeric($value,1,15)) {
             $this->codigo = $value;
             return true;
         } else {
@@ -50,12 +39,7 @@ class CodigoComun extends CodigoComunQueries
     */
     public function getId()
     {
-        return $this->idcodigocomun;
-    }
-
-    public function getNomenclatura()
-    {
-        return $this->nomenclatura;
+        return $this->id;
     }
 
     public function getCodigo()

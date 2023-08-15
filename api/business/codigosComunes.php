@@ -28,10 +28,8 @@ if (isset($_GET['action'])) {
                 break;
             case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
-                if (!$codigo->setNomenclatura($_POST['nomenclatura'])) {
+                if (!$codigo->setCodigo($_POST['codigo'])) {
                     $result['exception'] = 'Nomenclatura incorrecta';
-                } elseif (!$codigo->setCodigo($_POST['codigo'])) {
-                    $result['exception'] = 'Código incorrecto';
                 } elseif ($codigo->crearRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Código común creado exitosamente';
@@ -66,8 +64,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $codigo->leerUnRegistro()) {
                     $result['exception'] = 'Código común inexistente';
-                } elseif (!$codigo->setNomenclatura($_POST['nomenclatura'])) {
-                    $result['exception'] = 'Nomenclatura incorrecta';
                 } elseif (!$codigo->setCodigo($_POST['codigo'])) {
                     $result['exception'] = 'Código incorrecto';
                 } elseif ($codigo->actualizarRegistro()) {
