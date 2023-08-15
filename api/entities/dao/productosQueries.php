@@ -12,16 +12,16 @@ class productosQueries
     /*metodo para buscar registros*/
     public function buscarProducto($value)
     {
-        $sql = 'SELECT productos.idproducto, productos.nombreprod, productos.descripcionprod, productos.precio, productos.preciodesc, productos.anioinicial, productos.aniofinal,codigoscomunes.codigo, tiposproductos.tipoproducto, categorias.categoria, modelos.modelo, paisesdeorigen.pais, productos.estadoproducto 
+        $sql = 'SELECT productos.idproducto, productos.imagen, productos.nombreprod, productos.descripcionprod, productos.precio, productos.preciodesc, productos.anioinicial, productos.aniofinal, codigoscomunes.codigo, tiposproductos.tipoproducto, categorias.categoria, modelos.modelo, paisesdeorigen.pais, productos.estadoproducto 
         FROM productos 
         INNER JOIN categorias ON productos.idcategoria = categorias.idcategoria 
         INNER JOIN codigoscomunes ON productos.idcodigocomun = codigoscomunes.idcodigocomun 
         INNER JOIN tiposproductos ON productos.idtipoproducto = tiposproductos.idtipoproducto 
         INNER JOIN modelos ON productos.idmodelo = modelos.idmodelo 
         INNER JOIN paisesdeorigen ON productos.idpais = paisesdeorigen.idpais 
-        WHERE productos.nombreprob LIKE ? OR productos.descripcion LIKE ? OR categorias.categoria  LIKE ? OR codigoComun.nomenclatura  LIKE ? OR CAST (codigoComun.codigo as varchar) LIKE ?
+        WHERE productos.nombreprod LIKE ? OR productos.descripcionprod LIKE ? OR categorias.categoria  LIKE ? OR codigoscomunes.codigo LIKE ?
         ORDER BY productos.nombreprod';
-        $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
+        $params = array("%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
