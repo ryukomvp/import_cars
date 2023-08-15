@@ -15,3 +15,11 @@ ON e.idempleado = u.idempleado
 WHERE estadousuario = ?
 
 .
+
+
+SELECT p.nombreprod, p.precio, c.categoria, m.modelo FROM productos p
+INNER JOIN categorias c
+ON c.idcategoria = p.idcategoria
+INNER JOIN modelos m
+ON m.idmodelo = p.idmodelo
+WHERE c.idcategoria = ?
