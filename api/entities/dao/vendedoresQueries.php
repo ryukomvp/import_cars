@@ -29,7 +29,7 @@ class VendedorQueries
     public function leerRegistros()
     {
         $sql = 'SELECT idvendedor, nombreus, nombrecaja
-                FROM vendedores INNER JOIN cajas USING(idcaja) INNER JOIN usuarios USING(idusuario)
+                FROM vendedores INNER JOIN cajas ON vendedores.idcaja = cajas.idcaja INNER JOIN usuarios ON vendedores.idusuario = usuarios.idusuario
                 ORDER BY nombrecaja';
         return Database::getRows($sql);
     }
