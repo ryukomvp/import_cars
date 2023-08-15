@@ -155,13 +155,13 @@ async function actualizarRegistro(id) {
         // Se inicializan los campos del formulario.
         // Se establece el campo de archivo como opcional.
         document.getElementById('archivo').required = false;
-        document.getElementById('id').value = JSON.dataset.id;
-        document.getElementById('nombreprod').value = JSON.dataset.nombre;
-        document.getElementById('descripcionprod').value = JSON.dataset.descripcion;
+        document.getElementById('id').value = JSON.dataset.idproducto;
+        document.getElementById('nombreprod').value = JSON.dataset.nombreprod;
+        document.getElementById('descripcionprod').value = JSON.dataset.descripcionprod;
         document.getElementById('precio').value = JSON.dataset.precio;
-        document.getElementById('preciodesc').value = JSON.dataset.precioDesc;
-        document.getElementById('anioinicial').value = JSON.dataset.anioIni;
-        document.getElementById('aniofinal').value = JSON.dataset.anioFin;
+        document.getElementById('preciodesc').value = JSON.dataset.preciodesc;
+        document.getElementById('anioinicial').value = JSON.dataset.anioinicio;
+        document.getElementById('aniofinal').value = JSON.dataset.aniofinal;
         fillSelect(PRODUCTOS_API, 'leerCodigosComunes', 'codigo');
         fillSelect(CATEGORIAS_API, 'leerRegistros', 'categoria');
         fillSelect(MODELOS_API, 'leerRegistros', 'modelo');
