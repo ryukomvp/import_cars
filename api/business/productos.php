@@ -146,13 +146,6 @@ if (isset($_GET['action'])) {
                     } else {
                         $result['exception'] = Database::getException();
                     }
-                } elseif ($productos->actualizarProducto($data['imagen'])) {
-                    $result['status'] = 1;
-                    if (Validator::saveFile($_FILES['archivo'], $productos->getRuta(), $productos->getImagen())) {
-                        $result['message'] = 'Producto modificado correctamente';
-                    } else {
-                        $result['message'] = 'Producto modificado pero no se guardó la imagen';
-                    }
                 } else {
                     $result['exception'] = Database::getException();
                 }
