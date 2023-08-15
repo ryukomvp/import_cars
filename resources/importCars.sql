@@ -41,6 +41,14 @@ CREATE TABLE IF NOT EXISTS codigostransacciones(
     codigo INT NOT NULL,
     nombrecodigo VARCHAR(100) NOT NULL
 );
+        
+CREATE TABLE IF NOT EXISTS codigosplazos(
+    
+    idcodigoplazo int AUTO_INCREMENT PRIMARY KEY not null,
+    plazo varchar(30),
+    dias int not null
+
+);
 
 CREATE TABLE IF NOT EXISTS sucursales (
 	idsucursal INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -48,6 +56,19 @@ CREATE TABLE IF NOT EXISTS sucursales (
     telefonosuc VARCHAR(10) NOT NULL,
     correosuc VARCHAR(100) NOT NULL UNIQUE,
     direccionsuc VARCHAR(150) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS plazos(
+    
+    idplazo int AUTO_INCREMENT PRIMARY KEY not null,
+    descripcion varchar(30) not null,
+    vencimiento int not null,
+    idcodigoplazo int not null,
+    tipoplazo ENUM('Contado', 'Credito') not null,
+
+	CONSTRAINT fkcodigopla
+    FOREIGN KEY (idcodigoplazo)
+    REFERENCES codigosplazos(idcodigoplazo) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS contactos(
@@ -114,6 +135,28 @@ CREATE TABLE IF NOT EXISTS empleados(
     estadoempleado ENUM('Activo', 'Inactivo' , 'Ausente con justificación' , 'Ausente sin justificación') NOT NULL,
     genero ENUM('Masculino' , 'Femenino') NOT NULL,
     cargo ENUM('Jefe', 'Gerente' , 'Vendedor') NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS clientes(
+     
+    idcliente int AUTO_INCREMENT PRIMARY KEY not null,
+    nombre varchar(100),
+    giro varchar(30),
+    dui varchar(11),
+    correo varchar(100),
+    telefono varchar(10),
+    contacto varchar(10),
+    tipopersona ENUM('Natural','Juridica')not null,
+    descuento decimal(5,2) not null,
+    exoneracion decimal(5,2) not null,
+    fechaini int not null,
+    tipocliente ENUM('Fiscal', 'Consumidor Final') not null,
+    idplazo int not null,
+     
+    CONSTRAINT fkclienteplazo
+    FOREIGN KEY (idplazo)
+    REFERENCES plazos(idplazo) ON UPDATE CASCADE ON DELETE CASCADE
+ 
 );
 
 CREATE TABLE IF NOT EXISTS usuarios(
@@ -615,32 +658,25 @@ INSERT INTO productos(nombreprod, descripcionprod, precio, preciodesc, anioinici
        ('Escape Hyundai El Antra 2017', 'Escape Hyundai EL Antra', 35.50, 33.99, 2017, 2020, 6, 4, 7, 6, 6,'Existente'),
        ('Foco delantero blanco Honda Civic SI 2020', 'Foco frontal blanco Honda Civic SI', 44.00, 43.00, 2020, 2022, 7, 1, 3, 7, 7,'Existente');
 
-/*INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro) VALUES
-       (1, 'Foco frontal amarillo', 20.00, 15.00, 2010, 2017, 1, 1, 3, 1, 1,'Existente');*/
+INSERT INTO codigostransacciones(codigo, nombrecodigo) VALUES
+       (1234, 'codigo1'),
+       (1235, 'codigo2'),
+       (1236, 'codigo3'),
+       (1237, 'codigo4'),
+       (1238, 'codigo5'),
+       (1239, 'codigo6'),
+       (1210, 'codigo7');
 
-create table tiposplazos(
-    
-    idtipoplazo int AUTO_INCREMENT PRIMARY KEY not null,
-    tipoplazo varchar(12)
+	   /*falta vendedores, clientes*/
 
-);
-        
-create table codigosplazos(
-    
-    idcodigoplazo int AUTO_INCREMENT PRIMARY KEY not null,
-    plazo varchar(30),
-    dias int not null
+INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro) VALUES
+       (1, 2015, 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1),
+       (2, 2016, 1214, 1235, 2, 2,'Efectivo', 2, 2, 2, 2, 2),
+       (3, 2017, 1215, 1236, 3, 3,'Efectivo', 3, 3, 3, 3, 3),
+       (4, 2018, 1216, 1237, 4, 4,'Efectivo', 4, 4, 4, 4, 4),
+       (5, 2019, 1217, 1238, 5, 5,'Efectivo', 5, 5, 5, 5, 5),
+       (6, 2020, 1218, 1239, 6, 6,'Efectivo', 6, 6, 6, 6, 6),
+       (7, 2021, 1219, 1230, 7, 7,'Efectivo', 7, 7, 7, 7, 7);
 
-);
 
-create table plazos(
-    
-    idplazo int AUTO_INCREMENT PRIMARY KEY not null,
-    descripcion varchar(30) not null,
-    vencimiento int not null,
-    idcodigoplazo int not null,
-    idtipoplazo int not null,
-	CONSTRAINT fkplazotipo
-    FOREIGN KEY (idmarca)
-    REFERENCES marcas(idmarca) ON UPDATE CASCADE ON DELETE CASCADE
-);
+
