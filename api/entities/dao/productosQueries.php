@@ -30,7 +30,7 @@ class productosQueries
         // , $_SESSION['idUsuario']
         $sql = 'INSERT INTO productos(nombreprod, imagen, descripcionprod, precio, preciodesc, anioinicial, aniofinal, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, estadoproducto)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->idCodigoComun, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto);
+        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->idCodigosComunes, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto);
         return Database::executeRow($sql, $params);
     }
 
@@ -64,7 +64,7 @@ class productosQueries
         $sql = 'UPDATE productos
                 SET nombreprod = ?, imagen= ?, descripcionprod= ?, precio= ?, preciodesc= ?, anioinicial= ?, aniofinal= ?, idcodigocomun= ?, idtipoproducto= ?, idcategoria= ?, idmodelo= ?, idpais= ?, estadoproducto= ?
                 WHERE idproducto = ?';
-        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->idCodigoComun, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto, $this->id);
+        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->idCodigosComunes, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto, $this->id);
         return Database::executeRow($sql, $params);
     }
 
