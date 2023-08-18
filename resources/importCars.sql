@@ -435,6 +435,24 @@ INSERT INTO monedas(moneda) VALUES
 	('Peso Colombiano'),
 	('Bitcoin');
 
+INSERT INTO codigosplazos(plazo, dias) VALUES
+	('plazo1', 1),
+    ('plazo2', 2),
+    ('plazo3', 3),
+    ('plazo4', 4),
+    ('plazo5', 5),
+    ('plazo6', 6),
+    ('plazo7', 7);
+
+INSERT INTO plazos(descripcion, vencimiento, idcodigoplazo, tipoplazo) VALUES
+	('plazo para cliente 1', 14, 1, 'Contado'),
+    ('plazo para cliente 2', 12, 2, 'Contado'),
+    ('plazo para cliente 3', 10, 3, 'Contado'),
+    ('plazo para cliente 4', 9, 4, 'Contado'),
+    ('plazo para cliente 5', 20, 5, 'Contado'),
+    ('plazo para cliente 6', 11, 6, 'Contado'),
+    ('plazo para cliente 7', 5, 7, 'Contado');
+
 INSERT INTO sucursales(nombresuc, telefonosuc, correosuc, direccionsuc) VALUES
 	('Sucursal1', '2343-2363', 'sucursal1@gmail.com', 'sucursal1'),
 	('Sucursal2', '2343-2363', 'sucursal2@gmail.com', 'sucursal2'),
@@ -475,6 +493,15 @@ INSERT INTO proveedores(nombreprov, telefonoprov, correoprov, codigoprov, codigo
 	('Tesla', '1572-7602', 'tesla@gmail.com', 111, 1233, '23465434-6', 2, 18),
 	('Dodge', '8366-2539', 'dodge@gmail.com', 221, 1233, '2343124434-7', 1, 19),
 	('Plymouth', '7363-8636', 'plymouth@gmail.com', 233, 1233, '234239457-0', 1, 20);
+
+INSERT INTO clientes(nombre, giro, dui, correo, telefono, contacto, tipopersona, descuento, exoneracion, fechaini, tipocliente, idplazo) VALUES
+	('Jonathan Kevin Murcia Hernandez', 'Empresario', '23456712-1', 'kdekevo@gmail.com', '3456-2345', 'contacto1', 'Natural', 43.50, 50.00, 2006, 'Fiscal', 1),
+    ('Jose Antonio Castillo Letona', 'Empresario', '73337323-0', 'jdejosesito@gmail.com', '3346-2482', 'contacto2', 'Natural', 86.80, 30.00, 2007, 'Fiscal', 2),
+    ('Jonathan Guillermo Parada Payes', 'Empresario', '46576748-2', 'cdecarbajal@gmail.com', '3226-2157', 'contacto3', 'Natural', 33.70, 60.00, 2008, 'Fiscal', 3),
+    ('Juan Kevo Ramirez Carbajal', 'Empresario', '71456472-1', 'ddedaniel@gmail.com', '3590-2781', 'contacto4', 'Natural', 72.60, 100.00, 2009, 'Fiscal', 4),
+    ('Diego Jose Murcia Hernandez', 'Empresario', '64567849-3', 'adeandre@gmail.com', '3419-6589', 'contacto5', 'Natural', 71.20, 20.00, 2014, 'Fiscal', 5),
+    ('Cristian Andre Heriquez Pineda', 'Empresario', '68452672-4', 'adealec@gmail.com', '3418-7821', 'contacto6', 'Natural', 68.90, 23.00, 2012, 'Fiscal', 6),
+    ('Alec Andre Marchelli Chavez', 'Empresario', '53362162-4', 'tdetanqueta@gmail.com', '6585-2367', 'contacto7', 'Natural', 22.70, 56.00, 2015, 'Fiscal', 7);
 
 INSERT INTO modelos(modelo, idmarca) VALUES
 	('modf1', 5),
