@@ -87,6 +87,12 @@ async function registrosTabla(form = null) {
                             <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
                         </button>
                     </td>
+                    <td class="px-6 py-4">
+                        <button onclick="openReport(${row.idtipoproducto})" 
+                            class="text-black bg-yellow-600 hover:bg-yellow-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                        </button>
+                    </td>
                 </tr>
             `;
         });
@@ -167,4 +173,13 @@ async function eliminarRegistro(id) {
             sweetAlert(2, JSON.exception, false);
         }
     }
+}
+
+function openReport(id) {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/productosPorTipo.php`);
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+    PATH.searchParams.append('idtipoproducto', id);
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
 }

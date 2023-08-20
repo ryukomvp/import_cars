@@ -66,4 +66,18 @@ class TiposProductosQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function productosTipo()
+    {
+        $sql = 'SELECT p.nombreprod, p.precio, c.categoria, t.tipoproducto 
+        FROM productos p
+        INNER JOIN categorias c
+        ON c.idcategoria = p.idcategoria
+        INNER JOIN tiposproductos t
+        ON t.idtipoproducto = p.idtipoproducto
+        WHERE t.idtipoproducto = ?
+        ORDER BY p.nombreprod';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
 }
