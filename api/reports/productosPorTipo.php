@@ -13,7 +13,7 @@ if (isset($_GET['idtipoproducto'])) {
     $tipo = new TiposProductos;
     $producto = new Productos;
     // Se establece el valor de la categoría, de lo contrario se muestra un mensaje.
-    if ($tipo->setId($_GET['idtipoproducto']) && $producto->setCategoria($_GET['idtipoproducto'])) {
+    if ($tipo->setId($_GET['idtipoproducto']) && $producto->setTipoProducto($_GET['idtipoproducto'])) {
         // Se verifica si la categoría existe, de lo contrario se muestra un mensaje.
         if ($rowTipo = $tipo->leerUnRegistro()) {
             // Se inicia el reporte con el encabezado del documento.
