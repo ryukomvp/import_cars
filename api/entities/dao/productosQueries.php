@@ -99,4 +99,16 @@ class productosQueries
        ORDER BY codigo";
         return Database::getRows($sql);
     }
+
+    public function productosCategoria()
+    {
+        $sql = 'SELECT p.nombreprod, p.precio, c.categoria, m.modelo FROM productos p
+            INNER JOIN categorias c
+            ON c.idcategoria = p.idcategoria
+            INNER JOIN modelos m
+            ON m.idmodelo = p.idmodelo
+            WHERE c.idcategoria = ?';
+        $params = array($this->idCategoria);
+        return Database::getRows($sql, $params);
+    }
 }
