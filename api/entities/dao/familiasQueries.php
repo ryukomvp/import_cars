@@ -11,14 +11,15 @@ class FamiliasQueries
 
     /*Método para la realizacion de busqueda de registros en la base de datos
      mediante el nombre de la bodega*/
-    public function buscarRegistros($value)
-    {
-        $sql = 'SELECT idfamilia, familia
-             FROM familias
-             WHERE familia ILIKE ?
-             ORDER BY familia';
-        $params = array("%$value%");
-        return Database::getRows($sql, $params);
+     public function buscarRegistros($value)
+     {
+         $sql = 'SELECT idfamilia, familia
+              FROM familias
+              WHERE familia LIKE ?
+              ORDER BY familia';
+         $params = array("%$value%");
+         return Database::getRows($sql, $params);
+     return Database::getRows($sql, $params);
     }
 
     /*Método para la insercion de datos en la base de datos*/

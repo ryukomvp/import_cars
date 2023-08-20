@@ -41,6 +41,14 @@ CREATE TABLE IF NOT EXISTS codigostransacciones(
     codigo INT NOT NULL,
     nombrecodigo VARCHAR(100) NOT NULL
 );
+        
+CREATE TABLE IF NOT EXISTS codigosplazos(
+    
+    idcodigoplazo int AUTO_INCREMENT PRIMARY KEY not null,
+    plazo varchar(30),
+    dias int not null
+
+);
 
 CREATE TABLE IF NOT EXISTS sucursales (
 	idsucursal INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -48,6 +56,19 @@ CREATE TABLE IF NOT EXISTS sucursales (
     telefonosuc VARCHAR(10) NOT NULL,
     correosuc VARCHAR(100) NOT NULL UNIQUE,
     direccionsuc VARCHAR(150) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS plazos(
+    
+    idplazo int AUTO_INCREMENT PRIMARY KEY not null,
+    descripcion varchar(30) not null,
+    vencimiento int not null,
+    idcodigoplazo int not null,
+    tipoplazo ENUM('Contado', 'Credito') not null,
+
+	CONSTRAINT fkcodigopla
+    FOREIGN KEY (idcodigoplazo)
+    REFERENCES codigosplazos(idcodigoplazo) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS contactos(
@@ -114,6 +135,28 @@ CREATE TABLE IF NOT EXISTS empleados(
     estadoempleado ENUM('Activo', 'Inactivo' , 'Ausente con justificación' , 'Ausente sin justificación') NOT NULL,
     genero ENUM('Masculino' , 'Femenino') NOT NULL,
     cargo ENUM('Jefe', 'Gerente' , 'Vendedor') NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS clientes(
+     
+    idcliente int AUTO_INCREMENT PRIMARY KEY not null,
+    nombre varchar(100),
+    giro varchar(30),
+    dui varchar(11),
+    correo varchar(100),
+    telefono varchar(10),
+    contacto varchar(10),
+    tipopersona ENUM('Natural','Juridica')not null,
+    descuento decimal(5,2) not null,
+    exoneracion decimal(5,2) not null,
+    fechaini int not null,
+    tipocliente ENUM('Fiscal', 'Consumidor Final') not null,
+    idplazo int not null,
+     
+    CONSTRAINT fkclienteplazo
+    FOREIGN KEY (idplazo)
+    REFERENCES plazos(idplazo) ON UPDATE CASCADE ON DELETE CASCADE
+ 
 );
 
 CREATE TABLE IF NOT EXISTS usuarios(
@@ -392,6 +435,24 @@ INSERT INTO monedas(moneda) VALUES
 	('Peso Colombiano'),
 	('Bitcoin');
 
+INSERT INTO codigosplazos(plazo, dias) VALUES
+	('plazo1', 1),
+    ('plazo2', 2),
+    ('plazo3', 3),
+    ('plazo4', 4),
+    ('plazo5', 5),
+    ('plazo6', 6),
+    ('plazo7', 7);
+
+INSERT INTO plazos(descripcion, vencimiento, idcodigoplazo, tipoplazo) VALUES
+	('plazo para cliente 1', 14, 1, 'Contado'),
+    ('plazo para cliente 2', 12, 2, 'Contado'),
+    ('plazo para cliente 3', 10, 3, 'Contado'),
+    ('plazo para cliente 4', 9, 4, 'Contado'),
+    ('plazo para cliente 5', 20, 5, 'Contado'),
+    ('plazo para cliente 6', 11, 6, 'Contado'),
+    ('plazo para cliente 7', 5, 7, 'Contado');
+
 INSERT INTO sucursales(nombresuc, telefonosuc, correosuc, direccionsuc) VALUES
 	('Sucursal1', '2343-2363', 'sucursal1@gmail.com', 'sucursal1'),
 	('Sucursal2', '2343-2363', 'sucursal2@gmail.com', 'sucursal2'),
@@ -432,6 +493,15 @@ INSERT INTO proveedores(nombreprov, telefonoprov, correoprov, codigoprov, codigo
 	('Tesla', '1572-7602', 'tesla@gmail.com', 111, 1233, '23465434-6', 2, 18),
 	('Dodge', '8366-2539', 'dodge@gmail.com', 221, 1233, '2343124434-7', 1, 19),
 	('Plymouth', '7363-8636', 'plymouth@gmail.com', 233, 1233, '234239457-0', 1, 20);
+
+INSERT INTO clientes(nombre, giro, dui, correo, telefono, contacto, tipopersona, descuento, exoneracion, fechaini, tipocliente, idplazo) VALUES
+	('Jonathan Kevin Murcia Hernandez', 'Empresario', '23456712-1', 'kdekevo@gmail.com', '3456-2345', 'contacto1', 'Natural', 43.50, 50.00, 2006, 'Fiscal', 1),
+    ('Jose Antonio Castillo Letona', 'Empresario', '73337323-0', 'jdejosesito@gmail.com', '3346-2482', 'contacto2', 'Natural', 86.80, 30.00, 2007, 'Fiscal', 2),
+    ('Jonathan Guillermo Parada Payes', 'Empresario', '46576748-2', 'cdecarbajal@gmail.com', '3226-2157', 'contacto3', 'Natural', 33.70, 60.00, 2008, 'Fiscal', 3),
+    ('Juan Kevo Ramirez Carbajal', 'Empresario', '71456472-1', 'ddedaniel@gmail.com', '3590-2781', 'contacto4', 'Natural', 72.60, 100.00, 2009, 'Fiscal', 4),
+    ('Diego Jose Murcia Hernandez', 'Empresario', '64567849-3', 'adeandre@gmail.com', '3419-6589', 'contacto5', 'Natural', 71.20, 20.00, 2014, 'Fiscal', 5),
+    ('Cristian Andre Heriquez Pineda', 'Empresario', '68452672-4', 'adealec@gmail.com', '3418-7821', 'contacto6', 'Natural', 68.90, 23.00, 2012, 'Fiscal', 6),
+    ('Alec Andre Marchelli Chavez', 'Empresario', '53362162-4', 'tdetanqueta@gmail.com', '6585-2367', 'contacto7', 'Natural', 22.70, 56.00, 2015, 'Fiscal', 7);
 
 INSERT INTO modelos(modelo, idmarca) VALUES
 	('modf1', 5),
@@ -615,32 +685,25 @@ INSERT INTO productos(nombreprod, descripcionprod, precio, preciodesc, anioinici
        ('Escape Hyundai El Antra 2017', 'Escape Hyundai EL Antra', 35.50, 33.99, 2017, 2020, 6, 4, 7, 6, 6,'Existente'),
        ('Foco delantero blanco Honda Civic SI 2020', 'Foco frontal blanco Honda Civic SI', 44.00, 43.00, 2020, 2022, 7, 1, 3, 7, 7,'Existente');
 
-/*INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro) VALUES
-       (1, 'Foco frontal amarillo', 20.00, 15.00, 2010, 2017, 1, 1, 3, 1, 1,'Existente');*/
+INSERT INTO codigostransacciones(codigo, nombrecodigo) VALUES
+       (1234, 'codigo1'),
+       (1235, 'codigo2'),
+       (1236, 'codigo3'),
+       (1237, 'codigo4'),
+       (1238, 'codigo5'),
+       (1239, 'codigo6'),
+       (1210, 'codigo7');
 
-create table tiposplazos(
-    
-    idtipoplazo int AUTO_INCREMENT PRIMARY KEY not null,
-    tipoplazo varchar(12)
+	   /*falta vendedores, clientes*/
 
-);
-        
-create table codigosplazos(
-    
-    idcodigoplazo int AUTO_INCREMENT PRIMARY KEY not null,
-    plazo varchar(30),
-    dias int not null
+INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro) VALUES
+       (1, 2015, 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1),
+       (2, 2016, 1214, 1235, 2, 2,'Efectivo', 2, 2, 2, 2, 2),
+       (3, 2017, 1215, 1236, 3, 3,'Efectivo', 3, 3, 3, 3, 3),
+       (4, 2018, 1216, 1237, 4, 4,'Efectivo', 4, 4, 4, 4, 4),
+       (5, 2019, 1217, 1238, 5, 5,'Efectivo', 5, 5, 5, 5, 5),
+       (6, 2020, 1218, 1239, 6, 6,'Efectivo', 6, 6, 6, 6, 6),
+       (7, 2021, 1219, 1230, 7, 7,'Efectivo', 7, 7, 7, 7, 7);
 
-);
 
-create table plazos(
-    
-    idplazo int AUTO_INCREMENT PRIMARY KEY not null,
-    descripcion varchar(30) not null,
-    vencimiento int not null,
-    idcodigoplazo int not null,
-    idtipoplazo int not null,
-	CONSTRAINT fkplazotipo
-    FOREIGN KEY (idmarca)
-    REFERENCES marcas(idmarca) ON UPDATE CASCADE ON DELETE CASCADE
-);
+

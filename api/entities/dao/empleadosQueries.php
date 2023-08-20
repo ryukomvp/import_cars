@@ -81,4 +81,6 @@ class empleadosQueries
         $params = array($this->idempleado);
         return Database::executeRow($sql, $params);
     }
+
+
 }
