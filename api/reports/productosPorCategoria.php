@@ -15,11 +15,11 @@ if (isset($_GET['idcategoria'])) {
     // Se establece el valor de la categoría, de lo contrario se muestra un mensaje.
     if ($categoria->setId($_GET['idcategoria']) && $producto->setCategoria($_GET['idcategoria'])) {
         // Se verifica si la categoría existe, de lo contrario se muestra un mensaje.
-        if ($rowCategoria = $categoria->leerRegistros()) {
+        if ($rowCategoria = $categoria->leerUnRegistro()) {
             // Se inicia el reporte con el encabezado del documento.
             $pdf->startReport('Productos de la categoría ' . $rowCategoria['categoria']);
             // Se verifica si existen registros para mostrar, de lo contrario se imprime un mensaje.
-            if ($dataProductos = $producto->productosCategoria()) {
+            if ($dataProductos = $categoria->productosCategoria()) {
                 // Se establece un color de relleno para los encabezados.
                 $pdf->setFillColor(225);
                 // Se establece la fuente para los encabezados.
@@ -34,7 +34,7 @@ if (isset($_GET['idcategoria'])) {
                 // Se recorren los registros fila por fila.
                 foreach ($dataProductos as $rowProducto) {
                     // Se imprimen las celdas con los datos de los productos.
-                    $pdf->cell(46.5, 10, $pdf->encodeString($rowProducto['nombreprod']), 1, 0);
+                    $pdf->cell(46.5, 10, $rowProducto['nombreprod'], 1, 0);
                     $pdf->cell(46.5, 10, $rowProducto['precio'], 1, 0);
                     $pdf->cell(46.5, 10, $pdf->encodeString($rowProducto['categoria']), 1, 0);
                     $pdf->cell(46.5, 10, $pdf->encodeString($rowProducto['modelo']), 1, 0);

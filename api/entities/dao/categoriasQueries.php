@@ -59,4 +59,18 @@ class CategoriaQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function productosCategoria()
+    {
+        $sql = 'SELECT p.nombreprod, p.precio, c.categoria, m.modelo 
+            FROM productos p
+            INNER JOIN categorias c
+            ON c.idcategoria = p.idcategoria
+            INNER JOIN modelos m
+            ON m.idmodelo = p.idmodelo
+            WHERE c.idcategoria = ?
+            ORDER BY p.nombreprod';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
 }
