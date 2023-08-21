@@ -55,4 +55,16 @@ class proveedoresQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    //Funcion para generar grafica parametrizada
+    public function graficaCantidadTransaccionesProveedor()
+    {
+        $sql = 'SELECT proveedores.nombreprov, COUNT(encabezadostransacciones.idencatransaccion) AS cantidad_transacciones 
+                FROM proveedores
+                INNER JOIN encabezadostransacciones ON proveedores.idproveedor = encabezadostransacciones.idproveedor
+                WHERE proveedores.idproveedor = ?
+                GROUP BY proveedores.nombreprov';
+        $params = array($this->id);
+        return Database::getRows($sql, $params);
+    }
 }

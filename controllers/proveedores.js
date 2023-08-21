@@ -5,6 +5,8 @@ const MONEDA_API = 'business/monedas.php';
 const BUSCAR_FORMULARIO = document.getElementById('buscarFormulario');
 // Constante para el formulario del modal, sirve para añadir y editar
 const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
+// Constante para el formulario del modal, para la grafica
+const EJECUTAR_FORMULARIO2 = document.getElementById('ejecutarFormulario2');
 // Constante para rellenar la tabla de los datos registrados en la base
 const REGISTROS_TABLA = document.getElementById('registrosTabla');
 // Constante para nombrar el modal dependiendo de la acción que se haga
@@ -13,6 +15,8 @@ const TITULO = document.getElementById('titulo');
 const BTN_ACCION = document.getElementById('accion');
 // Constante para abrir o cerrar el modal
 const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
+// Constante para abrir o cerrar el modal para la grafica
+const ABRIR_MODAL_GRAFICA = new Modal(document.getElementById('abrirModalGrafica'));
 
 // Metodo para cargar la pagina cada vez que haya un cambio en el DOM
 document.addEventListener('DOMContentLoaded', () => {
@@ -53,6 +57,31 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     }
 });
 
+async function abrirGrafica(idproveedor) {
+    const FORM = new FormData();
+    FORM.append('idproveedor', idproveedor)
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(PROVEEDOR_API, 'graficaCantidadTransaccionesProveedor', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let proveedor = [];
+        let cantidad_transacciones = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            proveedor.push(row.nombreprov);
+            cantidad_transacciones.push(row.cantidad_transacciones);
+        });
+        document.getElementById('graphContainer').innerHTML = '<canvas id="chart"></canvas>';
+        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+        barGraph('chart', proveedor, cantidad_transacciones, 'Nombre proveedor:', 'Cantidad:');
+        ABRIR_MODAL_GRAFICA.show();
+    } else {
+        console.log(JSON.exception);
+    }
+}
+
 // Metodo para cargar la tabla con los datos de la base
 async function rellenarTabla(form = null) {
     // Se inicializa el contenido de la tabla.
@@ -88,6 +117,12 @@ async function rellenarTabla(form = null) {
                         class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                        </button>
+
+                        <button onclick="abrirGrafica(${row.idproveedor})"
+                        class="md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">
+                        <img src="../resources/img/icons8-reports-58.png" width="30px" height="32px"/>
                         </button>
                     </td>
                 </tr>
