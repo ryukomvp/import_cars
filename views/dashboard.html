@@ -24,10 +24,10 @@
         <div class="grid grid-cols-2 mb-4">
             <!-- gráfica -->
             <div>
-                <canvas id="chart-bar"></canvas>
+                <canvas id="cajerosPorCaja"></canvas>
             </div>
             <div>
-                <canvas id="chart-line"></canvas>
+                <canvas id="familiasPorBodega"></canvas>
             </div>
         </div>
         <div class="grid grid-cols-2 mb-4">
@@ -49,91 +49,7 @@
     <script type="text/javascript" src="../resources/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../controllers/components.js"></script>
     <script type="text/javascript" src="../controllers/account.js"></script>
-    <script>
-        const cbar = document.getElementById('chart-bar');
-
-        new Chart(cbar, {
-            type: 'bar',
-            data: {
-                labels: ['Uno', 'Dos', 'Tres'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [11, 9, 10],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const cline = document.getElementById('chart-line');
-
-        new Chart(cline, {
-            type: 'line',
-            data: {
-                labels: ['Uno', 'Dos', 'Tres'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [11, 9, 10],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-
-        const cpolar = document.getElementById('chart-polar');
-
-        new Chart(cpolar, {
-            type: 'polarArea',
-            data: {
-                labels: ['Uno', 'Dos', 'Tres'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [1, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: false
-                    }
-                }
-            }
-        });
-
-        const cdoughnut = document.getElementById('chart-doughnut');
-
-        new Chart(cdoughnut, {
-            type: 'doughnut',
-            data: {
-                labels: ['Uno', 'Dos', 'Tres'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [1, 2, 3],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: false
-                    }
-                }
-            }
-        });
-    </script>
+    <script type="text/javascript" src="../controllers/dashboard.js"></script>
 </body>
 
 </html>

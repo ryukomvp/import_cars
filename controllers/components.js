@@ -267,39 +267,46 @@ function lineGraph(canvas, xAxis, yAxis, legend, title) {
     });
 }
 
-function radarGraph(canvas, legend, values, concat, title) {
+/*
+*   Función para generar un gráfico radar.
+*   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
+*   Retorno: ninguno.
+*/
+function radarGraph(canvas, xAxis, yAxis, legend, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
-    values.forEach(() => {
+    xAxis.forEach(() => {
         colors.push('#' + (Math.random().toString(16)).substring(2, 8));
     });
-    // Se establece el contexto donde se mostrará el gráfico, es decir, la etiqueta canvas a utilizar.
-    const CONTEXT = document.getElementById(canvas).getContext('2d');
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    const context = document.getElementById(canvas).getContext('2d');
     // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
-    const CHART = new Chart(CONTEXT, {
+    const chart = new Chart(context, {
         type: 'radar',
         data: {
-            labels: legend,
+            labels: xAxis,
             datasets: [{
-                label: concat,
-                data: values,
-                hoverBackgroundColor: colors,
+                label: legend,
+                data: yAxis,
+                fill: true,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                pointBackgroundColor: 'rgb(255, 99, 132)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 99, 132)'
             }]
         },
         options: {
-            plugins: {
-                title: {
-                    display: false,
-                    text: title
-                },
-                legend: {
-                    display: false
+            elements: {
+                line: {
+                  borderWidth: 3
                 }
-            }
-        }
+              }
+        },
     });
-}
+};
 
 function doughnutGraph(canvas, legends, values, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
@@ -328,36 +335,38 @@ function doughnutGraph(canvas, legends, values, title) {
                 }
             }
         }
-    });
+    });  
 }
 
-function polarAreaGraph(canvas, legend, values, title) {
+/*
+*   Función para generar un gráfico polar.
+*   Parámetros: canvas (identificador de la etiqueta canvas), legends (valores para las etiquetas), values (valores de los datos) y title (título del gráfico).
+*   Retorno: ninguno.
+*/
+function polarGraph(canvas, legends, values, title) {
     // Se declara un arreglo para guardar códigos de colores en formato hexadecimal.
     let colors = [];
     // Se generan códigos hexadecimales de 6 cifras de acuerdo con el número de datos a mostrar y se agregan al arreglo.
     values.forEach(() => {
         colors.push('#' + (Math.random().toString(16)).substring(2, 8));
     });
-    // Se establece el contexto donde se mostrará el gráfico, es decir, la etiqueta canvas a utilizar.
-    const CONTEXT = document.getElementById(canvas).getContext('2d');
+    // Se establece el contexto donde se mostrará el gráfico, es decir, se define la etiqueta canvas a utilizar.
+    const context = document.getElementById(canvas).getContext('2d');
     // Se crea una instancia para generar el gráfico con los datos recibidos. Requiere la librería chart.js para funcionar.
-    const CHART = new Chart(CONTEXT, {
-        type: 'radar',
+    const chart = new Chart(context, {
+        type: 'polarArea',
         data: {
-            labels: legend,
+            labels: legends,
             datasets: [{
                 data: values,
-                hoverBackgroundColor: colors,
+                backgroundColor: colors
             }]
         },
         options: {
             plugins: {
                 title: {
-                    display: false,
+                    display: true,
                     text: title
-                },
-                legend: {
-                    display: false
                 }
             }
         }
