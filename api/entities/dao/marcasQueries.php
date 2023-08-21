@@ -74,6 +74,6 @@ class MarcaQueries
                 ON ma.idmarca = mo.idmodelo
                 WHERE ma.idmarca = ?';
         $params = array($this->id);
-        return Database::executeRow($sql, $params);
+        return Database::getRows($sql, $params);
     }
 }
