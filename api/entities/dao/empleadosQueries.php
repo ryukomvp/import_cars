@@ -7,19 +7,19 @@ class empleadosQueries
     //funcion para leer los empleados
     public function leerEmpleados()
     {
-        $sql = 'SELECT idempleado, nombre, telefono, correo, nacimiento, documento, estadoempleado, genero, cargo
+        $sql = 'SELECT idempleado, nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo
         FROM empleados
-        ORDER BY nombre';
+        ORDER BY nombreemp';
         return Database::getRows($sql);
     }
 
     //funcion para buscar empleados
     public function buscarEmpleado($value)
     {
-        $sql = 'SELECT idempleado, nombre, telefono, correo, nacimiento, documento, estadoempleado, genero, cargo
+        $sql = 'SELECT idempleado, nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo
                 FROM empleados
-                WHERE nombre ILIKE ? OR telefono ILIKE ? OR correo ILIKE ?  OR documento ILIKE ?
-                ORDER BY nombre';
+                WHERE nombre LIKE ? OR telefono LIKE ? OR correo LIKE ?  OR documento LIKE ?
+                ORDER BY nombreemp';
         $params = array("%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
@@ -27,7 +27,7 @@ class empleadosQueries
     //funcion para crear empleados
     public function crearEmpleado()
     {
-        $sql = 'INSERT INTO empleados(nombre, telefono, correo, nacimiento, documento, estadoempleado, genero, cargo)
+        $sql = 'INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo)
                 VALUES(?,?,?,?,?,?,?,?)';
         $params = array($this->nombre, $this->telefono, $this->correo, $this->nacimiento, $this->documento, $this->estado, $this->genero, $this->cargo);
         return Database::executeRow($sql, $params);
@@ -36,7 +36,7 @@ class empleadosQueries
     //funcion para seleccionar un empleado
     public function leerUnEmpleado()
     {
-        $sql = 'SELECT idempleado, nombre, telefono, correo, nacimiento, documento, estadoempleado, genero, cargo
+        $sql = 'SELECT idempleado, nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo
                 FROM empleados
                 WHERE idempleado = ?';
         $params = array($this->idempleado);
@@ -46,28 +46,28 @@ class empleadosQueries
     //funcion para leer los estados de empleado
     public function leerEstadosEmpleados()
     {
-        $sql = 'SELECT unnest(enum_range(NULL::estadosempleados)) val, unnest(enum_range(NULL::estadosempleados)) text';
-        return Database::getRows($sql);
+        $estados = array(array('Activo','Activo'), array('Inactivo','Inactivo'), array('Ausente con justificación','Ausente con justificación'), array('Ausente sin justificación','Ausente sin justificación'));
+        return $estados;
     }
 
     //funcion para leer los generos
     public function leerGeneros()
     {
-        $sql = 'SELECT unnest(enum_range(NULL::generos)) val, unnest(enum_range(NULL::generos)) text';
-        return Database::getRows($sql);
+        $generos = array(array('Masculino','Masculino'), array('Femenino','Femenino'));
+        return $generos;
     }
 
     public function leerCargos()
     {
-        $sql = 'SELECT unnest(enum_range(NULL::cargos)) val, unnest(enum_range(NULL::cargos)) text';
-        return Database::getRows($sql);
+        $cargos = array(array('Jefe','Jefe'), array('Gerente','Gerente'), array('Vendedor','Vendedor'));
+        return $cargos;
     }
 
     //funcion para actualizar empleado
     public function actualizarEmpleado()
     {
         $sql = 'UPDATE empleados
-                SET nombre = ?, telefono = ?, correo = ?, nacimiento = ?, documento = ?, estadoempleado = ?, genero = ?, cargo = ?
+                SET nombreemp = ?, telefonoemp = ?, correoemp = ?, nacimientoemp = ?, duiemp = ?, estadoempleado = ?, genero = ?, cargo = ?
                 WHERE idempleado = ?';
         $params = array($this->nombre, $this->telefono, $this->correo, $this->nacimiento, $this->documento, $this->estado, $this->genero, $this->cargo, $this->idempleado);
         return Database::executeRow($sql, $params);

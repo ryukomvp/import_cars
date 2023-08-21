@@ -17,18 +17,18 @@
     <title>Empleados</title>
 </head>
 
-<body>
+<body class="bg-gray-900">
     <!-- encabezado del sistio -->
     <header></header>
 
     <!-- contenido del sitio -->
     <main>
-        <div class="py-4">
+        <div class="py-4 container">
             <div>
                 <div class="py-4 text-center">
                     <!--Informacion del contenido de la pagina-->
-                    <h1 class="text-xl text-rojo font-bold">Empleados</h1>
-                    <p class="text-azul font-medium">Gestion de los empleados donde se podran registrar los empleados,
+                    <h1 class="text-xl text-rojo font-bold uppercase">empleados</h1>
+                    <p class="text-blue-500 font-medium">Gestion de los empleados donde se podran registrar los empleados,
                         actualizar y eliminar la informacion de cada uno de estos.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
@@ -45,16 +45,14 @@
                                     </svg>
                                 </div>
                                 <input type="search" id="buscar" name="buscar"
-                                    class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="block w-full bg-gray-900 text-white border border-white rounded-lg focus:ring-azul focus:border-azul p-4 pl-10 text-sm"
                                     placeholder="Buscar...">
-                                <button type="submit"
-                                    class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                             </div>
                         </form>
                     </div>
                     <div class="col-end-5">
                         <button onclick="crearRegistro()"
-                            class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
                         </button>
@@ -84,20 +82,16 @@
                         <!-- Modal body -->
                         <form method="post" id="ejecutarFormulario" class="p-4">
                             <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
-                                <div class="text-center py-4 p-6 space-x-2">
-                                    <img src="../resources/img/logo.jpg" alt="img">
-                                    <br>
+                                <div>
+                                    <div class="text-center py-4 p-6 space-x-2 rounded-b">
+                                        <img src="../resources/img/logo.jpg" alt="img">
+                                        <br>
+                                    </div>
+                                    <!--ID-->
+                                    <input class="hidden" type="number" id="id" name="id">
                                 </div>
                                 <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                    <!--ID-->..
-                                    <div>
-                                        <!--<div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
-                                            <img src="../resources/img/logo.jpg" alt="img">
-                                            <br>
-                                        </div>-->
-                                        <!--ID-->
-                                        <input class="hidden" type="number" id="id" name="id">
-                                    </div>
+                                    <!--ID-->
                                     <!--Input nombre del empleado-->
                                     <div>
                                         <label for="nombre"
@@ -174,7 +168,7 @@
                             <div
                                 class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                                 <button id="accion" type="submit"
-                                    class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"></button>
+                                    class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"></button>
                             </div>
                         </form>
                         <!-- Modal footer -->
@@ -184,14 +178,10 @@
             </div>
             <!--Final del modal-->
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
                     <thead
-                        class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
-                            <!--Numero de registro-->
-                            <th scope="col" class="hidden px-6 py-3">
-                                ID
-                            </th>
                             <!--Columna de nombres del empleado-->
                             <th scope="col" class="px-6 py-3">
                                 Nombre
@@ -208,10 +198,6 @@
                             <th scope="col" class="px-6 py-3">
                                 Nacimiento
                             </th>
-                            <!--Tipo de documento del empleado
-                            <th scope="col" class="px-6 py-3">
-                                Tipo documento
-                            </th>-->
                             <!--Columna del numero de documento del empleado-->
                             <th scope="col" class="px-6 py-3">
                                 Documento

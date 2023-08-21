@@ -66,27 +66,26 @@ async function rellenarTabla(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
-                <tr  class="text-center bg-white hover:bg-blue-200">
-                    <td class="hidden">${row.idempleado}</td>
-                    <td>${row.nombre}</td>
-                    <td>${row.telefono}</td>
-                    <td>${row.correo}</td>
-                    <td>${row.nacimiento}</td>
-                    <td>${row.documento}</td>
+                <tr  class="bg-white hover:bg-blue-200">
+                    <td>${row.nombreemp}</td>
+                    <td>${row.telefonoemp}</td>
+                    <td>${row.correoemp}</td>
+                    <td>${row.nacimientoemp}</td>
+                    <td>${row.duiemp}</td>
                     <td>${row.estadoempleado}</td>
                     <td>${row.genero}</td>
                     <td>${row.cargo}</td>
                     <td>
                         <button onclick="actualizarRegistro(${row.idempleado})"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        class="text-blue-700 border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         type="button">
-                        <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                        <img src="https://img.icons8.com/ios/30/1A56DB/synchronize.png" />
                         </button>
 
                         <button onclick="eliminarRegistro(${row.idempleado})"
-                        class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        class="text-red-700 border border-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                         type="button">
-                        <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                        <img src="https://img.icons8.com/ios/30/C81E1E/delete--v1.png" />
                         </button>
                     </td>
                 </tr>
@@ -131,11 +130,11 @@ async function actualizarRegistro(id) {
         TITULO.textContent = 'Actualizar empleado';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idempleado;
-        document.getElementById('nombre').value = JSON.dataset.nombre;
-        document.getElementById('telefono').value = JSON.dataset.telefono;
-        document.getElementById('correo').value = JSON.dataset.correo;
-        document.getElementById('nacimiento').value = JSON.dataset.nacimiento;
-        document.getElementById('documento').value = JSON.dataset.documento;
+        document.getElementById('nombre').value = JSON.dataset.nombreemp;
+        document.getElementById('telefono').value = JSON.dataset.telefonoemp;
+        document.getElementById('correo').value = JSON.dataset.correoemp;
+        document.getElementById('nacimiento').value = JSON.dataset.nacimientoemp;
+        document.getElementById('documento').value = JSON.dataset.duiemp;
         fillSelect(EMPLEADO_API, 'leerEstadosEmpleados', 'estado', JSON.dataset.estadoempleado);
         fillSelect(EMPLEADO_API, 'leerGeneros', 'genero', JSON.dataset.genero);
         fillSelect(EMPLEADO_API, 'leerCargos', 'cargo', JSON.dataset.cargos);

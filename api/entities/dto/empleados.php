@@ -46,7 +46,7 @@ class empleados extends empleadosQueries
     // Método para validar y asignar el telefono.
     public function setTelefono($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validatePhone($value)) {
             $this->telefono = $value;
             return true;
         } else {
