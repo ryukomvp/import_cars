@@ -133,7 +133,7 @@ async function actualizarRegistro(id) {
 //Funcion para abrir el modal con los datos del registro a eliminar
 async function eliminarRegistro(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const MENSAJE = await confirmAction('¿Desea eliminar el código común?');
+    const MENSAJE = await confirmAction('¿Desea eliminar el código del plazo?');
     // Se verifica la respuesta del mensaje.
     if (MENSAJE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
