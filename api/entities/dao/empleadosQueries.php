@@ -82,5 +82,13 @@ class empleadosQueries
         return Database::executeRow($sql, $params);
     }
 
+    public function empleadoCargo()
+    {
+        $sql = 'SELECT cargo, count(idempleado) idempleado
+        FROM empleados
+        GROUP BY cargo ORDER BY idempleado ASC';
+        return Database::getRows($sql);
+    }
+
 
 }

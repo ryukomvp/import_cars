@@ -10,9 +10,9 @@ class EncabezadosQueries
     */
     public function encaBodegas()
     {
-        $sql = 'SELECT numerobod, count(nocomprobante) nocomprobante
+        $sql = 'SELECT numerobod, count(idencatransaccion) idencatransaccion
         FROM encabezadostransacciones INNER JOIN bodegas ON encabezadostransacciones.idbodega = bodegas.idbodega
-        GROUP BY numerobod,nocomprobante ORDER BY nocomprobante ASC';
+        GROUP BY numerobod ORDER BY idencatransaccion DESC';
         return Database::getRows($sql);
     }
 }
