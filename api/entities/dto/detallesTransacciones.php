@@ -41,6 +41,17 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         }
     }
 
+
+    public function setIva($value)
+    {
+        if(Validator::validateDouble($value)) {
+            $this->iva = $value;
+            return true;
+        } else{
+            return false;
+        }
+    }
+
     public function setObservacion($value)
     {
         if (Validator::validateAlphabetic($value, 1, 200)) {
@@ -100,6 +111,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
             return false;
         }
     }
+
 
     /*
     *   Métodos para obtener valores de los atributos.
