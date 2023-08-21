@@ -100,4 +100,5 @@ class productosQueries
         return Database::getRows($sql);
     }
 
+    
 }

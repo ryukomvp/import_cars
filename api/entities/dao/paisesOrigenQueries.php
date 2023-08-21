@@ -57,4 +57,17 @@ class PaisesOrigenQueries
         $params = array($this->idpais);
         return Database::executeRow($sql, $params);
     }
+
+    /*Métodos para generar graficas*/
+
+    public function graficaCantidadProductosPais()
+    {
+        $sql = "SELECT pa.pais, COUNT(pr.idproducto) AS cantidad_productos 
+            FROM paisesdeorigen pa 
+            INNER JOIN productos pr ON pa.idpais = pr.idpais 
+            WHERE pa.idpais = ? 
+            GROUP BY pr.nombreprod";
+        $params = array($this->id);
+        return Database::getRow($sql, $params)
+    }
 }
