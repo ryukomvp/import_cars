@@ -1,10 +1,13 @@
 
+
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const PAIS_ORIGEN_API = 'business/paisesOrigen.php';
 // Constante para el input de busqueda
 const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para el formulario del modal, sirve para añadir y editar
 const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
+// Constante para el formulario del modal, para la grafica
+const EJECUTAR_FORMULARIO2 = document.getElementById('ejecutarFormulario2');
 // Constante para rellenar la tabla de los datos registrados en la base
 const REGISTROS_TABLA = document.getElementById('registrosTabla');
 // Constante para nombrar el modal dependiendo de la acción que se haga
@@ -13,6 +16,8 @@ const TITULO = document.getElementById('titulo');
 const BTN_ACCION = document.getElementById('accion');
 // Constante para abrir o cerrar el modal
 const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
+// Constante para abrir o cerrar el modal para la grafica
+const ABRIR_MODAL_GRAFICA = new Modal(document.getElementById('abrirModalGrafica'));
 
 // Metodo para cargar la pagina cada vez que haya un cambio en el DOM
 document.addEventListener('DOMContentLoaded', () => {
@@ -53,6 +58,31 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     }
 });
 
+async function abrirGrafica(idpais) {
+    const FORM = new FormData();
+    FORM.append('idpais', idpais)
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(PAIS_ORIGEN_API, 'graficaCantidadProductosPais', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let pais = [];
+        let cantidad_productos = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            pais.push(row.pais);
+            cantidad_productos.push(row.cantidad_productos);
+        });
+        document.getElementById('graphContainer').innerHTML = '<canvas id="chart"></canvas>';
+        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+        barGraph('chart', pais, cantidad_productos, 'Pais de origen', 'Cantidad de productos por país');
+        ABRIR_MODAL_GRAFICA.show();
+    } else {
+        console.log(JSON.exception);
+    }
+}
+
 // Metodo para cargar la tabla con los datos de la base
 async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.
@@ -78,6 +108,12 @@ async function cargarRegistros(form = null) {
                         </button>
 
                         <button onclick="eliminarRegistro(${row.idpais})"
+                        class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">
+                        <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                        </button>
+
+                        <button onclick="abrirGrafica(${row.idpais})"
                         class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />

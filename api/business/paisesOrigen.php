@@ -46,6 +46,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+            case 'graficaCantidadProductosPais':
+                $_POST = Validator::validateForm($_POST);
+                if (!$pais->setId($_POST['idpais'])) {
+                    $result['exception'] = 'Pais incorrecto';
+                } elseif(!$data = $pais->leerUnRegistro()){
+                    $result['exception'] = 'País inexistente';
+                } elseif ($result['dataset'] = $pais->graficaCantidadProductosPais()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'País inexistente';
+                }
+                break;
             case 'leerUnRegistro':
                 if (!$pais->setId($_POST['id'])) {
                     $result['exception'] = 'País incorrecto';
