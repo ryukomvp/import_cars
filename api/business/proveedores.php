@@ -72,6 +72,20 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Proveedor inexistente';
                 }
                 break;
+            case 'graficaCantidadTransaccionesProveedor':
+                $_POST = Validator::validateForm($_POST);
+                if(!$proveedores->setId($_POST['idproveedor'])) {
+                    $result['exception'] = 'proveedor incorrecto';
+                } elseif(!$data = $proveedores->leerUnProveedor()) {
+                    $result['exception'] = 'Proveedor inexistente';
+                } elseif($result['dataset'] = $proveedores->graficaCantidadTransaccionesProveedor()) {
+                    $result['status'] = 1;
+                } elseif(Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else{
+                    $result['exception'] = 'No hay transacciones para este proveedor.';
+                }
+                break;
             case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$proveedores->setId($_POST['id'])) {
