@@ -295,4 +295,16 @@ class Validator
             return false;
         }
     }
+
+
+
+    public static function validateDouble($value)
+    {
+        // Se dividen las partes de la fecha y se guardan en un arreglo en el siguiene orden: año, mes y día.
+        if (preg_match('/^[0-9]{2}[.][0-9]{2}$/', $value)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
