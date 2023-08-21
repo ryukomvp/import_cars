@@ -67,7 +67,7 @@ class PaisesOrigenQueries
             INNER JOIN productos pr ON pa.idpais = pr.idpais 
             WHERE pa.idpais = ? 
             GROUP BY pr.nombreprod";
-        $params = array($this->id);
-        return Database::getRow($sql, $params)
+        $params = array($this->idpais);
+        return Database::getRows($sql, $params);
     }
 }

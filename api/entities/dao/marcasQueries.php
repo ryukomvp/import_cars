@@ -60,4 +60,20 @@ class MarcaQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function productosMarca()
+    {
+        $sql = 'SELECT p.nombreprod, t.tipoproducto, c.categoria, mo.modelo FROM productos p
+                INNER JOIN tiposproductos t
+                ON p.idtipoproducto = t.idtipoproducto
+                INNER JOIN categorias c
+                ON p.idcategoria = c.idcategoria
+                INNER JOIN modelos mo
+                ON mo.idmodelo = p.idmodelo
+                INNER JOIN marcas ma
+                ON ma.idmarca = mo.idmodelo
+                WHERE ma.idmarca = ?';
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    }
 }

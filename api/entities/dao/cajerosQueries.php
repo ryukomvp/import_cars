@@ -59,4 +59,15 @@ class CajeroQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    /*
+    *   Métodos para generar gráficas por la cantidad de cajeros por cajas.
+    */
+    public function cantidadCajerosCajas()
+    {
+        $sql = 'SELECT idcaja, COUNT(idcajero) AS "cajeros"
+        FROM cajeros INNER JOIN cajas USING(idcaja)
+        GROUP BY idcaja';
+        return Database::getRows($sql);
+    }
 }

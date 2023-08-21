@@ -44,7 +44,7 @@ foreach ($dataTipos as $indice => $valor) {
             $pdf->cell(0, 10, $pdf->encodeString('No hay usuarios con este tipo'), 1, 1);
         }
     } else {
-        $pdf->cell(0, 10, $pdf->encodeString('Acceso incorrecto o inexistente'), 1, 1);
+        $pdf->cell(0, 10, $pdf->encodeString('Tipo incorrecto o inexistente'), 1, 1);
     }
 }
 // Se llama implícitamente al método footer() y se envía el documento al navegador web.

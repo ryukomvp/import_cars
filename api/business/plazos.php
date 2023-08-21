@@ -1,11 +1,11 @@
 <?php
-require_once('../entities/dto/paisesOrigen.php');
+require_once('../entities/dto/Plazos.php');
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $pais = new PaisesOrigen;
+    $plazo = new Plazos;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -15,10 +15,11 @@ if (isset($_GET['action'])) {
             case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['buscar'] == '') {
-                    $result['dataset'] = $pais->leerRegistros();
+                    $result['dataset'] = $plazo->leerRegistros();
                     $result['status'] = 1;
-                } elseif ($result['dataset'] = $pais->buscarRegistros($_POST['buscar'])) {
+                } elseif ($result['dataset'] = $plazo->buscarRegistros($_POST['buscar'])) {
                     $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -27,73 +28,71 @@ if (isset($_GET['action'])) {
                 break;
             case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pais->setpais($_POST['pais'])) {
-                    $result['exception'] = 'País incorrecto';
-                } elseif ($pais->crearRegistro()) {
+                if (!$plazo->setDescripcion($_POST['descripcion'])) {
+                    $result['exception'] = 'Descripción incorrecta';
+                } elseif (!$plazo->setVencimiento($_POST['vencimiento'])) {
+                    $result['exception'] = 'Fecha de vencimiento incorrecta';
+                } elseif (!$plazo->setIdCodigoPlazo($_POST['codigoPlazo'])) {
+                    $result['exception'] = 'Codigo de plazo incorrecto';
+                } elseif (!$plazo->setTipoPlazo($_POST['tipoPlazo'])) {
+                    $result['exception'] = 'Tipo de plazo incorrecto';
+                } elseif ($plazo->crearRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'País creado correctamente';
+                    $result['message'] = 'Plazo creado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'leerRegistros':
-                if ($result['dataset'] = $pais->leerRegistros()) {
+                if ($result['dataset'] = $plazo->leerRegistros()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'graficaCantidadProductosPais':
-                $_POST = Validator::validateForm($_POST);
-                if (!$pais->setId($_POST['idpais'])) {
-                    $result['exception'] = 'Pais incorrecto';
-                } elseif(!$data = $pais->leerUnRegistro()){
-                    $result['exception'] = 'País inexistente';
-                } elseif ($result['dataset'] = $pais->graficaCantidadProductosPais()) {
-                    $result['status'] = 1;
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'País inexistente';
+                    $result['exception'] = 'No hay registros';
                 }
                 break;
             case 'leerUnRegistro':
-                if (!$pais->setId($_POST['id'])) {
-                    $result['exception'] = 'País incorrecto';
-                } elseif ($result['dataset'] = $pais->leerUnRegistro()) {
+                if (!$plazo->setId($_POST['id'])) {
+                    $result['exception'] = 'Código incorrecto';
+                } elseif ($result['dataset'] = $plazo->leerUnRegistro()) {
                     $result['status'] = 1;
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'País inexistente';
+                    $result['exception'] = 'Plazo inexistente';
                 }
                 break;
             case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pais->setId($_POST['id'])) {
+                if (!$plazo->setId($_POST['id'])) {
                     $result['exception'] = 'ID incorrecto';
-                } elseif (!$data = $pais->leerUnRegistro()) {
-                    $result['exception'] = 'País inexistente';
-                } elseif (!$pais->setPais($_POST['pais'])) {
-                    $result['exception'] = 'País incorrecto';
-                } elseif ($pais->actualizarRegistro()) {
+                } elseif (!$data = $plazo->leerUnRegistro()) {
+                    $result['exception'] = 'Plazo inexistente';
+                } elseif (!$plazo->setDescripcion($_POST['descripcion'])) {
+                    $result['exception'] = 'Descripción incorrecta';
+                } elseif (!$plazo->setVencimiento($_POST['vencimiento'])) {
+                    $result['exception'] = 'Fecha de vencimiento incorrecta';
+                } elseif (!$plazo->setIdCodigoPlazo($_POST['codigoPlazo'])) {
+                    $result['exception'] = 'Codigo de plazo incorrecto';
+                } elseif (!$plazo->setTipoPlazo($_POST['tipoPlazo'])) {
+                    $result['exception'] = 'Tipo de plazo incorrecto';
+                } elseif ($plazo->actualizarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Pais modificado correctamente';
+                    $result['message'] = 'Plazo actualizado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }
                 break;
             case 'eliminarRegistro':
-                if (!$pais->setId($_POST['idpais'])) {
-                    $result['exception'] = 'País incorrecta';
-                } elseif (!$data = $pais->leerUnRegistro()) {
-                    $result['exception'] = 'País inexistente';
-                } elseif ($pais->eliminarRegistro()) {
+                if (!$plazo->setId($_POST['idplazo'])) {
+                    $result['exception'] = 'Código incorrecto';
+                } elseif (!$data = $plazo->leerUnRegistro()) {
+                    $result['exception'] = 'Código inexistente';
+                } elseif ($plazo->eliminarRegistro()) {
                     $result['status'] = 1;
-                    $result['message'] = 'País eliminado correctamente';
+                    $result['message'] = 'Plazo eliminado exitosamente';
                 } else {
                     $result['exception'] = Database::getException();
                 }

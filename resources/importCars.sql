@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS plazos(
     
     idplazo int AUTO_INCREMENT PRIMARY KEY not null,
     descripcion varchar(30) not null,
-    vencimiento int not null,
+    vencimiento date not null,
     idcodigoplazo int not null,
     tipoplazo ENUM('Contado', 'Credito') not null,
 
