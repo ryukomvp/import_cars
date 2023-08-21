@@ -357,6 +357,8 @@ CREATE TABLE IF NOT EXISTS detallestransacciones (
     REFERENCES encabezadostransacciones(idencatransaccion) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+/*inserciones de datos*/
+
 INSERT INTO paisesDeOrigen(pais) VALUES
 	('El Salvador'),
 	('Honduras'),
@@ -694,8 +696,6 @@ INSERT INTO codigostransacciones(codigo, nombrecodigo) VALUES
        (1239, 'codigo6'),
        (1210, 'codigo7');
 
-	   /*falta vendedores, clientes*/
-
 INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro) VALUES
        (1, 2015, 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1),
        (2, 2016, 1214, 1235, 2, 2,'Efectivo', 2, 2, 2, 2, 2),
@@ -704,6 +704,15 @@ INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza,
        (5, 2019, 1217, 1238, 5, 5,'Efectivo', 5, 5, 5, 5, 5),
        (6, 2020, 1218, 1239, 6, 6,'Efectivo', 6, 6, 6, 6, 6),
        (7, 2021, 1219, 1230, 7, 7,'Efectivo', 7, 7, 7, 7, 7);
+
+INSERT INTO detallestransacciones(correlativo, cantidad, preciounitario, ventanosujeta, ventaexenta, ventaafecta, descuento, valordescuento, sumas, subtotal, ventatotal, iva, observaciones, idbodegaentrada, idbodegasalida, idproducto, descripcion, idencatransaccion) VALUES
+       (1, 50, 20.00, 15.00, 40.00, 34.00, 40.00, 20.00, 40.00, 34.00, 34.00, 19.00, 'Exelente', 1, 1, 1, 'Transaccion de producto', 1),
+       (2, 60, 40.00, 20.00, 34.00, 40.00, 33.00, 19.00, 20.00, 33.00, 40.00, 40.00, 'Defectuoso', 2, 2, 2, 'Transaccion de producto', 2),
+       (3, 70, 33.00, 40.00, 19.00, 33.00, 19.00, 33.00, 19.00, 33.00, 20.00, 19.00, 'Exelente', 3, 3, 3, 'Transaccion de producto', 3),
+       (4, 80, 19.00, 60.00, 20.00, 19.00, 40.00, 19.00, 19.00, 40.00, 40.00, 20.00, 'Exelente', 4, 4, 4, 'Transaccion de producto', 4),
+       (5, 90, 80.00, 34.00, 40.00, 34.00, 19.00, 20.00, 33.00, 20.00, 19.00, 34.00, 'Defectuoso', 5, 5, 5, 'Transaccion de producto', 5),
+       (6, 100, 15.00, 12.00, 19.00, 19.00, 40.00, 20.00, 40.00, 19.00, 19.00, 33.00, 'Exelente', 6, 6, 6, 'Transaccion de producto', 6),
+       (7, 110, 84.00, 19.00, 19.00, 40.00, 19.00, 19.00, 34.00, 20.00, 33.00, 40.00, 'Defectuoso', 7, 7, 7, 'Transaccion de producto', 7);
 
 
 
