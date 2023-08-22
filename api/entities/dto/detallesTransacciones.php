@@ -16,7 +16,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     protected $ventaafecta = null;
     protected $descuento = null;
     protected $valordescuento = null;
-    protected $sumas = null;
+    protected $suma = null;
     protected $subtotal = null;
     protected $ventatotal = null;
     protected $iva = null;
@@ -124,7 +124,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     public function setSumas($value)
     {
         if (Validator::validateMoney($value)) {
-            $this->sumas = $value;
+            $this->suma = $value;
             return true;
         } else {
             return false;
@@ -317,6 +317,6 @@ class DetallesTransacciones extends DetallesTransaccionQueries
 
     public function getEncaTransaccion()
     {
-        return $this->encatraccion;
+        return $this->encatransaccion;
     }
 }
