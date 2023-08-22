@@ -60,6 +60,18 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Plazo inexistente';
                 }
                 break;
+            case 'graficaCantidadPlazos':
+                $_POST = Validator::validateForm($_POST);
+                if(!$plazo->setId($_POST['idcodigoplazo'])) {
+                    $result = ['exception'] = 'Codigo no encontrado';
+                } elseif(!$data = $plazo->leerUnRegistro()) {
+                    $result = ['exception'] = 'Codigo inexistente';
+                } elseif($result['dataset'] = $plazo->graficaCantidadPlazos()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['exception'] = 'Codigo sin plazos';
+                }
+                break;
             case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$plazo->setId($_POST['id'])) {

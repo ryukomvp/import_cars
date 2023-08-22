@@ -5,6 +5,8 @@ const CODIGO_PLAZO_API = 'business/codigosPlazos.php';
 const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para el formulario del modal, sirve para añadir y editar
 const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
+// Constante para el formulario del modal, para la grafica
+const EJECUTAR_FORMULARIO2 = document.getElementById('ejecutarFormulario2');
 // Constante para rellenar la tabla de los datos registrados en la base
 const REGISTROS_TABLA = document.getElementById('registros');
 // Constante para nombrar el modal dependiendo de la acción que se haga
@@ -13,6 +15,8 @@ const TITULO = document.getElementById('titulo');
 const BTN_ACCION = document.getElementById('accion');
 // Constante para abrir o cerrar el modal
 const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
+// Constante para abrir o cerrar el modal para la grafica
+const ABRIR_MODAL_GRAFICA = new Modal(document.getElementById('abrirModalGrafica'));
 
 // Metodo para cargar la pagina cada vez que haya un cambio en el DOM
 document.addEventListener('DOMContentLoaded', () => {
@@ -53,6 +57,30 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     }
 });
 
+async function abrirGrafica(idcodigoplazo) {
+    const FORM = new FormData();
+    FORM.append('idcodigoplazo', idcodigoplazo)
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(CODIGO_PLAZO_API, 'graficaCantidadPlazos', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let plazo = [];
+        let cantidad_plazos = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            plazo.push(row.plazo);
+            cantidad_plazos.push(row.cantidad_plazos);
+        });
+        document.getElementById('graphContainer').innerHTML = '<canvas id="chart"></canvas>';
+        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+        barGraph('chart', plazo, cantidad_plazos, 'Nombre de codigo', 'Cantidad:');
+        ABRIR_MODAL_GRAFICA.show();
+    } else {
+        console.log(JSON.exception);
+    }
+ }
 // Metodo para cargar la tabla con los datos de la base
 async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.

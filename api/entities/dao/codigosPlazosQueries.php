@@ -59,4 +59,17 @@ class CodigosPlazosQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    //Generar Gráfica//
+
+    public function graficaCantidadPlazos()
+    {
+        $sql = 'SELECT codigosplazos.plazo, COUNT(plazos.idcodigoplazo) AS cantidad_plazos
+            FROM plazos
+            INNER JOIN codigosplazos ON plazos.idcodigoplazo = codigosplazos.idcodigoplazo
+            WHERE idcodigoplazo = ?
+            GROUP BY codigosplazos.plazo';
+        $params(this->id);
+        return Database::getRows($sql, $params);
+    }
 }
