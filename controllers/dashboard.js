@@ -1,6 +1,7 @@
 // Constante para completar la ruta de la API.
 const CAJERO_API = 'business/cajeros.php';
 const FAMILIABODEGA_API = 'business/familiasbodegas.php';
+const DETALLETRANSACCIONES_API = 'business/detallesTransacciones.php';
 const ENCATRANSACCIONES_API = 'business/encabezadosTransacciones.php';
 const EMPLEADOS_API = 'business/empleados.php';
 
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     graficoRadarFamilias();
     graficoBodegasTransacciones();
     graficoEmpleadosCargos();
+    graficoBarraDetallesTrans();
 });
 
 /*
@@ -63,6 +65,33 @@ async function graficoRadarFamilias() {
         pieGraph('familiasPorBodega', bodegas, cantidad, 'Cantidad de familias que se encuentran en la bodega');
     } else {
         document.getElementById('familiasPorBodega').remove();
+        console.log(JSON.exception);
+    }
+}
+
+/*
+*   Función asíncrona para mostrar en un gráfico polor mostrando la cantidad de cajeros por caja.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+async function graficoBarraDetallesTrans() {
+    // Petición para obtener los datos del gráfico.
+    const JSON = await dataFetch(DETALLETRANSACCIONES_API, 'cantidadCantidadTransaccion');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
+    if (JSON.status) {
+        // Se declaran los arreglos para guardar los datos a graficar.
+        let detalle = [];
+        let cantidad = [];
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
+        JSON.dataset.forEach(row => {
+            // Se agregan los datos a los arreglos.
+            detalle.push(row.detalle);
+            cantidad.push(row.cantidad);
+        });
+        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
+        barGraph('cantidadDetalleTransaccion', detalle, cantidad, 'Cantidad de productos en una transaccion');
+    } else {
+        document.getElementById('cantidadDetalleTransaccion').remove();
         console.log(JSON.exception);
     }
 }
