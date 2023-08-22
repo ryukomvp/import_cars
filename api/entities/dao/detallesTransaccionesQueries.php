@@ -11,8 +11,7 @@ class DetallesTransaccionQueries
     public function cantidadCantidadTransaccion()
     {
         $sql = 'SELECT iddetalletransaccion AS "detalle", cantidad
-        FROM detallestransacciones INNER JOIN encabezadostransacciones USING(idencatransaccion)
-        INNER JOIN familias USING(idfamilia)
+        FROM detallestransacciones 
         GROUP BY iddetalletransaccion
         ORDER BY cantidad DESC
         LIMIT 5';

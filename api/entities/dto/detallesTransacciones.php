@@ -1,6 +1,6 @@
 <?php
 require_once('../helpers/validator.php');
-require_once('../entities/dao/detallesTransaccionQueries.php');
+require_once('../entities/dao/detallesTransaccionesQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad CATEGORIA.
 */
