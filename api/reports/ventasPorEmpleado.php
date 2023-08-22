@@ -37,16 +37,16 @@ if (isset($_GET['idempleado'])) {
                     $pdf->cell(41, 10, $rowDetalle['preciounitario'], 1, 1);
                 }
             } else {
-                $pdf->cell(0, 10, $pdf->encodeString('No hay productos para la categoría seleccionada'), 1, 1);
+                $pdf->cell(0, 10, $pdf->encodeString('No hay ventas de el empleado que selecciono '), 1, 1);
             }
             // Se llama implícitamente al método footer() y se envía el documento al navegador web.
-            $pdf->output('I', 'productos_categoria.pdf');
+            $pdf->output('I', 'Ventas_empleado.pdf');
         } else {
-            print('Categoría inexistente');
+            print('No tiene ventas este empleado');
         }
     } else {
-        print('Categoría incorrecta');
+        print('Empleado incorrecta');
     }
 } else {
-    print('Debe seleccionar una categoría');
+    print('Debe seleccionar una empleado');
 }
