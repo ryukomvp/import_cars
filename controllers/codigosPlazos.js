@@ -75,7 +75,7 @@ async function abrirGrafica(idcodigoplazo) {
         });
         document.getElementById('graphContainer').innerHTML = '<canvas id="chart"></canvas>';
         // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-        barGraph('chart', plazo, cantidad_plazos, 'Nombre de codigo', 'Cantidad:');
+        barGraph('chart', plazo, cantidad_plazos, 'Cantidad de plazos', 'Códigos plazos:');
         ABRIR_MODAL_GRAFICA.show();
     } else {
         console.log(JSON.exception);
@@ -110,6 +110,12 @@ async function cargarRegistros(form = null) {
                         class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                        </button>
+
+                        <button onclick="abrirGrafica(${row.idcodigoplazo})"
+                        class="md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        type="button">
+                        <img src="../resources/img/icons8-reports-58.png" width="31px" height="34px"/>
                         </button>
                     </td>
                 </tr>
