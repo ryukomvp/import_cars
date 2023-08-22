@@ -18,7 +18,8 @@ if ($dataEmpleados = $empleados->leerEmpleados()) {
     $pdf->setFont('Times', 'B', 11);
     // Se imprimen los encabezados con los encabezados.
     // Encabezado de categoria
-    $pdf->cell(186, 10, 'Empleados', 1, 1, 'C', 1);
+    $pdf->cell(93, 10, 'Empleados', 1, 0, 'C', 1);
+    $pdf->cell(93, 10, 'Telefono', 1, 1, 'C', 1);
     // Se establece un color de relleno para mostrar el nombre de la categoría.
     $pdf->setFillColor(225);
     // Se establece la fuente para los datos de las categorias.
@@ -27,7 +28,8 @@ if ($dataEmpleados = $empleados->leerEmpleados()) {
     foreach ($dataEmpleados as $rowEmpleados) {
         // Se imprimen las celdas con los datos de las categorias.
         // Celda de categoria
-        $pdf->cell(186, 10, $pdf->encodeString($rowEmpleados['nombreemp']), 1, 1);
+        $pdf->cell(93, 10, $pdf->encodeString($rowEmpleados['nombreemp']), 1, 0);
+        $pdf->cell(93, 10, $pdf->encodeString($rowEmpleados['telefonoemp']), 1, 1);
     }
 } else {
     $pdf->cell(0, 10, $pdf->encodeString('No hay empleados para mostrar'), 1, 1);
