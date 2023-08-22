@@ -90,5 +90,20 @@ class empleadosQueries
         return Database::getRows($sql);
     }
 
-
+    public function ventasPorEmpleado()
+    {
+        $sql = 'SELECT e.fechatransac, p.nombreemp, d.cantidad, d.preciounitario
+        FROM encabezadostransacciones  e
+        INNER JOIN detallestransacciones as d
+        ON e.idencatransaccion = d.iddetalletransaccion
+        INNER JOIN vendedores as v
+        ON e.idvendedor = v.idvendedor
+        INNER JOIN usuarios as u
+        ON v.idusuario = u.idusuario
+        INNER JOIN empleados as p 
+        ON u.idempleado = p.idempleado
+        WHERE u.idempleado = ?';
+        $params = array($this->idempleado);
+        return Database::getRows($sql, $params);
+    }
 }

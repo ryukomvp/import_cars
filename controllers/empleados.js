@@ -87,6 +87,12 @@ async function rellenarTabla(form = null) {
                         type="button">
                         <img src="https://img.icons8.com/ios/30/C81E1E/delete--v1.png" />
                         </button>
+
+                        <button onclick="generarReporte(${row.idempleado})"  
+                            class="text-yellow-700 border border-yellow-700 hover:bg-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            type="button">
+                            <img src="https://img.icons8.com/ios/30/8E4B10/graph-report.png" />
+                        </button>
                     </td>
                 </tr>
             `;
@@ -166,4 +172,13 @@ async function eliminarRegistro(id) {
             sweetAlert(2, JSON.exception, false);
         }
     }
+}
+
+function generarReporte(idempleado) {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/ventasPorEmpleado.php`);
+    // Se agrega un parámetro a la ruta con el valor del registro seleccionado.
+    PATH.searchParams.append('idempleado', idempleado);
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
 }

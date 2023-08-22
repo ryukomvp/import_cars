@@ -17,5 +17,5 @@ class DetallesTransaccionQueries
         ORDER BY cantidad DESC
         LIMIT 5';
         return Database::getRows($sql);
-    }   
+    }       
 }
