@@ -67,9 +67,9 @@ class CodigosPlazosQueries
         $sql = 'SELECT codigosplazos.plazo, COUNT(plazos.idcodigoplazo) AS cantidad_plazos
             FROM plazos
             INNER JOIN codigosplazos ON plazos.idcodigoplazo = codigosplazos.idcodigoplazo
-            WHERE idcodigoplazo = ?
+            WHERE codigosplazos.idcodigoplazo = ?
             GROUP BY codigosplazos.plazo';
-        $params(this->id);
+        $params = array($this->id);
         return Database::getRows($sql, $params);
     }
 }
