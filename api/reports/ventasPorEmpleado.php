@@ -8,7 +8,7 @@ $pdf = new Report;
 if (isset($_GET['idempleado'])) {
     // Se incluyen las clases para la transferencia y acceso a datos.
     require_once('../entities/dto/encabezadosTransacciones.php.php');
-    require_once('../entities/dto/empleados.php');
+    require_once('../entities/dto/detallestransacciones.php');
     // Se instancian las entidades correspondientes.
     $empleado = new empleados;
     $encabezado = new Encabezado;
