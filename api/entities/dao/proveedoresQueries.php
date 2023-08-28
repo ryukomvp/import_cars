@@ -59,11 +59,14 @@ class proveedoresQueries
     //Funcion para generar grafica parametrizada
     public function graficaCantidadTransaccionesProveedor()
     {
-        $sql = 'SELECT proveedores.nombreprov, COUNT(encabezadostransacciones.idencatransaccion) AS cantidad_transacciones 
-                FROM proveedores
-                INNER JOIN encabezadostransacciones ON proveedores.idproveedor = encabezadostransacciones.idproveedor
-                WHERE proveedores.idproveedor = ?
-                GROUP BY proveedores.nombreprov';
+        $sql = 'SELECT productos.nombreprod, SUM(detallestransacciones.cantidad) AS cantidadTransacciones 
+        FROM proveedores
+        INNER JOIN encabezadostransacciones ON proveedores.idproveedor = encabezadostransacciones.idproveedor
+        INNER JOIN detallestransacciones ON encabezadostransacciones.idencatransaccion = detallestransacciones.idencatransaccion
+        INNER JOIN productos ON detallestransacciones.idproducto = productos.idproducto
+        WHERE proveedores.idproveedor = ?
+        GROUP BY proveedores.nombreprov 
+        ORDER BY cantidadTransacciones DESC LIMIT 5;';
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }

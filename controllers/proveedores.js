@@ -65,17 +65,17 @@ async function abrirGrafica(idproveedor) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
     if (JSON.status) {
         // Se declaran los arreglos para guardar los datos a graficar.
-        let proveedor = [];
+        let producto = [];
         let cantidad_transacciones = [];
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         JSON.dataset.forEach(row => {
             // Se agregan los datos a los arreglos.
-            proveedor.push(row.nombreprov);
-            cantidad_transacciones.push(row.cantidad_transacciones);
+            producto.push(row.nombreprod);
+            cantidad_transacciones.push(row.cantidadTransacciones);
         });
         document.getElementById('graphContainer').innerHTML = '<canvas id="chart"></canvas>';
         // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-        barGraph('chart', proveedor, cantidad_transacciones, 'Nombre proveedor:', 'Cantidad:');
+        barGraph('chart', producto, cantidad_transacciones, 'Cantidad:', 'Producto:');
         ABRIR_MODAL_GRAFICA.show();
     } else {
         console.log(JSON.exception);
