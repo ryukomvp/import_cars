@@ -65,8 +65,9 @@ class proveedoresQueries
         INNER JOIN detallestransacciones ON encabezadostransacciones.idencatransaccion = detallestransacciones.idencatransaccion
         INNER JOIN productos ON detallestransacciones.idproducto = productos.idproducto
         WHERE proveedores.idproveedor = ?
-        GROUP BY proveedores.nombreprov 
-        ORDER BY cantidadTransacciones DESC LIMIT 5;';
+        GROUP BY productos.nombreprod 
+        ORDER BY cantidadTransacciones DESC 
+        LIMIT 5;';
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }
