@@ -12,12 +12,12 @@ Idioma: español
 API
 
 Nombres de archivos: camelCase; nombre de la tabla (Agregar la palabra Queries al final en el caso del DAO)
-Nombres de clases: PascalCase
+Nombres de clases: StudlyCaps
 Nombres de funciones: camelCase
 Nombres de propiedades: mismo nombre del campo en la tabla; tipoProducto -> tipoproducto
 Nombres de objetos: minúsculas, una sola palabra referente a la tabla (Bussiness)
 Nombres de los casos: camelCase (Businnes)
-
+https://www.php-fig.org/psr/psr-1/
 
 CONTROLLER
 
