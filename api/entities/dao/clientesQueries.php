@@ -10,7 +10,7 @@ class ClientesQueries
     */
     public function buscarRegistros($value)
     {
-        $sql = 'SELECT idcliente, nombre, giro, dui, correo, telefono, contacto, descuento, exoneracion, fechaini, tipocliente, plazos.tipoplazo
+        $sql = 'SELECT idcliente, nombre, giro, dui, correo, telefono, contacto, descuento, exoneracion, fechaini, tipocliente, plazos.descripcion
                 FROM clientesINNER JOIN plazos 
                 WHERE clientes.idplazo = plazos.idplazo AND nombre LIKE ? OR dui LIKE ? OR correo LIKE ? OR telefono LIKE ? OR tipocliente LIKE ? OR plazos.tipoplazo LIKE ? 
                 ORDER BY nombre';
@@ -28,7 +28,7 @@ class ClientesQueries
 
     public function leerRegistros()
     {
-        $sql = 'SELECT idcliente, nombre, giro, dui, correo, telefono, contacto, descuento, exoneracion, fechaini, tipocliente, plazos.tipoplazo
+        $sql = 'SELECT idcliente, nombre, giro, dui, correo, telefono, contacto, descuento, exoneracion, fechaini, tipocliente, plazos.descripcion
                 FROM clientes INNER JOIN plazos 
                 WHERE clientes.idplazo = plazos.idplazo
                 ORDER BY nombre';

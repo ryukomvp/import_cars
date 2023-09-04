@@ -107,7 +107,7 @@ async function cargarRegistros(form = null) {
                         ${row.tipocliente}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.tipoplazo}
+                        ${row.descripcion}
                     </td>
                     <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idcliente})"
@@ -144,7 +144,7 @@ function crearRegistro() {
     // Se asigna título a la caja de diálogo.
     TITULO.textContent = 'Crear un registro';
     fillSelect(CLIENTES_API, 'leerTiposClientes', 'tipoCliente');
-    FILLSelect(CLIENTES_API, 'leerPlazos', 'plazo');
+    fillSelect(PLAZOS_API, 'leerRegistros', 'plazo');
 }
 
 /*
@@ -180,7 +180,7 @@ async function actualizarRegistro(id) {
         document.getElementById('exoneracion').value = JSON.dataset.exoneracion;
         document.getElementById('fechaIni').value = JSON.dataset.fechaini;
         fillSelect(CLIENTES_API, 'leerTiposClientes', 'tipoCliente', JSON.dataset.tipocliente);
-        fillSelect(CLIENTES_API, 'leerPlazos', 'plazo', JSON.dataset.idplazo);
+        fillSelect(PLAZOS_API, 'leerRegistros', 'plazo', JSON.dataset.idplazo);
     } else {
         sweetAlert(2, JSON.exception, false);
     }
