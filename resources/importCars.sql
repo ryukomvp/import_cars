@@ -140,18 +140,17 @@ CREATE TABLE IF NOT EXISTS empleados(
 CREATE TABLE IF NOT EXISTS clientes(
      
     idcliente int AUTO_INCREMENT PRIMARY KEY not null,
-    nombre varchar(100),
-    giro varchar(30),
-    dui varchar(11),
-    correo varchar(100),
-    telefono varchar(10),
-    contacto varchar(10),
-    tipopersona ENUM('Natural','Juridica')not null,
-    descuento decimal(5,2) not null,
-    exoneracion decimal(5,2) not null,
-    fechaini int not null,
-    tipocliente ENUM('Fiscal', 'Consumidor Final') not null,
-    idplazo int not null,
+    nombre VARCHAR(100) NOT NULL,
+    giro VARCHAR(30) NULL,
+    dui VARCHAR(11) NOT NULL,
+    correo VARCHAR(100) NOT NULL,
+    telefono VARCHAR(10) NOT NULL,
+    contacto VARCHAR(10) NULL,
+    descuento DECIMAL(5,2) NULL,
+    exoneracion DECIMAL(5,2) NULL,
+    fechaini DATE NOT NULL,
+    tipocliente ENUM('Fiscal', 'Consumidor Final') NOT NULL,
+    idplazo INT NOT NULL,
      
     CONSTRAINT fkclienteplazo
     FOREIGN KEY (idplazo)
