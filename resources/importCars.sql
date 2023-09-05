@@ -315,7 +315,11 @@ CREATE TABLE IF NOT EXISTS encabezadostransacciones (
     
     CONSTRAINT fkparametrotransac
     FOREIGN KEY (idparametro)
-    REFERENCES parametros(idparametro) ON UPDATE CASCADE ON DELETE CASCADE
+    REFERENCES parametros(idparametro) ON UPDATE CASCADE ON DELETE CASCADE,
+
+    CONSTRAINT fkcliencatransaccion
+    FOREIGN KEY (idcliente)
+    REFERENCES clientes(idcliente) ON UPDATE CASCADE ON DELETE CASCADE,
 );
 
 CREATE TABLE IF NOT EXISTS detallestransacciones (
