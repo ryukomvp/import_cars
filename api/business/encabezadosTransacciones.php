@@ -12,20 +12,20 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['idusuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            // case 'buscarRegistros':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if ($_POST['buscar'] == '') {
-            //         $result['dataset'] = $encabezadoTransac->leerRegistros();
-            //         $result['status'] = 1;
-            //     } elseif ($result['dataset'] = $encabezadoTransac->buscarRegistros($_POST['buscar'])) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
-            //     } elseif (Database::getException()) {
-            //         $result['exception'] = Database::getException();
-            //     } else {
-            //         $result['exception'] = 'No hay coincidencias';
-            //     }
-            //     break;
+            case 'buscarRegistros':
+                $_POST = Validator::validateForm($_POST);
+                if ($_POST['buscar'] == '') {
+                    $result['dataset'] = $encabezadoTransac->leerRegistros();
+                    $result['status'] = 1;
+                } elseif ($result['dataset'] = $encabezadoTransac->buscarRegistros($_POST['buscar'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay coincidencias';
+                }
+                break;
             // case 'crearRegistro':
             //     $_POST = Validator::validateForm($_POST);
             //     if (!$encabezadoTransac->setCodigo($_POST['codigo'])) {
