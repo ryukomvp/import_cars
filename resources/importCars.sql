@@ -278,7 +278,7 @@ CREATE TABLE IF NOT EXISTS productos(
     REFERENCES tiposproductos(idtipoproducto) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS  (
+CREATE TABLE IF NOT EXISTS encabezadostransacciones (
     idencatransaccion INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nocomprobante INT NOT NULL UNIQUE,
     fechatransac NUMERIC(8,2) NOT NULL,
@@ -307,7 +307,7 @@ CREATE TABLE IF NOT EXISTS  (
     
     CONSTRAINT fkvendedortransac
     FOREIGN KEY (idvendedor)
-    REFERENCES vendedores(iencabezadostransaccionesdvendedor) ON UPDATE CASCADE ON DELETE CASCADE,
+    REFERENCES vendedores(idvendedor) ON UPDATE CASCADE ON DELETE CASCADE,
     
     CONSTRAINT fkprovtransac
     FOREIGN KEY (idproveedor)
