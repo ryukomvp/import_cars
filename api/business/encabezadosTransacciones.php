@@ -26,80 +26,108 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            // case 'crearRegistro':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if (!$encabezadoTransac->setCodigo($_POST['codigo'])) {
-            //         $result['exception'] = 'Código incorrecto';
-            //     } elseif(!$encabezadoTransac->setNombreCodigo($S_POST['nombrecodigo'])){
-            //         $result['exception'] = 'Nombre incorrecto';
-            //     } elseif ($encabezadoTransac->crearRegistro()) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Código de transacción creado exitosamente';
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
-            // case 'leerRegistros':
-            //     if ($result['dataset'] = $encabezadoTransac->leerRegistros()) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
-            //     } elseif (Database::getException()) {
-            //         $result['exception'] = Database::getException();
-            //     } else {
-            //         $result['exception'] = 'No hay registros';
-            //     }
-            //     break;
-            // case 'leerUnRegistro':
-            //     if (!$encabezadoTransac->setId($_POST['id'])) {
-            //         $result['exception'] = 'Código incorrecto';
-            //     } elseif ($result['dataset'] = $encabezadoTransac->leerUnRegistro()) {
-            //         $result['status'] = 1;
-            //     } elseif (Database::getException()) {
-            //         $result['exception'] = Database::getException();
-            //     } else {
-            //         $result['exception'] = 'Código común inexistente';
-            //     }
-            //     break;
-            // case 'actualizarRegistro':
-            //     $_POST = Validator::validateForm($_POST);
-            //     if (!$encabezadoTransac->setId($_POST['id'])) {
-            //         $result['exception'] = 'ID incorrecto';
-            //     } elseif (!$data = $encabezadoTransac->leerUnRegistro()) {
-            //         $result['exception'] = 'Código de transacción inexistente';
-            //     } elseif (!$encabezadoTransac->setCodigo($_POST['codigo'])) {
-            //         $result['exception'] = 'Código incorrecto';
-            //     } elseif(!$encabezadoTransac->setNombreCodigo($S_POST['nombrecodigo'])){
-            //         $result['exception'] = 'Nombre incorrecto';
-            //     } elseif ($encabezadoTransac->actualizarRegistro()) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Código común actualizado exitosamente';
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
-            // case 'eliminarRegistro':
-            //     if (!$encabezadoTransac->setId($_POST['idcodigotransaccion'])) {
-            //         $result['exception'] = 'Código incorrecto';
-            //     } elseif (!$data = $encabezadoTransac->leerUnRegistro()) {
-            //         $result['exception'] = 'Código inexistente';
-            //     } elseif ($encabezadoTransac->eliminarRegistro()) {
-            //         $result['status'] = 1;
-            //         $result['message'] = 'Código de transacción eliminado exitosamente';
-            //     } else {
-            //         $result['exception'] = Database::getException();
-            //     }
-            //     break;
-            case 'transacBodegas':
-                // Condicion para retornar a la consulta
-                if ($result['dataset'] = $encabezadoTransac->encaBodegas()) {
+            case 'crearRegistro':
+                $_POST = Validator::validateForm($_POST);
+                if (!$encabezadoTransac->setNoComprobante($_POST['noComprobante'])) {
+                    $result['exception'] = 'Número de comprobante incorrecto';
+                } elseif(!$encabezadoTransac->setFechaTransac($S_POST['fechaTransac'])){
+                    $result['exception'] = 'Fecha de la transacción incorrecta';
+                } elseif(!$encabezadoTransac->setLote($S_POST['lote'])){
+                    $result['exception'] = 'Lote asignado incorrecto';
+                } elseif(!$encabezadoTransac->setNoPoliza($S_POST['nopoliza'])){
+                    $result['exception'] = 'Número de poliza incorrecto';
+                } elseif(!$encabezadoTransac->setIdBodega($S_POST['bodega'])){
+                    $result['exception'] = 'Error al asignar la bodega';
+                } elseif(!$encabezadoTransac->setIdCajero($S_POST['cajero'])){
+                    $result['exception'] = 'Error al asignar el cajero';
+                } elseif(!$encabezadoTransac->setTipoPago($S_POST['tipoPago'])){
+                    $result['exception'] = 'Error al asignar el tipo de pago';
+                } elseif(!$encabezadoTransac->setIdCodigoTransaccion($S_POST['codigoTransaccion'])){
+                    $result['exception'] = 'Error al asignar el código de la transacción';
+                } elseif(!$encabezadoTransac->setIdCliente($S_POST['cliente'])){
+                    $result['exception'] = 'Error al asignar el cliente';
+                } elseif(!$encabezadoTransac->setIdVendedor($S_POST['vendedor'])){
+                    $result['exception'] = 'Error al asignar el vendedor';
+                } elseif(!$encabezadoTransac->setIdProveedor($S_POST['proveedor'])){
+                    $result['exception'] = 'Error al asignar el proveedor';
+                } elseif(!$encabezadoTransac->setIdParametro($S_POST['parametro'])){
+                    $result['exception'] = 'Error al asignar el parámetro';
+                } elseif ($encabezadoTransac->crearRegistro()) {
                     $result['status'] = 1;
-                    // Si no retorna la exception
+                    $result['message'] = 'Encabezado de la transacción creado exitosamente';
                 } else {
-                    $result['exception'] = 'No hay datos disponibles';
+                    $result['exception'] = Database::getException();
                 }
                 break;
-            default:
-                $result['exception'] = 'Acción no disponible dentro de la sesión';
+            case 'leerRegistros':
+                if ($result['dataset'] = $encabezadoTransac->leerRegistros()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay registros';
+                }
+                break;
+            case 'leerUnRegistro':
+                if (!$encabezadoTransac->setId($_POST['id'])) {
+                    $result['exception'] = 'Encabezado incorrecto';
+                } elseif ($result['dataset'] = $encabezadoTransac->leerUnRegistro()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Encabezado inexistente';
+                }
+                break;
+            case 'actualizarRegistro':
+                $_POST = Validator::validateForm($_POST);
+                if (!$encabezadoTransac->setId($_POST['id'])) {
+                    $result['exception'] = 'ID incorrecto';
+                } elseif (!$data = $encabezadoTransac->leerUnRegistro()) {
+                    $result['exception'] = 'Código de transacción inexistente';
+                } elseif (!$encabezadoTransac->setNoComprobante($_POST['noComprobante'])) {
+                    $result['exception'] = 'Número de comprobante incorrecto';
+                } elseif(!$encabezadoTransac->setFechaTransac($S_POST['fechaTransac'])){
+                    $result['exception'] = 'Fecha de la transacción incorrecta';
+                } elseif(!$encabezadoTransac->setLote($S_POST['lote'])){
+                    $result['exception'] = 'Lote asignado incorrecto';
+                } elseif(!$encabezadoTransac->setNoPoliza($S_POST['nopoliza'])){
+                    $result['exception'] = 'Número de poliza incorrecto';
+                } elseif(!$encabezadoTransac->setIdBodega($S_POST['bodega'])){
+                    $result['exception'] = 'Error al asignar la bodega';
+                } elseif(!$encabezadoTransac->setIdCajero($S_POST['cajero'])){
+                    $result['exception'] = 'Error al asignar el cajero';
+                } elseif(!$encabezadoTransac->setTipoPago($S_POST['tipoPago'])){
+                    $result['exception'] = 'Error al asignar el tipo de pago';
+                } elseif(!$encabezadoTransac->setIdCodigoTransaccion($S_POST['codigoTransaccion'])){
+                    $result['exception'] = 'Error al asignar el código de la transacción';
+                } elseif(!$encabezadoTransac->setIdCliente($S_POST['cliente'])){
+                    $result['exception'] = 'Error al asignar el cliente';
+                } elseif(!$encabezadoTransac->setIdVendedor($S_POST['vendedor'])){
+                    $result['exception'] = 'Error al asignar el vendedor';
+                } elseif(!$encabezadoTransac->setIdProveedor($S_POST['proveedor'])){
+                    $result['exception'] = 'Error al asignar el proveedor';
+                } elseif(!$encabezadoTransac->setIdParametro($S_POST['parametro'])){
+                    $result['exception'] = 'Error al asignar el parámetro';
+                } elseif ($encabezadoTransac->actualizarRegistro()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Encabezado de la transacción actualizado exitosamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            case 'eliminarRegistro':
+                if (!$encabezadoTransac->setId($_POST['idencatransaccion'])) {
+                    $result['exception'] = 'Encabezado de la transacción incorrecto';
+                } elseif (!$data = $encabezadoTransac->leerUnRegistro()) {
+                    $result['exception'] = 'Encabezado de la transacción inexistente';
+                } elseif ($encabezadoTransac->eliminarRegistro()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Encabezado de la transacción eliminado exitosamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
                 break;
         }
         // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.

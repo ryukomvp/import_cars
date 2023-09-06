@@ -94,7 +94,7 @@ class Encabezado extends EncabezadosQueries
         }
     }
 
-    public function tipoPago($value)
+    public function setTipoPago($value)
     {
         if (Validator::validateAlphanumeric($value,1,50)) {
             $this->tipopago = $value;

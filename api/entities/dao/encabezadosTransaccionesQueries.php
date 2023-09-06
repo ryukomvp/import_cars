@@ -37,7 +37,7 @@ class EncabezadosQueries
 
     public function leerRegistros()
     {
-        $sql = 'SELECT a.idencatransaccion, a.nocomprobante, a.fechatransac, a.lote, a.npoliza, b.numerobod, c.nombrecajero, a.tipopago, CONCAT(d.codigo, " ", d.nombrecodigo) Codigo, l.nombre, u.nombreus, v.nombreprov, o.registro
+        $sql = 'SELECT a.idencatransaccion, a.nocomprobante, a.fechatransac, a.lote, a.npoliza, b.numerobod, c.nombrecajero, a.tipopago, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, l.nombre, u.nombreus, v.nombreprov, o.registro
                 FROM encabezadostransacciones a 
                 INNER JOIN bodegas b ON a.idbodega = b.idbodega
                 INNER JOIN cajeros c ON a.idcajero = c.idcajero

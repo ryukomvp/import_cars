@@ -56,31 +56,6 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
         sweetAlert(2, JSON.exception, false);
     }
 });
-
-async function abrirGrafica(idcodigoplazo) {
-    const FORM = new FormData();
-    FORM.append('idcodigoplazo', idcodigoplazo)
-    // Petición para obtener los datos del gráfico.
-    const JSON = await dataFetch(CODIGO_PLAZO_API, 'graficaCantidadPlazos', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
-    if (JSON.status) {
-        // Se declaran los arreglos para guardar los datos a graficar.
-        let plazo = [];
-        let cantidad_plazos = [];
-        // Se recorre el conjunto de registros fila por fila a través del objeto row.
-        JSON.dataset.forEach(row => {
-            // Se agregan los datos a los arreglos.
-            plazo.push(row.plazo);
-            cantidad_plazos.push(row.cantidad_plazos);
-        });
-        document.getElementById('graphContainer').innerHTML = '<canvas id="chart"></canvas>';
-        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-        barGraph('chart', plazo, cantidad_plazos, 'Cantidad de plazos', 'Códigos plazos:');
-        ABRIR_MODAL_GRAFICA.show();
-    } else {
-        console.log(JSON.exception);
-    }
- }
 // Metodo para cargar la tabla con los datos de la base
 async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.
@@ -96,26 +71,30 @@ async function cargarRegistros(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr  class="text-center bg-white hover:bg-blue-200">
-                    <td class="hidden px-6 py-4">${row.idcodigoplazo}</td>
-                    <td class="px-6 py-4">${row.plazo}</td>
-                    <td class="px-6 py-4">${row.dias}</td>
+                    <td class="hidden px-6 py-4">${row.idencatransaccion}</td>
+                    <td class="px-6 py-4">${row.nocomprobante}</td>
+                    <td class="px-6 py-4">${row.fechatransac}</td>
+                    <td class="px-6 py-4">${row.lote}</td>
+                    <td class="px-6 py-4">${row.nopoliza}</td>
+                    <td class="px-6 py-4">${row.numerobod}</td>
+                    <td class="px-6 py-4">${row.nombrecajero}</td>
+                    <td class="px-6 py-4">${row.tipopago}</td>
+                    <td class="px-6 py-4">${row.codigo}</td>
+                    <td class="px-6 py-4">${row.nombre}</td>
+                    <td class="px-6 py-4">${row.nombreus}</td>
+                    <td class="px-6 py-4">${row.nombreprov}</td>
+                    <td class="px-6 py-4">${row.registro}</td>
                     <td class="px-6 py-4">
-                        <button onclick="actualizarRegistro(${row.idcodigoplazo})"
+                        <button onclick="actualizarRegistro(${row.idencatransaccion})"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                         </button>
 
-                        <button onclick="eliminarRegistro(${row.idcodigoplazo})"
+                        <button onclick="eliminarRegistro(${row.idencatransaccion})"
                         class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
-                        </button>
-
-                        <button onclick="abrirGrafica(${row.idcodigoplazo})"
-                        class="md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        type="button">
-                        <img src="../resources/img/icons8-reports-58.png" width="31px" height="34px"/>
                         </button>
                     </td>
                 </tr>
