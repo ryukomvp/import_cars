@@ -17,24 +17,25 @@
     <title>Transacciones</title>
 </head>
 
-<body class="bg-gray-900">
+<body>
     <!-- encabezado del sistio -->
-    <header></header>
-
+    <header>
+    </header>
     <!-- contenido del sitio -->
     <main>
-        <div class="py-4 container">
-            <div>
+        <div class="py-4">
+            <div class="">
+                <!--Encabezado del SCRUD de modelos-->
                 <div class="py-4 text-center">
-                    <!--Informacion del contenido de la pagina-->
-                    <h1 class="text-xl text-rojo font-bold uppercase">Detalles de Transacciones</h1>
-                    <p class="text-blue-500 font-medium">Entradas y ventas de productos por medio transacciones que se imprimen.</p>
+                    <h1 class="text-xl text-rojo font-bold ">Encabezado de Transacciones</h1>
+                    <p class="text-azul font-medium">Gestion de la parte superior de las facturas administrando la
+                        información que pide y se coloca de acuerdo a la información.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
+                    <!--Buscador de paises de origen-->
                     <div class="col-start-2 col-end-4">
                         <form method="post" id="buscarFormulario">
-                            <label for="default-search"
-                                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
+                            <label for="buscar" class="mb-2 text-sm font-medium text-gray-900 sr-only">Buscar</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
@@ -44,14 +45,16 @@
                                     </svg>
                                 </div>
                                 <input type="search" id="buscar" name="buscar"
-                                    class="block w-full bg-gray-900 text-white border border-white rounded-lg focus:ring-azul focus:border-azul p-4 pl-10 text-sm"
+                                    class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Buscar...">
+                                <button type="submit"
+                                    class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                             </div>
                         </form>
                     </div>
                     <div class="col-end-5">
                         <button onclick="crearRegistro()"
-                            class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                             type="button">
                             <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
                         </button>
@@ -85,131 +88,141 @@
                                     <div class="text-center py-4 p-6 space-x-2 rounded-b">
                                         <img src="../resources/img/logo.jpg" alt="img">
                                         <br>
+                                    </div>
+                                    <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                        <!--Input del ID-->
+                                        <div>
+                                            <label for="id"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
+                                            <input type="number" id="id" name="id"
+                                                class="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700"
+                                                placeholder="ID" readonly>
+                                        </div>
+                                        <!--Input numero de conprobante-->
+                                        <div>
+                                            <label for="noComprobante"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">No.
+                                                Comprobante</label>
+                                            <input type="number" id="noComprobante" name="noComprobante" min="0"
+                                                step="1"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Numero de comprobante" required>
+                                        </div>
+                                        <!--Input fecha de transaccion-->
+                                        <div>
+                                            <label for="fechaTransac"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Fecha
+                                                de Transacción</label>
+                                            <input type="date" id="fechaTransac" name="fechaTransac"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Fecha de la transaccion" required>
+                                        </div>
+                                        <!--Input del lote-->
+                                        <div>
+                                            <label for="lote"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Lote</label>
+                                            <input type="number" id="lote" name="lote" min="0" step="1"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Productos agrupados en un conjunto" required>
+                                        </div>
+                                        <!--Input de número de poliza-->
+                                        <div>
+                                            <label for="nopoliza"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">No.
+                                                Poliza</label>
+                                            <input type="number" id="nopoliza" name="nopoliza" min="0" step="1"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                placeholder="Número de la poliza" required>
+                                        </div>
+                                        <!--Input de bodega-->
+                                        <div>
+                                            <label for="bodega"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega</label>
+                                            <select id="bodega" name="bodega"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </select>
+                                        </div>
+                                        <!--Input de cajero-->
+                                        <div>
+                                            <label for="cajero"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Cajero</label>
+                                            <select id="cajero" name="cajero"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </select>
+                                        </div>
+                                        <!--Input tipo de pago-->
+                                        <div>
+                                            <label for="tipoPago"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo
+                                                de Pago</label>
+                                            <select id="tipoPago" name="tipoPago"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </select>
+                                        </div>
+                                        <!--Input de codigo de la transacción-->
+                                        <div>
+                                            <label for="codigoTransaccion"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Codigo
+                                                de Transacción</label>
+                                            <select id="codigoTransaccion" name="codigoTransaccion"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </select>
+                                        </div>
+                                        <!--Input de cliente-->
+                                        <div>
+                                            <label for="cliente"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Cliente</label>
+                                            <select id="cliente" name="cliente"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </select>
+                                        </div>
+                                        <!--Input de vendedor-->
+                                        <div>
+                                            <label for="vendedor"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Vendedor</label>
+                                            <select id="vendedor" name="vendedor"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </select>
+                                        </div>
+                                        <!--Input de proveedor-->
+                                        <div>
+                                            <label for="proveedor"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Proveedor</label>
+                                            <select id="proveedor" name="proveedor"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </select>
+                                        </div>
+                                        <!--Input de parametro-->
+                                        <div>
+                                            <label for="parametro"
+                                                class="block mb-2 text-sm font-semibold text-azul dark:text-white">Parametro</label>
+                                            <select id="parametro" name="parametro"
+                                                class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                    <!--Input del ID-->
-                                    <div>
-                                        <label for="id"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
-                                        <input type="number" id="id" name="id"
-                                            class="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700"
-                                            placeholder="ID" readonly>
-                                    </div>
-                                    <!--Input numero de conprobante-->
-                                    <div>
-                                        <label for="noComprobante"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">No. Comprobante</label>
-                                        <input type="number" id="noComprobante" name="noComprobante" min="0" step="1"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Numero de comprobante" required>
-                                    </div>
-                                    <!--Input fecha de transaccion-->
-                                    <div>
-                                        <label for="fechaTransac"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Fecha de Transacción</label>
-                                        <input type="date" id="fechaTransac" name="fechaTransac"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Fecha de la transaccion" required>
-                                    </div>
-                                    <!--Input del lote-->
-                                    <div>
-                                        <label for="lote"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Lote</label>
-                                        <input type="number" id="lote" name="lote" min="0" step="1"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Productos agrupados en un conjunto" required>
-                                    </div>
-                                    <!--Input de número de poliza-->
-                                    <div>
-                                        <label for="nopoliza"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">No. Poliza</label>
-                                        <input type="number" id="nopoliza" name="nopoliza" min="0" step="1"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Número de la poliza" required>
-                                    </div>
-                                    <!--Input de bodega-->
-                                    <div>
-                                        <label for="bodega"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega</label>
-                                        <select id="bodega" name="bodega"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
-                                    <!--Input de cajero-->
-                                    <div>
-                                        <label for="cajero"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Cajero</label>
-                                        <select id="cajero" name="cajero"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
-                                    <!--Input tipo de pago-->
-                                    <div>
-                                        <label for="tipoPago"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo de Pago</label>
-                                        <select id="tipoPago" name="tipoPago"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
-                                    <!--Input de codigo de la transacción-->
-                                    <div>
-                                        <label for="codigoTransaccion"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Codigo de Transacción</label>
-                                        <select id="codigoTransaccion" name="codigoTransaccion"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
-                                    <!--Input de cliente-->
-                                    <div>
-                                        <label for="cliente"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Cliente</label>
-                                        <select id="cliente" name="cliente"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
-                                    <!--Input de vendedor-->
-                                    <div>
-                                        <label for="vendedor"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Vendedor</label>
-                                        <select id="vendedor" name="vendedor"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
-                                    <!--Input de proveedor-->
-                                    <div>
-                                        <label for="proveedor"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Proveedor</label>
-                                        <select id="proveedor" name="proveedor"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
-                                    <!--Input de parametro-->
-                                    <div>
-                                        <label for="parametro"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Parametro</label>
-                                        <select id="parametro" name="parametro"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
+                                <div
+                                    class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                    <button id="accion" type="submit"
+                                        class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"></button>
                                 </div>
-                            </div>
-                            <div
-                                class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                <button id="accion" type="submit"
-                                    class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"></button>
-                            </div>
                         </form>
                         <!-- Modal footer -->
-
                     </div>
                 </div>
             </div>
             <!--Final del modal-->
+            <!--Tabla de modelos-->
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead
-                        class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
+                            <!--Columna del numero comprobante de detalles transacciones-->
+                            <th scope="col" class="hidden px-6 py-3">
+                                ID
+                            </th>
                             <!--Columna del numero comprobante de detalles transacciones-->
                             <th scope="col" class="px-6 py-3">
                                 No. Comprobante
@@ -264,7 +277,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="registrosTabla">
+                    <tbody id="registros">
                     </tbody>
                 </table>
             </div>
@@ -278,7 +291,5 @@
     <script src="../resources/JS/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
     <script src="../controllers/account.js"></script>
-    <script src="../controllers/empleados.js"></script>
+    <script src="../controllers/encabezadosTransacciones.js"></script>
 </body>
-
-</html>

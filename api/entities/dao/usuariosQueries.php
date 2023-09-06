@@ -149,13 +149,13 @@ class UsuariosQueries
     }
 
     //Verificar si el usuario tiene activa la verificacion en 2 pasos//
-    public function verificarSegundoFactor()
-    {
-        $sql = 'SELECT verificacion FROM usuarios 
-        WHERE idusuario = ?';
-        $params = array($this->id)
-        return Database::getRow($sql, $params);
-    }
+    // public function verificarSegundoFactor()
+    // {
+    //     $sql = 'SELECT verificacion FROM usuarios 
+    //     WHERE idusuario = ?';
+    //     $params = array($this->id)
+    //     return Database::getRow($sql, $params);
+    // }
 
     
 

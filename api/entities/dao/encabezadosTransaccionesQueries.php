@@ -77,11 +77,9 @@ class EncabezadosQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function encaBodegas()
+    public function leerTiposPagos()
     {
-        $sql = 'SELECT numerobod, count(idencatransaccion) idencatransaccion
-        FROM encabezadostransacciones INNER JOIN bodegas ON encabezadostransacciones.idbodega = bodegas.idbodega
-        GROUP BY numerobod ORDER BY idencatransaccion DESC';
-        return Database::getRows($sql);
+        $estados = array(array('Efectivo','Efectivo'), array('Tarjeta','Tarjeta'));
+        return $estados;
     }
 }
