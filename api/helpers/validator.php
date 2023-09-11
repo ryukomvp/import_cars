@@ -187,7 +187,7 @@ class Validator
     {
         // Se verifica la longitud mínima.
         if (strlen($value) < 8) {
-            self::$passwordError = 'Clave menor a 6 caracteres';
+            self::$passwordError = 'Clave menor a 8 caracteres';
             return false;
         } elseif (strlen($value) <= 72) {
             return true;
