@@ -167,6 +167,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
     tipousuario ENUM('Administrador' , 'Gerente' , 'Vendedor') NOT NULL,
     idempleado INT NOT NULL, 
     estadousuario ENUM('Activo' , 'Inactivo' , 'Bloqueado') NOT NULL,
+    intentos INT NOT NULL default 0,
     
     CONSTRAINT fkusuarioemp
     FOREIGN KEY (idempleado)
