@@ -153,6 +153,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Empleado incorrecto';
                 } elseif (!$usuario->setEstado($_POST['estado'])) {
                     $result['exception'] = 'Estado incorrecto';
+                } elseif (!$usuario->setVerificacion(isset($_POST['verificacion']) ? 1 : 0)) {
+                    $result['exception'] = 'No se puede aplicar la verificacion';
                 } elseif ($usuario->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Usuario actualizado correctamente';

@@ -154,6 +154,12 @@ async function actualizarRegistro(id) {
         fillSelect(USUARIO_API, 'leerTipos', 'tipo', JSON.dataset.tipousuario);
         fillSelect(USUARIO_API, 'leerEmpleados', 'empleado', JSON.dataset.idempleado);
         fillSelect(USUARIO_API, 'leerEstados', 'estado', JSON.dataset.estadousuario);
+        //Cargar estado que se encuentra en la base de datos si esta activa o no la verificación en dos pasos
+        if (JSON.dataset.verificacion == '1') {
+            document.getElementById('verificacion').checked = 1;
+        } else {
+            document.getElementById('verificacion').checked = 0;
+        }
     } else {
         sweetAlert(2, JSON.exception, false);
     }

@@ -14,6 +14,7 @@ class Usuarios extends UsuariosQueries
     protected $tipo = null;
     protected $empleado = null;
     protected $estado = null;
+    protected $verificacion = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -88,6 +89,16 @@ class Usuarios extends UsuariosQueries
         }
     }
 
+    public function setVerificacion($value)
+    {
+        if (Validator::validateBoolean($value)) {
+            $this->verificacion = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -124,5 +135,10 @@ class Usuarios extends UsuariosQueries
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    public function getVerificacion()
+    {
+        return $this->verificacion;
     }
 }
