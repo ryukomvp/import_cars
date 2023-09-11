@@ -139,11 +139,24 @@ class UsuariosQueries
 
     public function reporteUsuariosTipo()
     {
-        $sql = "SELECT u.nombreus AS usuario, e.nombreemp AS empleado, u.estadousuario AS estado FROM usuarios u
+        $sql = 'SELECT u.nombreus AS usuario, e.nombreemp AS empleado, u.estadousuario AS estado FROM usuarios u
                 INNER JOIN empleados e
                 ON e.idempleado = u.idempleado
                 WHERE tipousuario = ?
-                ORDER BY e.nombreemp ASC";
+                ORDER BY e.nombreemp ASC';
         $params = array($this->tipo);
+        return Database::getRows($sql, $params);
     }
+
+    //Verificar si el usuario tiene activa la verificacion en 2 pasos//
+    // public function verificarSegundoFactor()
+    // {
+    //     $sql = 'SELECT verificacion FROM usuarios 
+    //     WHERE idusuario = ?';
+    //     $params = array($this->id)
+    //     return Database::getRow($sql, $params);
+    // }
+
+    
+
 }

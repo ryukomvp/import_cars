@@ -140,18 +140,17 @@ CREATE TABLE IF NOT EXISTS empleados(
 CREATE TABLE IF NOT EXISTS clientes(
      
     idcliente int AUTO_INCREMENT PRIMARY KEY not null,
-    nombre varchar(100),
-    giro varchar(30),
-    dui varchar(11),
-    correo varchar(100),
-    telefono varchar(10),
-    contacto varchar(10),
-    tipopersona ENUM('Natural','Juridica')not null,
-    descuento decimal(5,2) not null,
-    exoneracion decimal(5,2) not null,
-    fechaini int not null,
-    tipocliente ENUM('Fiscal', 'Consumidor Final') not null,
-    idplazo int not null,
+    nombre VARCHAR(100) NOT NULL,
+    giro VARCHAR(30) NULL,
+    dui VARCHAR(11) NOT NULL,
+    correo VARCHAR(100) NOT NULL,
+    telefono VARCHAR(10) NOT NULL,
+    contacto VARCHAR(10) NULL,
+    descuento DECIMAL(5,2) NULL,
+    exoneracion DECIMAL(5,2) NULL,
+    fechaini DATE NOT NULL,
+    tipocliente ENUM('Fiscal', 'Consumidor Final') NOT NULL,
+    idplazo INT NOT NULL,
      
     CONSTRAINT fkclienteplazo
     FOREIGN KEY (idplazo)
@@ -316,7 +315,11 @@ CREATE TABLE IF NOT EXISTS encabezadostransacciones (
     
     CONSTRAINT fkparametrotransac
     FOREIGN KEY (idparametro)
-    REFERENCES parametros(idparametro) ON UPDATE CASCADE ON DELETE CASCADE
+    REFERENCES parametros(idparametro) ON UPDATE CASCADE ON DELETE CASCADE,
+
+    CONSTRAINT fkcliencatransaccion
+    FOREIGN KEY (idcliente)
+    REFERENCES clientes(idcliente) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS detallestransacciones (
@@ -496,14 +499,14 @@ INSERT INTO proveedores(nombreprov, telefonoprov, correoprov, codigoprov, codigo
 	('Dodge', '8366-2539', 'dodge@gmail.com', 221, 1233, '2343124434-7', 1, 19),
 	('Plymouth', '7363-8636', 'plymouth@gmail.com', 233, 1233, '234239457-0', 1, 20);
 
-INSERT INTO clientes(nombre, giro, dui, correo, telefono, contacto, tipopersona, descuento, exoneracion, fechaini, tipocliente, idplazo) VALUES
-	('Jonathan Kevin Murcia Hernandez', 'Empresario', '23456712-1', 'kdekevo@gmail.com', '3456-2345', 'contacto1', 'Natural', 43.50, 50.00, 2006, 'Fiscal', 1),
-    ('Jose Antonio Castillo Letona', 'Empresario', '73337323-0', 'jdejosesito@gmail.com', '3346-2482', 'contacto2', 'Natural', 86.80, 30.00, 2007, 'Fiscal', 2),
-    ('Jonathan Guillermo Parada Payes', 'Empresario', '46576748-2', 'cdecarbajal@gmail.com', '3226-2157', 'contacto3', 'Natural', 33.70, 60.00, 2008, 'Fiscal', 3),
-    ('Juan Kevo Ramirez Carbajal', 'Empresario', '71456472-1', 'ddedaniel@gmail.com', '3590-2781', 'contacto4', 'Natural', 72.60, 100.00, 2009, 'Fiscal', 4),
-    ('Diego Jose Murcia Hernandez', 'Empresario', '64567849-3', 'adeandre@gmail.com', '3419-6589', 'contacto5', 'Natural', 71.20, 20.00, 2014, 'Fiscal', 5),
-    ('Cristian Andre Heriquez Pineda', 'Empresario', '68452672-4', 'adealec@gmail.com', '3418-7821', 'contacto6', 'Natural', 68.90, 23.00, 2012, 'Fiscal', 6),
-    ('Alec Andre Marchelli Chavez', 'Empresario', '53362162-4', 'tdetanqueta@gmail.com', '6585-2367', 'contacto7', 'Natural', 22.70, 56.00, 2015, 'Fiscal', 7);
+INSERT INTO clientes(nombre, giro, dui, correo, telefono, contacto, descuento, exoneracion, fechaini, tipocliente, idplazo) VALUES
+	('Jonathan Kevin Murcia Hernandez', 'Empresario', '23456712-1', 'kdekevo@gmail.com', '3456-2345', 'contacto1', 43.50, 50.00, 2006, 'Fiscal', 1),
+    ('Jose Antonio Castillo Letona', 'Empresario', '73337323-0', 'jdejosesito@gmail.com', '3346-2482', 'contacto2', 86.80, 30.00, 2007, 'Fiscal', 2),
+    ('Jonathan Guillermo Parada Payes', 'Empresario', '46576748-2', 'cdecarbajal@gmail.com', '3226-2157', 'contacto3', 33.70, 60.00, 2008, 'Fiscal', 3),
+    ('Juan Kevo Ramirez Carbajal', 'Empresario', '71456472-1', 'ddedaniel@gmail.com', '3590-2781', 'contacto4', 72.60, 100.00, 2009, 'Fiscal', 4),
+    ('Diego Jose Murcia Hernandez', 'Empresario', '64567849-3', 'adeandre@gmail.com', '3419-6589', 'contacto5', 71.20, 20.00, 2014, 'Fiscal', 5),
+    ('Cristian Andre Heriquez Pineda', 'Empresario', '68452672-4', 'adealec@gmail.com', '3418-7821', 'contacto6', 68.90, 23.00, 2012, 'Fiscal', 6),
+    ('Alec Andre Marchelli Chavez', 'Empresario', '53362162-4', 'tdetanqueta@gmail.com', '6585-2367', 'contacto7', 22.70, 56.00, 2015, 'Fiscal', 7);
 
 INSERT INTO modelos(modelo, idmarca) VALUES
 	('modf1', 5),

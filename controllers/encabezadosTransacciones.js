@@ -1,12 +1,24 @@
 
 // Constante para la ruta del business que conecta a los metodos del SCRUD
-const CODIGO_PLAZO_API = 'business/codigosPlazos.php';
+const ENCABEZADO_TRANSACCION_API = 'business/encabezadosTransacciones.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const BODEGA_API = 'business/bodegas.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const CAJERO_API = 'business/cajeros.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const CODIGO_TRANSACCION_API = 'business/codigosTransacciones.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const CLIENTE_API = 'business/clientes.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const VENDEDDOR_API = 'business/vendedores.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const PROVEEDOR_API = 'business/proveedores.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const PARAMETRO_API = 'business/parametros.php';
 // Constante para el input de busqueda
 const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para el formulario del modal, sirve para añadir y editar
 const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
-// Constante para el formulario del modal, para la grafica
-const EJECUTAR_FORMULARIO2 = document.getElementById('ejecutarFormulario2');
 // Constante para rellenar la tabla de los datos registrados en la base
 const REGISTROS_TABLA = document.getElementById('registros');
 // Constante para nombrar el modal dependiendo de la acción que se haga
@@ -15,8 +27,7 @@ const TITULO = document.getElementById('titulo');
 const BTN_ACCION = document.getElementById('accion');
 // Constante para abrir o cerrar el modal
 const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
-// Constante para abrir o cerrar el modal para la grafica
-const ABRIR_MODAL_GRAFICA = new Modal(document.getElementById('abrirModalGrafica'));
+
 
 // Metodo para cargar la pagina cada vez que haya un cambio en el DOM
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,7 +54,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(CODIGO_PLAZO_API, action, FORM);
+    const JSON = await dataFetch(ENCABEZADO_TRANSACCION_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
@@ -56,31 +67,6 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
         sweetAlert(2, JSON.exception, false);
     }
 });
-
-async function abrirGrafica(idcodigoplazo) {
-    const FORM = new FormData();
-    FORM.append('idcodigoplazo', idcodigoplazo)
-    // Petición para obtener los datos del gráfico.
-    const JSON = await dataFetch(CODIGO_PLAZO_API, 'graficaCantidadPlazos', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se remueve la etiqueta canvas.
-    if (JSON.status) {
-        // Se declaran los arreglos para guardar los datos a graficar.
-        let plazo = [];
-        let cantidad_plazos = [];
-        // Se recorre el conjunto de registros fila por fila a través del objeto row.
-        JSON.dataset.forEach(row => {
-            // Se agregan los datos a los arreglos.
-            plazo.push(row.plazo);
-            cantidad_plazos.push(row.cantidad_plazos);
-        });
-        document.getElementById('graphContainer').innerHTML = '<canvas id="chart"></canvas>';
-        // Llamada a la función que genera y muestra un gráfico de barras. Se encuentra en el archivo components.js
-        barGraph('chart', plazo, cantidad_plazos, 'Cantidad de plazos', 'Códigos plazos:');
-        ABRIR_MODAL_GRAFICA.show();
-    } else {
-        console.log(JSON.exception);
-    }
- }
 // Metodo para cargar la tabla con los datos de la base
 async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.
@@ -88,7 +74,7 @@ async function cargarRegistros(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(CODIGO_PLAZO_API, action, form);
+    const JSON = await dataFetch(ENCABEZADO_TRANSACCION_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -96,26 +82,30 @@ async function cargarRegistros(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr  class="text-center bg-white hover:bg-blue-200">
-                    <td class="hidden px-6 py-4">${row.idcodigoplazo}</td>
-                    <td class="px-6 py-4">${row.plazo}</td>
-                    <td class="px-6 py-4">${row.dias}</td>
+                    <td class="hidden px-6 py-4">${row.idencatransaccion}</td>
+                    <td class="px-6 py-4">${row.nocomprobante}</td>
+                    <td class="px-6 py-4">${row.fechatransac}</td>
+                    <td class="px-6 py-4">${row.lote}</td>
+                    <td class="px-6 py-4">${row.nopoliza}</td>
+                    <td class="px-6 py-4">${row.numerobod}</td>
+                    <td class="px-6 py-4">${row.nombrecajero}</td>
+                    <td class="px-6 py-4">${row.tipopago}</td>
+                    <td class="px-6 py-4">${row.codigo}</td>
+                    <td class="px-6 py-4">${row.nombre}</td>
+                    <td class="px-6 py-4">${row.nombreus}</td>
+                    <td class="px-6 py-4">${row.nombreprov}</td>
+                    <td class="px-6 py-4">${row.registro}</td>
                     <td class="px-6 py-4">
-                        <button onclick="actualizarRegistro(${row.idcodigoplazo})"
+                        <button onclick="actualizarRegistro(${row.idencatransaccion})"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
                         </button>
 
-                        <button onclick="eliminarRegistro(${row.idcodigoplazo})"
+                        <button onclick="eliminarRegistro(${row.idencatransaccion})"
                         class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
-                        </button>
-
-                        <button onclick="abrirGrafica(${row.idcodigoplazo})"
-                        class="md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        type="button">
-                        <img src="../resources/img/icons8-reports-58.png" width="31px" height="34px"/>
                         </button>
                     </td>
                 </tr>
@@ -136,6 +126,14 @@ function crearRegistro() {
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna el título a la caja de diálogo.
     TITULO.textContent = 'Crear un registro';
+    fillSelect(BODEGA_API, 'buscarRegistros', 'bodega');
+    fillSelect(CAJERO_API, 'buscarRegistros', 'cajero');
+    fillSelect(ENCABEZADO_TRANSACCION_API, 'leerTiposPagos', 'tipoPago');
+    fillSelect(CODIGO_TRANSACCION_API, 'buscarRegistros', 'codigoTransaccion');
+    fillSelect(CLIENTE_API, 'buscarRegistros', 'cliente');
+    fillSelect(VENDEDDOR_API, 'buscarRegistros', 'vendedor');
+    fillSelect(PROVEEDOR_API, 'buscarRegistros', 'proveedor');
+    fillSelect(PARAMETRO_API, 'buscarRegistros', 'parametro');
 }
 
 //Funcion para abrir el modal con los datos del registro a actualizar
@@ -144,7 +142,7 @@ async function actualizarRegistro(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(CODIGO_PLAZO_API, 'leerUnRegistro', FORM);
+    const JSON = await dataFetch(ENCABEZADO_TRANSACCION_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -155,9 +153,19 @@ async function actualizarRegistro(id) {
         // Se asigna título para la caja de diálogo.
         TITULO.textContent = 'Actualizar un registro';
         // Se inicializan los campos del formulario.
-        document.getElementById('id').value = JSON.dataset.idcodigoplazo;
-        document.getElementById('plazo').value = JSON.dataset.plazo;
-        document.getElementById('dias').value = JSON.dataset.dias;
+        document.getElementById('id').value = JSON.dataset.idencatransaccion;
+        document.getElementById('noComprobante').value = JSON.dataset.nocomprobante;
+        document.getElementById('fechaTransac').value = JSON.dataset.fechatransac;
+        document.getElementById('lote').value = JSON.dataset.lote;
+        document.getElementById('nopoliza').value = JSON.dataset.nopoliza;
+        fillSelect(BODEGA_API, 'buscarRegistros', 'bodega', JSON.dataset.numerobod);
+        fillSelect(CAJERO_API, 'buscarRegistros', 'cajero', JSON.dataset.nombrecajero);
+        fillSelect(ENCABEZADO_TRANSACCION_API, 'leerTiposPagos', 'tipoPago', JSON.dataset.tipopago);
+        fillSelect(CODIGO_TRANSACCION_API, 'buscarRegistros', 'codigoTransaccion', JSON.dataset.codigo);
+        fillSelect(CLIENTE_API, 'buscarRegistros', 'cliente', JSON.dataset.nombre);
+        fillSelect(VENDEDDOR_API, 'buscarRegistros', 'vendedor', JSON.dataset.nombreus);
+        fillSelect(PROVEEDOR_API, 'buscarRegistros', 'proveedor', JSON.dataset.nombreprov);
+        fillSelect(PARAMETRO_API, 'buscarRegistros', 'parametro', JSON.dataset.registro);
 
     } else {
         sweetAlert(2, JSON.exception, false);
@@ -167,14 +175,14 @@ async function actualizarRegistro(id) {
 //Funcion para abrir el modal con los datos del registro a eliminar
 async function eliminarRegistro(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const MENSAJE = await confirmAction('¿Desea eliminar el código del plazo?');
+    const MENSAJE = await confirmAction('¿Desea eliminar el encabezado de transacción?');
     // Se verifica la respuesta del mensaje.
     if (MENSAJE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idcodigoplazo', id);
+        FORM.append('idencatransaccion', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(CODIGO_PLAZO_API, 'eliminarRegistro', FORM);
+        const JSON = await dataFetch(ENCABEZADO_TRANSACCION_API, 'eliminarRegistro', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
