@@ -1,10 +1,9 @@
 // Constante para establecer el formulario de registro del primer usuario.
 // const SIGNUP_FORM = document.getElementById('signup-form');
 // Constante para establecer el formulario de inicio de sesión.
-const 
 const FORMULARIO_SESION = document.getElementById('login-form');
-const ABRIR_MODAL1 = document.getElementById('RecuperarModal');
-const ABRIR_MODAL2 = document.getElementById('RecuperarModal2');
+const ABRIR_MODAL1 = new Modal(document.getElementById('RecuperarModal'));
+const ABRIR_MODAL2 = new Modal(document.getElementById('RecuperarModal2'));
 
 // // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
@@ -58,7 +57,7 @@ FORMULARIO_SESION.addEventListener('submit', async (event) => {
     }
 });
 
-function abrirRecuperacion() {
+/*function abrirRecuperacion() {
     const FORM = new FormData();
     // Se abre la caja de diálogo que contiene el formulario.
     ABRIR_MODAL1.show();
@@ -74,8 +73,7 @@ function abrirRecuperacion() {
     }else{
         sweetAlert(2, JSON.exception, false);
     }
-
-}
+}*/
 
 async function actualizarRegistroPorCorreo(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.

@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (JSON.session) {
         setInterval(() => {
             checkSessionTime();
-        }, 60000);
+        }, 120000);
 
         if (JSON.status) {
             // Inserción de header
@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function checkSessionTime() {
     //Solo un ejémplo de un ajax
-    const DATA = await dataFetch(USER_API, 'checkSessionTime');
+    const DATA = await dataFetch(USUARIO_API, 'checkSessionTime');
     if (DATA.status) {
         console.log(DATA.message);// <-- Aquí sabemos que no es válida
     } else {
