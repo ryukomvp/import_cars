@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
     const JSON = await dataFetch(USUARIO_API, 'capturarUsuario');
     if (JSON.session) {
+        setInterval(() => {
+            checkSessionTime();
+        }, 60000);
+
+
         if (JSON.status) {
             // Inserción de header
             HEADER.innerHTML = `
@@ -311,3 +316,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     };
 })
+
+
+async function checkSessionTime() {
+    //Solo un ejémplo de un ajax
+    const DATA = await dataFetch(USER_API, 'checkSessionTime');
+    if (DATA.status) {
+        console.log(DATA.message);// <-- Aquí sabemos que no es válida
+    } else {
+        setInterval();
+        sweetAlert(3, DATA.exception, false, 'index.html');
+    }
+}

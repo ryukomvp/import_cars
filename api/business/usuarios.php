@@ -17,6 +17,14 @@ if (isset($_GET['action'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
+            case 'checkSessionTime':
+                if (Validator::validateSessionTime()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Sesión activa';
+                } else {
+                    $result['exception'] = 'Su sesión ha caducado';
+                }
+                break;
             case 'capturarUsuario':
                 if (isset($_SESSION['nombreus'])) {
                     $result['status'] = 1;
