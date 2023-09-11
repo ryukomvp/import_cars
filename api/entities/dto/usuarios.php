@@ -14,6 +14,8 @@ class Usuarios extends UsuariosQueries
     protected $tipo = null;
     protected $empleado = null;
     protected $estado = null;
+    protected $correoemp = null;
+    protected $idempleado = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -88,6 +90,26 @@ class Usuarios extends UsuariosQueries
         }
     }
 
+    public function setCorreo($value)
+    {
+        if (Validator::validateEmail($value)) {
+            $this->correoemp = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setIdEmpleado($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->idempleado = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -124,5 +146,15 @@ class Usuarios extends UsuariosQueries
     public function getEstado()
     {
         return $this->estado;
+    }
+
+    public function getCorreo()
+    {
+        return $this->correoemp;
+    }
+
+    public function getIdEmpleado()
+    {
+        return $this->idempleado;
     }
 }

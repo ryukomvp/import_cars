@@ -245,6 +245,27 @@ if (isset($_GET['action'])) {
                     $_SESSION['nombreus'] = $usuario->getNombre();
                 }
                 break;
+            case 'verificarRecu':
+                $_POST = Validator::validateForm($_POST);
+                if (!$usuario->verificarUsuarioEmp($_POST['usuario'])) {
+                    $result['exception'] = 'Autenticación incorrecto';
+                } elseif (!$usuario->verificarCorreo($_POST['correo'])) {
+                    $result['exception'] = 'Autenticaión incorrecta';
+                } else {
+                    $result['status'] = 1;
+                    $result['message'] = 'Autenticación correcta';
+                    $_SESSION['nombreus'] = $usuario->getNombre();
+                    $_SESSION['correoemp'] = $usuario->getCorreo();                   
+                }
+                break;
+            case 'verificarPin':
+                $_POST = Validator::validateForm($_POST);
+                if (!$usuario->verificarPin($_POST['pin'])) {
+                    $result['exception'] = 'Autenticación incorrecto';
+                } else {
+                    $result['status'] = 1;
+                    $result['message'] = 'Autenticación correcta';
+                }
             default:
                 $result['exception'] = 'Acción no disponible fuera de la sesión';
         }

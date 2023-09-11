@@ -157,6 +157,46 @@ class UsuariosQueries
     //     return Database::getRow($sql, $params);
     // }
 
+    public function verificarUsuarioEmp($nombre)
+    {
+        $sql = 'SELECT idusuario FROM usuarios WHERE nombreus = ?';
+        $params = array($nombre);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id = $data['idusuario'];
+            $this->nombre = $nombre;
+            return true;
+        } else {
+            return false;
+        }
+    }
     
+    public function verificarCorreo($correoemp)
+    {
+        $sql = 'SELECT usuarios.idempleado, empleados.correoemp
+        FROM empleados
+        INNER JOIN usuarios ON empleados.idempleado = usuarios.idempleado
+        WHERE 	correoemp = ?';
+        $params = array($correoemp);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->idempleado = $data['idempleado'];
+            $this->correoemp = $correoemp;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function verificarPin($pin)
+    {
+        $sql = 'SELECT idusuario FROM usuarios WHERE pin = ?';
+        $params = array($pin);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id = $data['idusuario'];
+            $this->pin = $pin;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
