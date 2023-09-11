@@ -1,6 +1,8 @@
 <?php
 // Se incluye la clase para la transferencia y acceso a datos.
 require_once('../entities/dto/usuarios.php');
+// Verificación 
+$special_charspattern = '/[^a-zA-Z\d]/';
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -58,23 +60,25 @@ if (isset($_GET['action'])) {
                 //         $result['exception'] = Database::getException();
                 //     }
                 //     break;
-                // case 'changePassword':
-                //     $_POST = Validator::validateForm($_POST);
-                //     if (!$usuario->setId($_SESSION['id_usuario'])) {
-                //         $result['exception'] = 'Usuario incorrecto';
-                //     } elseif (!$usuario->checkPassword($_POST['actual'])) {
-                //         $result['exception'] = 'Clave actual incorrecta';
-                //     } elseif ($_POST['nueva'] != $_POST['confirmar']) {
-                //         $result['exception'] = 'Claves nuevas diferentes';
-                //     } elseif (!$usuario->setClave($_POST['nueva'])) {
-                //         $result['exception'] = Validator::getPasswordError();
-                //     } elseif ($usuario->changePassword()) {
-                //         $result['status'] = 1;
-                //         $result['message'] = 'Contraseña cambiada correctamente';
-                //     } else {
-                //         $result['exception'] = Database::getException();
-                //     }
-                //     break;
+            case 'cambiarClave':
+                $_POST = Validator::validateForm($_POST);
+                if (!$usuario->setId($_SESSION['idusuario'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif (!$usuario->verificarClave($_POST['clave-actual'])) {
+                    $result['exception'] = 'Clave actual incorrecta';
+                } elseif (!preg_match($special_charspattern, $_POST['clave-nueva'])) {
+                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                } elseif ($_POST['clave-nueva'] != $_POST['confirmar-clave-nueva']) {
+                    $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
+                } elseif (!$usuario->setClave($_POST['nueva'])) {
+                    $result['exception'] = Validator::getPasswordError();
+                } elseif ($usuario->cambiarClave()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Contraseña cambiada correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -82,7 +86,6 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                 } elseif ($result['dataset'] = $usuario->buscarRegistros($_POST['search'])) {
                     $result['status'] = 1;
-                    // $result['message'] = 'Existen '.count($result['dataset']).' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
@@ -101,6 +104,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Empleado incorrecto';
                 } elseif (!$usuario->setEstado($_POST['estado'])) {
                     $result['exception'] = 'Estado incorrecto';
+                } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
+                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
                 } elseif ($_POST['clave'] != $_POST['confirmar']) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$usuario->setClave($_POST['clave'])) {
@@ -115,7 +120,6 @@ if (isset($_GET['action'])) {
             case 'leerRegistros':
                 if ($result['dataset'] = $usuario->leerRegistros()) {
                     $result['status'] = 1;
-                    // $result['message'] = 'Existen '.count($result['dataset']).' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
