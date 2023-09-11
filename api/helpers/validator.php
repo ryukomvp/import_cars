@@ -187,7 +187,7 @@ class Validator
     {
         // Se verifica la longitud mínima.
         if (strlen($value) < 8) {
-            self::$passwordError = 'Clave menor a 6 caracteres';
+            self::$passwordError = 'Clave menor a 8 caracteres';
             return false;
         } elseif (strlen($value) <= 72) {
             return true;
@@ -296,7 +296,20 @@ class Validator
         }
     }
 
-
+    public static function validateSessionTime()
+    {
+        //Establecer tiempo de inactivad en segundos
+        $tiempoInactividadMaximo = 60;
+        //Verificar la última actividad está registrada en la sesión 
+        if ((time() - $_SESSION['tiempo_sesion']) > $tiempoInactividadMaximo) {
+            //Destruye la sesión
+            session_destroy();
+            return false;
+        } else {
+            $_SESSION['tiempo_sesion'] = time();
+            return true;
+        }
+    }
 
     public static function validateDouble($value)
     {
