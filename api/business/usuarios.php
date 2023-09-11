@@ -255,6 +255,7 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
+                    $_SESSION['tiempo_sesion'] = time();
                     $_SESSION['idusuario'] = $usuario->getId();
                     $_SESSION['nombreus'] = $usuario->getNombre();
                 }
