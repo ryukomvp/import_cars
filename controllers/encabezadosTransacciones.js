@@ -86,7 +86,7 @@ async function cargarRegistros(form = null) {
                     <td class="px-6 py-4">${row.nocomprobante}</td>
                     <td class="px-6 py-4">${row.fechatransac}</td>
                     <td class="px-6 py-4">${row.lote}</td>
-                    <td class="px-6 py-4">${row.nopoliza}</td>
+                    <td class="px-6 py-4">${row.npoliza}</td>
                     <td class="px-6 py-4">${row.numerobod}</td>
                     <td class="px-6 py-4">${row.nombrecajero}</td>
                     <td class="px-6 py-4">${row.tipopago}</td>
@@ -111,7 +111,6 @@ async function cargarRegistros(form = null) {
                 </tr>
             `;
         });
-
     } else {
         sweetAlert(4, JSON.exception, true);
     }

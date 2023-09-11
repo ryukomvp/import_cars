@@ -14,7 +14,7 @@
     <!-- icono de la página -->
     <link rel="icon" href="../resources/img/logo.png">
     <!-- titulo de la página -->
-    <title>Monedas</title>
+    <title>Parametros</title>
 </head>
 
 <body>
@@ -27,9 +27,8 @@
             <div class="">
                 <!--Encabezado del SCRUD de modelos-->
                 <div class="py-4 text-center">
-                    <h1 class="text-xl text-rojo font-bold ">Tipos de monedas</h1>
-                    <p class="text-azul font-medium">Tipos de moneda con las que se trabaja con los proveedores
-                        relacionados con el pais de origen del producto.</p>
+                    <h1 class="text-xl text-rojo font-bold ">Parametros</h1>
+                    <p class="text-azul font-medium">Apartado para añadir datos fijos a los encabezados de las transacciones y en dado caso especifico actualizarlo.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <!--Buscador de paises de origen-->
@@ -99,11 +98,61 @@
                                     </div>
                                     <!--Input moneda-->
                                     <div>
-                                        <label for="moneda"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Moneda</label>
-                                        <input type="text" id="moneda" name="moneda"
+                                        <label for="nombreEmp"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre de la Empresa</label>
+                                        <input type="text" id="nombreEmp" name="nombreEmp"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                            placeholder="Moneda" required>
+                                            placeholder="Empresa" required>
+                                    </div>
+                                    <div>
+                                        <label for="direccionEmp"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Dirección de la Empresa</label>
+                                        <input type="text" id="direccionEmp" name="direccionEmp"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                            placeholder="Dirección" required>
+                                    </div>
+                                    <div>
+                                        <label for="porcentaje"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Porcentaje</label>
+                                        <input type="number" id="porcentaje" name="porcentaje" min="0" step="1"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                            placeholder="Porcentaje" required>
+                                    </div>
+                                    <div>
+                                        <label for="registro"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Registro</label>
+                                        <input type="number" id="registro" name="registro" min="0" step="1"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                            placeholder="# de Registro" required>
+                                    </div>
+                                    <div>
+                                        <label for="giro"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Giro de la Empresa</label>
+                                        <input type="text" id="giro" name="giro" min="0"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                            placeholder="# de Registro" required>
+                                    </div>
+                                    <div>
+                                        <label for="nit"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">NIT</label>
+                                        <input type="text" id="nit" name="nit"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                            placeholder="NIT" required>
+                                    </div>
+                                    <div>
+                                        <label for="dui"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">DUI</label>
+                                        <input type="text" id="dui" name="dui"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                            placeholder="DUI" required>
+                                    </div>
+                                    <!--Input de contacto-->
+                                    <div>
+                                        <label for="contacto"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contacto</label>
+                                        <select id="contacto" name="contacto"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -125,20 +174,50 @@
                     <thead
                         class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
+                            <!--Columna del numero comprobante de detalles transacciones-->
                             <th scope="col" class="hidden px-6 py-3">
                                 ID
                             </th>
-                            <th scope="col"
-                                class="text-oscuro font-bold px-6 py-4 whitespace-nowrap dark:text-white">
-                                Moneda
+                            <!--Columna del nombre de la empresa de parametros-->
+                            <th scope="col" class="px-6 py-3">
+                                NNombre de Empresa
                             </th>
+                            <!--Columna de la direccion de la empresa de parametros-->
+                            <th scope="col" class="px-6 py-3">
+                                Dirección de Empresa
+                            </th>
+                            <!--Columna del porcentaje de parametros-->
+                            <th scope="col" class="px-6 py-3">
+                                Porcentaje
+                            </th>
+                            <!--Columna del registro de parametros-->
+                            <th scope="col" class="px-6 py-3">
+                                Registro
+                            </th>
+                            <!--Columna del giro de parametros-->
+                            <th scope="col" class="px-6 py-3">
+                                Giro de la Empresa
+                            </th>
+                            <!--Columna del NIT de parametros-->
+                            <th scope="col" class="px-6 py-3">
+                                NIT
+                            </th>
+                            <!--Columna del DUI de parametros-->
+                            <th scope="col" class="px-6 py-3">
+                                DUI
+                            </th>
+                            <!--Columna del Correo de parametros-->
+                            <th scope="col" class="px-6 py-3">
+                                Correo
+                            </th>
+                            <!--Controles de acciones para actualizar o eliminar registro-->
                             <th scope="col" class="px-8 py-3">
                                 <span class="">Controles</span>
                             </th>
                         </tr>
                     </thead>
                     <!--Filas de la tabla-->
-                    <tbody id="registrosTabla">
+                    <tbody id="registros">
                     </tbody>
                 </table>
             </div>
@@ -152,5 +231,5 @@
     <script src="../resources/JS/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
     <script src="../controllers/account.js"></script>
-    <script src="../controllers/monedas.js"></script>
+    <script src="../controllers/parametros.js"></script>
 </body>

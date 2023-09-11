@@ -65,7 +65,7 @@ class UsuariosQueries
 
     public function leerRegistros()
     {
-        $sql = 'SELECT idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, e.nombreemp empleado, estadousuario
+        $sql = 'SELECT idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, e.nombreemp empleado, estadousuario, verificacion
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
                 ORDER BY idusuario';
         return Database::getRows($sql);
@@ -73,7 +73,7 @@ class UsuariosQueries
 
     public function leerUnRegistro()
     {
-        $sql = 'SELECT idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, idempleado, e.nombreemp empleado, estadousuario
+        $sql = 'SELECT idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, idempleado, e.nombreemp empleado, estadousuario, verificacion
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
 				WHERE idusuario = ?';
         $params = array($this->id);
@@ -83,9 +83,9 @@ class UsuariosQueries
     public function actualizarRegistro()
     {
         $sql = 'UPDATE usuarios 
-                SET nombreus = ?, pin = ?, tipousuario = ?, idempleado = ?, estadousuario = ?
+                SET nombreus = ?, pin = ?, tipousuario = ?, idempleado = ?, estadousuario = ?, verificacion = ?
                 WHERE idusuario = ?';
-        $params = array($this->nombre, $this->pin, $this->tipo, $this->empleado, $this->estado, $this->id);
+        $params = array($this->nombre, $this->pin, $this->tipo, $this->empleado, $this->estado, $this->verificacion, $this->id);
         return Database::executeRow($sql, $params);
     }
 

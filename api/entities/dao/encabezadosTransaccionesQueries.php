@@ -21,7 +21,7 @@ class EncabezadosQueries
                 INNER JOIN usuarios u ON s.idusuario = u.idusuario
                 INNER JOIN proveedores v ON a.idproveedor = v.idproveedor
                 INNER JOIN parametros o ON a.idparametro = o.idparametro
-                WHERE b.numerobod LIKE ? OR c.nombrecajero LIKE ? OR p.tipopago LIKE ? OR d.codigo LIKE ? OR d.nombrecodigo LIKE ? OR l.nombre LIKE ? OR u.nombreus LIKE ? OR v.nombreprov LIKE ? OR o.registro LIKE ? 
+                WHERE b.numerobod LIKE ? OR c.nombrecajero LIKE ? OR a.tipopago LIKE ? OR d.codigo LIKE ? OR d.nombrecodigo LIKE ? OR l.nombre LIKE ? OR u.nombreus LIKE ? OR v.nombreprov LIKE ? OR o.registro LIKE ? 
                 ORDER BY a.nocomprobante';
         $params = array("%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%");
         return Database::getRows($sql, $params);

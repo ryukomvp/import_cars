@@ -16,6 +16,8 @@ class Usuarios extends UsuariosQueries
     protected $estado = null;
     protected $correoemp = null;
     protected $idempleado = null;
+    protected $verificacion = null;
+
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -110,6 +112,16 @@ class Usuarios extends UsuariosQueries
         }
     }
 
+    public function setVerificacion($value)
+    {
+        if (Validator::validateBoolean($value)) {
+            $this->verificacion = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -156,5 +168,10 @@ class Usuarios extends UsuariosQueries
     public function getIdEmpleado()
     {
         return $this->idempleado;
+    }
+    
+    public function getVerificacion()
+    {
+        return $this->verificacion;
     }
 }

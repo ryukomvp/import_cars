@@ -162,10 +162,12 @@ CREATE TABLE IF NOT EXISTS usuarios(
 	idusuario INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nombreus VARCHAR(50) NOT NULL UNIQUE,
     contrasenia VARCHAR(150) NOT NULL,
+    fechacontra DATE NULL,
     pin VARCHAR(10) NOT NULL,
     tipousuario ENUM('Administrador' , 'Gerente' , 'Vendedor') NOT NULL,
     idempleado INT NOT NULL, 
     estadousuario ENUM('Activo' , 'Inactivo' , 'Bloqueado') NOT NULL,
+    intentos INT NOT NULL default 0,
     
     CONSTRAINT fkusuarioemp
     FOREIGN KEY (idempleado)
