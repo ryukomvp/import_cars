@@ -126,6 +126,13 @@
                                             placeholder="# de Registro" required>
                                     </div>
                                     <div>
+                                        <label for="giro"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Giro de la Empresa</label>
+                                        <input type="text" id="giro" name="giro" min="0"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                            placeholder="# de Registro" required>
+                                    </div>
+                                    <div>
                                         <label for="nit"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">NIT</label>
                                         <input type="text" id="nit" name="nit"
@@ -171,53 +178,37 @@
                             <th scope="col" class="hidden px-6 py-3">
                                 ID
                             </th>
-                            <!--Columna del numero comprobante de detalles transacciones-->
+                            <!--Columna del nombre de la empresa de parametros-->
                             <th scope="col" class="px-6 py-3">
-                                No. Comprobante
+                                NNombre de Empresa
                             </th>
-                            <!--Columna de a fecha de la transaccion  de detalles transacciones-->
+                            <!--Columna de la direccion de la empresa de parametros-->
                             <th scope="col" class="px-6 py-3">
-                                Fecha de la Transacción
+                                Dirección de Empresa
                             </th>
-                            <!--Columna de lote de detalles transacciones-->
+                            <!--Columna del porcentaje de parametros-->
                             <th scope="col" class="px-6 py-3">
-                                Lote
+                                Porcentaje
                             </th>
-                            <!--Columna de poliza de detalles transacciones-->
+                            <!--Columna del registro de parametros-->
                             <th scope="col" class="px-6 py-3">
-                                No. Poliza
+                                Registro
                             </th>
-                            <!--Columna de bodega de detalles transacciones-->
+                            <!--Columna del giro de parametros-->
                             <th scope="col" class="px-6 py-3">
-                                Bodega
+                                Giro de la Empresa
                             </th>
-                            <!--Columna del cajero de detalles transacciones-->
+                            <!--Columna del NIT de parametros-->
                             <th scope="col" class="px-6 py-3">
-                                Cajero
+                                NIT
                             </th>
-                            <!--Columna del tipo de pago de detalles transacciones-->
+                            <!--Columna del DUI de parametros-->
                             <th scope="col" class="px-6 py-3">
-                                Tipo de Pago
+                                DUI
                             </th>
-                            <!--Columna del ecodigo de detalles transacciones-->
+                            <!--Columna del Correo de parametros-->
                             <th scope="col" class="px-6 py-3">
-                                Codigo Transacción
-                            </th>
-                            <!--Columna del cliente de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Cliente
-                            </th>
-                            <!--Columna del vendedor de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Vendedor
-                            </th>
-                            <!--Columna del proveedor de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Proveedor
-                            </th>
-                            <!--Columna de los parametros de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Parametros
+                                Correo
                             </th>
                             <!--Controles de acciones para actualizar o eliminar registro-->
                             <th scope="col" class="px-8 py-3">
@@ -226,7 +217,7 @@
                         </tr>
                     </thead>
                     <!--Filas de la tabla-->
-                    <tbody id="registrosTabla">
+                    <tbody id="registros">
                     </tbody>
                 </table>
             </div>
