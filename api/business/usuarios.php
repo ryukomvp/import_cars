@@ -260,6 +260,10 @@ if (isset($_GET['action'])) {
                     $usuario->setIntentos($intentos);
                     $usuario->actualizarIntentos($intentos);
                 } else {
+                    //generar codigo random
+                    $codigoveri=rand(10000,99999);
+                    //enviar codigo a la base de datos
+                    $usuario->ingresarCodigo($codigoveri);
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['tiempo_sesion'] = time();

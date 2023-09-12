@@ -148,15 +148,6 @@ class UsuariosQueries
         return Database::getRows($sql, $params);
     }
 
-    //Verificar si el usuario tiene activa la verificacion en 2 pasos//
-    // public function verificarSegundoFactor()
-    // {
-    //     $sql = 'SELECT verificacion FROM usuarios 
-    //     WHERE idusuario = ?';
-    //     $params = array($this->id)
-    //     return Database::getRow($sql, $params);
-    // }
-
     public function verificarUsuarioEmp($nombre)
     {
         $sql = 'SELECT idusuario FROM usuarios WHERE nombreus = ?';
@@ -186,6 +177,7 @@ class UsuariosQueries
         }
     }
 
+    
     public function verificarPin($pin)
     {
         $sql = 'SELECT idusuario FROM usuarios WHERE pin = ?';
@@ -229,4 +221,39 @@ class UsuariosQueries
         return Database::executeRow($sql, $params);
     }    
 
+
+
+    //Método para actualizar el codigo enviado al correo
+    public function ingresarCodigo($codigoveri)
+    {
+        $sql = 'UPDATE usuarios SET codigoveri = ? 
+                WHERE idusuario = ?';
+        $params = array($codigoveri, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    //Método para verificar si el usuario tiene activa la verificaicion en dos factores y mostrar el modal para el ingreso del codigo
+    public function verificarSegundoFactor()
+    {
+        $sql = 'SELECT verificacion 
+                FROM usuarios
+                WHERE idusuario = ?';
+        $params = array($this->verificacion, $this->id);
+        return Database::getRow($sql, $params);
+    }
+
+    //Método para verificar si el codigo generado y el ingresado por el usuario coinciden
+    public function verificarCodigo($codigoingresado)
+    {
+        $sql = 'SELECT codigoveri
+        FROM usuarios
+        WHERE codigoveri = ?';
+        $params = array($codigoingresado);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->codigoingresado = $codigoingresado;
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

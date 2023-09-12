@@ -18,6 +18,7 @@ class Usuarios extends UsuariosQueries
     protected $idempleado = null;
     protected $verificacion = null;
     protected $intentos = null;
+    protected $codigoveri = null;
 
 
     /*
@@ -133,6 +134,16 @@ class Usuarios extends UsuariosQueries
         }
     }
 
+    public function setCodigoveri($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->codigoveri = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -190,4 +201,10 @@ class Usuarios extends UsuariosQueries
     {
         return $this->intentos;
     }
+
+    public function getCodigoveri()
+    {
+        return $this->codigoveri;
+    }
 }
+
