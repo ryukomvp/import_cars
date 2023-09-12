@@ -3,6 +3,8 @@
 require_once('../entities/dto/usuarios.php');
 // Verificación 
 $special_charspattern = '/[^a-zA-Z\d]/';
+// Variable para almacenar temporalmente los intentos de inicio de sesión.
+$intentos = 0;
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -252,12 +254,23 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Alias incorrecto';
                 } elseif (!$usuario->verificarClave($_POST['clave'])) {
                     $result['exception'] = 'Clave incorrecta';
+                    // Clave incorrecta, se suma in tengo fallido de inicio de sesión.
+                    $usuario->leerIntentos($_POST['usuario']);
+                    $intentos = $usuario->getIntentos() + 1;
+                    $usuario->setIntentos($intentos);
+                    $usuario->actualizarIntentos($intentos);
+
+                    $usuario->verificarIntentos($_POST['usuario']);
                 } else {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['tiempo_sesion'] = time();
                     $_SESSION['idusuario'] = $usuario->getId();
                     $_SESSION['nombreus'] = $usuario->getNombre();
+                    // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
+                    $intentos = 0;
+                    $usuario->setIntentos($intentos);
+                    $usuario->actualizarIntentos();
                 }
                 break;
             case 'verificarRecu':

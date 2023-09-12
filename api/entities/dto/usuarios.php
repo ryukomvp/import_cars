@@ -17,6 +17,7 @@ class Usuarios extends UsuariosQueries
     protected $correoemp = null;
     protected $idempleado = null;
     protected $verificacion = null;
+    protected $intentos = null;
 
 
     /*
@@ -122,6 +123,16 @@ class Usuarios extends UsuariosQueries
         }
     }
 
+    public function setIntentos($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->intentos = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -173,5 +184,10 @@ class Usuarios extends UsuariosQueries
     public function getVerificacion()
     {
         return $this->verificacion;
+    }
+
+    public function getIntentos()
+    {
+        return $this->intentos;
     }
 }
