@@ -37,8 +37,8 @@ class UsuariosQueries
 
     public function cambiarClave()
     {
-        $sql = 'UPDATE usuarios SET clave = ? WHERE idusuario = ?';
-        $params = array($this->clave, $_SESSION['idusuario']);
+        $sql = 'UPDATE usuarios SET clave = ?, fechacontra = current_timestamp() WHERE idusuario = ?';
+        $params = array($this->clave, $this->id);
         return Database::executeRow($sql, $params);
     }
 
