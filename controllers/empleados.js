@@ -143,7 +143,7 @@ async function actualizarRegistro(id) {
         document.getElementById('documento').value = JSON.dataset.duiemp;
         fillSelect(EMPLEADO_API, 'leerEstadosEmpleados', 'estado', JSON.dataset.estadoempleado);
         fillSelect(EMPLEADO_API, 'leerGeneros', 'genero', JSON.dataset.genero);
-        fillSelect(EMPLEADO_API, 'leerCargos', 'cargo', JSON.dataset.cargos);
+        fillSelect(EMPLEADO_API, 'leerCargos', 'cargo', JSON.dataset.cargo);
         //document.getElementById('numeroRegistroProv').value = JSON.dataset.numeroregistroprov;
         //fillSelect(MONEDA_API, 'leerMonedas', 'moneda', JSON.dataset.idmoneda);
     } else {

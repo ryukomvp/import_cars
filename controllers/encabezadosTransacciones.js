@@ -94,7 +94,7 @@ async function cargarRegistros(form = null) {
                     <td class="px-6 py-4">${row.nombre}</td>
                     <td class="px-6 py-4">${row.nombreus}</td>
                     <td class="px-6 py-4">${row.nombreprov}</td>
-                    <td class="px-6 py-4">${row.registro}</td>
+                    <td class="px-6 py-4">${row.nombreemp}</td>
                     <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idencatransaccion})"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -125,14 +125,14 @@ function crearRegistro() {
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna el título a la caja de diálogo.
     TITULO.textContent = 'Crear un registro';
-    fillSelect(BODEGA_API, 'buscarRegistros', 'bodega');
-    fillSelect(CAJERO_API, 'buscarRegistros', 'cajero');
+    fillSelect(BODEGA_API, 'leerRegistros', 'bodega');
+    fillSelect(CAJERO_API, 'leerRegistros', 'cajero');
     fillSelect(ENCABEZADO_TRANSACCION_API, 'leerTiposPagos', 'tipoPago');
-    fillSelect(CODIGO_TRANSACCION_API, 'buscarRegistros', 'codigoTransaccion');
-    fillSelect(CLIENTE_API, 'buscarRegistros', 'cliente');
-    fillSelect(VENDEDDOR_API, 'buscarRegistros', 'vendedor');
-    fillSelect(PROVEEDOR_API, 'buscarRegistros', 'proveedor');
-    fillSelect(PARAMETRO_API, 'buscarRegistros', 'parametro');
+    fillSelect(CODIGO_TRANSACCION_API, 'leerRegistros', 'codigoTransaccion');
+    fillSelect(CLIENTE_API, 'leerRegistros', 'cliente');
+    fillSelect(VENDEDDOR_API, 'leerRegistros', 'vendedor');
+    fillSelect(PROVEEDOR_API, 'leerRegistros', 'proveedor');
+    fillSelect(PARAMETRO_API, 'leerRegistros', 'parametro');
 }
 
 //Funcion para abrir el modal con los datos del registro a actualizar
@@ -156,15 +156,15 @@ async function actualizarRegistro(id) {
         document.getElementById('noComprobante').value = JSON.dataset.nocomprobante;
         document.getElementById('fechaTransac').value = JSON.dataset.fechatransac;
         document.getElementById('lote').value = JSON.dataset.lote;
-        document.getElementById('nopoliza').value = JSON.dataset.nopoliza;
-        fillSelect(BODEGA_API, 'buscarRegistros', 'bodega', JSON.dataset.numerobod);
-        fillSelect(CAJERO_API, 'buscarRegistros', 'cajero', JSON.dataset.nombrecajero);
+        document.getElementById('nopoliza').value = JSON.dataset.npoliza;
+        fillSelect(BODEGA_API, 'leerRegistros', 'bodega', JSON.dataset.idbodega);
+        fillSelect(CAJERO_API, 'leerRegistros', 'cajero', JSON.dataset.idcajero);
         fillSelect(ENCABEZADO_TRANSACCION_API, 'leerTiposPagos', 'tipoPago', JSON.dataset.tipopago);
-        fillSelect(CODIGO_TRANSACCION_API, 'buscarRegistros', 'codigoTransaccion', JSON.dataset.codigo);
-        fillSelect(CLIENTE_API, 'buscarRegistros', 'cliente', JSON.dataset.nombre);
-        fillSelect(VENDEDDOR_API, 'buscarRegistros', 'vendedor', JSON.dataset.nombreus);
-        fillSelect(PROVEEDOR_API, 'buscarRegistros', 'proveedor', JSON.dataset.nombreprov);
-        fillSelect(PARAMETRO_API, 'buscarRegistros', 'parametro', JSON.dataset.registro);
+        fillSelect(CODIGO_TRANSACCION_API, 'leerRegistros', 'codigoTransaccion', JSON.dataset.idcodigotransaccion);
+        fillSelect(CLIENTE_API, 'leerRegistros', 'cliente', JSON.dataset.idcliente);
+        fillSelect(VENDEDDOR_API, 'leerRegistros', 'vendedor', JSON.dataset.idvendedor);
+        fillSelect(PROVEEDOR_API, 'leerRegistros', 'proveedor', JSON.dataset.idproveedor);
+        fillSelect(PARAMETRO_API, 'leerRegistros', 'parametro', JSON.dataset.idparametro);
 
     } else {
         sweetAlert(2, JSON.exception, false);
