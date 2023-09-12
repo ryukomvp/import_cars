@@ -208,18 +208,18 @@ class UsuariosQueries
         return Database::getRow($sql, $params);
     }
 
-    public boolean verificarIntentos($pin)
-    {
-        $sql = 'SELECT * FROM usuarios WHERE nombreus = ? AND intentos = 3';
-        $params = array($usuario);
-        if ($data = Database::getRow($sql, $params)) {
-            // $this->id = $data['idusuario'];
-            // $this->pin = $pin;
-            return true;
-        } else {
-            return false;
-        }
-    }
+    // public boolean verificarIntentos($pin)
+    // {
+    //     $sql = 'SELECT * FROM usuarios WHERE nombreus = ? AND intentos = 3';
+    //     $params = array($usuario);
+    //     if ($data = Database::getRow($sql, $params)) {
+    //         // $this->id = $data['idusuario'];
+    //         // $this->pin = $pin;
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
     // Método para actualizar los intentos de inicio de sesión.
     public function actualizarIntentos()
