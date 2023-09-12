@@ -55,7 +55,7 @@ class Validator
     public static function validateNaturalNumber($value)
     {
         // Se verifica que el valor sea un número entero mayor o igual a uno.
-        if (filter_var($value, FILTER_VALIDATE_INT, array('options'=>array('min_range' => 1)))) {
+        if (filter_var($value, FILTER_VALIDATE_INT, array('options'=>array('min_range' => 0)))) {
             return true;
         } else {
             return false;
@@ -299,7 +299,7 @@ class Validator
     public static function validateSessionTime()
     {
         //Establecer tiempo de inactivad en segundos
-        $tiempoInactividadMaximo = 120;
+        $tiempoInactividadMaximo = 300;
         //Verificar la última actividad está registrada en la sesión 
         if ((time() - $_SESSION['tiempo_sesion']) > $tiempoInactividadMaximo) {
             //Destruye la sesión
