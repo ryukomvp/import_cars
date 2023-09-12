@@ -3,6 +3,8 @@
 require_once('../entities/dto/usuarios.php');
 // Verificación 
 $special_charspattern = '/[^a-zA-Z\d]/';
+// Variable para almacenar temporalmente los intentos de inicio de sesión.
+$intentos = 0;
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {

@@ -199,4 +199,21 @@ class UsuariosQueries
         }
     }
 
+    // Método para leer los intentos de iniciar sesión realizados.
+    public function leerIntentos()
+    {
+        $sql = 'SELECT intentos FROM usuarios
+                WHERE nombreus = ?';
+        $params = array($this->nombre);
+        return Database::getRow($sql, $params);
+    }
+
+    // Método para actualizar los intentos de inicio de sesión.
+    public function actualizarIntentos()
+    {
+        $sql = 'UPDATE usuarios SET intentos = ? WHERE nombreus = ?';
+        $params = array($this->intentos, $this->nombre);
+        return Database::executeRow($sql, $params);
+    }    
+
 }
