@@ -259,8 +259,6 @@ if (isset($_GET['action'])) {
                     $intentos = $usuario->getIntentos() + 1;
                     $usuario->setIntentos($intentos);
                     $usuario->actualizarIntentos($intentos);
-
-                    $usuario->verificarIntentos($_POST['usuario']);
                 } else {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
