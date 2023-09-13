@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (JSON.session) {
         setInterval(() => {
             checkSessionTime();
-        }, 120000);
+        }, 300000);
 
         if (JSON.status) {
             // Inserción de header

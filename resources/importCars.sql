@@ -315,7 +315,7 @@ CREATE TABLE IF NOT EXISTS productos(
 CREATE TABLE IF NOT EXISTS encabezadostransacciones (
     idencatransaccion INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nocomprobante INT NOT NULL UNIQUE,
-    fechatransac NUMERIC(8,2) NOT NULL,
+    fechatransac DATE NOT NULL,
     lote INT NOT NULL,
     npoliza INT NOT NULL,
     idbodega INT NOT NULL,
@@ -734,13 +734,13 @@ INSERT INTO codigostransacciones(codigo, nombrecodigo) VALUES
        (1210, 'codigo7');
 
 INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro) VALUES
-       (1, 2015, 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1),
-       (2, 2016, 1214, 1235, 2, 2,'Efectivo', 2, 2, 2, 2, 2),
-       (3, 2017, 1215, 1236, 3, 3,'Efectivo', 3, 3, 3, 3, 3),
-       (4, 2018, 1216, 1237, 4, 4,'Efectivo', 4, 4, 4, 4, 4),
-       (5, 2019, 1217, 1238, 5, 5,'Efectivo', 5, 5, 5, 5, 5),
-       (6, 2020, 1218, 1239, 6, 6,'Efectivo', 6, 6, 6, 6, 6),
-       (7, 2021, 1219, 1230, 7, 7,'Efectivo', 7, 7, 7, 7, 7);
+       (1, '2015-01-01', 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1),
+       (2, '2015-01-01', 1214, 1235, 2, 2,'Efectivo', 2, 2, 2, 2, 2),
+       (3, '2015-01-01', 1215, 1236, 3, 3,'Efectivo', 3, 3, 3, 3, 3),
+       (4, '2015-01-01', 1216, 1237, 4, 4,'Efectivo', 4, 4, 4, 4, 4),
+       (5, '2015-01-01', 1217, 1238, 5, 5,'Efectivo', 5, 5, 5, 5, 5),
+       (6, '2015-01-01', 1218, 1239, 6, 6,'Efectivo', 6, 6, 6, 6, 6),
+       (7, '2015-01-01', 1219, 1230, 7, 7,'Efectivo', 7, 7, 7, 7, 7);
 
 INSERT INTO detallestransacciones(correlativo, cantidad, preciounitario, ventanosujeta, ventaexenta, ventaafecta, descuento, valordescuento, sumas, subtotal, ventatotal, iva, observaciones, idbodegaentrada, idbodegasalida, idproducto, descripcion, idencatransaccion) VALUES
        (1, 50, 20.00, 15.00, 40.00, 34.00, 40.00, 20.00, 40.00, 34.00, 34.00, 19.00, 'Exelente', 1, 1, 1, 'Transaccion de producto', 1),

@@ -30,27 +30,27 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$encabezadoTransac->setNoComprobante($_POST['noComprobante'])) {
                     $result['exception'] = 'Número de comprobante incorrecto';
-                } elseif (!$encabezadoTransac->setFechaTransac($S_POST['fechaTransac'])) {
+                } elseif (!$encabezadoTransac->setFechaTransac($_POST['fechaTransac'])) {
                     $result['exception'] = 'Fecha de la transacción incorrecta';
-                } elseif (!$encabezadoTransac->setLote($S_POST['lote'])) {
+                } elseif (!$encabezadoTransac->setLote($_POST['lote'])) {
                     $result['exception'] = 'Lote asignado incorrecto';
-                } elseif (!$encabezadoTransac->setNoPoliza($S_POST['nopoliza'])) {
+                } elseif (!$encabezadoTransac->setNoPoliza($_POST['nopoliza'])) {
                     $result['exception'] = 'Número de poliza incorrecto';
-                } elseif (!$encabezadoTransac->setIdBodega($S_POST['bodega'])) {
+                } elseif (!$encabezadoTransac->setIdBodega($_POST['bodega'])) {
                     $result['exception'] = 'Error al asignar la bodega';
-                } elseif (!$encabezadoTransac->setIdCajero($S_POST['cajero'])) {
+                } elseif (!$encabezadoTransac->setIdCajero($_POST['cajero'])) {
                     $result['exception'] = 'Error al asignar el cajero';
-                } elseif (!$encabezadoTransac->setTipoPago($S_POST['tipoPago'])) {
+                } elseif (!$encabezadoTransac->setTipoPago($_POST['tipoPago'])) {
                     $result['exception'] = 'Error al asignar el tipo de pago';
-                } elseif (!$encabezadoTransac->setIdCodigoTransaccion($S_POST['codigoTransaccion'])) {
+                } elseif (!$encabezadoTransac->setIdCodigoTransaccion($_POST['codigoTransaccion'])) {
                     $result['exception'] = 'Error al asignar el código de la transacción';
-                } elseif (!$encabezadoTransac->setIdCliente($S_POST['cliente'])) {
+                } elseif (!$encabezadoTransac->setIdCliente($_POST['cliente'])) {
                     $result['exception'] = 'Error al asignar el cliente';
-                } elseif (!$encabezadoTransac->setIdVendedor($S_POST['vendedor'])) {
+                } elseif (!$encabezadoTransac->setIdVendedor($_POST['vendedor'])) {
                     $result['exception'] = 'Error al asignar el vendedor';
-                } elseif (!$encabezadoTransac->setIdProveedor($S_POST['proveedor'])) {
+                } elseif (!$encabezadoTransac->setIdProveedor($_POST['proveedor'])) {
                     $result['exception'] = 'Error al asignar el proveedor';
-                } elseif (!$encabezadoTransac->setIdParametro($S_POST['parametro'])) {
+                } elseif (!$encabezadoTransac->setIdParametro($_POST['parametro'])) {
                     $result['exception'] = 'Error al asignar el parámetro';
                 } elseif ($encabezadoTransac->crearRegistro()) {
                     $result['status'] = 1;
@@ -88,27 +88,27 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Código de transacción inexistente';
                 } elseif (!$encabezadoTransac->setNoComprobante($_POST['noComprobante'])) {
                     $result['exception'] = 'Número de comprobante incorrecto';
-                } elseif (!$encabezadoTransac->setFechaTransac($S_POST['fechaTransac'])) {
+                } elseif (!$encabezadoTransac->setFechaTransac($_POST['fechaTransac'])) {
                     $result['exception'] = 'Fecha de la transacción incorrecta';
-                } elseif (!$encabezadoTransac->setLote($S_POST['lote'])) {
+                } elseif (!$encabezadoTransac->setLote($_POST['lote'])) {
                     $result['exception'] = 'Lote asignado incorrecto';
-                } elseif (!$encabezadoTransac->setNoPoliza($S_POST['nopoliza'])) {
+                } elseif (!$encabezadoTransac->setNoPoliza($_POST['nopoliza'])) {
                     $result['exception'] = 'Número de poliza incorrecto';
-                } elseif (!$encabezadoTransac->setIdBodega($S_POST['bodega'])) {
+                } elseif (!$encabezadoTransac->setIdBodega($_POST['bodega'])) {
                     $result['exception'] = 'Error al asignar la bodega';
-                } elseif (!$encabezadoTransac->setIdCajero($S_POST['cajero'])) {
+                } elseif (!$encabezadoTransac->setIdCajero($_POST['cajero'])) {
                     $result['exception'] = 'Error al asignar el cajero';
-                } elseif (!$encabezadoTransac->setTipoPago($S_POST['tipoPago'])) {
+                } elseif (!$encabezadoTransac->setTipoPago($_POST['tipoPago'])) {
                     $result['exception'] = 'Error al asignar el tipo de pago';
-                } elseif (!$encabezadoTransac->setIdCodigoTransaccion($S_POST['codigoTransaccion'])) {
+                } elseif (!$encabezadoTransac->setIdCodigoTransaccion($_POST['codigoTransaccion'])) {
                     $result['exception'] = 'Error al asignar el código de la transacción';
-                } elseif (!$encabezadoTransac->setIdCliente($S_POST['cliente'])) {
+                } elseif (!$encabezadoTransac->setIdCliente($_POST['cliente'])) {
                     $result['exception'] = 'Error al asignar el cliente';
-                } elseif (!$encabezadoTransac->setIdVendedor($S_POST['vendedor'])) {
+                } elseif (!$encabezadoTransac->setIdVendedor($_POST['vendedor'])) {
                     $result['exception'] = 'Error al asignar el vendedor';
-                } elseif (!$encabezadoTransac->setIdProveedor($S_POST['proveedor'])) {
+                } elseif (!$encabezadoTransac->setIdProveedor($_POST['proveedor'])) {
                     $result['exception'] = 'Error al asignar el proveedor';
-                } elseif (!$encabezadoTransac->setIdParametro($S_POST['parametro'])) {
+                } elseif (!$encabezadoTransac->setIdParametro($_POST['parametro'])) {
                     $result['exception'] = 'Error al asignar el parámetro';
                 } elseif ($encabezadoTransac->actualizarRegistro()) {
                     $result['status'] = 1;

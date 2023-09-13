@@ -4,6 +4,7 @@
 const FORMULARIO_SESION = document.getElementById('login-form');
 const ABRIR_MODAL1 = new Modal(document.getElementById('RecuperarModal'));
 const ABRIR_MODAL2 = new Modal(document.getElementById('RecuperarModal2'));
+const ABRIR_MODAL3 = new Modal(document.getElementById('CambioContraseña'));
 
 // // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {

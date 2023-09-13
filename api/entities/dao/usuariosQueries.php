@@ -22,11 +22,26 @@ class UsuariosQueries
         }
     }
 
+    public function verificarBloqueo($nombre)
+    {
+        $sql = "SELECT idusuario FROM usuarios WHERE nombreus = ? AND estadousuario != 'Bloqueado'";
+        $params = array($nombre);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id = $data['idusuario'];
+            $this->nombre = $nombre;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function verificarClave($password)
     {
-        $sql = 'SELECT contrasenia FROM usuarios WHERE idusuario = ?';
+        $sql = 'SELECT contrasenia, intentos FROM usuarios WHERE idusuario = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
+        // Se capturan los intentos antes de verificar la contraseña.
+        $this->intentos = $data['intentos'];
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
         if (password_verify($password, $data['contrasenia'])) {
             return true;
@@ -37,8 +52,8 @@ class UsuariosQueries
 
     public function cambiarClave()
     {
-        $sql = 'UPDATE usuarios SET clave = ? WHERE idusuario = ?';
-        $params = array($this->clave, $_SESSION['idusuario']);
+        $sql = 'UPDATE usuarios SET clave = ?, fechacontra = current_timestamp() WHERE idusuario = ?';
+        $params = array($this->clave, $this->id);
         return Database::executeRow($sql, $params);
     }
 
@@ -121,6 +136,7 @@ class UsuariosQueries
         $sql = "UPDATE usuarios SET estadousuario = 'Activo'
                 WHERE idusuario = ? AND estadousuario = 'Inactivo'";
         $params = array($this->id);
+        return Database::executeRow($sql, $params);
     }
 
     public function estadoInactivo()
@@ -128,6 +144,7 @@ class UsuariosQueries
         $sql = "UPDATE usuarios SET estadousuario = 'Inactivo'
                 WHERE idusuario = ? AND estadousuario = 'Activo'";
         $params = array($this->id);
+        return Database::executeRow($sql, $params);
     }
 
     public function desbloquearUsuario()
@@ -135,6 +152,16 @@ class UsuariosQueries
         $sql = "UPDATE usuarios SET estadousuario = 'Inactivo'
                 WHERE idusuario = ? AND estadousuario = 'Bloqueado'";
         $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function bloquearUsuario()
+    {
+        $sql = "UPDATE usuarios SET estadousuario = 'Bloqueado'
+                WHERE idusuario = ?";
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+
     }
 
     public function reporteUsuariosTipo()
@@ -147,15 +174,6 @@ class UsuariosQueries
         $params = array($this->tipo);
         return Database::getRows($sql, $params);
     }
-
-    //Verificar si el usuario tiene activa la verificacion en 2 pasos//
-    // public function verificarSegundoFactor()
-    // {
-    //     $sql = 'SELECT verificacion FROM usuarios 
-    //     WHERE idusuario = ?';
-    //     $params = array($this->id)
-    //     return Database::getRow($sql, $params);
-    // }
 
     public function verificarUsuarioEmp($nombre)
     {
@@ -186,6 +204,7 @@ class UsuariosQueries
         }
     }
 
+    
     public function verificarPin($pin)
     {
         $sql = 'SELECT idusuario FROM usuarios WHERE pin = ?';
@@ -199,4 +218,69 @@ class UsuariosQueries
         }
     }
 
+    // Método para leer los intentos de iniciar sesión realizados.
+    public function leerIntentos()
+    {
+        $sql = 'SELECT intentos FROM usuarios
+                WHERE nombreus = ?';
+        $params = array($this->nombre);
+        return Database::getRow($sql, $params);
+    }
+
+    // public boolean verificarIntentos($pin)
+    // {
+    //     $sql = 'SELECT * FROM usuarios WHERE nombreus = ? AND intentos = 3';
+    //     $params = array($usuario);
+    //     if ($data = Database::getRow($sql, $params)) {
+    //         // $this->id = $data['idusuario'];
+    //         // $this->pin = $pin;
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+    // Método para actualizar los intentos de inicio de sesión.
+    public function actualizarIntentos()
+    {
+        $sql = 'UPDATE usuarios SET intentos = intentos + 1 WHERE nombreus = ?';
+        $params = array($this->nombre);
+        return Database::executeRow($sql, $params);
+    }    
+
+
+
+    //Método para actualizar el codigo enviado al correo
+    public function ingresarCodigo($codigoveri)
+    {
+        $sql = 'UPDATE usuarios SET codigoveri = ? 
+                WHERE idusuario = ?';
+        $params = array($codigoveri, $this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    //Método para verificar si el usuario tiene activa la verificaicion en dos factores y mostrar el modal para el ingreso del codigo
+    public function verificarSegundoFactor()
+    {
+        $sql = 'SELECT verificacion 
+                FROM usuarios
+                WHERE idusuario = ?';
+        $params = array($this->verificacion, $this->id);
+        return Database::getRow($sql, $params);
+    }
+
+    //Método para verificar si el codigo generado y el ingresado por el usuario coinciden
+    public function verificarCodigo($codigoingresado)
+    {
+        $sql = 'SELECT codigoveri
+        FROM usuarios
+        WHERE codigoveri = ?';
+        $params = array($codigoingresado);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->codigoingresado = $codigoingresado;
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
