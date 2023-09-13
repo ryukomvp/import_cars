@@ -11,6 +11,19 @@ class UsuariosQueries
 
     public function verificarUsuario($nombre)
     {
+        $sql = 'SELECT idusuario FROM usuarios WHERE nombreus = ?';
+        $params = array($nombre);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id = $data['idusuario'];
+            $this->nombre = $nombre;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function verificarBloqueo($nombre)
+    {
         $sql = "SELECT idusuario FROM usuarios WHERE nombreus = ? AND estadousuario != 'Bloqueado'";
         $params = array($nombre);
         if ($data = Database::getRow($sql, $params)) {
