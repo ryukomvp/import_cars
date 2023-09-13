@@ -36,6 +36,38 @@ CREATE TABLE IF NOT EXISTS tiposproductos (
     tipoproducto VARCHAR(30) NOT NULL UNIQUE
 );
 
+CREATE TABLE tiposusuarios(
+    
+    idtipousuario int AUTO_INCREMENT PRIMARY KEY not null,
+	nombretipous varchar(25) not null,
+    marcas boolean,
+    paisesdeorigen boolean,
+    monedas boolean,
+    familias boolean,
+    categorias boolean,
+    codigoscomunes boolean,
+    tiposproductos boolean,
+    codigostransacciones boolean,
+    codigosplazos boolean,
+    sucursales boolean,
+    plazos boolean,
+    contactos boolean,
+    parametros boolean,
+    proveedores boolean,
+    modelos boolean,
+    empleados boolean,
+    clientes boolean,
+    usuarios boolean,
+    cajas boolean,
+    cajeros boolean,
+    vendedores boolean,
+    bodegas boolean,
+    familiasbodegas boolean,
+    productos boolean,
+    encabezadostransacciones boolean,
+    detallestransacciones boolean
+);
+
 CREATE TABLE IF NOT EXISTS codigostransacciones(
 	idcodigotransaccion INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     codigo INT NOT NULL,
