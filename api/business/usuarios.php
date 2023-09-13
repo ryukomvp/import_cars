@@ -251,7 +251,7 @@ if (isset($_GET['action'])) {
             case 'iniciarSesion':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->verificarUsuario($_POST['usuario'])) {
-                    $result['exception'] = 'Nombre de clave incorrecto';
+                    $result['exception'] = 'Nombre de usuario incorrecto';
                 } elseif (!$usuario->verificarBloqueo($_POST['usuario'])) {
                     $result['exception'] = 'El usuario se encuentra bloqueado, comuniquese con un administrador.';
                 } elseif (!$usuario->verificarClave($_POST['clave'])) {
