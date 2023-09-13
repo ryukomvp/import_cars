@@ -22,11 +22,26 @@ class UsuariosQueries
         }
     }
 
+    public function verificarBloqueo($nombre)
+    {
+        $sql = "SELECT idusuario FROM usuarios WHERE nombreus = ? AND estadousuario != 'Bloqueado'";
+        $params = array($nombre);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id = $data['idusuario'];
+            $this->nombre = $nombre;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function verificarClave($password)
     {
-        $sql = 'SELECT contrasenia FROM usuarios WHERE idusuario = ?';
+        $sql = 'SELECT contrasenia, intentos FROM usuarios WHERE idusuario = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
+        // Se capturan los intentos antes de verificar la contraseña.
+        $this->intentos = $data['intentos'];
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
         if (password_verify($password, $data['contrasenia'])) {
             return true;
@@ -121,6 +136,7 @@ class UsuariosQueries
         $sql = "UPDATE usuarios SET estadousuario = 'Activo'
                 WHERE idusuario = ? AND estadousuario = 'Inactivo'";
         $params = array($this->id);
+        return Database::executeRow($sql, $params);
     }
 
     public function estadoInactivo()
@@ -128,6 +144,7 @@ class UsuariosQueries
         $sql = "UPDATE usuarios SET estadousuario = 'Inactivo'
                 WHERE idusuario = ? AND estadousuario = 'Activo'";
         $params = array($this->id);
+        return Database::executeRow($sql, $params);
     }
 
     public function desbloquearUsuario()
@@ -135,6 +152,16 @@ class UsuariosQueries
         $sql = "UPDATE usuarios SET estadousuario = 'Inactivo'
                 WHERE idusuario = ? AND estadousuario = 'Bloqueado'";
         $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function bloquearUsuario()
+    {
+        $sql = "UPDATE usuarios SET estadousuario = 'Bloqueado'
+                WHERE idusuario = ?";
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+
     }
 
     public function reporteUsuariosTipo()
@@ -216,8 +243,8 @@ class UsuariosQueries
     // Método para actualizar los intentos de inicio de sesión.
     public function actualizarIntentos()
     {
-        $sql = 'UPDATE usuarios SET intentos = ? WHERE nombreus = ?';
-        $params = array($this->intentos, $this->nombre);
+        $sql = 'UPDATE usuarios SET intentos = intentos + 1 WHERE nombreus = ?';
+        $params = array($this->nombre);
         return Database::executeRow($sql, $params);
     }    
 
