@@ -253,12 +253,19 @@ if (isset($_GET['action'])) {
                 if (!$usuario->verificarUsuario($_POST['usuario'])) {
                     $result['exception'] = 'Alias incorrecto';
                 } elseif (!$usuario->verificarClave($_POST['clave'])) {
-                    $result['exception'] = 'Clave incorrecta';
-                    // Clave incorrecta, se suma in tengo fallido de inicio de sesión.
-                    $usuario->leerIntentos($_POST['usuario']);
-                    $intentos = $usuario->getIntentos() + 1;
-                    $usuario->setIntentos($intentos);
-                    $usuario->actualizarIntentos($intentos);
+                    if ($usuario->getIntentos() < 2) {
+                        if ($usuario->actualizarIntentos()) {
+                            $result['exception'] = 'Clave incorrecta';
+                        } else {
+                            $result['exception'] = Database::getException();
+                        }
+                    } else {
+                        if ($usuario->bloquearUsuario()) {
+                            $result['exception'] = 'Usuario bloqueado';
+                        } else {
+                            $result['exception'] = Database::getException();
+                        }
+                    }
                 } else {
                     //generar codigo random
                     $codigoveri=rand(10000,99999);
