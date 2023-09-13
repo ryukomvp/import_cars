@@ -171,7 +171,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         }
     }
 
-    public function setBodegaEntrada($value)
+    public function setIdBodegaEntrada($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->idbodegaentrada = $value;
@@ -181,7 +181,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         }
     }
 
-    public function setBodegaSalida($value)
+    public function setIdBodegaSalida($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->idbodegasalida = $value;
@@ -191,7 +191,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         }
     }
     
-    public function setProducto($value)
+    public function setIdProducto($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->idproducto = $value;
@@ -211,7 +211,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         }
     }
 
-    public function setEncatraccion($value)
+    public function setIdEncatraccion($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->idencatransaccion = $value;
@@ -295,17 +295,17 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         return $this->observaciones;
     }
 
-    public function getBodegaEntrada()
+    public function getIdBodegaEntrada()
     {
         return $this->idbodegaentrada;
     }
 
-    public function getBodegaSalida()
+    public function getIdBodegaSalida()
     {
         return $this->idbodegasalida;
     }
 
-    public function getProducto()
+    public function getIdProducto()
     {
         return $this->idproducto;
     }
@@ -315,7 +315,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         return $this->descripcion;
     }
 
-    public function getEncaTransaccion()
+    public function getIdEncaTransaccion()
     {
         return $this->idencatransaccion;
     }
