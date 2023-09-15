@@ -96,7 +96,7 @@ if (isset($_GET['action'])) {
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
-                    $result['exception'] = 'Encabezado inexistente';
+                    $result['exception'] = 'Detalle inexistente';
                 }
                 break;
             case 'actualizarRegistro':
@@ -150,7 +150,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'eliminarRegistro':
                 if (!$detalleTrans->setId($_POST['iddetalletransaccion'])) {
-                    $result['exception'] = 'Detalle de la transaccion incorrecto incorrecto';
+                    $result['exception'] = 'Detalle de la transaccion incorrecto';
                 } elseif (!$data = $detalleTrans->leerUnRegistro()) {
                     $result['exception'] = 'Detalle de la transacción inexistente';
                 } elseif ($detalleTrans->eliminarRegistro()) {
