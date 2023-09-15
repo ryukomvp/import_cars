@@ -20,7 +20,7 @@ class DetallesTransaccionQueries
     
     public function buscarRegistros($value)
     {
-        $sql = 'SELECT a.correlativo, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, d.nocomprobante 
+        $sql = 'SELECT a.iddetalletransaccion, a.correlativo, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, d.nocomprobante 
         FROM detallestransacciones a 
         INNER JOIN bodegas b ON a.idbodegaentrada = b.idbodega 
         INNER JOIN bodegas e ON a.idbodegasalida = e.idbodega 
@@ -41,7 +41,7 @@ class DetallesTransaccionQueries
 
     public function leerRegistros()
     {
-        $sql = 'SELECT a.correlativo, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, d.nocomprobante 
+        $sql = 'SELECT a.iddetalletransaccion, a.correlativo, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, d.nocomprobante 
         FROM detallestransacciones a 
         INNER JOIN bodegas b ON a.idbodegaentrada = b.idbodega 
         INNER JOIN bodegas e ON a.idbodegasalida = e.idbodega 
