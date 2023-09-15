@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- importación de archivos css -->
     <link href="../resources/css/tailwind.css" rel="stylesheet" />
-    <link href="../resources/css/menu.css" rel="stylesheet" />
+    <link href="../resources/css/styles.css" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
     <!-- titulo de la página -->
     <title>Perfil de usuario</title>
@@ -30,56 +30,52 @@
                     class="rounded-full w-28 " alt="profile picture" srcset="">
             </div>
 
-            <div class="mt-8">
+            <div class="mt-8 mb-8">
                 <h2 class="text-white font-bold text-2xl tracking-wide">Jonathan Smith</h2>
             </div>
             <hr class="mb-1">
-            <button onclick="abrirModalClave()" class="w-auto ring-1 ring-azul text-azul font-medium focus:ring-4 focus:ring-white rounded-lg px-5 py-2.5 text-center hover:bg-azul hover:text-white">Cambiar
+            <button onclick="abrirModalClave()"
+                class="w-full ring-1 ring-azul text-azul font-medium focus:ring-4 focus:ring-white rounded-lg px-5 py-2.5 text-center hover:bg-azul hover:text-white">Cambiar
                 clave</button>
-            <button
-                class="w-auto ring-1 ring-azul text-azul font-medium focus:ring-4 focus:ring-white rounded-lg px-5 py-2.5 text-center hover:bg-azul hover:text-white">Verificación</button>
         </div>
 
         <form class="grid col-span-2 m-5">
-            <div class="mb-6">
-                <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre
-                    completo</label>
-                <input type="text" id="nombre"
-                    class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
-                    placeholder="Ingrese su nombre completo" required>
-            </div>
             <div class="grid gap-6 mb-12 md:grid-cols-2">
+                <!-- nombre de usuario -->
                 <div>
-                    <label for="telefono"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Teléfono</label>
-                    <input type="text" id="telefono"
-                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
-                        placeholder="Ingrese su teléfono" required>
+                    <label for="usuario" class="block mb-2 text-sm font-medium text-white">Usuario</label>
+                    <input type="text" name="usuario" id="usuario"
+                        class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Usuario" required="" autocomplete="no" disabled>
                 </div>
+                <!-- nombre del empleado -->
                 <div>
-                    <label for="correo"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
-                    <input type="email" id="correo"
-                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
-                        placeholder="Ingrese su correo" required>
+                    <label for="empleado" class="block mb-2 text-sm font-medium text-white">Empleado</label>
+                    <input type="text" name="empleado" id="empleado"
+                        class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Empleado" required="" autocomplete="no" disabled>
                 </div>
+                <!-- tipo de usuario -->
                 <div>
-                    <label for="tipo-documento" class="block mb-2 text-sm font-medium text-gray-900">Tipo de
-                        documento</label>
-                    <select id="tipo-documento"
-                        class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5">
-                        <option selected>Seleccione el tipo de documento</option>
-                        <option value="dui">DUI</option>
-                        <option value="pa">Pasaporte</option>
-                        <option value="nit">NIT</option>
-                    </select>
+                    <label for="tipous" class="block mb-2 text-sm font-medium text-white">Tipo de
+                        usuario</label>
+                    <input type="text" name="tipous" id="tipous"
+                        class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Tipo de usuario" required="" autocomplete="no" disabled>
                 </div>
+                <!-- cargo en la empresa -->
                 <div>
-                    <label for="documento"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Documento</label>
-                    <input type="text" id="documento"
-                        class="bg-white border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
-                        placeholder="Ingrese su documento" required>
+                    <label for="cargoemp" class="block mb-2 text-sm font-medium text-white">Cargo en la empresa</label>
+                    <input type="text" name="cargoemp" id="cargoemp"
+                        class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Cargo en la empresa" required="" autocomplete="no" disabled>
+                </div>
+                <!-- correo del empleado -->
+                <div>
+                    <label for="cargoemp" class="block mb-2 text-sm font-medium text-white">Cargo en la empresa</label>
+                    <input type="text" name="cargoemp" id="cargoemp"
+                        class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                        placeholder="Cargo en la empresa" required="" autocomplete="no" disabled>
                 </div>
                 <div>
                     <div class="flex">
@@ -92,8 +88,8 @@
                             <label for="helper-checkbox" class="text-white">Verificación de dos factores</label>
                         </div>
                     </div>
-
                 </div>
+            </div>
         </form>
         <!-- Modal para cambio de clave -->
         <div id="abrirModal" tabindex="-1"
@@ -130,7 +126,7 @@
                             <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                 <!-- Input para ingresar la clave actual -->
                                 <div>
-                                    <label for="clave-actual"
+                                    <label for="actual"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
                                         del usuario:</label>
                                     <input type="text" id="clave-actual" name="clave-actual"
@@ -140,9 +136,9 @@
                                 <hr>
                                 <!-- Input para ingresar la nueva clave -->
                                 <div>
-                                    <label for="clave"
+                                    <label for="nueva"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contraseña:</label>
-                                    <input type="password" id="clave" name="clave"
+                                    <input type="password" id="nueva" name="nueva"
                                         class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                         placeholder="Ingrese la contraseña" required>
                                 </div>
@@ -160,7 +156,8 @@
                         <div
                             class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                             <button type="submit"
-                                class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Camiar clave</button>
+                                class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Camiar
+                                clave</button>
                         </div>
                     </form>
                 </div>

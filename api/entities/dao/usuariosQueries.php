@@ -227,19 +227,6 @@ class UsuariosQueries
         return Database::getRow($sql, $params);
     }
 
-    // public boolean verificarIntentos($pin)
-    // {
-    //     $sql = 'SELECT * FROM usuarios WHERE nombreus = ? AND intentos = 3';
-    //     $params = array($usuario);
-    //     if ($data = Database::getRow($sql, $params)) {
-    //         // $this->id = $data['idusuario'];
-    //         // $this->pin = $pin;
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-
     // Método para actualizar los intentos de inicio de sesión.
     public function actualizarIntentos()
     {
@@ -247,8 +234,6 @@ class UsuariosQueries
         $params = array($this->nombre);
         return Database::executeRow($sql, $params);
     }    
-
-
 
     //Método para actualizar el codigo enviado al correo
     public function ingresarCodigo($codigoveri)
@@ -282,5 +267,15 @@ class UsuariosQueries
         } else {
             return false;
         }
+    }
+
+    // Método para leer el perfil del usuario.
+    public function leerPerfil()
+    {
+        $sql = 'SELECT idusuario, u.nombreus usuario, idempleado, e.nombreemp empleado, tipousuario, e.cargo, e.correoemp
+                FROM usuarios u INNER JOIN empleados e USING(idempleado)
+				WHERE idusuario = ?';
+        $params = array($_SESSION['idusuario']);
+        return Database::getRow($sql, $params);
     }
 }

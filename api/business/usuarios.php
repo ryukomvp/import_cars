@@ -43,15 +43,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
-                // case 'readProfile':
-                //     if ($result['dataset'] = $usuario->readProfile()) {
-                //         $result['status'] = 1;
-                //     } elseif (Database::getException()) {
-                //         $result['exception'] = Database::getException();
-                //     } else {
-                //         $result['exception'] = 'Usuario inexistente';
-                //     }
-                //     break;
+                case 'readProfile':
+                    if ($result['dataset'] = $usuario->readProfile()) {
+                        $result['status'] = 1;
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'Usuario inexistente';
+                    }
+                    break;
                 // case 'editProfile':
                 //     $_POST = Validator::validateForm($_POST);
                 //     if (!$usuario->setNombres($_POST['nombres'])) {
@@ -74,11 +74,11 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_SESSION['idusuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->verificarClave($_POST['clave-actual'])) {
+                } elseif (!$usuario->verificarClave($_POST['actual'])) {
                     $result['exception'] = 'Clave actual incorrecta';
-                } elseif (!preg_match($special_charspattern, $_POST['clave-nueva'])) {
+                } elseif (!preg_match($special_charspattern, $_POST['nueva'])) {
                     $result['exception'] = 'La clave debe contener al menos un carácter especial';
-                } elseif ($_POST['clave-nueva'] != $_POST['confirmar-clave-nueva']) {
+                } elseif ($_POST['nueva'] != $_POST['confirmar']) {
                     $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
                 } elseif (!$usuario->setClave($_POST['nueva'])) {
                     $result['exception'] = Validator::getPasswordError();
