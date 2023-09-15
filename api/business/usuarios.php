@@ -24,7 +24,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Sesión activa';
                 } else {
-                    $result['exception'] = 'Su sesión ha caducado';
+                    $result['exception'] = 'Su sesión ha caducado por inactividad';
                 }
                 break;
             case 'capturarUsuario':
