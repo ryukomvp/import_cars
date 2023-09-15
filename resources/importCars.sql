@@ -631,7 +631,7 @@ INSERT INTO tiposproductos(tipoproducto) VALUES
 	('Bomper'),
 	('Capo');
 
-INSERT INTO tiposusuarios(tipousuario,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones) VALUES
+INSERT INTO tiposusuarios(nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones) VALUES
     ('Administrador',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
     ('Cajero',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
     ('Vendedor',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
@@ -659,7 +659,7 @@ INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, 
 	('Nevin Oke', '2536-1122', 'nokej@home.pl', '1999-02-03', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '2010-10-10', '06795006-2', 'Activo', 'Masculino', 'Jefe');
 
-INSERT INTO usuarios(nombreus, contrasenia, pin, tipousuario, idempleado, estadousuario) VALUES
+INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, estadousuario) VALUES
 	('Marchelli', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 1, 'Activo'),
 	('Elianore', 'Boggon', '12345678', 1, 2, 'Activo'),
 	('Germaine', 'Antonietti', '12345678', 1, 3, 'Activo'),
