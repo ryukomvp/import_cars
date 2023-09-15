@@ -39,33 +39,34 @@ CREATE TABLE IF NOT EXISTS tiposproductos (
 CREATE TABLE tiposusuarios(
     
     idtipousuario int AUTO_INCREMENT PRIMARY KEY not null,
-	nombretipous varchar(25) not null,
-    marcas boolean,
-    paisesdeorigen boolean,
-    monedas boolean,
-    familias boolean,
-    categorias boolean,
-    codigoscomunes boolean,
-    tiposproductos boolean,
-    codigostransacciones boolean,
-    codigosplazos boolean,
-    sucursales boolean,
-    plazos boolean,
-    contactos boolean,
-    parametros boolean,
-    proveedores boolean,
-    modelos boolean,
-    empleados boolean,
-    clientes boolean,
-    usuarios boolean,
-    cajas boolean,
-    cajeros boolean,
-    vendedores boolean,
-    bodegas boolean,
-    familiasbodegas boolean,
-    productos boolean,
-    encabezadostransacciones boolean,
-    detallestransacciones boolean
+	nombretipous VARCHAR(25) not null,
+    marcas BOOLEAN,
+    paisesdeorigen BOOLEAN,
+    monedas BOOLEAN,
+    familias BOOLEAN,
+    categorias BOOLEAN,
+    codigoscomunes BOOLEAN,
+    tiposproductos BOOLEAN,
+    codigostransacciones BOOLEAN,
+    codigosplazos BOOLEAN,
+    sucursales BOOLEAN,
+    plazos BOOLEAN,
+    contactos BOOLEAN,
+    parametros BOOLEAN,
+    proveedores BOOLEAN,
+    modelos BOOLEAN,
+    empleados BOOLEAN,
+    clientes BOOLEAN,
+    usuarios BOOLEAN,
+    cajas BOOLEAN,
+    cajeros BOOLEAN,
+    vendedores BOOLEAN,
+    bodegas BOOLEAN,
+    familiasbodegas BOOLEAN,
+    productos BOOLEAN,
+    encabezadostransacciones BOOLEAN,
+    detallestransacciones BOOLEAN,
+    tiposusuarios BOOLEAN
 );
 
 CREATE TABLE IF NOT EXISTS codigostransacciones(
@@ -631,10 +632,10 @@ INSERT INTO tiposproductos(tipoproducto) VALUES
 	('Bomper'),
 	('Capo');
 
-INSERT INTO tiposusuarios(nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones) VALUES
-    ('Administrador',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
-    ('Cajero',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
-    ('Vendedor',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+INSERT INTO tiposusuarios(nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios) VALUES
+    ('Administrador',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+    ('Cajero',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+    ('Vendedor',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
 
 INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo) VALUES
 	('Annamaria Sheffield', '0971-3740', 'asheffield0@sogou.com', '2003-06-02', '02434523-2', 'Activo', 'Masculino', 'Jefe'),
