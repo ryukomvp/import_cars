@@ -261,10 +261,11 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'verificarRecu':
+                print_r($_POST);
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->verificarUsuarioEmp($_POST['usuario'])) {
+                if (!$usuario->verificarUsuarioEmp($_POST['nombreus'])) {
                     $result['exception'] = 'Autenticación incorrecto';
-                } elseif (!$usuario->verificarCorreo($_POST['correo'])) {
+                } elseif (!$usuario->verificarCorreo($_POST['correoemp'])) {
                     $result['exception'] = 'Autenticaión incorrecta';
                 } else {
                     $result['status'] = 1;
