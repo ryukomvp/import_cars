@@ -21,11 +21,11 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     protected $ventatotal = null;
     protected $iva = null;
     protected $observaciones = null;
-    protected $bodegaentrada = null;
-    protected $bodegasalida = null;
-    protected $producto = null;
+    protected $idbodegaentrada = null;
+    protected $idbodegasalida = null;
+    protected $idproducto = null;
     protected $descripcion = null;
-    protected $encatransaccion = null;
+    protected $idencatransaccion = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -44,7 +44,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     public function setCorrelativo($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->encatransaccion = $value;
+            $this->correlativo = $value;
             return true;
         } else {
             return false;
@@ -54,7 +54,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     public function setCantidad($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->encatransaccion = $value;
+            $this->cantidad = $value;
             return true;
         } else {
             return false;
@@ -113,8 +113,8 @@ class DetallesTransacciones extends DetallesTransaccionQueries
 
     public function setValorDescuento($value)
     {
-        if (Validator::validateMoney($value)) {
-            $this->subtotal = $value;
+        if (Validator::validateDouble($value)) {
+            $this->valordescuento = $value;
             return true;
         } else {
             return false;
@@ -171,30 +171,30 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         }
     }
 
-    public function setBodegaEntrada($value)
+    public function setIdBodegaEntrada($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->bodegaentrada = $value;
+            $this->idbodegaentrada = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setBodegaSalida($value)
+    public function setIdBodegaSalida($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->bodegasalida = $value;
+            $this->idbodegasalida = $value;
             return true;
         } else {
             return false;
         }
     }
     
-    public function setProducto($value)
+    public function setIdProducto($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->producto = $value;
+            $this->idproducto = $value;
             return true;
         } else {
             return false;
@@ -211,10 +211,10 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         }
     }
 
-    public function setEncatraccion($value)
+    public function setIdEncatraccion($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->encatransaccion = $value;
+            $this->idencatransaccion = $value;
             return true;
         } else {
             return false;
@@ -295,19 +295,19 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         return $this->observaciones;
     }
 
-    public function getBodegaEntrada()
+    public function getIdBodegaEntrada()
     {
-        return $this->bodegaentrada;
+        return $this->idbodegaentrada;
     }
 
-    public function getBodegaSalida()
+    public function getIdBodegaSalida()
     {
-        return $this->bodegasalida;
+        return $this->idbodegasalida;
     }
 
-    public function getProducto()
+    public function getIdProducto()
     {
-        return $this->producto;
+        return $this->idproducto;
     }
 
     public function getDescripcion()
@@ -315,8 +315,8 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         return $this->descripcion;
     }
 
-    public function getEncaTransaccion()
+    public function getIdEncaTransaccion()
     {
-        return $this->encatransaccion;
+        return $this->idencatransaccion;
     }
 }

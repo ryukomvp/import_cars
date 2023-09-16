@@ -4,9 +4,10 @@ const FORMULARIO_SESION = document.getElementById('login-form');
 const EJECUTAR_FORMULARIO1 = document.getElementById('ejecutarFormulario1');
 const EJECUTAR_FORMULARIO2 = document.getElementById('ejecutarFormulario2');
 const EJECUTAR_FORMULARIO3 = document.getElementById('ejecutarFormulario3');
-const ABRIR_MODAL1 = new Modal(document.getElementById('RecuperarModal'));
+const ABRIR_MODAL1 = new Modal(document.getElementById('RecuperarModal1'));
 const ABRIR_MODAL2 = new Modal(document.getElementById('RecuperarModal2'));
 const ABRIR_MODAL3 = new Modal(document.getElementById('RecuperarModal3'));
+
 
 // // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {

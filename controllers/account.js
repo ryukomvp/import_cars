@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (JSON.session) {
         setInterval(() => {
             checkSessionTime();
-        }, 120000);
-
+        }, 300000);
+        
         if (JSON.status) {
             // Inserción de header
             HEADER.innerHTML = `
@@ -306,6 +306,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             sweetAlert(3, JSON.exception, false, 'index.html');
         }
+        
     } else {
         if (location.pathname == '/import_cars/views/index.html') {
             HEADER.innerHTML = ``;

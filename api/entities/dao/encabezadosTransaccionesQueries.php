@@ -11,7 +11,7 @@ class EncabezadosQueries
 
     public function buscarRegistros($value)
     {
-        $sql = 'SELECT a.idencatransaccion, a.nocomprobante, a.fechatransac, a.lote, a.npoliza, b.numerobod, c.nombrecajero, a.tipopago, CONCAT(d.codigo, " ", d.nombrecodigo) Codigo, l.nombre, u.nombreus, v.nombreprov, o.registro
+        $sql = 'SELECT a.idencatransaccion, a.nocomprobante, a.fechatransac, a.lote, a.npoliza, b.numerobod, c.nombrecajero, a.tipopago, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, l.nombre, u.nombreus, v.nombreprov, o.nombreemp
                 FROM encabezadostransacciones a 
                 INNER JOIN bodegas b ON a.idbodega = b.idbodega
                 INNER JOIN cajeros c ON a.idcajero = c.idcajero
@@ -29,7 +29,7 @@ class EncabezadosQueries
 
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO encabezadostransacciones(nocomprobante, fechtransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro)
+        $sql = 'INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->nocomprobante, $this->fechatransac, $this->lote, $this->npoliza, $this->idbodega, $this->idcajero, $this->tipopago, $this->idcodigotransaccion, $this->idcliente, $this->idvendedor, $this->idproveedor, $this->idparametro);
         return Database::executeRow($sql, $params);
@@ -37,7 +37,7 @@ class EncabezadosQueries
 
     public function leerRegistros()
     {
-        $sql = 'SELECT a.idencatransaccion, a.nocomprobante, a.fechatransac, a.lote, a.npoliza, b.numerobod, c.nombrecajero, a.tipopago, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, l.nombre, u.nombreus, v.nombreprov, o.registro
+        $sql = 'SELECT a.idencatransaccion, a.nocomprobante, a.fechatransac, a.lote, a.npoliza, b.numerobod, c.nombrecajero, a.tipopago, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, l.nombre, u.nombreus, v.nombreprov, o.nombreemp
                 FROM encabezadostransacciones a 
                 INNER JOIN bodegas b ON a.idbodega = b.idbodega
                 INNER JOIN cajeros c ON a.idcajero = c.idcajero
@@ -63,7 +63,7 @@ class EncabezadosQueries
     public function actualizarRegistro()
     {
         $sql = 'UPDATE encabezadostransacciones
-                SET nocmprobante = ?, fechatransac = ?, lote = ?, npoliza = ?, idbodega = ?, idcajero = ?, tipopago = ?, idcodigotransaccion = ?, idcliente = ?, idvendedor = ?, idproveedor = ?, idparametro = ?
+                SET nocomprobante = ?, fechatransac = ?, lote = ?, npoliza = ?, idbodega = ?, idcajero = ?, tipopago = ?, idcodigotransaccion = ?, idcliente = ?, idvendedor = ?, idproveedor = ?, idparametro = ?
                 WHERE idencatransaccion = ?';
         $params = array($this->nocomprobante, $this->fechatransac, $this->lote, $this->npoliza, $this->idbodega, $this->idcajero, $this->tipopago, $this->idcodigotransaccion, $this->idcliente, $this->idvendedor, $this->idproveedor, $this->idparametro, $this->id);
         return Database::executeRow($sql, $params);

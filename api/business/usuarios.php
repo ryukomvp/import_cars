@@ -3,6 +3,8 @@
 require_once('../entities/dto/usuarios.php');
 // Verificación 
 $special_charspattern = '/[^a-zA-Z\d]/';
+// Variable para almacenar temporalmente los intentos de inicio de sesión.
+$intentos = 0;
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -22,7 +24,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Sesión activa';
                 } else {
-                    $result['exception'] = 'Su sesión ha caducado';
+                    $result['exception'] = 'Su sesión ha caducado por inactividad';
                 }
                 break;
             case 'capturarUsuario':
@@ -41,15 +43,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
-                // case 'readProfile':
-                //     if ($result['dataset'] = $usuario->readProfile()) {
-                //         $result['status'] = 1;
-                //     } elseif (Database::getException()) {
-                //         $result['exception'] = Database::getException();
-                //     } else {
-                //         $result['exception'] = 'Usuario inexistente';
-                //     }
-                //     break;
+                case 'readProfile':
+                    if ($result['dataset'] = $usuario->readProfile()) {
+                        $result['status'] = 1;
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'Usuario inexistente';
+                    }
+                    break;
                 // case 'editProfile':
                 //     $_POST = Validator::validateForm($_POST);
                 //     if (!$usuario->setNombres($_POST['nombres'])) {
@@ -72,11 +74,11 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_SESSION['idusuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->verificarClave($_POST['clave-actual'])) {
+                } elseif (!$usuario->verificarClave($_POST['actual'])) {
                     $result['exception'] = 'Clave actual incorrecta';
-                } elseif (!preg_match($special_charspattern, $_POST['clave-nueva'])) {
+                } elseif (!preg_match($special_charspattern, $_POST['nueva'])) {
                     $result['exception'] = 'La clave debe contener al menos un carácter especial';
-                } elseif ($_POST['clave-nueva'] != $_POST['confirmar-clave-nueva']) {
+                } elseif ($_POST['nueva'] != $_POST['confirmar']) {
                     $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
                 } elseif (!$usuario->setClave($_POST['nueva'])) {
                     $result['exception'] = Validator::getPasswordError();
@@ -249,15 +251,37 @@ if (isset($_GET['action'])) {
             case 'iniciarSesion':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->verificarUsuario($_POST['usuario'])) {
-                    $result['exception'] = 'Alias incorrecto';
+                    $result['exception'] = 'Nombre de usuario incorrecto';
+                } elseif (!$usuario->verificarBloqueo($_POST['usuario'])) {
+                    $result['exception'] = 'El usuario se encuentra bloqueado, comuniquese con un administrador.';
                 } elseif (!$usuario->verificarClave($_POST['clave'])) {
-                    $result['exception'] = 'Clave incorrecta';
+                    if ($usuario->getIntentos() < 2) {
+                        if ($usuario->actualizarIntentos()) {
+                            $result['exception'] = 'Clave incorrecta';
+                        } else {
+                            $result['exception'] = Database::getException();
+                        }
+                    } else {
+                        if ($usuario->bloquearUsuario()) {
+                            $result['exception'] = 'Excedio el número de intentos para iniciar sesión, el usuario ha sido bloqueado.';
+                        } else {
+                            $result['exception'] = Database::getException();
+                        }
+                    }
                 } else {
+                    //generar codigo random
+                    $codigoveri=rand(10000,99999);
+                    //enviar codigo a la base de datos
+                    $usuario->ingresarCodigo($codigoveri);
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['tiempo_sesion'] = time();
                     $_SESSION['idusuario'] = $usuario->getId();
                     $_SESSION['nombreus'] = $usuario->getNombre();
+                    // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
+                    $intentos = 0;
+                    $usuario->setIntentos($intentos);
+                    $usuario->actualizarIntentos();
                 }
                 break;
             case 'verificarRecu':

@@ -36,6 +36,39 @@ CREATE TABLE IF NOT EXISTS tiposproductos (
     tipoproducto VARCHAR(30) NOT NULL UNIQUE
 );
 
+CREATE TABLE tiposusuarios(
+    
+    idtipousuario int AUTO_INCREMENT PRIMARY KEY not null,
+	nombretipous VARCHAR(25) not null,
+    marcas BOOLEAN,
+    paisesdeorigen BOOLEAN,
+    monedas BOOLEAN,
+    familias BOOLEAN,
+    categorias BOOLEAN,
+    codigoscomunes BOOLEAN,
+    tiposproductos BOOLEAN,
+    codigostransacciones BOOLEAN,
+    codigosplazos BOOLEAN,
+    sucursales BOOLEAN,
+    plazos BOOLEAN,
+    contactos BOOLEAN,
+    parametros BOOLEAN,
+    proveedores BOOLEAN,
+    modelos BOOLEAN,
+    empleados BOOLEAN,
+    clientes BOOLEAN,
+    usuarios BOOLEAN,
+    cajas BOOLEAN,
+    cajeros BOOLEAN,
+    vendedores BOOLEAN,
+    bodegas BOOLEAN,
+    familiasbodegas BOOLEAN,
+    productos BOOLEAN,
+    encabezadostransacciones BOOLEAN,
+    detallestransacciones BOOLEAN,
+    tiposusuarios BOOLEAN
+);
+
 CREATE TABLE IF NOT EXISTS codigostransacciones(
 	idcodigotransaccion INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     codigo INT NOT NULL,
@@ -164,14 +197,18 @@ CREATE TABLE IF NOT EXISTS usuarios(
     contrasenia VARCHAR(150) NOT NULL,
     fechacontra DATE NULL,
     pin VARCHAR(10) NOT NULL,
-    tipousuario ENUM('Administrador' , 'Gerente' , 'Vendedor') NOT NULL,
+    idtipousuario INT NOT NULL,
     idempleado INT NOT NULL, 
     estadousuario ENUM('Activo' , 'Inactivo' , 'Bloqueado') NOT NULL,
     intentos INT NOT NULL default 0,
     
     CONSTRAINT fkusuarioemp
     FOREIGN KEY (idempleado)
-    REFERENCES empleados(idempleado) ON UPDATE CASCADE ON DELETE CASCADE
+    REFERENCES empleados(idempleado) ON UPDATE CASCADE ON DELETE CASCADE,
+
+    CONSTRAINT fktipousuario
+    FOREIGN KEY (idtipousuario)
+    REFERENCES tiposusuarios(idtipousuario) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS cajas (
@@ -283,7 +320,7 @@ CREATE TABLE IF NOT EXISTS productos(
 CREATE TABLE IF NOT EXISTS encabezadostransacciones (
     idencatransaccion INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nocomprobante INT NOT NULL UNIQUE,
-    fechatransac NUMERIC(8,2) NOT NULL,
+    fechatransac DATE NOT NULL,
     lote INT NOT NULL,
     npoliza INT NOT NULL,
     idbodega INT NOT NULL,
@@ -595,6 +632,11 @@ INSERT INTO tiposproductos(tipoproducto) VALUES
 	('Bomper'),
 	('Capo');
 
+INSERT INTO tiposusuarios(nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios) VALUES
+    ('Administrador',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+    ('Cajero',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+    ('Vendedor',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+
 INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo) VALUES
 	('Annamaria Sheffield', '0971-3740', 'asheffield0@sogou.com', '2003-06-02', '02434523-2', 'Activo', 'Masculino', 'Jefe'),
 	('Elianore Boggon', '4518-8750', 'eboggon1@techcrunch.com', '2003-06-08', '12434523-2', 'Activo', 'Masculino', 'Jefe'),
@@ -618,28 +660,28 @@ INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, 
 	('Nevin Oke', '2536-1122', 'nokej@home.pl', '1999-02-03', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '2010-10-10', '06795006-2', 'Activo', 'Masculino', 'Jefe');
 
-INSERT INTO usuarios(nombreus, contrasenia, pin, tipousuario, idempleado, estadousuario) VALUES
-	('Marchelli', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 'Administrador', 1, 'Activo'),
-	('Elianore', 'Boggon', '12345678', 'Administrador', 2, 'Activo'),
-	('Germaine', 'Antonietti', '12345678', 'Administrador', 3, 'Activo'),
-	('Susanna', 'Jahns', '12345678', 'Administrador', 4, 'Activo'),
-	('Ruperto', 'Lundon', '12345678', 'Administrador', 5, 'Activo'),
-	('Isabella', 'Phillpot', '12345678', 'Administrador', 6, 'Activo'),
-	('Pauly', 'Budge', '12345678', 'Administrador', 7, 'Activo'),
-	('Neely', 'Bawden', '12345678', 'Administrador', 8, 'Activo'),
-	('Ignaz', 'Cuvley', '12345678', 'Administrador', 9, 'Activo'),
-	('Barri', 'Sheffield', '12345678', 'Administrador', 10, 'Activo'),
-	('Zsazsa', 'Chstney', '12345678', 'Administrador', 11, 'Activo'),
-	('Scarface', 'Sheffield', '12345678', 'Administrador', 12, 'Activo'),
-	('Edithe', 'Sleight', '12345678', 'Administrador', 13, 'Activo'),
-	('Bartholomew', 'Sheffield', '12345678', 'Administrador', 14, 'Activo'),
-	('Shayla', 'Sheffield', '12345678', 'Administrador', 15, 'Activo'),
-	('Sisile', 'Sleight', '12345678', 'Administrador', 16, 'Inactivo'),
-	('Evelin', 'Anstee', '12345678', 'Administrador', 17, 'Activo'),
-	('Pietrek', 'Sheffield', '12345678', 'Gerente', 18, 'Inactivo'),
-	('Mellisa', 'Anstee', '12345678', 'Gerente', 19, 'Activo'),
-	('Nevin', 'Sheffield', '12345678', 'Gerente', 20, 'Activo'),
-	('dani', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 'Administrador', 21, 'Inactivo');
+INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, estadousuario) VALUES
+	('Marchelli', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 1, 'Activo'),
+	('Elianore', 'Boggon', '12345678', 1, 2, 'Activo'),
+	('Germaine', 'Antonietti', '12345678', 1, 3, 'Activo'),
+	('Susanna', 'Jahns', '12345678', 1, 4, 'Activo'),
+	('Ruperto', 'Lundon', '12345678', 1, 5, 'Activo'),
+	('Isabella', 'Phillpot', '12345678', 1, 6, 'Activo'),
+	('Pauly', 'Budge', '12345678', 1, 7, 'Activo'),
+	('Neely', 'Bawden', '12345678', 1, 8, 'Activo'),
+	('Ignaz', 'Cuvley', '12345678', 1, 9, 'Activo'),
+	('Barri', 'Sheffield', '12345678', 1, 10, 'Activo'),
+	('Zsazsa', 'Chstney', '12345678', 1, 11, 'Activo'),
+	('Scarface', 'Sheffield', '12345678', 1, 12, 'Activo'),
+	('Edithe', 'Sleight', '12345678', 1, 13, 'Activo'),
+	('Bartholomew', 'Sheffield', '12345678', 1, 14, 'Activo'),
+	('Shayla', 'Sheffield', '12345678', 1, 15, 'Activo'),
+	('Sisile', 'Sleight', '12345678', 1, 16, 'Inactivo'),
+	('Evelin', 'Anstee', '12345678', 1, 17, 'Activo'),
+	('Pietrek', 'Sheffield', '12345678', 2, 18, 'Inactivo'),
+	('Mellisa', 'Anstee', '12345678', 2, 19, 'Activo'),
+	('Nevin', 'Sheffield', '12345678', 2, 20, 'Activo'),
+	('dani', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 21, 'Inactivo');
 
 INSERT INTO cajas (nombrecaja, nombreequipo, serieequipo, modeloequipo, idsucursal, idusuario) VALUES
         ('Caja 1','HP basic 1080','1098R3456P93', 'HP',1,1),
@@ -702,13 +744,13 @@ INSERT INTO codigostransacciones(codigo, nombrecodigo) VALUES
        (1210, 'codigo7');
 
 INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro) VALUES
-       (1, 2015, 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1),
-       (2, 2016, 1214, 1235, 2, 2,'Efectivo', 2, 2, 2, 2, 2),
-       (3, 2017, 1215, 1236, 3, 3,'Efectivo', 3, 3, 3, 3, 3),
-       (4, 2018, 1216, 1237, 4, 4,'Efectivo', 4, 4, 4, 4, 4),
-       (5, 2019, 1217, 1238, 5, 5,'Efectivo', 5, 5, 5, 5, 5),
-       (6, 2020, 1218, 1239, 6, 6,'Efectivo', 6, 6, 6, 6, 6),
-       (7, 2021, 1219, 1230, 7, 7,'Efectivo', 7, 7, 7, 7, 7);
+       (1, '2015-01-01', 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1),
+       (2, '2015-01-01', 1214, 1235, 2, 2,'Efectivo', 2, 2, 2, 2, 2),
+       (3, '2015-01-01', 1215, 1236, 3, 3,'Efectivo', 3, 3, 3, 3, 3),
+       (4, '2015-01-01', 1216, 1237, 4, 4,'Efectivo', 4, 4, 4, 4, 4),
+       (5, '2015-01-01', 1217, 1238, 5, 5,'Efectivo', 5, 5, 5, 5, 5),
+       (6, '2015-01-01', 1218, 1239, 6, 6,'Efectivo', 6, 6, 6, 6, 6),
+       (7, '2015-01-01', 1219, 1230, 7, 7,'Efectivo', 7, 7, 7, 7, 7);
 
 INSERT INTO detallestransacciones(correlativo, cantidad, preciounitario, ventanosujeta, ventaexenta, ventaafecta, descuento, valordescuento, sumas, subtotal, ventatotal, iva, observaciones, idbodegaentrada, idbodegasalida, idproducto, descripcion, idencatransaccion) VALUES
        (1, 50, 20.00, 15.00, 40.00, 34.00, 40.00, 20.00, 40.00, 34.00, 34.00, 19.00, 'Exelente', 1, 1, 1, 'Transaccion de producto', 1),
