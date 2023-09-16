@@ -1,0 +1,11 @@
+Desconfiguración de seguridad
+
+La aplicacion puede ser vulnerable si es:
+
+Es por falta de seguridad adecuada, la cual configura incorrectamente los permisos. Se instalan o habilitan procesos innecesarios, las cuents predeterminadas o las contraseñas que no se modifican cada cierto periodo de tiempo son un ejemplo de desconfiguracion en la seguridad.
+Los servidores, bases de datos o el centro de información no estan condigurados con valores seguros impiden el acceso a entidades peligrosas.
+
+Formas de evitarlo:
+Para evitar esos problemas se pueden seguir procesos de endurecimiento del sistema, haciendo esto mas rápido y fácil de implementar en otro entorno que esta adecuadamente bloqueado. 
+Por cada entorno de desarrollo tener credenciales diferentes para brindar seguridad, siendo un proceso que se automatize para reducir trabajo necesario. 
+Es necesario un proceso automatico para verificar eficacia de los entornos. 
