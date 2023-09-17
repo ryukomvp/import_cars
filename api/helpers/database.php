@@ -90,7 +90,7 @@ class Database
         // Se compara el código del error para establecer un error personalizado.
         switch ($code) {
             case '2002':
-                // self::$error = 'Servidor desconocido';
+                self::$error = 'Servidor desconocido';
                 break;
             case '1049':
                 self::$error = 'Base de datos desconocida';
