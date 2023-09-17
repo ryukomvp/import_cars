@@ -62,7 +62,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para iniciar sesión.
-    const JSON = await dataFetch(USUARIO_API, 'verificarRecu1', FORM);
+    const JSON = await dataFetch(USUARIO_API, 'verificarRecu', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
                     let clave = document.getElementById('clave').value;
@@ -81,7 +81,7 @@ function Recuperacion() {
     // Se abre la caja de diálogo que contiene el formulario.
     EJECUTAR_FORMULARIO.reset();
     // Verificar si el correo y usuario son validos
-    const JSON = dataFetch(USUARIO_API, 'verificarRecu1', FORM);
+    const JSON = dataFetch(USUARIO_API, 'verificarRecu', FORM);
     // Revisa el resultado si fue true o false y dependiendo de eso pasa a el siguiente paso o tira error 
     if (JSON.status) {
         // Mostrar el segundo modal para ingresar el pin y contrasenia
