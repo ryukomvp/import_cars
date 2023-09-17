@@ -290,8 +290,14 @@ class UsuariosQueries
 
     public function recuperarContrasenia()
     {
-        $sql = 'UPDATE usuarios SET contrasenia = ?, fechacontra = current_timestamp() WHERE idusuario = ?';
-        $params = array($this->clave, $this->id);
+        $sql = 'UPDATE usuarios u
+        INNER JOIN empleados e ON u.idempleado = e.idempleado
+        SET u.contrasenia = ?, usuarios.fechacontra = current_timestamp() 
+        WHERE e.correoemp = ?';
+        $params = array($this->clave, $this->correo);
         return Database::executeRow($sql, $params);
     }
 }
+
+
+
