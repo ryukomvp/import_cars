@@ -25,7 +25,8 @@
             <div>
                 <div class="py-4 text-center">
                     <h1 class="text-xl text-rojo font-bold">Cargos o Niveles de los usuarios</h1>
-                    <p class="text-azul font-medium">Apartado para gestionar los permisos de los distintos cargos de la empresa para permitir o denegar el acceso a las interfaces dependiendo del cargo.</p>
+                    <p class="text-azul font-medium">Apartado para gestionar los permisos de los distintos cargos de la
+                        empresa para permitir o denegar el acceso a las interfaces dependiendo del cargo.</p>
                 </div>
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
@@ -79,12 +80,12 @@
                         </div>
                         <!-- Modal body -->
                         <form class="p-4" method="post" id="ejecutarFormulario">
-                            <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                    <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
-                                        <img src="../resources/img/logo.jpg" alt="img">
-                                        <br>
-                                    </div>
-                                <div>
+                            <div class="grid gap-6 mb-6 md:grid-cols-3 md:col-start-2 md:col-end-4">
+                                <div class="text-center py-4 p-6 space-x-2 border-t border-gray-200 rounded-b">
+                                    <img src="../resources/img/logo.jpg" alt="img">
+                                    <br>
+                                </div>
+                                <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                     <!--Input del ID-->
                                     <div>
                                         <label for="id"
@@ -103,192 +104,282 @@
                                     </div>
                                     <!--Checkbox para darle permisos de marcas-->
                                     <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="marca" name="marca" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="marca" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Marcas</label>
+                                        <div
+                                            class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                            <input type="checkbox" value="" id="marca" name="marca"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="marca"
+                                                class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Marcas</label>
                                         </div>
                                     </div>
                                     <!--Checkbox para darle permisos de paises de origen-->
                                     <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="paisOrigen" name="paisOrigen" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="paisOrigen" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Paises de Origen</label>
+                                        <div
+                                            class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                            <input type="checkbox" value="" id="paisOrigen" name="paisOrigen"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="paisOrigen"
+                                                class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Paises
+                                                de Origen</label>
                                         </div>
                                     </div>
                                     <!--Checkbox para darle permisos de monedas-->
                                     <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="moneda" name="moneda" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="moneda" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Monedas</label>
+                                        <div
+                                            class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                            <input type="checkbox" value="" id="moneda" name="moneda"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="moneda"
+                                                class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Monedas</label>
                                         </div>
                                     </div>
                                     <!--Checkbox para darle permisos de familias-->
                                     <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="familia" name="familia" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="familia" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Familias</label>
+                                        <div
+                                            class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                            <input type="checkbox" value="" id="familia" name="familia"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="familia"
+                                                class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Familias</label>
                                         </div>
                                     </div>
                                     <!--Checkbox para darle permisos de categorias-->
                                     <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="categoria" name="categoria" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="categoria" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Categorias</label>
+                                        <div
+                                            class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                            <input type="checkbox" value="" id="categoria" name="categoria"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="categoria"
+                                                class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Categorias</label>
                                         </div>
                                     </div>
                                     <!--Checkbox para darle permisos de codigos comunes-->
                                     <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="codigoComun" name="codigoComun" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="codigoComun" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Coóigos Comunes</label>
+                                        <div
+                                            class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                            <input type="checkbox" value="" id="codigoComun" name="codigoComun"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="codigoComun"
+                                                class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Coóigos
+                                                Comunes</label>
                                         </div>
                                     </div>
                                     <!--Checkbox para darle permisos de tiposproductos-->
                                     <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="tipoProducto" name="tipoProducto" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="tipoProducto" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tipos de Productos</label>
+                                        <div
+                                            class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                            <input type="checkbox" value="" id="tipoProducto" name="tipoProducto"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="tipoProducto"
+                                                class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Tipos
+                                                de Productos</label>
                                         </div>
                                     </div>
                                     <!--Checkbox para darle permisos de codigos de transacciones-->
                                     <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="codigoTransac" name="codigoTransac" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="codigoTransac" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Codigos de Transacciones</label>
+                                        <div
+                                            class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                            <input type="checkbox" value="" id="codigoTransac" name="codigoTransac"
+                                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="codigoTransac"
+                                                class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Codigos
+                                                de Transacciones</label>
                                         </div>
                                     </div>
-                                    <!--Checkbox para darle permisos de codigos de plazos-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="codigoPlazo" name="codigoPlazo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="codigoPlazo" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Codigos de Plazos</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de codigos de plazos-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="codigoPlazo" name="codigoPlazo"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="codigoPlazo"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Codigos
+                                            de Plazos</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de sucursales-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="sucursal" name="sucursal" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="sucursal" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sucursales</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de sucursales-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="sucursal" name="sucursal"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="sucursal"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sucursales</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de plazos-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="plazo" name="plazo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="plazo" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Plazos</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de plazos-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="plazo" name="plazo"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="plazo"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Plazos</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de contactos-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="contacto" name="contacto" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="contacto" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Contactos</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de contactos-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="contacto" name="contacto"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="contacto"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Contactos</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de parametros-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="parametro" name="parametro" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="parametro" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Parametros</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de parametros-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="parametro" name="parametro"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="parametro"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Parametros</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de proveedores-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="proveedor" name="proveedor" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="proveedor" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Proveedores</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de proveedores-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="proveedor" name="proveedor"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="proveedor"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Proveedores</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de modelos-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="modelo" name="modelo" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="modelo" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Modelos</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de modelos-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="modelo" name="modelo"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="modelo"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Modelos</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de empleados-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="empleado" name="empleado" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="empleado" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Empleados</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de empleados-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="empleado" name="empleado"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="empleado"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Empleados</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de clientes-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="cliente" name="cliente" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="cliente" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Clientes</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de clientes-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="cliente" name="cliente"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="cliente"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Clientes</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de usuarios-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="usuario" name="usuario" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="usuario" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Usuarios</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de usuarios-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="usuario" name="usuario"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="usuario"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Usuarios</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de cajas-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="caja" name="caja" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="caja" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Cajas</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de cajas-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="caja" name="caja"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="caja"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Cajas</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de cajeros-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="cajero" name="cajero" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="cajero" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Cajeros</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de cajeros-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="cajero" name="cajero"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="cajero"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Cajeros</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de vendedores-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="vendedor" name="vendedor" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="vendedor" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Vendedores</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de vendedores-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="vendedor" name="vendedor"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="vendedor"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Vendedores</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de bodegas-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="bodega" name="bodega" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="bodega" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bodegas</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de bodegas-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="bodega" name="bodega"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="bodega"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bodegas</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de familiasbodegas-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="familiaBod" name="familiaBod" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="familiaBod" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Familias Bodegas</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de familiasbodegas-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="familiaBod" name="familiaBod"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="familiaBod"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Familias
+                                            Bodegas</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de productos-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="producto" name="producto" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="producto" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Productos</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de productos-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="producto" name="producto"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="producto"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Productos</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de encabezados de transacciones-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="encaTransac" name="encaTransac" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="encaTransac" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Encabezados de Transacciones</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de encabezados de transacciones-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="encaTransac" name="encaTransac"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="encaTransac"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Encabezados
+                                            de Transacciones</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de detalles de transacciones-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="detalleTransac" name="detalleTransac" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="detalleTransac" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Detalles de Transacciones</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de detalles de transacciones-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="detalleTransac" name="detalleTransac"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="detalleTransac"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Detalles
+                                            de Transacciones</label>
                                     </div>
-                                    <!--Checkbox para darle permisos de tipos de usuarios-->
-                                    <div>
-                                        <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                                            <input type="checkbox" value="" id="tipoUsuario" name="tipoUsuario" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="tipoUsuario" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">tipos de Usuarios</label>
-                                        </div>
+                                </div>
+                                <!--Checkbox para darle permisos de tipos de usuarios-->
+                                <div>
+                                    <div
+                                        class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+                                        <input type="checkbox" value="" id="tipoUsuario" name="tipoUsuario"
+                                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <label for="tipoUsuario"
+                                            class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">tipos
+                                            de Usuarios</label>
                                     </div>
                                 </div>
                             </div>
@@ -398,7 +489,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="cargarRegistros"></tbody>
+                    <tbody id="registros"></tbody>
                 </table>
             </div>
         </div>
@@ -411,7 +502,7 @@
     <script type="text/javascript" src="../resources/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../controllers/components.js"></script>
     <script type="text/javascript" src="../controllers/account.js"></script>
-    <script type="text/javascript" src="../controllers/tiposProductos.js"></script>
+    <script type="text/javascript" src="../controllers/tiposUsuarios.js"></script>
 </body>
 
 </html>
