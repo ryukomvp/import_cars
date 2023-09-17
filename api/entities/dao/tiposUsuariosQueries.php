@@ -12,7 +12,7 @@ class TiposUsuariosQueries
     /*Método para la realizacion de busqueda de registros en la base de datos mediante el nombre de la bodega*/
     public function buscarRegistros($value)
     {
-        $sql = 'SELECT idtipousuario, nombretipous
+        $sql = 'SELECT idtipousuario, nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios
                 FROM tiposusuarios
                 WHERE nombretipous LIKE ?
                 ORDER BY nombretipous';
