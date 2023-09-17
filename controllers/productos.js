@@ -39,7 +39,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (document.getElementById('id').value) ? action = 'actualizarProducto' : action = 'crearProducto';
+    (document.setElementById('id').value = JSON.dataget.id) ? action = 'actualizarProducto' : action = 'crearProducto';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
