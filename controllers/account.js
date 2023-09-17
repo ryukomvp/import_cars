@@ -1,3 +1,4 @@
+
 // Constante para completar la ruta de la API.
 const USUARIO_API = 'business/usuarios.php';
 
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
     const JSON = await dataFetch(USUARIO_API, 'capturarUsuario');
     if (JSON.session) {
+        checkRol();
         setInterval(() => {
             checkSessionTime();
         }, 300000);
@@ -325,5 +327,16 @@ async function checkSessionTime() {
     } else {
         clearInterval();
         sweetAlert(3, DATA.exception, false, 'index.html');
+    }
+}
+
+async function checkRol() {
+    const JSON = await dataFetch(USUARIO_API, 'verificarRol');
+    if (JSON.status) {
+        if (JSON.data.rol == 'Administrador') {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -66,7 +66,7 @@ class Usuarios extends UsuariosQueries
 
     public function setTipo($value)
     {
-        if (Validator::validateAlphabetic($value, 1, 50)) {
+        if (Validator::validateNaturalNumber($value)) {
             $this->tipo = $value;
             return true;
         } else {

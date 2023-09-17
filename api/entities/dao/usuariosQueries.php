@@ -281,10 +281,10 @@ class UsuariosQueries
 
     public function leerTipoUsuario()
     {
-        $sql = 'SELECT idusuario, nombreus, contrasenia, fechacontra, pin, idtipousuario, idempleado, estadousuario, intentos
+        $sql = 'SELECT idusuario, nombreus, idtipousuario
                 FROM usuarios 
                 WHERE idtipousuario = ?';
-        $params = array($_SESSION['idusuario']);
+        $params = array($this->tipo);
         return Database::getRow($sql, $params);
     }
 

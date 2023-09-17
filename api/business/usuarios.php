@@ -13,7 +13,7 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $usuario = new Usuarios;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'usertype' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
+    $result = array('status' => 0, 'session' => 0, 'usertype' => null, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['idusuario'])) {
         $result['session'] = 1;
@@ -29,8 +29,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'capturarUsuario':
                 if (isset($_SESSION['nombreus'])) {
-                    $result['status'] = 1;
-                    $result['username'] = $_SESSION['nombreus'];
+                        $result['status'] = 1;
+                        $result['username'] = $_SESSION['nombreus'];
+                        // $result['usertype']  = $_SESSION['idtipousuario'];
                 } else {
                     $result['exception'] = 'Nombre de usuario indefinido';
                 }
@@ -269,58 +270,64 @@ if (isset($_GET['action'])) {
                         }
                     }
                 } else {
-                    // if ($usuario->leerTipoUsuario()) {
-                        //generar codigo random
-                        $codigoveri = rand(10000, 99999);
-                        //enviar codigo a la base de datos
-                        $usuario->ingresarCodigo($codigoveri);
-                        $result['status'] = 1;
-                        $result['message'] = 'Autenticación correcta';
-                        // $result['usertype'] = $usuario->getTipo();
-                        $_SESSION['tiempo_sesion'] = time();
-                        $_SESSION['idusuario'] = $usuario->getId();
-                        $_SESSION['nombreus'] = $usuario->getNombre();
-                        // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
-                        $intentos = 0;
-                        $usuario->setIntentos($intentos);
-                        $usuario->actualizarIntentos();
-                    // } else {
-                    //     $result['exception'] = Database::getException();
-                    // }
+                    //generar codigo random
+                    $codigoveri = rand(10000, 99999);
+                    //enviar codigo a la base de datos
+                    $usuario->ingresarCodigo($codigoveri);
+                    $result['status'] = 1;
+                    $result['message'] = 'Autenticación correcta';
+                    $_SESSION['tiempo_sesion'] = time();
+                    $_SESSION['idusuario'] = $usuario->getId();
+                    $_SESSION['nombreus'] = $usuario->getNombre();
+                    // $_SESSION['idtipousuario'] = $usuario->gettipo();
+                    // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
+                    $intentos = 0;
+                    $usuario->setIntentos($intentos);
+                    $usuario->actualizarIntentos();
                 }
                 break;
-                case 'verificarContrasenia':
+                case 'verificarRol':
                     $_POST = Validator::validateForm($_POST);
-                    // print_r($_POST);
-                    if (!preg_match($special_charspattern, $_POST['clave'])) {
-                        $result['exception'] = 'La clave debe contener al menos un carácter especial';
-                    } elseif ($_POST['clave'] != $_POST['confirmar']) {
-                        $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
-                    } elseif (!$usuario->setClave($_POST['clave'])) {
-                        $result['exception'] = Validator::getPasswordError();
-                    } else {
-                        $result['message'] = 'Clave cambiada correctamente';
-                        $usuario->recuperarContrasenia(); 
-                        $result['status'] = 1;
-                    }
-                    break;
-                case 'verificarRecu':
-                    $_POST = Validator::validateForm($_POST);
-                    // print_r($_POST);
-                    if (!$usuario->verificarUsuarioEmp($_POST['nombreus'])) {
+                    if (!$usuario->leerTipoUsuario()) {
                         $result['exception'] = 'Usuario incorrecto';
-                    } elseif (!$usuario->verificarCorreo($_POST['correoemp'])) {
-                        $result['exception'] = 'Correo incorrecta';
-                    } elseif (!$usuario->verificarPin($_POST['pin'])) {
-                        $result['exception'] = 'Pin incorrecto';
                     } else {
-                        $result['message'] = 'Auntenticacion correcta';
-                        $_SESSION['nombreus'] = $usuario->getNombre();
-                        $_SESSION['correoemp'] = $usuario->getCorreo();
-                        $_SESSION['pin'] = $usuario->getPin();  
                         $result['status'] = 1;
+                        $result['message'] = 'Rol correcto';
+                        $usuario->gettipo();
                     }
                     break;
+            case 'verificarContrasenia':
+                $_POST = Validator::validateForm($_POST);
+                // print_r($_POST);
+                if (!preg_match($special_charspattern, $_POST['clave'])) {
+                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                } elseif ($_POST['clave'] != $_POST['confirmar']) {
+                    $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
+                } elseif (!$usuario->setClave($_POST['clave'])) {
+                    $result['exception'] = Validator::getPasswordError();
+                } else {
+                    $result['message'] = 'Clave cambiada correctamente';
+                    $usuario->recuperarContrasenia();
+                    $result['status'] = 1;
+                }
+                break;
+            case 'verificarRecu':
+                $_POST = Validator::validateForm($_POST);
+                // print_r($_POST);
+                if (!$usuario->verificarUsuarioEmp($_POST['nombreus'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif (!$usuario->verificarCorreo($_POST['correoemp'])) {
+                    $result['exception'] = 'Correo incorrecta';
+                } elseif (!$usuario->verificarPin($_POST['pin'])) {
+                    $result['exception'] = 'Pin incorrecto';
+                } else {
+                    $result['message'] = 'Auntenticacion correcta';
+                    $_SESSION['nombreus'] = $usuario->getNombre();
+                    $_SESSION['correoemp'] = $usuario->getCorreo();
+                    $_SESSION['pin'] = $usuario->getPin();
+                    $result['status'] = 1;
+                }
+                break;
             default:
                 $result['exception'] = 'Algo salio mal';
         }
