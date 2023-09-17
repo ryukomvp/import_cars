@@ -287,7 +287,7 @@ async function actualizarRegistro(id) {
         } else {
             document.getElementById('codigoTransac').checked = 0;
         }
-        if (JSON.dataset.codigospazos == '1') {
+        if (JSON.dataset.codigosplazos == '1') {
             document.getElementById('codigoPlazo').checked = 1;
         } else {
             document.getElementById('codigoPlazo').checked = 0;
