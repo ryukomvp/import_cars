@@ -190,7 +190,7 @@ class UsuariosQueries
     
     public function verificarCorreo($correoemp)
     {
-        $sql = 'SELECT usuarios.idempleado, empleados.correoemp
+        $sql = 'SELECT usuarios.idusuario, usuarios.idempleado, empleados.correoemp
         FROM empleados
         INNER JOIN usuarios ON empleados.idempleado = usuarios.idempleado
         WHERE 	correoemp = ?';
@@ -286,5 +286,12 @@ class UsuariosQueries
                 WHERE idtipousuario = ?';
         $params = array($_SESSION['idusuario']);
         return Database::getRow($sql, $params);
+    }
+
+    public function recuperarContrasenia()
+    {
+        $sql = 'UPDATE usuarios SET contrasenia = ?, fechacontra = current_timestamp() WHERE idusuario = ?';
+        $params = array($this->clave, $this->id);
+        return Database::executeRow($sql, $params);
     }
 }

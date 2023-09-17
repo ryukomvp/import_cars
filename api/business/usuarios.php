@@ -289,26 +289,36 @@ if (isset($_GET['action'])) {
                     // }
                 }
                 break;
+                case 'verificarContrasenia':
+                    $_POST = Validator::validateForm($_POST);
+                    // print_r($_POST);
+                    if (!preg_match($special_charspattern, $_POST['clave'])) {
+                        $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                    } elseif ($_POST['clave'] != $_POST['confirmar']) {
+                        $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
+                    } elseif (!$usuario->setClave($_POST['clave'])) {
+                        $result['exception'] = Validator::getPasswordError();
+                    } else {
+                        $result['message'] = 'Clave cambiada correctamente';
+                        $usuario->recuperarContrasenia(); 
+                        $result['status'] = 1;
+                    }
+                    break;
                 case 'verificarRecu':
                     $_POST = Validator::validateForm($_POST);
+                    // print_r($_POST);
                     if (!$usuario->verificarUsuarioEmp($_POST['nombreus'])) {
                         $result['exception'] = 'Usuario incorrecto';
                     } elseif (!$usuario->verificarCorreo($_POST['correoemp'])) {
                         $result['exception'] = 'Correo incorrecta';
                     } elseif (!$usuario->verificarPin($_POST['pin'])) {
                         $result['exception'] = 'Pin incorrecto';
-                    } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
-                        $result['exception'] = 'La clave debe contener al menos un carácter especial';
-                    } elseif ($_POST['clave'] != $_POST['confirmar']) {
-                        $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
-                    } elseif (!$usuario->setClave($_POST['clave'])) {
-                        $result['exception'] = Validator::getPasswordError();
-                    } elseif ($usuario->cambiarClave()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Contraseña cambiada correctamente';
+                    } else {
+                        $result['message'] = 'Auntenticacion correcta';
                         $_SESSION['nombreus'] = $usuario->getNombre();
                         $_SESSION['correoemp'] = $usuario->getCorreo();
                         $_SESSION['pin'] = $usuario->getPin();  
+                        $result['status'] = 1;
                     }
                     break;
             default:

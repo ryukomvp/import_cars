@@ -65,37 +65,40 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     const JSON = await dataFetch(USUARIO_API, 'verificarRecu', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
-                    let clave = document.getElementById('clave').value;
-                    if(document.getElementById('confirmar').value.equals(clave)){
-                        document.getElementById('clave').value = JSON.dataset.contrasenia;
-                    } else {
-                        sweetAlert(2, JSON.exception, false, 'dashboard.html');
-                    }
-            } else {
-            sweetAlert(2, JSON.exception, false,'usuario.html');
+        const JSON = await dataFetch(USUARIO_API, 'verificarContrasenia', FORM);
+        if (JSON.status) {
+            document.getElementById('clave').value = JSON.dataset.clave;
+            document.getElementById('confirmar').value = JSON.dataset.clave;
+        } else {
+            sweetAlert(2, JSON.exception, false, 'usuario.html');
         }
+
+    } else {
+        sweetAlert(2, JSON.exception, false, 'dashboard.html');
+    }
+
 });
 
-function Recuperacion() {
-    const FORM = new FormData();
-    // Se abre la caja de diálogo que contiene el formulario.
-    EJECUTAR_FORMULARIO.reset();
-    // Verificar si el correo y usuario son validos
-    const JSON = dataFetch(USUARIO_API, 'verificarRecu', FORM);
-    // Revisa el resultado si fue true o false y dependiendo de eso pasa a el siguiente paso o tira error 
-    if (JSON.status) {
-        // Mostrar el segundo modal para ingresar el pin y contrasenia
-        VERIFICAR_PIN.show();
-        // Verificar que el pin ingresado sea igual que el de la base 
-        const JSON = dataFetch(USUARIO_API, 'verificarPin', FORM);
-        if (JSON.status) {
-            document.getElementById('clave').value = JSON.dataset.contrasenia;
-            document.getElementById('confirmar').value = document.getElementById('clave').value;
-        }
-    } else {
-        sweetAlert(2, JSON.exception, false);
-    }
-}
+// function Recuperacion() {
+//     const FORM = new FormData();
+//     // Se abre la caja de diálogo que contiene el formulario.
+//     EJECUTAR_FORMULARIO.reset();
+//     // Verificar si el correo y usuario son validos
+//     const JSON = dataFetch(USUARIO_API, 'verificarRecu', FORM);
+//     // Revisa el resultado si fue true o false y dependiendo de eso pasa a el siguiente paso o tira error
+//     if (JSON.status) {
+//         // Mostrar el segundo modal para ingresar el pin y contrasenia
+//         VERIFICAR_PIN.show();
+//         // Verificar que el pin ingresado sea igual que el de la base
+//         const JSON = dataFetch(USUARIO_API, 'verificarPin', FORM);
+//         if (JSON.status) {
+//             document.getElementById('clave').value = JSON.dataset.contrasenia;
+//             document.getElementById('confirmar').value = document.getElementById('clave').value;
+//         }
+//     } else {
+//         sweetAlert(2, JSON.exception, false);
+//     }
+// }
 
 // async function actualizarClave(id) {
 //     // Se define una constante tipo objeto con los datos del registro seleccionado.
