@@ -285,29 +285,55 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'verificarRecu':
-                print_r($_POST);
                 $_POST = Validator::validateForm($_POST);
-                if (!$usuario->verificarUsuarioEmp($_POST['nombreus'])) {
-                    $result['exception'] = 'Autenticación incorrecto';
+                print_r($_POST);
+                if (!$usuario->leerUnRegistro($_POST['id'])){
+                    $returt['exception'] = 'Usuario incorrecto id';
+                }elseif (!$usuario->verificarUsuarioEmp($_POST['nombreus'])) {
+                    $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$usuario->verificarCorreo($_POST['correoemp'])) {
-                    $result['exception'] = 'Autenticaión incorrecta';
-                } else {
+                    $result['exception'] = 'Correo incorrecta';
+                } elseif (!$usuario->verificarPin($_POST['pin'])) {
+                    $result['exception'] = 'Pin incorrecto';
+                } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
+                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                } elseif ($_POST['clave'] != $_POST['confirmar']) {
+                    $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
+                } elseif (!$usuario->setClave($_POST['clave'])) {
+                    $result['exception'] = Validator::getPasswordError();
+                } elseif ($usuario->cambiarClave()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Autenticación correcta';
+                    $result['message'] = 'Contraseña cambiada correctamente';
                     $_SESSION['nombreus'] = $usuario->getNombre();
-                    $_SESSION['correoemp'] = $usuario->getCorreo();                   
+                    $_SESSION['correoemp'] = $usuario->getCorreo();
+                    $_SESSION['pin'] = $usuario->getPin();  
                 }
                 break;
-            case 'verificarPin':
-                $_POST = Validator::validateForm($_POST);
-                if (!$usuario->verificarPin($_POST['pin'])) {
-                    $result['exception'] = 'Autenticación incorrecto';
-                } else {
-                    $result['status'] = 1;
-                    $result['message'] = 'Autenticación correcta';
-                }
+                case 'verificarRecu1':
+                    $_POST = Validator::validateForm($_POST);
+                    print_r($_POST);
+                    if (!$usuario->verificarUsuarioEmp($_POST['nombreus'])) {
+                        $result['exception'] = 'Usuario incorrecto';
+                    } elseif (!$usuario->verificarCorreo($_POST['correoemp'])) {
+                        $result['exception'] = 'Correo incorrecta';
+                    } elseif (!$usuario->verificarPin($_POST['pin'])) {
+                        $result['exception'] = 'Pin incorrecto';
+                    } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
+                        $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                    } elseif ($_POST['clave'] != $_POST['confirmar']) {
+                        $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
+                    } elseif (!$usuario->setClave($_POST['clave'])) {
+                        $result['exception'] = Validator::getPasswordError();
+                    } elseif ($usuario->cambiarClave()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Contraseña cambiada correctamente';
+                        $_SESSION['nombreus'] = $usuario->getNombre();
+                        $_SESSION['correoemp'] = $usuario->getCorreo();
+                        $_SESSION['pin'] = $usuario->getPin();  
+                    }
+                    break;
             default:
-                $result['exception'] = 'Acción no disponible fuera de la sesión';
+                $result['exception'] = 'Algo salio mal';
         }
     }
     // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
