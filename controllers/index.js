@@ -67,8 +67,8 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     if (JSON.status) {
         const JSON = await dataFetch(USUARIO_API, 'verificarContrasenia', FORM);
         if (JSON.status) {
-            document.getElementById('clave').value = JSON.dataset.clave;
-            document.getElementById('confirmar').value = JSON.dataset.clave;
+            document.getElementById('clave').value = JSON.dataset.contrasenia;
+            document.getElementById('confirmar').value = JSON.dataset.contrasenia;
         } else {
             sweetAlert(2, JSON.exception, false, 'usuario.html');
         }

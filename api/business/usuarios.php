@@ -298,10 +298,11 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
                     } elseif (!$usuario->setClave($_POST['clave'])) {
                         $result['exception'] = Validator::getPasswordError();
-                    } else {
-                        $result['message'] = 'Clave cambiada correctamente';
-                        $usuario->recuperarContrasenia(); 
+                    } elseif($usuario->recuperarContrasenia()) {
                         $result['status'] = 1;
+                        $result['message'] = 'Clave cambiada correctamente';
+                    }else {
+                        $result['exception'] = Database::getException();
                     }
                     break;
                 case 'verificarRecu':
