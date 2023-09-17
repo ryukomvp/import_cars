@@ -64,7 +64,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $tipoUs->leerUnRegistro()) {
                     $result['exception'] = 'Tipo de usuario inexistente';
-                } elseif (!$tipoUs->setNombretipous($_POST['tipoProducto'])) {
+                } elseif (!$tipoUs->setNombretipous($_POST['cargo'])) {
                     $result['exception'] = 'Tipo de producto incorrecto';
                 } elseif (!$tipoUs->setMarcas(isset($_POST['marca']) ? 1 : 0)) {
                     $result['exception'] = 'Marca incorrecta';

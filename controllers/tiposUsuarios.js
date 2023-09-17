@@ -10,7 +10,7 @@ const TITULO = document.getElementById('titulo');
 // Constantes para establecer el contenido de la tabla.
 const REGISTROS_TABLA = document.getElementById('registros');
 // Constante para capturar el modal.
-const ACCIONES_MODAL = new Modal(document.getElementById('abrirModal'));
+const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
 // Constante para el texto del boton
 const BTN_ACCION = document.getElementById('accion');
 
@@ -45,7 +45,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         cargarRegistros();
         // Se cierra la caja de diálogo.
-        ACCIONES_MODAL.hide();
+        ABRIR_MODAL.hide();
         // Se muestra un mensaje de éxito.
         sweetAlert(1, JSON.message, true);
     } else {
@@ -69,6 +69,34 @@ async function cargarRegistros(form = null) {
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
+            // Se establece una condicion para asignar "Permitido" o "Denegado"
+            (row.marcas) ? txtmarcas = 'Permitido' : txtmarcas = 'Denegado';
+            (row.paisesdeorigen) ? txtpaises = 'Permitido' : txtpaises = 'Denegado';
+            (row.monedas) ? txtmonedas = 'Permitido' : txtmonedas = 'Denegado';
+            (row.familias) ? txtfamilias = 'Permitido' : txtfamilias = 'Denegado';
+            (row.categorias) ? txtcategorias = 'Permitido' : txtcategorias = 'Denegado';
+            (row.codigoscomunes) ? txtcodigoscomunes = 'Permitido' : txtcodigoscomunes = 'Denegado';
+            (row.tiposproductos) ? txttiposproductos = 'Permitido' : txttiposproductos = 'Denegado';
+            (row.codigostransacciones) ? txtcodigostransacciones = 'Permitido' : txtcodigostransacciones = 'Denegado';
+            (row.codigosplazos) ? txtcodigosplazos = 'Permitido' : txtcodigosplazos = 'Denegado';
+            (row.sucursales) ? txtsucursales = 'Permitido' : txtsucursales = 'Denegado';
+            (row.plazos) ? txtplazos = 'Permitido' : txtplazos = 'Denegado';
+            (row.contactos) ? txtcontactos = 'Permitido' : txtcontactos = 'Denegado';
+            (row.parametros) ? txtparametros = 'Permitido' : txtparametros = 'Denegado';
+            (row.proveedores) ? txtproveedores = 'Permitido' : txtproveedores = 'Denegado';
+            (row.modelos) ? txtmodelos = 'Permitido' : txtmodelos = 'Denegado';
+            (row.empleados) ? txtempleados = 'Permitido' : txtempleados = 'Denegado';
+            (row.clientes) ? txtclientes = 'Permitido' : txtclientes = 'Denegado';
+            (row.usuarios) ? txtusuarios = 'Permitido' : txtusuarios = 'Denegado';
+            (row.cajas) ? txtcajas = 'Permitido' : txtcajas = 'Denegado';
+            (row.cajeros) ? txtcajeros = 'Permitido' : txtcajeros = 'Denegado';
+            (row.vendedores) ? txtvendedores = 'Permitido' : txtvendedores = 'Denegado';
+            (row.bodegas) ? txtbodegas = 'Permitido' : txtbodegas = 'Denegado';
+            (row.familiasbodegas) ? txtfamiliasbodegas = 'Permitido' : txtfamiliasbodegas = 'Denegado';
+            (row.productos) ? txtproductos = 'Permitido' : txtproductos = 'Denegado';
+            (row.encabezadostransacciones) ? txtencabezadostransacicones = 'Permitido' : txtencabezadostransacicones = 'Denegado';
+            (row.detallestransacciones) ? txtdetallestransacciones = 'Permitido' : txtdetallestransacciones = 'Denegado';
+            (row.tiposusuarios) ? txttiposusuarios = 'Permitido' : txttiposusuarios = 'Denegado';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white hover:bg-blue-200">
@@ -79,85 +107,85 @@ async function cargarRegistros(form = null) {
                         ${row.nombretipous}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.marcas}
+                        ${txtmarcas}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.paisesdeorigen}
+                        ${txtpaises}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.monedas}
+                        ${txtmonedas}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.familias}
+                        ${txtfamilias}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.categorias}
+                        ${txtcategorias}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.codigoscomunes}
+                        ${txtcodigoscomunes}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.tiposproductos}
+                        ${txttiposproductos}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.codigostransacciones}
+                        ${txtcodigostransacciones}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.codigosplazos}
+                        ${txtcodigosplazos}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.sucursales}
+                        ${txtsucursales}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.plazos}
+                        ${txtplazos}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.contactos}
+                        ${txtcontactos}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.parametros}
+                        ${txtparametros}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.proveedores}
+                        ${txtproveedores}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.modelos}
+                        ${txtmodelos}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.empleados}
+                        ${txtempleados}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.clientes}
+                        ${txtclientes}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.usuarios}
+                        ${txtusuarios}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.cajas}
+                        ${txtcajas}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.cajeros}
+                        ${txtcajeros}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.vendedores}
+                        ${txtvendedores}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.bodegas}
+                        ${txtbodegas}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.familiasbodegas}
+                        ${txtfamiliasbodegas}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.productos}
+                        ${txtproductos}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.encabezadostransacciones}
+                        ${txtencabezadostransacicones}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.detallestransacciones}
+                        ${txtdetallestransacciones}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.tiposusuarios}
+                        ${txttiposusuarios}
                     </td>
                     <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idtipousuario})"
@@ -186,7 +214,7 @@ async function cargarRegistros(form = null) {
 */
 function crearRegistro() {
     // Se abre la caja de diálogo que contiene el formulario.
-    ACCIONES_MODAL.show();
+    ABRIR_MODAL.show();
     // Se restauran los elementos del formulario.
     EJECUTAR_FORMULARIO.reset();
     // Texto del boton para crear un registro
@@ -209,43 +237,151 @@ async function actualizarRegistro(id) {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
-        ACCIONES_MODAL.show();
+        ABRIR_MODAL.show();
         // Se restauran los elementos del formulario.
         EJECUTAR_FORMULARIO.reset();
         // Texto del boton para crear un registro
         BTN_ACCION.textContent = 'Actualizar';
         // Se asigna título para la caja de diálogo.
-        TITULO.textContent = 'Actualizar un registro';
+        TITULO.textContent = 'Permisos de los tipos de usuarios';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idtipousuario;
         document.getElementById('cargo').value = JSON.dataset.nombretipous;
-        document.getElementById('marca').value = JSON.dataset.marcas;
-        document.getElementById('paisOrigen').value = JSON.dataset.paisesdeorigen;
-        document.getElementById('moneda').value = JSON.dataset.monedas;
-        document.getElementById('familia').value = JSON.dataset.familias;
-        document.getElementById('categoria').value = JSON.dataset.categorias;
-        document.getElementById('codigoComun').value = JSON.dataset.codigoscomunes;
-        document.getElementById('tipoProducto').value = JSON.dataset.tiposproductos;
-        document.getElementById('codigoTransac').value = JSON.dataset.codigostransacciones;
-        document.getElementById('codigoPlazo').value = JSON.dataset.codigosplazos;
-        document.getElementById('sucursal').value = JSON.dataset.sucursales;
-        document.getElementById('plazo').value = JSON.dataset.plazos;
-        document.getElementById('contacto').value = JSON.dataset.contactos;
-        document.getElementById('parametro').value = JSON.dataset.parametros;
-        document.getElementById('proveedor').value = JSON.dataset.proveedores;
-        document.getElementById('modelo').value = JSON.dataset.modelos;
-        document.getElementById('empleado').value = JSON.dataset.empleados;
-        document.getElementById('cliente').value = JSON.dataset.clientes;
-        document.getElementById('usuario').value = JSON.dataset.usuarios;
-        document.getElementById('caja').value = JSON.dataset.cajas;
-        document.getElementById('cajero').value = JSON.dataset.cajeros;
-        document.getElementById('vendedor').value = JSON.dataset.vendedores;
-        document.getElementById('bodega').value = JSON.dataset.bodegas;
-        document.getElementById('familiaBod').value = JSON.dataset.familiasbodegas;
-        document.getElementById('producto').value = JSON.dataset.productos;
-        document.getElementById('encaTransac').value = JSON.dataset.encabezadostransacciones;
-        document.getElementById('detalleTransac').value = JSON.dataset.detallestransacciones;
-        document.getElementById('tipoUsuario').value = JSON.dataset.tiposusuarios;
+        if (JSON.dataset.marcas == '1') {
+            document.getElementById('marca').checked = 1;
+        } else {
+            document.getElementById('marca').checked = 0;
+        }
+        if (JSON.dataset.paisesdeorigen == '1') {
+            document.getElementById('paisOrigen').checked = 1;
+        } else {
+            document.getElementById('paisOrigen').checked = 0;
+        }
+        if (JSON.dataset.monedas == '1') {
+            document.getElementById('moneda').checked = 1;
+        } else {
+            document.getElementById('moneda').checked = 0;
+        }
+        if (JSON.dataset.familias == '1') {
+            document.getElementById('familia').checked = 1;
+        } else {
+            document.getElementById('familia').checked = 0;
+        }
+        if (JSON.dataset.categorias == '1') {
+            document.getElementById('categoria').checked = 1;
+        } else {
+            document.getElementById('categoria').checked = 0;
+        }
+        if (JSON.dataset.codigoscomunes == '1') {
+            document.getElementById('codigoComun').checked = 1;
+        } else {
+            document.getElementById('codigoComun').checked = 0;
+        }
+        if (JSON.dataset.tiposproductos == '1') {
+            document.getElementById('tipoProducto').checked = 1;
+        } else {
+            document.getElementById('tipoProducto').checked = 0;
+        }
+        if (JSON.dataset.codigostransacciones == '1') {
+            document.getElementById('codigoTransac').checked = 1;
+        } else {
+            document.getElementById('codigoTransac').checked = 0;
+        }
+        if (JSON.dataset.codigospazos == '1') {
+            document.getElementById('codigoPlazo').checked = 1;
+        } else {
+            document.getElementById('codigoPlazo').checked = 0;
+        }
+        if (JSON.dataset.sucursales == '1') {
+            document.getElementById('sucursal').checked = 1;
+        } else {
+            document.getElementById('sucursal').checked = 0;
+        }
+        if (JSON.dataset.plazos == '1') {
+            document.getElementById('plazo').checked = 1;
+        } else {
+            document.getElementById('plazo').checked = 0;
+        }
+        if (JSON.dataset.contactos == '1') {
+            document.getElementById('contacto').checked = 1;
+        } else {
+            document.getElementById('contacto').checked = 0;
+        }
+        if (JSON.dataset.parametros == '1') {
+            document.getElementById('parametro').checked = 1;
+        } else {
+            document.getElementById('parametro').checked = 0;
+        }
+        if (JSON.dataset.proveedores == '1') {
+            document.getElementById('proveedor').checked = 1;
+        } else {
+            document.getElementById('proveedor').checked = 0;
+        }
+        if (JSON.dataset.modelos == '1') {
+            document.getElementById('modelo').checked = 1;
+        } else {
+            document.getElementById('modelo').checked = 0;
+        }
+        if (JSON.dataset.empleados == '1') {
+            document.getElementById('empleado').checked = 1;
+        } else {
+            document.getElementById('empleado').checked = 0;
+        }
+        if (JSON.dataset.clientes == '1') {
+            document.getElementById('cliente').checked = 1;
+        } else {
+            document.getElementById('cliente').checked = 0;
+        }
+        if (JSON.dataset.usuarios == '1') {
+            document.getElementById('usuario').checked = 1;
+        } else {
+            document.getElementById('usuario').checked = 0;
+        }
+        if (JSON.dataset.cajas == '1') {
+            document.getElementById('caja').checked = 1;
+        } else {
+            document.getElementById('caja').checked = 0;
+        }
+        if (JSON.dataset.cajeros == '1') {
+            document.getElementById('cajero').checked = 1;
+        } else {
+            document.getElementById('cajero').checked = 0;
+        }
+        if (JSON.dataset.vendedores == '1') {
+            document.getElementById('vendedor').checked = 1;
+        } else {
+            document.getElementById('vendedor').checked = 0;
+        }
+        if (JSON.dataset.bodegas == '1') {
+            document.getElementById('bodega').checked = 1;
+        } else {
+            document.getElementById('bodega').checked = 0;
+        }
+        if (JSON.dataset.familiasbodegas == '1') {
+            document.getElementById('familiaBod').checked = 1;
+        } else {
+            document.getElementById('familiaBod').checked = 0;
+        }
+        if (JSON.dataset.productos == '1') {
+            document.getElementById('producto').checked = 1;
+        } else {
+            document.getElementById('producto').checked = 0;
+        }
+        if (JSON.dataset.encabezadostransacciones == '1') {
+            document.getElementById('encaTransac').checked = 1;
+        } else {
+            document.getElementById('encaTransac').checked = 0;
+        }
+        if (JSON.dataset.detallestransacciones == '1') {
+            document.getElementById('detalleTransac').checked = 1;
+        } else {
+            document.getElementById('detalleTransac').checked = 0;
+        }
+        if (JSON.dataset.tiposusuarios == '1') {
+            document.getElementById('tipoUsuario').checked = 1;
+        } else {
+            document.getElementById('tipoUsuario').checked = 0;
+        }
     } else {
         sweetAlert(2, JSON.exception, false);
     }
