@@ -296,6 +296,17 @@ if (isset($_GET['action'])) {
                         $usuario->gettipo();
                     }
                     break;
+                case 'leerUnRegistroPorCorreo':
+                    if (!$usuario->setCorreo($_POST['correoemp'])) {
+                        $result['exception'] = 'Usuario incorrecto';
+                    } elseif ($result['dataset'] = $usuario->leerUnRegistroPorCorreo()) {
+                        $result['status'] = 1;
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                         $result['exception'] = 'Usuario inexistente';
+                    }
+                    break;
             case 'verificarContrasenia':
                 $_POST = Validator::validateForm($_POST);
                 // print_r($_POST);

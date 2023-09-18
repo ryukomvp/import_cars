@@ -59,13 +59,15 @@ FORMULARIO_SESION.addEventListener('submit', async (event) => {
 EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    // Se verifica la acción a realizar.
-    (document.setElementById('correoemp').value = JSON.dataget.correoemp);
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
-    const JSON = await dataFetch(USUARIOS_API,'verificarContrasenia', FORM);
-    console.log(JSON);
+    const JSON = await dataFetch(USUARIO_API,'verificarRecu', FORM);
+    // Se verifica la acción a realizar.
+    // document.getElementById('correoemp').value = ;
+    let correo = document.getElementById('correoemp').value;
+    console.log(correo);
+    console.log(typeof JSON.status);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se cierra la caja de diálogo.
@@ -77,30 +79,45 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
         sweetAlert(2, JSON.exception, false);
     }
 });
+// EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
+//     // Se evita recargar la página web después de enviar el formulario.
+//     event.preventDefault();
+//     // Constante tipo objeto con los datos del formulario.
+//     const FORM = new FormData(EJECUTAR_FORMULARIO);
+//     // Petición para iniciar sesión.
+//     const JSON = await dataFetch(USUARIO_API, 'verificarRecu', FORM);
+//     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+//     if (JSON.status) {
+//         const JSON = await dataFetch(USUARIO_API, 'verificarContrasenia', FORM);
+//         if (JSON.status) {
+//             document.getElementById('clave').value = JSON.dataset.contrasenia;
+//             document.getElementById('confirmar').value = JSON.dataset.contrasenia;
+//         } else {
+//             sweetAlert(2, JSON.exception, false, 'usuario.html');
+//         }
 
+//     } else {
+//         sweetAlert(2, JSON.exception, false, 'dashboard.html');
+//     }
+// });
 
-EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
-    // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(EJECUTAR_FORMULARIO);
-    // Petición para iniciar sesión.
-    const JSON = await dataFetch(USUARIO_API, 'verificarRecu', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+async function RecuperarClave(correo){
+    const FORM = new FormData();
+    FORM.append('correoemp', correo);
+    EJECUTAR_FORMULARIO.reset();
+    const JSON = await dataFetch(USUARIO_API, 'leerUnRegistroPorCorreo', FORM);
     if (JSON.status) {
         const JSON = await dataFetch(USUARIO_API, 'verificarContrasenia', FORM);
         if (JSON.status) {
             document.getElementById('clave').value = JSON.dataset.contrasenia;
             document.getElementById('confirmar').value = JSON.dataset.contrasenia;
-        } else {
-            sweetAlert(2, JSON.exception, false, 'usuario.html');
         }
-
     } else {
         sweetAlert(2, JSON.exception, false, 'dashboard.html');
     }
+}
 
-});
+
 
 // function Recuperacion() {
 //     const FORM = new FormData();

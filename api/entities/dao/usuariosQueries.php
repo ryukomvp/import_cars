@@ -294,8 +294,17 @@ class UsuariosQueries
         INNER JOIN empleados e ON u.idempleado = e.idempleado
         SET u.contrasenia = ?, usuarios.fechacontra = current_timestamp() 
         WHERE e.correoemp = ?';
-        $params = array($this->clave, $this->correo);
+        $params = array($this->clave, $this->correoemp);
         return Database::executeRow($sql, $params);
+    }
+
+    public function leerUnRegistroPorCorreo()
+    {
+        $sql = 'SELECT u.idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, idempleado, e.nombreemp empleado, estadousuario, verificacion
+        FROM usuarios u INNER JOIN empleados e USING(idempleado)
+        WHERE  e.correoemp= ?';
+        $params = array($this->correo);
+        return Database::getRow($sql, $params);
     }
 }
 

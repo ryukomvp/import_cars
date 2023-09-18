@@ -39,6 +39,8 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
     const JSON = await dataFetch(FAMILIA_API, action, FORM);
+
+    console.log(JSON);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se carga nuevamente la tabla para visualizar los cambios.
