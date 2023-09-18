@@ -20,6 +20,7 @@ const ABRIR_MODAL_GRAFICA = new Modal(document.getElementById('abrirModalGrafica
 
 // Metodo para cargar la pagina cada vez que haya un cambio en el DOM
 document.addEventListener('DOMContentLoaded', () => {
+    // se quita el autollenado de los campos del formulario
     document.getElementById('ejecutarFormulario').autocomplete = 'off';
     // Llamada a la función para llenar la tabla con los registros disponibles.
     cargarRegistros();

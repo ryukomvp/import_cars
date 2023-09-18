@@ -16,6 +16,7 @@ const BTN_ACCION = document.getElementById('accion');
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
+    // se quita el autollenado de los campos del formulario
     document.getElementById('ejecutarFormulario').autocomplete = 'off';
     // Llamada a la función para llenar la tabla con los registros disponibles.
     cargarRegistros();
@@ -248,136 +249,163 @@ async function actualizarRegistro(id) {
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idtipousuario;
         document.getElementById('cargo').value = JSON.dataset.nombretipous;
+        // Se verifica si el permiso esta activo o no de marcas
         if (JSON.dataset.marcas == '1') {
             document.getElementById('marca').checked = 1;
         } else {
             document.getElementById('marca').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de paisesdeorigen
         if (JSON.dataset.paisesdeorigen == '1') {
             document.getElementById('paisOrigen').checked = 1;
         } else {
             document.getElementById('paisOrigen').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de monedas
         if (JSON.dataset.monedas == '1') {
             document.getElementById('moneda').checked = 1;
         } else {
             document.getElementById('moneda').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de familias
         if (JSON.dataset.familias == '1') {
             document.getElementById('familia').checked = 1;
         } else {
             document.getElementById('familia').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de categorias
         if (JSON.dataset.categorias == '1') {
             document.getElementById('categoria').checked = 1;
         } else {
             document.getElementById('categoria').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de codigoscomunes
         if (JSON.dataset.codigoscomunes == '1') {
             document.getElementById('codigoComun').checked = 1;
         } else {
             document.getElementById('codigoComun').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de tiposproductos
         if (JSON.dataset.tiposproductos == '1') {
             document.getElementById('tipoProducto').checked = 1;
         } else {
             document.getElementById('tipoProducto').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de codigostransacciones
         if (JSON.dataset.codigostransacciones == '1') {
             document.getElementById('codigoTransac').checked = 1;
         } else {
             document.getElementById('codigoTransac').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de codigosplazos
         if (JSON.dataset.codigosplazos == '1') {
             document.getElementById('codigoPlazo').checked = 1;
         } else {
             document.getElementById('codigoPlazo').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de sucursales
         if (JSON.dataset.sucursales == '1') {
             document.getElementById('sucursal').checked = 1;
         } else {
             document.getElementById('sucursal').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de plazos
         if (JSON.dataset.plazos == '1') {
             document.getElementById('plazo').checked = 1;
         } else {
             document.getElementById('plazo').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de contactos
         if (JSON.dataset.contactos == '1') {
             document.getElementById('contacto').checked = 1;
         } else {
             document.getElementById('contacto').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de parametros
         if (JSON.dataset.parametros == '1') {
             document.getElementById('parametro').checked = 1;
         } else {
             document.getElementById('parametro').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de proveedores
         if (JSON.dataset.proveedores == '1') {
             document.getElementById('proveedor').checked = 1;
         } else {
             document.getElementById('proveedor').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de modelos
         if (JSON.dataset.modelos == '1') {
             document.getElementById('modelo').checked = 1;
         } else {
             document.getElementById('modelo').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de empleados
         if (JSON.dataset.empleados == '1') {
             document.getElementById('empleado').checked = 1;
         } else {
             document.getElementById('empleado').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de clientes
         if (JSON.dataset.clientes == '1') {
             document.getElementById('cliente').checked = 1;
         } else {
             document.getElementById('cliente').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de usuarios
         if (JSON.dataset.usuarios == '1') {
             document.getElementById('usuario').checked = 1;
         } else {
             document.getElementById('usuario').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de cajas
         if (JSON.dataset.cajas == '1') {
             document.getElementById('caja').checked = 1;
         } else {
             document.getElementById('caja').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de cajeros
         if (JSON.dataset.cajeros == '1') {
             document.getElementById('cajero').checked = 1;
         } else {
             document.getElementById('cajero').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de vendedores
         if (JSON.dataset.vendedores == '1') {
             document.getElementById('vendedor').checked = 1;
         } else {
             document.getElementById('vendedor').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de bodegas
         if (JSON.dataset.bodegas == '1') {
             document.getElementById('bodega').checked = 1;
         } else {
             document.getElementById('bodega').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de familiasbodegas
         if (JSON.dataset.familiasbodegas == '1') {
             document.getElementById('familiaBod').checked = 1;
         } else {
             document.getElementById('familiaBod').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de productos
         if (JSON.dataset.productos == '1') {
             document.getElementById('producto').checked = 1;
         } else {
             document.getElementById('producto').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de encabezadostransacciones
         if (JSON.dataset.encabezadostransacciones == '1') {
             document.getElementById('encaTransac').checked = 1;
         } else {
             document.getElementById('encaTransac').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de detallestransacciones
         if (JSON.dataset.detallestransacciones == '1') {
             document.getElementById('detalleTransac').checked = 1;
         } else {
             document.getElementById('detalleTransac').checked = 0;
         }
+        // Se verifica si el permiso esta activo o no de tiposusuarios
         if (JSON.dataset.tiposusuarios == '1') {
             document.getElementById('tipoUsuario').checked = 1;
         } else {
