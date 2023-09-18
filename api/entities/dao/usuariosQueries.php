@@ -52,7 +52,7 @@ class UsuariosQueries
 
     public function cambiarClave()
     {
-        $sql = 'UPDATE usuarios SET clave = ?, fechacontra = current_timestamp() WHERE idusuario = ?';
+        $sql = 'UPDATE usuarios SET contrasenia = ? WHERE idusuario = ?';
         $params = array($this->clave, $this->id);
         return Database::executeRow($sql, $params);
     }
@@ -277,9 +277,11 @@ class UsuariosQueries
     // Método para leer el perfil del usuario.
     public function leerPerfil()
     {
-        $sql = 'SELECT idusuario, u.nombreus usuario, idempleado, e.nombreemp empleado, tipousuario, e.cargo, e.correoemp
-                FROM usuarios u INNER JOIN empleados e USING(idempleado)
-				WHERE idusuario = ?';
+        $sql = 'SELECT idusuario, u.nombreus usuario, idempleado, e.nombreemp empleado, t.nombretipous tipousuario, e.cargo, e.correoemp
+                FROM usuarios u
+                INNER JOIN empleados e USING(idempleado)
+                INNER JOIN tiposusuarios t USING(idtipousuario)
+                WHERE idusuario = ?';
         $params = array($_SESSION['idusuario']);
         return Database::getRow($sql, $params);
     }

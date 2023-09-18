@@ -67,13 +67,15 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_SESSION['idusuario'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->verificarClave($_POST['actual'])) {
+                } elseif (!$usuario->verificarClave($_POST['clave-actual'])) {
                     $result['exception'] = 'Clave actual incorrecta';
-                } elseif (!preg_match($special_charspattern, $_POST['nueva'])) {
+                } elseif (!preg_match($special_charspattern, $_POST['clave-nueva'])) {
                     $result['exception'] = 'La clave debe contener al menos un carácter especial';
-                } elseif ($_POST['nueva'] != $_POST['confirmar']) {
+                } elseif ($_POST['clave-nueva'] != $_POST['clave-nueva']) {
+                    $result['exception'] = 'La clave nueva debe ser diferente a la clave actual';
+                } elseif ($_POST['clave-nueva'] != $_POST['clave-confirmar']) {
                     $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
-                } elseif (!$usuario->setClave($_POST['nueva'])) {
+                } elseif (!$usuario->setClave($_POST['clave-nueva'])) {
                     $result['exception'] = Validator::getPasswordError();
                 } elseif ($usuario->cambiarClave()) {
                     $result['status'] = 1;

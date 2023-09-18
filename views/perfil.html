@@ -39,7 +39,7 @@
                 contraseña</button>
         </div>
 
-        <form class="grid col-span-2 m-5">
+        <form class="grid col-span-2 m-5" id="formulario-perfil">
             <div class="grid gap-6 mb-12 md:grid-cols-2">
                 <!-- nombre de usuario -->
                 <div>
@@ -120,34 +120,32 @@
                                     <img src="../resources/img/logo.jpg" alt="img">
                                     <br>
                                 </div>
-                                <!--ID-->
-                                <input class="hidden" type="number" id="id" name="id">
                             </div>
                             <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                                 <!-- Input para ingresar la clave actual -->
                                 <div>
-                                    <label for="actual"
+                                    <label for="clave-actual"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Contraseña actual:</label>
                                     <input type="password" id="clave-actual" name="clave-actual"
                                         class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
-                                        placeholder="Ingrese su contraseña actual" required>
+                                        placeholder="Ingrese su contraseña actual" required autocomplete="off">
                                 </div>
                                 <!-- Input para ingresar la nueva clave -->
                                 <div>
-                                    <label for="nueva"
+                                    <label for="clave-nueva"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nueva contraseña:</label>
-                                    <input type="password" id="nueva" name="nueva"
+                                    <input type="password" id="clave-nueva" name="clave-nueva"
                                         class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
-                                        placeholder="Ingrese su nueva contraseña" required>
+                                        placeholder="Ingrese su nueva contraseña" required autocomplete="off">
                                 </div>
                                 <!-- Input para confirmar la nueva clave -->
                                 <div>
-                                    <label for="confirmar"
+                                    <label for="calve-confirmar"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Confirmar
                                         nueva contraseña:</label>
-                                    <input type="password" id="confirmar" name="confirmar"
+                                    <input type="password" id="clave-confirmar" name="clave-confirmar"
                                         class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
-                                        placeholder="Confirme su nueva contraseña" required>
+                                        placeholder="Confirme su nueva contraseña" required autocomplete="off">
                                 </div>
                             </div>
                         </div>
