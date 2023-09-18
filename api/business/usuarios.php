@@ -21,7 +21,7 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $usuario = new Usuarios;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'usertype' => null, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
+    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['idusuario'])) {
         $result['session'] = 1;
@@ -37,9 +37,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'capturarUsuario':
                 if (isset($_SESSION['nombreus'])) {
-                        $result['status'] = 1;
-                        $result['username'] = $_SESSION['nombreus'];
-                        // $result['usertype']  = $_SESSION['idtipousuario'];
+                    $result['status'] = 1;
+                    $result['username'] = $_SESSION['nombreus'];
+                    // $result['usertype']  = $_SESSION['idtipousuario'];
                 } else {
                     $result['exception'] = 'Nombre de usuario indefinido';
                 }
@@ -52,15 +52,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
-            case 'readProfile':
-                if ($result['dataset'] = $usuario->readProfile()) {
-                    $result['status'] = 1;
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'Usuario inexistente';
-                }
-                break;
+            // case 'readProfile':
+            //     if ($result['dataset'] = $usuario->readProfile()) {
+            //         $result['status'] = 1;
+            //     } elseif (Database::getException()) {
+            //         $result['exception'] = Database::getException();
+            //     } else {
+            //         $result['exception'] = 'Usuario inexistente';
+            //     }
+            //     break;
                 // case 'editProfile':
                 //     $_POST = Validator::validateForm($_POST);
                 //     if (!$usuario->setNombres($_POST['nombres'])) {
@@ -277,90 +277,27 @@ if (isset($_GET['action'])) {
                             $result['exception'] = Database::getException();
                         }
                     }
-                // } elseif ($usuario->leerDiasContra() >= 90) {
-                //     $_SESSION['idusuario'] = $usuario->getId();
-                //     $_SESSION['clave_caducada'] = $_POST['clave'];
-                //     $result['clave'] = true;
-                //     $result['exception'] = 'Su contraseña ha caducado';
+                    // } elseif ($usuario->leerDiasContra() >= 90) {
+                    //     $_SESSION['idusuario'] = $usuario->getId();
+                    //     $_SESSION['clave_caducada'] = $_POST['clave'];
+                    //     $result['clave'] = true;
+                    //     $result['exception'] = 'Su contraseña ha caducado';
                 } else {
                     //generar codigo random
                     // $codigoveri = rand(10000, 99999);
                     //enviar codigo a la base de datos
                     // $usuario->ingresarCodigo($codigoveri);
-                    $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['tiempo_sesion'] = time();
                     $_SESSION['idusuario'] = $usuario->getId();
                     $_SESSION['nombreus'] = $usuario->getNombre();
-                    // $_SESSION['email'] = $usuario->getCorreo();
-                    // $_SESSION['idtipousuario'] = $usuario->gettipo();
                     // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
                     $intentos = 0;
                     $usuario->setIntentos($intentos);
                     $usuario->actualizarIntentos();
-                    //  //Mandar correo con el código al correo
-                    //  $number = array();
-                    //  $email = $_POST['email'];
-                    //  $recipient = $usuario->getNombre();
-                    //  array_push($number, $code);
-                    //  $mail = new PHPMailer(true);
-                    //  $mail->isSMTP();
-                    //  $mail->SMTPAuth = true;
-                    //  //to view proper logging details for success and error messages
-                    //  // $mail->SMTPDebug = 1;
-                    //  $mail->Host = 'smtp.gmail.com';  //gmail SMTP server
-                    //  $mail->Username = 'importcars044@gmail.com';   //email
-                    //  $mail->Password = 'hmppxvsafzohqlen';   //16 character obtained from app password created
-                    //  $mail->Port = 465;                    //SMTP port
-                    //  $mail->SMTPSecure = "ssl";
-                    //  //sender information
-                    //  $mail->setFrom('importcars044@gmail.com', 'importcars_004');
-                    //  //receiver address and name
-                    //  $mail->addAddress($email, $recipient);
-                    //  $mail->isHTML(true);
-                    //  $mail->Subject = 'Codigo de recuperacion de contrasena';
-                    //  $mail->Body    = '<body style="background-color:#2B3547";>
-                    //  <br>
-                    //  <h1 style="color:white; text-align:center">Su codigo para resetear su contraseña</h1>
-                    //  <div>
-                    //      <p style = "color:white; text-align:center";>
-                    //          Aqui se le presenta el codigode recuperacion de contraseña,
-                    //          recuerde cambiarla cada cierto tiempo para evitar problemas de seguridad.
-                    //      </p>
-                    //  </div>
-                    //  <br>
-                    //  <br>
-                    //  <h2 style="color:white; text-align:center">' . $codigoveri . '</h2>
-                    //  <br>
-                    //  <br>
-                    //  </body>
-                    //  <footer style="background-color:#010a1b">
-                    //      <br>
-                    //      <p style="color:white; text-align:center"> De parte de importcars a usted ' . $recipient . '</p>
-                    //      <br>
-                    //  </footer>';
-                    //  // Send mail   
-                    //  if ($mail->send()) {
-                    //      if ($result['dataset'] = [$number, $usuario->getCorreo()]) {
-                    //          $result['status'] = 1;
-                    //          $result['message'] = 'correo enviado';
-                    //      }
-                    //  } else {
-                    //      $result['exception'] = 'no fue posible enviar el correo';
-                    //  }
-                    //  $mail->smtpClose();
-                 }
-                case 'leerUnRegistroPorCorreo':
-                    if (!$usuario->setCorreo($_POST['correoemp'])) {
-                        $result['exception'] = 'Usuario incorrecto';
-                    } elseif ($result['dataset'] = $usuario->leerUnRegistroPorCorreo()) {
-                        $result['status'] = 1;
-                    } elseif (Database::getException()) {
-                        $result['exception'] = Database::getException();
-                    } else {
-                         $result['exception'] = 'Usuario inexistente';
-                    }
-                    break;       
+                    $result['status'] = 1;
+                }
+                break;
             case 'verificarContrasenia':
                 $_POST = Validator::validateForm($_POST);
                 // print_r($_POST);
@@ -395,6 +332,7 @@ if (isset($_GET['action'])) {
                 break;
             default:
                 $result['exception'] = 'Algo salio mal';
+                break;
         }
     }
     // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.

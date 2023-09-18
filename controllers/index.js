@@ -126,23 +126,21 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
 //     }
 // });
 
-async function RecuperarClave(correo){
-    const FORM = new FormData();
-    FORM.append('correoemp', correo);
-    EJECUTAR_FORMULARIO.reset();
-    const JSON = await dataFetch(USUARIO_API, 'leerUnRegistroPorCorreo', FORM);
-    if (JSON.status) {
-        const JSON = await dataFetch(USUARIO_API, 'verificarContrasenia', FORM);
-        if (JSON.status) {
-            document.getElementById('clave').value = JSON.dataset.contrasenia;
-            document.getElementById('confirmar').value = JSON.dataset.contrasenia;
-        }
-    } else {
-        sweetAlert(2, JSON.exception, false, 'dashboard.html');
-    }
-}
-
-
+// async function RecuperarClave(correo){
+//     const FORM = new FormData();
+//     FORM.append('correoemp', correo);
+//     EJECUTAR_FORMULARIO.reset();
+//     const JSON = await dataFetch(USUARIO_API, 'leerUnRegistroPorCorreo', FORM);
+//     if (JSON.status) {
+//         const JSON = await dataFetch(USUARIO_API, 'verificarContrasenia', FORM);
+//         if (JSON.status) {
+//             document.getElementById('clave').value = JSON.dataset.contrasenia;
+//             document.getElementById('confirmar').value = JSON.dataset.contrasenia;
+//         }
+//     } else {
+//         sweetAlert(2, JSON.exception, false, 'dashboard.html');
+//     }
+// }
 
 // function Recuperacion() {
 //     const FORM = new FormData();
