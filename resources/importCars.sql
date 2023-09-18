@@ -201,7 +201,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
     idempleado INT NOT NULL, 
     estadousuario ENUM('Activo' , 'Inactivo' , 'Bloqueado') NOT NULL,
     intentos INT NOT NULL default 0,
-    palabraclave NOT NULL varchar(150),
+    palabraclave varchar(150) NOT NULL,
     
     CONSTRAINT fkusuarioemp
     FOREIGN KEY (idempleado)
@@ -661,28 +661,28 @@ INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, 
 	('Nevin Oke', '2536-1122', 'nokej@home.pl', '1999-02-03', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '2010-10-10', '06795006-2', 'Activo', 'Masculino', 'Jefe');
 
-INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, estadousuario) VALUES
-	('Marchelli', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 1, 'Activo'),
-	('Elianore', 'Boggon', '12345678', 1, 2, 'Activo'),
-	('Germaine', 'Antonietti', '12345678', 1, 3, 'Activo'),
-	('Susanna', 'Jahns', '12345678', 1, 4, 'Activo'),
-	('Ruperto', 'Lundon', '12345678', 1, 5, 'Activo'),
-	('Isabella', 'Phillpot', '12345678', 1, 6, 'Activo'),
-	('Pauly', 'Budge', '12345678', 1, 7, 'Activo'),
-	('Neely', 'Bawden', '12345678', 1, 8, 'Activo'),
-	('Ignaz', 'Cuvley', '12345678', 1, 9, 'Activo'),
-	('Barri', 'Sheffield', '12345678', 1, 10, 'Activo'),
-	('Zsazsa', 'Chstney', '12345678', 1, 11, 'Activo'),
-	('Scarface', 'Sheffield', '12345678', 1, 12, 'Activo'),
-	('Edithe', 'Sleight', '12345678', 1, 13, 'Activo'),
-	('Bartholomew', 'Sheffield', '12345678', 1, 14, 'Activo'),
-	('Shayla', 'Sheffield', '12345678', 1, 15, 'Activo'),
-	('Sisile', 'Sleight', '12345678', 1, 16, 'Inactivo'),
-	('Evelin', 'Anstee', '12345678', 1, 17, 'Activo'),
-	('Pietrek', 'Sheffield', '12345678', 2, 18, 'Inactivo'),
-	('Mellisa', 'Anstee', '12345678', 2, 19, 'Activo'),
-	('Nevin', 'Sheffield', '12345678', 2, 20, 'Activo'),
-	('dani', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 21, 'Inactivo');
+INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, estadousuario, palabraclave) VALUES
+	('Marchelli', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 1, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Elianore', 'Boggon', '12345678', 1, 2, 'Activo', '$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Germaine', 'Antonietti', '12345678', 1, 3, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Susanna', 'Jahns', '12345678', 1, 4, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Ruperto', 'Lundon', '12345678', 1, 5, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Isabella', 'Phillpot', '12345678', 1, 6, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Pauly', 'Budge', '12345678', 1, 7, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Neely', 'Bawden', '12345678', 1, 8, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Ignaz', 'Cuvley', '12345678', 1, 9, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Barri', 'Sheffield', '12345678', 1, 10, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Zsazsa', 'Chstney', '12345678', 1, 11, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Scarface', 'Sheffield', '12345678', 1, 12, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Edithe', 'Sleight', '12345678', 1, 13, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Bartholomew', 'Sheffield', '12345678', 1, 14, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Shayla', 'Sheffield', '12345678', 1, 15, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Sisile', 'Sleight', '12345678', 1, 16, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Evelin', 'Anstee', '12345678', 1, 17, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Pietrek', 'Sheffield', '12345678', 2, 18, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Mellisa', 'Anstee', '12345678', 2, 19, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('Nevin', 'Sheffield', '12345678', 2, 20, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv'),
+	('dani', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 21, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv');
 
 INSERT INTO cajas (nombrecaja, nombreequipo, serieequipo, modeloequipo, idsucursal, idusuario) VALUES
         ('Caja 1','HP basic 1080','1098R3456P93', 'HP',1,1),
