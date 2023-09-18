@@ -55,8 +55,11 @@ FORMULARIO_SESION.addEventListener('submit', async (event) => {
     if (JSON.status) {
         // Se notifica al usuario que el ingreso al sistema ha sido exitoso y se redirige a la página principal.
         sweetAlert(1, JSON.message, true, 'dashboard.html');
-    } else {
-        sweetAlert(2, JSON.exception, false);
+    } else{
+        const JSON = await dataFetch(USUARIO_API, 'verificarClaveDias', FORM);
+        if(JSON.status){
+            const FORM = new FormData(FORMULARIO_SESION);
+        }
     }
 });
 
