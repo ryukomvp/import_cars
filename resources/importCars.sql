@@ -201,6 +201,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
     idempleado INT NOT NULL, 
     estadousuario ENUM('Activo' , 'Inactivo' , 'Bloqueado') NOT NULL,
     intentos INT NOT NULL default 0,
+    palabraclave NOT NULL varchar(150),
     
     CONSTRAINT fkusuarioemp
     FOREIGN KEY (idempleado)
