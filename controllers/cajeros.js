@@ -71,6 +71,7 @@ async function cargarRegistros(form = null) {
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
         JSON.dataset.forEach(row => {
+            (row.estadocajero) ? estadocajero = 'En funcionamiento' : estadocajero = 'No disponible';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white hover:bg-blue-200">
@@ -81,7 +82,7 @@ async function cargarRegistros(form = null) {
                         ${row.nombrecajero}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.estadocajero}
+                        ${estadocajero}
                     </td>
                     <td class="px-6 py-4">
                         ${row.fechaingreso}
@@ -150,7 +151,11 @@ async function actualizarRegistro(id) {
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idcajero;
         document.getElementById('cajero').value = JSON.dataset.nombrecajero;
-        document.getElementById('estado').value = JSON.dataset.estadocajero;
+        if (JSON.dataset.estadocajero == '1') {
+            document.getElementById('estado').checked = 1;
+        } else {
+            document.getElementById('estado').checked = 0;
+        }
         document.getElementById('fechaIngreso').value = JSON.dataset.fechaingreso;
         fillSelect(CAJA_API, 'leerRegistros', 'caja', JSON.dataset.idcaja);
     } else {

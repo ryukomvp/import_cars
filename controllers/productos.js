@@ -39,7 +39,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (document.setElementById('id').value = JSON.dataget.id) ? action = 'actualizarProducto' : action = 'crearProducto';
+    (document.getElementById('id').value) ? action = 'actualizarRegistro' : action = 'crearRegistro';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
@@ -68,7 +68,7 @@ async function rellenarTabla(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'buscarProducto' : action = 'leerTodo';
+    (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(PRODUCTOS_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -87,6 +87,8 @@ async function rellenarTabla(form = null) {
                     <td class="px-6 py-4">${row.preciodesc}</td>
                     <td class="px-6 py-4">${row.categoria}</td>
                     <td class="px-6 py-4">${row.modelo}</td>
+                    <td class="px-6 py-4">${row.pais}</td>
+                    <td class="px-6 py-4">${row.estadoproducto}</td>
                     <td class="px-6 py-4" >
                         <button onclick="actualizarRegistro(${row.idproducto})"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -123,7 +125,7 @@ function crearRegistro() {
     // Se asigna título a la caja de diálogo.
     TITULO.textContent = 'Crear Producto nuevo';
     // Llamada a la función para llenar el select del formulario. Se encuentra en el archivo components.js
-    fillSelect(PRODUCTOS_API, 'leerCodigosComunes', 'codigo');
+    fillSelect(CODIGOS_COMUNES_API, 'leerRegistros', 'codigo');
     fillSelect(CATEGORIAS_API, 'leerRegistros', 'categoria');
     fillSelect(MODELOS_API, 'leerRegistros', 'modelo');
     fillSelect(PAISES_API, 'leerRegistros', 'paisorigen');
@@ -141,7 +143,7 @@ async function actualizarRegistro(id) {
     const FORM = new FormData();
     FORM.append('id', id);
     // Petición para obtener los datos del registro solicitado.
-    const JSON = await dataFetch(PRODUCTOS_API, 'leerUnProducto', FORM);
+    const JSON = await dataFetch(PRODUCTOS_API, 'leerUnRegistro', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se abre la caja de diálogo que contiene el formulario.
@@ -157,17 +159,17 @@ async function actualizarRegistro(id) {
         document.getElementById('archivo').required = false;
         document.getElementById('id').value = JSON.dataset.idproducto;
         document.getElementById('nombreprod').value = JSON.dataset.nombreprod;
-        document.getElementById('descripcionprod').value = JSON.dataset.descripcionprod;
+        document.getElementById('descripcion').value = JSON.dataset.descripcionprod;
         document.getElementById('precio').value = JSON.dataset.precio;
         document.getElementById('preciodesc').value = JSON.dataset.preciodesc;
-        document.getElementById('anioinicial').value = JSON.dataset.anioinicio;
+        document.getElementById('anioinicial').value = JSON.dataset.anioinicial;
         document.getElementById('aniofinal').value = JSON.dataset.aniofinal;
-        fillSelect(PRODUCTOS_API, 'leerCodigosComunes', 'codigo');
-        fillSelect(CATEGORIAS_API, 'leerRegistros', 'categoria');
-        fillSelect(MODELOS_API, 'leerRegistros', 'modelo');
-        fillSelect(PAISES_API, 'leerRegistros', 'paisorigen');
-        fillSelect(PRODUCTOS_API, 'leerEstado', 'estado');
-        fillSelect(TIPO_API, 'leerRegistros', 'tipo');
+        fillSelect(CODIGOS_COMUNES_API, 'leerRegistros', 'codigo',JSON.dataset.idcodigocomun);
+        fillSelect(CATEGORIAS_API, 'leerRegistros', 'categoria',JSON.dataset.idcategoria);
+        fillSelect(MODELOS_API, 'leerRegistros', 'modelo',JSON.dataset.idmodelo);
+        fillSelect(PAISES_API, 'leerRegistros', 'paisorigen',JSON.dataset.idpais);
+        fillSelect(PRODUCTOS_API, 'leerEstado', 'estado',JSON.dataset.estadoproducto);
+        fillSelect(TIPO_API, 'leerRegistros', 'tipo',JSON.dataset.idtipoproducto);
     } else {
         sweetAlert(2, JSON.exception, false);
     }
@@ -187,7 +189,7 @@ async function eliminarRegistro(id) {
         const FORM = new FormData();
         FORM.append('idproducto', id);
         // Petición para eliminar el registro seleccionado.
-        const JSON = await dataFetch(PRODUCTOS_API, 'eliminarProducto', FORM);
+        const JSON = await dataFetch(PRODUCTOS_API, 'eliminarRegistro', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (JSON.status) {
             // Se carga nuevamente la tabla para visualizar los cambios.
