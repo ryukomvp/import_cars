@@ -5,6 +5,8 @@ const USUARIO_API = 'business/usuarios.php';
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
 const HEADER = document.querySelector('header');
 const FOOTER = document.querySelector('footer');
+const FORMULARIO_CAMBIAR_CLAVE = document.getElementById('Formulario-psw');
+
 
 document.addEventListener('DOMContentLoaded', async () => {
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
@@ -13,10 +15,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         setInterval(() => {
             checkSessionTime();
         }, 300000);
-        
-        if (JSON.status) {
-            // Inserción de header
-            HEADER.innerHTML = `
+        if (JSON.session) {
+            setInterval(() => {
+                verificarClaveDias();
+            });
+            if (JSON.status) {
+                // Inserción de header
+                HEADER.innerHTML = `
             <!-- drawer component -->
             <div id="drawer-navigation"
                 class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800"
@@ -278,8 +283,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </div>
             </nav>`;
-            // Inserción de footer
-            FOOTER.innerHTML = `
+                // Inserción de footer
+                FOOTER.innerHTML = `
                         <div class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
                             <!-- nombre del sistema -->
                             <span class="text-white text-2xl">Import Cars</span>
@@ -304,18 +309,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                     `;
 
+            } else {
+                sweetAlert(3, JSON.exception, false, 'index.html');
+            }
+
         } else {
-            sweetAlert(3, JSON.exception, false, 'index.html');
-        }
-        
-    } else {
-        if (location.pathname == '/import_cars/views/index.html') {
-            HEADER.innerHTML = ``;
-            FOOTER.innerHTML = ``;
-        } else {
-            location.href = 'index.html'
-        }
-    };
+            if (location.pathname == '/import_cars/views/index.html') {
+                HEADER.innerHTML = ``;
+                FOOTER.innerHTML = ``;
+            } else {
+                location.href = 'index.html'
+            }
+        };
+    }
 })
 
 async function checkSessionTime() {
@@ -328,3 +334,75 @@ async function checkSessionTime() {
         sweetAlert(3, DATA.exception, false, 'index.html');
     }
 }
+
+// async function verificarClaveDias() {
+//     //Solo un ejémplo de un ajax
+//     const DATA = await dataFetch(USUARIO_API, 'verificarClaveDias');
+//     if (DATA.status) {
+//         console.log(DATA.message);// <-- Aquí sabemos que no es válida
+//     } else {
+//         clearInterval();
+//         sweetAlert(3, DATA.exception, false, 'index.html');
+//     }
+// }
+
+async function verificarClaveDias() {
+    //Solo un ejémplo de un ajax
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(FORMULARIO_CAMBIAR_CLAVE);
+    // Petición para registrar el primer usuario.
+    const JSON = await dataFetch(USUARIO_API, 'cambiarClave', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se notifica que el primer usuario ha sido registrado exitosamente y se redirige al inicio de sesión
+        sweetAlert(1, JSON.message, true, 'dashboard.html');
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+}
+
+async function verificarClaveDias() {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(FORMULARIO_CAMBIAR_CLAVE);
+    // Petición para registrar el primer empleado.
+    const JSON = await dataFetch(USUARIO_API, 'registrarPrimerEmpleado', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        sweetAlert(1, JSON.message, true);
+        // Se oculta el formulario para registrar el primer empleado.
+        document.getElementById('registrar-emp').classList.add('hidden');
+        // Se notifica que debe registrar un usuario para utilizar el sistema.
+        // sweetAlert(1, 'Debe registrar un usuario para inicializar el sistema', false);
+        // Se muestra el formulario para registrar el primer usuario.
+        document.getElementById('registrar-us').classList.remove('hidden');
+        // Se leen los empleados registrados en la base de datos (ya que se esta registrando el primer usuario, por obviedad, solo existe un empleado el cual aun no posee usuario para acceder al sistema).
+        fillSelect(USUARIO_API, 'leerEmpleados', 'empleado');
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+});
+
+FORMULARIO_EMPLEADO.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(FORMULARIO_EMPLEADO);
+    // Petición para registrar el primer empleado.
+    const JSON = await dataFetch(USUARIO_API, 'registrarPrimerEmpleado', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        sweetAlert(1, JSON.message, true);
+        // Se oculta el formulario para registrar el primer empleado.
+        document.getElementById('registrar-emp').classList.add('hidden');
+        // Se notifica que debe registrar un usuario para utilizar el sistema.
+        // sweetAlert(1, 'Debe registrar un usuario para inicializar el sistema', false);
+        // Se muestra el formulario para registrar el primer usuario.
+        document.getElementById('registrar-us').classList.remove('hidden');
+        // Se leen los empleados registrados en la base de datos (ya que se esta registrando el primer usuario, por obviedad, solo existe un empleado el cual aun no posee usuario para acceder al sistema).
+        fillSelect(USUARIO_API, 'leerEmpleados', 'empleado');
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+});

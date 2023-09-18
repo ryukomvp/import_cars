@@ -10,6 +10,7 @@ const FORMULARIO_USUARIO = document.getElementById('formulario-us');
 const FORMULARIO_RECUPERACION = document.getElementById('formulario-rc');
 
 
+
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
     // Petición para consultar los empleados registrados.
