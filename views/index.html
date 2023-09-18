@@ -279,6 +279,56 @@
                 </form>
             </div>
         </div>
+        <!-- formulario para cambiar contrasenia por dias  -->
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 hidden" id="registrar-us">
+            <div class="py-4 rounded-lg ring-1 ring-azul shadow-2xl shadow-black">
+                <p class="text-2xl text-center font-bold text-white p-4">Registrar primer usuario</p>
+                <form class="p-4" method="post" id="Formulario-psw">
+                    <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
+                        <div>
+                            <div class="text-center py-4 p-6 space-x-2 rounded-b">
+                                <img src="../resources/img/logo-circulo.png" alt="img">
+                                <br>
+                            </div>
+                            <!--ID-->
+                            <input class="hidden" type="number" id="id" name="id">
+                        </div>
+                        <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                            <div>
+                                <label for="claved"
+                                    class="block mb-2 text-sm font-medium text-white">Contraseña actual:</label>
+                                <input type="password" id="claved" name="claved"
+                                    class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                                    placeholder="Ingrese la contraseña" required autocomplete="off">
+                            </div>
+                            <!--Input contraseña del usuario-->
+                            <div>
+                                <label for="clave"
+                                    class="block mb-2 text-sm font-medium text-white">Contraseña:</label>
+                                <input type="password" id="clave" name="clave"
+                                    class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                                    placeholder="Ingrese la contraseña" required autocomplete="off">
+                            </div>
+                            <!--Input contraseña del usuario-->
+                            <div>
+                                <label for="confirmar"
+                                    class="block mb-2 text-sm font-medium text-white">Confirmar
+                                    contraseña:</label>
+                                <input type="password" id="confirmar" name="confirmar"
+                                    class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                                    placeholder="Ingrese la contraseña" required autocomplete="off">
+                            </div>
+                            <!--Input del empleado asignado al usuario-->
+
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit"
+                        class="w-auto ring-1 ring-azul text-azul font-medium focus:ring-4 focus:ring-white rounded-lg px-5 py-2.5 text-center hover:bg-azul hover:text-white">Registrar usuario</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </main>
 
     <footer></footer>

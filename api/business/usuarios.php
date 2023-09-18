@@ -37,6 +37,17 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Su sesión ha caducado por inactividad';
                 }
                 break;
+            case 'verificarClaveDias':
+                if (!$usuario->leerDiasContra() >= 90) {
+                        $_SESSION['idusuario'] = $usuario->getId();
+                        $_SESSION['clave_caducada'] = $_POST['contrasenia'];
+                        $result['contrasenia'] = true;
+                        $result['exception'] = 'Su contraseña ha caducado';
+                } else {
+
+                    $result['exception'] = 'Su sesión esta god';
+                }
+                break;
             case 'capturarUsuario':
                 if (isset($_SESSION['nombreus'])) {
                     $result['status'] = 1;
