@@ -277,91 +277,79 @@ if (isset($_GET['action'])) {
                             $result['exception'] = Database::getException();
                         }
                     }
-                } elseif ($usuario->leerDiasContra() >= 90) {
-                    $_SESSION['idusuario'] = $usuario->getId();
-                    $_SESSION['clave_caducada'] = $_POST['clave'];
-                    $result['clave'] = true;
-                    $result['exception'] = 'Su contraseña ha caducado'
+                // } elseif ($usuario->leerDiasContra() >= 90) {
+                //     $_SESSION['idusuario'] = $usuario->getId();
+                //     $_SESSION['clave_caducada'] = $_POST['clave'];
+                //     $result['clave'] = true;
+                //     $result['exception'] = 'Su contraseña ha caducado';
                 } else {
                     //generar codigo random
-                    $codigoveri = rand(10000, 99999);
+                    // $codigoveri = rand(10000, 99999);
                     //enviar codigo a la base de datos
-                    $usuario->ingresarCodigo($codigoveri);
+                    // $usuario->ingresarCodigo($codigoveri);
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                     $_SESSION['tiempo_sesion'] = time();
                     $_SESSION['idusuario'] = $usuario->getId();
                     $_SESSION['nombreus'] = $usuario->getNombre();
-                    $_SESSION['email'] = $usuario->getCorreo();
+                    // $_SESSION['email'] = $usuario->getCorreo();
                     // $_SESSION['idtipousuario'] = $usuario->gettipo();
                     // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
                     $intentos = 0;
                     $usuario->setIntentos($intentos);
                     $usuario->actualizarIntentos();
-                     //Mandar correo con el código al correo
-                     $number = array();
-                     $email = $_POST['email'];
-                     $recipient = $usuario->getNombre();
-                     array_push($number, $code);
-                     $mail = new PHPMailer(true);
-                     $mail->isSMTP();
-                     $mail->SMTPAuth = true;
-                     //to view proper logging details for success and error messages
-                     // $mail->SMTPDebug = 1;
-                     $mail->Host = 'smtp.gmail.com';  //gmail SMTP server
-                     $mail->Username = 'importcars044@gmail.com';   //email
-                     $mail->Password = 'hmppxvsafzohqlen';   //16 character obtained from app password created
-                     $mail->Port = 465;                    //SMTP port
-                     $mail->SMTPSecure = "ssl";
-                     //sender information
-                     $mail->setFrom('importcars044@gmail.com', 'importcars_004');
-                     //receiver address and name
-                     $mail->addAddress($email, $recipient);
-                     $mail->isHTML(true);
-                     $mail->Subject = 'Codigo de recuperacion de contrasena';
-                     $mail->Body    = '<body style="background-color:#2B3547";>
-                     <br>
-                     <h1 style="color:white; text-align:center">Su codigo para resetear su contraseña</h1>
-                     <div>
-                         <p style = "color:white; text-align:center";>
-                             Aqui se le presenta el codigode recuperacion de contraseña,
-                             recuerde cambiarla cada cierto tiempo para evitar problemas de seguridad.
-                         </p>
-                     </div>
-                     <br>
-                     <br>
-                     <h2 style="color:white; text-align:center">' . $codigoveri . '</h2>
-                     <br>
-                     <br>
-                     </body>
-                     <footer style="background-color:#010a1b">
-                         <br>
-                         <p style="color:white; text-align:center"> De parte de importcars a usted ' . $recipient . '</p>
-                         <br>
-                     </footer>';
-                     // Send mail   
-                     if ($mail->send()) {
-                         if ($result['dataset'] = [$number, $usuario->getCorreo()]) {
-                             $result['status'] = 1;
-                             $result['message'] = 'correo enviado';
-                         }
-                     } else {
-                         $result['exception'] = 'no fue posible enviar el correo';
-                     }
-                     $mail->smtpClose();
+                    //  //Mandar correo con el código al correo
+                    //  $number = array();
+                    //  $email = $_POST['email'];
+                    //  $recipient = $usuario->getNombre();
+                    //  array_push($number, $code);
+                    //  $mail = new PHPMailer(true);
+                    //  $mail->isSMTP();
+                    //  $mail->SMTPAuth = true;
+                    //  //to view proper logging details for success and error messages
+                    //  // $mail->SMTPDebug = 1;
+                    //  $mail->Host = 'smtp.gmail.com';  //gmail SMTP server
+                    //  $mail->Username = 'importcars044@gmail.com';   //email
+                    //  $mail->Password = 'hmppxvsafzohqlen';   //16 character obtained from app password created
+                    //  $mail->Port = 465;                    //SMTP port
+                    //  $mail->SMTPSecure = "ssl";
+                    //  //sender information
+                    //  $mail->setFrom('importcars044@gmail.com', 'importcars_004');
+                    //  //receiver address and name
+                    //  $mail->addAddress($email, $recipient);
+                    //  $mail->isHTML(true);
+                    //  $mail->Subject = 'Codigo de recuperacion de contrasena';
+                    //  $mail->Body    = '<body style="background-color:#2B3547";>
+                    //  <br>
+                    //  <h1 style="color:white; text-align:center">Su codigo para resetear su contraseña</h1>
+                    //  <div>
+                    //      <p style = "color:white; text-align:center";>
+                    //          Aqui se le presenta el codigode recuperacion de contraseña,
+                    //          recuerde cambiarla cada cierto tiempo para evitar problemas de seguridad.
+                    //      </p>
+                    //  </div>
+                    //  <br>
+                    //  <br>
+                    //  <h2 style="color:white; text-align:center">' . $codigoveri . '</h2>
+                    //  <br>
+                    //  <br>
+                    //  </body>
+                    //  <footer style="background-color:#010a1b">
+                    //      <br>
+                    //      <p style="color:white; text-align:center"> De parte de importcars a usted ' . $recipient . '</p>
+                    //      <br>
+                    //  </footer>';
+                    //  // Send mail   
+                    //  if ($mail->send()) {
+                    //      if ($result['dataset'] = [$number, $usuario->getCorreo()]) {
+                    //          $result['status'] = 1;
+                    //          $result['message'] = 'correo enviado';
+                    //      }
+                    //  } else {
+                    //      $result['exception'] = 'no fue posible enviar el correo';
+                    //  }
+                    //  $mail->smtpClose();
                  }
-                }
-                break;
-                case 'verificarRol':
-                    $_POST = Validator::validateForm($_POST);
-                    if (!$usuario->leerTipoUsuario()) {
-                        $result['exception'] = 'Usuario incorrecto';
-                    } else {
-                        $result['status'] = 1;
-                        $result['message'] = 'Rol correcto';
-                        $usuario->gettipo();
-                    }
-                    break;
                 case 'leerUnRegistroPorCorreo':
                     if (!$usuario->setCorreo($_POST['correoemp'])) {
                         $result['exception'] = 'Usuario incorrecto';
@@ -372,7 +360,7 @@ if (isset($_GET['action'])) {
                     } else {
                          $result['exception'] = 'Usuario inexistente';
                     }
-                    break;
+                    break;       
             case 'verificarContrasenia':
                 $_POST = Validator::validateForm($_POST);
                 // print_r($_POST);
