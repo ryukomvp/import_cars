@@ -9,6 +9,7 @@ require_once('../libraries/phpmailer651/src/PHPMailer.php');
 require_once('../libraries/phpmailer651/src/SMTP.php');
 require_once('../libraries/phpmailer651/src/Exception.php');
 require_once('../entities/dto/usuarios.php');
+require_once('../entities/dto/empleados.php');
 // Verificación 
 $special_charspattern = '/[^a-zA-Z\d]/';
 // Variable para almacenar temporalmente los intentos de inicio de sesión.
@@ -20,6 +21,7 @@ if (isset($_GET['action'])) {
     session_start();
     // Se instancia la clase correspondiente.
     $usuario = new Usuarios;
+    $empleados = new empleados;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -215,30 +217,69 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Debe autenticarse para ingresar';
                 } else {
+                    $result['exception'] = 'Debe registrar un usuario para inicializar el sistema';
+                }
+                break;
+            case 'leerEmpleados':
+                if ($result['dataset'] = $empleados->leerEmpleados()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Debe autenticarse para ingresar';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
                     $result['exception'] = 'Debe crear un usuario para comenzar';
                 }
                 break;
-                // case 'regitrarUsuario':
-                //     $_POST = Validator::validateForm($_POST);
-                //     if (!$usuario->setNombres($_POST['nombres'])) {
-                //         $result['exception'] = 'Nombres incorrectos';
-                //     } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
-                //         $result['exception'] = 'Apellidos incorrectos';
-                //     } elseif (!$usuario->setCorreo($_POST['correo'])) {
-                //         $result['exception'] = 'Correo incorrecto';
-                //     } elseif (!$usuario->setAlias($_POST['usuario'])) {
-                //         $result['exception'] = 'Alias incorrecto';
-                //     } elseif ($_POST['codigo'] != $_POST['confirmar']) {
-                //         $result['exception'] = 'Claves diferentes';
-                //     } elseif (!$usuario->setClave($_POST['codigo'])) {
-                //         $result['exception'] = Validator::getPasswordError();
-                //     } elseif ($usuario->createRow()) {
-                //         $result['status'] = 1;
-                //         $result['message'] = 'Usuario registrado correctamente';
-                //     } else {
-                //         $result['exception'] = Database::getException();
-                //     }
-                //     break;
+            case 'registrarPrimerEmpleado':
+                $_POST = Validator::validateForm($_POST);
+                if (!$empleados->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre incorrecto';
+                } elseif (!$empleados->setTelefono($_POST['telefono'])) {
+                    $result['exception'] = 'Teléfonon incorrecto';
+                } elseif (!$empleados->setCorreo($_POST['correo'])) {
+                    $result['exception'] = 'Correo incorrecto';
+                } elseif (!$empleados->setNacimiento($_POST['nacimiento'])) {
+                    $result['exception'] = 'Fecha de nacimiento incorrecta';
+                } elseif (!$empleados->setDocumento($_POST['documento'])) {
+                    $result['exception'] = 'Documento incorrecto';
+                } elseif (!$empleados->setEstado('Activo')) {
+                    $result['exception'] = 'Estado del empleado incorrecto';
+                } elseif (!$empleados->setGenero($_POST['genero'])) {
+                    $result['exception'] = 'Genero del empleado incorrecto';
+                } elseif (!$empleados->setCargo('Jefe')) {
+                    $result['exception'] = 'Cargo del empleado incorrecto';
+                } elseif ($empleados->crearEmpleado()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Primer empleado registrado correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            case 'registrarPrimerUsuario':
+                $_POST = Validator::validateForm($_POST);
+                if (!$usuario->setNombre($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre incorrecto';
+                } elseif (!$usuario->setPin($_POST['pin'])) {
+                    $result['exception'] = 'Pin incorrecto';
+                } elseif (!$usuario->setTipo('1')) {
+                    $result['exception'] = 'Tipo incorrecto';
+                } elseif (!$usuario->setEmpleado($_POST['empleado'])) {
+                    $result['exception'] = 'Empleado incorrecto';
+                } elseif (!$usuario->setEstado('Activo')) {
+                    $result['exception'] = 'Estado incorrecto';
+                } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
+                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                } elseif ($_POST['clave'] != $_POST['confirmar']) {
+                    $result['exception'] = 'Claves diferentes';
+                } elseif (!$usuario->setClave($_POST['clave'])) {
+                    $result['exception'] = Validator::getPasswordError();
+                } elseif ($usuario->crearRegistro()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Primer usuario registrado correctamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             case 'iniciarSesion':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->verificarUsuario($_POST['usuario'])) {
@@ -308,6 +349,16 @@ if (isset($_GET['action'])) {
                     $_SESSION['correoemp'] = $usuario->getCorreo();
                     $_SESSION['pin'] = $usuario->getPin();
                     $result['status'] = 1;
+                }
+                break;
+            case 'leerGeneros':
+                if ($result['dataset'] = $empleados->leerGeneros()) {
+                    $result['status'] = 1;
+                    //$result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
                 }
                 break;
             default:
