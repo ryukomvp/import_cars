@@ -269,6 +269,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Empleado incorrecto';
                 } elseif (!$usuario->setEstado('Activo')) {
                     $result['exception'] = 'Estado incorrecto';
+                } elseif (!$usuario->setPalabra('palabra')) {
+                    $result['exception'] = 'Palabra incorrecto';
                 } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
                     $result['exception'] = 'La clave debe contener al menos un carácter especial';
                 } elseif ($_POST['clave'] != $_POST['confirmar']) {
@@ -335,8 +337,6 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->verificarUsuario($_POST['nombre'])) {
                     $result['exception'] = 'Nombre de usuario incorrecto';
-                } elseif (!$usuario->verificarPin($_POST['pin'])) {
-                    $result['exception'] = 'Pin de usuario incorrecto';
                 } elseif (!$usuario->verificarPalabra($_POST['palabra'])) {
                     $result['exception'] = 'Palabra de usuario incorrecta';
                 } elseif (!preg_match($special_charspattern, $_POST['clave'])) {

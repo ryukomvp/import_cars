@@ -22,13 +22,13 @@ class UsuariosQueries
         }
     }
 
-    public function verificarPin($id)
+    public function verificarPin($nombre)
     {
-        $sql = 'SELECT pin FROM usuarios WHERE idusuario = ?';
-        $params = array($id);
+        $sql = 'SELECT pin FROM usuarios WHERE nombreus = ?';
+        $params = array($nombre);
         if ($data = Database::getRow($sql, $params)) {
             $this->pin = $data['pin'];
-            $this->id = $id;
+            $this->nombre = $nombre;
             return true;
         } else {
             return false;
@@ -37,11 +37,11 @@ class UsuariosQueries
 
     public function verificarPalabra($palabra)
     {
-        $sql = 'SELECT palabra FROM usuarios WHERE idusuario = ?';
-        $params = array($this->id);
+        $sql = 'SELECT palabraclave FROM usuarios WHERE nombreus = ?';
+        $params = array($this->nombre);
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
-        if (password_verify($palabra, $data['palabra'])) {
+        if (password_verify($palabra, $data['palabraclave'])) {
             return true;
         } else {
             return false;
@@ -100,9 +100,9 @@ class UsuariosQueries
 
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, estadousuario)
-                VALUES(?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->clave, $this->pin, $this->tipo, $this->empleado, $this->estado);
+        $sql = 'INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, estadousuario, palabraclave)
+                VALUES(?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre, $this->clave, $this->pin, $this->tipo, $this->empleado, $this->estado, $this->palabra);
         return Database::executeRow($sql, $params);
     }
 
