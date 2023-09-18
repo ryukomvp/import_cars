@@ -6,6 +6,8 @@ const FORMULARIO_SESION = document.getElementById('formulario-sesion');
 const FORMULARIO_EMPLEADO = document.getElementById('formulario-emp');
 // Constante para acceder al formulario de registro para el primer usuario.
 const FORMULARIO_USUARIO = document.getElementById('formulario-us');
+// Constante para acceder al formulario de recuperación de clave.
+const FORMULARIO_RECUPERACION = document.getElementById('formulario-us');
 
 
 // Método manejador de eventos para cuando el documento ha cargado.
@@ -89,6 +91,30 @@ FORMULARIO_USUARIO.addEventListener('submit', async (event) => {
     const FORM = new FormData(FORMULARIO_USUARIO);
     // Petición para registrar el primer usuario.
     const JSON = await dataFetch(USUARIO_API, 'registrarPrimerUsuario', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se notifica que el primer usuario ha sido registrado exitosamente y se redirige al inicio de sesión
+        sweetAlert(1, JSON.message, true, 'index.html');
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+});
+
+function abrirRecuperacion() {
+    // Se oculta el formulario para iniciar sesión.
+    document.getElementById('ingresar-us').classList.add('hidden');
+    // Se muestra el formulario para recuperar clave.
+    document.getElementById('recuperacion-clave').classList.remove('hidden');
+}
+
+// Método manejador de eventos para cuando se envía el formulario de inicio de sesión.
+FORMULARIO_RECUPERACION.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(FORMULARIO_RECUPERACION);
+    // Petición para registrar el primer usuario.
+    const JSON = await dataFetch(USUARIO_API, 'recuperacionClave', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se notifica que el primer usuario ha sido registrado exitosamente y se redirige al inicio de sesión
