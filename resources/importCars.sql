@@ -195,7 +195,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
 	idusuario INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     nombreus VARCHAR(50) NOT NULL UNIQUE,
     contrasenia VARCHAR(150) NOT NULL,
-    fechacontra DATE NULL,
+    fechacontra DATETIME NULL,
     pin VARCHAR(10) NOT NULL,
     idtipousuario INT NOT NULL,
     idempleado INT NOT NULL, 
