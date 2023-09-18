@@ -349,6 +349,56 @@ if (isset($_GET['action'])) {
                     //enviar codigo a la base de datos
                     $usuario->ingresarCodigo($codigoveri);
                     //Aquí enviar por correo el código
+                    $number = array();
+                     $email = $_POST['email'];
+                     $recipient = $usuario->getNombre();
+                     array_push($number, $code);
+                     $mail = new PHPMailer(true);
+                     $mail->isSMTP();
+                     $mail->SMTPAuth = true;
+                     //to view proper logging details for success and error messages
+                     // $mail->SMTPDebug = 1;
+                     $mail->Host = 'smtp.gmail.com';  //gmail SMTP server
+                     $mail->Username = 'importcars044@gmail.com';   //email
+                     $mail->Password = 'hmppxvsafzohqlen';   //16 character obtained from app password created
+                     $mail->Port = 465;                    //SMTP port
+                     $mail->SMTPSecure = "ssl";
+                     //sender information
+                     $mail->setFrom('importcars044@gmail.com', 'importcars_004');
+                     //receiver address and name
+                     $mail->addAddress($email, $recipient);
+                     $mail->isHTML(true);
+                     $mail->Subject = 'Codigo de recuperacion de contrasena';
+                     $mail->Body    = '<body style="background-color:#2B3547";>
+                     <br>
+                     <h1 style="color:white; text-align:center">Su codigo para resetear su contraseña</h1>
+                     <div>
+                         <p style = "color:white; text-align:center";>
+                             Aqui se le presenta el codigode recuperacion de contraseña,
+                             recuerde cambiarla cada cierto tiempo para evitar problemas de seguridad.
+                         </p>
+                     </div>
+                     <br>
+                     <br>
+                     <h2 style="color:white; text-align:center">' . $codigoveri . '</h2>
+                     <br>
+                     <br>
+                     </body>
+                     <footer style="background-color:#010a1b">
+                         <br>
+                         <p style="color:white; text-align:center"> De parte de importcars a usted ' . $recipient . '</p>
+                         <br>
+                     </footer>';
+                     // Send mail   
+                     if ($mail->send()) {
+                         if ($result['dataset'] = [$number, $usuario->getCorreo()]) {
+                             $result['status'] = 1;
+                             $result['message'] = 'correo enviado';
+                         }
+                     } else {
+                         $result['exception'] = 'no fue posible enviar el correo';
+                     }
+                     $mail->smtpClose();
                     $result['status'] = 1;
                     $result['message'] = 'Credenciales correctas, revise su correo para continuar';
                     $_SESSION['idusuario_sfa'] = $usuario->getId();
