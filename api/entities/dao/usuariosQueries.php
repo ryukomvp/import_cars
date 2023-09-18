@@ -106,7 +106,7 @@ class UsuariosQueries
 
     public function leerUnRegistro()
     {
-        $sql = 'SELECT idusuario, u.nombreus usuario, contrasenia, pin, idtipousuario, idempleado, e.nombreemp empleado, estadousuario
+        $sql = 'SELECT idusuario, u.nombreus usuario, contrasenia, pin, idtipousuario, idempleado, e.nombreemp empleado, estadousuario, e.correoemp
                 FROM usuarios u INNER JOIN empleados e USING(idempleado)
 				WHERE idusuario = ?';
         $params = array($this->id);
