@@ -1,3 +1,6 @@
+
+// Constante para completar la ruta de la API.
+const TIPO_USUARIO_API = 'business/tiposUsuarios.php';
 // Constante para establecer el formulario de buscar.
 const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para establecer el formulario de guardar.
@@ -70,7 +73,7 @@ async function registrosTabla(form = null) {
                 <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
                     <td>${row.usuario}</td>
                     <td>${row.pin}</td>
-                    <td>${row.tipousuario}</td>
+                    <td>${row.nombretipous}</td>
                     <td>${row.empleado}</td>
                     <td>${row.estadousuario}</td>
                     <td>
@@ -114,7 +117,7 @@ function crearRegistro() {
     document.getElementById('clave').disabled = false;
     document.getElementById('confirmar').disabled = false;
     // Se cargan los datos del/los componente/s select 
-    fillSelect(USUARIO_API, 'leerTipos', 'tipo');
+    fillSelect(TIPO_USUARIO_API, 'leerRegistros', 'tipo');
     fillSelect(USUARIO_API, 'leerEmpleados', 'empleado');
     fillSelect(USUARIO_API, 'leerEstados', 'estado');
 }
@@ -151,15 +154,15 @@ async function actualizarRegistro(id) {
         document.getElementById('pin').value = JSON.dataset.pin;
         document.getElementById('clave').value = JSON.dataset.contrasenia;
         document.getElementById('confirmar').value = JSON.dataset.contrasenia;
-        fillSelect(USUARIO_API, 'leerTipos', 'tipo', JSON.dataset.tipousuario);
+        fillSelect(TIPO_USUARIO_API, 'leerRegistros', 'tipo', JSON.dataset.idtipousuario);
         fillSelect(USUARIO_API, 'leerEmpleados', 'empleado', JSON.dataset.idempleado);
         fillSelect(USUARIO_API, 'leerEstados', 'estado', JSON.dataset.estadousuario);
         //Cargar estado que se encuentra en la base de datos si esta activa o no la verificación en dos pasos
-        if (JSON.dataset.verificacion == '1') {
-            document.getElementById('verificacion').checked = 1;
-        } else {
-            document.getElementById('verificacion').checked = 0;
-        }
+        // if (JSON.dataset.verificacion == '1') {
+        //     document.getElementById('verificacion').checked = 1;
+        // } else {
+        //     document.getElementById('verificacion').checked = 0;
+        // }
     } else {
         sweetAlert(2, JSON.exception, false);
     }
