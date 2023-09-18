@@ -19,6 +19,7 @@ class Usuarios extends UsuariosQueries
     protected $verificacion = null;
     protected $intentos = null;
     protected $codigoveri = null;
+    protected $palabra = null;
 
 
     /*
@@ -144,6 +145,16 @@ class Usuarios extends UsuariosQueries
         }
     }
 
+    public function setPalabra($value)
+    {
+        if (Validator::validateAlphabetic($value, 1, 10)) {
+            $this->palabra = password_hash($value, PASSWORD_DEFAULT);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -205,6 +216,11 @@ class Usuarios extends UsuariosQueries
     public function getCodigoveri()
     {
         return $this->codigoveri;
+    }
+
+    public function getPalabra()
+    {
+        return $this->palabra;
     }
 }
 
