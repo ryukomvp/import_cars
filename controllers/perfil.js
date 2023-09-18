@@ -23,6 +23,25 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+// Método manejador de eventos para cuando el documento ha cargado.
+document.addEventListener('DOMContentLoaded', async () => {
+    // Petición para obtener los datos del usuario que ha iniciado sesión.
+    const DATA = await fetchData(USUARIOS_API, 'leerPerfil');
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se inicializan los campos del formulario con los datos del usuario que ha iniciado sesión.
+        document.getElementById('usuario').value = DATA.dataset.usuario;
+        document.getElementById('empleado').value = DATA.dataset.empleado;
+        document.getElementById('tipous').value = DATA.dataset.tipousuario;
+        document.getElementById('cargoemp').value = DATA.dataset.cargo;
+        document.getElementById('correemp').value = DATA.dataset.correoemp;
+        // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
+        M.updateTextFields();
+    } else {
+        sweetAlert(2, DATA.exception, null);
+    }
+});
+
 // Método manejador de eventos para cuando se envía el formulario de cambiar contraseña.
 EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
