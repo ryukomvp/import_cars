@@ -230,7 +230,15 @@ class UsuariosQueries
         $sql = 'UPDATE usuarios SET intentos = intentos + 1 WHERE nombreus = ?';
         $params = array($this->nombre);
         return Database::executeRow($sql, $params);
-    }    
+    }
+    
+    // Método para resetear los intentos de inicio de sesión.
+    public function resetearIntentos()
+    {
+        $sql = 'UPDATE usuarios SET intentos = 0 WHERE nombreus = ?';
+        $params = array($this->nombre);
+        return Database::executeRow($sql, $params);
+    }
 
     //Método para actualizar el codigo enviado al correo
     public function ingresarCodigo($codigoveri)

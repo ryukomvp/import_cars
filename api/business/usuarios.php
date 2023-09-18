@@ -292,9 +292,7 @@ if (isset($_GET['action'])) {
                     $_SESSION['idusuario'] = $usuario->getId();
                     $_SESSION['nombreus'] = $usuario->getNombre();
                     // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
-                    $intentos = 0;
-                    $usuario->setIntentos($intentos);
-                    $usuario->actualizarIntentos();
+                    $usuario->resetearIntentos();
                     $result['status'] = 1;
                 }
                 break;
