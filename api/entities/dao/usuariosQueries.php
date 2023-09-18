@@ -22,6 +22,32 @@ class UsuariosQueries
         }
     }
 
+    public function verificarUsuario($id)
+    {
+        $sql = 'SELECT pin FROM usuarios WHERE idusuario = ?';
+        $params = array($id);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->pin = $data['pin'];
+            $this->id = $id;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function verificarPalabra($palabra)
+    {
+        $sql = 'SELECT palabra FROM usuarios WHERE idusuario = ?';
+        $params = array($this->id);
+        $data = Database::getRow($sql, $params);
+        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
+        if (password_verify($palabra, $data['palabra'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function verificarBloqueo($nombre)
     {
         $sql = "SELECT idusuario FROM usuarios WHERE nombreus = ? AND estadousuario != 'Bloqueado'";
