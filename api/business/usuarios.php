@@ -23,7 +23,7 @@ if (isset($_GET['action'])) {
     $usuario = new Usuarios;
     $empleados = new empleados;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null);
+    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null, 'password' => false);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['idusuario'])) {
         $result['session'] = 1;
@@ -295,12 +295,31 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+
+            case 'verificarCodigo' :
+                if(!$usuario->setId($_SESSION['idusuario_sfa'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                }elseif($usuario->verificarCodigo($_POST['codigoingresado'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Autenticación correcta';
+                    $_SESSION['tiempo_sesion'] = time();
+                    $_SESSION['idusuario'] = $usuario->getId();
+                    $_SESSION['nombreus'] = $usuario->getNombre();
+                    // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
+                    $usuario->resetearIntentos();
+                }else {
+                    $result['exception'] = 'El codigo ingresado es incorrecto.';
+                }
+                break;
             case 'iniciarSesion':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->verificarUsuario($_POST['usuario'])) {
                     $result['exception'] = 'Nombre de usuario incorrecto';
-                } elseif (!$usuario->verificarBloqueo($_POST['usuario'])) {
+                } elseif ($usuario->getEstado() == 'Bloqueado') {
                     $result['exception'] = 'El usuario se encuentra bloqueado, comuniquese con un administrador.';
+                } elseif ($usuario->getDiasClave() > 90) {
+                    $result['password'] = true;
+                    $result['exception'] = 'Clave caducada, debe cambiarla.';
                 } elseif (!$usuario->verificarClave($_POST['clave'])) {
                     if ($usuario->getIntentos() < 2) {
                         if ($usuario->actualizarIntentos()) {
@@ -315,23 +334,15 @@ if (isset($_GET['action'])) {
                             $result['exception'] = Database::getException();
                         }
                     }
-                    // } elseif ($usuario->leerDiasContra() >= 90) {
-                    //     $_SESSION['idusuario'] = $usuario->getId();
-                    //     $_SESSION['clave_caducada'] = $_POST['clave'];
-                    //     $result['clave'] = true;
-                    //     $result['exception'] = 'Su contraseña ha caducado';
                 } else {
                     //generar codigo random
-                    // $codigoveri = rand(10000, 99999);
+                    $codigoveri = rand(10000, 99999);
                     //enviar codigo a la base de datos
-                    // $usuario->ingresarCodigo($codigoveri);
-                    $result['message'] = 'Autenticación correcta';
-                    $_SESSION['tiempo_sesion'] = time();
-                    $_SESSION['idusuario'] = $usuario->getId();
-                    $_SESSION['nombreus'] = $usuario->getNombre();
-                    // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
-                    $usuario->resetearIntentos();
+                    $usuario->ingresarCodigo($codigoveri);
+                    //Aquí enviar por correo el código
                     $result['status'] = 1;
+                    $result['message'] = 'Credenciales correctas, revise su correo para continuar';
+                    $_SESSION['idusuario_sfa'] = $usuario->getId();
                 }
                 break;
             case 'leerGeneros':

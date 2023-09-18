@@ -6,6 +6,8 @@ const FORMULARIO_SESION = document.getElementById('formulario-sesion');
 const FORMULARIO_EMPLEADO = document.getElementById('formulario-emp');
 // Constante para acceder al formulario de registro para el primer usuario.
 const FORMULARIO_USUARIO = document.getElementById('formulario-us');
+// Constante para acceder al formulario de ingreso para el código de la verificacion en dos factores.
+const FORMULARIO_SEGUNDOFACTOR = document.getElementById('formulario-codigo');
 // Constante para acceder al formulario de recuperación de clave.
 const FORMULARIO_RECUPERACION = document.getElementById('formulario-rc');
 
@@ -50,17 +52,34 @@ FORMULARIO_SESION.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_SESION);
     // Petición para iniciar sesión.
-    const JSON = await dataFetch(USUARIO_API, 'iniciarSesion', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (JSON.status) {
-        // Se notifica al usuario que el ingreso al sistema ha sido exitoso y se redirige a la página principal.
-        sweetAlert(1, JSON.message, true, 'dashboard.html');
-    } else{
-        const JSON = await dataFetch(USUARIO_API, 'verificarClaveDias', FORM);
-        if(JSON.status){
-            const FORM = new FormData(FORMULARIO_SESION);
+    if (document.getElementById('codigoingresado').disabled) {
+        const JSON = await dataFetch(USUARIO_API, 'iniciarSesion', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (JSON.status) {
+            // Se notifica al usuario que el ingreso al sistema ha sido exitoso y se redirige a la página principal.
+            sweetAlert(1, JSON.message, true);
+            document.getElementById('usuario').disabled = true;
+            document.getElementById('clave').disabled = true;
+            document.getElementById('codigoingresado').disabled = false;
+        } else {
+            if (JSON.password) {
+                //Aquí mandar a cambiar la contraseña
+            } else {
+                sweetAlert(2, JSON.exception, false);
+            }
+        }
+    } else {
+        // Segundo factor de autenticación
+        const JSON = await dataFetch(USUARIO_API, 'verificarCodigo', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (JSON.status) {
+            // Se notifica al usuario que el ingreso al sistema ha sido exitoso y se redirige a la página principal.
+            sweetAlert(1, JSON.message, true, 'dashboard.html');
+        } else {
+            sweetAlert(2, JSON.exception, false);
         }
     }
+
 });
 
 // Método manejador de eventos para cuando se envía el formulario de inicio de sesión.

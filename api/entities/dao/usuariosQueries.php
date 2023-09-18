@@ -11,11 +11,12 @@ class UsuariosQueries
 
     public function verificarUsuario($nombre)
     {
-        $sql = 'SELECT idusuario FROM usuarios WHERE nombreus = ?';
+        $sql = 'SELECT idusuario, estadousuario, DATEDIFF(CURRENT_DATE, fechacontra) as dias FROM usuarios WHERE nombreus = ?';
         $params = array($nombre);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['idusuario'];
-            $this->nombre = $nombre;
+            $this->estado = $data['estadousuario'];
+            $this->diasclave = $data['dias'];
             return true;
         } else {
             return false;
@@ -42,19 +43,6 @@ class UsuariosQueries
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
         if (password_verify($palabra, $data['palabraclave'])) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function verificarBloqueo($nombre)
-    {
-        $sql = "SELECT idusuario FROM usuarios WHERE nombreus = ? AND estadousuario != 'Bloqueado'";
-        $params = array($nombre);
-        if ($data = Database::getRow($sql, $params)) {
-            $this->id = $data['idusuario'];
-            $this->nombre = $nombre;
             return true;
         } else {
             return false;
@@ -261,28 +249,13 @@ class UsuariosQueries
         return Database::executeRow($sql, $params);
     }
 
-    //Método para verificar si el usuario tiene activa la verificaicion en dos factores y mostrar el modal para el ingreso del codigo
-    public function verificarSegundoFactor()
-    {
-        $sql = 'SELECT verificacion 
-                FROM usuarios
-                WHERE idusuario = ?';
-        $params = array($this->id);
-        $data = Database::getRow($sql, $params);
-        if($data['verificacion' == 1]) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     //Método para verificar si el codigo generado y el ingresado por el usuario coinciden
-    public function verificarCodigo($codigoingresado)
+    public function verificarCodigo($codigo)
     {
         $sql = 'SELECT codigoveri 
                 FROM usuarios
-                WHERE idusuario = ?';
-        $params = array($this->id);
+                WHERE codigoveri = ? AND idusuario = ?';
+        $params = array($codigo, $this->id);
         return Database::getRow($sql, $params);
     }
 
@@ -323,13 +296,6 @@ class UsuariosQueries
         FROM usuarios u INNER JOIN empleados e USING(idempleado)
         WHERE  e.correoemp= ?';
         $params = array($this->correo);
-        return Database::getRow($sql, $params);
-    }
-
-    public function leerDiasContra()
-    {
-        $sql = 'SELECT DATEDIFF(CURRENT_DATE, fecha_clave) as dias FROM usuarios WHERE idusuario = ?';
-        $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 }

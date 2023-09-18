@@ -19,7 +19,9 @@ class Usuarios extends UsuariosQueries
     protected $verificacion = null;
     protected $intentos = null;
     protected $codigoveri = null;
+    protected $codigoingresado = null;
     protected $palabra = null;
+    protected $diasclave = null;
 
 
     /*
@@ -145,6 +147,16 @@ class Usuarios extends UsuariosQueries
         }
     }
 
+    public function setCodigoIngresado($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->setCodigoIngresado = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setPalabra($value)
     {
         if (Validator::validateAlphabetic($value, 1, 10)) {
@@ -218,9 +230,19 @@ class Usuarios extends UsuariosQueries
         return $this->codigoveri;
     }
 
+    public function getCodigoIngresado()
+    {
+        return $this->codigoingresado;
+    }
+
     public function getPalabra()
     {
         return $this->palabra;
+    }
+
+    public function getDiasClave()
+    {
+        return $this->diasclave;
     }
 }
 
