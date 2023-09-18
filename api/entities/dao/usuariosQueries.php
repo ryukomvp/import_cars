@@ -22,7 +22,7 @@ class UsuariosQueries
         }
     }
 
-    public function verificarUsuario($id)
+    public function verificarPin($id)
     {
         $sql = 'SELECT pin FROM usuarios WHERE idusuario = ?';
         $params = array($id);
@@ -221,20 +221,6 @@ class UsuariosQueries
         if ($data = Database::getRow($sql, $params)) {
             $this->idempleado = $data['idempleado'];
             $this->correoemp = $correoemp;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    
-    public function verificarPin($pin)
-    {
-        $sql = 'SELECT idusuario FROM usuarios WHERE pin = ?';
-        $params = array($pin);
-        if ($data = Database::getRow($sql, $params)) {
-            $this->id = $data['idusuario'];
-            $this->pin = $pin;
             return true;
         } else {
             return false;

@@ -321,38 +321,6 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                 }
                 break;
-            case 'verificarContrasenia':
-                $_POST = Validator::validateForm($_POST);
-                // print_r($_POST);
-                if (!preg_match($special_charspattern, $_POST['clave'])) {
-                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
-                } elseif ($_POST['clave'] != $_POST['confirmar']) {
-                    $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
-                } elseif (!$usuario->setClave($_POST['clave'])) {
-                    $result['exception'] = Validator::getPasswordError();
-                } else {
-                    $result['message'] = 'Clave cambiada correctamente';
-                    $usuario->recuperarContrasenia();
-                    $result['status'] = 1;
-                }
-                break;
-            case 'verificarRecu':
-                $_POST = Validator::validateForm($_POST);
-                // print_r($_POST);
-                if (!$usuario->verificarUsuarioEmp($_POST['nombreus'])) {
-                    $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->verificarCorreo($_POST['correoemp'])) {
-                    $result['exception'] = 'Correo incorrecta';
-                } elseif (!$usuario->verificarPin($_POST['pin'])) {
-                    $result['exception'] = 'Pin incorrecto';
-                } else {
-                    $result['message'] = 'Auntenticacion correcta';
-                    $_SESSION['nombreus'] = $usuario->getNombre();
-                    $_SESSION['correoemp'] = $usuario->getCorreo();
-                    $_SESSION['pin'] = $usuario->getPin();
-                    $result['status'] = 1;
-                }
-                break;
             case 'leerGeneros':
                 if ($result['dataset'] = $empleados->leerGeneros()) {
                     $result['status'] = 1;
@@ -361,6 +329,29 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            case 'recuperacionClave':
+                $_POST = Validator::validateForm($_POST);
+                if (!$usuario->verificarUsuario($_POST['nombre'])) {
+                    $result['exception'] = 'Nombre de usuario incorrecto';
+                } elseif (!$usuario->verificarPin($_POST['pin'])) {
+                    $result['exception'] = 'Pin de usuario incorrecto';
+                } elseif (!$usuario->verificarPalabra($_POST['palabra'])) {
+                    $result['exception'] = 'Palabra de usuario incorrecta';
+                } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
+                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                } elseif ($_POST['clave'] != $_POST['confirmar']) {
+                    $result['exception'] = 'Claves diferentes';
+                } elseif (!$usuario->setClave($_POST['clave'])) {
+                    $result['exception'] = Validator::getPasswordError();
+                } elseif ($usuario->cambiarClave()) {
+                    $usuario->resetearIntentos();
+                    $result['status'] = 1;
+                    $result['message'] = 'Cambiar clave correcto tilin :D';
+
+                } else {
+                    $result['exception'] = Database::getException();
                 }
                 break;
             default:

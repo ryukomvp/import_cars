@@ -7,7 +7,7 @@ const FORMULARIO_EMPLEADO = document.getElementById('formulario-emp');
 // Constante para acceder al formulario de registro para el primer usuario.
 const FORMULARIO_USUARIO = document.getElementById('formulario-us');
 // Constante para acceder al formulario de recuperación de clave.
-const FORMULARIO_RECUPERACION = document.getElementById('formulario-us');
+const FORMULARIO_RECUPERACION = document.getElementById('formulario-rc');
 
 
 // Método manejador de eventos para cuando el documento ha cargado.
@@ -115,10 +115,11 @@ FORMULARIO_RECUPERACION.addEventListener('submit', async (event) => {
     const FORM = new FormData(FORMULARIO_RECUPERACION);
     // Petición para registrar el primer usuario.
     const JSON = await dataFetch(USUARIO_API, 'recuperacionClave', FORM);
+    console.log(JSON);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se notifica que el primer usuario ha sido registrado exitosamente y se redirige al inicio de sesión
-        sweetAlert(1, JSON.message, true, 'index.html');
+        sweetAlert(1, JSON.message, false, 'index.html');
     } else {
         sweetAlert(2, JSON.exception, false);
     }
