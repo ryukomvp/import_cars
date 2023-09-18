@@ -11,8 +11,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     const JSON = await dataFetch(USUARIO_API, 'leerUsuarios');
     // Se comprueba si existe una sesión, de lo contrario se sigue con el flujo normal.
     if (JSON.session) {
-        // Se direcciona a la página web de bienvenida.
-        location.href = 'dashboard.html';
+        if (JSON.dataget.verificacion == '1'){
+            sweetAlert(2, 'Tiene activa la verificacion en dos factores', false);
+        } else{
+            // Se direcciona a la página web de bienvenida.
+            location.href = 'dashboard.html';
+        }
     } else if (JSON.status) {
         // Se muestra el formulario para iniciar sesión.
         // document.getElementById('login-form').classList.remove('d-none');
@@ -24,6 +28,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     //     sweetAlert(4, JSON.exception, true);
     // }
 });
+
+//Método para abrir formulario en caso que tenga activo el segundo factor
+
 
 // Método manejador de eventos para cuando se envía el formulario de registro del primer usuario.
 // SIGNUP_FORM.addEventListener('submit', async (event) => {
