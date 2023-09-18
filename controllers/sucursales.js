@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
 BUSCAR_FORMULARIO.addEventListener('submit', (event) => {
+    document.getElementById('ejecutarFormulario').autocomplete = 'off';
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.

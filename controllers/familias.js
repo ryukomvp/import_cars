@@ -15,6 +15,7 @@ const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
 const BTN_ACCION = document.getElementById('accion');
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('ejecutarFormulario').autocomplete = 'off';
     // Llamada a la función para llenar la tabla con los registros disponibles.
     cargarRegistros();
 });
