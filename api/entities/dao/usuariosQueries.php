@@ -306,6 +306,13 @@ class UsuariosQueries
         $params = array($this->correo);
         return Database::getRow($sql, $params);
     }
+
+    public function leerDiasContra()
+    {
+        $sql = 'SELECT DATEDIFF(CURRENT_DATE, fecha_clave) as dias FROM usuarios WHERE idusuario = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
 }
 
 

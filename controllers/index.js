@@ -1,6 +1,7 @@
 const FORMULARIO_SESION = document.getElementById('login-form');
 const EJECUTAR_FORMULARIO = document.getElementById('ejecutarFormulario');
 const RECUPERAR_CLAVE = new Modal(document.getElementById('RecuperarClave'));
+const CAMBIO_CLAVE = new Modal(document.getElementById('CambioContraseña'));
 
 
 
@@ -100,6 +101,23 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
 //         sweetAlert(2, JSON.exception, false, 'dashboard.html');
 //     }
 // });
+
+CAMBIO_CLAVE.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(CAMBIO_CLAVE);
+    // Petición para iniciar sesión.
+    const JSON = await dataFetch(USUARIO_API, 'cambiarClave', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        sweetAlert(1, JSON.message, true);
+        CAMBIO_CLAVE.hide();
+        FORMULARIO_SESION.reset();
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+});
 
 async function RecuperarClave(correo){
     const FORM = new FormData();

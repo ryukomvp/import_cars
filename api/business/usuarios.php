@@ -269,6 +269,11 @@ if (isset($_GET['action'])) {
                             $result['exception'] = Database::getException();
                         }
                     }
+                } elseif ($usuario->leerDiasContra() >= 90) {
+                    $_SESSION['idusuario'] = $usuario->getId();
+                    $_SESSION['clave_caducada'] = $_POST['clave'];
+                    $result['clave'] = true;
+                    $result['exception'] = 'Su contraseña ha caducado'
                 } else {
                     //generar codigo random
                     $codigoveri = rand(10000, 99999);
