@@ -52,33 +52,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Ocurrió un problema al cerrar la sesión';
                 }
                 break;
-            // case 'readProfile':
-            //     if ($result['dataset'] = $usuario->readProfile()) {
-            //         $result['status'] = 1;
-            //     } elseif (Database::getException()) {
-            //         $result['exception'] = Database::getException();
-            //     } else {
-            //         $result['exception'] = 'Usuario inexistente';
-            //     }
-            //     break;
-                // case 'editProfile':
-                //     $_POST = Validator::validateForm($_POST);
-                //     if (!$usuario->setNombres($_POST['nombres'])) {
-                //         $result['exception'] = 'Nombres incorrectos';
-                //     } elseif (!$usuario->setApellidos($_POST['apellidos'])) {
-                //         $result['exception'] = 'Apellidos incorrectos';
-                //     } elseif (!$usuario->setCorreo($_POST['correo'])) {
-                //         $result['exception'] = 'Correo incorrecto';
-                //     } elseif (!$usuario->setAlias($_POST['alias'])) {
-                //         $result['exception'] = 'Alias incorrecto';
-                //     } elseif ($usuario->editProfile()) {
-                //         $result['status'] = 1;
-                //         $_SESSION['alias_usuario'] = $usuario->getAlias();
-                //         $result['message'] = 'Perfil modificado correctamente';
-                //     } else {
-                //         $result['exception'] = Database::getException();
-                //     }
-                //     break;
+            case 'leerPerfil':
+                if ($result['dataset'] = $usuario->leerPerfil()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Usuario inexistente';
+                }
+                break;
             case 'cambiarClave':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_SESSION['idusuario'])) {
@@ -329,7 +311,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             default:
-                $result['exception'] = 'Algo salio mal';
+                $result['exception'] = 'Acción no disponible fuera de la sesión';
                 break;
         }
     }
