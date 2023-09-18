@@ -317,10 +317,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre de usuario incorrecto';
                 } elseif ($usuario->getEstado() == 'Bloqueado') {
                     $result['exception'] = 'El usuario se encuentra bloqueado, comuniquese con un administrador.';
-                } elseif ($usuario->getDiasClave() > 90) {
-                    $result['password'] = true;
-                    $result['exception'] = 'Clave caducada, debe cambiarla.';
-                } elseif (!$usuario->verificarClave($_POST['clave'])) {
+                }  elseif (!$usuario->verificarClave($_POST['clave'])) {
                     if ($usuario->getIntentos() < 2) {
                         if ($usuario->actualizarIntentos()) {
                             $result['exception'] = 'Clave incorrecta';

@@ -252,11 +252,16 @@ class UsuariosQueries
     //Método para verificar si el codigo generado y el ingresado por el usuario coinciden
     public function verificarCodigo($codigo)
     {
-        $sql = 'SELECT codigoveri 
+        $sql = 'SELECT codigoveri, nombreus
                 FROM usuarios
                 WHERE codigoveri = ? AND idusuario = ?';
         $params = array($codigo, $this->id);
-        return Database::getRow($sql, $params);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->nombre = $data['nombreus'];
+            return true;
+        } else {
+            return false;
+        }
     }
 
     // Método para leer el perfil del usuario.

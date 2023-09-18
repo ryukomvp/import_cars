@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         setInterval(() => {
             checkSessionTime();
         }, 300000);
-        if (JSON.session) {
-            setInterval(() => {
-                verificarClaveDias();
-            });
+        // if (JSON.session) {
+            // setInterval(() => {
+            //     verificarClaveDias();
+            // });
             if (JSON.status) {
                 // Inserción de header
                 HEADER.innerHTML = `
@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 location.href = 'index.html'
             }
         };
-    }
+    // }
 })
 
 async function checkSessionTime() {
