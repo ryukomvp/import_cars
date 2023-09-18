@@ -10,6 +10,9 @@ const FORMULARIO_USUARIO = document.getElementById('formulario-us');
 const FORMULARIO_SEGUNDOFACTOR = document.getElementById('formulario-codigo');
 // Constante para acceder al formulario de recuperación de clave.
 const FORMULARIO_RECUPERACION = document.getElementById('formulario-rc');
+// Constante para acceder al formulario cambio de clave.
+const FORMULARIO_CAMBIO_CLAVE = document.getElementById('formulario-psw');
+
 
 
 
@@ -61,12 +64,14 @@ FORMULARIO_SESION.addEventListener('submit', async (event) => {
             document.getElementById('usuario').disabled = true;
             document.getElementById('clave').disabled = true;
             document.getElementById('codigoingresado').disabled = false;
+        } 
+        if (JSON.password) {
+            sweetAlert(4, 'Retorna true, hola.', false);
+            document.getElementById('ingresar-us').classList.add('hidden');
+            //Aquí mandar a cambiar la contraseña
+            document.getElementById('cambiar-clv').classList.remove('hidden');
         } else {
-            if (JSON.password) {
-                //Aquí mandar a cambiar la contraseña
-            } else {
-                sweetAlert(2, JSON.exception, false);
-            }
+            sweetAlert(2, JSON.exception, false);
         }
     } else {
         // Segundo factor de autenticación
@@ -80,6 +85,22 @@ FORMULARIO_SESION.addEventListener('submit', async (event) => {
         }
     }
 
+});
+
+FORMULARIO_CAMBIO_CLAVE.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(FORMULARIO_CAMBIO_CLAVE);
+    // Petición para registrar el primer usuario.
+    const JSON = await dataFetch(USUARIO_API, 'cambiarClaveDia', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se notifica que el primer usuario ha sido registrado exitosamente y se redirige al inicio de sesión
+        sweetAlert(1, JSON.message, true, 'index.html');
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
 });
 
 // Método manejador de eventos para cuando se envía el formulario de inicio de sesión.

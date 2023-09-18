@@ -37,17 +37,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Su sesión ha caducado por inactividad';
                 }
                 break;
-            case 'verificarClaveDias':
-                if (!$usuario->leerDiasContra() >= 90) {
-                        $_SESSION['idusuario'] = $usuario->getId();
-                        $_SESSION['clave_caducada'] = $_POST['contrasenia'];
-                        $result['contrasenia'] = true;
-                        $result['exception'] = 'Su contraseña ha caducado';
-                } else {
-
-                    $result['exception'] = 'Su sesión esta god';
-                }
-                break;
             case 'capturarUsuario':
                 if (isset($_SESSION['nombreus'])) {
                     $result['status'] = 1;
@@ -243,6 +232,26 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Debe crear un usuario para comenzar';
                 }
                 break;
+                case 'cambiarClaveDia':
+                    $_POST = Validator::validateForm($_POST);
+                    print_r($_POST);
+                    if (!$usuario->verificarClaveDia($_POST['claved'])) {
+                        $result['exception'] = 'Clave actual incorrecto';
+                    } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
+                        $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                    } elseif ($_POST['clave'] != $_POST['confirmar']) {
+                        $result['exception'] = 'Claves diferentes';
+                    } elseif (!$usuario->setClave($_POST['clave'])) {
+                        $result['exception'] = Validator::getPasswordError();
+                    } elseif ($usuario->cambiarClaveDia()) {
+                        $usuario->resetearIntentos();
+                        $result['status'] = 1;
+                        $result['message'] = 'Cambiar clave correcto tilin :D';
+    
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
             case 'registrarPrimerEmpleado':
                 $_POST = Validator::validateForm($_POST);
                 if (!$empleados->setNombre($_POST['nombre'])) {
@@ -317,7 +326,10 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Nombre de usuario incorrecto';
                 } elseif ($usuario->getEstado() == 'Bloqueado') {
                     $result['exception'] = 'El usuario se encuentra bloqueado, comuniquese con un administrador.';
-                }  elseif (!$usuario->verificarClave($_POST['clave'])) {
+                } elseif ($usuario->getDiasClave() > 90) {
+                    $result['password'] = true;
+                    $result['exception'] = 'Clave caducada, debe cambiarla.';
+                } elseif (!$usuario->verificarClave($_POST['clave'])) {
                     if ($usuario->getIntentos() < 2) {
                         if ($usuario->actualizarIntentos()) {
                             $result['exception'] = 'Clave incorrecta';

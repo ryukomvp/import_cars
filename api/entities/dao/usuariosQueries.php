@@ -23,6 +23,31 @@ class UsuariosQueries
         }
     }
 
+    public function cambiarClaveDia()
+    {
+        $sql = 'UPDATE usuarios SET contrasenia = ? WHERE idusuario = ?';
+        $params = array($this->clave);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->id = $data['idusuario'];
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function verificarClaveDia($password)
+    {
+        $sql = 'SELECT contrasenia FROM usuarios WHERE idusuario = ?';
+        $params = array($this->id);
+        $data = Database::getRow($sql, $params);
+        if (password_verify($password, $data['contrasenia'])) {
+            $this->id = $data['idusuario'];
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function verificarPin($nombre)
     {
         $sql = 'SELECT pin FROM usuarios WHERE nombreus = ?';
