@@ -13,7 +13,7 @@ if (isset($_GET['action'])) {
     if (isset($_SESSION['idUsuario']) or !isset($_SESSION['idUsuario'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
-            case 'leerTodo':
+            case 'leerRegistros':
                 if ($result['dataset'] = $productos->leerTodo()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
@@ -23,7 +23,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'buscarProducto':
+            case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
                 if ($_POST['search'] == '') {
                     $result['dataset'] = $productos->leerTodo();
@@ -37,7 +37,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'crearProducto':
+            case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$productos->setNombre($_POST['nombre'])) {
                     $result['exception'] = 'Nombre incorrecto';
@@ -88,7 +88,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();;
                 }
                 break;
-            case 'leerUnProducto':
+            case 'leerUnRegistro':
                 if (!$productos->setId($_POST['id'])) {
                     $result['exception'] = 'Producto incorrecto';
                 } elseif ($result['dataset'] = $productos->leerUnProducto()) {
@@ -99,7 +99,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Producto inexistente';
                 }
                 break;
-            case 'actualizarProducto':
+            case 'actualizarRegistro':
                 $_POST = Validator::validateForm($_POST);
                 if (!$productos->setId($_POST['id'])) {
                     $result['exception'] = 'Producto incorrecto';
@@ -150,7 +150,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'eliminarProducto':
+            case 'eliminarRegistro':
                 if (!$productos->setId($_POST['idproducto'])) {
                     $result['exception'] = 'Id incorrecto';
                 } elseif (!$data = $productos->leerUnProducto()) {
