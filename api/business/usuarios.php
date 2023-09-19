@@ -331,11 +331,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Clave caducada, debe cambiarla.';
                 } elseif (!$usuario->verificarClave($_POST['clave'])) {
                     if ($usuario->getIntentos() < 2) {
-                        if ($usuario->actualizarIntentos()) {
+                            $usuario->actualizarIntentos();
                             $result['exception'] = 'Clave incorrecta';
-                        } else {
-                            $result['exception'] = Database::getException();
-                        }
                     } else {
                         if ($usuario->bloquearUsuario()) {
                             $result['exception'] = 'Excedio el número de intentos para iniciar sesión, el usuario ha sido bloqueado.';
@@ -401,7 +398,7 @@ if (isset($_GET['action'])) {
                      }
                      $mail->smtpClose();
                     $result['status'] = 1;
-                    $result['exception'] = 'Autenticación correcta';
+                    $result['message'] = 'Autenticación correcta';
                     $_SESSION['idusuario_sfa'] = $usuario->getId();
                 }
                 break;

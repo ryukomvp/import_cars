@@ -65,12 +65,12 @@ FORMULARIO_SESION.addEventListener('submit', async (event) => {
             document.getElementById('clave').disabled = true;
             document.getElementById('codigoingresado').disabled = false;
         } 
-        if (JSON.password) {
-            sweetAlert(4, 'Retorna true, hola.', false);
-            document.getElementById('ingresar-us').classList.add('hidden');
-            //Aquí mandar a cambiar la contraseña
-            document.getElementById('cambiar-clv').classList.remove('hidden');
-        } else {
+        // if (JSON.password) {
+        //     sweetAlert(1, JSON.message, true);
+        //     document.getElementById('ingresar-us').classList.add('hidden');
+        //     //Aquí mandar a cambiar la contraseña
+        //     document.getElementById('cambiar-clv').classList.remove('hidden');
+        else {
             sweetAlert(2, JSON.exception, false);
         }
     } else {
