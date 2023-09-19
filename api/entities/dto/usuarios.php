@@ -150,7 +150,7 @@ class Usuarios extends UsuariosQueries
     public function setCodigoIngresado($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->setCodigoIngresado = $value;
+            $this->codigoingresado = $value;
             return true;
         } else {
             return false;
@@ -166,6 +166,7 @@ class Usuarios extends UsuariosQueries
             return false;
         }
     }
+
 
     /*
     *   Métodos para obtener valores de los atributos.
@@ -244,5 +245,6 @@ class Usuarios extends UsuariosQueries
     {
         return $this->diasclave;
     }
+
 }
 
