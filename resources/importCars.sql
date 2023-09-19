@@ -401,6 +401,21 @@ CREATE TABLE IF NOT EXISTS detallestransacciones (
     REFERENCES encabezadostransacciones(idencatransaccion) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
+CREATE TABLE IF NOT EXISTS bitacoras( 
+    idbitacora INT PRIMARY KEY AUTO_INCREMENT NOT NULL, 
+    mensaje VARCHAR(200) NOT NULL ,
+    fechabitacora DATETIME NOT NULL
+);
+
+DELIMITER $$
+CREATE TRIGGER bitacoraUsuario AFTER UPDATE ON usuarios
+FOR EACH ROW 
+BEGIN
+INSERT INTO bitacoras(mensaje, fechabitacora)
+VALUES('EL usuario fue modificado', CURRENT_DATE);
+END $$
+DELIMITER ;
+
 /*inserciones de datos*/
 
 INSERT INTO paisesDeOrigen(pais) VALUES
