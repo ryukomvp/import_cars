@@ -13,9 +13,6 @@ const FORMULARIO_RECUPERACION = document.getElementById('formulario-rc');
 // Constante para acceder al formulario cambio de clave.
 const FORMULARIO_CAMBIO_CLAVE = document.getElementById('formulario-psw');
 
-
-
-
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
     // Petición para consultar los empleados registrados.
@@ -61,9 +58,17 @@ FORMULARIO_SESION.addEventListener('submit', async (event) => {
         if (JSON.status) {
             // Se notifica al usuario que el ingreso al sistema ha sido exitoso y se redirige a la página principal.
             sweetAlert(1, JSON.message, true);
-            document.getElementById('usuario').disabled = true;
-            document.getElementById('clave').disabled = true;
+            // Se ocultan los campos del primer paso, ingresar credenciales.
+            document.getElementById('usuario').classList.add('hidden');
+            document.getElementById('clave').classList.add('hidden');
+            document.getElementById('uslabel').classList.add('hidden');
+            document.getElementById('clavlabel').classList.add('hidden');
+
+            document.getElementById('controles').classList.add('hidden');
+            // Se muestran los campos del segundo paso, ingresar código de verificación.
+            document.getElementById('codigoingresado').classList.remove('hidden');
             document.getElementById('codigoingresado').disabled = false;
+            document.getElementById('codlabel').classList.remove('hidden');
         } 
         // if (JSON.password) {
         //     sweetAlert(1, JSON.message, true);
