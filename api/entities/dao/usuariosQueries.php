@@ -256,8 +256,8 @@ class UsuariosQueries
     // Método para actualizar los intentos de inicio de sesión.
     public function actualizarIntentos()
     {
-        $sql = 'UPDATE usuarios SET intentos = intentos + 1 WHERE nombreus = ?';
-        $params = array($this->nombre);
+        $sql = 'UPDATE usuarios SET intentos = intentos + 1 WHERE idusuario = ?';
+        $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
     
