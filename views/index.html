@@ -29,25 +29,26 @@
                     <form method="post" id="formulario-sesion" class="space-y-4 md:space-y-6" action="#">
                         <!-- textbox para ingresar usuario -->
                         <div>
-                            <label for="usuario" class="block mb-2 text-sm font-medium text-white">Usuario</label>
+                            <label id="uslabel" for="usuario" class="block mb-2 text-sm font-medium text-white">Usuario</label>
                             <input type="text" name="usuario" id="usuario"
                                 class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                 placeholder="Ingrese su usuario" required="" autocomplete="off">
                         </div>
+                        <!-- Ingresar clave -->
                         <div>
-                            <label for="clave" class="block mb-2 text-sm font-medium text-white">Contraseña</label>
+                            <label id="clavlabel" for="clave" class="block mb-2 text-sm font-medium text-white">Contraseña</label>
                             <input type="password" name="clave" id="clave"
                                 class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                 placeholder="Ingrese su contraseña" required="" autocomplete="off">
                         </div>                             
                         <!--Input codigo a ingresar-->
                         <div>
-                           <label for="codigoingresado" class="block mb-2 text-sm font-medium text-white">Ingresar codigo:</label>
+                           <label id="codlabel" for="codigoingresado" class="block mb-2 text-sm font-medium text-white hidden">Ingresar codigo:</label>
                            <input type="number" id="codigoingresado" name="codigoingresado"
-                               class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                               class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5 hidden"
                                placeholder="Código de verificación" disabled autocomplete="off">
                        </div>
-                        <div class="flex items-center justify-between">
+                        <div id="controles" class="flex items-center justify-between">
                             <!-- checkbox para recordar sesión -->
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
@@ -173,7 +174,6 @@
                 </form>
             </div>
         </div>
-
         <!-- formulario para registrar el primer usuario -->
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 hidden" id="registrar-us">
             <div class="py-4 rounded-lg ring-1 ring-azul shadow-2xl shadow-black">
