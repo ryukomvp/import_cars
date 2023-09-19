@@ -11,12 +11,16 @@ class UsuariosQueries
 
     public function verificarUsuario($nombre)
     {
-        $sql = 'SELECT idusuario, estadousuario, DATEDIFF(CURRENT_DATE, fechacontra) as dias FROM usuarios WHERE nombreus = ?';
+        $sql = 'SELECT usuarios.idusuario, usuarios.estadousuario, empleados.correoemp, empleados.nombreemp, DATEDIFF(CURRENT_DATE, usuarios.fechacontra) as dias 
+                FROM usuarios INNER JOIN empleados USING(idempleado)
+                WHERE nombreus = ?';
         $params = array($nombre);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['idusuario'];
             $this->estado = $data['estadousuario'];
             $this->diasclave = $data['dias'];
+            $this->correoemp = $data['correoemp'];
+            $this->nombreempleado = $data['nombreemp'];
             return true;
         } else {
             return false;
@@ -272,6 +276,22 @@ class UsuariosQueries
                 WHERE idusuario = ?';
         $params = array($codigoveri, $this->id);
         return Database::executeRow($sql, $params);
+    }
+
+    public function verificarEnviarCorreo($nombre)
+    {
+        $sql = 'SELECT empleados.correoemp
+        FROM empleados
+        INNER JOIN usuarios ON empleados.idempleado = usuarios.idempleado
+        WHERE 	nombreus = ?';
+        $params = array($nombre);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->nombre = $data['nombreus'];
+            $this->correoemp = $correoemp;
+            return true;
+        } else {
+            return false;
+        }
     }
 
     //Método para verificar si el codigo generado y el ingresado por el usuario coinciden

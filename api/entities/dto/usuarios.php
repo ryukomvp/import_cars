@@ -13,6 +13,7 @@ class Usuarios extends UsuariosQueries
     protected $pin = null;
     protected $tipo = null;
     protected $empleado = null;
+    protected $nombreempleado = null;    
     protected $estado = null;
     protected $correoemp = null;
     protected $idempleado = null;
@@ -243,6 +244,11 @@ class Usuarios extends UsuariosQueries
     public function getDiasClave()
     {
         return $this->diasclave;
+    }
+
+    public function getNombreEmpleado()
+    {
+        return $this->nombreempleado;
     }
 }
 

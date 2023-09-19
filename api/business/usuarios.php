@@ -344,15 +344,17 @@ if (isset($_GET['action'])) {
                         }
                     }
                 } else {
+                    
                     //generar codigo random
                     $codigoveri = rand(10000, 99999);
                     //enviar codigo a la base de datos
                     $usuario->ingresarCodigo($codigoveri);
+                    
                     //Aquí enviar por correo el código
                     $number = array();
-                     $email = $_POST['email'];
-                     $recipient = $usuario->getNombre();
-                     array_push($number, $code);
+                     $email = $_SESSION['correoemp'] = $usuario->getCorreo();
+                     $recipient = $_SESSION['nombreemp'] = $usuario->getNombreEmpleado();
+                     array_push($number, $codigoveri);
                      $mail = new PHPMailer(true);
                      $mail->isSMTP();
                      $mail->SMTPAuth = true;
@@ -371,11 +373,10 @@ if (isset($_GET['action'])) {
                      $mail->Subject = 'Codigo de recuperacion de contrasena';
                      $mail->Body    = '<body style="background-color:#2B3547";>
                      <br>
-                     <h1 style="color:white; text-align:center">Su codigo para resetear su contraseña</h1>
+                     <h1 style="color:white; text-align:center">Su codigo para ingresar al sistema</h1>
                      <div>
                          <p style = "color:white; text-align:center";>
-                             Aqui se le presenta el codigode recuperacion de contraseña,
-                             recuerde cambiarla cada cierto tiempo para evitar problemas de seguridad.
+                             Aqui se le presenta el codigo para su ingreso al sistema.
                          </p>
                      </div>
                      <br>
@@ -391,7 +392,7 @@ if (isset($_GET['action'])) {
                      </footer>';
                      // Send mail   
                      if ($mail->send()) {
-                         if ($result['dataset'] = [$number, $usuario->getCorreo()]) {
+                         if ($result['dataset'] = [$number, $_SESSION['correoemp'] = $usuario->getCorreo()]) {
                              $result['status'] = 1;
                              $result['message'] = 'correo enviado';
                          }
@@ -400,7 +401,7 @@ if (isset($_GET['action'])) {
                      }
                      $mail->smtpClose();
                     $result['status'] = 1;
-                    $result['message'] = 'Credenciales correctas, revise su correo para continuar';
+                    $result['exception'] = 'Autenticación correcta';
                     $_SESSION['idusuario_sfa'] = $usuario->getId();
                 }
                 break;
