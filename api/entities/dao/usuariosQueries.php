@@ -67,8 +67,8 @@ class UsuariosQueries
 
     public function verificarPalabra($palabra)
     {
-        $sql = 'SELECT palabraclave FROM usuarios WHERE nombreus = ?';
-        $params = array($this->nombre);
+        $sql = 'SELECT palabraclave FROM usuarios WHERE idusuario = ?';
+        $params = array($this->id);
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
         if (password_verify($palabra, $data['palabraclave'])) {
