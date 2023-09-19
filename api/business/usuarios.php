@@ -323,7 +323,7 @@ if (isset($_GET['action'])) {
             case 'iniciarSesion':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->verificarUsuario($_POST['usuario'])) {
-                    $result['exception'] = 'Nombre de usuario incorrecto';
+                    $result['exception'] = 'Credenciales incorrectas';
                 } elseif ($usuario->getEstado() == 'Bloqueado') {
                     $result['exception'] = 'El usuario se encuentra bloqueado, comuniquese con un administrador.';
                 } elseif ($usuario->getDiasClave() > 90) {
@@ -332,7 +332,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$usuario->verificarClave($_POST['clave'])) {
                     if ($usuario->getIntentos() < 2) {
                             $usuario->actualizarIntentos();
-                            $result['exception'] = 'Clave incorrecta';
+                            $result['exception'] = 'Credenciales incorrectas';
                     } else {
                         if ($usuario->bloquearUsuario()) {
                             $result['exception'] = 'Excedio el número de intentos para iniciar sesión, el usuario ha sido bloqueado.';
