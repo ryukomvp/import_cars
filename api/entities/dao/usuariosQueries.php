@@ -264,7 +264,7 @@ class UsuariosQueries
     // Método para resetear los intentos de inicio de sesión.
     public function resetearIntentos()
     {
-        $sql = 'UPDATE usuarios SET intentos = 0 WHERE nombreus = ?';
+        $sql = 'UPDATE usuarios SET intentos = 0 WHERE idusuario = ?';
         $params = array($this->nombre);
         return Database::executeRow($sql, $params);
     }
