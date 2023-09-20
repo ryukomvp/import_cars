@@ -265,7 +265,7 @@ class UsuariosQueries
     public function resetearIntentos()
     {
         $sql = 'UPDATE usuarios SET intentos = 0 WHERE idusuario = ?';
-        $params = array($this->nombre);
+        $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
 
