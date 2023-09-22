@@ -71,7 +71,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Clave actual incorrecta';
                 } elseif (!preg_match($special_charspattern, $_POST['clave-nueva'])) {
                     $result['exception'] = 'La clave debe contener al menos un carácter especial';
-                } elseif ($_POST['clave-nueva'] != $_POST['clave-nueva']) {
+                } elseif ($_POST['clave-nueva'] != $_POST['clave-actual']) {
                     $result['exception'] = 'La clave nueva debe ser diferente a la clave actual';
                 } elseif ($_POST['clave-nueva'] != $_POST['clave-confirmar']) {
                     $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
