@@ -284,8 +284,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Empleado incorrecto';
                 } elseif (!$usuario->setEstado('Activo')) {
                     $result['exception'] = 'Estado incorrecto';
-                } elseif (!$usuario->setPalabra('palabra')) {
-                    $result['exception'] = 'Palabra incorrecto';
                 } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
                     $result['exception'] = 'La clave debe contener al menos un carácter especial';
                 } elseif ($_POST['clave'] != $_POST['confirmar']) {
