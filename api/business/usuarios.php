@@ -365,7 +365,7 @@ if (isset($_GET['action'])) {
                         <footer style="background-color:#11468F">
                             <br>
                             <p style="color:white">⚠ Si usted no ha solicitado un proceso de inicio de sesión o este usuario no le pertenece por favor, intente comunicarse con un administrador. ⚠</p>
-                            <p style="color:white">Tenga un buen dia :D</p>
+                            <p style="color:white">Tenga un buen dia :D atte. Import Cars</p>
                             <br>
                         </footer>
                     </body>';
