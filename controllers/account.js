@@ -14,11 +14,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         setInterval(() => {
             checkSessionTime();
         }, 300000);
-        // if (JSON.session) {
-            // setInterval(() => {
-            //     verificarClaveDias();
-            // });
+        
             if (JSON.status) {
+                console.log(JSON.permissions);
                 // Inserción de header
                 HEADER.innerHTML = `
             <!-- drawer component -->
@@ -72,7 +70,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </button>
                             <!-- id="dropdown-inventory" es el buscador para poder conectar los dropdowns con los debidos botenes -->
                             <ul id="dropdown-inventory" class="hidden py-2 space-y-2">
-                                <li>
+                                <li class="${JSON.permissions.productos ? '' : 'hidden'}">
                                     <a href="productos.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Productos y relacionados</a>
                                 </li>

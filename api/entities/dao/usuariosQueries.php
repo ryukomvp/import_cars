@@ -291,18 +291,28 @@ class UsuariosQueries
     //Método para verificar si el codigo generado y el ingresado por el usuario coinciden
     public function verificarCodigo($codigo)
     {
-        $sql = 'SELECT codigoveri, nombreus
+        $sql = 'SELECT codigoveri, nombreus, idtipousuario
                 FROM usuarios
                 WHERE codigoveri = ? AND idusuario = ?';
         $params = array($codigo, $this->id);
         if ($data = Database::getRow($sql, $params)) {
             $this->nombre = $data['nombreus'];
+            $this->tipo = $data['idtipousuario'];
             return true;
         } else {
             return false;
         }
     }
 
+    //Leer el tipo de usuario
+    public function leerTipoUs()
+    {
+        $sql = 'SELECT idtipousuario,nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios
+                FROM tiposusuarios INNER JOIN usuarios USING(idtipousuario)
+				WHERE idusuario = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
     // Método para leer el perfil del usuario.
     public function leerPerfil()
     {

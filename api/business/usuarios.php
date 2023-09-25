@@ -23,7 +23,7 @@ if (isset($_GET['action'])) {
     $usuario = new Usuarios;
     $empleados = new empleados;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'username' => null, 'password' => false);
+    $result = array('status' => 0, 'session' => 0, 'message' => null, 'exception' => null, 'dataset' => null, 'password' => false, 'permissions' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     if (isset($_SESSION['idusuario'])) {
         $result['session'] = 1;
@@ -38,12 +38,12 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'capturarUsuario':
-                if (isset($_SESSION['nombreus'])) {
+                if (!$usuario->setId($_SESSION['idusuario'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif ($result['permissions'] = $usuario->leerTipoUs()) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['nombreus'];
-                    // $result['usertype']  = $_SESSION['idtipousuario'];
                 } else {
-                    $result['exception'] = 'Nombre de usuario indefinido';
+                    $result['exception'] = 'Tipo de usuario inexistente';
                 }
                 break;
             case 'cerrarSesion':
@@ -181,15 +181,15 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-            case 'leerTipos':
-                if ($result['dataset'] = $usuario->leerTipos()) {
-                    $result['status'] = 1;
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
+                // case 'leerTipos':
+                //     if ($result['dataset'] = $usuario->leerTipos()) {
+                //         $result['status'] = 1;
+                //     } elseif (Database::getException()) {
+                //         $result['exception'] = Database::getException();
+                //     } else {
+                //         $result['exception'] = 'No hay datos registrados';
+                //     }
+                //     break;
             case 'leerEmpleados':
                 if ($result['dataset'] = $usuario->leerEmpleados()) {
                     $result['status'] = 1;
@@ -316,6 +316,7 @@ if (isset($_GET['action'])) {
                     $_SESSION['tiempo_sesion'] = time();
                     $_SESSION['idusuario'] = $usuario->getId();
                     $_SESSION['nombreus'] = $usuario->getNombre();
+                    $_SESSION['idtipousuario'] = $usuario->getTipo();
                     // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
                     $usuario->resetearIntentos();
                 } else {
@@ -334,8 +335,8 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Clave caducada, debe cambiarla.';
                 } elseif (!$usuario->verificarClave($_POST['clave'])) {
                     if ($usuario->getIntentos() < 2) {
-                            $usuario->actualizarIntentos();
-                            $result['exception'] = 'Credenciales incorrectas';
+                        $usuario->actualizarIntentos();
+                        $result['exception'] = 'Credenciales incorrectas';
                     } else {
                         if ($usuario->bloquearUsuario()) {
                             $result['exception'] = 'Excedio el número de intentos para iniciar sesión, el usuario ha sido bloqueado.';
@@ -399,8 +400,6 @@ if (isset($_GET['action'])) {
                         $result['exception'] = 'no fue posible enviar el correo';
                     }
                     $mail->smtpClose();
-                    // $result['status'] = 1;
-                    // $result['message'] = 'Autenticación correcta';   
                 }
                 break;
             case 'leerGeneros':
