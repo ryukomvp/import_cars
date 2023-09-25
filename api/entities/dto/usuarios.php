@@ -1,5 +1,6 @@
 <?php
 require_once('../helpers/validator.php');
+require_once('../helpers/methods.php');
 require_once('../entities/dao/usuariosQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad USUARIO.
