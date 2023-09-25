@@ -61,8 +61,8 @@ class UsuariosQueries
 
     public function verificarPalabra($palabra)
     {
-        $sql = 'SELECT palabraclave FROM usuarios WHERE nombreus = ?';
-        $params = array($this->nombre);
+        $sql = 'SELECT palabraclave FROM usuarios WHERE idusuario = ?';
+        $params = array($this->id);
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
         if (password_verify($palabra, $data['palabraclave'])) {
@@ -258,8 +258,8 @@ class UsuariosQueries
     // Método para resetear los intentos de inicio de sesión.
     public function resetearIntentos()
     {
-        $sql = 'UPDATE usuarios SET intentos = 0 WHERE nombreus = ?';
-        $params = array($this->nombre);
+        $sql = 'UPDATE usuarios SET intentos = 0 WHERE idusuario = ?';
+        $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
 

@@ -71,7 +71,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Clave actual incorrecta';
                 } elseif (!preg_match($special_charspattern, $_POST['clave-nueva'])) {
                     $result['exception'] = 'La clave debe contener al menos un carácter especial';
-                } elseif ($_POST['clave-nueva'] != $_POST['clave-nueva']) {
+                } elseif ($_POST['clave-nueva'] != $_POST['clave-actual']) {
                     $result['exception'] = 'La clave nueva debe ser diferente a la clave actual';
                 } elseif ($_POST['clave-nueva'] != $_POST['clave-confirmar']) {
                     $result['exception'] = 'Claves nuevas diferentes, debe confirmar su nueva clave';
@@ -325,7 +325,7 @@ if (isset($_GET['action'])) {
             case 'iniciarSesion':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->verificarUsuario($_POST['usuario'])) {
-                    $result['exception'] = 'Nombre de usuario incorrecto';
+                    $result['exception'] = 'Credenciales incorrectas';
                 } elseif ($usuario->getEstado() == 'Bloqueado') {
                     $result['exception'] = 'El usuario se encuentra bloqueado, comuniquese con un administrador.';
                 } elseif ($usuario->getDiasClave() > 90) {
@@ -334,8 +334,8 @@ if (isset($_GET['action'])) {
                     $result['message'] = 'Clave caducada, debe cambiarla.';
                 } elseif (!$usuario->verificarClave($_POST['clave'])) {
                     if ($usuario->getIntentos() < 2) {
-                        $usuario->actualizarIntentos();
-                        $result['exception'] = 'Clave incorrecta';
+                            $usuario->actualizarIntentos();
+                            $result['exception'] = 'Credenciales incorrectas';
                     } else {
                         if ($usuario->bloquearUsuario()) {
                             $result['exception'] = 'Excedio el número de intentos para iniciar sesión, el usuario ha sido bloqueado.';
