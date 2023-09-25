@@ -51,45 +51,49 @@ FORMULARIO_SESION.addEventListener('submit', async (event) => {
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_SESION);
-    // Petición para iniciar sesión.
-    if (document.getElementById('codigoingresado').disabled) {
-        const JSON = await dataFetch(USUARIO_API, 'iniciarSesion', FORM);
-        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-        if (JSON.status) {
-            // Se notifica al usuario que el ingreso al sistema ha sido exitoso y se redirige a la página principal.
-            sweetAlert(1, JSON.message, true);
-            // Se ocultan los campos del primer paso, ingresar credenciales.
-            document.getElementById('usuario').classList.add('hidden');
-            document.getElementById('clave').classList.add('hidden');
-            document.getElementById('uslabel').classList.add('hidden');
-            document.getElementById('clavlabel').classList.add('hidden');
-
-            document.getElementById('controles').classList.add('hidden');
-            // Se muestran los campos del segundo paso, ingresar código de verificación.
-            document.getElementById('codigoingresado').classList.remove('hidden');
-            document.getElementById('codigoingresado').disabled = false;
-            document.getElementById('codlabel').classList.remove('hidden');
-        } 
-        // if (JSON.password) {
-        //     sweetAlert(1, JSON.message, true);
-        //     document.getElementById('ingresar-us').classList.add('hidden');
-        //     //Aquí mandar a cambiar la contraseña
-        //     document.getElementById('cambiar-clv').classList.remove('hidden');
-        else {
-            sweetAlert(2, JSON.exception, false);
-        }
+    const JSON = await dataFetch(USUARIO_API, 'iniciarSesion', FORM);
+    console.log(JSON);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se notifica al usuario que el ingreso al sistema ha sido exitoso y se redirige a la página principal.
+        sweetAlert(1, JSON.message, true);
+        // Se ocultan los campos del primer paso, ingresar credenciales.
+        // document.getElementById('usuario').classList.add('hidden');
+        // document.getElementById('clave').classList.add('hidden');
+        // document.getElementById('uslabel').classList.add('hidden');
+        // document.getElementById('clavlabel').classList.add('hidden');
+          document.getElementById('ingresar-us').classList.add('hidden');
+          document.getElementById('ingresar-codigo').classList.remove('hidden');
+        // document.getElementById('controles').classList.add('hidden');
+        // Se muestran los campos del segundo paso, ingresar código de verificación.
+        // document.getElementById('codigoingresado').classList.remove('hidden');
+        // document.getElementById('codigoingresado').disabled = false;
+        // document.getElementById('codlabel').classList.remove('hidden');
+    } else if (JSON.password) {
+        sweetAlert(3, JSON.message, true);
+        document.getElementById('ingresar-us').classList.add('hidden');
+        //Aquí mandar a cambiar la contraseña
+        document.getElementById('cambiar-clv').classList.remove('hidden');
     } else {
-        // Segundo factor de autenticación
-        const JSON = await dataFetch(USUARIO_API, 'verificarCodigo', FORM);
-        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-        if (JSON.status) {
-            // Se notifica al usuario que el ingreso al sistema ha sido exitoso y se redirige a la página principal.
-            sweetAlert(1, JSON.message, true, 'dashboard.html');
-        } else {
-            sweetAlert(2, JSON.exception, false);
-        }
+        sweetAlert(2, JSON.exception, false);
     }
+});
 
+FORMULARIO_SEGUNDOFACTOR.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(FORMULARIO_SEGUNDOFACTOR);
+    // Petición para iniciar sesión.
+    // Segundo factor de autenticación
+    const JSON = await dataFetch(USUARIO_API, 'verificarCodigo', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se notifica al usuario que el ingreso al sistema ha sido exitoso y se redirige a la página principal.
+        sweetAlert(1, JSON.message, true, 'dashboard.html');
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
 });
 
 FORMULARIO_CAMBIO_CLAVE.addEventListener('submit', async (event) => {

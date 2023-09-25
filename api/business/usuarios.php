@@ -232,26 +232,27 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Debe crear un usuario para comenzar';
                 }
                 break;
-                case 'cambiarClaveDia':
-                    $_POST = Validator::validateForm($_POST);
-                    print_r($_POST);
-                    if (!$usuario->verificarClaveDia($_POST['claved'])) {
-                        $result['exception'] = 'Clave actual incorrecto';
-                    } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
-                        $result['exception'] = 'La clave debe contener al menos un carácter especial';
-                    } elseif ($_POST['clave'] != $_POST['confirmar']) {
-                        $result['exception'] = 'Claves diferentes';
-                    } elseif (!$usuario->setClave($_POST['clave'])) {
-                        $result['exception'] = Validator::getPasswordError();
-                    } elseif ($usuario->cambiarClaveDia()) {
-                        $usuario->resetearIntentos();
-                        $result['status'] = 1;
-                        $result['message'] = 'Cambiar clave correcto tilin :D';
-    
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                    break;
+            case 'cambiarClaveDia':
+                $_POST = Validator::validateForm($_POST);
+                if (!$usuario->setId($_SESSION['idusuario_clave'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif (!$usuario->verificarClaveDia($_POST['claved'])) {
+                    $result['exception'] = 'Clave actual incorrecto';
+                } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
+                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                } elseif ($_POST['clave'] != $_POST['confirmar']) {
+                    $result['exception'] = 'Claves diferentes';
+                } elseif (!$usuario->setClave($_POST['clave'])) {
+                    $result['exception'] = Validator::getPasswordError();
+                } elseif ($usuario->cambiarClaveDia()) {
+                    unset($_SESSION['idusuario_clave']);
+                    $usuario->resetearIntentos();
+                    $result['status'] = 1;
+                    $result['message'] = 'Cambiar clave correcto tilin :D';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
             case 'registrarPrimerEmpleado':
                 $_POST = Validator::validateForm($_POST);
                 if (!$empleados->setNombre($_POST['nombre'])) {
@@ -305,18 +306,19 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-            case 'verificarCodigo' :
-                if(!$usuario->setId($_SESSION['idusuario_sfa'])) {
+            case 'verificarCodigo':
+                if (!$usuario->setId($_SESSION['idusuario_sfa'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                }elseif($usuario->verificarCodigo($_POST['codigoingresado'])) {
+                } elseif ($usuario->verificarCodigo($_POST['codigoingresado'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
+                    unset($_SESSION['idusuario_sfa']);
                     $_SESSION['tiempo_sesion'] = time();
                     $_SESSION['idusuario'] = $usuario->getId();
                     $_SESSION['nombreus'] = $usuario->getNombre();
                     // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
                     $usuario->resetearIntentos();
-                }else {
+                } else {
                     $result['exception'] = 'El codigo ingresado es incorrecto.';
                 }
                 break;
@@ -328,11 +330,12 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'El usuario se encuentra bloqueado, comuniquese con un administrador.';
                 } elseif ($usuario->getDiasClave() > 90) {
                     $result['password'] = true;
-                    $result['exception'] = 'Clave caducada, debe cambiarla.';
+                    $_SESSION['idusuario_clave'] = $usuario->getId();
+                    $result['message'] = 'Clave caducada, debe cambiarla.';
                 } elseif (!$usuario->verificarClave($_POST['clave'])) {
                     if ($usuario->getIntentos() < 2) {
-                            $usuario->actualizarIntentos();
-                            $result['exception'] = 'Clave incorrecta';
+                        $usuario->actualizarIntentos();
+                        $result['exception'] = 'Clave incorrecta';
                     } else {
                         if ($usuario->bloquearUsuario()) {
                             $result['exception'] = 'Excedio el número de intentos para iniciar sesión, el usuario ha sido bloqueado.';
@@ -341,34 +344,34 @@ if (isset($_GET['action'])) {
                         }
                     }
                 } else {
-                    
+
                     //generar codigo random
                     $codigoveri = rand(10000, 99999);
                     //enviar codigo a la base de datos
                     $usuario->ingresarCodigo($codigoveri);
-                    
+
                     //Aquí enviar por correo el código
                     $number = array();
-                     $email = $_SESSION['correoemp'] = $usuario->getCorreo();
-                     $recipient = $_SESSION['nombreemp'] = $usuario->getNombreEmpleado();
-                     array_push($number, $codigoveri);
-                     $mail = new PHPMailer(true);
-                     $mail->isSMTP();
-                     $mail->SMTPAuth = true;
-                     //to view proper logging details for success and error messages
-                     // $mail->SMTPDebug = 1;
-                     $mail->Host = 'smtp.gmail.com';  //gmail SMTP server
-                     $mail->Username = 'importcars044@gmail.com';   //email
-                     $mail->Password = 'hmppxvsafzohqlen';   //16 character obtained from app password created
-                     $mail->Port = 465;                    //SMTP port
-                     $mail->SMTPSecure = "ssl";
-                     //sender information
-                     $mail->setFrom('importcars044@gmail.com', 'importcars_004');
-                     //receiver address and name
-                     $mail->addAddress($email, $recipient);
-                     $mail->isHTML(true);
-                     $mail->Subject = 'Codigo de recuperacion de contrasena';
-                     $mail->Body    = '<body style="background-color:#2B3547";>
+                    $email = $_SESSION['correoemp'] = $usuario->getCorreo();
+                    $recipient = $_SESSION['nombreemp'] = $usuario->getNombreEmpleado();
+                    array_push($number, $codigoveri);
+                    $mail = new PHPMailer(true);
+                    $mail->isSMTP();
+                    $mail->SMTPAuth = true;
+                    //to view proper logging details for success and error messages
+                    // $mail->SMTPDebug = 1;
+                    $mail->Host = 'smtp.gmail.com';  //gmail SMTP server
+                    $mail->Username = 'importcars044@gmail.com';   //email
+                    $mail->Password = 'hmppxvsafzohqlen';   //16 character obtained from app password created
+                    $mail->Port = 465;                    //SMTP port
+                    $mail->SMTPSecure = "ssl";
+                    //sender information
+                    $mail->setFrom('importcars044@gmail.com', 'importcars_004');
+                    //receiver address and name
+                    $mail->addAddress($email, $recipient);
+                    $mail->isHTML(true);
+                    $mail->Subject = 'Codigo de recuperacion de contrasena';
+                    $mail->Body    = '<body style="background-color:#2B3547";>
                      <br>
                      <h1 style="color:white; text-align:center">Su codigo para ingresar al sistema</h1>
                      <div>
@@ -387,19 +390,17 @@ if (isset($_GET['action'])) {
                          <p style="color:white; text-align:center"> De parte de importcars a usted ' . $recipient . '</p>
                          <br>
                      </footer>';
-                     // Send mail   
-                     if ($mail->send()) {
-                         if ($result['dataset'] = [$number, $_SESSION['correoemp'] = $usuario->getCorreo()]) {
-                             $result['status'] = 1;
-                             $result['message'] = 'correo enviado';
-                         }
-                     } else {
-                         $result['exception'] = 'no fue posible enviar el correo';
-                     }
-                     $mail->smtpClose();
-                    $result['status'] = 1;
-                    $result['message'] = 'Autenticación correcta';
-                    $_SESSION['idusuario_sfa'] = $usuario->getId();
+                    // Send mail   
+                    if ($mail->send()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'correo enviado';
+                        $_SESSION['idusuario_sfa'] = $usuario->getId();
+                    } else {
+                        $result['exception'] = 'no fue posible enviar el correo';
+                    }
+                    $mail->smtpClose();
+                    // $result['status'] = 1;
+                    // $result['message'] = 'Autenticación correcta';   
                 }
                 break;
             case 'leerGeneros':
@@ -428,7 +429,6 @@ if (isset($_GET['action'])) {
                     $usuario->resetearIntentos();
                     $result['status'] = 1;
                     $result['message'] = 'Cambiar clave correcto tilin :D';
-
                 } else {
                     $result['exception'] = Database::getException();
                 }

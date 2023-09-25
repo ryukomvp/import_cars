@@ -29,14 +29,9 @@ class UsuariosQueries
 
     public function cambiarClaveDia()
     {
-        $sql = 'UPDATE usuarios SET contrasenia = ? WHERE idusuario = ?';
-        $params = array($this->clave);
-        if ($data = Database::getRow($sql, $params)) {
-            $this->id = $data['idusuario'];
-            return true;
-        } else {
-            return false;
-        }
+        $sql = 'UPDATE usuarios SET contrasenia = ?, fechacontra = current_timestamp() WHERE idusuario = ?';
+        $params = array($this->clave, $this->id);
+        return Database::executeRow($sql, $params);
     }
 
     public function verificarClaveDia($password)
@@ -45,7 +40,6 @@ class UsuariosQueries
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
         if (password_verify($password, $data['contrasenia'])) {
-            $this->id = $data['idusuario'];
             return true;
         } else {
             return false;
