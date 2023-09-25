@@ -230,7 +230,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->setId($_SESSION['idusuario_clave'])) {
                     $result['exception'] = 'Usuario incorrecto';
-                } elseif (!$usuario->verificarClaveDia($_POST['claved'])) {
+                } elseif (!$usuario->verificarClave($_POST['claved'])) {
                     $result['exception'] = 'Clave actual incorrecto';
                 } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
                     $result['exception'] = 'La clave debe contener al menos un carácter especial';
@@ -238,11 +238,11 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Claves diferentes';
                 } elseif (!$usuario->setClave($_POST['clave'])) {
                     $result['exception'] = Validator::getPasswordError();
-                } elseif ($usuario->cambiarClaveDia()) {
+                } elseif ($usuario->cambiarClave()) {
                     unset($_SESSION['idusuario_clave']);
                     $usuario->resetearIntentos();
                     $result['status'] = 1;
-                    $result['message'] = 'Cambiar clave correcto tilin :D';
+                    $result['message'] = 'Cambio de clave exitoso';
                 } else {
                     $result['exception'] = Database::getException();
                 }
@@ -299,7 +299,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-
             case 'verificarCodigo':
                 if (!$usuario->setId($_SESSION['idusuario_sfa'])) {
                     $result['exception'] = 'Usuario incorrecto';
@@ -314,7 +313,7 @@ if (isset($_GET['action'])) {
                     // Inicio de sesión correcto, los intentos registrados en la base se resetean a 0.
                     $usuario->resetearIntentos();
                 } else {
-                    $result['exception'] = 'El codigo ingresado es incorrecto.';
+                    $result['exception'] = 'El código ingresado es incorrecto.';
                 }
                 break;
             case 'iniciarSesion':
@@ -346,28 +345,28 @@ if (isset($_GET['action'])) {
                     // Se captura la información del receptor.
                     $email = $_SESSION['correoemp'] = $usuario->getCorreo();
                     $recipient = $_SESSION['nombreemp'] = $usuario->getNombreEmpleado();
+                    $usuario = $_SESSION['nombreus'] = $usuario->getNombre();
                     // Asunto del correo.
-                    $asunto = 'Codigo de recuperacion de contrasena';
+                    $asunto = 'Código de autenticación';
                     // Cuerpo del correo.
-                    $cuerpo = '<body style="background-color:#2B3547";>
-                    <br>
-                    <h1 style="color:white; text-align:center">Su codigo para ingresar al sistema</h1>
-                    <div>
-                        <p style = "color:white; text-align:center";>
-                            Aqui se le presenta el codigo para su ingreso al sistema.
-                        </p>
-                    </div>
-                    <br>
-                    <br>
-                    <h2 style="color:white; text-align:center">' . $codigoveri . '</h2>
-                    <br>
-                    <br>
-                    </body>
-                    <footer style="background-color:#010a1b">
+                    $cuerpo =
+                    '<body style="background-color:#111827; color:white; text-align:center";>
                         <br>
-                        <p style="color:white; text-align:center"> De parte de importcars a usted ' . $recipient . '</p>
+                        <div>
+                            <p style="color:white">
+                                Se solicitó un inicio de sesión para el usuario: ' . $usuario . '
+                            </p>
+                        </div>
+                        <div>
+                            <h2> Su código de autenticación es: ' . $codigoveri . '</h2>
+                        </div>
                         <br>
-                    </footer>';
+                        <footer style="background-color:#11468F">
+                            <br>
+                            <p>⚠ Si usted no ha solicitado un proceso de inicio de sesión o este usuario no le pertenece por favor, intente comunicarse con un administrador. ⚠</p>
+                            <br>
+                        </footer>
+                    </body>';
                     if (Methods::enviarCorreo($email, $recipient, $codigoveri, $asunto, $cuerpo)) {
                         $result['status'] = 1;
                         $result['message'] = 'Correo enviado';

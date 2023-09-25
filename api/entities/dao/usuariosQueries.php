@@ -27,18 +27,14 @@ class UsuariosQueries
         }
     }
 
-    public function cambiarClaveDia()
+    public function verificarClave($password)
     {
-        $sql = 'UPDATE usuarios SET contrasenia = ?, fechacontra = current_timestamp() WHERE idusuario = ?';
-        $params = array($this->clave, $this->id);
-        return Database::executeRow($sql, $params);
-    }
-
-    public function verificarClaveDia($password)
-    {
-        $sql = 'SELECT contrasenia FROM usuarios WHERE idusuario = ?';
+        $sql = 'SELECT contrasenia, intentos FROM usuarios WHERE idusuario = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
+        // Se capturan los intentos antes de verificar la contraseña.
+        $this->intentos = $data['intentos'];
+        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
         if (password_verify($password, $data['contrasenia'])) {
             return true;
         } else {
@@ -53,34 +49,6 @@ class UsuariosQueries
         if ($data = Database::getRow($sql, $params)) {
             $this->pin = $data['pin'];
             $this->nombre = $nombre;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function verificarPalabra($palabra)
-    {
-        $sql = 'SELECT palabraclave FROM usuarios WHERE idusuario = ?';
-        $params = array($this->id);
-        $data = Database::getRow($sql, $params);
-        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
-        if (password_verify($palabra, $data['palabraclave'])) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function verificarClave($password)
-    {
-        $sql = 'SELECT contrasenia, intentos FROM usuarios WHERE idusuario = ?';
-        $params = array($this->id);
-        $data = Database::getRow($sql, $params);
-        // Se capturan los intentos antes de verificar la contraseña.
-        $this->intentos = $data['intentos'];
-        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
-        if (password_verify($password, $data['contrasenia'])) {
             return true;
         } else {
             return false;
