@@ -89,7 +89,7 @@ class UsuariosQueries
 
     public function cambiarClave()
     {
-        $sql = 'UPDATE usuarios SET contrasenia = ? WHERE idusuario = ?';
+        $sql = 'UPDATE usuarios SET contrasenia = ?, fechacontra = current_timestamp() WHERE idusuario = ?';
         $params = array($this->clave, $this->id);
         return Database::executeRow($sql, $params);
     }
@@ -111,9 +111,9 @@ class UsuariosQueries
 
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, estadousuario, palabraclave)
-                VALUES(?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->clave, $this->pin, $this->tipo, $this->empleado, $this->estado, $this->palabra);
+        $sql = 'INSERT INTO usuarios(nombreus, contrasenia, fechacontra, pin, idtipousuario, idempleado, estadousuario)
+                VALUES(?, ?, current_timestamp(), ?, ?, ?, ?)';
+        $params = array($this->nombre, $this->clave, $this->pin, $this->tipo, $this->empleado, $this->estado);
         return Database::executeRow($sql, $params);
     }
 
