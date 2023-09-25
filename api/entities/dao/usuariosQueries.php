@@ -11,12 +11,13 @@ class UsuariosQueries
 
     public function verificarUsuario($nombre)
     {
-        $sql = 'SELECT usuarios.idusuario, usuarios.estadousuario, empleados.correoemp, empleados.nombreemp, DATEDIFF(CURRENT_DATE, usuarios.fechacontra) as dias 
+        $sql = 'SELECT usuarios.idusuario, usuarios.nombreus, usuarios.estadousuario, empleados.correoemp, empleados.nombreemp, DATEDIFF(CURRENT_DATE, usuarios.fechacontra) as dias 
                 FROM usuarios INNER JOIN empleados USING(idempleado)
                 WHERE nombreus = ?';
         $params = array($nombre);
         if ($data = Database::getRow($sql, $params)) {
             $this->id = $data['idusuario'];
+            $this->nombre = $data['nombreus'];
             $this->estado = $data['estadousuario'];
             $this->diasclave = $data['dias'];
             $this->correoemp = $data['correoemp'];

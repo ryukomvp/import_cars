@@ -344,6 +344,7 @@ if (isset($_GET['action'])) {
                     $email = $_SESSION['correoemp'] = $usuario->getCorreo();
                     $recipient = $_SESSION['nombreemp'] = $usuario->getNombreEmpleado();
                     $nombreus = $_SESSION['nombreus'] = $usuario->getNombre();
+                    $fecha = date("d-m-Y h:i:s");
                     // Asunto del correo.
                     $asunto = 'Código de autenticación';
                     // Cuerpo del correo.
@@ -354,9 +355,12 @@ if (isset($_GET['action'])) {
                             <p style="color:white">
                                 Se solicitó un inicio de sesión para el usuario: ' . $nombreus . '
                             </p>
+                            <p style="color:white">
+                                Fecha y hora de la solicitud: ' . $fecha . '
+                            </p>
                         </div>
                         <div>
-                            <h2> Su código de autenticación es: ' . $codigoveri . '</h2>
+                            <h1> Su código de autenticación es: ' . $codigoveri . '</h2>
                         </div>
                         <footer style="background-color:#11468F">
                             <br>
