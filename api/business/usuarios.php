@@ -346,7 +346,7 @@ if (isset($_GET['action'])) {
                     $nombreus = $_SESSION['nombreus'] = $usuario->getNombre();
                     $fecha = date("d-m-Y h:i:s");
                     // Asunto del correo.
-                    $asunto = 'Código de autenticación';
+                    $asunto = 'Código de autenticación para inicio de sesión';
                     // Cuerpo del correo.
                     $cuerpo =
                     '<body style="background-color:#111827; color:white; text-align:center";>
@@ -360,7 +360,7 @@ if (isset($_GET['action'])) {
                             </p>
                         </div>
                         <div>
-                            <h1> Su código de autenticación es: ' . $codigoveri . '</h2>
+                            <h1>Código de autenticación: ' . $codigoveri . '</h1>
                         </div>
                         <footer style="background-color:#11468F">
                             <br>
@@ -392,20 +392,48 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->verificarUsuario($_POST['nombre'])) {
                     $result['exception'] = 'Nombre de usuario incorrecto';
-                } elseif (!$usuario->verificarPalabra($_POST['palabra'])) {
-                    $result['exception'] = 'Palabra de usuario incorrecta';
-                } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
-                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
-                } elseif ($_POST['clave'] != $_POST['confirmar']) {
-                    $result['exception'] = 'Claves diferentes';
-                } elseif (!$usuario->setClave($_POST['clave'])) {
-                    $result['exception'] = Validator::getPasswordError();
-                } elseif ($usuario->cambiarClave()) {
-                    $usuario->resetearIntentos();
-                    $result['status'] = 1;
-                    $result['message'] = 'Cambiar clave correcto tilin :D';
+                } elseif (!$usuario->verificarPin($_POST['pin'])) {
+                    $result['exception'] = 'Pin de usuario incorrecta';
                 } else {
-                    $result['exception'] = Database::getException();
+                    // Se genera un código aleatorio de cinco digitos.
+                    $codigoveri = rand(10000, 99999);
+                    // El código se registra en la base de datos.
+                    $usuario->ingresarCodigo($codigoveri);
+                    // Se captura la información del receptor.
+                    $email = $_SESSION['correoemp'] = $usuario->getCorreo();
+                    $recipient = $_SESSION['nombreemp'] = $usuario->getNombreEmpleado();
+                    $nombreus = $_SESSION['nombreus'] = $usuario->getNombre();
+                    $fecha = date("d-m-Y h:i:s");
+                    // Asunto del correo.
+                    $asunto = 'Código de autenticación para recuperación de contraseña';
+                    // Cuerpo del correo.
+                    $cuerpo =
+                    '<body style="background-color:#111827; color:white; text-align:center";>
+                        <br>
+                        <div>
+                            <p style="color:white">
+                                Se solicitó una recuperación de clave para el usuario: ' . $nombreus . '
+                            </p>
+                            <p style="color:white">
+                                Fecha y hora de la solicitud: ' . $fecha . '
+                            </p>
+                        </div>
+                        <div>
+                            <h1>Código de autenticación: ' . $codigoveri . '</h1>
+                        </div>
+                        <footer style="background-color:#11468F">
+                            <br>
+                            <p style="color:white">⚠ Si usted no ha solicitado un proceso de recuperación de clave o este usuario no le pertenece por favor, intente comunicarse con un administrador. ⚠</p>
+                            <p style="color:white">Tenga un buen dia :D atte. Import Cars</p>
+                            <br>
+                        </footer>
+                    </body>';
+                    if (Methods::enviarCorreo($email, $recipient, $codigoveri, $asunto, $cuerpo)) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Correo enviado';
+                    } else {
+                        $result['exception'] = 'El correo no fue enviado';
+                    }
                 }
                 break;
             default:

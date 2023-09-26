@@ -157,7 +157,6 @@ FORMULARIO_RECUPERACION.addEventListener('submit', async (event) => {
     const FORM = new FormData(FORMULARIO_RECUPERACION);
     // Petición para registrar el primer usuario.
     const JSON = await dataFetch(USUARIO_API, 'recuperacionClave', FORM);
-    console.log(JSON);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se notifica que el primer usuario ha sido registrado exitosamente y se redirige al inicio de sesión
