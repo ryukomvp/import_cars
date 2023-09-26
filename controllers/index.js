@@ -56,8 +56,8 @@ FORMULARIO_SESION.addEventListener('submit', async (event) => {
     if (JSON.status) {
         // Se notifica al usuario que el ingreso al sistema ha sido exitoso y se redirige a la página principal.
         sweetAlert(1, JSON.message, true);
-          document.getElementById('ingresar-us').classList.add('hidden');
-          document.getElementById('ingresar-codigo').classList.remove('hidden');
+          document.getElementById('formulario-sesion').classList.add('hidden');
+          document.getElementById('formulario-codigo').classList.remove('hidden');
     } else if (JSON.password) {
         sweetAlert(3, JSON.message, true);
         document.getElementById('ingresar-us').classList.add('hidden');

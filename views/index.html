@@ -26,6 +26,7 @@
             <!-- caja de contenido -->
             <div class="w-full rounded-lg ring-1 ring-azul shadow-2xl shadow-black md:mt-0 sm:max-w-md xl:p-0">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                    <!-- Formulario para ingresar las credenciales del usuario -->
                     <form method="post" id="formulario-sesion" class="space-y-4 md:space-y-6" action="#">
                         <!-- textbox para ingresar usuario -->
                         <div>
@@ -41,7 +42,6 @@
                                 class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                 placeholder="Ingrese su contraseña" required="" autocomplete="off">
                         </div>                             
-                        
                         <div class="flex">
                             <!-- Acceder a recuperación de clave -->
                             <a onclick="abrirRecuperacion()"
@@ -53,26 +53,15 @@
                         <button type="submit"
                             class="w-full ring-1 ring-azul text-azul font-medium focus:ring-4 focus:ring-white rounded-lg px-5 py-2.5 text-center hover:bg-azul hover:text-white">Ingresar</button>
                     </form>
-                </div>
-            </div>
-        </div>
-        <!-- formulario para el ingreso del codigo de la verificacion en 2 pasos -->
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 hidden" id="ingresar-codigo">
-            <!-- logo de la empresa -->
-            <img src="../resources/img/logo-circulo.png" alt="logo" id="logo" width="200px">
-            <!-- caja de contenido -->
-            <div class="w-full rounded-lg ring-1 ring-azul shadow-2xl shadow-black md:mt-0 sm:max-w-md xl:p-0">
-                <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-                    <form method="post" id="formulario-codigo" class="space-y-4 md:space-y-6" action="#">
+                    <!-- Formulario para ingresar el codigo de verificación (Segundo factor de autenticación) -->
+                    <form method="post" id="formulario-codigo" class="space-y-4 md:space-y-6 hidden" action="#">
                         <!-- textbox para ingresar usuario -->
-
                         <div>
                             <label id="codlabel" for="codigoingresado" class="block mb-2 text-sm font-medium text-white">Ingresar codigo:</label>
                             <input type="number" id="codigoingresado" name="codigoingresado"
                                 class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5 "
                                 placeholder="Código de verificación" autocomplete="off">
                         </div>
-                     
                         <!-- boton para ingersar -->
                         <button type="submit"
                             class="w-full ring-1 ring-azul text-azul font-medium focus:ring-4 focus:ring-white rounded-lg px-5 py-2.5 text-center hover:bg-azul hover:text-white">Ingresar</button>
@@ -226,7 +215,15 @@
             <div class="py-4 rounded-lg ring-1 ring-azul shadow-2xl shadow-black">
                 <p class="text-2xl text-center font-bold text-white p-4">Recuperación de clave</p>
                 <form class="p-4" method="post" id="formulario-rc">
-                    <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-2">
+                    <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
+                        <div>
+                            <div class="text-center py-4 p-6 space-x-2 rounded-b">
+                                <img src="../resources/img/logo-circulo.png" alt="img">
+                                <br>
+                            </div>
+                            <!--ID-->
+                            <input class="hidden" type="number" id="id" name="id">
+                        </div>
                         <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                             <!--Input nombre de de usuario-->
                             <div>
