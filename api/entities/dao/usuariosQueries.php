@@ -43,13 +43,12 @@ class UsuariosQueries
         }
     }
 
-    public function verificarPin($nombre)
+    public function verificarPin($pin)
     {
-        $sql = 'SELECT pin FROM usuarios WHERE nombreus = ?';
-        $params = array($nombre);
+        $sql = 'SELECT pin FROM usuarios WHERE idusuario = ?';
+        $params = array($this->id);
         if ($data = Database::getRow($sql, $params)) {
             $this->pin = $data['pin'];
-            $this->nombre = $nombre;
             return true;
         } else {
             return false;

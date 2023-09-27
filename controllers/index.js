@@ -156,12 +156,18 @@ FORMULARIO_RECUPERACION.addEventListener('submit', async (event) => {
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_RECUPERACION);
     // Petición para registrar el primer usuario.
-    const JSON = await dataFetch(USUARIO_API, 'recuperacionClave', FORM);
+    const RC = await dataFetch(USUARIO_API, 'recuperacionClave', FORM);
+    const VC = await dataFetch(USUARIO_API, 'vCodigoRecuperacion', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (JSON.status) {
-        // Se notifica que el primer usuario ha sido registrado exitosamente y se redirige al inicio de sesión
-        sweetAlert(1, JSON.message, false, 'index.html');
-    } else {
-        sweetAlert(2, JSON.exception, false);
+    if (!RC.status) {
+        sweetAlert(2, RC.exception, false);
     }
+    sweetAlert(1, RC.message, false);
+    document.getElementById('registrar-us').;
+    document.getElementById('registrar-us').classList.remove('hidden');
+    document.getElementById('registrar-us').classList.remove('hidden');
+    if (!VC.status) {
+        sweetAlert(2, VC.exception, false);
+    }
+
 });
