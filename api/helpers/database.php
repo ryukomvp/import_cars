@@ -105,7 +105,7 @@ class Database
                 // self::$error = 'Columna no encontrada';
                 break;
             case '23000':
-                self::$error = 'Violación de restricción de integridad';
+                // self::$error = 'Violación de restricción de integridad';
                 break;
             default:
                 self::$error = 'Ocurrió un problema en la base de datos';

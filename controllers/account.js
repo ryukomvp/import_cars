@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (JSON.session) {
         setInterval(() => {
             checkSessionTime();
-        }, 300000);
+        }, 1800000);
         
             if (JSON.status) {
                 console.log(JSON.permissions);
@@ -74,13 +74,37 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <a href="productos.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Productos y relacionados</a>
                                 </li>
+                                <li class="${JSON.permissions.productos ? '' : 'hidden'}">
+                                    <a href="tiposProductos.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Tipos de productos</a>
+                                </li>
+                                <li>
+                                    <a href="categorias.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Categorias</a>
+                                </li>
                                 <li>
                                     <a href="marcas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Marcas</a>
                                 </li>
                                 <li>
+                                    <a href="modelos.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Modelos</a>
+                                </li>
+                                <li>
+                                    <a href="parametros.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Parametros</a>
+                                </li>
+                                <li>
                                     <a href="familias.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Familias</a>
+                                </li>
+                                <li>
+                                    <a href="sucursales.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Sucursales</a>
+                                </li>
+                                <li>
+                                    <a href="bodegas.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Bodegas</a>
                                 </li>
                             </ul>
                         </li>
@@ -111,6 +135,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <a href="detallesfacturas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Detalles facturas</a>
                                 </li>
+                                <li>
+                                    <a href="encabezadosTransacciones.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Encabezados transaccion</a>
+                                </li>
+                                <li>
+                                    <a href="detallesTransacciones.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Detalles transaccion</a>
+                                </li>
+                                <li>
+                                    <a href="codigosTransacciones.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Codigos transaccion</a>
+                                </li>
                             </ul>
                         </li>
                         <!-- data-collapse-toggle="dropdown-Miscellaneous" es el identificador correcto dentro de flowbite para poder desplegar los dropdown, en resumen es el identificador que luego se busca abajo como id-->
@@ -139,24 +175,44 @@ document.addEventListener('DOMContentLoaded', async () => {
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Usuarios</a>
                                 </li>
                                 <li>
+                                    <a href="tiposUsuarios.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Tipos de usuarios</a>
+                                </li>
+                                <li>
                                     <a href="clientes.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Clientes</a>
                                 </li>
                                 <li>
-                                    <a href="empleados"
+                                    <a href="empleados.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Empleados</a>
+                                </li>
+                                <li>
+                                    <a href="cajeros.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Cajeros</a>
+                                </li>
+                                <li>
+                                    <a href="cajas.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Cajas</a>
+                                </li>
+                                <li>
+                                    <a href="contactos.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Contactos</a>
                                 </li>
                                 <li>
                                     <a href="monedas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Monedas</a>
                                 </li>
                                 <li>
-                                    <a href="#"
+                                    <a href="paisOrigen.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Pais de origen</a>
+                                </li>
+                                <li>
+                                    <a href="plazos.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Plazos</a>
                                 </li>
                                 <li>
-                                    <a href="#"
-                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Compañias</a>
+                                    <a href="codigosComunes.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Codigos comunes</a>
                                 </li>
                                 <li>
                                     <a href="contactos.html"
