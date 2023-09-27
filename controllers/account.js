@@ -74,35 +74,35 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <a href="productos.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Productos y relacionados</a>
                                 </li>
-                                <li class="${JSON.permissions.productos ? '' : 'hidden'}">
+                                <li class="${JSON.permissions.tiposproductos ? '' : 'hidden'}">
                                     <a href="tiposProductos.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Tipos de productos</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.categorias ? '' : 'hidden'}">
                                     <a href="categorias.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Categorias</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.marcas ? '' : 'hidden'}">
                                     <a href="marcas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Marcas</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.modelos ? '' : 'hidden'}">
                                     <a href="modelos.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Modelos</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.parametros ? '' : 'hidden'}">
                                     <a href="parametros.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Parametros</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.familias ? '' : 'hidden'}">
                                     <a href="familias.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Familias</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.sucursales ? '' : 'hidden'}">
                                     <a href="sucursales.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Sucursales</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.bodegas ? '' : 'hidden'}">
                                     <a href="bodegas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Bodegas</a>
                                 </li>
@@ -127,23 +127,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </button>
                             <!-- id="dropdown-Billing" es el buscador para poder conectar los dropdowns con los debidos botenes -->
                             <ul id="dropdown-Billing" class="hidden py-2 space-y-2">
-                                <li>
-                                    <a href="facturas.html"
-                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Facturas</a>
-                                </li>
-                                <li>
-                                    <a href="detallesfacturas.html"
-                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Detalles facturas</a>
-                                </li>
-                                <li>
+                                <li class="${JSON.permissions.encabezadostransacciones ? '' : 'hidden'}">
                                     <a href="encabezadosTransacciones.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Encabezados transaccion</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.detallestransacciones ? '' : 'hidden'}">
                                     <a href="detallesTransacciones.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Detalles transaccion</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.codigostransacciones ? '' : 'hidden'}">
                                     <a href="codigosTransacciones.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Codigos transaccion</a>
                                 </li>
@@ -170,59 +162,59 @@ document.addEventListener('DOMContentLoaded', async () => {
                             </button>
                             <!-- id="dropdown-Miscellaneous" es el buscador para poder conectar los dropdowns con los debidos botenes -->
                             <ul id="dropdown-Miscellaneous" class="hidden py-2 space-y-2">
-                                <li>
+                                <li class="${JSON.permissions.usuarios ? '' : 'hidden'}">
                                     <a href="usuarios.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Usuarios</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.tiposusuarios ? '' : 'hidden'}">
                                     <a href="tiposUsuarios.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Tipos de usuarios</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.clientes ? '' : 'hidden'}">
                                     <a href="clientes.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Clientes</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.empleados ? '' : 'hidden'}">
                                     <a href="empleados.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Empleados</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.cajeros ? '' : 'hidden'}">
                                     <a href="cajeros.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Cajeros</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.cajas ? '' : 'hidden'}">
                                     <a href="cajas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Cajas</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.contactos ? '' : 'hidden'}">
                                     <a href="contactos.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Contactos</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.monedas ? '' : 'hidden'}">
                                     <a href="monedas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Monedas</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.paisesdeorigen ? '' : 'hidden'}">
                                     <a href="paisOrigen.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Pais de origen</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.plazos ? '' : 'hidden'}">
                                     <a href="plazos.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Plazos</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.codigosplazos ? '' : 'hidden'}">
+                                    <a href="codigosPlazos.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Codigos plazos</a>
+                                </li>
+                                <li class="${JSON.permissions.codigoscomunes ? '' : 'hidden'}">
                                     <a href="codigosComunes.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Codigos comunes</a>
                                 </li>
-                                <li>
-                                    <a href="contactos.html"
-                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Personas naturales</a>
-                                </li>
-                                <li>
+                                <li class="${JSON.permissions.vendedores ? '' : 'hidden'}">
                                     <a href="vendedores.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Vendedores</a>
                                 </li>
-                                <li>
+                                <li class="${JSON.permissions.proveedores ? '' : 'hidden'}">
                                     <a href="proveedores.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Provedores</a>
                                 </li>
