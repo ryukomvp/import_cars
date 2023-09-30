@@ -434,6 +434,9 @@ if (isset($_GET['action'])) {
                     } else {
                         $result['exception'] = 'El correo no fue enviado';
                     }
+                    if (!$usuario->verificarCodigo($_POST['codigo'])) {
+                        $result['exception'] = 'Código incorrecto';
+                    }
                 }
                 break;
             default:

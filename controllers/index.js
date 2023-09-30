@@ -163,11 +163,14 @@ FORMULARIO_RECUPERACION.addEventListener('submit', async (event) => {
         sweetAlert(2, RC.exception, false);
     }
     sweetAlert(1, RC.message, false);
-    document.getElementById('registrar-us').;
-    document.getElementById('registrar-us').classList.remove('hidden');
-    document.getElementById('registrar-us').classList.remove('hidden');
+    document.getElementById('nombre').disabled = true;
+    document.getElementById('pin').disabled = true;
+    document.getElementById('codigo').disabled = false;
     if (!VC.status) {
         sweetAlert(2, VC.exception, false);
     }
-
+    sweetAlert(1, RC.message, false);
+    document.getElementById('codigo').disabled = true;
+    document.getElementById('clave').disabled = false;
+    document.getElementById('clave').disabled = false;
 });
