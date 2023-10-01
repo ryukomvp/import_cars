@@ -36,6 +36,7 @@ class TipoUsuario extends TiposUsuariosQueries
     protected $encabezadostransacciones = null;
     protected $detallestransacciones = null;
     protected $tiposusuarios = null;
+    protected $bitacoras = null;
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
@@ -300,8 +301,15 @@ class TipoUsuario extends TiposUsuariosQueries
             return false;
         }
     }
-
-
+    public function setBitacoras($value)
+    {
+        if (Validator::validateBoolean($value)) {
+            $this->bitacoras = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /*
     *   Métodos para obtener valores de los atributos.
@@ -421,5 +429,9 @@ class TipoUsuario extends TiposUsuariosQueries
     public function getTiposusuarios()
     {
         return $this->tiposusuarios;
+    }
+    public function getBitacoras()
+    {
+        return $this->bitacoras;
     }
 }

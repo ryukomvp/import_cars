@@ -99,6 +99,7 @@ async function cargarRegistros(form = null) {
             (row.encabezadostransacciones) ? txtencabezadostransacicones = 'Permitido' : txtencabezadostransacicones = 'Denegado';
             (row.detallestransacciones) ? txtdetallestransacciones = 'Permitido' : txtdetallestransacciones = 'Denegado';
             (row.tiposusuarios) ? txttiposusuarios = 'Permitido' : txttiposusuarios = 'Denegado';
+            (row.bitacoras) ? txtbitacoras = 'Permitido' : txtbitacoras = 'Denegado';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white hover:bg-blue-200">
@@ -188,6 +189,9 @@ async function cargarRegistros(form = null) {
                     </td>
                     <td class="px-6 py-4">
                         ${txttiposusuarios}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${txtbitacoras}
                     </td>
                     <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idtipousuario})"
@@ -410,6 +414,12 @@ async function actualizarRegistro(id) {
             document.getElementById('tipoUsuario').checked = 1;
         } else {
             document.getElementById('tipoUsuario').checked = 0;
+        }
+        // Se verifica si el permiso esta activo o no de bitacoras
+        if (JSON.dataset.bitacoras == '1') {
+            document.getElementById('bitacora').checked = 1;
+        } else {
+            document.getElementById('bitacora').checked = 0;
         }
     } else {
         sweetAlert(2, JSON.exception, false);

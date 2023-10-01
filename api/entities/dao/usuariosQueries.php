@@ -275,7 +275,7 @@ class UsuariosQueries
     //Leer el tipo de usuario
     public function leerTipoUs()
     {
-        $sql = 'SELECT idtipousuario,nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios
+        $sql = 'SELECT idtipousuario,nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios,bitacoras
                 FROM tiposusuarios INNER JOIN usuarios USING(idtipousuario)
 				WHERE idusuario = ?';
         $params = array($this->id);
@@ -293,15 +293,6 @@ class UsuariosQueries
         return Database::getRow($sql, $params);
     }
 
-    public function leerTipoUsuario()
-    {
-        $sql = 'SELECT idusuario, nombreus, idtipousuario
-                FROM usuarios 
-                WHERE idtipousuario = ?';
-        $params = array($this->tipo);
-        return Database::getRow($sql, $params);
-    }
-
     public function recuperarContrasenia()
     {
         $sql = 'UPDATE usuarios u
@@ -312,14 +303,14 @@ class UsuariosQueries
         return Database::executeRow($sql, $params);
     }
 
-    public function leerUnRegistroPorCorreo()
-    {
-        $sql = 'SELECT u.idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, idempleado, e.nombreemp empleado, estadousuario, verificacion
-        FROM usuarios u INNER JOIN empleados e USING(idempleado)
-        WHERE  e.correoemp= ?';
-        $params = array($this->correo);
-        return Database::getRow($sql, $params);
-    }
+    // public function leerUnRegistroPorCorreo()
+    // {
+    //     $sql = 'SELECT u.idusuario, u.nombreus usuario, contrasenia, pin, tipousuario, idempleado, e.nombreemp empleado, estadousuario, verificacion
+    //     FROM usuarios u INNER JOIN empleados e USING(idempleado)
+    //     WHERE  e.correoemp= ?';
+    //     $params = array($this->correo);
+    //     return Database::getRow($sql, $params);
+    // }
 }
 
 
