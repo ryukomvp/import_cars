@@ -698,7 +698,7 @@ INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, esta
 	('Evelin', 'Anstee', '12345678', 1, 17, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Pietrek', 'Sheffield', '12345678', 2, 18, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Mellisa', 'Anstee', '12345678', 2, 19, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
-	('Nevin', 'Sheffield', '12345678', 2, 20, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
+	('Kevin', '$2y$10$1wWqmZ36Pts6cYlKBY1FN.kgn/HfUyCjF/JkWIO1M5xipDgFlFKna', '12345678', 2, 20, 'Activo','$2y$10$1wWqmZ36Pts6cYlKBY1FN.kgn/HfUyCjF/JkWIO1M5xipDgFlFKna',0),
 	('dani', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 21, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0);
 
 INSERT INTO cajas (nombrecaja, nombreequipo, serieequipo, modeloequipo, idsucursal, idusuario) VALUES
