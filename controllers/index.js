@@ -155,22 +155,36 @@ FORMULARIO_RECUPERACION.addEventListener('submit', async (event) => {
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_RECUPERACION);
-    // Petición para registrar el primer usuario.
-    const RC = await dataFetch(USUARIO_API, 'recuperacionClave', FORM);
-    const VC = await dataFetch(USUARIO_API, 'vCodigoRecuperacion', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (!RC.status) {
-        sweetAlert(2, RC.exception, false);
+    if (!document.getElementById('nombre-recuperacion').disabled && !document.getElementById('pin-recuperacion').disabled) {
+        // 
+        const RC = await dataFetch(USUARIO_API, 'recuperacionCredenciales', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (!RC.status) {
+            sweetAlert(2, RC.exception, false);
+        } else {
+            sweetAlert(1, RC.message, false);
+            document.getElementById('nombre-recuperacion').disabled = true;
+            document.getElementById('pin-recuperacion').disabled = true;
+            document.getElementById('codigo-recuperacion').disabled = false;
+        }
+    } else if (!document.getElementById('codigo-recuperacion').disabled) {
+        // 
+        const VC = await dataFetch(USUARIO_API, 'recuperacionCodigo', FORM);
+        if (!VC.status) {
+            sweetAlert(2, VC.exception, false);
+        } else {
+            sweetAlert(1, VC.message, false);
+            document.getElementById('codigo-recuperacion').disabled = true;
+            document.getElementById('clave-recuperacion').disabled = false;
+            document.getElementById('confirmar-recuperacion').disabled = false;
+        }
+    } else if (!document.getElementById('clave-recuperacion').disabled && !document.getElementById('confirmar-recuperacion').disabled) {
+        const CC = await dataFetch(USUARIO_API, 'recuperacionClave', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (!CC.status) {
+            sweetAlert(2, CC.exception, false);
+        } else {
+            sweetAlert(1, CC.message, true, 'index.html');
+        }
     }
-    sweetAlert(1, RC.message, false);
-    document.getElementById('nombre').disabled = true;
-    document.getElementById('pin').disabled = true;
-    document.getElementById('codigo').disabled = false;
-    if (!VC.status) {
-        sweetAlert(2, VC.exception, false);
-    }
-    sweetAlert(1, RC.message, false);
-    document.getElementById('codigo').disabled = true;
-    document.getElementById('clave').disabled = false;
-    document.getElementById('clave').disabled = false;
 });
