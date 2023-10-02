@@ -369,8 +369,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             } else {
                 location.href = 'index.html'
             }
-        };
-    // }
+        }
 })
 
 async function checkSessionTime() {
