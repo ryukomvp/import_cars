@@ -175,15 +175,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                // case 'leerTipos':
-                //     if ($result['dataset'] = $usuario->leerTipos()) {
-                //         $result['status'] = 1;
-                //     } elseif (Database::getException()) {
-                //         $result['exception'] = Database::getException();
-                //     } else {
-                //         $result['exception'] = 'No hay datos registrados';
-                //     }
-                //     break;
             case 'leerEmpleados':
                 if ($result['dataset'] = $usuario->leerEmpleados()) {
                     $result['status'] = 1;
@@ -388,7 +379,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
-            case 'recuperacionClave':
+            case 'recuperacionCredenciales':
                 $_POST = Validator::validateForm($_POST);
                 if (!$usuario->verificarUsuario($_POST['nombre'])) {
                     $result['exception'] = 'Nombre de usuario incorrecto';
@@ -431,12 +422,39 @@ if (isset($_GET['action'])) {
                     if (Methods::enviarCorreo($email, $recipient, $codigoveri, $asunto, $cuerpo)) {
                         $result['status'] = 1;
                         $result['message'] = 'Correo enviado';
+                        $_SESSION['idusuario_rc'] = $usuario->getId();
                     } else {
                         $result['exception'] = 'El correo no fue enviado';
                     }
-                    if (!$usuario->verificarCodigo($_POST['codigo'])) {
-                        $result['exception'] = 'Código incorrecto';
-                    }
+                }
+                break;
+            case 'recuperacionCodigo':
+                if (!$usuario->setId($_SESSION['idusuario_rc'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif ($usuario->verificarCodigo($_POST['codigo'])) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Código correcto';
+                } else {
+                    $result['exception'] = 'El código ingresado es incorrecto.';
+                }
+                break;
+            case 'recuperacionClave':
+                $_POST = Validator::validateForm($_POST);
+                if (!$usuario->setId($_SESSION['idusuario_rc'])) {
+                    $result['exception'] = 'Usuario incorrecto';
+                } elseif (!preg_match($special_charspattern, $_POST['clave'])) {
+                    $result['exception'] = 'La clave debe contener al menos un carácter especial';
+                } elseif ($_POST['clave'] != $_POST['confirmar']) {
+                    $result['exception'] = 'Claves diferentes';
+                } elseif (!$usuario->setClave($_POST['clave'])) {
+                    $result['exception'] = Validator::getPasswordError();
+                } elseif ($usuario->cambiarClave()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Cambio de clave exitoso';
+                    // Se elimina la variable temporal que almacena el usuario.
+                    unset($_SESSION['idusuario_rc']);
+                } else {
+                    $result['exception'] = Database::getException();
                 }
                 break;
             default:
