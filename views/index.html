@@ -50,7 +50,7 @@
                                 contraseña?</a>
                         </div>
                         <!-- boton para ingersar -->
-                        <button type="submit"
+                        <button type="submit" id="btn-ingresar"
                             class="w-full ring-1 ring-azul text-azul font-medium focus:ring-4 focus:ring-white rounded-lg px-5 py-2.5 text-center hover:bg-azul hover:text-white">Ingresar</button>
                     </form>
                     <!-- Formulario para ingresar el codigo de verificación (Segundo factor de autenticación) -->
@@ -227,10 +227,10 @@
                         <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
                             <!--Input nombre de de usuario-->
                             <div>
-                                <label for="nombre"
+                                <label for="nombre-recuperacion"
                                     class="block mb-2 text-sm font-medium text-white">Nombre
                                     del usuario:</label>
-                                <input type="text" id="nombre" name="nombre"
+                                <input type="text" id="nombre-recuperacion" name="nombre"
                                     class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                     placeholder="Ingrese nombre de usuario" required autocomplete="off">
                             </div>
@@ -238,33 +238,33 @@
                             <div>
                                 <label for="pin"
                                     class="block mb-2 text-sm font-medium text-white">Pin:</label>
-                                <input type="number" id="pin" name="pin"
+                                <input type="password" id="pin-recuperacion" name="pin"
                                     class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                     placeholder="Ingrese su pin" required autocomplete="off">
                             </div>
                             <!-- Input codigo del usuario -->
                             <div>
-                                <label for="codigo"
+                                <label for="codigo-recuperacion"
                                     class="block mb-2 text-sm font-medium text-white">Código:</label>
-                                <input type="number" id="codigo" name="codigo"
+                                <input type="number" id="codigo-recuperacion" name="codigo"
                                     class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                     placeholder="Ingrese su código de verificación" required autocomplete="off" disabled>
                             </div>
                             <br>
                             <!--Input contraseña del usuario-->
                             <div>
-                                <label for="clave"
+                                <label for="clave-recuperacion"
                                     class="block mb-2 text-sm font-medium text-white">Contraseña:</label>
-                                <input type="password" id="clave" name="clave"
+                                <input type="password" id="clave-recuperacion" name="clave"
                                     class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                     placeholder="Ingrese la contraseña" required autocomplete="off" disabled>
                             </div>
                             <!--Input contraseña del usuario-->
                             <div>
-                                <label for="confirmar"
+                                <label for="confirmar-recuperacion"
                                     class="block mb-2 text-sm font-medium text-white">Confirmar
                                     contraseña:</label>
-                                <input type="password" id="confirmar" name="confirmar"
+                                <input type="password" id="confirmar-recuperacion" name="confirmar"
                                     class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                                     placeholder="Ingrese la contraseña" required autocomplete="off" disabled>
                             </div>

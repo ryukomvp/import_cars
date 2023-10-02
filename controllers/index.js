@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 FORMULARIO_SESION.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
+    // Desactivar botón para prevenir muchas peticiones seguidas.
+    document.getElementById('btn-ingresar').disabled = true;
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_SESION);
     const JSON = await dataFetch(USUARIO_API, 'iniciarSesion', FORM);
@@ -115,7 +117,6 @@ FORMULARIO_EMPLEADO.addEventListener('submit', async (event) => {
         // Se oculta el formulario para registrar el primer empleado.
         document.getElementById('registrar-emp').classList.add('hidden');
         // Se notifica que debe registrar un usuario para utilizar el sistema.
-        // sweetAlert(1, 'Debe registrar un usuario para inicializar el sistema', false);
         // Se muestra el formulario para registrar el primer usuario.
         document.getElementById('registrar-us').classList.remove('hidden');
         // Se leen los empleados registrados en la base de datos (ya que se esta registrando el primer usuario, por obviedad, solo existe un empleado el cual aun no posee usuario para acceder al sistema).
@@ -155,22 +156,36 @@ FORMULARIO_RECUPERACION.addEventListener('submit', async (event) => {
     event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_RECUPERACION);
-    // Petición para registrar el primer usuario.
-    const RC = await dataFetch(USUARIO_API, 'recuperacionClave', FORM);
-    const VC = await dataFetch(USUARIO_API, 'vCodigoRecuperacion', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (!RC.status) {
-        sweetAlert(2, RC.exception, false);
+    if (!document.getElementById('nombre-recuperacion').disabled && !document.getElementById('pin-recuperacion').disabled) {
+        // 
+        const RC = await dataFetch(USUARIO_API, 'recuperacionCredenciales', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (!RC.status) {
+            sweetAlert(2, RC.exception, false);
+        } else {
+            sweetAlert(1, RC.message, false);
+            document.getElementById('nombre-recuperacion').disabled = true;
+            document.getElementById('pin-recuperacion').disabled = true;
+            document.getElementById('codigo-recuperacion').disabled = false;
+        }
+    } else if (!document.getElementById('codigo-recuperacion').disabled) {
+        // 
+        const VC = await dataFetch(USUARIO_API, 'recuperacionCodigo', FORM);
+        if (!VC.status) {
+            sweetAlert(2, VC.exception, false);
+        } else {
+            sweetAlert(1, VC.message, false);
+            document.getElementById('codigo-recuperacion').disabled = true;
+            document.getElementById('clave-recuperacion').disabled = false;
+            document.getElementById('confirmar-recuperacion').disabled = false;
+        }
+    } else if (!document.getElementById('clave-recuperacion').disabled && !document.getElementById('confirmar-recuperacion').disabled) {
+        const CC = await dataFetch(USUARIO_API, 'recuperacionClave', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (!CC.status) {
+            sweetAlert(2, CC.exception, false);
+        } else {
+            sweetAlert(1, CC.message, true, 'index.html');
+        }
     }
-    sweetAlert(1, RC.message, false);
-    document.getElementById('nombre').disabled = true;
-    document.getElementById('pin').disabled = true;
-    document.getElementById('codigo').disabled = false;
-    if (!VC.status) {
-        sweetAlert(2, VC.exception, false);
-    }
-    sweetAlert(1, RC.message, false);
-    document.getElementById('codigo').disabled = true;
-    document.getElementById('clave').disabled = false;
-    document.getElementById('clave').disabled = false;
 });
