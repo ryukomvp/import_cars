@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<!-- definición del lengauje del sitio -->
+<html lang="es">
+
+<head>
+    <!-- definición del set de carácteres -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- importación de archivos css -->
+    <link href="../resources/css/tailwind.css" rel="stylesheet">
+    <link href="../resources/css/styles.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <!-- icono de la página -->
+    <link rel="icon" href="../resources/img/logo.png">
+    <!-- titulo de la página -->
+    <title>Transacciones</title>
+</head>
+
+<body>
+    <!-- encabezado del sistio -->
+    <header>
+    </header>
+    <!-- contenido del sitio -->
+    <main>
+        <div class="py-4">
+            <!--Encabezado del SCRUD de modelos-->
+            <div class="py-4 text-center">
+                <h1 class="text-xl text-rojo font-bold ">Encabezado de Transacciones</h1>
+                <p class="text-azul font-medium">Gestion de la parte superior de las facturas administrando la
+                    información que pide y se coloca de acuerdo a la información.</p>
+            </div>
+            <div class="grid grid-cols-4 gap-4 py-4">
+                <!--Buscador de paises de origen-->
+                <div class="col-start-2 col-end-4">
+                    <form method="post" id="buscarFormulario">
+                        <label for="buscar" class="mb-2 text-sm font-medium text-gray-900 sr-only">Buscar</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                            <input type="search" id="buscar" name="buscar"
+                                class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Buscar...">
+                            <button type="submit"
+                                class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-end-5">
+                    <button onclick="crearRegistro()"
+                        class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        type="button">
+                        <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
+                    </button>
+                </div>
+            </div>
+            <div id="abrirModal" tabindex="-1"
+                class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+                <div class="relative w-full h-full max-w-4xl">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                            <h3 id="titulo" class="text-xl font-bold text-oscuro dark:text-white">
+                            </h3>
+                            <button onclick="ABRIR_MODAL.hide();" type="button"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="sr-only">Cerrar ventana</span>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <form method="post" id="ejecutarFormulario" class="p-4">
+                            <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
+                                <div class="text-center py-4 p-6 space-x-2 rounded-b">
+                                    <img src="../resources/img/logo.jpg" alt="img">
+                                    <br>
+                                </div>
+                                <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                    <!--Input del ID-->
+                                    <div>
+                                        <label for="id"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
+                                        <input type="number" id="id" name="id"
+                                            class="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700"
+                                            placeholder="ID" readonly>
+                                    </div>
+                                    <!--Input del correlativoe-->
+                                    <div>
+                                        <label for="correlativo"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Correlativo</label>
+                                        <input type="number" id="correlativo" name="correlativo"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Correlativo" required autocomplete="off">
+                                    </div>
+                                    <!--Input fecha de la cantidad de cada producto-->
+                                    <div>
+                                        <label for="cantidad"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">cantidad
+                                            por Producto</label>
+                                        <input type="number" id="cantidad" name="cantidad" min="0" step="1"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Cantidad de cada producto a ingresar" required autocomplete="off">
+                                    </div>
+                                    <!--Input del precio unitario-->
+                                    <div>
+                                        <label for="precioUnitario"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio
+                                            Unitario</label>
+                                        <input type="number" id="precioUnitario" name="precioUnitario" min="0" step="1"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Precio unitario del producto" required autocomplete="off">
+                                    </div>
+                                    <!--Input de las ventas no sujetas-->
+                                    <div>
+                                        <label for="ventaNoSujeta"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Venta no
+                                            Sujeta</label>
+                                        <input type="number" id="ventaNoSujeta" name="ventaNoSujeta" min="0" step="1"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Venta no Sujeta" autocomplete="off">
+                                    </div>
+                                    <!--Input de las ventas exentas-->
+                                    <div>
+                                        <label for="ventaExenta"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Venta
+                                            Exenta</label>
+                                        <input type="number" id="ventaExenta" name="ventaExenta" min="0" step="1"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Venta Exenta" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <!--Input de las ventas afectas-->
+                                <div>
+                                    <label for="ventaAfecta"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Venta
+                                        Afecta</label>
+                                    <input type="number" id="ventaAfecta" name="ventaAfecta" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Venta Afecta" autocomplete="off">
+                                </div>
+                                <!--Input del descuento-->
+                                <div>
+                                    <label for="descuento"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descuento</label>
+                                    <input type="number" id="descuento" name="descuento" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Descuento" required autocomplete="off">
+                                </div>
+                                <!--Input del valor de descuento-->
+                                <div>
+                                    <label for="valorDescuento"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Valor del
+                                        descuento</label>
+                                    <input type="number" id="valorDescuento" name="valorDescuento" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Valor del Descuento" required autocomplete="off">
+                                </div>
+                                <!--Input del valor mediante suma de precios-->
+                                <div>
+                                    <label for="suma"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Suma de los
+                                        articulos</label>
+                                    <input type="number" id="suma" name="suma" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Suma" required autocomplete="off">
+                                </div>
+                                <!--Input del sub total-->
+                                <div>
+                                    <label for="subTotal"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sub
+                                        Total</label>
+                                    <input type="number" id="subTotal" name="subTotal" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Sub Total" required autocomplete="off">
+                                </div>
+                                <!--Input del total-->
+                                <div>
+                                    <label for="ventaTotal"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Total</label>
+                                    <input type="number" id="ventaTotal" name="ventaTotal" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Ventas Totales" required autocomplete="off">
+                                </div>
+                                <!--Input del IVA impuesto a la compra-->
+                                <div>
+                                    <label for="iva"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">IVA</label>
+                                    <input type="number" id="iva" name="iva" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="IVA" required autocomplete="off">
+                                </div>
+                                <!--Input de las observaciones de los productos-->
+                                <div>
+                                    <label for="observaciones"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Observaciones</label>
+                                    <input type="text" id="observaciones" name="observaciones"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Observaciones" required>
+                                </div>
+                                <!--Input de la bodega de entrada-->
+                                <div>
+                                    <label for="bodegaEntrada"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega de
+                                        Entrada</label>
+                                    <select id="bodegaEntrada" name="bodegaEntrada"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
+                                </div>
+                                <!--Input de la bodega de salida-->
+                                <div>
+                                    <label for="bodegaSalida"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega de
+                                        Salida</label>
+                                    <select id="bodegaSalida" name="bodegaSalida"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
+                                </div>
+                                <!--Input del producto añadido-->
+                                <div>
+                                    <label for="producto"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Producto</label>
+                                    <select id="producto" name="producto"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
+                                </div>
+                                <!--Input de la descripción del producto-->
+                                <div>
+                                    <label for="descripcion"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
+                                    <input type="text" id="descripcion" name="descripcion"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Descripción del producto" required>
+                                </div>
+                                <!--Input del tipo de encabezado-->
+                                <div>
+                                    <label for="encaTransaccion"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">N°.
+                                        Transacción</label>
+                                    <select id="encaTransaccion" name="encaTransaccion"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
+                                </div>
+                            </div>
+                            <div
+                                class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button id="accion" type="submit"
+                                    class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead
+                        class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr class="text-oscuro font-semibold">
+                            <!--Columna del numero comprobante de detalles transacciones-->
+                            <th scope="col" class="hidden px-6 py-3">
+                                ID
+                            </th>
+                            <!--Columna del correlativo de detalles transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Correlativo
+                            </th>
+                            <!--Columna de a fecha de la transaccion  de encabezados transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Fecha de la Transacción
+                            </th>
+                            <!--Columna del codigo de encabezados transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Codigo Transacción
+                            </th>
+                            <!--Columna de cantidad de producto de detalles transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Cantidad
+                            </th>
+                            <!--Columna del precio unitario de los productos de detalles transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Precio Unitario
+                            </th>
+                            <!--Columna del descuento de detalles transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Descuento
+                            </th>
+                            <!--Columna de sub total de compra de detalles transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Sub Total
+                            </th>
+                            <!--Columna de la venta total de detalles transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Venta Total
+                            </th>
+                            <!--Columna de las observaciones de la transacción de detalles transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Observaciones
+                            </th>
+                            <!--Columna de la bodega de salida del producto de detalles transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Bodega de Salida
+                            </th>
+                            <!--Columna del productos de detalles transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Producto
+                            </th>
+                            <!--Columna de la descripción de detalles transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Descripción
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                N. comprobante
+                            </th>
+                            <!--Controles de acciones para actualizar o eliminar registro-->
+                            <th scope="col" class="px-8 py-3">
+                                <span class="">Controles</span>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="registros">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <!-- pie del sitio -->
+    <footer></footer>
+
+    <!-- Importacion de archivos JavaScript -->
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="../resources/JS/sweetalert.min.js"></script>
+    <script src="../controllers/components.js"></script>
+    <script src="../controllers/account.js"></script>
+    <script src="../controllers/ventaProducto.js"></script>
+</body>

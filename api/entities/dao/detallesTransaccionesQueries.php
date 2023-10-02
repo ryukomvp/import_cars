@@ -51,6 +51,36 @@ class DetallesTransaccionQueries
         return Database::getRows($sql);
     }
 
+    public function leerVentas()
+    {
+        $sql = 'SELECT a.iddetalletransaccion, a.correlativo, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, b.nocomprobante 
+        FROM detallestransacciones a 
+        INNER JOIN bodegas b ON a.idbodegaentrada = b.idbodega 
+        INNER JOIN bodegas e ON a.idbodegasalida = e.idbodega 
+        INNER JOIN productos c ON a.idproducto = c.idproducto 
+        INNER JOIN encabezadostransacciones b ON a.idencatransaccion = b.idencatransaccion
+        INNER JOIN codigostransacciones d ON a.idcodigotransaccion = d.idcodigotransaccion 
+        ORDER BY a.correlativo
+        WHERE d.codigo = ';
+        return Database::getRows($sql);
+    }
+
+    public function leerRegistros()
+    {
+        $sql = 'SELECT a.idencatransaccion, a.nocomprobante, a.fechatransac, a.lote, a.npoliza, b.numerobod, c.nombrecajero, a.tipopago, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, l.nombre, u.nombreus, v.nombreprov, o.nombreemp
+                FROM encabezadostransacciones a 
+                INNER JOIN bodegas b ON a.idbodega = b.idbodega
+                INNER JOIN cajeros c ON a.idcajero = c.idcajero
+                INNER JOIN codigostransacciones d ON a.idcodigotransaccion = d.idcodigotransaccion
+                INNER JOIN clientes l ON a.idcliente = l.idcliente
+                INNER JOIN vendedores s ON a.idvendedor = s.idvendedor
+                INNER JOIN usuarios u ON s.idusuario = u.idusuario
+                INNER JOIN proveedores v ON a.idproveedor = v.idproveedor
+                INNER JOIN parametros o ON a.idparametro = o.idparametro
+                ORDER BY a.nocomprobante';
+        return Database::getRows($sql);
+    }
+
     public function leerUnRegistro()
     {
         $sql = 'SELECT iddetalletransaccion, correlativo, cantidad, preciounitario, ventanosujeta, ventaexenta, ventaafecta, descuento, valordescuento, sumas, subtotal, ventatotal, iva, observaciones, idbodegaentrada, idbodegasalida, idproducto, descripcion, idencatransaccion
