@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 FORMULARIO_SESION.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
+    // Desactivar botón para prevenir muchas peticiones seguidas.
+    document.getElementById('btn-ingresar').disabled = true;
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_SESION);
     const JSON = await dataFetch(USUARIO_API, 'iniciarSesion', FORM);
@@ -115,7 +117,6 @@ FORMULARIO_EMPLEADO.addEventListener('submit', async (event) => {
         // Se oculta el formulario para registrar el primer empleado.
         document.getElementById('registrar-emp').classList.add('hidden');
         // Se notifica que debe registrar un usuario para utilizar el sistema.
-        // sweetAlert(1, 'Debe registrar un usuario para inicializar el sistema', false);
         // Se muestra el formulario para registrar el primer usuario.
         document.getElementById('registrar-us').classList.remove('hidden');
         // Se leen los empleados registrados en la base de datos (ya que se esta registrando el primer usuario, por obviedad, solo existe un empleado el cual aun no posee usuario para acceder al sistema).
