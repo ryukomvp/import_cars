@@ -21,6 +21,7 @@ class Methods
         $number = array();
         array_push($number, $codigoveri);
         $mail = new PHPMailer(true);
+        $mail->charSet = 'UTF-8';
         $mail->isSMTP();
         $mail->SMTPAuth = true;
         $mail->Host = 'smtp.gmail.com';  //gmail SMTP server
@@ -34,7 +35,7 @@ class Methods
         $mail->addAddress($email, $recipient);
         $mail->isHTML(true);
         // Asunto del correo
-        $mail->Subject = $asunto;
+        $mail->Subject = utf8_decode($asunto);
         // Cuerpo del correo
         $mail->Body = $cuerpo;
         // Se envia el correo 
