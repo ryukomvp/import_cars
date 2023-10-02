@@ -30,7 +30,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$codigoTransac->setCodigo($_POST['codigo'])) {
                     $result['exception'] = 'Código incorrecto';
-                } elseif(!$codigoTransac->setNombreCodigo($S_POST['nombrecodigo'])){
+                } elseif(!$codigoTransac->setNombreCodigo($_POST['nombreCodigo'])){
                     $result['exception'] = 'Nombre incorrecto';
                 } elseif ($codigoTransac->crearRegistro()) {
                     $result['status'] = 1;
@@ -68,7 +68,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Código de transacción inexistente';
                 } elseif (!$codigoTransac->setCodigo($_POST['codigo'])) {
                     $result['exception'] = 'Código incorrecto';
-                } elseif(!$codigoTransac->setNombreCodigo($S_POST['nombrecodigo'])){
+                } elseif(!$codigoTransac->setNombreCodigo($_POST['nombreCodigo'])){
                     $result['exception'] = 'Nombre incorrecto';
                 } elseif ($codigoTransac->actualizarRegistro()) {
                     $result['status'] = 1;
