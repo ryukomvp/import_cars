@@ -21,7 +21,7 @@ if (isset($_GET['action'])) {
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
     // print_r($_SESSION['permissions']);
     if (isset($_SESSION['idusuario'])) {
-        print_r($_SESSION['permissions']);
+        // print_r($_SESSION['permissions']);
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
