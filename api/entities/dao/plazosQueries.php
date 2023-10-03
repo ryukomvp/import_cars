@@ -57,4 +57,9 @@ class PlazosQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+    public function leerTipoPlazo()
+    {
+        $plazos = array(array('Contado','Contado'), array('Credito','Credito'));
+        return $plazos;
+    }
 }
