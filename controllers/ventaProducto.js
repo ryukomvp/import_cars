@@ -66,7 +66,7 @@ async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.
     REGISTROS_TABLA.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
+    (form) ? action = 'buscarRegistros' : action = 'leerVentas';
     // Petición para obtener los registros disponibles.
     const JSON = await dataFetch(DETALLE_TRANSACCION_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.

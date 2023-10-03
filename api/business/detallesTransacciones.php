@@ -88,6 +88,16 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay registros';
                 }
                 break;
+            case 'leerVentas':
+                    if ($result['dataset'] = $detalleTrans->leerVentas()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Existen ' . count($result['dataset']) . ' ventas';
+                    } elseif (Database::getException()) {
+                        $result['exception'] = Database::getException();
+                    } else {
+                        $result['exception'] = 'No hay ventas';
+                    }
+                    break;
             case 'leerUnRegistro':
                 if (!$detalleTrans->setId($_POST['id'])) {
                     $result['exception'] = 'Transacción incorrecta';

@@ -61,23 +61,7 @@ class DetallesTransaccionQueries
         INNER JOIN encabezadostransacciones b ON a.idencatransaccion = b.idencatransaccion
         INNER JOIN codigostransacciones d ON a.idcodigotransaccion = d.idcodigotransaccion 
         ORDER BY a.correlativo
-        WHERE d.codigo = ';
-        return Database::getRows($sql);
-    }
-
-    public function leerRegistros()
-    {
-        $sql = 'SELECT a.idencatransaccion, a.nocomprobante, a.fechatransac, a.lote, a.npoliza, b.numerobod, c.nombrecajero, a.tipopago, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, l.nombre, u.nombreus, v.nombreprov, o.nombreemp
-                FROM encabezadostransacciones a 
-                INNER JOIN bodegas b ON a.idbodega = b.idbodega
-                INNER JOIN cajeros c ON a.idcajero = c.idcajero
-                INNER JOIN codigostransacciones d ON a.idcodigotransaccion = d.idcodigotransaccion
-                INNER JOIN clientes l ON a.idcliente = l.idcliente
-                INNER JOIN vendedores s ON a.idvendedor = s.idvendedor
-                INNER JOIN usuarios u ON s.idusuario = u.idusuario
-                INNER JOIN proveedores v ON a.idproveedor = v.idproveedor
-                INNER JOIN parametros o ON a.idparametro = o.idparametro
-                ORDER BY a.nocomprobante';
+        WHERE d.codigo = 1235';
         return Database::getRows($sql);
     }
 
