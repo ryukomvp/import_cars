@@ -19,9 +19,9 @@ class productosQueries
         INNER JOIN tiposproductos ON productos.idtipoproducto = tiposproductos.idtipoproducto 
         INNER JOIN modelos ON productos.idmodelo = modelos.idmodelo 
         INNER JOIN paisesdeorigen ON productos.idpais = paisesdeorigen.idpais 
-        WHERE productos.nombreprod LIKE ? OR productos.descripcionprod LIKE ? OR categorias.categoria  LIKE ? OR codigoscomunes.codigo LIKE ?
+        WHERE productos.nombreprod LIKE ? OR productos.descripcionprod LIKE ? OR categorias.categoria  LIKE ? OR codigoscomunes.codigo LIKE ? OR modelos.modelo LIKE ? OR paisesdeorigen.pais LIKE ?
         ORDER BY productos.nombreprod';
-        $params = array("%$value%", "%$value%", "%$value%", "%$value%");
+        $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
@@ -62,7 +62,7 @@ class productosQueries
         ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
 
         $sql = 'UPDATE productos
-                SET nombreprod = ?, imagen= ?, descripcionprod= ?, precio= ?, preciodesc= ?, anioinicial= ?, aniofinal= ?, idcodigocomun= ?, idtipoproducto= ?, idcategoria= ?, idmodelo= ?, idpais= ?, estadoproducto= ?
+                SET nombreprod = ?, imagen = ?, descripcionprod = ?, precio = ?, preciodesc = ?, anioinicial = ?, aniofinal = ?, idcodigocomun = ?, idtipoproducto = ?, idcategoria = ?, idmodelo = ?, idpais = ?, estadoproducto = ?
                 WHERE idproducto = ?';
         $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->idCodigosComunes, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto, $this->id);
         return Database::executeRow($sql, $params);
