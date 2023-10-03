@@ -14,11 +14,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         setInterval(() => {
             checkSessionTime();
         }, 1800000);
-        
-            if (JSON.status) {
-                console.log(JSON.permissions);
-                // Inserción de header
-                HEADER.innerHTML = `
+        if (JSON.status) {
+            console.log(JSON.permissions.usuarios);
+            // COndicion para evaluar los permisos al acceder por medio de la url
+            if ((location.pathname.endsWith('usuarios.html') && !JSON.permissions.usuarios) || (location.pathname.endsWith('productos.html') && !JSON.permissions.productos) || (location.pathname.endsWith('bitacoras.html') && !JSON.permissions.bitacoras) || (location.pathname.endsWith('bodegas.html') && !JSON.permissions.bodegas) || (location.pathname.endsWith('cajas.html') && !JSON.permissions.cajas) || (location.pathname.endsWith('cajeros.html') && !JSON.permissions.cajeros) || (location.pathname.endsWith('categorias.html') && !JSON.permissions.categorias) || (location.pathname.endsWith('clientes.html') && !JSON.permissions.clientes) || (location.pathname.endsWith('codigoscomunes.html') && !JSON.permissions.codigoscomunes) || (location.pathname.endsWith('codigosplazos.html') && !JSON.permissions.codigosplazos) || (location.pathname.endsWith('codigostransacciones.html') && !JSON.permissions.codigostransacciones) || (location.pathname.endsWith('detallestransacciones.html') && !JSON.permissions.contactos) || (location.pathname.endsWith('clientes.html') && !JSON.permissions.detallestransacciones) || (location.pathname.endsWith('empleados.html') && !JSON.permissions.empleados) || (location.pathname.endsWith('encabezadostransacciones.html') && !JSON.permissions.encabezadostransacciones) || (location.pathname.endsWith('familias.html') && !JSON.permissions.familias) || (location.pathname.endsWith('marcas.html') && !JSON.permissions.marcas) || (location.pathname.endsWith('modelos.html') && !JSON.permissions.modelos) || (location.pathname.endsWith('monedas.html') && !JSON.permissions.monedas) || (location.pathname.endsWith('paisesdeorigen.html') && !JSON.permissions.paisesdeorigen) || (location.pathname.endsWith('parametros.html') && !JSON.permissions.parametros) || (location.pathname.endsWith('plazos.html') && !proveedores) || (location.pathname.endsWith('sucursales.html') && !JSON.permissions.sucursales) || (location.pathname.endsWith('tiposproductos.html') && !JSON.permissions.tiposproductos) || (location.pathname.endsWith('tiposusuarios.html') && !JSON.permissions.tiposusuarios) || (location.pathname.endsWith('vendedores.html') && !JSON.permissions.vendedores)) {
+                location.href = 'dashboard.html';
+            }
+            // Inserción de header
+            HEADER.innerHTML = `
             <!-- drawer component -->
             <div id="drawer-navigation"
                 class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800"
@@ -325,8 +328,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     </div>
                 </div>
             </nav>`;
-                // Inserción de footer
-                FOOTER.innerHTML = `
+            // Inserción de footer
+            FOOTER.innerHTML = `
                         <div class="2xl:sticky bottom-0 left-0 right-0 p-4 bg-azul shadow md:flex md:items-center md:justify-between md:p-6 dark:bg-gray-800">
                             <!-- nombre del sistema -->
                             <span class="text-white text-2xl">Import Cars</span>
@@ -351,18 +354,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                         </div>
                     `;
 
-            } else {
-                sweetAlert(3, JSON.exception, false, 'index.html');
-            }
-
         } else {
-            if (location.pathname == '/import_cars/views/index.html') {
-                HEADER.innerHTML = ``;
-                FOOTER.innerHTML = ``;
-            } else {
-                location.href = 'index.html'
-            }
+            sweetAlert(3, JSON.exception, false, 'index.html');
         }
+
+    } else {
+        if (location.pathname == '/import_cars/views/index.html') {
+            HEADER.innerHTML = ``;
+            FOOTER.innerHTML = ``;
+        } else {
+            location.href = 'index.html'
+        }
+    }
 })
 
 async function checkSessionTime() {
