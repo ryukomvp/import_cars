@@ -92,17 +92,18 @@ async function cargarRegistros(form = null) {
                     <td class="px-6 py-4">${row.descripcion}</td>
                     <td class="px-6 py-4">${row.nocomprobante}</td>
                     <td class="px-6 py-4">
-                        <button onclick="actualizarRegistro(${row.iddetalletransaccion})"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        type="button">
-                        <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                        <td>
+                            <button onclick="actualizarRegistro(${row.iddetalletransaccion})"
+                                class="text-blue-700 border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                                type="button">
+                                <img src="https://img.icons8.com/ios/30/1A56DB/synchronize.png" />
+                            </button>
+                            <button onclick="eliminarRegistro(${row.iddetalletransaccion})"  
+                                class="text-red-700 border border-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                                type="button">
+                                <img src="https://img.icons8.com/ios/30/C81E1E/delete--v1.png" />
                         </button>
-
-                        <button onclick="eliminarRegistro(${row.iddetalletransaccion})"
-                        class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        type="button">
-                        <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
-                        </button>
+                        </td>
                     </td>
                 </tr>
             `;
@@ -113,7 +114,7 @@ async function cargarRegistros(form = null) {
 }
 
 // Funcion para abrir el modal y añadir un registro
-function crearRegistro() {
+function crearRegistroDetalle() {
     // Se abre la caja de diálogo que contiene el formulario.
     ABRIR_MODAL.show();
     EJECUTAR_FORMULARIO.reset();
