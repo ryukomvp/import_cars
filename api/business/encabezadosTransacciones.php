@@ -26,7 +26,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'crearRegistro':
+            case 'crearRegistroVenta':
                 $_POST = Validator::validateForm($_POST);
                 if (!$encabezadoTransac->setNoComprobante($_POST['noComprobante'])) {
                     $result['exception'] = 'Número de comprobante incorrecto';
@@ -52,6 +52,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Error al asignar el proveedor';
                 } elseif (!$encabezadoTransac->setIdParametro($_POST['parametro'])) {
                     $result['exception'] = 'Error al asignar el parámetro';
+                } elseif (!$detalleTrans->setIdDetalletraccion($_POST['detalletransaccion'])) {
+                    $result['exception'] = 'Error al asignar el detalle de la transacción';
                 } elseif ($encabezadoTransac->crearRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Encabezado de la transacción creado exitosamente';

@@ -349,7 +349,7 @@ CREATE TABLE IF NOT EXISTS detallestransacciones (
     
     CONSTRAINT fkproddetalletransac
     FOREIGN KEY (idproducto)
-    REFERENCES productos(idproducto) ON UPDATE CASCADE ON DELETE CASCADE,
+    REFERENCES productos(idproducto) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS encabezadostransacciones (
@@ -394,11 +394,11 @@ CREATE TABLE IF NOT EXISTS encabezadostransacciones (
 
     CONSTRAINT fkcliencatransaccion
     FOREIGN KEY (idcliente)
-    REFERENCES clientes(idcliente) ON UPDATE CASCADE ON DELETE CASCADE
+    REFERENCES clientes(idcliente) ON UPDATE CASCADE ON DELETE CASCADE,
     
     CONSTRAINT fkencadetalletransac
     FOREIGN KEY (iddetalletransaccion)
-    REFERENCES detalletransacciones(iddetalletransaccion) ON UPDATE CASCADE ON DELETE CASCADE
+    REFERENCES detallestransacciones(iddetalletransaccion) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 
@@ -406,6 +406,29 @@ CREATE TABLE IF NOT EXISTS bitacoras(
     idbitacora INT PRIMARY KEY AUTO_INCREMENT NOT NULL, 
     mensaje VARCHAR(200) NOT NULL ,
     fechabitacora DATETIME NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS inventariosbodegas (
+    idinventariobodega INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    idproducto INT NOT NULL UNIQUE,
+    cantidad INT NOT NULL,
+    idbodega INT NOT NULL,
+    
+    CONSTRAINT fkinventariobodega
+    FOREIGN KEY (idbodega)
+    REFERENCES bodegas(idbodega) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS inventariossucursales (
+    idinventariosucursales INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    idproducto INT NOT NULL UNIQUE,
+    cantidad INT NOT NULL,
+    idsucursal INT NOT NULL,
+    
+    CONSTRAINT fkinventariosucursal
+    FOREIGN KEY (idsucursal)
+    REFERENCES sucursales(idsucursal) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 DELIMITER $$
@@ -753,22 +776,10 @@ INSERT INTO productos(nombreprod, descripcionprod, precio, preciodesc, anioinici
        ('Foco delantero blanco Honda Civic SI 2020', 'Foco frontal blanco Honda Civic SI', 44.00, 43.00, 2020, 2022, 7, 1, 3, 7, 7,'Existente');
 
 INSERT INTO codigostransacciones(codigo, nombrecodigo) VALUES
-       (1234, 'codigo1'),
-       (1235, 'codigo2'),
-       (1236, 'codigo3'),
-       (1237, 'codigo4'),
-       (1238, 'codigo5'),
-       (1239, 'codigo6'),
-       (1210, 'codigo7');
-
-INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro, iddetalletransaccion) VALUES
-       (1, '2015-01-01', 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1, 1),
-       (2, '2015-01-01', 1214, 1235, 2, 2,'Efectivo', 2, 2, 2, 2, 2, 2),
-       (3, '2015-01-01', 1215, 1236, 3, 3,'Efectivo', 3, 3, 3, 3, 3, 3),
-       (4, '2015-01-01', 1216, 1237, 4, 4,'Efectivo', 4, 4, 4, 4, 4, 4),
-       (5, '2015-01-01', 1217, 1238, 5, 5,'Efectivo', 5, 5, 5, 5, 5, 5),
-       (6, '2015-01-01', 1218, 1239, 6, 6,'Efectivo', 6, 6, 6, 6, 6, 6),
-       (7, '2015-01-01', 1219, 1230, 7, 7,'Efectivo', 7, 7, 7, 7, 7, 7);
+       (1234, 'Venta'),
+       (1235, 'Ingreso'),
+       (1236, 'Recuento'),
+       (1237, 'Traspaso');
 
 INSERT INTO detallestransacciones(correlativo, cantidad, preciounitario, ventanosujeta, ventaexenta, ventaafecta, descuento, valordescuento, sumas, subtotal, ventatotal, iva, observaciones, idbodegaentrada, idbodegasalida, idproducto, descripcion) VALUES
        (1, 50, 20.00, 15.00, 40.00, 34.00, 40.00, 20.00, 40.00, 34.00, 34.00, 19.00, 'Exelente', 1, 1, 1, 'Transaccion de producto'),
@@ -778,6 +789,18 @@ INSERT INTO detallestransacciones(correlativo, cantidad, preciounitario, ventano
        (5, 90, 80.00, 34.00, 40.00, 34.00, 19.00, 20.00, 33.00, 20.00, 19.00, 34.00, 'Defectuoso', 5, 5, 5, 'Transaccion de producto'),
        (6, 100, 15.00, 12.00, 19.00, 19.00, 40.00, 20.00, 40.00, 19.00, 19.00, 33.00, 'Exelente', 6, 6, 6, 'Transaccion de producto'),
        (7, 110, 84.00, 19.00, 19.00, 40.00, 19.00, 19.00, 34.00, 20.00, 33.00, 40.00, 'Defectuoso', 7, 7, 7, 'Transaccion de producto');
+
+
+INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro, iddetalletransaccion) VALUES
+       (1, '2015-01-01', 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1, 1),
+       (2, '2015-01-01', 1214, 1235, 2, 2,'Efectivo', 2, 2, 2, 2, 2, 2),
+       (3, '2015-01-01', 1215, 1236, 3, 3,'Efectivo', 3, 3, 3, 3, 3, 3),
+       (4, '2015-01-01', 1216, 1237, 4, 4,'Efectivo', 1, 4, 4, 4, 4, 4),
+       (5, '2015-01-01', 1217, 1238, 5, 5,'Efectivo', 2, 5, 5, 5, 5, 5),
+       (6, '2015-01-01', 1218, 1239, 6, 6,'Efectivo', 3, 6, 6, 6, 6, 6),
+       (7, '2015-01-01', 1219, 1230, 7, 7,'Efectivo', 1, 7, 7, 7, 7, 7);
+
+
 
 
 
