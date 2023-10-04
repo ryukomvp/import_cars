@@ -50,7 +50,7 @@ FORMULARIO_SESION.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Desactivar botón para prevenir muchas peticiones seguidas.
-    document.getElementById('btn-ingresar').disabled = true;
+    // document.getElementById('btn-ingresar').disabled = true;
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(FORMULARIO_SESION);
     const JSON = await dataFetch(USUARIO_API, 'iniciarSesion', FORM);
