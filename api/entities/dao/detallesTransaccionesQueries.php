@@ -90,4 +90,17 @@ class DetallesTransaccionQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function leerVentasReporte()
+    {
+        $sql = 'SELECT a.idencatransaccion , a.fechatransac , f.correlativo, f.cantidad, f.preciounitario, f.ventanosujeta, a.lote, f.ventaexenta, f.ventaafecta, f.descuento, f.valordescuento, f.sumas, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, f.subtotal, f.ventatotal, f.iva, f.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, f.descripcion, a.nocomprobante 
+        FROM encabezadostransacciones a 
+        INNER JOIN detallestransacciones f ON a.iddetalletransaccion = f.iddetalletransaccion
+        INNER JOIN bodegas b ON f.idbodegaentrada = b.idbodega 
+        INNER JOIN bodegas e ON f.idbodegasalida = e.idbodega 
+        INNER JOIN productos c ON f.idproducto = c.idproducto 
+        INNER JOIN codigostransacciones d ON a.idcodigotransaccion = d.idcodigotransaccion 
+        ORDER BY f.correlativo';
+        return Database::getRows($sql);
+    }
 }
