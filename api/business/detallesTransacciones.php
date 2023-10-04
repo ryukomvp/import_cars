@@ -33,7 +33,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'crearRegistro':
+            case 'crearRegistroVenta':
                 $_POST = Validator::validateForm($_POST);
                 if (!$detalleTrans->setCorrelativo($_POST['correlativo'])) {
                     $result['exception'] = 'Correlativo incorrecto';
@@ -61,17 +61,13 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'IVA asignado incorrecto';
                 } elseif (!$detalleTrans->setObservacion($_POST['observaciones'])) {
                     $result['exception'] = 'Observación incorrecta';
-                } elseif (!$detalleTrans->setIdBodegaEntrada($_POST['bodegaEntrada'])) {
-                    $result['exception'] = 'Error al asignar la bodega de entrada del articulo';
                 } elseif (!$detalleTrans->setIdBodegaSalida($_POST['bodegaSalida'])) {
                     $result['exception'] = 'Error al asignar la bodega de salida del articulo';
                 } elseif (!$detalleTrans->setIdProducto($_POST['producto'])) {
                     $result['exception'] = 'Error al asignar el producto';
                 } elseif (!$detalleTrans->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$detalleTrans->setIdEncatraccion($_POST['encaTransaccion'])) {
-                    $result['exception'] = 'Error al asignar el encabezado de la transacción';
-                } elseif ($detalleTrans->crearRegistro()) {
+                }  elseif ($detalleTrans->crearRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Detalle de la transacción creado exitosamente';
                 } else {

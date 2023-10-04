@@ -116,7 +116,7 @@ async function cargarRegistros(form = null) {
 }
 
 // Funcion para abrir el modal y añadir un registro
-function crearRegistroDetalle() {
+function crearRegistroDetalleVenta() {
     // Se abre la caja de diálogo que contiene el formulario.
     ABRIR_MODAL_DETALLE.show();
     EJECUTAR_FORMULARIO.reset();
@@ -124,10 +124,8 @@ function crearRegistroDetalle() {
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna el título a la caja de diálogo.
     TITULO.textContent = 'Crear un registro';
-    fillSelect(BODEGA_API, 'leerRegistros', 'bodegaEntrada');
     fillSelect(BODEGA_API, 'leerRegistros', 'bodegaSalida');
     fillSelect(PRODUCTOS_API, 'leerTodo', 'producto');
-    fillSelect(ENCABEZADO_TRANSACCION_API, 'leerRegistros', 'encaTransaccion');
 }
 
 function crearRegistroEncabezado() {
@@ -141,7 +139,6 @@ function crearRegistroEncabezado() {
     fillSelect(BODEGA_API, 'leerRegistros', 'bodega');
     fillSelect(CAJERO_API, 'leerRegistros', 'cajero');
     fillSelect(ENCABEZADO_TRANSACCION_API, 'leerTiposPagos', 'tipoPago');
-    fillSelect(CODIGO_TRANSACCION_API, 'leerRegistros', 'codigoTransaccion');
     fillSelect(CLIENTE_API, 'leerRegistros', 'cliente');
     fillSelect(VENDEDDOR_API, 'leerRegistros', 'vendedor');
     fillSelect(PROVEEDOR_API, 'leerRegistros', 'proveedor');
