@@ -110,7 +110,7 @@ function crearRegistro() {
     // Se asigna el título a la caja de diálogo.
     TITULO.textContent = 'Crear un registro';
     fillSelect(CODIGO_PLAZOS_API, 'leerRegistros', 'codigoPlazo');
-    fillSelect(PLAZOS_API, 'leerTipos', 'tipoPlazo');
+    fillSelect(PLAZOS_API, 'leerTiposPlazos', 'tipoPlazo');
 }
 
 //Funcion para abrir el modal con los datos del registro a actualizar
@@ -131,10 +131,10 @@ async function actualizarRegistro(id) {
         TITULO.textContent = 'Actualizar un registro';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idcodigoplazo;
-        document.getElementById('descripcion').value = JSON.dataset.plazo;
-        document.getElementById('vencimiento').value = JSON.dataset.dias;
+        document.getElementById('descripcion').value = JSON.dataset.descripcion;
+        document.getElementById('vencimiento').value = JSON.dataset.vencimiento;
         fillSelect(CODIGO_PLAZOS_API, 'leerRegistros', 'codigoPlazo', JSON.dataset.idcodigoplazo);
-        fillSelect(PLAZOS_API, 'leerTipos', 'tipoPlazo', JSON.dataset.tipoplazo);
+        fillSelect(PLAZOS_API, 'leerTiposPlazos', 'tipoPlazo', JSON.dataset.tipoplazo);
 
     } else {
         sweetAlert(2, JSON.exception, false);
