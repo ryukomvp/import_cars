@@ -408,6 +408,29 @@ CREATE TABLE IF NOT EXISTS bitacoras(
     fechabitacora DATETIME NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS inventariosbodegas (
+    idinventariobodega INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    idproducto INT NOT NULL UNIQUE,
+    cantidad INT NOT NULL,
+    idbodega INT NOT NULL,
+    
+    CONSTRAINT fkinventariobodega
+    FOREIGN KEY (idbodega)
+    REFERENCES bodegas(idbodega) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+CREATE TABLE IF NOT EXISTS inventariossucursales (
+    idinventariosucursales INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    idproducto INT NOT NULL UNIQUE,
+    cantidad INT NOT NULL,
+    idsucursal INT NOT NULL,
+    
+    CONSTRAINT fkinventariosucursal
+    FOREIGN KEY (idsucursal)
+    REFERENCES sucursales(idsucursal) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
 DELIMITER $$
 CREATE TRIGGER bitacoraUsuario AFTER UPDATE ON usuarios
 FOR EACH ROW 
@@ -753,13 +776,10 @@ INSERT INTO productos(nombreprod, descripcionprod, precio, preciodesc, anioinici
        ('Foco delantero blanco Honda Civic SI 2020', 'Foco frontal blanco Honda Civic SI', 44.00, 43.00, 2020, 2022, 7, 1, 3, 7, 7,'Existente');
 
 INSERT INTO codigostransacciones(codigo, nombrecodigo) VALUES
-       (1234, 'codigo1'),
-       (1235, 'codigo2'),
-       (1236, 'codigo3'),
-       (1237, 'codigo4'),
-       (1238, 'codigo5'),
-       (1239, 'codigo6'),
-       (1210, 'codigo7');
+       (1234, 'Venta'),
+       (1235, 'Ingreso'),
+       (1236, 'Recuento'),
+       (1237, 'Traspaso');
 
 INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro, iddetalletransaccion) VALUES
        (1, '2015-01-01', 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1, 1),
