@@ -18,7 +18,9 @@ const TITULO = document.getElementById('titulo');
 // Constante para el texto del boton
 const BTN_ACCION = document.getElementById('accion');
 // Constante para abrir o cerrar el modal
-const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
+const ABRIR_MODAL_DETALLE = new Modal(document.getElementById('abrirModalDetalle'));
+// Contate para abrir o cerral el modal 
+const ABRIR_MODAL_ENCABEZADO = new Modal(document.getElementById('abrirModalEncabezado'));\
 
 
 // Metodo para cargar la pagina cada vez que haya un cambio en el DOM
@@ -93,7 +95,7 @@ async function cargarRegistros(form = null) {
                     <td class="px-6 py-4">${row.nocomprobante}</td>
                     <td class="px-6 py-4">
                         <td>
-                            <button onclick="actualizarRegistro(${row.iddetalletransaccion})"
+                            <button onclick="actualizarRegistroDetalle(${row.iddetalletransaccion})"
                                 class="text-blue-700 border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                                 type="button">
                                 <img src="https://img.icons8.com/ios/30/1A56DB/synchronize.png" />
@@ -116,7 +118,7 @@ async function cargarRegistros(form = null) {
 // Funcion para abrir el modal y añadir un registro
 function crearRegistroDetalle() {
     // Se abre la caja de diálogo que contiene el formulario.
-    ABRIR_MODAL.show();
+    ABRIR_MODAL_DETALLE.show();
     EJECUTAR_FORMULARIO.reset();
     // Texto del boton para crear un registro
     BTN_ACCION.textContent = 'Añadir';
@@ -128,8 +130,26 @@ function crearRegistroDetalle() {
     fillSelect(ENCABEZADO_TRANSACCION_API, 'leerRegistros', 'encaTransaccion');
 }
 
+function crearRegistroEncabezado() {
+    // Se abre la caja de diálogo que contiene el formulario.
+    ABRIR_MODAL_ENCABEZADO.show();
+    EJECUTAR_FORMULARIO.reset();
+    // Texto del boton para crear un registro
+    BTN_ACCION.textContent = 'Añadir';
+    // Se asigna el título a la caja de diálogo.
+    TITULO.textContent = 'Crear un registro';
+    fillSelect(BODEGA_API, 'leerRegistros', 'bodega');
+    fillSelect(CAJERO_API, 'leerRegistros', 'cajero');
+    fillSelect(ENCABEZADO_TRANSACCION_API, 'leerTiposPagos', 'tipoPago');
+    fillSelect(CODIGO_TRANSACCION_API, 'leerRegistros', 'codigoTransaccion');
+    fillSelect(CLIENTE_API, 'leerRegistros', 'cliente');
+    fillSelect(VENDEDDOR_API, 'leerRegistros', 'vendedor');
+    fillSelect(PROVEEDOR_API, 'leerRegistros', 'proveedor');
+    fillSelect(PARAMETRO_API, 'leerRegistros', 'parametro');
+}
+
 //Funcion para abrir el modal con los datos del registro a actualizar
-async function actualizarRegistro(id) {
+async function actualizarRegistroDetalle(id) {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
     FORM.append('id', id);
@@ -168,6 +188,42 @@ async function actualizarRegistro(id) {
         sweetAlert(2, JSON.exception, false);
     }
 }
+
+async function actualizarRegistroEncabezado(id) {
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id', id);
+    // Petición para obtener los datos del registro solicitado.
+    const JSON = await dataFetch(ENCABEZADO_TRANSACCION_API, 'leerUnRegistro', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se abre la caja de diálogo que contiene el formulario.
+        ABRIR_MODAL.show();
+        EJECUTAR_FORMULARIO.reset();
+        // Texto del boton para actualizar un registro 
+        BTN_ACCION.textContent = 'Actualizar';
+        // Se asigna título para la caja de diálogo.
+        TITULO.textContent = 'Actualizar un registro';
+        // Se inicializan los campos del formulario.
+        document.getElementById('id').value = JSON.dataset.idencatransaccion;
+        document.getElementById('noComprobante').value = JSON.dataset.nocomprobante;
+        document.getElementById('fechaTransac').value = JSON.dataset.fechatransac;
+        document.getElementById('lote').value = JSON.dataset.lote;
+        document.getElementById('nopoliza').value = JSON.dataset.npoliza;
+        fillSelect(BODEGA_API, 'leerRegistros', 'bodega', JSON.dataset.idbodega);
+        fillSelect(CAJERO_API, 'leerRegistros', 'cajero', JSON.dataset.idcajero);
+        fillSelect(ENCABEZADO_TRANSACCION_API, 'leerTiposPagos', 'tipoPago', JSON.dataset.tipopago);
+        fillSelect(CODIGO_TRANSACCION_API, 'leerRegistros', 'codigoTransaccion', JSON.dataset.idcodigotransaccion);
+        fillSelect(CLIENTE_API, 'leerRegistros', 'cliente', JSON.dataset.idcliente);
+        fillSelect(VENDEDDOR_API, 'leerRegistros', 'vendedor', JSON.dataset.idvendedor);
+        fillSelect(PROVEEDOR_API, 'leerRegistros', 'proveedor', JSON.dataset.idproveedor);
+        fillSelect(PARAMETRO_API, 'leerRegistros', 'parametro', JSON.dataset.idparametro);
+
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+}
+
 
 //Funcion para abrir el modal con los datos del registro a eliminar
 async function eliminarRegistro(id) {
