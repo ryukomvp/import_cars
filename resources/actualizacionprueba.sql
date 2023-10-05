@@ -698,7 +698,7 @@ INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, 
 	('Evelin Fery', '5971-3740', 'eferyg@omniture.com', '1998-06-04', '17434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Pietrek Peris', '8905-6928', 'pperish@cornell.edu', '2002-06-06', '99434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Mellisa Anstee', '1936-8789', 'mansteei@google.co.jp', '1997-09-11', '00434523-2', 'Inactivo', 'Masculino', 'Jefe'),
-	('Nevin Oke', '2536-1122', 'nokej@home.pl', '1999-02-03', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
+	('Kevin Oke', '2536-1122', 'kevinrivassd04@gmail.com', '1999-02-03', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '2010-10-10', '06795006-2', 'Activo', 'Masculino', 'Jefe');
 
 INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, estadousuario, palabraclave, codigoveri) VALUES

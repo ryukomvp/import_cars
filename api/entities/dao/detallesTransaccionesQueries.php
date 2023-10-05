@@ -41,12 +41,14 @@ class DetallesTransaccionQueries
 
     public function leerRegistros()
     {
-        $sql = 'SELECT a.iddetalletransaccion, a.correlativo, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, d.nocomprobante 
-        FROM detallestransacciones a 
+        $sql = 'SELECT a.iddetalletransaccion, f.fechatransac , a.correlativo, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, f.nocomprobante 
+        FROM encabezadostransacciones f  
+        INNER JOIN codigostransacciones d ON f.idcodigotransaccion = d.idcodigotransaccion
+        INNER JOIN detallestransacciones a ON a.iddetalletransaccion = f.iddetalletransaccion
         INNER JOIN bodegas b ON a.idbodegaentrada = b.idbodega 
         INNER JOIN bodegas e ON a.idbodegasalida = e.idbodega 
-        INNER JOIN productos c ON a.idproducto = c.idproducto 
-        INNER JOIN encabezadostransacciones d ON a.idencatransaccion = d.idencatransaccion 
+        INNER JOIN productos c ON a.idproducto = c.idproducto  
+        WHERE d.codigo = 1235
         ORDER BY a.correlativo';
         return Database::getRows($sql);
     }
@@ -54,12 +56,12 @@ class DetallesTransaccionQueries
     public function leerVentas()
     {
         $sql = 'SELECT a.iddetalletransaccion, f.fechatransac , a.correlativo, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, f.nocomprobante 
-        FROM detallestransacciones a 
+        FROM encabezadostransacciones f  
+        INNER JOIN codigostransacciones d ON f.idcodigotransaccion = d.idcodigotransaccion
+        INNER JOIN detallestransacciones a ON a.iddetalletransaccion = f.iddetalletransaccion
         INNER JOIN bodegas b ON a.idbodegaentrada = b.idbodega 
         INNER JOIN bodegas e ON a.idbodegasalida = e.idbodega 
-        INNER JOIN productos c ON a.idproducto = c.idproducto 
-        INNER JOIN encabezadostransacciones f ON a.idencatransaccion = f.idencatransaccion
-        INNER JOIN codigostransacciones d ON f.idcodigotransaccion = d.idcodigotransaccion 
+        INNER JOIN productos c ON a.idproducto = c.idproducto  
         WHERE d.codigo = 1235
         ORDER BY a.correlativo';
         return Database::getRows($sql);
