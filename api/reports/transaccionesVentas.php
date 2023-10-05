@@ -21,9 +21,9 @@ if ($dataProducto = $producto->leerTodo()) {
     // Encabezado de categoria
     $pdf->cell(30, 10, 'N. Comprobante', 1, 0, 'C', 1);
     $pdf->cell(20, 10, 'Cantidad', 1, 0, 'C', 1);
-    $pdf->cell(20, 10, 'Lote', 1, 0, 'C', 1);
+    $pdf->cell(16, 10, 'Lote', 1, 0, 'C', 1);
     $pdf->cell(24, 10, 'Fecha', 1, 0, 'C', 1);
-    $pdf->cell(26, 10, 'Precio Unitario', 1, 0, 'C', 1);
+    $pdf->cell(30, 10, 'Precio Unitario', 1, 0, 'C', 1);
     $pdf->cell(16, 10, 'Descuento', 1, 0, 'C', 1);
     $pdf->cell(20, 10, 'Total', 1, 0, 'C', 1);
     $pdf->cell(30, 10, 'Bodega de Salida', 1, 1, 'C', 1);
@@ -47,9 +47,9 @@ if ($dataProducto = $producto->leerTodo()) {
                 // Celda de categoria
                 $pdf->cell(30, 10, $pdf->encodeString($rowTransaccionVenta['nocomprobante']), 1, 0);
                 $pdf->cell(20, 10, $pdf->encodeString($rowTransaccionVenta['cantidad']), 1, 0);
-                $pdf->cell(20, 10, $pdf->encodeString($rowTransaccionVenta['lote']), 1, 0);
+                $pdf->cell(16, 10, $pdf->encodeString($rowTransaccionVenta['lote']), 1, 0);
                 $pdf->cell(24, 10, $pdf->encodeString($rowTransaccionVenta['fechatransac']), 1, 0);
-                $pdf->cell(26, 10, $pdf->encodeString($rowTransaccionVenta['preciounitario']), 1, 0);
+                $pdf->cell(30, 10, $pdf->encodeString($rowTransaccionVenta['preciounitario']), 1, 0);
                 $pdf->cell(16, 10, $pdf->encodeString($rowTransaccionVenta['descuento']), 1, 0);
                 $pdf->cell(20, 10, $pdf->encodeString($rowTransaccionVenta['ventatotal']), 1, 0);
                 $pdf->cell(30, 10, $pdf->encodeString($rowTransaccionVenta['bodegaSalida']), 1, 1);
