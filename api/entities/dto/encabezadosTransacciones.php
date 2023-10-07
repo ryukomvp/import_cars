@@ -20,6 +20,7 @@ class Encabezado extends EncabezadosQueries
     protected $idvendedor = null;
     protected $idproveedor = null;
     protected $idparametro = null; 
+    protected $iddetalletransaccion = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -155,6 +156,16 @@ class Encabezado extends EncabezadosQueries
         }
     }
 
+    public function setIdDetalleTransaccion($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->iddetalletransaccion = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -221,5 +232,10 @@ class Encabezado extends EncabezadosQueries
     public function getIdParametro()
     {
         return $this->idparametro;
+    }
+
+    public function getIdDetalleTransaccion()
+    {
+        return $this->iddetalletransaccion;
     }
 }

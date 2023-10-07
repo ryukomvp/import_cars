@@ -50,3 +50,17 @@ function transaccionesVentas() {
     // Se abre el reporte en una nueva pestaña del navegador web.
     window.open(PATH.href);
 }
+
+function transaccionesIngresos() {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/transaccionesIngresos.php`);
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
+}
+
+function transaccionesTraspasos() {
+    // Se declara una constante tipo objeto con la ruta específica del reporte en el servidor.
+    const PATH = new URL(`${SERVER_URL}reports/transaccionesTraspasos.php`);
+    // Se abre el reporte en una nueva pestaña del navegador web.
+    window.open(PATH.href);
+}

@@ -15,6 +15,8 @@ const VENDEDDOR_API = 'business/vendedores.php';
 const PROVEEDOR_API = 'business/proveedores.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const PARAMETRO_API = 'business/parametros.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const DETALLE_API = 'business/detallesTransacciones.php';
 // Constante para el input de busqueda
 const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para el formulario del modal, sirve para añadir y editar
@@ -97,6 +99,7 @@ async function cargarRegistros(form = null) {
                     <td class="px-6 py-4">${row.nombreus}</td>
                     <td class="px-6 py-4">${row.nombreprov}</td>
                     <td class="px-6 py-4">${row.nombreemp}</td>
+                    <td class="px-6 py-4">${row.correlativo}</td>
                     <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idencatransaccion})"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -135,6 +138,7 @@ function crearRegistro() {
     fillSelect(VENDEDDOR_API, 'leerRegistros', 'vendedor');
     fillSelect(PROVEEDOR_API, 'leerRegistros', 'proveedor');
     fillSelect(PARAMETRO_API, 'leerRegistros', 'parametro');
+    fillSelect(DETALLE_API, 'leerRegistros', 'detalleTransaccion');
 }
 
 //Funcion para abrir el modal con los datos del registro a actualizar
@@ -167,6 +171,7 @@ async function actualizarRegistro(id) {
         fillSelect(VENDEDDOR_API, 'leerRegistros', 'vendedor', JSON.dataset.idvendedor);
         fillSelect(PROVEEDOR_API, 'leerRegistros', 'proveedor', JSON.dataset.idproveedor);
         fillSelect(PARAMETRO_API, 'leerRegistros', 'parametro', JSON.dataset.idparametro);
+        fillSelect(DETALLE_API, 'leerRegistros', 'detalleTransaccion', JSON.dataset.iddetalletransaccion);
 
     } else {
         sweetAlert(2, JSON.exception, false);

@@ -41,7 +41,7 @@ class DetallesTransaccionQueries
 
     public function leerRegistros()
     {
-        $sql = 'SELECT a.iddetalletransaccion, f.fechatransac , a.correlativo, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, f.nocomprobante 
+        $sql = 'SELECT a.iddetalletransaccion , a.correlativo, f.fechatransac, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, f.nocomprobante 
         FROM encabezadostransacciones f  
         INNER JOIN codigostransacciones d ON f.idcodigotransaccion = d.idcodigotransaccion
         INNER JOIN detallestransacciones a ON a.iddetalletransaccion = f.iddetalletransaccion
@@ -102,6 +102,35 @@ class DetallesTransaccionQueries
         INNER JOIN bodegas e ON f.idbodegasalida = e.idbodega 
         INNER JOIN productos c ON f.idproducto = c.idproducto 
         INNER JOIN codigostransacciones d ON a.idcodigotransaccion = d.idcodigotransaccion 
+        WHERE d.codigo = 1234
+        ORDER BY f.correlativo';
+        return Database::getRows($sql);
+    }
+
+    public function leerIngresosReporte()
+    {
+        $sql = 'SELECT a.idencatransaccion , a.fechatransac , f.correlativo, f.cantidad, f.preciounitario, f.ventanosujeta, a.lote, f.ventaexenta, f.ventaafecta, f.descuento, f.valordescuento, f.sumas, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, f.subtotal, f.ventatotal, f.iva, f.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, f.descripcion, a.nocomprobante 
+        FROM encabezadostransacciones a 
+        INNER JOIN detallestransacciones f ON a.iddetalletransaccion = f.iddetalletransaccion
+        INNER JOIN bodegas b ON f.idbodegaentrada = b.idbodega 
+        INNER JOIN bodegas e ON f.idbodegasalida = e.idbodega 
+        INNER JOIN productos c ON f.idproducto = c.idproducto 
+        INNER JOIN codigostransacciones d ON a.idcodigotransaccion = d.idcodigotransaccion 
+        WHERE d.codigo = 1235
+        ORDER BY f.correlativo';
+        return Database::getRows($sql);
+    }
+
+    public function leerTraspasoReporte()
+    {
+        $sql = 'SELECT a.idencatransaccion , a.fechatransac , f.correlativo, f.cantidad, f.preciounitario, f.ventanosujeta, a.lote, f.ventaexenta, f.ventaafecta, f.descuento, f.valordescuento, f.sumas, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, f.subtotal, f.ventatotal, f.iva, f.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, f.descripcion, a.nocomprobante 
+        FROM encabezadostransacciones a 
+        INNER JOIN detallestransacciones f ON a.iddetalletransaccion = f.iddetalletransaccion
+        INNER JOIN bodegas b ON f.idbodegaentrada = b.idbodega 
+        INNER JOIN bodegas e ON f.idbodegasalida = e.idbodega 
+        INNER JOIN productos c ON f.idproducto = c.idproducto 
+        INNER JOIN codigostransacciones d ON a.idcodigotransaccion = d.idcodigotransaccion 
+        WHERE d.codigo = 1237
         ORDER BY f.correlativo';
         return Database::getRows($sql);
     }
