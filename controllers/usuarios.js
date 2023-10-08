@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('ejecutarFormulario').autocomplete = 'off';
     // Llamada a la función para llenar la tabla con los registros disponibles.
     registrosTabla();
+    // document.querySelectorAll('input');
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
@@ -80,7 +81,7 @@ async function registrosTabla(form = null) {
                     <td>${row.estadousuario}</td>
                     <td>
                         <button onclick="actualizarRegistro(${row.idusuario})"
-                            class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mt-2 mb-2"
                             type="button">
                             <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97"/>
