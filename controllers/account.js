@@ -3,11 +3,13 @@
 const USUARIO_API = 'business/usuarios.php';
 
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
+const BODY = document.querySelector('body');
 const HEADER = document.querySelector('header');
 const FOOTER = document.querySelector('footer');
 
 
 document.addEventListener('DOMContentLoaded', async () => {
+    BODY.classList.add('bg-gray-900');
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
     const JSON = await dataFetch(USUARIO_API, 'capturarUsuario');
     if (JSON.session) {
