@@ -22,149 +22,147 @@
     <header></header>
     <!-- contenido del sitio -->
     <main>
-        <div class="py-4 container">
-            <div>
-                <div class="py-4 text-center">
-                    <h1 class="text-xl text-rojo font-bold uppercase">Sucursales</h1>
-                    <p class="text-blue-500 font-medium">Gestion de sucursales.</p>
-                </div>
-                <div class="grid grid-cols-4 gap-4 py-4">
-                    <div class="col-start-2 col-end-4">
-                        <form method="post" id="buscarFormulario">
-                            <label for="default-search"
-                                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                    </svg>
-                                </div>
-                                <input type="search" id="search" name="search"
-                                    class="block w-full bg-gray-900 text-white border border-white rounded-lg focus:ring-azul focus:border-azul p-4 pl-10 text-sm"
-                                    placeholder="Buscar registro por nombre o dirección de la sucursal">
+        <div>
+            <div class="py-4 text-center">
+                <h1 class="text-xl text-rojo font-bold uppercase">Sucursales</h1>
+                <p class="text-blue-500 font-medium">Gestion de sucursales.</p>
+            </div>
+            <div class="grid grid-cols-4 gap-4 py-4">
+                <div class="col-start-2 col-end-4">
+                    <form method="post" id="buscarFormulario">
+                        <label for="default-search"
+                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
                             </div>
-                        </form>
-                    </div>
-                    <div class="col-end-5">
-                        <button onclick="openCreate()"
-                            class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2""
-                            type=" button">
-                            <img src="https://img.icons8.com/ios/30/046C4E/add--v1.png" />
+                            <input type="search" id="search" name="search"
+                                class="block w-full bg-gray-900 text-white border border-white rounded-lg focus:ring-azul focus:border-azul p-4 pl-10 text-sm"
+                                placeholder="Buscar registro por nombre o dirección de la sucursal">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-end-5">
+                    <button onclick="openCreate()"
+                        class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2""
+                        type=" button">
+                        <img src="https://img.icons8.com/ios/30/046C4E/add--v1.png" />
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!--Acciones y contenido del modal-->
+        <!--Componente modal para guardar un registro-->
+        <div id="abrirModal" tabindex="-1"
+            class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+            <div class="relative w-full h-full max-w-4xl">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                        <!--Título del componente modal-->
+                        <h3 class="text-xl font-bold text-oscuro dark:text-white" id="titulo"></h3>
+                        <button onclick="ABRIR_MODAL.hide()" type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="sr-only">Cerrar ventana</span>
                         </button>
                     </div>
-                </div>
-            </div>
-            <!--Acciones y contenido del modal-->
-            <!--Componente modal para guardar un registro-->
-            <div id="abrirModal" tabindex="-1"
-                class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-                <div class="relative w-full h-full max-w-4xl">
-                    <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal header -->
-                        <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
-                            <!--Título del componente modal-->
-                            <h3 class="text-xl font-bold text-oscuro dark:text-white" id="titulo"></h3>
-                            <button onclick="ABRIR_MODAL.hide()" type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
-                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="sr-only">Cerrar ventana</span>
-                            </button>
-                        </div>
-                        <!-- Modal body -->
-                        <!-- Formulario para crear o actualizar un registro -->
-                        <form class="p-4" method="post" id="ejecutarFormulario">
-                            <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                    <!-- Modal body -->
+                    <!-- Formulario para crear o actualizar un registro -->
+                    <form class="p-4" method="post" id="ejecutarFormulario">
+                        <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                            <!--ID-->
+                            <div>
+                                <div class="text-center py-4 p-6 space-x-2 rounded-b">
+                                    <img src="../resources/img/logo.jpg" alt="img">
+                                    <br>
+                                </div>
                                 <!--ID-->
+                                <input class="hidden" type="number" id="id" name="id">
+                            </div>
+                            <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                <!--Input nombre de la familia-->
                                 <div>
-                                    <div class="text-center py-4 p-6 space-x-2 rounded-b">
-                                        <img src="../resources/img/logo.jpg" alt="img">
-                                        <br>
-                                    </div>
-                                    <!--ID-->
-                                    <input class="hidden" type="number" id="id" name="id">
+                                    <label for="nombre" class="block mb-2 text-sm font-semibold text-azul">Nombre de
+                                        la
+                                        sucursal:</label>
+                                    <input type="text" id="nombre"
+                                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                                        placeholder="Nombre" name="nombre" required autocomplete="off">
                                 </div>
-                                <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                    <!--Input nombre de la familia-->
-                                    <div>
-                                        <label for="nombre" class="block mb-2 text-sm font-semibold text-azul">Nombre de
-                                            la
-                                            sucursal:</label>
-                                        <input type="text" id="nombre"
-                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
-                                            placeholder="Nombre" name="nombre" required autocomplete="off">
-                                    </div>
-                                    <div>
-                                        <label for="Telefono" class="block mb-2 text-sm font-semibold text-azul">Ingrese
-                                            su
-                                            Telefono:</label>
-                                        <input type="text" id="telefono"
-                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
-                                            placeholder="telefono" name="telefono" required autocomplete="off">
-                                    </div>
-                                    <div>
-                                        <label for="email" class="block mb-2 text-sm font-semibold text-azul">Correo
-                                            electronico</label>
-                                        <input type="email" id="correo"
-                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
-                                            placeholder="john.doe@company.com" name="correo" required
-                                            autocomplete="off">
-                                    </div>
-                                    <div>
-                                        <label for="direccion"
-                                            class="block mb-2 text-sm font-semibold text-azul">Direccion</label>
-                                        <textarea id="direccion" rows="4"
-                                            class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
-                                            placeholder="Direccion" name="direccion" required></textarea>
-                                    </div>
+                                <div>
+                                    <label for="Telefono" class="block mb-2 text-sm font-semibold text-azul">Ingrese
+                                        su
+                                        Telefono:</label>
+                                    <input type="text" id="telefono"
+                                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                                        placeholder="telefono" name="telefono" required autocomplete="off">
+                                </div>
+                                <div>
+                                    <label for="email" class="block mb-2 text-sm font-semibold text-azul">Correo
+                                        electronico</label>
+                                    <input type="email" id="correo"
+                                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                                        placeholder="john.doe@company.com" name="correo" required
+                                        autocomplete="off">
+                                </div>
+                                <div>
+                                    <label for="direccion"
+                                        class="block mb-2 text-sm font-semibold text-azul">Direccion</label>
+                                    <textarea id="direccion" rows="4"
+                                        class="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
+                                        placeholder="Direccion" name="direccion" required></textarea>
                                 </div>
                             </div>
-                            <!-- Modal footer -->
-                            <div
-                                class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                <button id="accion" type="submit"
-                                    class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"></button>
-                            </div>
-                        </form>
-                    </div>
+                        </div>
+                        <!-- Modal footer -->
+                        <div
+                            class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <button id="accion" type="submit"
+                                class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"></button>
+                        </div>
+                    </form>
                 </div>
-            </div><!--Final del modal-->
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <!--Tabla para mostrar los registros que existen-->
-                <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50">
-                        <tr class="text-oscuro font-semibold">
-                            <th scope="col" class="hidden px-6 py-3">
-                                ID
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Nombre
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Telefono
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                correo
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                direccion
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Controles
-                            </th>
-                        </tr>
-                    </thead>
-                    <!--Cuerpo de la tabla para mostrar los registros-->
-                    <tbody id="registrosTabla"></tbody>
-                </table>
             </div>
+        </div><!--Final del modal-->
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <!--Tabla para mostrar los registros que existen-->
+            <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                    <tr class="text-oscuro font-semibold">
+                        <th scope="col" class="hidden px-6 py-3">
+                            ID
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Nombre
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Telefono
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            correo
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            direccion
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Controles
+                        </th>
+                    </tr>
+                </thead>
+                <!--Cuerpo de la tabla para mostrar los registros-->
+                <tbody id="registrosTabla"></tbody>
+            </table>
         </div>
     </main>
     <!-- pie del sitio -->

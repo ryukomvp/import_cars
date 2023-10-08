@@ -21,99 +21,97 @@
     <header></header>
     <!-- contenido del sitio -->
     <main>
-        <div class="py-4 container">
-            <!-- generales -->
-            <div class="flex flex-col gap-2">
-                <!-- titulo -->
-                <p class="text-xl text-white text-center uppercase">reportes generales</p>
-                <br>
-                <div class="inline-flex gap-2">
-                    <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
-                        <!-- titulo del reporte -->
-                        <h5 class="mb-2 text-2xl font-bold text-black text-center">Usuarios filtrados por su tipo</h5>
-                        <!-- descripcion del reporte -->
-                        <p class="mb-3 font-normal text-gray-700 text-justify">Lista de todos los usuarios registrados, agrupados por el tipo de usuarios al que pertenecen.</p>
-                        <br>
-                        <!-- boton para generar el reporte -->
-                        <button onclick="usuariosTipo()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
-                            Generar reporte
-                        </button>
-                    </div>
-                    <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
-                        <!-- titulo del reporte -->
-                        <h5 class="mb-2 text-2xl font-bold text-black text-center">Empleados</h5>
-                        <!-- descripcion del reporte -->
-                        <p class="mb-3 font-normal text-gray-700 text-justify">Lista de todos los empleados registrados.</p>
-                        <br>
-                        <!-- boton para generar el reporte -->
-                        <button onclick="empleados()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
-                            Generar reporte
-                        </button>
-                    </div>
-                    <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
-                        <!-- titulo del reporte -->
-                        <h5 class="mb-2 text-2xl font-bold text-black text-center">Marcas</h5>
-                        <!-- descripcion del reporte -->
-                        <p class="mb-3 font-normal text-gray-700 text-justify">Lista de todas las marcas registradas.</p>
-                        <br>
-                        <!-- boton para generar el reporte -->
-                        <button onclick="marcas()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
-                            Generar reporte
-                        </button>
-                    </div>
-                    <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
-                        <!-- titulo del reporte -->
-                        <h5 class="mb-2 text-2xl font-bold text-black text-center">Proveedores</h5>
-                        <!-- descripcion del reporte -->
-                        <p class="mb-3 font-normal text-gray-700 text-justify">Lista de todos los proveedores registrados.</p>
-                        <br>
-                        <!-- boton para generar el reporte -->
-                        <button onclick="proveedores()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
-                            Generar reporte
-                        </button>
-                    </div>
+        <!-- generales -->
+        <div class="flex flex-col gap-2">
+            <!-- titulo -->
+            <p class="text-xl text-white text-center uppercase py-4">reportes generales</p>
+            <div class="inline-flex gap-2">
+                <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
+                    <!-- titulo del reporte -->
+                    <h5 class="mb-2 text-2xl font-bold text-black text-center">Usuarios filtrados por su tipo</h5>
+                    <!-- descripcion del reporte -->
+                    <p class="mb-3 font-normal text-gray-700 text-justify">Lista de todos los usuarios registrados, agrupados por el tipo de usuarios al que pertenecen.</p>
+                    <br>
+                    <!-- boton para generar el reporte -->
+                    <button onclick="usuariosTipo()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
+                        Generar reporte
+                    </button>
                 </div>
-                <div class="inline-flex gap-2 a">
-                    <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
-                        <!-- titulo del reporte -->
-                        <h5 class="mb-2 text-2xl font-bold text-black text-center">Transaccion por Ventas</h5>
-                        <!-- descripcion del reporte -->
-                        <p class="mb-3 font-normal text-gray-700 text-justify">Lista de los productos vendidos y eliminados de las existencias del inventario.</p>
-                        <br>
-                        <!-- boton para generar el reporte -->
-                        <button onclick="transaccionesVentas()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
-                            Generar reporte
-                        </button>
-                    </div>
-                    <div>
-                        <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
-                            <!-- titulo del reporte -->
-                            <h5 class="mb-2 text-2xl font-bold text-black text-center">Transaccion por Ingresos</h5>
-                            <!-- descripcion del reporte -->
-                            <p class="mb-3 font-normal text-gray-700 text-justify">Ingresos por lotes de productos a la bodega principal.</p>
-                            <br>
-                            <!-- boton para generar el reporte -->
-                            <button onclick="transaccionesIngresos()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
-                                Generar reporte
-                            </button>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
-                            <!-- titulo del reporte -->
-                            <h5 class="mb-2 text-2xl font-bold text-black text-center">Transaccion por Tranpasos</h5>
-                            <!-- descripcion del reporte -->
-                            <p class="mb-3 font-normal text-gray-700 text-justify">Traspasos de productos realizado entre bodegas.</p>
-                            <br>
-                            <!-- boton para generar el reporte -->
-                            <button onclick="transaccionesTraspasos()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
-                                Generar reporte
-                            </button>
-                        </div>
-                    </div>
+                <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
+                    <!-- titulo del reporte -->
+                    <h5 class="mb-2 text-2xl font-bold text-black text-center">Empleados</h5>
+                    <!-- descripcion del reporte -->
+                    <p class="mb-3 font-normal text-gray-700 text-justify">Lista de todos los empleados registrados.</p>
+                    <br>
+                    <!-- boton para generar el reporte -->
+                    <button onclick="empleados()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
+                        Generar reporte
+                    </button>
                 </div>
-                <!-- tarjeta del reporte -->
+                <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
+                    <!-- titulo del reporte -->
+                    <h5 class="mb-2 text-2xl font-bold text-black text-center">Marcas</h5>
+                    <!-- descripcion del reporte -->
+                    <p class="mb-3 font-normal text-gray-700 text-justify">Lista de todas las marcas registradas.</p>
+                    <br>
+                    <!-- boton para generar el reporte -->
+                    <button onclick="marcas()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
+                        Generar reporte
+                    </button>
+                </div>
+                <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
+                    <!-- titulo del reporte -->
+                    <h5 class="mb-2 text-2xl font-bold text-black text-center">Proveedores</h5>
+                    <!-- descripcion del reporte -->
+                    <p class="mb-3 font-normal text-gray-700 text-justify">Lista de todos los proveedores registrados.</p>
+                    <br>
+                    <!-- boton para generar el reporte -->
+                    <button onclick="proveedores()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
+                        Generar reporte
+                    </button>
+                </div>
             </div>
+            <div class="inline-flex gap-2 a">
+                <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
+                    <!-- titulo del reporte -->
+                    <h5 class="mb-2 text-2xl font-bold text-black text-center">Transaccion por Ventas</h5>
+                    <!-- descripcion del reporte -->
+                    <p class="mb-3 font-normal text-gray-700 text-justify">Lista de los productos vendidos y eliminados de las existencias del inventario.</p>
+                    <br>
+                    <!-- boton para generar el reporte -->
+                    <button onclick="transaccionesVentas()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
+                        Generar reporte
+                    </button>
+                </div>
+                <div>
+                    <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
+                        <!-- titulo del reporte -->
+                        <h5 class="mb-2 text-2xl font-bold text-black text-center">Transaccion por Ingresos</h5>
+                        <!-- descripcion del reporte -->
+                        <p class="mb-3 font-normal text-gray-700 text-justify">Ingresos por lotes de productos a la bodega principal.</p>
+                        <br>
+                        <!-- boton para generar el reporte -->
+                        <button onclick="transaccionesIngresos()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
+                            Generar reporte
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <div class="max-w-sm p-6 bg-white border border-azul rounded-lg">
+                        <!-- titulo del reporte -->
+                        <h5 class="mb-2 text-2xl font-bold text-black text-center">Transaccion por Tranpasos</h5>
+                        <!-- descripcion del reporte -->
+                        <p class="mb-3 font-normal text-gray-700 text-justify">Traspasos de productos realizado entre bodegas.</p>
+                        <br>
+                        <!-- boton para generar el reporte -->
+                        <button onclick="transaccionesTraspasos()" class="w-full text-center text-azul rounded-lg border border-azul hover:bg-azul hover:text-white py-2 text-sm font-medium">
+                            Generar reporte
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- tarjeta del reporte -->
+        </div>
     </main>
     <!-- pie del sitio -->
     <footer></footer>
