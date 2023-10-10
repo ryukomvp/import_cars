@@ -17,20 +17,20 @@ $marca = new marca;
     $pdf->setFont('Times', 'B', 11);
     // Se imprimen los encabezados con los encabezados.
     // Encabezado de categoria
-    $pdf->cell(186, 10, 'IMPORT CARS, S.A DE C.V', 1, 1, 'C', 0);
-    $pdf->cell(62, 10, 'Giro', 1, 0, 'C', 0);
-    $pdf->cell(62, 10, 'Direccion', 1, 0, 'C', 0);
-    $pdf->cell(62, 10, 'Factura', 1, 1, 'C', 0) ;
-    $pdf->cell(186, 10, 'Correo', 1, 1, 'C', 0);
-    $pdf->cell(62, 10, 'Cliente', 1, 0, 'C', 0);
-    $pdf->cell(62, 10, 'DUI/NIT', 1, 0, 'C', 0);
-    $pdf->cell(62, 10, 'Vendedor', 1, 1, 'C', 0);
-    $pdf->cell(62, 10, 'Direccion', 1, 0, 'C', 0);
-    $pdf->cell(62, 10, 'Municipio', 1, 0, 'C', 0);
-    $pdf->cell(62, 10, 'Departamento', 1, 1, 'C', 0);
-    $pdf->cell(62, 10, 'Condicion de pago', 1, 0, 'C', 0);
-    $pdf->cell(62, 10, 'Caja', 1, 0, 'C', 0);
-    $pdf->cell(62, 10, 'Cajero', 1, 1, 'C', 0);
+    $pdf->cell(186, 10, 'IMPORT CARS, S.A DE C.V', 0, 1, 'C', 0);
+    $pdf->cell(62, 10, 'Giro', 0, 0, 'C', 0);
+    $pdf->cell(62, 10, 'Direccion y Sucursal', 0, 0, 'C', 0);
+    $pdf->cell(62, 10, 'Factura', 0, 1, 'C', 0) ;
+    $pdf->cell(186, 10, 'Correo', 0, 1, 'C', 0);
+    $pdf->cell(62, 10, 'Cliente', 0, 0, 'C', 0);
+    $pdf->cell(62, 10, 'DUI/NIT', 0, 0, 'C', 0);
+    $pdf->cell(62, 10, 'Vendedor', 0, 1, 'C', 0);
+    $pdf->cell(62, 10, 'Direccion', 0, 0, 'C', 0);
+    $pdf->cell(62, 10, 'Municipio', 0, 0, 'C', 0);
+    $pdf->cell(62, 10, 'Departamento', 0, 1, 'C', 0);
+    $pdf->cell(62, 10, 'Condicion de pago', 0, 0, 'C', 0);
+    $pdf->cell(62, 10, 'Caja', 0, 0, 'C', 0);
+    $pdf->cell(62, 10, 'Cajero', 0, 1, 'C', 0);
 
     $pdf->setFillColor(230);
     $pdf->setFont('Times', 'B', 11);
