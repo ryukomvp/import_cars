@@ -145,8 +145,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Error al asignar el producto';
                 } elseif (!$detalleTrans->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'Descripción incorrecta';
-                } elseif (!$detalleTrans->setIdEncatraccion($_POST['encaTransaccion'])) {
-                    $result['exception'] = 'Error al asignar el encabezado de la transacción';
                 } elseif ($detalleTrans->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Detalle de la transacción actualizado exitosamente';

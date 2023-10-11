@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('ejecutarFormulario').autocomplete = 'off';
     // Llamada a la función para llenar la tabla con los registros disponibles.
     registrosTabla();
+    // document.querySelectorAll('input');
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
@@ -80,14 +81,18 @@ async function registrosTabla(form = null) {
                     <td>${row.estadousuario}</td>
                     <td>
                         <button onclick="actualizarRegistro(${row.idusuario})"
-                            class="text-blue-700 border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mt-2 mb-2"
                             type="button">
-                            <img src="https://img.icons8.com/ios/30/1A56DB/synchronize.png" />
+                            <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97"/>
+                            </svg>
                         </button>
                         <button onclick="eliminarRegistro(${row.idusuario})"  
-                            class="text-red-700 border border-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                             type="button">
-                            <img src="https://img.icons8.com/ios/30/C81E1E/delete--v1.png" />
+                            <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
+                            </svg>
                         </button>
                     </td>
                 </tr>
@@ -159,12 +164,6 @@ async function actualizarRegistro(id) {
         fillSelect(TIPO_USUARIO_API, 'leerRegistros', 'tipo', JSON.dataset.idtipousuario);
         fillSelect(USUARIO_API, 'leerEmpleados', 'empleado', JSON.dataset.idempleado);
         fillSelect(USUARIO_API, 'leerEstados', 'estado', JSON.dataset.estadousuario);
-        //Cargar estado que se encuentra en la base de datos si esta activa o no la verificación en dos pasos
-        // if (JSON.dataset.verificacion == '1') {
-        //     document.getElementById('verificacion').checked = 1;
-        // } else {
-        //     document.getElementById('verificacion').checked = 0;
-        // }
     } else {
         sweetAlert(2, JSON.exception, false);
     }

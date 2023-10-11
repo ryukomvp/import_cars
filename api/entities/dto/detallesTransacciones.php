@@ -25,7 +25,6 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     protected $idbodegasalida = null;
     protected $idproducto = null;
     protected $descripcion = null;
-    protected $idencatransaccion = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -211,16 +210,6 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         }
     }
 
-    public function setIdEncatraccion($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->idencatransaccion = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 
     /*
     *   Métodos para obtener valores de los atributos.
@@ -313,10 +302,5 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     public function getDescripcion()
     {
         return $this->descripcion;
-    }
-
-    public function getIdEncaTransaccion()
-    {
-        return $this->idencatransaccion;
     }
 }

@@ -52,7 +52,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Error al asignar el proveedor';
                 } elseif (!$encabezadoTransac->setIdParametro($_POST['parametro'])) {
                     $result['exception'] = 'Error al asignar el parámetro';
-                } elseif (!$detalleTrans->setIdDetalletraccion($_POST['detalletransaccion'])) {
+                } elseif (!$detalleTrans->setIdDetalleTransaccion($_POST['detalleTransaccion'])) {
                     $result['exception'] = 'Error al asignar el detalle de la transacción';
                 } elseif ($encabezadoTransac->crearRegistro()) {
                     $result['status'] = 1;
@@ -112,6 +112,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Error al asignar el proveedor';
                 } elseif (!$encabezadoTransac->setIdParametro($_POST['parametro'])) {
                     $result['exception'] = 'Error al asignar el parámetro';
+                } elseif (!$detalleTrans->setIdDetalleTransaccion($_POST['detalleTransaccion'])) {
+                    $result['exception'] = 'Error al asignar el detalle de la transacción';
                 } elseif ($encabezadoTransac->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Encabezado de la transacción actualizado exitosamente';

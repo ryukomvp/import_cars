@@ -5,8 +5,6 @@ const DETALLE_TRANSACCION_API = 'business/detallesTransacciones.php';
 const BODEGA_API = 'business/bodegas.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const PRODUCTOS_API = 'business/productos.php';
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const ENCABEZADO_TRANSACCION_API = 'business/encabezadosTransacciones.php';
 // Constante para el input de busqueda
 const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para el formulario del modal, sirve para añadir y editar
@@ -94,7 +92,6 @@ async function cargarRegistros(form = null) {
                     <td class="px-6 py-4">${row.bodegaSalida}</td>
                     <td class="px-6 py-4">${row.nombreprod}</td>
                     <td class="px-6 py-4">${row.descripcion}</td>
-                    <td class="px-6 py-4">${row.nocomprobante}</td>
                     <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.iddetalletransaccion})"
                         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -128,7 +125,6 @@ function crearRegistro() {
     fillSelect(BODEGA_API, 'leerRegistros', 'bodegaEntrada');
     fillSelect(BODEGA_API, 'leerRegistros', 'bodegaSalida');
     fillSelect(PRODUCTOS_API, 'leerTodo', 'producto');
-    fillSelect(ENCABEZADO_TRANSACCION_API, 'leerRegistros', 'encaTransaccion');
 }
 
 //Funcion para abrir el modal con los datos del registro a actualizar
@@ -166,7 +162,6 @@ async function actualizarRegistro(id) {
         fillSelect(BODEGA_API, 'leerRegistros', 'bodegaSalida', JSON.dataset.idbodegasalida);
         fillSelect(PRODUCTOS_API, 'leerTodo', 'producto', JSON.dataset.idproducto);
         document.getElementById('descripcion').value = JSON.dataset.descripcion;
-        fillSelect(ENCABEZADO_TRANSACCION_API, 'leerRegistros', 'encaTransaccion', JSON.dataset.idencatransaccion);
     } else {
         sweetAlert(2, JSON.exception, false);
     }

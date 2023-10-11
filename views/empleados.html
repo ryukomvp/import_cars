@@ -17,213 +17,211 @@
     <title>Empleados</title>
 </head>
 
-<body class="bg-gray-900">
+<body>
     <!-- encabezado del sistio -->
     <header></header>
 
     <!-- contenido del sitio -->
     <main>
-        <div class="py-4 container">
-            <div>
-                <div class="py-4 text-center">
-                    <!--Informacion del contenido de la pagina-->
-                    <h1 class="text-xl text-rojo font-bold uppercase">empleados</h1>
-                    <p class="text-blue-500 font-medium">Gestion de los empleados donde se podran registrar los
-                        empleados,
-                        actualizar y eliminar la informacion de cada uno de estos.</p>
-                </div>
-                <div class="grid grid-cols-4 gap-4 py-4">
-                    <div class="col-start-2 col-end-4">
-                        <form method="post" id="buscarFormulario">
-                            <label for="default-search"
-                                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
-                            <div class="relative">
-                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
-                                        stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                    </svg>
-                                </div>
-                                <input type="search" id="buscar" name="buscar"
-                                    class="block w-full bg-gray-900 text-white border border-white rounded-lg focus:ring-azul focus:border-azul p-4 pl-10 text-sm"
-                                    placeholder="Buscar...">
+        <div>
+            <div class="py-4 text-center">
+                <!--Informacion del contenido de la pagina-->
+                <h1 class="text-xl text-rojo font-bold uppercase">empleados</h1>
+                <p class="text-blue-500 font-medium">Gestion de los empleados donde se podran registrar los
+                    empleados,
+                    actualizar y eliminar la informacion de cada uno de estos.</p>
+            </div>
+            <div class="grid grid-cols-4 gap-4 py-4">
+                <div class="col-start-2 col-end-4">
+                    <form method="post" id="buscarFormulario">
+                        <label for="default-search"
+                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
                             </div>
-                        </form>
-                    </div>
-                    <div class="col-end-5">
-                        <button onclick="crearRegistro()"
-                            class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                            type="button">
-                            <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
+                            <input type="search" id="buscar" name="buscar"
+                                class="block w-full bg-gray-900 text-white border border-white rounded-lg focus:ring-azul focus:border-azul p-4 pl-10 text-sm"
+                                placeholder="Buscar...">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-end-5">
+                    <button onclick="crearRegistro()"
+                        class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                        type="button">
+                        <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="abrirModal" tabindex="-1"
+            class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+            <div class="relative w-full h-full max-w-4xl">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 id="titulo" class="text-xl font-bold text-oscuro dark:text-white">
+                        </h3>
+                        <button onclick="ABRIR_MODAL.hide();" type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="sr-only">Cerrar ventana</span>
                         </button>
                     </div>
-                </div>
-            </div>
-            <div id="abrirModal" tabindex="-1"
-                class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
-                <div class="relative w-full h-full max-w-4xl">
-                    <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal header -->
-                        <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
-                            <h3 id="titulo" class="text-xl font-bold text-oscuro dark:text-white">
-                            </h3>
-                            <button onclick="ABRIR_MODAL.hide();" type="button"
-                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
-                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="sr-only">Cerrar ventana</span>
-                            </button>
-                        </div>
-                        <!-- Modal body -->
-                        <form method="post" id="ejecutarFormulario" class="p-4">
-                            <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
+                    <!-- Modal body -->
+                    <form method="post" id="ejecutarFormulario" class="p-4">
+                        <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
+                            <div>
+                                <div class="text-center py-4 p-6 space-x-2 rounded-b">
+                                    <img src="../resources/img/logo.jpg" alt="img">
+                                    <br>
+                                </div>
+                                <!--ID-->
+                                <input class="hidden" type="number" id="id" name="id">
+                            </div>
+                            <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                <!--ID-->
+                                <!--Input nombre del empleado-->
                                 <div>
-                                    <div class="text-center py-4 p-6 space-x-2 rounded-b">
-                                        <img src="../resources/img/logo.jpg" alt="img">
-                                        <br>
-                                    </div>
-                                    <!--ID-->
-                                    <input class="hidden" type="number" id="id" name="id">
+                                    <label for="nombre"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
+                                        del empleado:</label>
+                                    <input type="text" id="nombre" name="nombre"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Nombre empleado" required autocomplete="off">
                                 </div>
-                                <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
-                                    <!--ID-->
-                                    <!--Input nombre del empleado-->
-                                    <div>
-                                        <label for="nombre"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                            del empleado:</label>
-                                        <input type="text" id="nombre" name="nombre"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Nombre empleado" required autocomplete="off">
-                                    </div>
-                                    <!--Input telefono del empleado-->
-                                    <div>
-                                        <label for="telefono"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Telefono:</label>
-                                        <input type="tel" id="telefono" name="telefono"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="7777-7777" required autocomplete="off">
-                                    </div>
-                                    <!--Input correo del empleado-->
-                                    <div>
-                                        <label for="correo"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Correo
-                                            del empleado:</label>
-                                        <input type="mail" id="correo" name="correo"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="elcorreo@ejemplo.com" required autocomplete="off">
-                                    </div>
-                                    <!--Input nacimiento del empleado-->
-                                    <div>
-                                        <label for="nacimiento"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Fecha de
-                                            nacimiento</label>
-                                        <input type="date" id="nacimiento" name="nacimiento"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="" required>
-                                    </div>
-                                    <!--Input documento del empleado-->
-                                    <div>
-                                        <label for="documentoempleado"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Documento
-                                            del empleado:</label>
-                                        <input type="text" id="documento" name="documento"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Ingrese el documento" required autocomplete="off">
-                                    </div>
-                                    <!--Input estado empleado-->
-                                    <div>
-                                        <label for="estado"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
-                                            del empleado:</label>
-                                        <select id="estado" name="estado"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
-                                    <!--Input genero empleado-->
-                                    <div>
-                                        <label for="genero"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Genero
-                                            del empleado:</label>
-                                        <select id="genero" name="genero"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
-                                    <!--Input cargo empleado-->
-                                    <div>
-                                        <label for="cargo"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Cargo
-                                            del empleado:</label>
-                                        <select id="cargo" name="cargo"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        </select>
-                                    </div>
+                                <!--Input telefono del empleado-->
+                                <div>
+                                    <label for="telefono"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Telefono:</label>
+                                    <input type="tel" id="telefono" name="telefono"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="7777-7777" required autocomplete="off">
+                                </div>
+                                <!--Input correo del empleado-->
+                                <div>
+                                    <label for="correo"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Correo
+                                        del empleado:</label>
+                                    <input type="mail" id="correo" name="correo"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="elcorreo@ejemplo.com" required autocomplete="off">
+                                </div>
+                                <!--Input nacimiento del empleado-->
+                                <div>
+                                    <label for="nacimiento"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Fecha de
+                                        nacimiento</label>
+                                    <input type="date" id="nacimiento" name="nacimiento"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="" required>
+                                </div>
+                                <!--Input documento del empleado-->
+                                <div>
+                                    <label for="documentoempleado"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Documento
+                                        del empleado:</label>
+                                    <input type="text" id="documento" name="documento"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Ingrese el documento" required autocomplete="off">
+                                </div>
+                                <!--Input estado empleado-->
+                                <div>
+                                    <label for="estado"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
+                                        del empleado:</label>
+                                    <select id="estado" name="estado"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
+                                </div>
+                                <!--Input genero empleado-->
+                                <div>
+                                    <label for="genero"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Genero
+                                        del empleado:</label>
+                                    <select id="genero" name="genero"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
+                                </div>
+                                <!--Input cargo empleado-->
+                                <div>
+                                    <label for="cargo"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Cargo
+                                        del empleado:</label>
+                                    <select id="cargo" name="cargo"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
                                 </div>
                             </div>
-                            <div
-                                class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                <button id="accion" type="submit"
-                                    class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"></button>
-                            </div>
-                        </form>
-                        <!-- Modal footer -->
+                        </div>
+                        <div
+                            class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <button id="accion" type="submit"
+                                class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"></button>
+                        </div>
+                    </form>
+                    <!-- Modal footer -->
 
-                    </div>
                 </div>
             </div>
-            <!--Final del modal-->
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr class="text-oscuro font-semibold">
-                            <!--Columna de nombres del empleado-->
-                            <th scope="col" class="px-6 py-3">
-                                Nombre
-                            </th>
-                            <!--Columna de el numero de contacto del empleado-->
-                            <th scope="col" class="px-6 py-3">
-                                Telefono
-                            </th>
-                            <!--Correo del email de contacto del empleado-->
-                            <th scope="col" class="px-6 py-3">
-                                Correo
-                            </th>
-                            <!--Nacimiento del empleado-->
-                            <th scope="col" class="px-6 py-3">
-                                Nacimiento
-                            </th>
-                            <!--Columna del numero de documento del empleado-->
-                            <th scope="col" class="px-6 py-3">
-                                Documento
-                            </th>
-                            <!--Columna del estado en el que se encuentra el empleado-->
-                            <th scope="col" class="px-6 py-3">
-                                Estado empleado
-                            </th>
-                            <!--Columna del estado en el que se encuentra el empleado-->
-                            <th scope="col" class="px-6 py-3">
-                                Genero
-                            </th>
-                            <!--Columna del estado en el que se encuentra el empleado-->
-                            <th scope="col" class="px-6 py-3">
-                                cargo
-                            </th>
-                            <!--Controles de acciones para actualizar o eliminar registro-->
-                            <th scope="col" class="px-8 py-3">
-                                <span class="">Controles</span>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody id="registrosTabla">
-                    </tbody>
-                </table>
-            </div>
+        </div>
+        <!--Final del modal-->
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr class="text-oscuro font-semibold">
+                        <!--Columna de nombres del empleado-->
+                        <th scope="col" class="px-6 py-3">
+                            Nombre
+                        </th>
+                        <!--Columna de el numero de contacto del empleado-->
+                        <th scope="col" class="px-6 py-3">
+                            Telefono
+                        </th>
+                        <!--Correo del email de contacto del empleado-->
+                        <th scope="col" class="px-6 py-3">
+                            Correo
+                        </th>
+                        <!--Nacimiento del empleado-->
+                        <th scope="col" class="px-6 py-3">
+                            Nacimiento
+                        </th>
+                        <!--Columna del numero de documento del empleado-->
+                        <th scope="col" class="px-6 py-3">
+                            Documento
+                        </th>
+                        <!--Columna del estado en el que se encuentra el empleado-->
+                        <th scope="col" class="px-6 py-3">
+                            Estado empleado
+                        </th>
+                        <!--Columna del estado en el que se encuentra el empleado-->
+                        <th scope="col" class="px-6 py-3">
+                            Genero
+                        </th>
+                        <!--Columna del estado en el que se encuentra el empleado-->
+                        <th scope="col" class="px-6 py-3">
+                            cargo
+                        </th>
+                        <!--Controles de acciones para actualizar o eliminar registro-->
+                        <th scope="col" class="px-8 py-3">
+                            <span class="">Controles</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="registrosTabla">
+                </tbody>
+            </table>
         </div>
     </main>
     <!-- pie del sitio -->

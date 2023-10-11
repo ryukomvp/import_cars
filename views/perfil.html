@@ -15,30 +15,22 @@
     <link rel="icon" href="../resources/img/logo.png">
 </head>
 
-<body class="bg-gray-900">
+<body>
     <!-- encabezado del sistio -->
     <header></header>
     <!-- contenido del sitio -->
     <main class="grid md:grid-cols-3 font-medium items-center justify-center mt-5 mb-5">
         <!-- carta para perfil del usaruio -->
         <div class="mx-auto border border-white rounded-2xl px-8 py-6 shadow-lg">
-            <div class="flex items-center justify-between">
-                <span class="text-white text-sm">Cargo en la empresa</span>
-            </div>
             <div class="mt-6 w-fit mx-auto">
                 <img class="rounded-full ring-2 ring-oscuro" src="../resources/img/perfil.jpg"
                     class="rounded-full w-28 " alt="profile picture" srcset="">
             </div>
-
-            <div class="mt-8 mb-8">
-                <h2 class="text-white font-bold text-2xl tracking-wide">Jonathan Smith</h2>
-            </div>
-            <hr class="mb-1">
+            <br>
             <button onclick="abrirModalClave()"
                 class="w-full ring-1 ring-azul text-azul font-medium focus:ring-4 focus:ring-white rounded-lg px-5 py-2.5 text-center hover:bg-azul hover:text-white">Cambiar
                 contraseña</button>
         </div>
-
         <form class="grid col-span-2 m-5" id="formulario-perfil">
             <div class="grid gap-6 mb-12 md:grid-cols-2">
                 <!-- nombre de usuario -->
@@ -76,18 +68,6 @@
                     <input type="text" name="correoemp" id="correoemp"
                         class="bg-gray-900 border border-white text-white sm:text-sm rounded-lg focus:ring-azul focus:border-azul block w-full p-2.5"
                         placeholder="Correo del empleado" required="" autocomplete="no" disabled>
-                </div>
-                <div>
-                    <div class="flex">
-                        <div class="flex items-center h-5">
-                            <input id="helper-checkbox" aria-describedby="helper-checkbox-text" id="verificacion"
-                                name="verificacion" type="checkbox"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        </div>
-                        <div class="ml-2 text-sm">
-                            <label for="helper-checkbox" class="text-white">Verificación de dos factores</label>
-                        </div>
-                    </div>
                 </div>
             </div>
         </form>

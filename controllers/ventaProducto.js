@@ -20,7 +20,7 @@ const BTN_ACCION = document.getElementById('accion');
 // Constante para abrir o cerrar el modal
 const ABRIR_MODAL_DETALLE = new Modal(document.getElementById('abrirModalDetalle'));
 // Contate para abrir o cerral el modal 
-const ABRIR_MODAL_ENCABEZADO = new Modal(document.getElementById('abrirModalEncabezado'));\
+const ABRIR_MODAL_ENCABEZADO = new Modal(document.getElementById('abrirModalEncabezado'));
 
 
 // Metodo para cargar la pagina cada vez que haya un cambio en el DOM

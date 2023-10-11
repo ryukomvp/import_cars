@@ -3,11 +3,14 @@
 const USUARIO_API = 'business/usuarios.php';
 
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
+const BODY = document.querySelector('body');
+const MAIN = document.querySelector('main');
 const HEADER = document.querySelector('header');
 const FOOTER = document.querySelector('footer');
 
 
 document.addEventListener('DOMContentLoaded', async () => {
+    BODY.classList.add('bg-gray-900');
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
     const JSON = await dataFetch(USUARIO_API, 'capturarUsuario');
     if (JSON.session) {
@@ -20,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             if ((location.pathname.endsWith('usuarios.html') && !JSON.permissions.usuarios) || (location.pathname.endsWith('productos.html') && !JSON.permissions.productos) || (location.pathname.endsWith('bitacoras.html') && !JSON.permissions.bitacoras) || (location.pathname.endsWith('bodegas.html') && !JSON.permissions.bodegas) || (location.pathname.endsWith('cajas.html') && !JSON.permissions.cajas) || (location.pathname.endsWith('cajeros.html') && !JSON.permissions.cajeros) || (location.pathname.endsWith('categorias.html') && !JSON.permissions.categorias) || (location.pathname.endsWith('clientes.html') && !JSON.permissions.clientes) || (location.pathname.endsWith('codigoscomunes.html') && !JSON.permissions.codigoscomunes) || (location.pathname.endsWith('codigosplazos.html') && !JSON.permissions.codigosplazos) || (location.pathname.endsWith('codigostransacciones.html') && !JSON.permissions.codigostransacciones) || (location.pathname.endsWith('detallestransacciones.html') && !JSON.permissions.contactos) || (location.pathname.endsWith('clientes.html') && !JSON.permissions.detallestransacciones) || (location.pathname.endsWith('empleados.html') && !JSON.permissions.empleados) || (location.pathname.endsWith('encabezadostransacciones.html') && !JSON.permissions.encabezadostransacciones) || (location.pathname.endsWith('familias.html') && !JSON.permissions.familias) || (location.pathname.endsWith('marcas.html') && !JSON.permissions.marcas) || (location.pathname.endsWith('modelos.html') && !JSON.permissions.modelos) || (location.pathname.endsWith('monedas.html') && !JSON.permissions.monedas) || (location.pathname.endsWith('paisesdeorigen.html') && !JSON.permissions.paisesdeorigen) || (location.pathname.endsWith('parametros.html') && !JSON.permissions.parametros) || (location.pathname.endsWith('plazos.html') && !proveedores) || (location.pathname.endsWith('sucursales.html') && !JSON.permissions.sucursales) || (location.pathname.endsWith('tiposproductos.html') && !JSON.permissions.tiposproductos) || (location.pathname.endsWith('tiposusuarios.html') && !JSON.permissions.tiposusuarios) || (location.pathname.endsWith('vendedores.html') && !JSON.permissions.vendedores)) {
                 location.href = 'dashboard.html';
             }
+            MAIN.classList.add('py-4', 'container');
             // Inserción de header
             HEADER.innerHTML = `
             <!-- drawer component -->
@@ -357,7 +361,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             sweetAlert(3, JSON.exception, false, 'index.html');
         }
-
     } else {
         if (location.pathname == '/import_cars/views/index.html') {
             HEADER.innerHTML = ``;
