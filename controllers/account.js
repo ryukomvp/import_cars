@@ -6,7 +6,6 @@ const BODY = document.querySelector('body');
 const MAIN = document.querySelector('main');
 const HEADER = document.querySelector('header');
 const FOOTER = document.querySelector('footer');
-const BUSCADOR = document.getElementById('buscador');
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 location.href = 'dashboard.html';
             }
             MAIN.classList.add('py-4', 'container');
-            BUSCADOR.classList.add('block', 'w-full', 'bg-gray-900', 'text-white', 'border', 'border-white', 'rounded-lg', 'focus:ring-azul', 'focus:border-azul', 'p-4', 'pl-10', 'text-sm');
             // Inserción de header
             HEADER.innerHTML = `
             <!-- drawer component -->
