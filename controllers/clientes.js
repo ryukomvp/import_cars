@@ -74,53 +74,57 @@ async function cargarRegistros(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
-                <tr class="text-center bg-white hover:bg-blue-200">
-                    <td class="hidden px-6 py-4">
+                <tr class="bg-white hover:bg-blue-200">
+                    <td class="hidden">
                         ${row.idcliente}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         ${row.nombre}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         ${row.giro}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         ${row.dui}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         ${row.correo}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         ${row.telefono}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         ${row.contacto}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         ${row.descuento}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         ${row.exoneracion}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         ${row.fechaini}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         ${row.tipocliente}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         ${row.descripcion}
                     </td>
-                    <td class="px-6 py-4">
+                    <td>
                         <button onclick="actualizarRegistro(${row.idcliente})"
-                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            type="button">
-                            <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                        class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mt-2 mb-2"
+                        type="button">
+                            <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97"/>
+                            </svg>
                         </button>
-                        <button onclick="eliminarRegistrote(${row.idcliente})"
-                            class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        <button onclick="eliminarRegistro(${row.idcliente})"  
+                            class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                             type="button">
-                            <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                            <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
+                            </svg>
                         </button>
                     </td>
                 </tr>

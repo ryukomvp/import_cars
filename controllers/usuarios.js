@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('ejecutarFormulario').autocomplete = 'off';
     // Llamada a la función para llenar la tabla con los registros disponibles.
     registrosTabla();
-    // document.querySelectorAll('input');
 });
 
 // Método manejador de eventos para cuando se envía el formulario de buscar.
@@ -73,7 +72,7 @@ async function registrosTabla(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
-                <tr class="bg-white dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 dark:hover:bg-gray-600">
+                <tr class="bg-white hover:bg-blue-200">
                     <td>${row.usuario}</td>
                     <td>${row.pin}</td>
                     <td>${row.nombretipous}</td>
