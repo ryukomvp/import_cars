@@ -395,6 +395,9 @@ CREATE TABLE IF NOT EXISTS encabezadostransacciones(
         idinventariosucursalsalida INT,
         observacion VARCHAR (100) ,
         descripcion VARCHAR (50) NOT NULL,
+        suma NUMERIC(6,2) NULL,
+        subtotal NUMERIC(6,2) NULL,
+        ventatotal NUMERIC(6,2) NULL,
         
     CONSTRAINT fkbodegatransacentrada
     FOREIGN KEY (idinventariobodegaentrada)
