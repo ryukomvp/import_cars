@@ -11,19 +11,17 @@ class EncabezadosQueries
 
     public function buscarRegistros($value)
     {
-        $sql = 'SELECT a.idencatransaccion, a.nocomprobante, a.fechatransac, a.lote, a.npoliza, b.numerobod, c.nombrecajero, a.tipopago, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, l.nombre, u.nombreus, v.nombreprov, o.nombreemp, j.correlativo
-                FROM encabezadostransacciones a 
-                INNER JOIN bodegas b ON a.idbodega = b.idbodega
-                INNER JOIN cajeros c ON a.idcajero = c.idcajero
-                INNER JOIN codigostransacciones d ON a.idcodigotransaccion = d.idcodigotransaccion
-                INNER JOIN clientes l ON a.idcliente = l.idcliente
-                INNER JOIN vendedores s ON a.idvendedor = s.idvendedor
-                INNER JOIN usuarios u ON s.idusuario = u.idusuario
-                INNER JOIN proveedores v ON a.idproveedor = v.idproveedor
-                INNER JOIN parametros o ON a.idparametro = o.idparametro
-                INNER JOIN detallestransacciones j ON a.iddetalletransaccion = j.iddetalletransaccion
-                WHERE b.numerobod LIKE ? OR c.nombrecajero LIKE ? OR a.tipopago LIKE ? OR d.codigo LIKE ? OR d.nombrecodigo LIKE ? OR l.nombre LIKE ? OR u.nombreus LIKE ? OR v.nombreprov LIKE ? OR o.nombreemp LIKE ? 
-                ORDER BY a.nocomprobante';
+        $sql = 'SELECT e.correlativo, e.fechahora, e.tipodepago ,e.lote, e.npoliza, c.nombre, c.correo, t.nombrecodigo, s.nombresuc, v.nombreemp
+                FROM encabezadotransacciones e
+                INNER JOIN clientes c ON e.idcliente = c.idcliente
+                INNER JOIN codigostransacciones t ON e.idcodigotransaccion = t.idcodigotransaccion
+                INNER JOIN inventariossucursales s ON e.idinventariosucursal = s.idinventariosucursal
+                INNER JOIN sucursales n ON s.idsucursal = s.idsucursal
+                INNER JOIN vendedores v ON e.idvendedor = v.idvendedor
+                INNER JOIN usuarios u ON v.idusuraio = u.idusuario
+                INNER JOIN empleados p ON u.idempleado = p.idempleado
+                WHERE e.correlativo LIKE ? OR e.lote LIKE ? OR e.npoliza LIKE ? OR c.nombre LIKE ? OR t.nombrecodigo OR s.nombresuc OR v.nombreemp
+                ORDER BY e.correlativo;';
         $params = array("%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%");
         return Database::getRows($sql, $params);
     }
@@ -35,6 +33,22 @@ class EncabezadosQueries
         $params = array($this->nocomprobante, $this->fechatransac, $this->lote, $this->npoliza, $this->idbodega, $this->idcajero, $this->tipopago, $this->idcodigotransaccion, $this->idcliente, $this->idvendedor, $this->idproveedor, $this->idparametro, $this->iddetallestransaccion);
         return Database::executeRow($sql, $params);
     }
+
+
+    SELECT e.correlativo, e.fechahora, e.tipodepago ,e.lote, e.npoliza, c.nombre, c.correo, t.nombrecodigo, s.nombresuc, v.nombreemp
+FROM encabezadotransacciones e
+INNER JOIN clientes c ON e.idcliente = c.idcliente
+INNER JOIN codigostransacciones t ON e.idcodigotransaccion = t.idcodigotransaccion
+INNER JOIN inventariossucursales s ON e.idinventariosucursal = s.idinventariosucursal
+INNER JOIN sucursales n ON s.idsucursal = s.idsucursal
+INNER JOIN vendedores v ON e.idvendedor = v.idvendedor
+INNER JOIN usuarios u ON v.idusuraio = u.idusuario
+INNER JOIN empleados p ON u.idempleado = p.idempleado
+WHERE e.correlativo LIKE ? OR e.lote LIKE ? OR e.npoliza LIKE ? OR c.nombre LIKE ? OR t.nombrecodigo OR s.nombresuc OR v.nombreemp
+ORDER BY e.correlativo;
+
+INSERT INTO encabezadotransacciones (correlatico, fechatransac, lote, npoliza, tipopago, idcodigotransaccion, idcliente, )
+VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
     public function leerRegistros()
     {
