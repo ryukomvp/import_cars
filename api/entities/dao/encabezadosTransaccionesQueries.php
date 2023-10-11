@@ -12,43 +12,27 @@ class EncabezadosQueries
     public function buscarRegistros($value)
     {
         $sql = 'SELECT e.correlativo, e.fechahora, e.tipodepago ,e.lote, e.npoliza, c.nombre, c.correo, t.nombrecodigo, s.nombresuc, v.nombreemp
-                FROM encabezadotransacciones e
-                INNER JOIN clientes c ON e.idcliente = c.idcliente
-                INNER JOIN codigostransacciones t ON e.idcodigotransaccion = t.idcodigotransaccion
-                INNER JOIN inventariossucursales s ON e.idinventariosucursal = s.idinventariosucursal
-                INNER JOIN sucursales n ON s.idsucursal = s.idsucursal
-                INNER JOIN vendedores v ON e.idvendedor = v.idvendedor
-                INNER JOIN usuarios u ON v.idusuraio = u.idusuario
-                INNER JOIN empleados p ON u.idempleado = p.idempleado
-                WHERE e.correlativo LIKE ? OR e.lote LIKE ? OR e.npoliza LIKE ? OR c.nombre LIKE ? OR t.nombrecodigo OR s.nombresuc OR v.nombreemp
-                ORDER BY e.correlativo;';
+        FROM encabezadotransacciones e
+        INNER JOIN clientes c ON e.idcliente = c.idcliente
+        INNER JOIN codigostransacciones t ON e.idcodigotransaccion = t.idcodigotransaccion
+        INNER JOIN inventariossucursales s ON e.idinventariosucursal = s.idinventariosucursal
+        INNER JOIN sucursales n ON s.idsucursal = s.idsucursal
+        INNER JOIN vendedores v ON e.idvendedor = v.idvendedor
+        INNER JOIN usuarios u ON v.idusuraio = u.idusuario
+        INNER JOIN empleados p ON u.idempleado = p.idempleado
+        WHERE e.correlativo LIKE ? OR e.lote LIKE ? OR e.npoliza LIKE ? OR c.nombre LIKE ? OR t.nombrecodigo OR s.nombresuc OR v.nombreemp
+        ORDER BY e.correlativo;';
         $params = array("%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro, iddetalletransaccion)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nocomprobante, $this->fechatransac, $this->lote, $this->npoliza, $this->idbodega, $this->idcajero, $this->tipopago, $this->idcodigotransaccion, $this->idcliente, $this->idvendedor, $this->idproveedor, $this->idparametro, $this->iddetallestransaccion);
+        $sql = 'INSERT INTO encabezadostransacciones ( descripcion, fechahora, idcajero, idcodigotransaccion, idinventariobodegasalida, idinventariobodegaentrada , idinventariosucursalsalida, idinventariosucursalentrada, idproveedor, idparametro, idvendedor, lote, npoliza, observacion, tipopago)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+        $params = array($this->descripcion, $this->fechahora, $this->cajero, $this->codigotransaccion, $this->bodega, $this->bodega ,$this->sucursal, $this->sucursal, $this->proveedor, $this->parametro, $this->vendedor, $this->lote, $this->npoliza, $this->observacion, $this->tipopago);
         return Database::executeRow($sql, $params);
     }
-
-
-    SELECT e.correlativo, e.fechahora, e.tipodepago ,e.lote, e.npoliza, c.nombre, c.correo, t.nombrecodigo, s.nombresuc, v.nombreemp
-FROM encabezadotransacciones e
-INNER JOIN clientes c ON e.idcliente = c.idcliente
-INNER JOIN codigostransacciones t ON e.idcodigotransaccion = t.idcodigotransaccion
-INNER JOIN inventariossucursales s ON e.idinventariosucursal = s.idinventariosucursal
-INNER JOIN sucursales n ON s.idsucursal = s.idsucursal
-INNER JOIN vendedores v ON e.idvendedor = v.idvendedor
-INNER JOIN usuarios u ON v.idusuraio = u.idusuario
-INNER JOIN empleados p ON u.idempleado = p.idempleado
-WHERE e.correlativo LIKE ? OR e.lote LIKE ? OR e.npoliza LIKE ? OR c.nombre LIKE ? OR t.nombrecodigo OR s.nombresuc OR v.nombreemp
-ORDER BY e.correlativo;
-
-INSERT INTO encabezadotransacciones (correlatico, fechatransac, lote, npoliza, tipopago, idcodigotransaccion, idcliente, )
-VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
     public function leerRegistros()
     {
@@ -69,9 +53,9 @@ VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
     public function leerUnRegistro()
     {
-        $sql = 'SELECT idencatransaccion, nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro, iddetalletransaccion
+        $sql = 'SELECT idencabezadotransaccion, correlativo, descripcion, fechahora, idacajero, idcodigotransaccion, idinventariosucursalsalida, idparametro, idproveedor, idvendedor, lote, npoliza, observaciones, tipopago, descripcion
                 FROM encabezadostransacciones
-                WHERE idencatransaccion = ?';
+                WHERE idencabezadotransaccion = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
@@ -79,8 +63,8 @@ VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     public function actualizarRegistro()
     {
         $sql = 'UPDATE encabezadostransacciones
-                SET nocomprobante = ?, fechatransac = ?, lote = ?, npoliza = ?, idbodega = ?, idcajero = ?, tipopago = ?, idcodigotransaccion = ?, idcliente = ?, idvendedor = ?, idproveedor = ?, idparametro = ?, iddetalletransaccion = ?
-                WHERE idencatransaccion = ?';
+                SET descripcion = ?, fechahora = ?, idcajero = ?, idcodigotransaccin = ?, idinventariosucursalsalida = ?, idparametro = ?, idproveedor = ?, invendedor = ?, lote = ?, npoliza = ?, observaciones = ?, tipopago = ?, descripcion = ?
+                WHERE idencabezadotransaccion = ?';
         $params = array($this->nocomprobante, $this->fechatransac, $this->lote, $this->npoliza, $this->idbodega, $this->idcajero, $this->tipopago, $this->idcodigotransaccion, $this->idcliente, $this->idvendedor, $this->idproveedor, $this->idparametro, $this->iddetalletransaccion, $this->id);
         return Database::executeRow($sql, $params);
     }
@@ -88,14 +72,14 @@ VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
     public function eliminarRegistro()
     {
         $sql = 'DELETE FROM encabezadostransacciones
-                WHERE idencatransaccion = ?';
+                WHERE idencabezadotransaccion = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
 
     public function leerTiposPagos()
     {
-        $estados = array(array('Efectivo','Efectivo'), array('Tarjeta','Tarjeta'));
+        $estados = array(array('Tarjeta','Tarjeta'), array('Efectivo','Efectivo'));
         return $estados;
     }
 }

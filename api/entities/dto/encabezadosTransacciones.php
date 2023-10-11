@@ -6,21 +6,21 @@ require_once('../entities/dao/encabezadosTransaccionesQueries.php');
 */
 class Encabezado extends EncabezadosQueries
 {
-    // Declaración de atributos (propiedades).
     protected $id = null;
-    protected $nocomprobante = null;
-    protected $fechatransac = null;
+    protected $correlativo = null;
+    protected $fechahora = null;
     protected $lote = null;
     protected $npoliza = null;
-    protected $idbodega = null;
-    protected $idcajero = null;
+    protected $cajero = null;
     protected $tipopago = null;
-    protected $idcodigotransaccion = null;
-    protected $idcliente = null;
-    protected $idvendedor = null;
-    protected $idproveedor = null;
-    protected $idparametro = null; 
-    protected $iddetalletransaccion = null;
+    protected $codigotransaccion = null;
+    protected $vendedor = null;
+    protected $proveedor = null;
+    protected $parametro = null;
+    protected $bodega = null;
+    protected $sucursal = null;
+    protected $observacion = null;
+    protected $descripcion = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -35,20 +35,20 @@ class Encabezado extends EncabezadosQueries
         }
     }
 
-    public function setNoComprobante($value)
+    public function setCorrelativo($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->nocomprobante = $value;
+            $this->correlativo = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setFechaTransac($value)
+    public function setFecha¿Hora($value)
     {
         if (Validator::validateDate($value)) {
-            $this->fechatransac = $value;
+            $this->fechahora = $value;
             return true;
         } else {
             return false;
@@ -65,7 +65,7 @@ class Encabezado extends EncabezadosQueries
         }
     }  
 
-    public function setNoPoliza($value)
+    public function setPoliza($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->npoliza = $value;
@@ -75,20 +75,11 @@ class Encabezado extends EncabezadosQueries
         }
     }
 
-    public function setIdBodega($value)
-    {
-        if (Validator::validateNaturalNumber($value)) {
-            $this->idbodega = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
+    
     public function setIdCajero($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idcajero = $value;
+            $this->cajero = $value;
             return true;
         } else {
             return false;
@@ -105,61 +96,81 @@ class Encabezado extends EncabezadosQueries
         }
     }
 
-    public function setIdCodigoTransaccion($value)
+    public function setCodigoTransaccion($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idcodigotransaccion = $value;
+            $this->codigotransaccion = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setIdCliente($value)
+    public function setVendedor($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idcliente = $value;
+            $this->vendedor = $value;
             return true;
         } else {
             return false;
         }
     }
 
-
-    public function setIdVendedor($value)
+    
+    public function setProveedor($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idvendedor = $value;
+            $this->proveedor = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setIdProveedor($value)
+    public function setParametro($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idproveedor = $value;
+            $this->parametro = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setIdParametro($value)
+    public function setBodega($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idparametro = $value;
+            $this->bodega = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setIdDetalleTransaccion($value)
+    public function setSucursal($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->iddetalletransaccion = $value;
+            $this->sucursal = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setObservacion($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->observacion = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setDescripcion($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->descripcion = $value;
             return true;
         } else {
             return false;
@@ -169,19 +180,20 @@ class Encabezado extends EncabezadosQueries
     /*
     *   Métodos para obtener valores de los atributos.
     */
+
     public function getId()
     {
         return $this->id;
     }
 
-    public function getNoComprobante()
+    public function getCorrelativo()
     {
-        return $this->nocomprobante;
+        return $this->correlativo;
     }
 
-    public function getFechaTransac()
+    public function getFechahora()
     {
-        return $this->fechatransac;
+        return $this->fechahora;
     }
 
     public function getLote()
@@ -189,53 +201,58 @@ class Encabezado extends EncabezadosQueries
         return $this->lote;
     }
 
-    public function getNoPoliza()
+    public function getPoliza()
     {
         return $this->npoliza;
     }
 
-    public function getIdBodega()
+    public function getCajero()
     {
-        return $this->idbodega;
+        return $this->cajero;
     }
 
-    public function getIdCajero()
-    {
-        return $this->idcajero;
-    }
-
-    public function getTipoPago()
+    public function getTipopago()
     {
         return $this->tipopago;
     }
 
-    public function getIdCodigoTransaccion()
+    public function getCodigoTransaccion()
     {
-        return $this->idcodigotransaccion;
+        return $this->codigotransaccion;
     }
 
-    public function getIdCliente()
+    public function getVendedor()
     {
-        return $this->idcliente;
+        return $this->vendedor;
     }
 
-    public function getIdVendedor()
+    public function getProveedor()
     {
-        return $this->idvendedor;
+        return $this->proveedor;
     }
 
-    public function getIdProveedor()
+    public function getParametro()
     {
-        return $this->idproveedor;
+        return $this->parametro;
     }
 
-    public function getIdParametro()
+    public function getBodega()
     {
-        return $this->idparametro;
+        return $this->bodega;
     }
 
-    public function getIdDetalleTransaccion()
+    public function getSucursal()
     {
-        return $this->iddetalletransaccion;
+        return $this->sucursal;
+    }
+
+    public function getobservacion()
+    {
+        return $this->sucursal;
+    }
+
+    public function getdescripcion()
+    {
+        return $this->sucursal;
     }
 }

@@ -393,7 +393,7 @@ CREATE TABLE IF NOT EXISTS encabezadostransacciones(
         idinventariobodegasalida INT,
         idinventariosucursalentrada INT,
         idinventariosucursalsalida INT,
-        observaciones VARCHAR (100) ,
+        observacion VARCHAR (100) ,
         descripcion VARCHAR (50) NOT NULL,
         
     CONSTRAINT fkbodegatransacentrada
