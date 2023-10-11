@@ -20,36 +20,32 @@ class DetallesTransaccionQueries
     
     public function buscarRegistros($value)
     {
-        $sql = 'SELECT a.iddetalletransaccion, a.correlativo, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, d.nocomprobante 
-        FROM detallestransacciones a 
-        INNER JOIN bodegas b ON a.idbodegaentrada = b.idbodega 
-        INNER JOIN bodegas e ON a.idbodegasalida = e.idbodega 
-        INNER JOIN productos c ON a.idproducto = c.idproducto 
-        INNER JOIN encabezadostransacciones d ON a.idencatransaccion = d.idencatransaccion 
-        ORDER BY a.correlativo';
-        $params = array("%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%");
+        $sql = 'SELECT d.correlativo, p.nombreprod, d.ventasnosujetas, d.ventasexentas, d.ventasafectas, d.descuento, d.valordescuento , d.idencabezadotransaccion  
+        FROM detallestransacciones d 
+        INNER JOIN productos p ON  d.idproducto = p.idproducto
+        INNER JOIN encabezadostransacciones e ON d.idencabezadotransaccion = e.idencabezadotransaccion 
+        WHERE d.idencabezadotransaccion = LIKE ?
+        ORDER BY d.correlativo;';
+        $params = array("%$value%");
         return Database::getRows($sql, $params);
     }
 
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO detallestransacciones(correlativo, idproducto, ventasnosujetas, ventaexenta, ventasafecta, descuento, valordescuento, idencabezadotransaccion)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->correlativo, $this->cantidad, $this->preciounitario, $this->ventanosujeta, $this->ventaexenta, $this->ventaafecta, $this->descuento, $this->valordescuento, $this->sumas, $this->subtotal, $this->ventatotal, $this->iva, $this->observaciones, $this->idbodegaentrada, $this->idbodegasalida, $this->idproducto, $this->descripcion, $this->idencatransaccion);
+        $sql = 'INSERT INTO detallestransacciones(correlativo, idproducto, preciounitario, ventasnosujetas, ventaexenta, ventasafecta, descuento, valordescuento, idencabezadotransaccion)
+                VALUES(?, ?, ?, ?, ? , ?, ?, ?, ?)';
+        $params = array($this->correlativo, $this->cantidad, $this->preciounitario, $this->preciounitario, $this->ventanosujeta, $this->ventaexenta, $this->ventaafecta, $this->descuento, $this->valordescuento, $this->sumas, $this->subtotal, $this->ventatotal, $this->iva, $this->observaciones, $this->idbodegaentrada, $this->idbodegasalida, $this->idproducto, $this->descripcion, $this->idencatransaccion);
         return Database::executeRow($sql, $params);
     }
 
     public function leerRegistros()
     {
-        $sql = 'SELECT a.iddetalletransaccion , a.correlativo, f.fechatransac, a.cantidad, a.preciounitario, a.ventanosujeta, a.ventaexenta, a.ventaafecta, a.descuento, a.valordescuento, a.sumas, CONCAT(d.codigo, " ", d.nombrecodigo) codigo, a.subtotal, a.ventatotal, a.iva, a.observaciones, b.numerobod as bodegaEntrada, e.numerobod as bodegaSalida, c.nombreprod, a.descripcion, f.nocomprobante 
-        FROM encabezadostransacciones f  
-        INNER JOIN codigostransacciones d ON f.idcodigotransaccion = d.idcodigotransaccion
-        INNER JOIN detallestransacciones a ON a.iddetalletransaccion = f.iddetalletransaccion
-        INNER JOIN bodegas b ON a.idbodegaentrada = b.idbodega 
-        INNER JOIN bodegas e ON a.idbodegasalida = e.idbodega 
-        INNER JOIN productos c ON a.idproducto = c.idproducto  
-        WHERE d.codigo = 1235
-        ORDER BY a.correlativo';
+        $sql = 'SELECT d.correlativo, p.nombreprod, d.preciounitario d.ventasnosujetas, d.ventasexentas, d.ventasafectas, d.descuento, d.valordescuento , d.idencabezadotransaccion  
+        FROM detallestransacciones d 
+        INNER JOIN productos p ON  d.idproducto = p.idproducto
+        INNER JOIN encabezadostransacciones e ON d.idencabezadotransaccion = e.idencabezadotransaccion 
+        WHERE d.idencabezadotransaccion = 1
+        ORDER BY d.correlativo;';
         return Database::getRows($sql);
     }
 
@@ -69,7 +65,7 @@ class DetallesTransaccionQueries
 
     public function leerUnRegistro()
     {
-        $sql = 'SELECT iddetalletransaccion, correlativo, cantidad, preciounitario, ventanosujeta, ventaexenta, ventaafecta, descuento, valordescuento, sumas, subtotal, ventatotal, iva, observaciones, idbodegaentrada, idbodegasalida, idproducto, descripcion, idencatransaccion
+        $sql = 'SELECT iddetalletransaccion, correlativo, idproducto, preciounitario, ventanosujeta, ventaexenta, ventaafecta, descuento, valordescuento, sumas, subtotal, ventatotal, iva, observaciones, idbodegaentrada, idbodegasalida, idproducto, descripcion, idencatransaccion
                 FROM detallestransacciones
                 WHERE iddetalletransaccion = ?';
         $params = array($this->id);

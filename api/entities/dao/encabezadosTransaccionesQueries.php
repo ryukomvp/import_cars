@@ -11,20 +11,21 @@ class EncabezadosQueries
 
     public function buscarRegistros($value)
     {
-        $sql = 'SELECT e.correlativo, e.fechahora, e.tipodepago ,e.lote, e.npoliza, c.nombre, c.correo, t.nombrecodigo, s.nombresuc, v.nombreemp
-        FROM encabezadotransacciones e
-        INNER JOIN clientes c ON e.idcliente = c.idcliente
-        INNER JOIN codigostransacciones t ON e.idcodigotransaccion = t.idcodigotransaccion
-        INNER JOIN inventariossucursales s ON e.idinventariosucursal = s.idinventariosucursal
-        INNER JOIN sucursales n ON s.idsucursal = s.idsucursal
-        INNER JOIN vendedores v ON e.idvendedor = v.idvendedor
-        INNER JOIN usuarios u ON v.idusuraio = u.idusuario
-        INNER JOIN empleados p ON u.idempleado = p.idempleado
-        WHERE e.correlativo LIKE ? OR e.lote LIKE ? OR e.npoliza LIKE ? OR c.nombre LIKE ? OR t.nombrecodigo OR s.nombresuc OR v.nombreemp
-        ORDER BY e.correlativo;';
-        $params = array("%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%","%$value%");
+        $sql = 'SELECT e.correlativo, e.fechahora, e.tipopago ,e.lote, e.npoliza, t.nombrecodigo, n.nombresuc, p.nombreemp
+            FROM encabezadostransacciones e
+            INNER JOIN codigostransacciones t ON e.idcodigotransaccion = t.idcodigotransaccion
+            INNER JOIN inventariossucursales s ON e.idinventariosucursalsalida = s.idinventariosucursal
+            INNER JOIN sucursales n ON s.idsucursal = n.idsucursal
+            INNER JOIN vendedores v ON e.idvendedor = v.idvendedor
+            INNER JOIN usuarios u ON v.idusuario = u.idusuario
+            INNER JOIN empleados p ON u.idempleado = p.idempleado
+            WHERE e.correlativo LIKE ? OR e.lote LIKE ? OR e.npoliza LIKE ? OR t.nombrecodigo LIKE ? OR s.nombresuc LIKE ? OR v.nombreemp LIKE ?
+            ORDER BY e.correlativo;';
+        $params = array("%$value%","%$value%","%$value%","%$value%","%$value%","%$value%");
         return Database::getRows($sql, $params);
     }
+
+   
 
     public function crearRegistro()
     {

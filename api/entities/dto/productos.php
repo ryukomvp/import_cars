@@ -15,6 +15,7 @@ class Productos extends productosQueries
     protected $precioDesc = null;
     protected $anioIni = null;
     protected $anioFin = null;
+    protected $iva = null;
     protected $idCodigosComunes = null;
     protected $idTipoProducto = null;
     protected $idCategoria = null;
@@ -86,6 +87,8 @@ class Productos extends productosQueries
         }
     }
 
+
+
     public function setAnioIni($value)
     {
         if (Validator::validateNaturalNumber($value)) {
@@ -100,6 +103,16 @@ class Productos extends productosQueries
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->anioFin = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setIva($value)
+    {
+        if (Validator::validateBoolean($value)) {
+            $this->iva = $value;
             return true;
         } else {
             return false;
