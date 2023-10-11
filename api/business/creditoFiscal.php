@@ -131,6 +131,26 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+            case 'leerTipoDocumento':
+                if ($result['dataset'] = $creditofiscal->leerTipoDocumento()) {
+                    $result['status'] = 1;
+                    //$result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
+            case 'leerTipoPersona':
+                if ($result['dataset'] = $creditofiscal->leerTipoPersona()) {
+                    $result['status'] = 1;
+                    //$result['message'] = 'Existen '.count($result['dataset']).' registros';
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'No hay datos registrados';
+                }
+                break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
                 break;

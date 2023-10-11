@@ -146,6 +146,8 @@ function crearRegistro() {
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna título a la caja de diálogo.
     TITULO.textContent = 'Crear un registro';
+    fillSelect(CREDITO_FISCAL_API, 'leerTipoDocumento', 'tipodoc');
+    fillSelect(CREDITO_FISCAL_API, 'leerTipoPersona', 'tipopersona');
     fillSelect(PAIS_API, 'leerRegistros', 'pais');
 }
 

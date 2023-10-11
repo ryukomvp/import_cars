@@ -59,4 +59,16 @@ class CreditoFiscalQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function leerTipoDocumento()
+    {
+        $estados = array(array('DUI','DUI'), array('NIT','NIT'));
+        return $estados;
+    }
+
+    public function leerTipoPersona()
+    {
+        $estados = array(array('Natural','Natural'), array('Juridico','Juridico'));
+        return $estados;
+    }
 }
