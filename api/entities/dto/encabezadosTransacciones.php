@@ -45,7 +45,7 @@ class Encabezado extends EncabezadosQueries
         }
     }
 
-    public function setFecha¿Hora($value)
+    public function setFechaHora($value)
     {
         if (Validator::validateDate($value)) {
             $this->fechahora = $value;
@@ -76,7 +76,7 @@ class Encabezado extends EncabezadosQueries
     }
 
     
-    public function setIdCajero($value)
+    public function setCajero($value)
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->cajero = $value;
@@ -246,12 +246,12 @@ class Encabezado extends EncabezadosQueries
         return $this->sucursal;
     }
 
-    public function getobservacion()
+    public function getObservacion()
     {
         return $this->sucursal;
     }
 
-    public function getdescripcion()
+    public function getDescripcion()
     {
         return $this->sucursal;
     }

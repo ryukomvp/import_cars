@@ -28,7 +28,7 @@ class EncabezadosQueries
 
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO encabezadostransacciones ( descripcion, fechahora, idcajero, idcodigotransaccion, idinventariobodegasalida, idinventariobodegaentrada , idinventariosucursalsalida, idinventariosucursalentrada, idproveedor, idparametro, idvendedor, lote, npoliza, observacion, tipopago)
+        $sql = 'INSERT INTO encabezadostransacciones (descripcion, fechahora, idcajero, idcodigotransaccion, idinventariobodegasalida, idinventariobodegaentrada , idinventariosucursalsalida, idinventariosucursalentrada, idproveedor, idparametro, idvendedor, lote, npoliza, observacion, tipopago)
                 VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
         $params = array($this->descripcion, $this->fechahora, $this->cajero, $this->codigotransaccion, $this->bodega, $this->bodega ,$this->sucursal, $this->sucursal, $this->proveedor, $this->parametro, $this->vendedor, $this->lote, $this->npoliza, $this->observacion, $this->tipopago);
         return Database::executeRow($sql, $params);
