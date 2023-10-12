@@ -1,6 +1,8 @@
 
 // Constante para completar la ruta de la API.
 const USUARIO_API = 'business/usuarios.php';
+// Constante para completar la ruta de la API.
+const ENCABEZADOS_API = 'business/encabezadosTransacciones.php';
 
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
 const BODY = document.querySelector('body');
@@ -13,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     BODY.classList.add('bg-gray-900');
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
     const JSON = await dataFetch(USUARIO_API, 'capturarUsuario');
+    const DATA = await dataFetch(ENCABEZADOS_API, 'CrearPreEncabezado');
     if (JSON.session) {
         setInterval(() => {
             checkSessionTime();
@@ -25,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             MAIN.classList.add('py-4', 'container');
             // Inserción de header
-            HEADER.innerHTML = `z
+            HEADER.innerHTML = `
             <!-- drawer component -->
             <div id="drawer-navigation"
                 class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800"
@@ -141,6 +144,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 <li class="${JSON.permissions.encabezadostransacciones ? '' : 'hidden'}">
                                     <a href="encabezadosTransacciones.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Encabezados transaccion</a>
+                                </li>
+                                <li class="${DATA.status ? true : false}">
+                                    <a href="ventaProducto.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Ventas</a>
                                 </li>
                                 <li class="${JSON.permissions.detallestransacciones ? '' : 'hidden'}">
                                     <a href="detallesTransacciones.html"
