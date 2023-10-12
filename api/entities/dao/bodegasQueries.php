@@ -24,7 +24,7 @@ class BodegasQueries
     /*Método para la insercion de datos en la base de datos*/
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO bodegas(numerobodega, direccion, idsucursal)
+        $sql = 'INSERT INTO bodegas(numerobod, direccionbod, idsucursal)
             VALUES(?, ?, ?)';
         $params = array($this->numerobodega, $this->direccion, $this->sucursal);
         return Database::executeRow($sql, $params);
