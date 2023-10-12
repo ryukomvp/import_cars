@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             MAIN.classList.add('py-4', 'container');
             // Inserción de header
-            HEADER.innerHTML = `z
+            HEADER.innerHTML = `
             <!-- drawer component -->
             <div id="drawer-navigation"
                 class="fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto transition-transform -translate-x-full bg-white dark:bg-gray-800"
