@@ -14,7 +14,6 @@ class Cliente extends ClientesQueries
     protected $correo = null;
     protected $telefono = null;
     protected $contacto = null;
-    protected $tipopersona = null;
     protected $descuento = null;
     protected $exoneracion = null;
     protected $fechaini = null;
@@ -56,7 +55,7 @@ class Cliente extends ClientesQueries
 
     public function setDui($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 11)) {
+        if (Validator::validateDUI($value, 1, 11)) {
             $this->dui = $value;
             return true;
         } else {
@@ -66,7 +65,7 @@ class Cliente extends ClientesQueries
 
     public function setCorreo($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 100)) {
+        if (Validator::validateEmail($value)) {
             $this->correo = $value;
             return true;
         } else {
@@ -76,7 +75,7 @@ class Cliente extends ClientesQueries
 
     public function setTelefono($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 10)) {
+        if (Validator::validatePhone($value)) {
             $this->telefono = $value;
             return true;
         } else {
@@ -88,16 +87,6 @@ class Cliente extends ClientesQueries
     {
         if (Validator::validateAlphanumeric($value, 1, 10)) {
             $this->contacto = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setTipoPersona($value)
-    {
-        if (Validator::validateAlphanumeric($value, 1, 50)) {
-            $this->tipopersona = $value;
             return true;
         } else {
             return false;
@@ -190,11 +179,6 @@ class Cliente extends ClientesQueries
     public function getContacto()
     {
         return $this->contacto;
-    }
-
-    public function getTipoPersona()
-    {
-        return $this->tipopersona;
     }
 
     public function getDescuento()
