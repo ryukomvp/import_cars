@@ -1,10 +1,10 @@
 <?php
 require_once('../helpers/validator.php');
-require_once('../entities/dao/creditoFiscalQueries.php');
+require_once('../entities/dao/creditosFiscalesQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad CATEGORIA.
 */
-class CreditoFiscal extends CreditoFiscalQueries
+class CreditosFiscales extends CreditosFiscalesQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
@@ -12,7 +12,7 @@ class CreditoFiscal extends CreditoFiscalQueries
     protected $fecha = null;
     protected $duinit = null;
     protected $tipodocumento = null;
-    protected $tipopersona = null;
+    protected $tipodepersona = null;
     protected $razonsocial = null;
     protected $empresa = null;
     protected $email = null;
@@ -77,7 +77,7 @@ class CreditoFiscal extends CreditoFiscalQueries
     public function setTipoPersona($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->tipopersona = $value;
+            $this->tipodepersona = $value;
             return true;
         } else {
             return false;
@@ -194,7 +194,7 @@ class CreditoFiscal extends CreditoFiscalQueries
 
     public function getTipoPersona()
     {
-        return $this->tipopersona;
+        return $this->tipodepersona;
     }
 
     public function getRazonSocial()
