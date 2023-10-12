@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const CREDITO_FISCAL_API = 'business/creditoFiscal.php';
+const CREDITO_FISCAL_API = 'business/creditosFiscales.php';
 // Constante para completar la ruta de la API.
 const PAIS_API = 'business/paisesOrigen .php';
 
@@ -191,7 +191,7 @@ async function actualizarRegistro(id) {
         document.getElementById('categoria').value = JSON.dataset.categoria;
         document.getElementById('telefono').value = JSON.dataset.telefono;
         fillSelect(CREDITO_FISCAL_API, 'leerTipoDocumento', 'tipodoc', JSON.dataset.tipodocumento);
-        fillSelect(CREDITO_FISCAL_API, 'leerTipoPersona', 'tipopersona', JSON.dataset.tipopersona);
+        fillSelect(CREDITO_FISCAL_API, 'leerTipoPersona', 'tipopersona', JSON.dataset.tipodepersona);
         fillSelect(PAIS_API, 'leerRegistros', 'pais', JSON.dataset.idpais);
     } else {
         sweetAlert(2, JSON.exception, false);

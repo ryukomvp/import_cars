@@ -3,7 +3,7 @@ require_once('../helpers/database.php');
 /*
 *	Clase para manejar el acceso a datos de la entidad CATEGORIA.
 */
-class CreditoFiscalQueries
+class CreditosFiscalesQueries
 {
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).

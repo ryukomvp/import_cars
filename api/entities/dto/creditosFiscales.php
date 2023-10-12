@@ -1,10 +1,10 @@
 <?php
 require_once('../helpers/validator.php');
-require_once('../entities/dao/creditoFiscalQueries.php');
+require_once('../entities/dao/creditosFiscalesQueries.php');
 /*
 *	Clase para manejar la transferencia de datos de la entidad CATEGORIA.
 */
-class CreditoFiscal extends CreditoFiscalQueries
+class CreditosFiscales extends CreditosFiscalesQueries
 {
     // Declaración de atributos (propiedades).
     protected $id = null;
