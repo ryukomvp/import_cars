@@ -8,8 +8,6 @@ const REGISTROS_TABLA = document.getElementById('registros');
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
-    // se quita el autollenado de los campos del formulario
-    document.getElementById('ejecutarFormulario').autocomplete = 'off';
     // Llamada a la función para llenar la tabla con los registros disponibles.
     cargarRegistros();
 });
