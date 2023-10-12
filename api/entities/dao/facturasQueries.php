@@ -66,13 +66,13 @@ class FacturasQueries
 
     public function leerUnRegistro()
     {
-        $sql = 'SELECT creditosfiscales.giro, CONCAT(sucursales.nombresuc, " ", sucursales.direccionsuc) nombresucdireccion, facturas.nofactura, facturas.gmail, clientes.nombre, clientes.dui, empleados.nombreemp, cajas.nombrecaja, cajeros.nombrecaja, detallestransacciones.cantidad, productos.nombreprod, producto.descripcionprod, detallestransacciones.preciounitario, detallestransacciones.ventasnosujetas, detallestransaccion.ventasexentas, detallestransacciones.ventasafectas, detallestransacicones.descuento, encabezadostransacciones.suma, encabezadostransacciones.subtotal, encabezadostransacciones.ventatotal
+        $sql = 'SELECT creditosfiscales.giro, CONCAT(sucursales.nombresuc, " ", sucursales.direccionsuc) nombresucdireccion, facturas.nofactura, facturas.gmail, clientes.nombre, clientes.dui, empleados.nombreemp, cajas.nombrecaja, cajeros.nombrecajero, detallestransacciones.cantidad, productos.nombreprod, productos.descripcionprod, detallestransacciones.preciounitario, detallestransacciones.ventasnosujetas, detallestransacciones.ventasexentas, detallestransacciones.ventasafectas, detallestransacciones.descuento, encabezadostransacciones.suma, encabezadostransacciones.subtotal, encabezadostransacciones.ventatotal
         FROM facturas 
         INNER JOIN creditosfiscales ON facturas.idcreditofiscal = creditosfiscales.idcreditofiscal
         INNER JOIN encabezadostransacciones ON facturas.idencabezadotransaccion = encabezadostransacciones.idencabezadotransaccion
+        INNER JOIN detallestransacciones ON detallestransacciones.idencabezadotransaccion = encabezadostransacciones.idencabezadotransaccion
         INNER JOIN inventariossucursales ON encabezadostransacciones.idinventariosucursalsalida = inventariossucursales.idinventariosucursal 
         INNER JOIN sucursales ON inventariossucursales.idsucursal = sucursales.idsucursal
-        INNER JOIN creditosfiscales ON facturas.idcreditofiscal = creditosfiscales.idcreditofiscal
         INNER JOIN clientes ON facturas.idcliente = clientes.idcliente
         INNER JOIN vendedores ON encabezadostransacciones.idvendedor = vendedores.idvendedor
         INNER JOIN usuarios ON vendedores.idusuario = usuarios.idusuario

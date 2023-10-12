@@ -21,19 +21,19 @@ $pdf = new Report;
         // Se imprimen los encabezados con los encabezados.
         // Encabezado de categoria
         $pdf->cell(186, 10, 'IMPORT CARS, S.A DE C.V', 0, 1, 'C', 0);
-        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['giro']), 1, 0);
+        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['creditosfiscales.giro']), 1, 0);
         $pdf->cell(62, 10, $pdf->encodeString($dataFactura['nombresucdireccion'],), 0, 0, 'C', 0);
-        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['nofactura']), 0, 1, 'C', 0);
-        $pdf->cell(186, 10, $pdf->encodeString($dataFactura['gmail']), 0, 1, 'C', 0);
-        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['nombre']), 0, 0, 'C', 0);
-        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['dui']), 0, 0, 'C', 0);
-        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['nombreemp']), 0, 1, 'C', 0);
+        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['facturas.nofactura']), 0, 1, 'C', 0);
+        $pdf->cell(186, 10, $pdf->encodeString($dataFactura['facturas.gmail']), 0, 1, 'C', 0);
+        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['clientes.nombre']), 0, 0, 'C', 0);
+        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['clientes.dui']), 0, 0, 'C', 0);
+        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['empleados.nombreemp']), 0, 1, 'C', 0);
         $pdf->cell(62, 10, 'Direccion', 0, 0, 'C', 0);
         $pdf->cell(62, 10, 'Municipio', 0, 0, 'C', 0);
         $pdf->cell(62, 10, 'Departamento', 0, 1, 'C', 0);
         $pdf->cell(62, 10, 'Condicion de pago', 0, 0, 'C', 0);
-        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['nombrecaja']), 0, 0, 'C', 0);
-        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['nombrecajero']), 0, 1, 'C', 0);
+        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['cajas.nombrecaja']), 0, 0, 'C', 0);
+        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['cajeros.nombrecajero']), 0, 1, 'C', 0);
 
         $pdf->setFillColor(230);
         $pdf->setFont('Times', 'B', 11);
@@ -53,25 +53,30 @@ $pdf = new Report;
         foreach ($dataFactura as $rowFactura) {
             // Se imprimen las celdas con los datos de las categorias.
             // Celda de los datos del producto y precios
-            $pdf->cell(93, 10, $pdf->encodeString($rowFactura['nombreprov']), 1, 0);
-            $pdf->cell(93, 10, $pdf->encodeString($rowFactura['correoprov']), 1, 1);
+            $pdf->cell(93, 10, $pdf->encodeString($rowFactura['detallestransacciones.cantidad']), 1, 0);
+            $pdf->cell(93, 10, $pdf->encodeString($rowFactura['productos.nombreprod']), 1, 0);
+            $pdf->cell(93, 10, $pdf->encodeString($rowFactura['productos.descripcionprod']), 1, 0);
+            $pdf->cell(93, 10, $pdf->encodeString($rowFactura['detallestransacciones.preciounitario']), 1, 0);
+            $pdf->cell(93, 10, $pdf->encodeString($rowFactura['detallestransacciones.ventasnosujetas']), 1, 0);
+            $pdf->cell(93, 10, $pdf->encodeString($rowFactura['detallestransacciones.ventasexentas']), 1, 0);
+            $pdf->cell(93, 10, $pdf->encodeString($rowFactura['detallestransacciones.ventasafectas']), 1, 1);
         }
         $pdf->cell(186, 15, '', 0, 1, 'C', 0);
         $pdf->cell(62, 10, '', 0, 0, 'C', 0);
         $pdf->cell(62, 10, '', 0, 0, 'C', 0);
-        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['descuento']), 1, 1, 'C', 1);
+        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['detallestransacciones.descuento']), 1, 1, 'C', 1);
 
         $pdf->cell(62, 10, '', 0, 0, 'C', 0);
         $pdf->cell(62, 10, '', 0, 0, 'C', 0);
-        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['suma']), 1, 1, 'C', 1);
+        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['encabezadostransacciones.suma']), 1, 1, 'C', 1);
 
         $pdf->cell(62, 10, '', 0, 0, 'C', 0);
         $pdf->cell(62, 10, '', 0, 0, 'C', 0);
-        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['subtotal']), 1, 1, 'C', 1);
+        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['encabezadostransacciones.subtotal']), 1, 1, 'C', 1);
 
         $pdf->cell(62, 10, '', 0, 0, 'C', 0);
         $pdf->cell(62, 10, '', 0, 0, 'C', 0);
-        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['ventatototal']), 1, 1, 'C', 1);
+        $pdf->cell(62, 10, $pdf->encodeString($dataFactura['encabezadostransacciones.ventatotal']), 1, 1, 'C', 1);
     } else {
         $pdf->cell(0, 10, $pdf->encodeString('No hay detalles de la factura'), 1, 1);
     }
