@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!-- definición del lengauje del sitio -->
+<html lang="es">
+
+<head>
+    <!-- definición del set de carácteres -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- importación de archivos css -->
+    <link href="../resources/css/tailwind.css" rel="stylesheet">
+    <link href="../resources/css/styles.css" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+    <!-- icono de la página -->
+    <link rel="icon" href="../resources/img/logo.png">
+    <!-- titulo de la página -->
+    <title>Inventario</title>
+</head>
+
+<body>
+    <!-- encabezado del sistio -->
+    <header></header>
+    <!-- contenido del sitio -->
+    <main>
+        <div>
+            <!--Encabezado del SCRUD-->
+            <div class="py-4 text-center">
+                <h1 class="text-xl text-rojo font-bold">Inventario</h1>
+                <p class="text-azul font-medium">Gestion del manejo de las existencias de los productos en las sucursales y las boedegas.</p>
+            </div>
+            <!--Buscador-->
+            <div class="grid grid-cols-4 gap-4 py-4">
+                <div class="col-start-2 col-end-4">
+                    <form method="post" id="buscarFormulario">
+                        <label for="buscarFormulario"
+                            class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                </svg>
+                            </div>
+                            <input type="search" id="search" name="search"
+                                class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                placeholder="Buscar...">
+                            <button type="submit"
+                                class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--Tabla de Marcas-->
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <!--Encabezados de columnas de la tabla-->
+                <thead
+                    class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr class="text-oscuro font-semibold">
+                        <th scope="col" class="hidden px-6 py-3">
+                            ID
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Producto
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Sucursal
+                        </th>
+                        <th scope="col" class="px-8 py-3">
+                            Cantidad:
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Bodega
+                        </th>
+                        <th scope="col" class="px-8 py-3">
+                            Cantidad:
+                        </th>
+                    </tr>
+                </thead>
+                <!--Filas de la tabla-->
+                <tbody id="cargarRegistros"></tbody>
+            </table>
+        </div>
+    </main>
+    <!-- pie del sitio -->
+    <footer></footer>
+
+    <!-- Importacion de archivos JavaScript -->
+    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script src="../resources/js/sweetalert.min.js"></script>
+    <script src="../controllers/components.js"></script>
+    <script src="../controllers/account.js"></script>
+    <script src="../controllers/inventario.js"></script>
+</body>
+
+</html>
