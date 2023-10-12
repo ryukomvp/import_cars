@@ -55,7 +55,7 @@ class Cliente extends ClientesQueries
 
     public function setDui($value)
     {
-        if (Validator::validateDUI($value, 1, 11)) {
+        if (Validator::validateDUI($value)) {
             $this->dui = $value;
             return true;
         } else {

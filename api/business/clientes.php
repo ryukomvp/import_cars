@@ -96,8 +96,6 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Teléfono incorrecto';
                 } elseif (!$cliente->setContacto($_POST['contacto'])) {
                     $result['exception'] = 'Contacto adicional incorrecto';
-                } elseif (!$cliente->setTipoPersona($_POST['tipoPersona'])) {
-                    $result['exception'] = 'Error al seleccionar el tipo de persona';
                 } elseif (!$cliente->setDescuento($_POST['descuento'])) {
                     $result['exception'] = 'Descuento incorrecto';
                 } elseif (!$cliente->setExoneracion($_POST['exoneracion'])) {

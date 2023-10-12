@@ -197,9 +197,9 @@ async function actualizarRegistro(id) {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function eliminarRegistrote(id) {
+async function eliminarRegistro(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar lel cliente de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar el cliente de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.

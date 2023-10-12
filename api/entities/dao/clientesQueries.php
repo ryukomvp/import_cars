@@ -21,7 +21,7 @@ class ClientesQueries
     public function crearRegistro()
     {
         $sql = 'INSERT INTO clientes(nombre, giro, dui, correo, telefono, contacto, descuento, exoneracion, fechaini, tipocliente, idplazo)
-                VALUES(?,?,?,?,?,?,?,?,?,?,?,?)';
+                VALUES(?,?,?,?,?,?,?,?,?,?,?)';
         $params = array($this->nombre, $this->giro, $this->dui, $this->correo, $this->telefono, $this->contacto, $this->descuento, $this->exoneracion, $this->fechaini, $this->tipocliente, $this->idplazo);
         return Database::executeRow($sql, $params);
     }
