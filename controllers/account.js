@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Codigos transaccion</a>
                                 </li>
                                 <li class="">
-                                <a href="creditoFiscal.html"
+                                <a href="creditosFiscales.html"
                                     class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Credito Fiscal</a>
                             </li>
                             </ul>
