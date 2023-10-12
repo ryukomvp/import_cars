@@ -1,6 +1,9 @@
 
 // Constante para completar la ruta de la API.
 const USUARIO_API = 'business/usuarios.php';
+// Constante para completar la ruta de la API.
+const ENCABEZADOS_API = 'business/encabezadosTransacciones.php';
+
 // Constantes para establecer las etiquetas de encabezado y pie de la página web.
 const BODY = document.querySelector('body');
 const MAIN = document.querySelector('main');
@@ -12,14 +15,15 @@ document.addEventListener('DOMContentLoaded', async () => {
     BODY.classList.add('bg-gray-900');
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
     const JSON = await dataFetch(USUARIO_API, 'capturarUsuario');
+    const DATA = await dataFetch(ENCABEZADOS_API, 'CrearPreEncabezado');
     if (JSON.session) {
         setInterval(() => {
             checkSessionTime();
         }, 1800000);
         if (JSON.status) {
-            console.log(JSON.permissions.usuarios);
+            console.log(JSON.permissions);
             // COndicion para evaluar los permisos al acceder por medio de la url
-            if ((location.pathname.endsWith('usuarios.html') && !JSON.permissions.usuarios) || (location.pathname.endsWith('productos.html') && !JSON.permissions.productos) || (location.pathname.endsWith('bitacoras.html') && !JSON.permissions.bitacoras) || (location.pathname.endsWith('bodegas.html') && !JSON.permissions.bodegas) || (location.pathname.endsWith('cajas.html') && !JSON.permissions.cajas) || (location.pathname.endsWith('cajeros.html') && !JSON.permissions.cajeros) || (location.pathname.endsWith('categorias.html') && !JSON.permissions.categorias) || (location.pathname.endsWith('clientes.html') && !JSON.permissions.clientes) || (location.pathname.endsWith('codigoscomunes.html') && !JSON.permissions.codigoscomunes) || (location.pathname.endsWith('codigosplazos.html') && !JSON.permissions.codigosplazos) || (location.pathname.endsWith('codigostransacciones.html') && !JSON.permissions.codigostransacciones) || (location.pathname.endsWith('detallestransacciones.html') && !JSON.permissions.contactos) || (location.pathname.endsWith('clientes.html') && !JSON.permissions.detallestransacciones) || (location.pathname.endsWith('empleados.html') && !JSON.permissions.empleados) || (location.pathname.endsWith('encabezadostransacciones.html') && !JSON.permissions.encabezadostransacciones) || (location.pathname.endsWith('familias.html') && !JSON.permissions.familias) || (location.pathname.endsWith('marcas.html') && !JSON.permissions.marcas) || (location.pathname.endsWith('modelos.html') && !JSON.permissions.modelos) || (location.pathname.endsWith('monedas.html') && !JSON.permissions.monedas) || (location.pathname.endsWith('paisesdeorigen.html') && !JSON.permissions.paisesdeorigen) || (location.pathname.endsWith('parametros.html') && !JSON.permissions.parametros) || (location.pathname.endsWith('plazos.html') && !proveedores) || (location.pathname.endsWith('sucursales.html') && !JSON.permissions.sucursales) || (location.pathname.endsWith('tiposproductos.html') && !JSON.permissions.tiposproductos) || (location.pathname.endsWith('tiposusuarios.html') && !JSON.permissions.tiposusuarios) || (location.pathname.endsWith('vendedores.html') && !JSON.permissions.vendedores)) {
+            if ((location.pathname.endsWith('usuarios.html') && !JSON.permissions.usuarios) || (location.pathname.endsWith('inventario.html') && !JSON.permissions.inventarios) || (location.pathname.endsWith('productos.html') && !JSON.permissions.productos) || (location.pathname.endsWith('bitacoras.html') && !JSON.permissions.bitacoras) || (location.pathname.endsWith('bodegas.html') && !JSON.permissions.bodegas) || (location.pathname.endsWith('cajas.html') && !JSON.permissions.cajas) || (location.pathname.endsWith('cajeros.html') && !JSON.permissions.cajeros) || (location.pathname.endsWith('categorias.html') && !JSON.permissions.categorias) || (location.pathname.endsWith('clientes.html') && !JSON.permissions.clientes) || (location.pathname.endsWith('codigoscomunes.html') && !JSON.permissions.codigoscomunes) || (location.pathname.endsWith('codigosplazos.html') && !JSON.permissions.codigosplazos) || (location.pathname.endsWith('codigostransacciones.html') && !JSON.permissions.codigostransacciones) || (location.pathname.endsWith('detallestransacciones.html') && !JSON.permissions.contactos) || (location.pathname.endsWith('clientes.html') && !JSON.permissions.detallestransacciones) || (location.pathname.endsWith('empleados.html') && !JSON.permissions.empleados) || (location.pathname.endsWith('encabezadostransacciones.html') && !JSON.permissions.encabezadostransacciones) || (location.pathname.endsWith('familias.html') && !JSON.permissions.familias) || (location.pathname.endsWith('marcas.html') && !JSON.permissions.marcas) || (location.pathname.endsWith('modelos.html') && !JSON.permissions.modelos) || (location.pathname.endsWith('monedas.html') && !JSON.permissions.monedas) || (location.pathname.endsWith('paisOrigen.html') && !JSON.permissions.paisesdeorigen) || (location.pathname.endsWith('parametros.html') && !JSON.permissions.parametros) || (location.pathname.endsWith('plazos.html') && !proveedores) || (location.pathname.endsWith('sucursales.html') && !JSON.permissions.sucursales) || (location.pathname.endsWith('tiposproductos.html') && !JSON.permissions.tiposproductos) || (location.pathname.endsWith('tiposusuarios.html') && !JSON.permissions.tiposusuarios) || (location.pathname.endsWith('vendedores.html') && !JSON.permissions.vendedores) || (location.pathname.endsWith('bitacoras.html') && !JSON.permissions.bitacoras) || (location.pathname.endsWith('inventarios.html') && !JSON.permissions.inventarios)) {
                 location.href = 'dashboard.html';
             }
             MAIN.classList.add('py-4', 'container');
@@ -112,6 +116,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <a href="bodegas.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Bodegas</a>
                                 </li>
+                                <li class="${JSON.permissions.inventarios ? '' : 'hidden'}">
+                                    <a href="inventarios.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Inventario</a>
+                                </li>
                             </ul>
                         </li>
                         <!-- data-collapse-toggle="dropdown-Billing" es el identificador correcto dentro de flowbite para poder desplegar los dropdown, en resumen es el identificador que luego se busca abajo como id-->
@@ -137,6 +145,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <a href="encabezadosTransacciones.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Encabezados transaccion</a>
                                 </li>
+                                <li class="${DATA.status ? true : false}">
+                                    <a href="ventaProducto.html"
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Ventas</a>
+                                </li>
                                 <li class="${JSON.permissions.detallestransacciones ? '' : 'hidden'}">
                                     <a href="detallesTransacciones.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Detalles transaccion</a>
@@ -145,6 +157,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <a href="codigosTransacciones.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Codigos transaccion</a>
                                 </li>
+                                <li class="">
+                                <a href="creditosFiscales.html"
+                                    class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Credito Fiscal</a>
+                            </li>
                             </ul>
                         </li>
                         <!-- data-collapse-toggle="dropdown-Miscellaneous" es el identificador correcto dentro de flowbite para poder desplegar los dropdown, en resumen es el identificador que luego se busca abajo como id-->

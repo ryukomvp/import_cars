@@ -20,6 +20,13 @@
     <header></header>
     <!-- contenido del sitio -->
     <main class="container mt-5 mb-5">
+        <div class="col-end-5">
+            <button onclick="crearPreVenta()"
+                class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                type="button">
+                <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
+            </button>
+        </div>
         <!-- contenedor para tarjetas informativas -->
         <div class="grid grid-cols-2 mb-4">
             <!-- gráfica -->
@@ -34,19 +41,11 @@
         </div>
         <!-- contenedor para tarjetas informativas -->
         <div class="grid grid-cols-2 mb-4">
-            <!-- gráfica -->
-            <div>
-                <h3 class="text-center text-rojo font-bold uppercase">Cantidad de transacciones por numero de bodega</h3>
-                <canvas id="transaccionBodegasGrafic"></canvas>
-            </div>
+        
             <div>
                 <h3 class="text-center text-rojo font-bold uppercase">Cantidad de empleados por cargo</h3>
                 <canvas id="empleadoCargo"></canvas>
             </div>
-        </div>
-        <!-- contenedor para tarjetas informativas -->
-        <div class="grid grid-cols-2 mb-4">
-            <!-- gráfica -->
             <div>
                 <h3 class="text-center text-rojo font-bold uppercase">Cantidad productos por detalle</h3>
                 <canvas id="cantidadDetalleTransaccion"></canvas>

@@ -27,7 +27,9 @@ if (isset($_GET['action'])) {
                 break;
             case 'crearRegistro':
                 $_POST = Validator::validateForm($_POST);
-                if (!$pais->setpais($_POST['pais'])) {
+                if (!$pais->setNomenclatura($_POST['nomenclatura'])) {
+                    $result['exception'] = 'Nomenclatura incorrecta';
+                } elseif (!$pais->setpais($_POST['pais'])) {
                     $result['exception'] = 'País incorrecto';
                 } elseif ($pais->crearRegistro()) {
                     $result['status'] = 1;
@@ -77,7 +79,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'ID incorrecto';
                 } elseif (!$data = $pais->leerUnRegistro()) {
                     $result['exception'] = 'País inexistente';
-                } elseif (!$pais->setPais($_POST['pais'])) {
+                } elseif (!$pais->setNomenclatura($_POST['nomenclatura'])) {
+                    $result['exception'] = 'Nomenclatura incorrecta';
+                } elseif (!$pais->setpais($_POST['pais'])) {
                     $result['exception'] = 'País incorrecto';
                 } elseif ($pais->actualizarRegistro()) {
                     $result['status'] = 1;

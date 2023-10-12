@@ -4,7 +4,8 @@ require_once('../entities/dao/paisesOrigenQueries.php');
 
 class PaisesOrigen extends PaisesOrigenQueries
 {
-    protected $idpais = null;
+    protected $id = null;
+    protected $nomenclatura = null;
     protected $pais = null;
 
     //Metodos set para asignar valores a los atributos
@@ -12,7 +13,17 @@ class PaisesOrigen extends PaisesOrigenQueries
     public function setId($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idpais = $value;
+            $this->id = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setNomenclatura($value)
+    {
+        if (Validator::validateString($value, 1, 5)) {
+            $this->nomenclatura = $value;
             return true;
         } else {
             return false;
@@ -33,7 +44,12 @@ class PaisesOrigen extends PaisesOrigenQueries
 
     public function getId()
     {
-        return $this->idpais;
+        return $this->id;
+    }
+
+    public function getNomenclatura()
+    {
+        return $this->nomenclatura;
     }
 
     public function getPais()

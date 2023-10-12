@@ -37,36 +37,24 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (!$detalleTrans->setCorrelativo($_POST['correlativo'])) {
                     $result['exception'] = 'Correlativo incorrecto';
+                } elseif (!$detalleTrans->setProducto($_POST['idproducto'])) {
+                    $result['exception'] = 'LPrecio unitario incorrecto';
                 } elseif (!$detalleTrans->setCantidad($_POST['cantidad'])) {
                     $result['exception'] = 'Cantidad de productos incorrecta';
-                } elseif (!$detalleTrans->setPrecioUnitario($_POST['precioUnitario'])) {
-                    $result['exception'] = 'LPrecio unitario incorrecto';
-                } elseif (!$detalleTrans->setVentaNoSujeta($_POST['ventaNoSujeta'])) {
+                } elseif (!$detalleTrans->setPrecioUnitario($_POST['preciounitario'])) {
                     $result['exception'] = 'Venta no sujeta incorrecta';
-                } elseif (!$detalleTrans->setVentaExenta($_POST['ventaExenta'])) {
+                } elseif (!$detalleTrans->setVentaNoSujeta($_POST['ventasnosujetas'])) {
                     $result['exception'] = 'Venta exenta incorrecta';
-                } elseif (!$detalleTrans->setVentaAfecta($_POST['ventaAfecta'])) {
+                } elseif (!$detalleTrans->setVentaExenta($_POST['ventaexenta'])) {
                     $result['exception'] = 'Venta afecta incorrecta';
+                } elseif (!$detalleTrans->setVentaAfecta($_POST['ventasafecta'])) {
+                    $result['exception'] = 'Descuento incorrecto';
                 } elseif (!$detalleTrans->setDescuento($_POST['descuento'])) {
                     $result['exception'] = 'Descuento incorrecto';
-                } elseif (!$detalleTrans->setValorDescuento($_POST['valorDescuento'])) {
+                } elseif (!$detalleTrans->setValorDescuento($_POST['valordescuento'])) {
                     $result['exception'] = 'Valor del descuento incorrecto';
-                } elseif (!$detalleTrans->setSumas($_POST['suma'])) {
-                    $result['exception'] = 'Sumatoria de los precios de los productos incorrecto';
-                } elseif (!$detalleTrans->setSubTotal($_POST['subTotal'])) {
-                    $result['exception'] = 'Sut total incorrecto';
-                } elseif (!$detalleTrans->setVentaTotal($_POST['ventaTotal'])) {
-                    $result['exception'] = 'Venta total incorrecta';
-                } elseif (!$detalleTrans->setIva($_POST['iva'])) {
-                    $result['exception'] = 'IVA asignado incorrecto';
-                } elseif (!$detalleTrans->setObservacion($_POST['observaciones'])) {
-                    $result['exception'] = 'Observación incorrecta';
-                } elseif (!$detalleTrans->setIdBodegaSalida($_POST['bodegaSalida'])) {
-                    $result['exception'] = 'Error al asignar la bodega de salida del articulo';
-                } elseif (!$detalleTrans->setIdProducto($_POST['producto'])) {
+                } elseif (!$detalleTrans->setEncabezadoTransaccion($_POST['idencabezadotransaccion'])) {
                     $result['exception'] = 'Error al asignar el producto';
-                } elseif (!$detalleTrans->setDescripcion($_POST['descripcion'])) {
-                    $result['exception'] = 'Descripción incorrecta';
                 }  elseif ($detalleTrans->crearRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Detalle de la transacción creado exitosamente';

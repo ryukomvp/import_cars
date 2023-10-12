@@ -26,34 +26,39 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'crearRegistroVenta':
+                case 'CrearPreEncabezado':
+                    $_POST = Validator::validateForm($_POST);
+                    if ($encabezadoTransac->crearPreEncabezado()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Encabezado de la transacción creado exitosamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
+            case 'actualizarRegistroVenta':
                 $_POST = Validator::validateForm($_POST);
-                if (!$encabezadoTransac->setNoComprobante($_POST['noComprobante'])) {
-                    $result['exception'] = 'Número de comprobante incorrecto';
-                } elseif (!$encabezadoTransac->setFechaTransac($_POST['fechaTransac'])) {
+                if (!$encabezadoTransac->setDescripcion($_POST['descripcion'])) {
+                    $result['exception'] = 'descripcion incorrecta';
+                } elseif (!$encabezadoTransac->setFechaHora($_POST['fechahora'])) {
                     $result['exception'] = 'Fecha de la transacción incorrecta';
-                } elseif (!$encabezadoTransac->setLote($_POST['lote'])) {
+                } elseif (!$encabezadoTransac->setCajero($_POST['idcajero'])) {
                     $result['exception'] = 'Lote asignado incorrecto';
-                } elseif (!$encabezadoTransac->setNoPoliza($_POST['nopoliza'])) {
+                } elseif (!$encabezadoTransac->setCodigoTransaccion($_POST['idcodigotransaccion'])) {
                     $result['exception'] = 'Número de poliza incorrecto';
-                } elseif (!$encabezadoTransac->setIdBodega($_POST['bodega'])) {
+                } elseif (!$encabezadoTransac->setSucursal($_POST['idinventariosucursalsalida'])) {
                     $result['exception'] = 'Error al asignar la bodega';
-                } elseif (!$encabezadoTransac->setIdCajero($_POST['cajero'])) {
-                    $result['exception'] = 'Error al asignar el cajero';
-                } elseif (!$encabezadoTransac->setTipoPago($_POST['tipoPago'])) {
+                } elseif (!$encabezadoTransac->setParametro($_POST['idparametro'])) {
                     $result['exception'] = 'Error al asignar el tipo de pago';
-                } elseif (!$encabezadoTransac->setIdCodigoTransaccion($_POST['codigoTransaccion'])) {
+                } elseif (!$encabezadoTransac->setVendedor($_POST['idvendedor'])) {
                     $result['exception'] = 'Error al asignar el código de la transacción';
-                } elseif (!$encabezadoTransac->setIdCliente($_POST['cliente'])) {
+                } elseif (!$encabezadoTransac->setLote($_POST['lote'])) {
                     $result['exception'] = 'Error al asignar el cliente';
-                } elseif (!$encabezadoTransac->setIdVendedor($_POST['vendedor'])) {
+                } elseif (!$encabezadoTransac->setPoliza($_POST['npoliza'])) {
                     $result['exception'] = 'Error al asignar el vendedor';
-                } elseif (!$encabezadoTransac->setIdProveedor($_POST['proveedor'])) {
+                } elseif (!$encabezadoTransac->setObservacion($_POST['observacion'])) {
                     $result['exception'] = 'Error al asignar el proveedor';
-                } elseif (!$encabezadoTransac->setIdParametro($_POST['parametro'])) {
+                } elseif (!$encabezadoTransac->setTipoPago($_POST['tipopago'])) {
                     $result['exception'] = 'Error al asignar el parámetro';
-                } elseif (!$detalleTrans->setIdDetalleTransaccion($_POST['detalleTransaccion'])) {
-                    $result['exception'] = 'Error al asignar el detalle de la transacción';
                 } elseif ($encabezadoTransac->crearRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Encabezado de la transacción creado exitosamente';

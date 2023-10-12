@@ -9,22 +9,17 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     //Declaración de atributos (propiedades).
     protected $id = null;
     protected $correlativo = null;
-    protected $cantidad = null;
-    protected $preciounitario = null;
-    protected $ventanosujeta = null;
-    protected $ventaexenta = null;
-    protected $ventaafecta = null;
+    protected $producto= null;
+    protected $cantidad= null;
+    protected $preciounitario= null;
+    protected $ventasnosujetas = null;
+    protected $ventasexentas = null;
+    protected $ventasafectas = null;
     protected $descuento = null;
     protected $valordescuento = null;
-    protected $suma = null;
-    protected $subtotal = null;
-    protected $ventatotal = null;
-    protected $iva = null;
-    protected $observaciones = null;
-    protected $idbodegaentrada = null;
-    protected $idbodegasalida = null;
-    protected $idproducto = null;
-    protected $descripcion = null;
+    protected $encabezadotransaccion = null;
+    protected $codigotransaccion = null;
+    protected $usuario = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -44,6 +39,16 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     {
         if (Validator::validateNaturalNumber($value)) {
             $this->correlativo = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+        
+    public function setProducto($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->producto = $value;
             return true;
         } else {
             return false;
@@ -73,7 +78,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     public function setVentaNoSujeta($value)
     {
         if (Validator::validateMoney($value)) {
-            $this->ventanosujeta = $value;
+            $this->ventasnosujetas = $value;
             return true;
         } else {
             return false;
@@ -83,7 +88,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     public function setVentaExenta($value)
     {
         if (Validator::validateMoney($value)) {
-            $this->subtotal = $value;
+            $this->ventasexentas = $value;
             return true;
         } else {
             return false;
@@ -93,7 +98,7 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     public function setVentaAfecta($value)
     {
         if (Validator::validateMoney($value)) {
-            $this->ventaafecta = $value;
+            $this->ventasafectas = $value;
             return true;
         } else {
             return false;
@@ -120,96 +125,35 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         }
     }
 
-    public function setSumas($value)
-    {
-        if (Validator::validateMoney($value)) {
-            $this->suma = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setSubTotal($value)
-    {
-        if (Validator::validateMoney($value)) {
-            $this->subtotal = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setVentaTotal($value)
-    {
-        if (Validator::validateMoney($value)) {
-            $this->ventatotal = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setIva($value)
-    {
-        if(Validator::validateDouble($value)) {
-            $this->iva = $value;
-            return true;
-        } else{
-            return false;
-        }
-    }
-
-    public function setObservacion($value)
-    {
-        if (Validator::validateAlphabetic($value, 1, 200)) {
-            $this->observaciones = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public function setIdBodegaEntrada($value)
+    public function setEncabezadoTransaccion($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idbodegaentrada = $value;
+            $this->encabezadotransaccion = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setIdBodegaSalida($value)
+    public function setCodigoTransaccion($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idbodegasalida = $value;
+            $this->codigotransaccion = $value;
             return true;
         } else {
             return false;
         }
     }
-    
-    public function setIdProducto($value)
+
+    public function setUsuario($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->idproducto = $value;
+            $this->usuario = $value;
             return true;
         } else {
             return false;
         }
     }
-
-    public function setDescripcion($value)
-    {
-        if (Validator::validateAlphabetic($value, 1, 200)) {
-            $this->descripcion = $value;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
 
     /*
     *   Métodos para obtener valores de los atributos.
@@ -224,6 +168,12 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         return $this->correlativo;
     }
 
+    public function getProducto()
+    {
+        return $this->producto;
+    }
+
+
     public function getCantidad()
     {
         return $this->cantidad;
@@ -236,17 +186,17 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     
     public function getVentaNoSujeta()
     {
-        return $this->ventanosujeta;
+        return $this->ventasnosujetas;
     }
 
     public function getVentaExenta()
     {
-        return $this->ventaexenta;
+        return $this->ventasexentas;
     }
 
     public function getVentaAfecta()
     {
-        return $this->ventaafecta;
+        return $this->ventasafectas;
     }
 
     public function getDescuento()
@@ -259,48 +209,13 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         return $this->valordescuento;
     }
 
-    public function getSumas()
+    public function getEncabezadoTransaccion()
     {
-        return $this->suma;
+        return $this->encabezadotransaccion;
     }
 
-    public function getSubTotal()
+    public function getCodigoTransaccion()
     {
-        return $this->subtotal;
-    }
-
-    public function getVentaTotal()
-    {
-        return $this->ventatotal;
-    }
-
-    public function getIva()
-    {
-        return $this->iva;
-    }
-
-    public function getObservaciones()
-    {
-        return $this->observaciones;
-    }
-
-    public function getIdBodegaEntrada()
-    {
-        return $this->idbodegaentrada;
-    }
-
-    public function getIdBodegaSalida()
-    {
-        return $this->idbodegasalida;
-    }
-
-    public function getIdProducto()
-    {
-        return $this->idproducto;
-    }
-
-    public function getDescripcion()
-    {
-        return $this->descripcion;
+        return $this->codigotransaccion;
     }
 }

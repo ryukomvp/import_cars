@@ -67,7 +67,8 @@ CREATE TABLE IF NOT EXISTS tiposusuarios(
     encabezadostransacciones BOOLEAN,
     detallestransacciones BOOLEAN,
     tiposusuarios BOOLEAN,
-    bitacoras BOOLEAN
+    bitacoras BOOLEAN,
+    inventarios BOOLEAN
 );
 
 CREATE TABLE IF NOT EXISTS codigostransacciones(
@@ -195,7 +196,7 @@ CREATE TABLE IF NOT EXISTS clientes(
 
 CREATE TABLE IF NOT EXISTS creditosfiscales(
     idcreditofiscal INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    noregistro INT NOT NULL,
+    noregistro INT NOT NULL UNIQUE,
     fecha DATE NOT NULL,
     duinit VARCHAR(11) NOT NULL,
     tipodocumento ENUM('Dui', 'Nit', 'otros o pasaporte') NOT NULL,
@@ -379,23 +380,25 @@ CREATE TABLE IF NOT EXISTS inventariossucursales (
 
 CREATE TABLE IF NOT EXISTS encabezadostransacciones(
         idencabezadotransaccion INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-        correlativo INT NOT NULL,
-        fechahora DATE NOT NULL,
-        lote INT NOT NULL,
-        npoliza INT ,
-        idcajero INT NOT NULL,
+        correlativo INT NOT NULL UNIQUE,
+        fechahora DATETIME NOT NULL,
+        lote INT NULL,
+        npoliza INT NULL,
+        idcajero INT NULL,
         tipopago ENUM('Tarjeta', 'Efectivo') NOT NULL,
-        idcodigotransaccion INT NOT NULL,
-        idcliente INT ,
-        idvendedor INT NOT NULL,
-        idproveedor INT ,
-        idparametro INT NOT NULL,
-        idinventariobodegaentrada INT,
-        idinventariobodegasalida INT,
-        idinventariosucursalentrada INT,
-        idinventariosucursalsalida INT,
-        observaciones VARCHAR (100) ,
-        descripcion VARCHAR (50) NOT NULL,
+        idcodigotransaccion INT NULL,
+        idusuario INT NULL,
+        idproveedor INT NULL,
+        idparametro INT NULL,
+        idinventariobodegaentrada INT NULL,
+        idinventariobodegasalida INT NULL,
+        idinventariosucursalentrada INT NULL,
+        idinventariosucursalsalida INT NULL,
+        observacion VARCHAR (100) NULL,
+        descripcion VARCHAR (50) NULL,
+        suma NUMERIC(6,2) NULL,
+        subtotal NUMERIC(6,2) NULL,
+        ventatotal NUMERIC(6,2) NULL,
         
     CONSTRAINT fkbodegatransacentrada
     FOREIGN KEY (idinventariobodegaentrada)
@@ -421,9 +424,9 @@ CREATE TABLE IF NOT EXISTS encabezadostransacciones(
     FOREIGN KEY (idcodigotransaccion)
     REFERENCES codigostransacciones(idcodigotransaccion) ON UPDATE CASCADE ON DELETE CASCADE,
     
-    CONSTRAINT fkvendedortransac
-    FOREIGN KEY (idvendedor)
-    REFERENCES vendedores(idvendedor) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT fkusuariotransac
+    FOREIGN KEY (idusuario)
+    REFERENCES usuarios(idusuario) ON UPDATE CASCADE ON DELETE CASCADE,
     
     CONSTRAINT fkprovtransac
     FOREIGN KEY (idproveedor)
@@ -431,17 +434,15 @@ CREATE TABLE IF NOT EXISTS encabezadostransacciones(
     
     CONSTRAINT fkparametrotransac
     FOREIGN KEY (idparametro)
-    REFERENCES parametros(idparametro) ON UPDATE CASCADE ON DELETE CASCADE,
-
-    CONSTRAINT fkcliencatransaccion
-    FOREIGN KEY (idcliente)
-    REFERENCES clientes(idcliente) ON UPDATE CASCADE ON DELETE CASCADE
+    REFERENCES parametros(idparametro) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS detallestransacciones(
         iddetalletransaccion INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-        correlativo INT NOT NULL,
+        correlativo INT NOT NULL UNIQUE,
         idproducto INT NOT NULL,
+   		cantidad INT NOT NULL,
+        preciounitario NUMERIC(6,2) NOT NULL,
         ventasnosujetas NUMERIC(6,2) NULL,
         ventasexentas NUMERIC(6,2) NULL,
         ventasafectas NUMERIC(6,2) NULL,
@@ -459,23 +460,28 @@ CREATE TABLE IF NOT EXISTS detallestransacciones(
     REFERENCES encabezadostransacciones(idencabezadotransaccion) ON UPDATE CASCADE ON DELETE CASCADE
 );
   
-CREATE TABLE IF NOT EXISTS factura(
+CREATE TABLE IF NOT EXISTS facturas(
         idfactura INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-        nofactura INT NOT NULL,
-        noregistro INT,
+        nofactura INT NOT NULL UNIQUE,
+        idcreditofiscal INT,
+        idcliente INT,
         gmail VARCHAR(100)NOT NULL,
         fecha DATE NOT NULL, 
-        idcliente INT,
-        idcreditofiscal INT,
         tipodocumento ENUM('C.C.F.', 'Factura' , 'Tiquete') NOT NULL,
+        idencabezadotransaccion INT NOT NULL,
         
         CONSTRAINT fkfacturacliente
         FOREIGN KEY (idcliente)
         REFERENCES clientes(idcliente) ON UPDATE CASCADE ON DELETE CASCADE,
+ 
     
         CONSTRAINT fkfacturacreditofiscal
         FOREIGN KEY (idcreditofiscal)
-        REFERENCES creditosfiscales(idcreditofiscal) ON UPDATE CASCADE ON DELETE CASCADE
+        REFERENCES creditosfiscales(idcreditofiscal) ON UPDATE CASCADE ON DELETE CASCADE,
+    
+        CONSTRAINT fkfacturaencabezado
+        FOREIGN KEY (idencabezadotransaccion)
+        REFERENCES encabezadostransacciones (idencabezadotransaccion) ON UPDATE CASCADE ON DELETE CASCADE
     );
 
 CREATE TABLE IF NOT EXISTS bitacoras( 
@@ -946,10 +952,10 @@ INSERT INTO tiposproductos(tipoproducto) VALUES
 	('Bomper'),
 	('Capo');
 
-INSERT INTO tiposusuarios(nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios, bitacoras) VALUES
-    ('Administrador',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
-    ('Gerente',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
-    ('Vendedor',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
+INSERT INTO tiposusuarios(nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios, bitacoras, inventarios) VALUES
+    ('Administrador',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+    ('Gerente',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
+    ('Vendedor',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
 
 INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, estadoempleado, genero, cargo) VALUES
 	('Annamaria Sheffield', '0971-3740', 'asheffield0@sogou.com', '2003-06-02', '02434523-2', 'Activo', 'Masculino', 'Jefe'),
@@ -971,7 +977,7 @@ INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, 
 	('Evelin Fery', '5971-3740', 'eferyg@omniture.com', '1998-06-04', '17434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Pietrek Peris', '8905-6928', 'pperish@cornell.edu', '2002-06-06', '99434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Mellisa Anstee', '1936-8789', 'mansteei@google.co.jp', '1997-09-11', '00434523-2', 'Inactivo', 'Masculino', 'Jefe'),
-	('Nevin Oke', '2536-1122', 'nokej@home.pl', '1999-02-03', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
+	('Kevin Rivas', '2536-1122', 'kevinrivassd04@gmail.com', '1999-02-03', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '2010-10-10', '06795006-2', 'Activo', 'Masculino', 'Jefe');
 
 INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, estadousuario, palabraclave, codigoveri) VALUES
@@ -987,14 +993,14 @@ INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, esta
 	('Barri', 'Sheffield', '12345678', 1, 10, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Zsazsa', 'Chstney', '12345678', 1, 11, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Scarface', 'Sheffield', '12345678', 1, 12, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
-	('Edithe', 'Sleight', '12345678', 1, 13, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
+	('Edithe', 'Sleight', '12345678', 1, 13, 'Actio','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Bartholomew', 'Sheffield', '12345678', 1, 14, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Shayla', 'Sheffield', '12345678', 1, 15, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Sisile', 'Sleight', '12345678', 1, 16, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Evelin', 'Anstee', '12345678', 1, 17, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Pietrek', 'Sheffield', '12345678', 2, 18, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Mellisa', 'Anstee', '12345678', 2, 19, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
-	('Kevin', '$2y$10$1wWqmZ36Pts6cYlKBY1FN.kgn/HfUyCjF/JkWIO1M5xipDgFlFKna', '12345678', 2, 20, 'Activo','$2y$10$1wWqmZ36Pts6cYlKBY1FN.kgn/HfUyCjF/JkWIO1M5xipDgFlFKna',0),
+	('Kevin', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 2, 20, 'Activo','$2y$10$1wWqmZ36Pts6cYlKBY1FN.kgn/HfUyCjF/JkWIO1M5xipDgFlFKna',0),
 	('dani', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 21, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0);
 
 INSERT INTO cajas (nombrecaja, nombreequipo, serieequipo, modeloequipo, idsucursal, idusuario) VALUES
@@ -1054,22 +1060,49 @@ INSERT INTO codigostransacciones(codigo, nombrecodigo) VALUES
        (1236, 'Recuento'),
        (1237, 'Traspaso');
 
-INSERT INTO detallestransacciones(correlativo, cantidad, preciounitario, ventanosujeta, ventaexenta, ventaafecta, descuento, valordescuento, sumas, subtotal, ventatotal, iva, observaciones, idbodegaentrada, idbodegasalida, idproducto, descripcion) VALUES
-       (1, 50, 20.00, 15.00, 40.00, 34.00, 40.00, 20.00, 40.00, 34.00, 34.00, 19.00, 'Exelente', 1, 1, 1, 'Transaccion de producto'),
-       (2, 60, 40.00, 20.00, 34.00, 40.00, 33.00, 19.00, 20.00, 33.00, 40.00, 40.00, 'Defectuoso', 2, 2, 2, 'Transaccion de producto'),
-       (3, 70, 33.00, 40.00, 19.00, 33.00, 19.00, 33.00, 19.00, 33.00, 20.00, 19.00, 'Exelente', 3, 3, 3, 'Transaccion de producto'),
-       (4, 80, 19.00, 60.00, 20.00, 19.00, 40.00, 19.00, 19.00, 40.00, 40.00, 20.00, 'Exelente', 4, 4, 4, 'Transaccion de producto'),
-       (5, 90, 80.00, 34.00, 40.00, 34.00, 19.00, 20.00, 33.00, 20.00, 19.00, 34.00, 'Defectuoso', 5, 5, 5, 'Transaccion de producto'),
-       (6, 100, 15.00, 12.00, 19.00, 19.00, 40.00, 20.00, 40.00, 19.00, 19.00, 33.00, 'Exelente', 6, 6, 6, 'Transaccion de producto'),
-       (7, 110, 84.00, 19.00, 19.00, 40.00, 19.00, 19.00, 34.00, 20.00, 33.00, 40.00, 'Defectuoso', 7, 7, 7, 'Transaccion de producto');
+INSERT INTO inventariosbodegas(idproducto, cantidad, idbodega) VALUES
+	(1,100,1),
+    (2,100,1),
+    (3,200,1),
+    (4,40,1),
+    (5,100,1);
+
+INSERT INTO inventariossucursales(idproducto, cantidad, idsucursal) VALUES
+	(1,10,1),
+    (2,10,1),
+    (3,20,1),
+    (4,40,1),
+    (5,60,1);
+
+INSERT INTO encabezadostransacciones(correlativo, fechahora, lote, npoliza, idcajero, tipopago, idcodigotransaccion, idusuario, idproveedor, idparametro, idinventariobodegaentrada, idinventariobodegasalida, idinventariosucursalentrada, idinventariosucursalsalida, observacion, descripcion, suma, subtotal, ventatotal) VALUES
+       (1, '2015-01-01', 1213, 1234, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Pieza solicitada','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
+       (2, '2015-01-01', 1214, 1235, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
+       (3, '2015-01-01', 1215, 1236, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
+       (4, '2015-01-01', 1216, 1237, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
+       (5, '2015-01-01', 1217, 1238, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
+       (6, '2015-01-01', 1218, 1239, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.506),
+       (7, '2015-01-01', 1219, 1230,1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50);
+
+INSERT INTO detallestransacciones(correlativo, idproducto, cantidad, preciounitario, ventasnosujetas, ventasexentas, ventasafectas, descuento, valordescuento, idencabezadotransaccion) VALUES
+       (00001, 1, 1, 10.00, 20.00, 15.00, 40.00, 34.00, 40.00, 1),
+       (00002, 2, 1, 11.00, 40.00, 20.00, 34.00, 40.00, 33.00, 1),
+       (00003, 3, 1, 09.00, 33.00, 40.00, 19.00, 33.00, 19.00, 1),
+       (00004, 4, 1, 07.00, 19.00, 60.00, 20.00, 19.00, 40.00, 1),
+       (00005, 5, 1, 10.00, 80.00, 34.00, 40.00, 34.00, 19.00, 1),
+       (00006, 6, 1, 16.00, 15.00, 12.00, 19.00, 19.00, 40.00, 1),
+       (00007, 7, 1, 10.00, 84.00, 19.00, 19.00, 40.00, 19.00, 1);
 
 
-INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro, iddetalletransaccion) VALUES
-       (1, '2015-01-01', 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1, 1),
-       (2, '2015-01-01', 1214, 1235, 2, 2,'Efectivo', 2, 2, 2, 2, 2, 2),
-       (3, '2015-01-01', 1215, 1236, 3, 3,'Efectivo', 3, 3, 3, 3, 3, 3),
-       (4, '2015-01-01', 1216, 1237, 4, 4,'Efectivo', 1, 4, 4, 4, 4, 4),
-       (5, '2015-01-01', 1217, 1238, 5, 5,'Efectivo', 2, 5, 5, 5, 5, 5),
-       (6, '2015-01-01', 1218, 1239, 6, 6,'Efectivo', 3, 6, 6, 6, 6, 6),
-       (7, '2015-01-01', 1219, 1230, 7, 7,'Efectivo', 1, 7, 7, 7, 7, 7);
+INSERT INTO creditosfiscales(noregistro, fecha, duinit, tipodocumento, tipodepersona, razonsocial, empresa, email, direccion, idpais, giro, categoria, telefono) VALUES
+	(00001, '2015-01-01', '02349567-9','Dui', 'Natural', '','importCars','jonathan.marchelli@gmail.com','29 Calle Poniente #1026, Colonia Layco Entre 17 y, 19 Avenida Nte., San Salvador',1,'Credito Fiscal','Venta de repuesto','7777-7777'),
+    (00002, '2015-01-01', '02300567-9','Dui', 'Natural', '','importCars','jonathan.marchelli@gmail.com','29 Calle Poniente #1026, Colonia Layco Entre 17 y, 19 Avenida Nte., San Salvador',1,'Credito Fiscal','Venta de repuesto','7777-7777'),
+    (00003, '2015-01-01', '01149567-9','Dui', 'Natural', '','importCars','jonathan.marchelli@gmail.com','29 Calle Poniente #1026, Colonia Layco Entre 17 y, 19 Avenida Nte., San Salvador',1,'Credito Fiscal','Venta de repuesto','7777-7777'),
+    (00004, '2015-01-01', '02349599-9','Dui', 'Natural', '','importCars','jonathan.marchelli@gmail.com','29 Calle Poniente #1026, Colonia Layco Entre 17 y, 19 Avenida Nte., San Salvador',1,'Credito Fiscal','Venta de repuesto','7777-7777'),
+    (00005, '2015-01-01', '02349567-9','Dui', 'Natural', '','importCars','jonathan.marchelli@gmail.com','29 Calle Poniente #1026, Colonia Layco Entre 17 y, 19 Avenida Nte., San Salvador',1,'Credito Fiscal','Venta de repuesto','7700-7777');
 
+INSERT INTO facturas(nofactura,idcreditofiscal,idcliente,gmail,fecha,tipodocumento,idencabezadotransaccion) VALUES
+	(00001,1,1,'jonathan.marchelli@gmail.com','2015-01-01','Dui',1),
+    (00002,1,2,'jonathan.marchelli@gmail.com','2015-01-01','Dui',1),
+    (00003,1,2,'jonathan.marchelli@gmail.com','2015-01-01','Dui',1),
+    (00004,1,3,'jonathan.marchelli@gmail.com','2015-01-01','Nit',2),
+    (00005,1,2,'jonathan.marchelli@gmail.com','2015-01-01','Nit',1);

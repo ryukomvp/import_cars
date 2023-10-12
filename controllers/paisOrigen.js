@@ -101,6 +101,7 @@ async function cargarRegistros(form = null) {
             REGISTROS_TABLA.innerHTML += `
                 <tr  class="text-center bg-white hover:bg-blue-200">
                     <td class="hidden px-6 py-4">${row.idpais}</td>
+                    <td class="px-6 py-4">${row.nomenclatura}</td>
                     <td class="px-6 py-4">${row.pais}</td>
                     <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idpais})"
@@ -159,6 +160,7 @@ async function actualizarRegistro(id) {
         TITULO.textContent = 'Actualizar Pais de origen';
         // Se inicializan los campos del formulario.
         document.getElementById('id').value = JSON.dataset.idpais;
+        document.getElementById('nomenclatura').value = JSON.dataset.nomenclatura;
         document.getElementById('pais').value = JSON.dataset.pais;
     } else {
         sweetAlert(2, JSON.exception, false);

@@ -97,6 +97,14 @@
                                             class="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700"
                                             placeholder="ID" readonly>
                                     </div>
+                                    <!--Input Nomenclatura-->
+                                    <div>
+                                        <label for="nomenclatura"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nomenclatura</label>
+                                        <input type="text" id="nomenclatura" name="nomenclatura"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                            placeholder="Nomenclatura" required autocomplete="off">
+                                    </div>
                                     <!--Input país de origen-->
                                     <div>
                                         <label for="pais"
@@ -166,6 +174,9 @@
                         <tr class="text-oscuro font-semibold">
                             <th scope="col" class="hidden px-6 py-3">
                                 ID
+                            </th>
+                            <th scope="col" class="text-oscuro font-bold px-6 py-4 whitespace-nowrap dark:text-white">
+                                Nomenclatura
                             </th>
                             <th scope="col" class="text-oscuro font-bold px-6 py-4 whitespace-nowrap dark:text-white">
                                 País de Origen

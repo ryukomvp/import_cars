@@ -100,6 +100,7 @@ async function cargarRegistros(form = null) {
             (row.detallestransacciones) ? txtdetallestransacciones = 'Permitido' : txtdetallestransacciones = 'Denegado';
             (row.tiposusuarios) ? txttiposusuarios = 'Permitido' : txttiposusuarios = 'Denegado';
             (row.bitacoras) ? txtbitacoras = 'Permitido' : txtbitacoras = 'Denegado';
+            (row.inventarios) ? txtinventarios = 'Permitido' : txtinventarios = 'Denegado';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr class="text-center bg-white hover:bg-blue-200">
@@ -192,6 +193,9 @@ async function cargarRegistros(form = null) {
                     </td>
                     <td class="px-6 py-4">
                         ${txtbitacoras}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${txtinventarios}
                     </td>
                     <td class="px-6 py-4">
                         <button onclick="actualizarRegistro(${row.idtipousuario})"
@@ -422,6 +426,12 @@ async function actualizarRegistro(id) {
             document.getElementById('bitacora').checked = 1;
         } else {
             document.getElementById('bitacora').checked = 0;
+        }
+        // Se verifica si el permiso esta activo o no de bitacoras
+        if (JSON.dataset.inventarios == '1') {
+            document.getElementById('inventario').checked = 1;
+        } else {
+            document.getElementById('inventario').checked = 0;
         }
     } else {
         sweetAlert(2, JSON.exception, false);

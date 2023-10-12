@@ -12,7 +12,7 @@ class productosQueries
     /*metodo para buscar registros*/
     public function buscarProducto($value)
     {
-        $sql = 'SELECT productos.idproducto, productos.imagen, productos.nombreprod, productos.descripcionprod, productos.precio, productos.preciodesc, productos.anioinicial, productos.aniofinal, codigoscomunes.codigo, tiposproductos.tipoproducto, categorias.categoria, modelos.modelo, paisesdeorigen.pais, productos.estadoproducto 
+        $sql = 'SELECT productos.idproducto, productos.imagen, productos.nombreprod, productos.descripcionprod, productos.iva, productos.precio, productos.preciodesc, productos.anioinicial, productos.aniofinal, codigoscomunes.codigo, tiposproductos.tipoproducto, categorias.categoria, modelos.modelo, paisesdeorigen.pais, productos.estadoproducto 
         FROM productos 
         INNER JOIN categorias ON productos.idcategoria = categorias.idcategoria 
         INNER JOIN codigoscomunes ON productos.idcodigocomun = codigoscomunes.idcodigocomun 
@@ -28,15 +28,15 @@ class productosQueries
     public function crearProducto()
     {
         // , $_SESSION['idUsuario']
-        $sql = 'INSERT INTO productos(nombreprod, imagen, descripcionprod, precio, preciodesc, anioinicial, aniofinal, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, estadoproducto)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->idCodigosComunes, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto);
+        $sql = 'INSERT INTO productos(nombreprod, imagen, descripcionprod, precio, preciodesc, anioinicial, aniofinal, iva, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, estadoproducto)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this-iva, $this->idCodigosComunes, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto);
         return Database::executeRow($sql, $params);
     }
 
     public function leerTodo() 
     {
-        $sql = 'SELECT p.idproducto, p.nombreprod, p.imagen, p.descripcionprod, p.precio, p.preciodesc , p.anioinicial, p.aniofinal, a.codigo, b.tipoproducto, c.categoria, n.modelo, s.pais, p.estadoproducto
+        $sql = 'SELECT p.idproducto, p.nombreprod, p.imagen, p.descripcionprod, p.precio, p.preciodesc , p.anioinicial, p.aniofinal, p.iva, a.codigo, b.tipoproducto, c.categoria, n.modelo, s.pais, p.estadoproducto
                 FROM productos p
                 INNER JOIN categorias c ON p.idcategoria = c.idcategoria 
                 INNER JOIN codigoscomunes a ON p.idcodigocomun = a.idcodigocomun
@@ -49,7 +49,7 @@ class productosQueries
 
     public function leerUnProducto()
     {
-        $sql = 'SELECT idproducto,nombreprod, imagen, descripcionprod, precio, preciodesc, anioinicial, aniofinal, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, estadoproducto
+        $sql = 'SELECT idproducto,nombreprod, imagen, descripcionprod, precio, preciodesc, anioinicial, aniofinal, iva, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, estadoproducto
         FROM productos
         WHERE idproducto = ?';
         $params = array($this->id);
@@ -62,9 +62,9 @@ class productosQueries
         ($this->imagen) ? Validator::deleteFile($this->getRuta(), $current_image) : $this->imagen = $current_image;
 
         $sql = 'UPDATE productos
-                SET nombreprod = ?, imagen = ?, descripcionprod = ?, precio = ?, preciodesc = ?, anioinicial = ?, aniofinal = ?, idcodigocomun = ?, idtipoproducto = ?, idcategoria = ?, idmodelo = ?, idpais = ?, estadoproducto = ?
+                SET nombreprod = ?, imagen = ?, descripcionprod = ?, precio = ?, preciodesc = ?, anioinicial = ?, aniofinal = ?, iva = ?, idcodigocomun = ?, idtipoproducto = ?, idcategoria = ?, idmodelo = ?, idpais = ?, estadoproducto = ?
                 WHERE idproducto = ?';
-        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->idCodigosComunes, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto, $this->id);
+        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->iva, $this->idCodigosComunes, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto, $this->id);
         return Database::executeRow($sql, $params);
     }
 
@@ -75,7 +75,7 @@ class productosQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
-
+s
     public function leerProductoCategoria()
     {
         $sql = 'SELECT idproducto, nombreprod, imagen,  descripcioprod, precio, preciodesc
