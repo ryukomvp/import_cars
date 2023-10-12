@@ -122,6 +122,8 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Tipo de usuario incorrecto';
                 } elseif (!$tipoUs->setBitacoras(isset($_POST['bitacora']) ? 1 : 0)) {
                     $result['exception'] = 'Bitácora incorrecta';
+                } elseif (!$tipoUs->setInventarios(isset($_POST['inventario']) ? 1 : 0)) {
+                    $result['exception'] = 'Bitácora incorrecta';
                 } elseif ($tipoUs->actualizarRegistro()) {
                     $result['status'] = 1;
                     $result['message'] = 'Tipo de usuario modificado correctamente';

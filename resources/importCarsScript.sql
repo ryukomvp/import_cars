@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS tiposusuarios(
     detallestransacciones BOOLEAN,
     tiposusuarios BOOLEAN,
     bitacoras BOOLEAN,
-    inventario BOOLEAN
+    inventarios BOOLEAN
 );
 
 CREATE TABLE IF NOT EXISTS codigostransacciones(
