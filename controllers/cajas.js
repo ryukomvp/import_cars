@@ -178,7 +178,7 @@ async function actualizarRegistro(id) {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
-async function eliminarRegistrote(id) {
+async function eliminarRegistro(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
     const RESPONSE = await confirmAction('¿Desea eliminar la caja de forma permanente?');
     // Se verifica la respuesta del mensaje.
