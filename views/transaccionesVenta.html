@@ -26,13 +26,12 @@
         <div class="py-4">
             <!--Encabezado del SCRUD de modelos-->
             <div class="py-4 text-center">
-                <h1 class="text-xl text-rojo font-bold ">Detalles de la Transacciones</h1>
-                <p class="text-azul font-medium">Gestion de la parte superior de las facturas administrando la
-                    información que pide y se coloca de acuerdo a la información.</p>
+                <h1 class="text-xl text-rojo font-bold ">Venta</h1>
+                
             </div>
             <div class="grid grid-cols-4 gap-4 py-4">
                 <!--Buscador de paises de origen-->
-                <div class="col-start-2 col-end-4">
+                <!-- <div class="col-start-2 col-end-4">
                     <form method="post" id="buscarFormulario">
                         <label for="buscar" class="mb-2 text-sm font-medium text-gray-900 sr-only">Buscar</label>
                         <div class="relative">
@@ -50,9 +49,9 @@
                                 class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                         </div>
                     </form>
-                </div>
+                </div> -->
                 <div class="col-end-5">
-                    <button onclick="crearRegistroVenta()"
+                    <button onclick="AgregarProducto()"
                         class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                         type="button">
                         <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
@@ -267,35 +266,35 @@
                     <thead
                         class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr class="text-oscuro font-semibold">
-                            <!--Columna del numero comprobante de detalles transacciones-->
-                            <th scope="col" class="hidden px-6 py-3">
-                                ID
-                            </th>
                             <!--Columna del correlativo de detalles transacciones-->
                             <th scope="col" class="px-6 py-3">
                                 Correlativo
                             </th>
                             <!--Columna de cantidad de producto de detalles transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Cantidad
+                                Producto
                             </th>
                             <!--Columna del precio unitario de los productos de detalles transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Precio Unitario
+                                Cantidad
                             </th>
                             <!--Columna de ventas no sujetas de detalles transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Ventas no Sujetas
+                                Precio unitario
                             </th>
                             <!--Columna de las ventas exentas de detalles transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Ventas Exentas
+                                Ventas no sujetas
                             </th>
                             <!--Columna de las ventas afectas de detalles transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Ventas Afectas
+                                Ventas exentas
                             </th>
                             <!--Columna del descuento de detalles transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Ventas afectas
+                            </th>
+                            <!--Columna del valor de descuento de detalles transacciones-->
                             <th scope="col" class="px-6 py-3">
                                 Descuento
                             </th>
@@ -303,45 +302,8 @@
                             <th scope="col" class="px-6 py-3">
                                 Valor de Descuento
                             </th>
-                            <!--Columna de la suma de los productos de detalles transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Sumas
-                            </th>
-                            <!--Columna de sub total de compra de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Sub Total
-                            </th>
-                            <!--Columna de la venta total de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Venta Total
-                            </th>
-                            <!--Columna para el IVA de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                IVA
-                            </th>
-                            <!--Columna de las observaciones de la transacción de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Observaciones
-                            </th>
-                            <!--Columna de la bodega de entrada del producto de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Bodega de Entrada
-                            </th>
-                            <!--Columna de la bodega de salida del producto de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Bodega de Salida
-                            </th>
-                            <!--Columna del productos de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Producto
-                            </th>
-                            <!--Columna de la descripción de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Descripción
-                            </th>
-                            <!--Columna del encabezado de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                N°. de Encabezado
+                                Encabezado
                             </th>
                             <!--Controles de acciones para actualizar o eliminar registro-->
                             <th scope="col" class="px-8 py-3">
@@ -349,8 +311,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody id="registros">
-                    </tbody>
+                    <tbody id="registros"></tbody>
                 </table>
             </div>
         </div>
@@ -363,5 +324,5 @@
     <script src="../resources/JS/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
     <script src="../controllers/account.js"></script>
-    <script src="../controllers/detallesTransacciones.js"></script>
+    <script src="../controllers/transaccionesVenta.js"></script>
 </body>

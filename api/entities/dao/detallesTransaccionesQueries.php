@@ -59,7 +59,7 @@ class DetallesTransaccionQueries
         INNER JOIN encabezadostransacciones e ON d.idencabezadotransaccion = e.idencabezadotransaccion 
         WHERE iddetalletransaccion = ?
         ORDER BY d.correlativo;';
-         $params = array( $this->idencatransaccion);
+         $params = array( $this->encabezadotransaccion);
          return Database::executeRow($sql, $params);
     }
 
