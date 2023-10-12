@@ -53,13 +53,14 @@ class DetallesTransaccionQueries
 
     public function leerRegistros()
     {
-        $sql = 'SELECT d.correlativo, p.nombreprod, d.cantidad, d.preciounitario d.ventasnosujetas, d.ventasexentas, d.ventasafectas, d.descuento, d.valordescuento , d.idencabezadotransaccion  
+        $sql = 'SELECT d.correlativo, p.nombreprod, d.cantidad, d.preciounitario, d.ventasnosujetas, d.ventasexentas, d.ventasafectas, d.descuento, d.valordescuento , d.idencabezadotransaccion  
         FROM detallestransacciones d 
         INNER JOIN productos p ON  d.idproducto = p.idproducto
         INNER JOIN encabezadostransacciones e ON d.idencabezadotransaccion = e.idencabezadotransaccion 
-        WHERE d.idencabezadotransaccion = 1
+        WHERE iddetalletransaccion = ?
         ORDER BY d.correlativo;';
-        return Database::getRows($sql);
+         $params = array( $this->idencatransaccion);
+         return Database::executeRow($sql, $params);
     }
 
     public function leerVentas()
