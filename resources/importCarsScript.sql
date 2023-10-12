@@ -440,8 +440,8 @@ CREATE TABLE IF NOT EXISTS detallestransacciones(
         iddetalletransaccion INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
         correlativo INT NOT NULL UNIQUE,
         idproducto INT NOT NULL,
-        cantidad INT NOT NULL,
-        preciounitario INT NOT NULL,
+   		cantidad INT NOT NULL,
+        preciounitario NUMERIC(6,2) NOT NULL,
         ventasnosujetas NUMERIC(6,2) NULL,
         ventasexentas NUMERIC(6,2) NULL,
         ventasafectas NUMERIC(6,2) NULL,
@@ -1059,22 +1059,49 @@ INSERT INTO codigostransacciones(codigo, nombrecodigo) VALUES
        (1236, 'Recuento'),
        (1237, 'Traspaso');
 
-INSERT INTO detallestransacciones(correlativo, cantidad, preciounitario, ventanosujeta, ventaexenta, ventaafecta, descuento, valordescuento, sumas, subtotal, ventatotal, iva, observaciones, idbodegaentrada, idbodegasalida, idproducto, descripcion) VALUES
-       (1, 50, 20.00, 15.00, 40.00, 34.00, 40.00, 20.00, 40.00, 34.00, 34.00, 19.00, 'Exelente', 1, 1, 1, 'Transaccion de producto'),
-       (2, 60, 40.00, 20.00, 34.00, 40.00, 33.00, 19.00, 20.00, 33.00, 40.00, 40.00, 'Defectuoso', 2, 2, 2, 'Transaccion de producto'),
-       (3, 70, 33.00, 40.00, 19.00, 33.00, 19.00, 33.00, 19.00, 33.00, 20.00, 19.00, 'Exelente', 3, 3, 3, 'Transaccion de producto'),
-       (4, 80, 19.00, 60.00, 20.00, 19.00, 40.00, 19.00, 19.00, 40.00, 40.00, 20.00, 'Exelente', 4, 4, 4, 'Transaccion de producto'),
-       (5, 90, 80.00, 34.00, 40.00, 34.00, 19.00, 20.00, 33.00, 20.00, 19.00, 34.00, 'Defectuoso', 5, 5, 5, 'Transaccion de producto'),
-       (6, 100, 15.00, 12.00, 19.00, 19.00, 40.00, 20.00, 40.00, 19.00, 19.00, 33.00, 'Exelente', 6, 6, 6, 'Transaccion de producto'),
-       (7, 110, 84.00, 19.00, 19.00, 40.00, 19.00, 19.00, 34.00, 20.00, 33.00, 40.00, 'Defectuoso', 7, 7, 7, 'Transaccion de producto');
+INSERT INTO inventariosbodegas(idproducto, cantidad, idbodega) VALUES
+	(1,100,1),
+    (2,100,1),
+    (3,200,1),
+    (4,40,1),
+    (5,100,1);
+
+INSERT INTO inventariossucursales(idproducto, cantidad, idsucursal) VALUES
+	(1,10,1),
+    (2,10,1),
+    (3,20,1),
+    (4,40,1),
+    (5,60,1);
+
+INSERT INTO encabezadostransacciones(correlativo, fechahora, lote, npoliza, idcajero, tipopago, idcodigotransaccion, idvendedor, idproveedor, idparametro, idinventariobodegaentrada, idinventariobodegasalida, idinventariosucursalentrada, idinventariosucursalsalida, observacion, descripcion, suma, subtotal, ventatotal) VALUES
+       (1, '2015-01-01', 1213, 1234, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Pieza solicitada','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
+       (2, '2015-01-01', 1214, 1235, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
+       (3, '2015-01-01', 1215, 1236, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
+       (4, '2015-01-01', 1216, 1237, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
+       (5, '2015-01-01', 1217, 1238, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
+       (6, '2015-01-01', 1218, 1239, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.506),
+       (7, '2015-01-01', 1219, 1230,1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50);
+
+INSERT INTO detallestransacciones(correlativo, idproducto, cantidad, preciounitario, ventasnosujetas, ventasexentas, ventasafectas, descuento, valordescuento, idencabezadotransaccion) VALUES
+       (00001, 1, 1, 10.00, 20.00, 15.00, 40.00, 34.00, 40.00, 1),
+       (00002, 2, 1, 11.00, 40.00, 20.00, 34.00, 40.00, 33.00, 1),
+       (00003, 3, 1, 09.00, 33.00, 40.00, 19.00, 33.00, 19.00, 1),
+       (00004, 4, 1, 07.00, 19.00, 60.00, 20.00, 19.00, 40.00, 1),
+       (00005, 5, 1, 10.00, 80.00, 34.00, 40.00, 34.00, 19.00, 1),
+       (00006, 6, 1, 16.00, 15.00, 12.00, 19.00, 19.00, 40.00, 1),
+       (00007, 7, 1, 10.00, 84.00, 19.00, 19.00, 40.00, 19.00, 1);
 
 
-INSERT INTO encabezadostransacciones(nocomprobante, fechatransac, lote, npoliza, idbodega, idcajero, tipopago, idcodigotransaccion, idcliente, idvendedor, idproveedor, idparametro, iddetalletransaccion) VALUES
-       (1, '2015-01-01', 1213, 1234, 1, 1,'Efectivo', 1, 1, 1, 1, 1, 1),
-       (2, '2015-01-01', 1214, 1235, 2, 2,'Efectivo', 2, 2, 2, 2, 2, 2),
-       (3, '2015-01-01', 1215, 1236, 3, 3,'Efectivo', 3, 3, 3, 3, 3, 3),
-       (4, '2015-01-01', 1216, 1237, 4, 4,'Efectivo', 1, 4, 4, 4, 4, 4),
-       (5, '2015-01-01', 1217, 1238, 5, 5,'Efectivo', 2, 5, 5, 5, 5, 5),
-       (6, '2015-01-01', 1218, 1239, 6, 6,'Efectivo', 3, 6, 6, 6, 6, 6),
-       (7, '2015-01-01', 1219, 1230, 7, 7,'Efectivo', 1, 7, 7, 7, 7, 7);
+INSERT INTO creditosfiscales(noregistro, fecha, duinit, tipodocumento, tipodepersona, razonsocial, empresa, email, direccion, idpais, giro, categoria, telefono) VALUES
+	(00001, '2015-01-01', '02349567-9','Dui', 'Natural', '','importCars','jonathan.marchelli@gmail.com','29 Calle Poniente #1026, Colonia Layco Entre 17 y, 19 Avenida Nte., San Salvador',1,'Credito Fiscal','Venta de repuesto','7777-7777'),
+    (00002, '2015-01-01', '02300567-9','Dui', 'Natural', '','importCars','jonathan.marchelli@gmail.com','29 Calle Poniente #1026, Colonia Layco Entre 17 y, 19 Avenida Nte., San Salvador',1,'Credito Fiscal','Venta de repuesto','7777-7777'),
+    (00003, '2015-01-01', '01149567-9','Dui', 'Natural', '','importCars','jonathan.marchelli@gmail.com','29 Calle Poniente #1026, Colonia Layco Entre 17 y, 19 Avenida Nte., San Salvador',1,'Credito Fiscal','Venta de repuesto','7777-7777'),
+    (00004, '2015-01-01', '02349599-9','Dui', 'Natural', '','importCars','jonathan.marchelli@gmail.com','29 Calle Poniente #1026, Colonia Layco Entre 17 y, 19 Avenida Nte., San Salvador',1,'Credito Fiscal','Venta de repuesto','7777-7777'),
+    (00005, '2015-01-01', '02349567-9','Dui', 'Natural', '','importCars','jonathan.marchelli@gmail.com','29 Calle Poniente #1026, Colonia Layco Entre 17 y, 19 Avenida Nte., San Salvador',1,'Credito Fiscal','Venta de repuesto','7700-7777');
 
+INSERT INTO facturas(nofactura,idcreditofiscal,idcliente,gmail,fecha,tipodocumento,idencabezadotransaccion) VALUES
+	(00001,1,1,'jonathan.marchelli@gmail.com','2015-01-01','Dui',1),
+    (00002,1,2,'jonathan.marchelli@gmail.com','2015-01-01','Dui',1),
+    (00003,1,2,'jonathan.marchelli@gmail.com','2015-01-01','Dui',1),
+    (00004,1,3,'jonathan.marchelli@gmail.com','2015-01-01','Nit',2),
+    (00005,1,2,'jonathan.marchelli@gmail.com','2015-01-01','Nit',1);
