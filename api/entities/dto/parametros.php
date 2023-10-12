@@ -83,7 +83,7 @@ class Parametro extends ParametrosQueries
 
     public function setNit($value)
     {
-        if (Validator::validateAlphanumeric($value,1,20)) {
+        if (Validator::validateAlphanumeric($value,1,30)) {
             $this->nit = $value;
             return true;
         } else {

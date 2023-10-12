@@ -38,7 +38,7 @@ class Bodegas extends BodegasQueries
 
     public function setDireccion($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 20)) {
+        if (Validator::validateAlphanumeric($value, 1, 50)) {
             $this->direccion = $value;
             return true;
         } else {

@@ -16,79 +16,24 @@ if (isset($_GET['action'])) {
         switch ($_GET['action']) {
             case 'buscarRegistros':
                 $_POST = Validator::validateForm($_POST);
-                if ($_POST['search'] == '') {
+                if ($_POST['buscar'] == '') {
                     $result['dataset'] = $bitacora->leerRegistros();
                     $result['status'] = 1;
-                } elseif ($result['dataset'] = $bitacora->buscarRegistros($_POST['search'])) {
+                } elseif ($result['dataset'] = $bitacora->buscarRegistros($_POST['buscar'])) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'crearRegistro':
-                $_POST = Validator::validateForm($_POST);
-                if (!$bitacora->setMensaje($_POST['mensaje'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$bitacora->setFechaBitacora($_POST['fecha'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif ($bitacora->crearRegistro()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Bitácora creada exitosamente';
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
             case 'leerRegistros':
                 if ($result['dataset'] = $bitacora->leerRegistros()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } elseif (Database::getException()) {
                     $result['exception'] = Database::getException();
                 } else {
                     $result['exception'] = 'No hay registros';
-                }
-                break;
-            case 'leerUnRegistro':
-                if (!$bitacora->setId($_POST['id'])) {
-                    $result['exception'] = 'No se pudo seleccionar la bitácora';
-                } elseif ($result['dataset'] = $bitacora->leerUnRegistro()) {
-                    $result['status'] = 1;
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'Registro inexistente';
-                }
-                break;
-            case 'actualizarRegistro':
-                $_POST = Validator::validateForm($_POST);
-                if (!$bitacora->setId($_POST['id'])) {
-                    $result['exception'] = 'No se pudo seleccionar la bitácora';
-                } elseif (!$data = $bitacora->leerUnRegistro()) {
-                    $result['exception'] = 'Bitácora inexistente';
-                } elseif (!$bitacora->setMensaje($_POST['mensaje'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif (!$bitacora->setFechaBitacora($_POST['fecha'])) {
-                    $result['exception'] = 'Nombre incorrecto';
-                } elseif ($bitacora->actualizarRegistro()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Bitácora actualizada exitosamente';
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            case 'eliminarRegistro':
-                if (!$bitacora->setId($_POST['idbitacora'])) {
-                    $result['exception'] = 'No se pudo seleccionar la bitácora';
-                } elseif (!$data = $bitacora->leerUnRegistro()) {
-                    $result['exception'] = 'Bitácora inexistente';
-                } elseif ($bitacora->eliminarRegistro()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Bitácora eliminada exitosamente';
-                } else {
-                    $result['exception'] = Database::getException();
                 }
                 break;
             default:

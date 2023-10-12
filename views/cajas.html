@@ -32,8 +32,6 @@
                 <div class="grid grid-cols-4 gap-4 py-4">
                     <div class="col-start-2 col-end-4">
                         <form method="post" id="buscarFormulario">
-                            <label for="default-search"
-                                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Buscar</label>
                             <div class="relative">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none"
@@ -42,20 +40,18 @@
                                             d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                                     </svg>
                                 </div>
-                                <input type="search" id="buscar" name="buscar"
-                                    class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Buscar Caja por nombres">
-                                <button type="submit"
-                                    class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
+                                <input type="search" id="buscador" name="buscar" placeholder="Buscar Caja por nombres">
                             </div>
                         </form>
                     </div>
                     <!-- contenedor para boton -->
                     <div class="col-end-5">
                         <button onclick="crearRegistro()"
-                            class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            type="button">
-                            <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
+                        class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                        type="button">
+                            <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -99,7 +95,7 @@
                                         <label for="caja"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Caja</label>
                                         <input type="text" id="caja" name="caja"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                             placeholder="Nombre de la caja" required autocomplete="off">
                                     </div>
                                     <!-- Nombre del equipo -->
@@ -107,7 +103,7 @@
                                         <label for="equipo"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Equipo</label>
                                         <input type="text" id="equipo" name="equipo"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                             placeholder="Nombre del equipo" required autocomplete="off">
                                     </div>
                                     <!-- Serie -->
@@ -115,7 +111,7 @@
                                         <label for="serie"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Serie del equipo</label>
                                         <input type="text" id="serie" name="serie"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                             placeholder="Serie del equipo" required autocomplete="off">
                                     </div>
                                     <!-- Modelo del equipo -->
@@ -123,7 +119,7 @@
                                         <label for="modelo"
                                             class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo del equipo</label>
                                         <input type="text" id="modelo" name="modelo"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                             placeholder="Modelo del equipo" required autocomplete="off">
                                     </div>
                                     <!-- Sucursal -->
@@ -145,11 +141,9 @@
                                 </div>
                             </div>
                             <!-- Modal footer -->
-                            <div
-                                class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <div class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b">
                                 <button id="accion" type="submit"
-                                    class="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    data-tooltip="Guardar"></button>
+                                    class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"></button>
                             </div>
                         </form>
                     </div>
@@ -157,10 +151,9 @@
             </div><!--Final del modal-->
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <!--Tabla para mostrar los registros que existen-->
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead
-                        class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr class="text-oscuro font-semibold">
+                <table class="w-full text-sm text-center text-gray-500">
+                    <thead class="text-xs text-oscuro uppercase bg-gray-50">
+                        <tr class="font-semibold">
                             <th scope="col" class="hidden px-6 py-3">
                                 ID
                             </th>
@@ -196,11 +189,12 @@
     <!-- pie del sitio -->
     <footer></footer>
     <!-- Importacion de archivos JavaScript -->
-    <script src="../node_modules/flowbite/dist/flowbite.min.js"></script>
+    <script type="text/javascript" src="../node_modules/flowbite/dist/flowbite.min.js"></script>
     <script type="text/javascript" src="../resources/js/sweetalert.min.js"></script>
     <script type="text/javascript" src="../controllers/components.js"></script>
     <script type="text/javascript" src="../controllers/account.js"></script>
     <script type="text/javascript" src="../controllers/cajas.js"></script>
+    <script type="text/javascript" src="../controllers/inners.js"></script>
 
 </body>
 

@@ -42,7 +42,7 @@ class productosQueries
                 INNER JOIN codigoscomunes a ON p.idcodigocomun = a.idcodigocomun
                 INNER JOIN tiposproductos b ON p.idtipoproducto = b.idtipoproducto
                 INNER JOIN modelos n ON p.idmodelo = n.idmodelo
-                INNER JOIN paisesdeorigen s ON p.idpais = s.idpais
+                INNER JOIN paises s ON p.idpais = s.idpais
                 ORDER BY p.nombreprod;';
         return Database::getRows($sql);
     }

@@ -97,27 +97,31 @@ async function cargarRegistros(form = null) {
         JSON.dataset.forEach(row => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
-                <tr  class="text-center bg-white hover:bg-blue-200">
-                    <td class="hidden px-6 py-4">${row.idcodigoplazo}</td>
-                    <td class="px-6 py-4">${row.plazo}</td>
-                    <td class="px-6 py-4">${row.dias}</td>
-                    <td class="px-6 py-4">
+                <tr  class="bg-white hover:bg-blue-200">
+                    <td class="hidden">${row.idcodigoplazo}</td>
+                    <td>${row.plazo}</td>
+                    <td>${row.dias}</td>
+                    <td>
                         <button onclick="actualizarRegistro(${row.idcodigoplazo})"
-                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        type="button">
-                        <img src="https://img.icons8.com/ios/30/FFFFFF/synchronize.png" />
+                            class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mt-2 mb-2"
+                            type="button">
+                            <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 1v5h-5M2 19v-5h5m10-4a8 8 0 0 1-14.947 3.97M1 10a8 8 0 0 1 14.947-3.97"/>
+                            </svg>
                         </button>
-
-                        <button onclick="eliminarRegistro(${row.idcodigoplazo})"
-                        class="md:w-auto text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        type="button">
-                        <img src="https://img.icons8.com/ios/30/FFFFFF/delete--v1.png" />
+                        <button onclick="eliminarRegistro(${row.idcodigoplazo})"  
+                            class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            type="button">
+                            <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M1 5h16M7 8v8m4-8v8M7 1h4a1 1 0 0 1 1 1v3H6V2a1 1 0 0 1 1-1ZM3 5h12v13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5Z"/>
+                            </svg>
                         </button>
-
-                        <button onclick="abrirGrafica(${row.idcodigoplazo})"
-                        class="md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                        type="button">
-                        <img src="../resources/img/icons8-reports-58.png" width="31px" height="34px"/>
+                        <button onclick="openReport(${row.idcodigoplazo})"  
+                            class="text-yellow-700 hover:text-white border border-yellow-700 hover:bg-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                            type="button">
+                            <svg class="w-[30px] h-[30px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M1 1v14h16m0-9-3-2-3 5-3-2-3 4"/>
+                            </svg>
                         </button>
                     </td>
                 </tr>

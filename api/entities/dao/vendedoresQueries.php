@@ -55,7 +55,7 @@ class VendedorQueries
     public function eliminarRegistro()
     {
         $sql = 'DELETE FROM vendedores
-                WHERE ivendedor = ?';
+                WHERE idvendedor = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }

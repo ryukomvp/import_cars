@@ -95,160 +95,114 @@
                                             class="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700"
                                             placeholder="ID" readonly>
                                     </div>
-                                    <!--Input del correlativoe-->
+                                    <!--Input numero de conprobante-->
                                     <div>
-                                        <label for="correlativo"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Correlativo</label>
-                                        <input type="number" id="correlativo" name="correlativo"
+                                        <label for="noComprobante"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">No.
+                                            Comprobante</label>
+                                        <input type="number" id="noComprobante" name="noComprobante"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                            placeholder="Correlativo" required autocomplete="off">
+                                            placeholder="Numero de comprobante" required autocomplete="off">
                                     </div>
-                                    <!--Input fecha de la cantidad de cada producto-->
+                                    <!--Input fecha de transaccion-->
                                     <div>
-                                        <label for="cantidad"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">cantidad
-                                            por Producto</label>
-                                        <input type="number" id="cantidad" name="cantidad" min="0" step="1"
+                                        <label for="fechaTransac"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Fecha de
+                                            Transacción</label>
+                                        <input type="date" id="fechaTransac" name="fechaTransac"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                            placeholder="Cantidad de cada producto a ingresar" required autocomplete="off">
+                                            placeholder="Fecha de Transacción" required>
                                     </div>
-                                    <!--Input del precio unitario-->
+                                    <!--Input del lote-->
                                     <div>
-                                        <label for="precioUnitario"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio
-                                            Unitario</label>
-                                        <input type="number" id="precioUnitario" name="precioUnitario" min="0" step="1"
+                                        <label for="lote"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Lote</label>
+                                        <input type="number" id="lote" name="lote" min="0" step="1"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                            placeholder="Precio unitario del producto" required autocomplete="off">
+                                            placeholder="Productos agrupados en un conjunto" required
+                                            autocomplete="off">
                                     </div>
-                                    <!--Input de las ventas no sujetas-->
+                                    <!--Input de número de poliza-->
                                     <div>
-                                        <label for="ventaNoSujeta"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Venta no
-                                            Sujeta</label>
-                                        <input type="number" id="ventaNoSujeta" name="ventaNoSujeta" min="0" step="1"
+                                        <label for="nopoliza"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">No.
+                                            Poliza</label>
+                                        <input type="number" id="nopoliza" name="nopoliza" min="0" step="1"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                            placeholder="Venta no Sujeta" autocomplete="off">
+                                            placeholder="Número de la poliza" required autocomplete="off">
                                     </div>
-                                    <!--Input de las ventas exentas-->
+                                    <!--Input de bodega-->
                                     <div>
-                                        <label for="ventaExenta"
-                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Venta
-                                            Exenta</label>
-                                        <input type="number" id="ventaExenta" name="ventaExenta" min="0" step="1"
-                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                            placeholder="Venta Exenta" autocomplete="off">
+                                        <label for="bodega"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega</label>
+                                        <select id="bodega" name="bodega"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        </select>
                                     </div>
                                 </div>
-
-                                <!--Input de las ventas afectas-->
+                                <!--Input de cajero-->
                                 <div>
-                                    <label for="ventaAfecta"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Venta
-                                        Afecta</label>
-                                    <input type="number" id="ventaAfecta" name="ventaAfecta" min="0" step="1"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Venta Afecta" autocomplete="off">
-                                </div>
-                                <!--Input del descuento-->
-                                <div>
-                                    <label for="descuento"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descuento</label>
-                                    <input type="number" id="descuento" name="descuento" min="0" step="1"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Descuento" required autocomplete="off">
-                                </div>
-                                <!--Input del valor de descuento-->
-                                <div>
-                                    <label for="valorDescuento"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Valor del
-                                        descuento</label>
-                                    <input type="number" id="valorDescuento" name="valorDescuento" min="0" step="1"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Valor del Descuento" required autocomplete="off">
-                                </div>
-                                <!--Input del valor mediante suma de precios-->
-                                <div>
-                                    <label for="suma"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Suma de los
-                                        articulos</label>
-                                    <input type="number" id="suma" name="suma" min="0" step="1"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Suma" required autocomplete="off">
-                                </div>
-                                <!--Input del sub total-->
-                                <div>
-                                    <label for="subTotal"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sub
-                                        Total</label>
-                                    <input type="number" id="subTotal" name="subTotal" min="0" step="1"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Sub Total" required autocomplete="off">
-                                </div>
-                                <!--Input del total-->
-                                <div>
-                                    <label for="ventaTotal"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Total</label>
-                                    <input type="number" id="ventaTotal" name="ventaTotal" min="0" step="1"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Ventas Totales" required autocomplete="off">
-                                </div>
-                                <!--Input del IVA impuesto a la compra-->
-                                <div>
-                                    <label for="iva"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">IVA</label>
-                                    <input type="number" id="iva" name="iva" min="0" step="1"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="IVA" required autocomplete="off">
-                                </div>
-                                <!--Input de las observaciones de los productos-->
-                                <div>
-                                    <label for="observaciones"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Observaciones</label>
-                                    <input type="text" id="observaciones" name="observaciones"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Observaciones" required>
-                                </div>
-                                <!--Input de la bodega de entrada-->
-                                <div>
-                                    <label for="bodegaEntrada"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega de
-                                        Entrada</label>
-                                    <select id="bodegaEntrada" name="bodegaEntrada"
+                                    <label for="cajero"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Cajero</label>
+                                    <select id="cajero" name="cajero"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     </select>
                                 </div>
-                                <!--Input de la bodega de salida-->
+                                <!--Input tipo de pago-->
                                 <div>
-                                    <label for="bodegaSalida"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega de
-                                        Salida</label>
-                                    <select id="bodegaSalida" name="bodegaSalida"
+                                    <label for="tipoPago"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo
+                                        de Pago</label>
+                                    <select id="tipoPago" name="tipoPago"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     </select>
                                 </div>
-                                <!--Input del producto añadido-->
+                                <!--Input de codigo de la transacción-->
                                 <div>
-                                    <label for="producto"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Producto</label>
-                                    <select id="producto" name="producto"
+                                    <label for="codigoTransaccion"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Codigo
+                                        de Transacción</label>
+                                    <select id="codigoTransaccion" name="codigoTransaccion"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     </select>
                                 </div>
-                                <!--Input de la descripción del producto-->
+                                <!--Input de cliente-->
                                 <div>
-                                    <label for="descripcion"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
-                                    <input type="text" id="descripcion" name="descripcion"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                        placeholder="Descripción del producto" required>
+                                    <label for="cliente"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Cliente</label>
+                                    <select id="cliente" name="cliente"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                    </select>
                                 </div>
-                                <!--Input del tipo de encabezado-->
+                                <!--Input de vendedor-->
                                 <div>
-                                    <label for="encaTransaccion"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">N°.
-                                        Transacción</label>
-                                    <select id="encaTransaccion" name="encaTransaccion"
+                                    <label for="vendedor"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Vendedor</label>
+                                    <select id="vendedor" name="vendedor"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                    </select>
+                                </div>
+                                <!--Input de proveedor-->
+                                <div>
+                                    <label for="proveedor"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Proveedor</label>
+                                    <select id="proveedor" name="proveedor"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                    </select>
+                                </div>
+                                <!--Input de parametro-->
+                                <div>
+                                    <label for="parametro"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Parametro</label>
+                                    <select id="parametro" name="parametro"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                    </select>
+                                </div>
+                                <!--Input de detalle de transacciones-->
+                                <div>
+                                    <label for="detalleTransaccion"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Detalles de Transacción</label>
+                                    <select id="detalleTransaccion" name="detalleTransaccion"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     </select>
                                 </div>
@@ -271,60 +225,57 @@
                             <th scope="col" class="hidden px-6 py-3">
                                 ID
                             </th>
-                            <!--Columna del correlativo de detalles transacciones-->
+                            <!--Columna del numero comprobante de encabezados transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Correlativo
+                                No. Comprobante
                             </th>
                             <!--Columna de a fecha de la transaccion  de encabezados transacciones-->
                             <th scope="col" class="px-6 py-3">
                                 Fecha de la Transacción
                             </th>
+                            <!--Columna de lote de encabezados transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Lote
+                            </th>
+                            <!--Columna de poliza de encabezados transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                No. Poliza
+                            </th>
+                            <!--Columna de bodega de encabezados transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Bodega
+                            </th>
+                            <!--Columna del cajero de encabezados transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Cajero
+                            </th>
+                            <!--Columna del tipo de pago de encabezados transacciones-->
+                            <th scope="col" class="px-6 py-3">
+                                Tipo de Pago
+                            </th>
                             <!--Columna del codigo de encabezados transacciones-->
                             <th scope="col" class="px-6 py-3">
                                 Codigo Transacción
                             </th>
-                            <!--Columna de cantidad de producto de detalles transacciones-->
+                            <!--Columna del cliente de encabezados transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Cantidad
+                                Cliente
                             </th>
-                            <!--Columna del precio unitario de los productos de detalles transacciones-->
+                            <!--Columna del vendedor de encabezados transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Precio Unitario
+                                Vendedor
                             </th>
-                            <!--Columna del descuento de detalles transacciones-->
+                            <!--Columna del proveedor de encabezados transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Descuento
+                                Proveedor
                             </th>
-                            <!--Columna de sub total de compra de detalles transacciones-->
+                            <!--Columna de los parametros de encabezados transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Sub Total
+                                Parametros
                             </th>
-                            <!--Columna de la venta total de detalles transacciones-->
+                            <!--Columna de los parametros de encabezados transacciones-->
                             <th scope="col" class="px-6 py-3">
-                                Venta Total
-                            </th>
-                            <!--Columna de las observaciones de la transacción de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Observaciones
-                            </th>
-                            <!--Columna de la bodega de entrada del producto de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Bodega de Entrada
-                            </th>
-                            <!--Columna de la bodega de salida del producto de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Bodega de Salida
-                            </th>
-                            <!--Columna del productos de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Producto
-                            </th>
-                            <!--Columna de la descripción de detalles transacciones-->
-                            <th scope="col" class="px-6 py-3">
-                                Descripción
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                N. comprobante
+                                Correlativo
                             </th>
                             <!--Controles de acciones para actualizar o eliminar registro-->
                             <th scope="col" class="px-8 py-3">
@@ -346,5 +297,7 @@
     <script src="../resources/JS/sweetalert.min.js"></script>
     <script src="../controllers/components.js"></script>
     <script src="../controllers/account.js"></script>
-    <script src="../controllers/detallesTransacciones.js"></script>
+    <script src="../controllers/encabezadosTransacciones.js"></script>
 </body>
+
+</html>
