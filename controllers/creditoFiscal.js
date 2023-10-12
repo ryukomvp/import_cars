@@ -1,7 +1,7 @@
 // Constante para completar la ruta de la API.
 const CREDITO_FISCAL_API = 'business/creditoFiscal.php';
 // Constante para completar la ruta de la API.
-const PAIS_API = 'business/pais.php';
+const PAIS_API = 'business/paisesOrigen .php';
 
 // Constante para establecer el formulario de buscar.
 const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
@@ -83,7 +83,13 @@ async function cargarRegistros(form = null) {
                         ${row.noregistro}
                     </td>
                     <td class="px-6 py-4">
-                        ${row.tipodocumenteo}
+                        ${row.fecha}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${row.tipodocumento}
+                    </td>
+                    <td class="px-6 py-4">
+                        ${row.duinit}
                     </td>
                     <td class="px-6 py-4">
                         ${row.tipodepersona}

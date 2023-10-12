@@ -10,9 +10,9 @@ class CreditoFiscalQueries
     */
     public function buscarRegistros($value)
     {
-        $sql = 'SELECT idcreditofiscal, noregistro, fecha, duinit, tipodocumento, tipopersona, razonsocial, empresa, email, direccion, pais, giro, categoria, telefono
-                FROM creditofiscal INNER JOIN paises USING(idpais)
-                WHERE duinit LIKE ? OR tipodocumento LIKE ? OR tipopersona LIKE ? OR empresa LIKE ? OR email LIKE ? OR pais LIKE ? OR categoria LIKE ? OR telefono LIKE ?
+        $sql = 'SELECT idcreditofiscal, noregistro, fecha, duinit, tipodocumento, tipodepersona, razonsocial, empresa, email, direccion, pais, giro, categoria, telefono
+        FROM creditosfiscales INNER JOIN paises USING(idpais)
+                WHERE duinit LIKE ? OR tipodocumento LIKE ? OR tipodepersona LIKE ? OR empresa LIKE ? OR email LIKE ? OR pais LIKE ? OR categoria LIKE ? OR telefono LIKE ?
                 ORDER BY noregistro';
         $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
@@ -20,24 +20,24 @@ class CreditoFiscalQueries
 
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO creditofiscal(noregistro, fecha, duinit, tipodocumento, tipopersona, razonsocial, empresa, email, direccion, idpais, giro, categoria, telefono)
+        $sql = 'INSERT INTO creditosfiscales(noregistro, fecha, duinit, tipodocumento, tipodepersona, razonsocial, empresa, email, direccion, idpais, giro, categoria, telefono)
                 VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)';
-        $params = array($this->noregistro, $this->fecha, $this->duinit, $this->tipodocumento, $this->tipopersona, $this->razonsocial, $this->empresa, $this->email, $this->direccion, $this->idpais, $this->giro, $this->categoria, $this->telefono);
+        $params = array($this->noregistro, $this->fecha, $this->duinit, $this->tipodocumento, $this->tipodepersona, $this->razonsocial, $this->empresa, $this->email, $this->direccion, $this->idpais, $this->giro, $this->categoria, $this->telefono);
         return Database::executeRow($sql, $params);
     }
 
     public function leerRegistros()
     {
-        $sql = 'SELECT idcreditofiscal, noregistro, fecha, duinit, tipodocumento, tipopersona, razonsocial, empresa, email, direccion, pais, giro, categoria, telefono
-                FROM creditofiscal INNER JOIN paises USING(idpais)
-                ORDER BY correocontac';
+        $sql = 'SELECT idcreditofiscal, noregistro, fecha, duinit, tipodocumento, tipodepersona, razonsocial, empresa, email, direccion, pais, giro, categoria, telefono
+                FROM creditosfiscales INNER JOIN paises USING(idpais)
+                ORDER BY noregistro';
         return Database::getRows($sql);
     }
 
     public function leerUnRegistro()
     {
-        $sql = 'SELECT idcreditofiscal, noregistro, fecha, duinit, tipodocumento, tipopersona, razonsocial, empresa, email, direccion, idpais, giro, categoria, telefono
-                FROM creditofiscal
+        $sql = 'SELECT idcreditofiscal, noregistro, fecha, duinit, tipodocumento, tipodepersona, razonsocial, empresa, email, direccion, idpais, giro, categoria, telefono
+                FROM creditosfiscales
                 WHERE idcreditofiscal = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
@@ -45,16 +45,16 @@ class CreditoFiscalQueries
 
     public function actualizarRegistro()
     {
-        $sql = 'UPDATE creditofiscal
-                SET noregistro = ?, fecha = ?, duinit = ?, tipodocumento = ?, tipopersona = ?, razonsocial = ?, empresa = ?, email = ?, direccion = ?, idpais = ?, giro = ?, categoria = ?, telefono = ?
+        $sql = 'UPDATE creditosfiscales
+                SET noregistro = ?, fecha = ?, duinit = ?, tipodocumento = ?, tipodepersona = ?, razonsocial = ?, empresa = ?, email = ?, direccion = ?, idpais = ?, giro = ?, categoria = ?, telefono = ?
                 WHERE idcreditofiscal = ?';
-        $params = array($this->noregistro, $this->fecha, $this->duinit, $this->tipodocumento, $this->tipopersona, $this->razonsocial, $this->empresa, $this->email, $this->direccion, $this->idpais, $this->giro, $this->categoria, $this->telefono, $this->id);
+        $params = array($this->noregistro, $this->fecha, $this->duinit, $this->tipodocumento, $this->tipodepersona, $this->razonsocial, $this->empresa, $this->email, $this->direccion, $this->idpais, $this->giro, $this->categoria, $this->telefono, $this->id);
         return Database::executeRow($sql, $params);
     }
 
     public function eliminarRegistro()
     {
-        $sql = 'DELETE FROM creditofiscal
+        $sql = 'DELETE FROM creditosfiscales
                 WHERE idcreditofiscal = ?';
         $params = array($this->id);
         return Database::executeRow($sql, $params);
@@ -62,7 +62,7 @@ class CreditoFiscalQueries
 
     public function leerTipoDocumento()
     {
-        $estados = array(array('DUI','DUI'), array('NIT','NIT'));
+        $estados = array(array('DUI','DUI'), array('NIT','NIT'), array('Otros o pasaporte','Otros o pasaporte'));
         return $estados;
     }
 
