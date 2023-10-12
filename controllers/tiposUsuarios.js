@@ -427,9 +427,9 @@ async function actualizarRegistro(id) {
         }
         // Se verifica si el permiso esta activo o no de bitacoras
         if (JSON.dataset.inventarios == '1') {
-            document.getElementById('inventarios').checked = 1;
+            document.getElementById('inventario').checked = 1;
         } else {
-            document.getElementById('inventarios').checked = 0;
+            document.getElementById('inventario').checked = 0;
         }
     } else {
         sweetAlert(2, JSON.exception, false);

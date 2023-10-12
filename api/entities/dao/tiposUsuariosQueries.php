@@ -32,7 +32,7 @@ class TiposUsuariosQueries
     /*Funcion para cargar los registros en la tabla y mostrarlos*/
     public function leerRegistros()
     {
-        $sql = 'SELECT idtipousuario,nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios,bitacoras
+        $sql = 'SELECT idtipousuario,nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios,bitacoras, inventarios
                 FROM tiposusuarios
                 ORDER BY nombretipous';
         return Database::getRows($sql);

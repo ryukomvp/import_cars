@@ -275,7 +275,7 @@ class UsuariosQueries
     //Leer el tipo de usuario
     public function leerTipoUs()
     {
-        $sql = 'SELECT idtipousuario,nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios,bitacoras
+        $sql = 'SELECT idtipousuario,nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios,bitacoras, inventarios
                 FROM tiposusuarios INNER JOIN usuarios USING(idtipousuario)
 				WHERE idusuario = ?';
         $params = array($this->id);
