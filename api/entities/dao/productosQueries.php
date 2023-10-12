@@ -75,7 +75,6 @@ class productosQueries
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
-s
     public function leerProductoCategoria()
     {
         $sql = 'SELECT idproducto, nombreprod, imagen,  descripcioprod, precio, preciodesc

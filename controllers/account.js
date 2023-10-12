@@ -145,15 +145,15 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <a href="encabezadosTransacciones.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Encabezados transaccion</a>
                                 </li>
-                                <li class="${DATA.status ? true : false}">
+                                <li class="$hidden">
                                     <a href="ventaProducto.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Ventas</a>
                                 </li>
-                                <li class="${JSON.permissions.detallestransacciones ? '' : 'hidden'}">
+                                <li class="hidden">
                                     <a href="detallesTransacciones.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Detalles transaccion</a>
                                 </li>
-                                <li class="${JSON.permissions.codigostransacciones ? '' : 'hidden'}">
+                                <li class="hidden">
                                     <a href="codigosTransacciones.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Codigos transaccion</a>
                                 </li>
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 </li>
                                 <li class="${JSON.permissions.bitacoras ? '' : 'hidden'}">
                                     <a href="bitacoras.html"
-                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Provedores</a>
+                                        class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Bitacoras</a>
                                 </li>
                             </ul>
                         </li>
