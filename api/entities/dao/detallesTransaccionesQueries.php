@@ -32,9 +32,9 @@ class DetallesTransaccionQueries
 
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO detallestransacciones(correlativo, idproducto, preciounitario, ventasnosujetas, ventaexenta, ventasafecta, descuento, valordescuento, idencabezadotransaccion)
+        $sql = 'INSERT INTO detallestransacciones(correlativo, idproducto, cantidad, preciounitario, ventasnosujetas, ventaexenta, ventasafecta, descuento, valordescuento, idencabezadotransaccion)
                 VALUES(?, ?, ?, ?, ? , ?, ?, ?, ?)';
-        $params = array($this->correlativo, $this->cantidad, $this->preciounitario, $this->preciounitario, $this->ventanosujeta, $this->ventaexenta, $this->ventaafecta, $this->descuento, $this->valordescuento, $this->sumas, $this->subtotal, $this->ventatotal, $this->iva, $this->observaciones, $this->idbodegaentrada, $this->idbodegasalida, $this->idproducto, $this->descripcion, $this->idencatransaccion);
+        $params = array($this->correlativo, $this->producto, $this->cantidad, $this->preciounitario, $this->ventasnosujetas, $this->ventasexentas, $this->ventasafectas, $this->descuento, $this->valordescuento, $this->encabezadotransaccion);
         return Database::executeRow($sql, $params);
     }
 

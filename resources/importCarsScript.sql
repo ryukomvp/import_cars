@@ -440,6 +440,7 @@ CREATE TABLE IF NOT EXISTS detallestransacciones(
         iddetalletransaccion INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
         correlativo INT NOT NULL UNIQUE,
         idproducto INT NOT NULL,
+        cantidad INT NOT NULL,
         preciounitario INT NOT NULL,
         ventasnosujetas NUMERIC(6,2) NULL,
         ventasexentas NUMERIC(6,2) NULL,
@@ -458,7 +459,7 @@ CREATE TABLE IF NOT EXISTS detallestransacciones(
     REFERENCES encabezadostransacciones(idencabezadotransaccion) ON UPDATE CASCADE ON DELETE CASCADE
 );
   
-CREATE TABLE IF NOT EXISTS factura(
+CREATE TABLE IF NOT EXISTS facturas(
         idfactura INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
         nofactura INT NOT NULL UNIQUE,
         idcreditofiscal INT,
