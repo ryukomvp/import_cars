@@ -2,21 +2,25 @@
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const ENCABEZADO_TRANSACCION_API = 'business/encabezadosTransacciones.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
-const DETALLE_TRANSACCION_API = 'business/detalleTransacciones.php';
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const BODEGA_API = 'business/bodegas.php';
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const CAJERO_API = 'business/cajeros.php';
+const DETALLE_TRANSACCION_API = 'business/detallesTransacciones.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const CODIGO_TRANSACCION_API = 'business/codigosTransacciones.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
-const CLIENTE_API = 'business/clientes.php';
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const VENDEDDOR_API = 'business/vendedores.php';
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const PROVEEDOR_API = 'business/proveedores.php';
+const VENDEDOR_API = 'business/vendedores.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const PARAMETRO_API = 'business/parametros.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const INVENTARIOBODEGA_API = 'business/bodegas.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const INVENTARIOSUCURSAL_API = 'business/sucursales.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const CAJERO_API = 'business/cajeros.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const CLIENTE_API = 'business/clientes.php';
+
+// Constante para la ruta del business que conecta a los metodos del SCRUD
+const PROVEEDOR_API = 'business/proveedores.php';
+
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const DETALLE_API = 'business/detallesTransacciones.php';
 // Constante para el input de busqueda

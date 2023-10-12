@@ -33,14 +33,14 @@ class DetallesTransaccionQueries
     public function crearRegistro()
     {
         $sql = 'INSERT INTO detallestransacciones(correlativo, idproducto, cantidad, preciounitario, ventasnosujetas, ventaexenta, ventasafecta, descuento, valordescuento, idencabezadotransaccion)
-                VALUES(?, ?, ?, ?, ? , ?, ?, ?, ?)';
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
         $params = array($this->correlativo, $this->producto, $this->cantidad, $this->preciounitario, $this->ventasnosujetas, $this->ventasexentas, $this->ventasafectas, $this->descuento, $this->valordescuento, $this->encabezadotransaccion);
         return Database::executeRow($sql, $params);
     }
 
     public function leerRegistros()
     {
-        $sql = 'SELECT d.correlativo, p.nombreprod, d.preciounitario d.ventasnosujetas, d.ventasexentas, d.ventasafectas, d.descuento, d.valordescuento , d.idencabezadotransaccion  
+        $sql = 'SELECT d.correlativo, p.nombreprod, d.cantidad, d.preciounitario d.ventasnosujetas, d.ventasexentas, d.ventasafectas, d.descuento, d.valordescuento , d.idencabezadotransaccion  
         FROM detallestransacciones d 
         INNER JOIN productos p ON  d.idproducto = p.idproducto
         INNER JOIN encabezadostransacciones e ON d.idencabezadotransaccion = e.idencabezadotransaccion 
@@ -65,7 +65,7 @@ class DetallesTransaccionQueries
 
     public function leerUnRegistro()
     {
-        $sql = 'SELECT iddetalletransaccion, correlativo, idproducto, preciounitario, ventanosujeta, ventaexenta, ventaafecta, descuento, valordescuento, sumas, subtotal, ventatotal, iva, observaciones, idbodegaentrada, idbodegasalida, idproducto, descripcion, idencatransaccion
+        $sql = 'SELECT iddetalletransaccion, correlativo, idproducto, cantidad, preciounitario, ventanosujeta, ventasexentas, ventasafectas, descuento, valordescuento, idencatransaccion
                 FROM detallestransacciones
                 WHERE iddetalletransaccion = ?';
         $params = array($this->id);
@@ -75,7 +75,7 @@ class DetallesTransaccionQueries
     public function actualizarRegistro()
     {
         $sql = 'UPDATE detallestransacciones
-                SET correlativo = ?, cantidad = ?, preciounitario = ?, ventanosujeta = ?, ventaexenta = ?, ventaafecta = ?, descuento = ?, valordescuento = ?, sumas = ?, subtotal = ?, ventatotal = ?, iva = ?, observaciones = ?, idbodegaentrada = ?, idbodegasalida = ?, idproducto = ?, descripcion = ?, idencatransaccion = ?
+                SET correlativo = ?, cantidad = ?, preciounitario = ?, ventanosujeta = ?, ventaexenta = ?, ventasafectas = ?, descuento = ?, valordescuento = ?, idencatransaccion = ?
                 WHERE iddetalletransaccion = ?';
         $params = array($this->correlativo, $this->cantidad, $this->preciounitario, $this->ventanosujeta, $this->ventaexenta, $this->ventaafecta, $this->descuento, $this->valordescuento, $this->sumas, $this->subtotal, $this->ventatotal, $this->iva, $this->observaciones, $this->idbodegaentrada, $this->idbodegasalida, $this->idproducto, $this->descripcion, $this->idencatransaccion, $this->id);
         return Database::executeRow($sql, $params);
