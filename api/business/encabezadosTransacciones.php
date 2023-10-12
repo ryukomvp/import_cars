@@ -26,7 +26,16 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-            case 'crearRegistroVenta':
+                case 'actualizarRegistroVenta':
+                    $_POST = Validator::validateForm($_POST);
+                    if ($encabezadoTransac->crearPreEncabezado()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Encabezado de la transacción creado exitosamente';
+                    } else {
+                        $result['exception'] = Database::getException();
+                    }
+                    break;
+            case 'actualizarRegistroVenta':
                 $_POST = Validator::validateForm($_POST);
                 if (!$encabezadoTransac->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'descripcion incorrecta';

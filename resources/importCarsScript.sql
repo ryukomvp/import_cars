@@ -380,21 +380,21 @@ CREATE TABLE IF NOT EXISTS inventariossucursales (
 CREATE TABLE IF NOT EXISTS encabezadostransacciones(
         idencabezadotransaccion INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
         correlativo INT NOT NULL UNIQUE,
-        fechahora DATE NOT NULL,
-        lote INT NOT NULL,
-        npoliza INT ,
-        idcajero INT NOT NULL,
+        fechahora DATETIME NOT NULL,
+        lote INT NULL,
+        npoliza INT NULL,
+        idcajero INT NULL,
         tipopago ENUM('Tarjeta', 'Efectivo') NOT NULL,
-        idcodigotransaccion INT NOT NULL,
-        idvendedor INT NOT NULL,
-        idproveedor INT ,
-        idparametro INT NOT NULL,
-        idinventariobodegaentrada INT,
-        idinventariobodegasalida INT,
-        idinventariosucursalentrada INT,
-        idinventariosucursalsalida INT,
-        observacion VARCHAR (100) ,
-        descripcion VARCHAR (50) NOT NULL,
+        idcodigotransaccion INT NULL,
+        idusuario INT NULL,
+        idproveedor INT NULL,
+        idparametro INT NULL,
+        idinventariobodegaentrada INT NULL,
+        idinventariobodegasalida INT NULL,
+        idinventariosucursalentrada INT NULL,
+        idinventariosucursalsalida INT NULL,
+        observacion VARCHAR (100) NULL,
+        descripcion VARCHAR (50) NULL,
         suma NUMERIC(6,2) NULL,
         subtotal NUMERIC(6,2) NULL,
         ventatotal NUMERIC(6,2) NULL,
@@ -423,9 +423,9 @@ CREATE TABLE IF NOT EXISTS encabezadostransacciones(
     FOREIGN KEY (idcodigotransaccion)
     REFERENCES codigostransacciones(idcodigotransaccion) ON UPDATE CASCADE ON DELETE CASCADE,
     
-    CONSTRAINT fkvendedortransac
-    FOREIGN KEY (idvendedor)
-    REFERENCES vendedores(idvendedor) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT fkusuariotransac
+    FOREIGN KEY (idusuario)
+    REFERENCES usuarios(idusuario) ON UPDATE CASCADE ON DELETE CASCADE,
     
     CONSTRAINT fkprovtransac
     FOREIGN KEY (idproveedor)

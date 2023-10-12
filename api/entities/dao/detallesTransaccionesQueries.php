@@ -30,6 +30,19 @@ class DetallesTransaccionQueries
         return Database::getRows($sql, $params);
     }
 
+    public function leerUltimoRegistro($nombre)
+    {
+        $sql = 'SELECT MAX(idencabezadotransaccion) from encabezadostransacciones
+        WHERE fechahora = ? AND idusuario = ? ;';
+        $params = array($fechahora, $usuario);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->encabezadotransaccion = $data['idencabezadotransaccion'];
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function crearRegistro()
     {
         $sql = 'INSERT INTO detallestransacciones(correlativo, idproducto, cantidad, preciounitario, ventasnosujetas, ventaexenta, ventasafecta, descuento, valordescuento, idencabezadotransaccion)

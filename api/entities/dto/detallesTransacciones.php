@@ -18,6 +18,8 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     protected $descuento = null;
     protected $valordescuento = null;
     protected $encabezadotransaccion = null;
+    protected $codigotransaccion = null;
+    protected $usuario = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -133,6 +135,26 @@ class DetallesTransacciones extends DetallesTransaccionQueries
         }
     }
 
+    public function setCodigoTransaccion($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->codigotransaccion = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setUsuario($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->usuario = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -190,5 +212,10 @@ class DetallesTransacciones extends DetallesTransaccionQueries
     public function getEncabezadoTransaccion()
     {
         return $this->encabezadotransaccion;
+    }
+
+    public function getCodigoTransaccion()
+    {
+        return $this->codigotransaccion;
     }
 }

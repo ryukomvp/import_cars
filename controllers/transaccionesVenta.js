@@ -4,25 +4,17 @@ const ENCABEZADO_TRANSACCION_API = 'business/encabezadosTransacciones.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const DETALLE_TRANSACCION_API = 'business/detallesTransacciones.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
+const CAJERO_API = 'business/cajeros.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
 const CODIGO_TRANSACCION_API = 'business/codigosTransacciones.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const VENDEDOR_API = 'business/vendedores.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
+const PROVEEDOR_API = 'business/proveedores.php';
+// Constante para la ruta del business que conecta a los metodos del SCRUD
 const PARAMETRO_API = 'business/parametros.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
-const INVENTARIOBODEGA_API = 'business/bodegas.php';
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const INVENTARIOSUCURSAL_API = 'business/sucursales.php';
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const CAJERO_API = 'business/cajeros.php';
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const CLIENTE_API = 'business/clientes.php';
-
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const PROVEEDOR_API = 'business/proveedores.php';
-
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const DETALLE_API = 'business/detallesTransacciones.php';
+const INVENTARIO_API = 'business/inventarios.php';
 // Constante para el input de busqueda
 const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');
 // Constante para el formulario del modal, sirve para añadir y editar
@@ -84,7 +76,7 @@ async function cargarRegistros(form = null) {
     // Se verifica la acción a realizar.
     (form) ? action = 'buscarRegistros' : action = 'leerRegistros';
     // Petición para obtener los registros disponibles.
-    const JSON = await dataFetch(ENCABEZADO_TRANSACCION_API, action, form);
+    const JSON = await dataFetch(DETALLE_TRANSACCION_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (JSON.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -92,7 +84,6 @@ async function cargarRegistros(form = null) {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             REGISTROS_TABLA.innerHTML += `
                 <tr  class="text-center bg-white hover:bg-blue-200">
-                    <td class="hidden px-6 py-4">${row.idencatransaccion}</td>
                     <td class="px-6 py-4">${row.nocomprobante}</td>
                     <td class="px-6 py-4">${row.fechatransac}</td>
                     <td class="px-6 py-4">${row.lote}</td>
@@ -128,7 +119,7 @@ async function cargarRegistros(form = null) {
 }
 
 // Funcion para abrir el modal y añadir un registro
-function crearRegistro() {
+function crearRegistroVenta () {
     // Se abre la caja de diálogo que contiene el formulario.
     ABRIR_MODAL.show();
     EJECUTAR_FORMULARIO.reset();

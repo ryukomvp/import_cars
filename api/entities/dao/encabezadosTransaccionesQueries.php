@@ -25,12 +25,32 @@ class EncabezadosQueries
         return Database::getRows($sql, $params);
     }
 
-   
-
-    public function crearRegistro()
+    public function crearPreEncabezado()
     {
-        $sql = 'INSERT INTO encabezadostransacciones (descripcion, fechahora, idcajero, idcodigotransaccion, idinventariobodegasalida, idinventariobodegaentrada , idinventariosucursalsalida, idinventariosucursalentrada, idproveedor, idparametro, idvendedor, lote, npoliza, observacion, tipopago)
-                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+        $sql = 'INSERT INTO encabezadostransacciones ( fechahora, idusuario)
+                VALUES (current_timestamp(),?)';
+        $params = array($this->fechahora, $_SESSION['idusuario']);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function leerUltimoRegistro($nombre)
+    {
+        $sql = 'SELECT MAX(idencabezadotransaccion) from encabezadostransacciones
+        WHERE fechahora = ? AND idusuario = ? ;';
+        $params = array($fechahora, $usuario);
+        if ($data = Database::getRow($sql, $params)) {
+            $this->encabezadotransaccion = $data['idencabezadotransaccion'];
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function actualizarRegistroM()
+    {
+        $sql = 'update INTO encabezadostransacciones 
+                SET descripcion = ?, fechahora = current_timestamp(), idcajero = ?, idcodigotransaccion = ?, idinventariobodegasalida = ?, idinventariobodegaentrada = ?, idinventariosucursalsalida = ?, idinventariosucursalentrada = ?, idproveedor = ?, idparametro = ?, idvendedor = ?, lote = ?, npoliza = ?, observacion = ?, tipopago = ?)
+                WHERE idencabezadotransaccion = ?';
         $params = array($this->descripcion, $this->fechahora, $this->cajero, $this->codigotransaccion, $this->bodega, $this->bodega ,$this->sucursal, $this->sucursal, $this->proveedor, $this->parametro, $this->vendedor, $this->lote, $this->npoliza, $this->observacion, $this->tipopago);
         return Database::executeRow($sql, $params);
     }
@@ -61,7 +81,7 @@ class EncabezadosQueries
         return Database::getRow($sql, $params);
     }
 
-    public function actualizarRegistro()
+    public function actualizarRegistr()
     {
         $sql = 'UPDATE encabezadostransacciones
                 SET descripcion = ?, fechahora = ?, idcajero = ?, idcodigotransaccin = ?, idinventariosucursalsalida = ?, idparametro = ?, idproveedor = ?, invendedor = ?, lote = ?, npoliza = ?, observaciones = ?, tipopago = ?, descripcion = ?
