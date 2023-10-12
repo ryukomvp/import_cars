@@ -952,7 +952,7 @@ INSERT INTO tiposproductos(tipoproducto) VALUES
 	('Bomper'),
 	('Capo');
 
-INSERT INTO tiposusuarios(nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios, bitacoras, inventario) VALUES
+INSERT INTO tiposusuarios(nombretipous,marcas,paisesdeorigen,monedas,familias,categorias,codigoscomunes,tiposproductos,codigostransacciones,codigosplazos,sucursales,plazos,contactos,parametros,proveedores,modelos,empleados,clientes,usuarios,cajas,cajeros,vendedores,bodegas,familiasbodegas,productos,encabezadostransacciones,detallestransacciones,tiposusuarios, bitacoras, inventarios) VALUES
     ('Administrador',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
     ('Gerente',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1),
     ('Vendedor',1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
@@ -977,7 +977,7 @@ INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, 
 	('Evelin Fery', '5971-3740', 'eferyg@omniture.com', '1998-06-04', '17434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Pietrek Peris', '8905-6928', 'pperish@cornell.edu', '2002-06-06', '99434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Mellisa Anstee', '1936-8789', 'mansteei@google.co.jp', '1997-09-11', '00434523-2', 'Inactivo', 'Masculino', 'Jefe'),
-	('Nevin Oke', '2536-1122', 'nokej@home.pl', '1999-02-03', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
+	('Kevin Rivas', '2536-1122', 'kevinrivassd04@gmail.com', '1999-02-03', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '2010-10-10', '06795006-2', 'Activo', 'Masculino', 'Jefe');
 
 INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, estadousuario, palabraclave, codigoveri) VALUES
@@ -993,14 +993,14 @@ INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, esta
 	('Barri', 'Sheffield', '12345678', 1, 10, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Zsazsa', 'Chstney', '12345678', 1, 11, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Scarface', 'Sheffield', '12345678', 1, 12, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
-	('Edithe', 'Sleight', '12345678', 1, 13, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
+	('Edithe', 'Sleight', '12345678', 1, 13, 'Actio','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Bartholomew', 'Sheffield', '12345678', 1, 14, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Shayla', 'Sheffield', '12345678', 1, 15, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Sisile', 'Sleight', '12345678', 1, 16, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Evelin', 'Anstee', '12345678', 1, 17, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Pietrek', 'Sheffield', '12345678', 2, 18, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Mellisa', 'Anstee', '12345678', 2, 19, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
-	('Kevin', '$2y$10$1wWqmZ36Pts6cYlKBY1FN.kgn/HfUyCjF/JkWIO1M5xipDgFlFKna', '12345678', 2, 20, 'Activo','$2y$10$1wWqmZ36Pts6cYlKBY1FN.kgn/HfUyCjF/JkWIO1M5xipDgFlFKna',0),
+	('Kevin', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 2, 20, 'Activo','$2y$10$1wWqmZ36Pts6cYlKBY1FN.kgn/HfUyCjF/JkWIO1M5xipDgFlFKna',0),
 	('dani', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 21, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0);
 
 INSERT INTO cajas (nombrecaja, nombreequipo, serieequipo, modeloequipo, idsucursal, idusuario) VALUES
@@ -1074,7 +1074,7 @@ INSERT INTO inventariossucursales(idproducto, cantidad, idsucursal) VALUES
     (4,40,1),
     (5,60,1);
 
-INSERT INTO encabezadostransacciones(correlativo, fechahora, lote, npoliza, idcajero, tipopago, idcodigotransaccion, idvendedor, idproveedor, idparametro, idinventariobodegaentrada, idinventariobodegasalida, idinventariosucursalentrada, idinventariosucursalsalida, observacion, descripcion, suma, subtotal, ventatotal) VALUES
+INSERT INTO encabezadostransacciones(correlativo, fechahora, lote, npoliza, idcajero, tipopago, idcodigotransaccion, idusuario, idproveedor, idparametro, idinventariobodegaentrada, idinventariobodegasalida, idinventariosucursalentrada, idinventariosucursalsalida, observacion, descripcion, suma, subtotal, ventatotal) VALUES
        (1, '2015-01-01', 1213, 1234, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Pieza solicitada','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
        (2, '2015-01-01', 1214, 1235, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
        (3, '2015-01-01', 1215, 1236, 1,'Efectivo', 1, 1, 1, 1, 1, 1, 1, 1,'Liquidos para toyota corolla','Piezas de carroceria para carro tal', 89.90, 91.50,91.50),
