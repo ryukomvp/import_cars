@@ -7,7 +7,7 @@ class PaisesOrigenQueries
     public function buscarRegistros($value)
     {
         $sql = 'SELECT idpais, pais
-                FROM paisesdeorigen
+                FROM paises
                 WHERE pais LIKE ?
                 ORDER BY pais';
         $params = array("%$value%");
@@ -16,7 +16,7 @@ class PaisesOrigenQueries
     // Función para crear paises de origen
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO paisesdeorigen(pais)
+        $sql = 'INSERT INTO paises(pais)
                 VALUES(?)';
         $params = array($this->pais);
         return Database::executeRow($sql, $params);
@@ -26,7 +26,7 @@ class PaisesOrigenQueries
     public function leerRegistros()
     {
         $sql = 'SELECT idpais, pais
-                FROM paisesdeorigen
+                FROM paises
                 ORDER BY pais';
         return Database::getRows($sql);
     }
@@ -35,7 +35,7 @@ class PaisesOrigenQueries
     public function leerUnRegistro()
     {
         $sql = 'SELECT idpais, pais
-                FROM paisesdeorigen
+                FROM paises
                 WHERE idpais = ?';
         $params = array($this->idpais);
         return Database::getRow($sql, $params);
@@ -43,7 +43,7 @@ class PaisesOrigenQueries
     // Actualizar pais de origen
     public function actualizarRegistro()
     {
-        $sql = 'UPDATE paisesdeorigen
+        $sql = 'UPDATE paises
                 SET pais = ?
                 WHERE idpais = ?';
         $params = array($this->pais, $this->idpais);
@@ -52,7 +52,7 @@ class PaisesOrigenQueries
     // Función para eliminar pais de origen
     public function eliminarRegistro()
     {
-        $sql = 'DELETE FROM paisesdeorigen
+        $sql = 'DELETE FROM paises
                 WHERE idpais = ?';
         $params = array($this->idpais);
         return Database::executeRow($sql, $params);
@@ -63,7 +63,7 @@ class PaisesOrigenQueries
     public function graficaCantidadProductosPais()
     {
         $sql = 'SELECT pa.pais, COUNT(pr.idproducto) AS cantidad_productos 
-            FROM paisesdeorigen pa 
+            FROM paises pa 
             INNER JOIN productos pr ON pa.idpais = pr.idpais 
             WHERE pa.idpais = ? 
             GROUP BY pr.nombreprod';
