@@ -6,26 +6,26 @@ class PaisesOrigenQueries
     // Funcion para buscar paises de origen
     public function buscarRegistros($value)
     {
-        $sql = 'SELECT idpais, pais
+        $sql = 'SELECT idpais,nomenclatura, pais
                 FROM paises
-                WHERE pais LIKE ?
+                WHERE nomenclatura LIKE ? OR pais LIKE ?
                 ORDER BY pais';
-        $params = array("%$value%");
+        $params = array("%$value%","%$value%");
         return Database::getRows($sql, $params);
     }
     // Función para crear paises de origen
     public function crearRegistro()
     {
-        $sql = 'INSERT INTO paises(pais)
-                VALUES(?)';
-        $params = array($this->pais);
+        $sql = 'INSERT INTO paises(nomenclatura,pais)
+                VALUES(?,?)';
+        $params = array($this->nomenclatura, $this->pais);
         return Database::executeRow($sql, $params);
     }
 
     // Función para leer los países de origen
     public function leerRegistros()
     {
-        $sql = 'SELECT idpais, pais
+        $sql = 'SELECT idpais, pais, nomenclatura
                 FROM paises
                 ORDER BY pais';
         return Database::getRows($sql);
@@ -34,19 +34,19 @@ class PaisesOrigenQueries
     // Función para seleccionar un pais de origen
     public function leerUnRegistro()
     {
-        $sql = 'SELECT idpais, pais
+        $sql = 'SELECT idpais,nomenclatura, pais
                 FROM paises
                 WHERE idpais = ?';
-        $params = array($this->idpais);
+        $params = array($this->id);
         return Database::getRow($sql, $params);
     }
     // Actualizar pais de origen
     public function actualizarRegistro()
     {
         $sql = 'UPDATE paises
-                SET pais = ?
+                SET nomenclatura = ?,  pais = ?
                 WHERE idpais = ?';
-        $params = array($this->pais, $this->idpais);
+        $params = array($this->nomenclatura, $this->pais, $this->id);
         return Database::executeRow($sql, $params);
     }
     // Función para eliminar pais de origen
@@ -54,7 +54,7 @@ class PaisesOrigenQueries
     {
         $sql = 'DELETE FROM paises
                 WHERE idpais = ?';
-        $params = array($this->idpais);
+        $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
 

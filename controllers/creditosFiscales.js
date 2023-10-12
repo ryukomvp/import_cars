@@ -1,7 +1,7 @@
 // Constante para completar la ruta de la API.
 const CREDITO_FISCAL_API = 'business/creditosFiscales.php';
 // Constante para completar la ruta de la API.
-const PAIS_API = 'business/paisesOrigen .php';
+const PAIS_API = 'business/paisesOrigen.php';
 
 // Constante para establecer el formulario de buscar.
 const FORMULARIO_BUSQUEDA = document.getElementById('buscarFormulario');

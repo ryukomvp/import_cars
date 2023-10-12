@@ -12,9 +12,9 @@ class CreditosFiscalesQueries
     {
         $sql = 'SELECT idcreditofiscal, noregistro, fecha, duinit, tipodocumento, tipodepersona, razonsocial, empresa, email, direccion, pais, giro, categoria, telefono
         FROM creditosfiscales INNER JOIN paises USING(idpais)
-                WHERE duinit LIKE ? OR tipodocumento LIKE ? OR tipodepersona LIKE ? OR empresa LIKE ? OR email LIKE ? OR pais LIKE ? OR categoria LIKE ? OR telefono LIKE ?
+                WHERE duinit LIKE ? OR tipodocumento LIKE ? OR tipodepersona LIKE ? OR razonsocial LIKE ? OR empresa LIKE ? OR email LIKE ? OR pais LIKE ? OR giro LIKE ? OR categoria LIKE ? OR telefono LIKE ?
                 ORDER BY noregistro';
-        $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
+        $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
     }
 
@@ -62,13 +62,13 @@ class CreditosFiscalesQueries
 
     public function leerTipoDocumento()
     {
-        $estados = array(array('DUI','DUI'), array('NIT','NIT'), array('Otros o pasaporte','Otros o pasaporte'));
-        return $estados;
+        $tipodoc = array(array('Dui','Dui'), array('Nit','Nit'), array('Otros o pasaporte','Otros o pasaporte'));
+        return $tipodoc;
     }
 
     public function leerTipoPersona()
     {
-        $estados = array(array('Natural','Natural'), array('Juridico','Juridico'));
-        return $estados;
+        $tipopersona = array(array('Natural','Natural'), array('Juridico','Juridico'));
+        return $tipopersona;
     }
 }

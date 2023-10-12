@@ -66,7 +66,7 @@ class CreditosFiscales extends CreditosFiscalesQueries
 
     public function setTipoDocumento($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphanumeric($value,1,20)) {
             $this->tipodocumento = $value;
             return true;
         } else {
@@ -76,7 +76,7 @@ class CreditosFiscales extends CreditosFiscalesQueries
 
     public function setTipoPersona($value)
     {
-        if (Validator::validateNaturalNumber($value)) {
+        if (Validator::validateAlphanumeric($value,1,20)) {
             $this->tipodepersona = $value;
             return true;
         } else {
@@ -116,7 +116,7 @@ class CreditosFiscales extends CreditosFiscalesQueries
 
     public function setDireccion($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 100)) {
+        if (Validator::validateAlphanumeric($value, 1, 200)) {
             $this->direccion = $value;
             return true;
         } else {
@@ -146,7 +146,7 @@ class CreditosFiscales extends CreditosFiscalesQueries
 
     public function setCategoria($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 10)) {
+        if (Validator::validateAlphanumeric($value, 1, 30)) {
             $this->categoria = $value;
             return true;
         } else {
@@ -156,7 +156,7 @@ class CreditosFiscales extends CreditosFiscalesQueries
 
     public function setTelefono($value)
     {
-        if (Validator::validateAlphanumeric($value, 1, 10)) {
+        if (Validator::validatePhone($value)) {
             $this->telefono = $value;
             return true;
         } else {
