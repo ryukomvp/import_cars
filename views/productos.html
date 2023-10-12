@@ -121,7 +121,7 @@
                                 <div>
                                     <label for="nombre"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Nombre
-                                        del producto:</label>
+                                        del producto</label>
                                     <input type="text" id="nombreprod" name="nombre"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                         placeholder="Nombre" required autocomplete="off">
@@ -129,7 +129,7 @@
                                 <!--Input precio del producto-->
                                 <div>
                                     <label for="precio"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio:</label>
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio</label>
                                     <input type="number" id="precio" name="precio" min="1" step="0.01"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                         placeholder="Precio" required>
@@ -137,7 +137,7 @@
                                 <div>
                                     <label for="preciodesc"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio
-                                        con descuento:</label>
+                                        con descuento</label>
                                     <input type="number" id="preciodesc" name="preciodesc" min="1" step="0.01"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                         placeholder="Precio con descuento">
@@ -146,7 +146,7 @@
                                 <div>
                                     <label for="anio inicial"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Año
-                                        inicio de pieza:</label>
+                                        inicio de pieza</label>
                                     <input type="number" id="anioinicial" name="anioinicial" min="1900" max="2023"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                         placeholder="Año" required>
@@ -154,15 +154,23 @@
                                 <div>
                                     <label for="anio final"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Año final
-                                        de pieza:</label>
+                                        de pieza</label>
                                     <input type="number" id="aniofinal" name="aniofinal" min="1900" max="2023"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                         placeholder="Año" required>
                                 </div>
+                                <!--Input de IVA-->
+                                <div>
+                                    <label for="iva"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">IVA</label>
+                                    <input type="number" id="iva" name="iva" min="1" step="0.01"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                        placeholder="Precio con descuento">
+                                </div>
                                 <!--Input codigo-->
                                 <div>
                                     <label for="codigo"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Código:</label>
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Código</label>
                                     <input type="text" list="datalistOptions" name="codigoscomunes" id="codigoscomunes"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                         placeholder="Seleccione un código" autocomplete="off">
@@ -173,7 +181,7 @@
                                 <!--Input categoria-->
                                 <div>
                                     <label for="categoria"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoría:</label>
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Categoría</label>
                                     <select id="categoria" name="categoria"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     </select>
@@ -181,7 +189,7 @@
                                 <!--Input modelo-->
                                 <div>
                                     <label for="modelo"
-                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo:</label>
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Modelo</label>
                                     <select id="modelo" name="modelo"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     </select>
@@ -190,7 +198,7 @@
                                 <div>
                                     <label for="paisorigen"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">País de
-                                        origen:</label>
+                                        origen</label>
                                     <select id="paisorigen" name="paisorigen"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     </select>
@@ -199,7 +207,7 @@
                                 <div>
                                     <label for="tipo"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Tipo de
-                                        producto :</label>
+                                        producto</label>
                                     <select id="tipo" name="tipo"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     </select>
@@ -208,7 +216,7 @@
                                 <div>
                                     <label for="estado"
                                         class="block mb-2 text-sm font-semibold text-azul dark:text-white">Estado
-                                        del producto:</label>
+                                        del productos</label>
                                     <select id="estado" name="estado"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                     </select>
@@ -262,7 +270,7 @@
                                 Precio descuento
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Código
+                                IVA
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Tipo de Producto

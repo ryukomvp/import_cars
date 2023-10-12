@@ -12,14 +12,14 @@ class productosQueries
     /*metodo para buscar registros*/
     public function buscarProducto($value)
     {
-        $sql = 'SELECT productos.idproducto, productos.imagen, productos.nombreprod, productos.descripcionprod, productos.iva, productos.precio, productos.preciodesc, productos.anioinicial, productos.aniofinal, codigoscomunes.codigo, tiposproductos.tipoproducto, categorias.categoria, modelos.modelo, paisesdeorigen.pais, productos.estadoproducto 
+        $sql = 'SELECT productos.idproducto, productos.imagen, productos.nombreprod, productos.descripcionprod, productos.iva, productos.precio, productos.preciodesc, productos.anioinicial, productos.aniofinal, codigoscomunes.codigo, tiposproductos.tipoproducto, categorias.categoria, modelos.modelo, paises.pais, productos.estadoproducto 
         FROM productos 
         INNER JOIN categorias ON productos.idcategoria = categorias.idcategoria 
         INNER JOIN codigoscomunes ON productos.idcodigocomun = codigoscomunes.idcodigocomun 
         INNER JOIN tiposproductos ON productos.idtipoproducto = tiposproductos.idtipoproducto 
         INNER JOIN modelos ON productos.idmodelo = modelos.idmodelo 
-        INNER JOIN paisesdeorigen ON productos.idpais = paisesdeorigen.idpais 
-        WHERE productos.nombreprod LIKE ? OR productos.descripcionprod LIKE ? OR categorias.categoria  LIKE ? OR codigoscomunes.codigo LIKE ? OR modelos.modelo LIKE ? OR paisesdeorigen.pais LIKE ?
+        INNER JOIN paises ON productos.idpais = paises.idpais 
+        WHERE productos.nombreprod LIKE ? OR productos.descripcionprod LIKE ? OR categorias.categoria  LIKE ? OR codigoscomunes.codigo LIKE ? OR modelos.modelo LIKE ? OR paises.pais LIKE ?
         ORDER BY productos.nombreprod';
         $params = array("%$value%", "%$value%", "%$value%", "%$value%", "%$value%", "%$value%");
         return Database::getRows($sql, $params);
@@ -30,7 +30,7 @@ class productosQueries
         // , $_SESSION['idUsuario']
         $sql = 'INSERT INTO productos(nombreprod, imagen, descripcionprod, precio, preciodesc, anioinicial, aniofinal, iva, idcodigocomun, idtipoproducto, idcategoria, idmodelo, idpais, estadoproducto)
                 VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this-iva, $this->idCodigosComunes, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto);
+        $params = array($this->nombre, $this->imagen, $this->descripcion, $this->precio, $this->precioDesc, $this->anioIni, $this->anioFin, $this->iva, $this->idCodigosComunes, $this->idTipoProducto, $this->idCategoria, $this->idModelo, $this->idPais, $this->estadoProducto);
         return Database::executeRow($sql, $params);
     }
 

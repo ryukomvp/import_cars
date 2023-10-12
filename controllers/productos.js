@@ -87,7 +87,7 @@ async function rellenarTabla(form = null) {
                     <td class="px-6 py-4">${row.anioinicial}-${row.aniofinal}</td>
                     <td class="px-6 py-4">${row.precio}</td>
                     <td class="px-6 py-4">${row.preciodesc}</td>
-                    <td class="px-6 py-4">${row.codigo}</td>
+                    <td class="px-6 py-4">${row.iva}</td>
                     <td class="px-6 py-4">${row.tipoproducto}</td>
                     <td class="px-6 py-4">${row.categoria}</td>
                     <td class="px-6 py-4">${row.modelo}</td>
@@ -168,6 +168,7 @@ async function actualizarRegistro(id) {
         document.getElementById('preciodesc').value = JSON.dataset.preciodesc;
         document.getElementById('anioinicial').value = JSON.dataset.anioinicial;
         document.getElementById('aniofinal').value = JSON.dataset.aniofinal;
+        document.getElementById('iva').value = JSON.dataset.iva;
         fillSelect(CODIGOS_COMUNES_API, 'leerRegistros', 'codigo',JSON.dataset.idcodigocomun);
         fillSelect(CATEGORIAS_API, 'leerRegistros', 'categoria',JSON.dataset.idcategoria);
         fillSelect(MODELOS_API, 'leerRegistros', 'modelo',JSON.dataset.idmodelo);
