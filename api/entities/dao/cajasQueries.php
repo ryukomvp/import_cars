@@ -22,7 +22,7 @@ class CajaQueries
     {
         $sql = 'INSERT INTO cajas(nombrecaja, nombreequipo, serieequipo, modeloequipo, idsucursal, idusuario)
                 VALUES(?,?,?,?,?,?)';
-        $params = array($this->nombrecaja.$this->nombreequipo, $this->serieequipo, $this->modeloequipo, $this->idsucursal, $this->idusuario);
+        $params = array($this->nombrecaja,$this->nombreequipo, $this->serieequipo, $this->modeloequipo, $this->idsucursal, $this->idusuario);
         return Database::executeRow($sql, $params);
     }
 
