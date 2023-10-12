@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     BODY.classList.add('bg-gray-900');
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
     const JSON = await dataFetch(USUARIO_API, 'capturarUsuario');
+    const DATA = await dataFetch(ENCABEZADOS_API, 'CrearPreEncabezado');
     if (JSON.session) {
         setInterval(() => {
             checkSessionTime();
@@ -144,8 +145,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                                     <a href="encabezadosTransacciones.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Encabezados transaccion</a>
                                 </li>
-                                <li class="">
-                                    <a href="ventaProducto.html" onclick=
+                                <li class="${DATA.status ? true : false}">
+                                    <a href="ventaProducto.html"
                                         class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Ventas</a>
                                 </li>
                                 <li class="${JSON.permissions.detallestransacciones ? '' : 'hidden'}">
