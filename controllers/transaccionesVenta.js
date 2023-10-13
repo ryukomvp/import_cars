@@ -26,7 +26,9 @@ const TITULO = document.getElementById('titulo');
 // Constante para el texto del boton
 const BTN_ACCION = document.getElementById('accion');
 // Constante para abrir o cerrar el modal
-const ABRIR_MODAL = new Modal(document.getElementById('abrirModal'));
+const ABRIR_MODAL_ENCABEZADO = new Modal(document.getElementById('abrirModalEncabeado'));
+// Constante para abrir o cerrar el modal
+const ABRIR_MODAL_DETALLE = new Modal(document.getElementById('abrirModalDetalle'));
 
 
 // Metodo para cargar la pagina cada vez que haya un cambio en el DOM
@@ -52,7 +54,7 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica si se realizara una actualización o un registro nuevo.
-    (document.getElementById('id').value) ? action = 'actualizarRegistro' : action = 'crearRegistro';
+    (document.getElementById('id').value) ? action = 'actualizarRegistro' : action = 'CrearPreEncabezado';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(EJECUTAR_FORMULARIO);
     // Petición para guardar los datos del formulario.
@@ -69,6 +71,30 @@ EJECUTAR_FORMULARIO.addEventListener('submit', async (event) => {
         sweetAlert(2, JSON.exception, false);
     }
 });
+
+EJECUTAR_FORMULARIO.addEventListener('submite', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Se verifica si se realizara una actualización o un registro nuevo.
+    (document.getElementById('id').value) ? action = 'actualizarRegistroVenta' : action = 'crearRegistro';
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(EJECUTAR_FORMULARIO);
+    // Petición para guardar los datos del formulario.
+    const JSON = await dataFetch(DETALLE_TRANSACCION_API, action, FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (JSON.status) {
+        // Se carga nuevamente la tabla para visualizar los cambios.
+        cargarRegistros();
+        // Se cierra la caja de diálogo.
+        ABRIR_MODAL.hide();
+        // Se muestra un mensaje de éxito.
+        sweetAlert(1, JSON.message, true);
+    } else {
+        sweetAlert(2, JSON.exception, false);
+    }
+});
+
+
 // Metodo para cargar la tabla con los datos de la base
 async function cargarRegistros(form = null) {
     // Se inicializa el contenido de la tabla.
@@ -116,9 +142,28 @@ async function cargarRegistros(form = null) {
 }
 
 // Funcion para abrir el modal y añadir un registro
-function crearRegistroVenta () {
+function crearVenta () {
     // Se abre la caja de diálogo que contiene el formulario.
-    ABRIR_MODAL.show();
+    ABRIR_MODAL_DETALLE.show();
+    EJECUTAR_FORMULARIO.reset();
+    // Texto del boton para crear un registro
+    BTN_ACCION.textContent = 'Añadir';
+    // Se asigna el título a la caja de diálogo.
+    TITULO.textContent = 'Crear un registro';
+    fillSelect(BODEGA_API, 'leerRegistros', 'bodega');
+    fillSelect(CAJERO_API, 'leerRegistros', 'cajero');
+    fillSelect(ENCABEZADO_TRANSACCION_API, 'leerTiposPagos', 'tipoPago');
+    fillSelect(CODIGO_TRANSACCION_API, 'leerRegistros', 'codigoTransaccion');
+    fillSelect(CLIENTE_API, 'leerRegistros', 'cliente');
+    fillSelect(VENDEDDOR_API, 'leerRegistros', 'vendedor');
+    fillSelect(PROVEEDOR_API, 'leerRegistros', 'proveedor');
+    fillSelect(PARAMETRO_API, 'leerRegistros', 'parametro');
+    fillSelect(DETALLE_API, 'leerRegistros', 'detalleTransaccion');
+}
+
+function crearPreEncabezado () {
+    // Se abre la caja de diálogo que contiene el formulario.
+    ABRIR_MODAL_ENCABEZADO.show();
     EJECUTAR_FORMULARIO.reset();
     // Texto del boton para crear un registro
     BTN_ACCION.textContent = 'Añadir';

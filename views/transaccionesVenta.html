@@ -31,7 +31,7 @@
             </div>
             <div class="grid grid-cols-4 gap-4 py-4">
                 <!--Buscador de paises de origen-->
-                <!-- <div class="col-start-2 col-end-4">
+                <div class="col-start-2 col-end-4">
                     <form method="post" id="buscarFormulario">
                         <label for="buscar" class="mb-2 text-sm font-medium text-gray-900 sr-only">Buscar</label>
                         <div class="relative">
@@ -49,15 +49,24 @@
                                 class="hidden text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Confirmar</button>
                         </div>
                     </form>
-                </div> -->
+                </div> 
                 <div class="col-end-5">
-                    <button onclick="AgregarProducto()"
-                        class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                        type="button">
-                        <img src="https://img.icons8.com/ios/30/FFFFFF/add--v1.png" />
-                    </button>
+                    <button onclick="crearEncabezado()"
+                                class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                type="button">
+                                <Span  class="flex-1 ml-3 text-left whitespace-nowrap">Ingresar encabezado</Span>
+                                
+                </div>
+                <div class="col-end-5">
+                    <button onclick="crearDetalle()"
+                                class="block md:w-auto text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                type="button">
+                                <Span  class="flex-1 ml-3 text-left whitespace-nowrap">Ingresar detalle</Span>
+                                
                 </div>
             </div>
+
+            <!--Modal para crear un nuevo registro-->
             <div id="abrirModal" tabindex="-1"
                 class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
                 <div class="relative w-full h-full max-w-4xl">
@@ -261,6 +270,211 @@
                     </div>
                 </div>
             </div>
+
+            <div id="abrirModal" tabindex="-1"
+                class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] md:h-full">
+                <div class="relative w-full h-full max-w-4xl">
+                    <!-- Modal content -->
+                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <!-- Modal header -->
+                        <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                            <h3 id="titulo" class="text-xl font-bold text-oscuro dark:text-white">
+                            </h3>
+                            <button onclick="ABRIR_MODAL.hide();" type="button"
+                                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="sr-only">Cerrar ventana</span>
+                            </button>
+                        </div>
+                        <!-- Modal body -->
+                        <form method="post" id="ejecutarFormulario" class="p-4">
+                            <div class="grid gap-6 mb-6 grid-cols-1 md:grid-cols-3">
+                                <div class="text-center py-4 p-6 space-x-2 rounded-b">
+                                    <img src="../resources/img/logo.jpg" alt="img">
+                                    <br>
+                                </div>
+                                <div class="grid gap-6 mb-6 md:grid-cols-2 md:col-start-2 md:col-end-4">
+                                    <!--Input del ID-->
+                                    <div>
+                                        <label for="id"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">ID</label>
+                                        <input type="number" id="id" name="id"
+                                            class="disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700"
+                                            placeholder="ID" readonly>
+                                    </div>
+                                    <!--Input del correlativoe-->
+                                    <div>
+                                        <label for="correlativo"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Correlativo</label>
+                                        <input type="number" id="correlativo" name="correlativo"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Correlativo" required autocomplete="off">
+                                    </div>
+                                    <!--Input fecha de la cantidad de cada producto-->
+                                    <div>
+                                        <label for="cantidad"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">cantidad
+                                            por Producto</label>
+                                        <input type="number" id="cantidad" name="cantidad" min="0" step="1"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Cantidad de cada producto a ingresar" required autocomplete="off">
+                                    </div>
+                                    <!--Input del precio unitario-->
+                                    <div>
+                                        <label for="precioUnitario"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Precio
+                                            Unitario</label>
+                                        <input type="number" id="precioUnitario" name="precioUnitario" min="0" step="1"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Precio unitario del producto" required autocomplete="off">
+                                    </div>
+                                    <!--Input de las ventas no sujetas-->
+                                    <div>
+                                        <label for="ventaNoSujeta"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Venta no
+                                            Sujeta</label>
+                                        <input type="number" id="ventaNoSujeta" name="ventaNoSujeta" min="0" step="1"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Venta no Sujeta" autocomplete="off">
+                                    </div>
+                                    <!--Input de las ventas exentas-->
+                                    <div>
+                                        <label for="ventaExenta"
+                                            class="block mb-2 text-sm font-semibold text-azul dark:text-white">Venta
+                                            Exenta</label>
+                                        <input type="number" id="ventaExenta" name="ventaExenta" min="0" step="1"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            placeholder="Venta Exenta" autocomplete="off">
+                                    </div>
+                                </div>
+
+                                <!--Input de las ventas afectas-->
+                                <div>
+                                    <label for="ventaAfecta"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Venta
+                                        Afecta</label>
+                                    <input type="number" id="ventaAfecta" name="ventaAfecta" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Venta Afecta" autocomplete="off">
+                                </div>
+                                <!--Input del descuento-->
+                                <div>
+                                    <label for="descuento"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descuento</label>
+                                    <input type="number" id="descuento" name="descuento" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Descuento" required autocomplete="off">
+                                </div>
+                                <!--Input del valor de descuento-->
+                                <div>
+                                    <label for="valorDescuento"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Valor del
+                                        descuento</label>
+                                    <input type="number" id="valorDescuento" name="valorDescuento" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Valor del Descuento" required autocomplete="off">
+                                </div>
+                                <!--Input del valor mediante suma de precios-->
+                                <div>
+                                    <label for="suma"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Suma de los
+                                        articulos</label>
+                                    <input type="number" id="suma" name="suma" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Suma" required autocomplete="off">
+                                </div>
+                                <!--Input del sub total-->
+                                <div>
+                                    <label for="subTotal"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Sub
+                                        Total</label>
+                                    <input type="number" id="subTotal" name="subTotal" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Sub Total" required autocomplete="off">
+                                </div>
+                                <!--Input del total-->
+                                <div>
+                                    <label for="ventaTotal"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Total</label>
+                                    <input type="number" id="ventaTotal" name="ventaTotal" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Ventas Totales" required autocomplete="off">
+                                </div>
+                                <!--Input del IVA impuesto a la compra-->
+                                <div>
+                                    <label for="iva"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">IVA</label>
+                                    <input type="number" id="iva" name="iva" min="0" step="1"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="IVA" required autocomplete="off">
+                                </div>
+                                <!--Input de las observaciones de los productos-->
+                                <div>
+                                    <label for="observaciones"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Observaciones</label>
+                                    <input type="text" id="observaciones" name="observaciones"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Observaciones" required>
+                                </div>
+                                <!--Input de la bodega de entrada-->
+                                <div>
+                                    <label for="bodegaEntrada"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega de
+                                        Entrada</label>
+                                    <select id="bodegaEntrada" name="bodegaEntrada"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
+                                </div>
+                                <!--Input de la bodega de salida-->
+                                <div>
+                                    <label for="bodegaSalida"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Bodega de
+                                        Salida</label>
+                                    <select id="bodegaSalida" name="bodegaSalida"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
+                                </div>
+                                <!--Input del producto añadido-->
+                                <div>
+                                    <label for="producto"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Producto</label>
+                                    <select id="producto" name="producto"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
+                                </div>
+                                <!--Input de la descripción del producto-->
+                                <div>
+                                    <label for="descripcion"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">Descripción</label>
+                                    <input type="text" id="descripcion" name="descripcion"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                        placeholder="Descripción del producto" required>
+                                </div>
+                                <!--Input del tipo de encabezado-->
+                                <div>
+                                    <label for="encaTransaccion"
+                                        class="block mb-2 text-sm font-semibold text-azul dark:text-white">N°.
+                                        Transacción</label>
+                                    <select id="encaTransaccion" name="encaTransaccion"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 mb-6 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    </select>
+                                </div>
+                            </div>
+                            <div
+                                class="text-right items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                                <button id="accion" type="submit"
+                                    class="border border-green-700 text-green-700 hover:bg-green-800 hover:text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead
