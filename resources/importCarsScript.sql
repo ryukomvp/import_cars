@@ -978,7 +978,8 @@ INSERT INTO empleados(nombreemp, telefonoemp, correoemp, nacimientoemp, duiemp, 
 	('Pietrek Peris', '8905-6928', 'pperish@cornell.edu', '2002-06-06', '99434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Mellisa Anstee', '1936-8789', 'mansteei@google.co.jp', '1997-09-11', '00434523-2', 'Inactivo', 'Masculino', 'Jefe'),
 	('Kevin Rivas', '2536-1122', 'kevinrivassd04@gmail.com', '1999-02-03', '20434523-2', 'Inactivo', 'Masculino', 'Jefe'),
-	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '2010-10-10', '06795006-2', 'Activo', 'Masculino', 'Jefe');
+	('Daniel Hernández', '7053-7276', 'daniel123hernandez15@gmail.com', '2010-10-10', '06795006-2', 'Activo', 'Masculino', 'Jefe'),
+    ('Jose Gonzalez', '7007-2947', 'j.castillo200412@gmail.com', '2004-12-03', '06783688-3', 'Activo', 'Masculino', 'Jefe');
 
 INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, estadousuario, palabraclave, codigoveri) VALUES
 	('Marchelli', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 1, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
@@ -1002,6 +1003,7 @@ INSERT INTO usuarios(nombreus, contrasenia, pin, idtipousuario, idempleado, esta
 	('Mellisa', 'Anstee', '12345678', 2, 19, 'Activo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0),
 	('Kevin', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 2, 20, 'Activo','$2y$10$1wWqmZ36Pts6cYlKBY1FN.kgn/HfUyCjF/JkWIO1M5xipDgFlFKna',0),
 	('dani', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 21, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0);
+    ('Grexfuxito', '$2y$10$Lh3Le1sR3Ys301TFgCGgeu5bdaRv27gWxO/4O66BUJQlGjji4n8Mm', '12345678', 1, 22, 'Inactivo','$2y$10$cnDyWARQwsAtmlonAYIUXOrelvB78AgqkcgTtB7KShShx.1KBO4Gyv',0);
 
 INSERT INTO cajas (nombrecaja, nombreequipo, serieequipo, modeloequipo, idsucursal, idusuario) VALUES
         ('Caja 1','HP basic 1080','1098R3456P93', 'HP',1,1),
