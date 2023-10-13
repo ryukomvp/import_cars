@@ -25,11 +25,11 @@ class EncabezadosQueries
         return Database::getRows($sql, $params);
     }
 
-    public function crearPreEncabezado()
+    public function crearEncabezado()
     {
-        $sql = 'INSERT INTO encabezadostransacciones ( fechahora, idusuario)
-                VALUES (current_timestamp(),?)';
-        $params = array($this->fechahora, $_SESSION['idusuario']);
+        $sql = 'INSERT INTO encabezadostransacciones ( correlativo, fechahora, lote, npoliza, cajero, tipopago, idcodigotransaccion, idusuario, idparametro, idinventariosucursalsalida, observacion, descripcion)
+                VALUES ( ?, current_timestamp(), ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->correlativo , $this->fechahora, $this->lote , $this->npoliza, $this->idcajero, $this->tipopago, $this->idcodigotransaccion, $_SESSION['idusuario'], $this->idparameto, $this->sucursal, $this->observacion, $this->descripcion);
         return Database::executeRow($sql, $params);
     }
 
@@ -84,7 +84,7 @@ class EncabezadosQueries
     public function actualizarRegistr()
     {
         $sql = 'UPDATE encabezadostransacciones
-                SET descripcion = ?, fechahora = ?, idcajero = ?, idcodigotransaccin = ?, idinventariosucursalsalida = ?, idparametro = ?, idproveedor = ?, invendedor = ?, lote = ?, npoliza = ?, observaciones = ?, tipopago = ?, descripcion = ?
+                SET 
                 WHERE idencabezadotransaccion = ?';
         $params = array($this->nocomprobante, $this->fechatransac, $this->lote, $this->npoliza, $this->idbodega, $this->idcajero, $this->tipopago, $this->idcodigotransaccion, $this->idcliente, $this->idvendedor, $this->idproveedor, $this->idparametro, $this->iddetalletransaccion, $this->id);
         return Database::executeRow($sql, $params);

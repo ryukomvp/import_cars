@@ -6,12 +6,6 @@ const DETALLE_TRANSACCION_API = 'business/detallesTransacciones.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const CAJERO_API = 'business/cajeros.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
-const CODIGO_TRANSACCION_API = 'business/codigosTransacciones.php';
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const VENDEDOR_API = 'business/vendedores.php';
-// Constante para la ruta del business que conecta a los metodos del SCRUD
-const PROVEEDOR_API = 'business/proveedores.php';
-// Constante para la ruta del business que conecta a los metodos del SCRUD
 const PARAMETRO_API = 'business/parametros.php';
 // Constante para la ruta del business que conecta a los metodos del SCRUD
 const INVENTARIO_API = 'business/inventarios.php';
@@ -150,15 +144,8 @@ function crearVenta () {
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna el título a la caja de diálogo.
     TITULO.textContent = 'Crear un registro';
-    fillSelect(BODEGA_API, 'leerRegistros', 'bodega');
-    fillSelect(CAJERO_API, 'leerRegistros', 'cajero');
-    fillSelect(ENCABEZADO_TRANSACCION_API, 'leerTiposPagos', 'tipoPago');
-    fillSelect(CODIGO_TRANSACCION_API, 'leerRegistros', 'codigoTransaccion');
-    fillSelect(CLIENTE_API, 'leerRegistros', 'cliente');
-    fillSelect(VENDEDDOR_API, 'leerRegistros', 'vendedor');
-    fillSelect(PROVEEDOR_API, 'leerRegistros', 'proveedor');
-    fillSelect(PARAMETRO_API, 'leerRegistros', 'parametro');
-    fillSelect(DETALLE_API, 'leerRegistros', 'detalleTransaccion');
+    fillSelect(PRODUCTO_API, 'leerRegistros', 'bodega');
+    fillSelect(ENCABEZADO_TRANSACCION_API, 'leerRegistros', 'cajero');
 }
 
 function crearPreEncabezado () {
@@ -169,15 +156,9 @@ function crearPreEncabezado () {
     BTN_ACCION.textContent = 'Añadir';
     // Se asigna el título a la caja de diálogo.
     TITULO.textContent = 'Crear un registro';
-    fillSelect(BODEGA_API, 'leerRegistros', 'bodega');
     fillSelect(CAJERO_API, 'leerRegistros', 'cajero');
-    fillSelect(ENCABEZADO_TRANSACCION_API, 'leerTiposPagos', 'tipoPago');
-    fillSelect(CODIGO_TRANSACCION_API, 'leerRegistros', 'codigoTransaccion');
-    fillSelect(CLIENTE_API, 'leerRegistros', 'cliente');
-    fillSelect(VENDEDDOR_API, 'leerRegistros', 'vendedor');
-    fillSelect(PROVEEDOR_API, 'leerRegistros', 'proveedor');
     fillSelect(PARAMETRO_API, 'leerRegistros', 'parametro');
-    fillSelect(DETALLE_API, 'leerRegistros', 'detalleTransaccion');
+    fillSelect(SUCURSAL_API, 'leerRegistros', 'detalleTransaccion');
 }
 
 //Funcion para abrir el modal con los datos del registro a actualizar

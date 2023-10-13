@@ -10,17 +10,20 @@ class Encabezado extends EncabezadosQueries
     protected $correlativo = null;
     protected $fechahora = null;
     protected $lote = null;
-    protected $npoliza = null;
+    protected $poliza = null;
     protected $cajero = null;
     protected $tipopago = null;
     protected $codigotransaccion = null;
-    protected $vendedor = null;
+    protected $usuario = null;
     protected $proveedor = null;
     protected $parametro = null;
     protected $bodega = null;
     protected $sucursal = null;
     protected $observacion = null;
     protected $descripcion = null;
+    protected $suma = null;
+    protected $subtotal = null;
+    protected $ventatotal = null;
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
@@ -68,7 +71,7 @@ class Encabezado extends EncabezadosQueries
     public function setPoliza($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->npoliza = $value;
+            $this->poliza = $value;
             return true;
         } else {
             return false;
@@ -106,10 +109,10 @@ class Encabezado extends EncabezadosQueries
         }
     }
 
-    public function setVendedor($value)
+    public function setUsuario($value)
     {
         if (Validator::validateNaturalNumber($value)) {
-            $this->vendedor = $value;
+            $this->usuario = $value;
             return true;
         } else {
             return false;
@@ -177,6 +180,36 @@ class Encabezado extends EncabezadosQueries
         }
     }
 
+    public function setSuma($value)
+    {
+        if (Validator::validateMoney($value)) {
+            $this->suma = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setSubTotal($value)
+    {
+        if (Validator::validateMoney($value)) {
+            $this->subtotal = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setVentaTotal($value)
+    {
+        if (Validator::validateMoney($value)) {
+            $this->ventatotal = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     /*
     *   Métodos para obtener valores de los atributos.
     */
@@ -203,7 +236,7 @@ class Encabezado extends EncabezadosQueries
 
     public function getPoliza()
     {
-        return $this->npoliza;
+        return $this->poliza;
     }
 
     public function getCajero()
@@ -221,9 +254,9 @@ class Encabezado extends EncabezadosQueries
         return $this->codigotransaccion;
     }
 
-    public function getVendedor()
+    public function getUsuario()
     {
-        return $this->vendedor;
+        return $this->usuario;
     }
 
     public function getProveedor()
@@ -254,5 +287,20 @@ class Encabezado extends EncabezadosQueries
     public function getDescripcion()
     {
         return $this->sucursal;
+    }
+
+    public function getSuma()
+    {
+        return $this->suma;
+    }
+
+    public function getSubTotal()
+    {
+        return $this->subtotal;
+    }
+
+    public function getVentaTotal()
+    {
+        return $this->ventatotal;
     }
 }

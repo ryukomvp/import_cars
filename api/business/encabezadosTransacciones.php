@@ -26,16 +26,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
-                case 'CrearPreEncabezado':
-                    $_POST = Validator::validateForm($_POST);
-                    if ($encabezadoTransac->crearPreEncabezado()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Encabezado de la transacción creado exitosamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                    break;
-            case 'actualizarRegistroVenta':
+            case 'CrearEncabezado':
                 $_POST = Validator::validateForm($_POST);
                 if (!$encabezadoTransac->setDescripcion($_POST['descripcion'])) {
                     $result['exception'] = 'descripcion incorrecta';
@@ -59,7 +50,16 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Error al asignar el proveedor';
                 } elseif (!$encabezadoTransac->setTipoPago($_POST['tipopago'])) {
                     $result['exception'] = 'Error al asignar el parámetro';
-                } elseif ($encabezadoTransac->crearRegistro()) {
+                } elseif ($encabezadoTransac->crearEncabezado()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Encabezado de la transacción creado exitosamente';
+                } else {
+                    $result['exception'] = Database::getException();
+                }
+                break;
+            case 'actualizarRegistroVenta':
+                $_POST = Validator::validateForm($_POST);
+                if ($encabezadoTransac->actualizarRegistroM()) {
                     $result['status'] = 1;
                     $result['message'] = 'Encabezado de la transacción creado exitosamente';
                 } else {
