@@ -168,7 +168,11 @@ async function actualizarRegistro(id) {
         document.getElementById('preciodesc').value = JSON.dataset.preciodesc;
         document.getElementById('anioinicial').value = JSON.dataset.anioinicial;
         document.getElementById('aniofinal').value = JSON.dataset.aniofinal;
-        document.getElementById('iva').value = JSON.dataset.iva;
+        if (JSON.dataset.iva == '1') {
+            document.getElementById('iva').checked = 1;
+        } else {
+            document.getElementById('iva').checked = 0;
+        }
         fillSelect(CODIGOS_COMUNES_API, 'leerRegistros', 'codigo',JSON.dataset.idcodigocomun);
         fillSelect(CATEGORIAS_API, 'leerRegistros', 'categoria',JSON.dataset.idcategoria);
         fillSelect(MODELOS_API, 'leerRegistros', 'modelo',JSON.dataset.idmodelo);

@@ -53,7 +53,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Fecha inicial incorrecto';
                 } elseif (!$productos->setAnioFin($_POST['aniofinal'])) {
                     $result['exception'] = 'Fecha final incorrecto';
-                } elseif (!$productos->setIva($_POST['iva'])) {
+                } elseif (!$productos->setIva(isset($_POST['iva']) ? 1 : 0)) {
                     $result['exception'] = 'IVA incorrecto';
                 } elseif (!isset($_POST['codigoscomunes'])) {
                     $result['exception'] = 'Seleccione un codigo';
@@ -119,7 +119,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Fecha inicial incorrecto';
                 } elseif (!$productos->setAnioFin($_POST['aniofinal'])) {
                     $result['exception'] = 'Fecha final incorrecto';
-                } elseif (!$productos->setIva($_POST['iva'])) {
+                } elseif (!$productos->setIva(isset($_POST['iva']) ? 1 : 0)) {
                     $result['exception'] = 'IVA incorrecto';
                 } elseif (!isset($_POST['codigoscomunes'])) {
                     $result['exception'] = 'Seleccione un codigo';
