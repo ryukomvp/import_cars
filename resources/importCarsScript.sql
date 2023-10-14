@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS importCars;
 USE importCars;
 
 CREATE TABLE IF NOT EXISTS marcas (
